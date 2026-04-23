@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 3: How Real Estate Makes Money — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1B4D3E;--forest-mid:#2A6B56;--forest-light:#3A8A6E;--forest-pale:#E8F5EE;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(27,77,62,0.1);--shadow-card:0 2px 16px rgba(27,77,62,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--forest);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(27,77,62,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:30%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(27,77,62,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(27,77,62,0.25);}
+.module-hero{background:linear-gradient(135deg,#0D2820 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Money Pillars */
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin:2rem 0;}
+.pillar{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;text-align:center;transition:all 0.25s;position:relative;overflow:hidden;}
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.pillar.p1::before{background:linear-gradient(90deg,var(--forest),var(--forest-mid));}
+.pillar.p2::before{background:linear-gradient(90deg,var(--gold),var(--gold-light));}
+.pillar.p3::before{background:linear-gradient(90deg,#4A6FA5,#7A9FD5);}
+.pillar.p4::before{background:linear-gradient(90deg,#8A4A90,#C07AC8);}
+.pillar:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.pillar-icon{font-size:32px;margin-bottom:0.75rem;display:block;}
+.pillar h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.pillar p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.pillar-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:10px;margin-bottom:0.6rem;}
+.p1 .pillar-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.p2 .pillar-tag{background:var(--gold-pale);color:#8A6A20;}
+.p3 .pillar-tag{background:#E8EFF8;color:#4A6FA5;}
+.p4 .pillar-tag{background:#F5EEF8;color:#8A4A90;}
+
+/* Example box */
+.example-box{background:var(--cream-dark);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;border:1px solid var(--border);}
+.example-box .ex-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.75rem;}
+.example-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;}
+.example-row{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:13.5px;}
+.example-row:last-child{border-bottom:none;font-weight:700;color:var(--forest);padding-top:0.75rem;}
+.example-row .label{color:var(--text-mid);}
+.example-row .value{font-weight:600;color:var(--text-dark);}
+.example-row.total .value{color:var(--forest);font-size:14.5px;}
+
+/* Career money grid */
+.career-money-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin:2rem 0;}
+.career-money-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.25s;}
+.career-money-card:hover{box-shadow:var(--shadow-card);}
+.career-money-card .emoji{font-size:22px;margin-bottom:0.5rem;display:block;}
+.career-money-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.career-money-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.career-money-card .how{font-size:12px;font-weight:600;color:var(--forest-mid);margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--border);}
+
+/* Ladder */
+.ladder{margin:2rem 0;display:flex;flex-direction:column;gap:0;}
+.ladder-step{display:flex;gap:1.25rem;align-items:flex-start;}
+.ladder-connector{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.ladder-circle{width:40px;height:40px;background:var(--forest);color:var(--gold-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;flex-shrink:0;z-index:1;}
+.ladder-line{width:2px;height:32px;background:linear-gradient(to bottom,var(--forest-mid),rgba(27,77,62,0.2));margin:0 auto;}
+.ladder-content{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;flex:1;margin-bottom:8px;transition:box-shadow 0.2s;}
+.ladder-content:hover{box-shadow:var(--shadow-card);}
+.ladder-content h4{font-weight:600;font-size:0.95rem;color:var(--text-dark);margin-bottom:0.3rem;}
+.ladder-content p{font-size:13.5px;color:var(--text-mid);line-height:1.65;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.cc{background:var(--forest-pale);color:var(--forest-mid);}
+.video-badge.bp{background:#E8F0FB;color:#1A4E7A;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem;margin:1.75rem 0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.skills-connection{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.skills-connection h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.skills-connection p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.career-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.career-tag{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--text-dark);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;}
+.btn-forest{background:var(--forest);color:var(--white);}
+.btn-forest:hover{background:var(--forest-mid);}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;}
+  .video-grid{grid-template-columns:1fr;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .pillars{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">Career Paths</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="index.html#begin">Core Foundation</a><span class="sep">›</span>
+  <span class="current">Module 3: How Real Estate Makes Money</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Your Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <div class="prog-dot active">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+    <div class="prog-dot locked">9</div>
+    <div class="prog-dot locked">10</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📚 Core Foundation · Module 3 of 10</div>
+    <h1>How Real Estate <em>Makes Money</em></h1>
+    <p>This is where everything starts to click. Real estate doesn't make money in just one way — it makes money in four different ways, often all at the same time. Understanding these four income streams is what separates people who see real estate clearly from those who only see the surface.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>35–45 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+      <div class="meta-item">✅ Knowledge check: <span>5 questions</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The four ways real estate <em>generates wealth</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most people think real estate makes money in one way — you buy something, it goes up in value, you sell it for more than you paid. That's true, but it's only one piece of a much bigger picture.</p>
+    <p class="lesson-text">Real estate is one of the only assets that can generate returns in four distinct ways — <strong>simultaneously</strong>. A single rental property can be paying you monthly income, growing in value, building equity through loan paydown, and reducing your tax bill all at the same time. No other common investment does all four at once. This is why real estate has created more millionaires than almost any other asset class in history.</p>
+    <p class="lesson-text">Here are the four pillars:</p>
+
+    <div class="pillars">
+      <div class="pillar p1 fade-in">
+        <span class="pillar-icon">💵</span>
+        <span class="pillar-tag">Pillar 1</span>
+        <h4>Cash Flow</h4>
+        <p>Monthly income left over after all expenses — your tenant's rent minus your mortgage, taxes, insurance, and management costs.</p>
+      </div>
+      <div class="pillar p2 fade-in">
+        <span class="pillar-icon">📈</span>
+        <span class="pillar-tag">Pillar 2</span>
+        <h4>Appreciation</h4>
+        <p>The increase in property value over time. Can happen naturally as markets rise, or be forced through renovations and better management.</p>
+      </div>
+      <div class="pillar p3 fade-in">
+        <span class="pillar-icon">🏗️</span>
+        <span class="pillar-tag">Pillar 3</span>
+        <h4>Loan Paydown</h4>
+        <p>Every mortgage payment reduces what you owe. Your tenant's rent is paying down your loan — quietly building your equity every single month.</p>
+      </div>
+      <div class="pillar p4 fade-in">
+        <span class="pillar-icon">🧾</span>
+        <span class="pillar-tag">Pillar 4</span>
+        <h4>Tax Benefits</h4>
+        <p>Real estate comes with powerful tax advantages — depreciation, deductions, and the ability to defer taxes through strategies like 1031 exchanges.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"Most beginning investors focus only on cash flow. That's understandable — it's the most visible return. But when you add up all four pillars together, the true return on a well-chosen property is often dramatically higher than the cash flow alone suggests. This is why experienced investors sometimes accept a modest monthly cash flow on a property that has strong appreciation potential — they're collecting all four streams, not just one."</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Breaking down each pillar — <em>with real numbers</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Let's make this concrete. Here's a simple example of a single rental property and how each of the four income streams actually works.</p>
+
+    <div class="example-box">
+      <div class="ex-label">📊 Example Property — Owner-Occupied Fourplex</div>
+      <h4>A 4-unit building (each unit: 2 bed / 2 bath) purchased for $1,000,000 — you live in one unit, rent the other three</h4>
+      <div class="example-row"><span class="label">Purchase Price</span><span class="value">$1,000,000</span></div>
+      <div class="example-row"><span class="label">Down Payment (15%)</span><span class="value">$150,000</span></div>
+      <div class="example-row"><span class="label">Loan Amount (85%)</span><span class="value">$850,000</span></div>
+      <div style="margin:0.75rem 0 0.4rem;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);">Monthly Income</div>
+      <div class="example-row"><span class="label">3 rented units × $2,500/month</span><span class="value">$7,500</span></div>
+      <div class="example-row"><span class="label">Your unit (you live here — no rent paid)</span><span class="value">$0</span></div>
+      <div class="example-row" style="font-weight:600;"><span class="label">Total Monthly Income</span><span class="value">$7,500</span></div>
+      <div style="margin:0.75rem 0 0.4rem;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);">Monthly Expenses Breakdown</div>
+      <div class="example-row"><span class="label">Mortgage payment ($850K @ 6.5% / 30 years)</span><span class="value">$5,373</span></div>
+      <div class="example-row"><span class="label">Property taxes (est.)</span><span class="value">$900</span></div>
+      <div class="example-row"><span class="label">Insurance</span><span class="value">$350</span></div>
+      <div class="example-row"><span class="label">Maintenance reserve (5% of income)</span><span class="value">$375</span></div>
+      <div class="example-row"><span class="label">Vacancy reserve (5% of income)</span><span class="value">$375</span></div>
+      <div class="example-row" style="font-weight:600;color:var(--text-dark);border-top:2px solid var(--border);margin-top:4px;"><span class="label">Total Monthly Expenses</span><span class="value">$7,373</span></div>
+      <div class="example-row total"><span class="label">Monthly Cash Flow (profit)</span><span class="value" style="color:var(--forest);font-size:15px;">+$127 / month</span></div>
+      <div class="example-row total"><span class="label">Your effective housing cost</span><span class="value" style="color:var(--forest);font-size:15px;">$0 — you live for free</span></div>
+    </div>
+
+    <p class="lesson-text" style="margin-top:1rem;">Notice that a maintenance reserve and vacancy reserve are included — money set aside each month for repairs and for the inevitable periods when a unit sits empty between tenants. Many beginners forget these and are then surprised when an expense hits. Building them into your numbers from day one is what separates realistic investors from wishful thinkers.</p>
+
+    <div class="callout callout-insight" style="margin-top:1rem;">
+      <div class="callout-label">💡 The House Hacking Advantage</div>
+      <p>Look at what just happened. Instead of paying $2,500/month to rent a 2-bed/2-bath apartment somewhere, you are now living for free — three tenants are covering every expense plus generating a small monthly profit. You own a $1,000,000 asset. Your tenants are paying down your mortgage. Your net worth is growing every single month. This is one of the most powerful wealth-building strategies available to someone starting out.</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Important Notes on This Strategy</div>
+      <p><strong>Owner-occupancy requirement:</strong> To qualify for favorable financing on a multifamily, you must live in one of the units as your primary residence — typically for at least one year. FHA loans allow as little as 3.5% down, conventional owner-occupied multifamily loans typically start at 5–15%. Always verify current loan limits and requirements with a licensed mortgage professional in your area, as limits vary by state and county. <strong>Note on property management:</strong> In this example the owner self-manages since they live on site — which saves the typical 8–10% management fee and helps the numbers work. As the portfolio grows, professional management becomes worth the cost.</p>
+    </div>
+
+    <h3 class="sub-title">Pillar 1: Cash Flow — and the House Hacking Advantage</h3>
+    <p class="lesson-text">On this fourplex the numbers tell a powerful story. Your three tenants generate $7,500/month in income. After all expenses — mortgage, taxes, insurance, and reserves — the property nets <strong>$127/month in profit</strong> while you live in your own unit completely rent-free. Compare that to paying $2,500/month to rent someone else's apartment and building zero equity. The difference is staggering.</p>
+    <p class="lesson-text">And this is just Pillar 1. The property is simultaneously doing three more things for you — appreciating in value, building equity through loan paydown, and generating tax benefits. All at the same time.</p>
+
+    <h3 class="sub-title">Pillar 2: Appreciation</h3>
+    <p class="lesson-text">At a conservative 3% annual appreciation, a $1,000,000 property gains <strong>$30,000 in value in year one</strong>. Over 10 years at 3%, that property could be worth over $1,340,000. That $30,000 gain on a $150,000 down payment represents a <strong>20% return on your actual cash invested</strong> — from appreciation alone in year one.</p>
+
+    <h3 class="sub-title">Pillar 3: Loan Paydown</h3>
+    <p class="lesson-text">Every month your tenants' rent covers the full mortgage payment — and generates a small profit on top. Part of that mortgage payment reduces your loan balance, building equity you didn't have to directly work for. On an $850,000 mortgage at 6.5%, approximately <strong>$9,500 in principal is paid down in year one</strong> — funded entirely by your tenants' rent. Over 10 years that compounds into significant additional equity.</p>
+
+    <h3 class="sub-title">Pillar 4: Tax Benefits</h3>
+    <p class="lesson-text">This is the pillar most beginners overlook — and it's one of the most powerful. The IRS allows rental property owners to deduct a wide range of expenses: mortgage interest, property taxes, insurance, repairs, property management, and more. It also allows something called <strong>depreciation</strong> — a paper deduction that lets you write off the cost of the building over 27.5 years, even as the property is actually appreciating.</p>
+    <p class="lesson-text">In practice, many investors pay little or no federal income tax on their rental income — and sometimes use rental losses to offset income from other sources. Always work with a real estate-savvy CPA to maximize these benefits.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Key Insight — The Combined Return</div>
+      <p>On our $1,000,000 fourplex with $150,000 invested: Cash flow is $1,524/year. Add $30,000 in appreciation (3%) and roughly $9,500 in loan paydown in year one, and your total combined return before tax benefits is around <strong>$41,000 on a $150,000 investment — a 27% annual return</strong>. And you lived for free the entire year. This is the power of combining all four pillars with a strategy built for someone starting out.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Coach Carson: The 3 ways real estate <em>builds real wealth</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Coach Carson — one of the clearest real estate educators online — walks through the three core ways real estate builds wealth using simple numbers and real examples. He specifically designed this for people who are new to investing. Watch how the numbers compound over 10 years. This is what makes real estate so powerful.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/rrN1Ql93WmQ" title="How to Become a Millionaire With Real Estate Investing For Newbies — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cc">Coach Carson · YouTube</span>
+        <h4>How to Become a Millionaire With Real Estate Investing For Newbies</h4>
+        <p>Coach Carson breaks down cash flow, loan paydown, and appreciation with clear, simple numbers — then shows how compounding over time creates real wealth. Perfect complement to the lessons above. Pay close attention to the 10-year breakdown starting around the 7-minute mark.</p>
+        <p class="credit">Coach Carson · YouTube 2022</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">How each real estate career <em>makes money</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Not everyone in real estate makes money by owning property. In fact, most people who build careers in real estate make their income by serving the people who do own property — or by facilitating the transactions that happen around it. Understanding how money flows in each career path is essential for choosing yours and building it intentionally.</p>
+
+    <div class="career-money-grid">
+      <div class="career-money-card fade-in">
+        <span class="emoji">🏠</span>
+        <h4>Residential Agent</h4>
+        <p>Earns a commission — typically 2.5–3% of the sale price — on every property bought or sold. The more transactions closed, the higher the income. Referrals and repeat clients compound over time.</p>
+        <div class="how">Income type: Commission per transaction</div>
+      </div>
+      <div class="career-money-card fade-in">
+        <span class="emoji">🏢</span>
+        <h4>Commercial Real Estate</h4>
+        <p>Commissions on commercial leases and sales, often larger than residential deals. Top CRE brokers earn significant income from fewer, larger transactions. Tenant rep and landlord rep roles both generate fees.</p>
+        <div class="how">Income type: Commission + leasing fees</div>
+      </div>
+      <div class="career-money-card fade-in">
+        <span class="emoji">🏘️</span>
+        <h4>Real Estate Investor</h4>
+        <p>Makes money through all four pillars — cash flow, appreciation, loan paydown, and tax benefits. Income can be active (flipping) or passive (buy-and-hold rentals). The goal is building a portfolio that generates income without trading time for money.</p>
+        <div class="how">Income type: All 4 pillars simultaneously</div>
+      </div>
+      <div class="career-money-card fade-in">
+        <span class="emoji">🔑</span>
+        <h4>Property Manager</h4>
+        <p>Earns a management fee — typically 8–12% of monthly rent collected — plus leasing fees for placing new tenants. Manages multiple properties for multiple clients. Income grows as the portfolio under management grows.</p>
+        <div class="how">Income type: Monthly management fees</div>
+      </div>
+      <div class="career-money-card fade-in">
+        <span class="emoji">🏗️</span>
+        <h4>Real Estate Developer</h4>
+        <p>Makes money by creating or significantly improving properties — building new construction, converting buildings, or repositioning assets. Development profit is the difference between total cost and final sale or stabilized value.</p>
+        <div class="how">Income type: Development profit + equity</div>
+      </div>
+      <div class="career-money-card fade-in">
+        <span class="emoji">💵</span>
+        <h4>Mortgage & Lending</h4>
+        <p>Earns origination fees, points, and commissions on every loan closed. Loan officers are paid per transaction. The more loans closed, the higher the income. A productive loan officer in a busy market earns very well.</p>
+        <div class="how">Income type: Origination fees per loan</div>
+      </div>
+      <div class="career-money-card fade-in">
+        <span class="emoji">🔄</span>
+        <h4>Wholesaling</h4>
+        <p>Makes money by finding distressed properties, getting them under contract below market value, and assigning the contract to an investor buyer for a fee — typically $5,000–$30,000 per deal. No property ownership required.</p>
+        <div class="how">Income type: Assignment fees per deal</div>
+      </div>
+      <div class="career-money-card fade-in">
+        <span class="emoji">🔧</span>
+        <h4>Maintenance & Repair</h4>
+        <p>Earns income by providing skilled trade services to property owners, investors, and managers. The best contractors build long-term relationships with investors who provide steady, recurring work. Premium rates for licensed, reliable professionals.</p>
+        <div class="how">Income type: Service fees per job</div>
+      </div>
+      <div class="career-money-card fade-in">
+        <span class="emoji">📸</span>
+        <h4>Real Estate Photography</h4>
+        <p>Earns per-shoot fees from agents, investors, and developers who need property photography, video, drone, and virtual staging. Repeat agent clients provide steady recurring income as their listing volume grows.</p>
+        <div class="how">Income type: Per-shoot fees + upsells</div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Important Distinction</div>
+      <p>Some careers pay you for your time — agents, photographers, contractors, and lenders earn income when they're actively working. Other careers can eventually pay you whether you work or not — rental investors earn cash flow around the clock. Most successful real estate professionals do both: they build a career that earns active income now, and use that income to build a portfolio that eventually generates passive income. Keep both goals in mind as you choose your path.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The wealth building ladder — <em>how it actually works in real life</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Understanding how real estate makes money is one thing. Understanding the path from where you are now to where you want to be is another. Here is the wealth building ladder that most successful real estate professionals climb — regardless of which career path they start on.</p>
+
+    <div class="ladder">
+      <div class="ladder-step fade-in">
+        <div class="ladder-connector">
+          <div class="ladder-circle">1</div>
+          <div class="ladder-line"></div>
+        </div>
+        <div class="ladder-content">
+          <h4>Build knowledge and skills first</h4>
+          <p>Before any deal, any license, or any investment — you build the foundation. That's what this curriculum is for. The people who shortcut this step make expensive mistakes. The ones who invest in knowledge first make better decisions at every stage.</p>
+        </div>
+      </div>
+      <div class="ladder-step fade-in">
+        <div class="ladder-connector">
+          <div class="ladder-circle">2</div>
+          <div class="ladder-line"></div>
+        </div>
+        <div class="ladder-content">
+          <h4>Enter your chosen career path</h4>
+          <p>Whether you become an agent, a wholesaler, a lender, a contractor, or a photographer — your career gives you active income and, more importantly, an inside view of the real estate market. You start seeing deals, opportunities, and relationships that most people never see.</p>
+        </div>
+      </div>
+      <div class="ladder-step fade-in">
+        <div class="ladder-connector">
+          <div class="ladder-circle">3</div>
+          <div class="ladder-line"></div>
+        </div>
+        <div class="ladder-content">
+          <h4>Save and invest your early income</h4>
+          <p>The trap most people fall into is spending their first real estate income on lifestyle. The ones who build wealth reinvest it — into their first investment property, into their business, or into their education. Discipline in the early years creates freedom later.</p>
+        </div>
+      </div>
+      <div class="ladder-step fade-in">
+        <div class="ladder-connector">
+          <div class="ladder-circle">4</div>
+          <div class="ladder-line"></div>
+        </div>
+        <div class="ladder-content">
+          <h4>Acquire your first investment property</h4>
+          <p>Your career gives you knowledge, relationships, and capital. Use them to buy your first rental property. It doesn't have to be big. A small duplex or a single rental unit, bought right, starts all four income pillars working for you simultaneously.</p>
+        </div>
+      </div>
+      <div class="ladder-step fade-in">
+        <div class="ladder-connector">
+          <div class="ladder-circle">5</div>
+          <div class="ladder-line"></div>
+        </div>
+        <div class="ladder-content">
+          <h4>Reinvest and compound</h4>
+          <p>Use the cash flow, equity, and appreciation from your first property to acquire more properties. Each one adds to the stream. Over time the portfolio generates enough income that the work becomes optional — not because you stopped working, but because you built something that keeps generating even when you don't.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"The people who reach financial freedom through real estate almost never did it through one big deal. They did it through consistent, patient accumulation — one property at a time, one relationship at a time, one year at a time. The ladder doesn't have to be climbed fast. It just has to be climbed."</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Brandon Turner: Real estate investing for beginners — <em>the big picture</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Brandon Turner from BiggerPockets is one of the most motivating real estate educators online — and this video is him at his best. He lays out the big picture of why real estate works, what beginners need to know before starting, and how to think about your first move. After the mechanics of the lessons above, this video brings it all to life.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/P925HsVKUN0" title="Real Estate For Beginners — Brandon Turner / BiggerPockets" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge bp">BiggerPockets · YouTube</span>
+        <h4>Real Estate For Beginners — How To Start Investing In Real Estate Now!</h4>
+        <p>Brandon Turner lays out 7 essential lessons for anyone starting in real estate — covering why it works, what mistakes to avoid, and how to think about your first move. Energetic, encouraging, and packed with practical insights. A great way to close out this module.</p>
+        <p class="credit">BiggerPockets · YouTube 2020</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📋 Key Takeaways — Module 3</h3>
+    <ul>
+      <li>Real estate generates wealth through four simultaneous income streams: cash flow, appreciation, loan paydown, and tax benefits. A single property can deliver all four at once — no other common investment does this.</li>
+      <li>Cash flow is the most visible return but not the only one. When you add appreciation, loan paydown, and tax benefits together, the true return on a well-chosen property is often dramatically higher than cash flow alone suggests.</li>
+      <li>Different career paths make money in different ways — agents earn commissions, investors earn all four pillars, property managers earn recurring fees, wholesalers earn assignment fees. Understanding how your path generates income helps you build it strategically.</li>
+      <li>The wealth building ladder works regardless of which career path you choose. Build knowledge, enter your career, save and invest early income, acquire properties, and let compounding do the heavy lifting over time.</li>
+      <li>The goal for most people isn't one huge payday — it's consistent accumulation over time. Patience and reinvestment are the actual mechanisms of wealth building in real estate.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in" id="knowledgeCheck">
+    <h3>✅ Knowledge Check</h3>
+    <p class="kc-sub">5 questions to test your understanding of how real estate generates wealth.</p>
+
+    <div class="question" id="q1">
+      <p>1. A rental property generates $500/month in cash flow, appreciates $8,000 in value, and the tenant's rent covers $2,000 in loan principal paydown over the course of a year. Approximately what is the total annual return across these three pillars?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> $6,000</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> $16,000</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> $8,000</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> $10,000</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. Which of the following best describes "forced appreciation"?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> When a market naturally rises due to population growth and demand.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> When a lender forces a property sale to recover a defaulted loan.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> When an owner increases a property's value through renovations, better management, or raising rents.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> When property taxes force owners to sell at a discount.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A tenant pays $1,600 per month in rent. The landlord's mortgage payment on the property is $1,100. Part of that mortgage payment goes toward principal reduction. What is this income pillar called?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Cash flow</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Appreciation</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Loan paydown</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Depreciation</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A real estate wholesaler finds a distressed property, gets it under contract for $150,000, and assigns the contract to an investor for $165,000. How does the wholesaler make money?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Through cash flow from renting the property after closing.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Through appreciation after holding the property for several years.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> Through a $15,000 assignment fee — the difference between the contract price and what the investor pays.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Through a commission paid by the seller's real estate agent.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. According to the wealth building ladder in this module, what should most people do with their early real estate career income?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Spend it on upgrading their lifestyle to project success to potential clients.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Wait until they have enough saved to buy a large multi-million dollar property.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Reinvest it — into their first investment property, their business, or their continued education.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Keep it in savings and wait for market conditions to be perfect before investing.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- SKILLS CONNECTION -->
+  <div class="skills-connection fade-in">
+    <h3>🔗 How This Module Connects to Your Career Path</h3>
+    <p>Understanding how real estate makes money changes how you approach every career path. An agent who understands the four pillars gives their investor clients far better advice. A property manager who understands NOI and cash flow manages portfolios more strategically. A contractor who understands value-add knows exactly which renovations actually increase an investor's return — and charges accordingly. Whatever path you're on, this module is the financial lens through which everything else gets sharper.</p>
+    <div class="career-tags">
+      <span class="career-tag">🏠 Residential Agent</span>
+      <span class="career-tag">🏢 Commercial RE</span>
+      <span class="career-tag">🏘️ Investing</span>
+      <span class="career-tag">🔑 Property Management</span>
+      <span class="career-tag">🏗️ Development</span>
+      <span class="career-tag">💵 Mortgage & Lending</span>
+      <span class="career-tag">🔄 Wholesaling</span>
+      <span class="career-tag">🔧 Maintenance & Repair</span>
+      <span class="career-tag">📸 Photography</span>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="fade-in" style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:16px;padding:1.75rem 2rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.4rem;">📖 Study Resource</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;">Real Estate Terms You Need to Be Familiar With</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6;">Keep studying them and do a search online if you need more explanation or examples. You got this — before you know it you'll be fluent in all these terms.</div>
+    </div>
+    <a href="darco-glossary.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;">⬇ Download Glossary</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="module-2.html" class="btn btn-outline">← Module 2</a>
+  <div class="module-nav-info">
+    <p>Core Foundation</p>
+    <strong>Module 3 of 10 — How Real Estate Makes Money</strong>
+  </div>
+  <a href="module-4.html" class="btn btn-gold">Next: Module 4 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: { correct: "Correct! $500 per month times 12 = $6,000 in cash flow. Add $8,000 in appreciation and $2,000 in loan paydown = $16,000 total across three pillars. And that is before tax benefits.", incorrect: "Not quite. Add all three: cash flow ($500 x 12 = $6,000) plus appreciation ($8,000) plus loan paydown ($2,000) = $16,000. This is why combining all four pillars is so powerful." },
+    q2: { correct: "Correct! Forced appreciation is when the owner takes deliberate action through renovations, better management, or rent increases to increase the property value. It is within the owner control.", incorrect: "Not quite. Forced appreciation is when the owner actively creates value through renovations, improved management, or increased rents - rather than waiting for the market to naturally rise." },
+    q3: { correct: "Correct! Loan paydown is the principal reduction that happens with every mortgage payment. When a tenant rent covers the mortgage, they are effectively paying down the loan for you.", incorrect: "Not quite. This is loan paydown - the portion of each mortgage payment that reduces the principal balance. Cash flow is what is left after all expenses. Appreciation is the increase in property value." },
+    q4: { correct: "Correct! The wholesaler profit is the assignment fee - the $15,000 spread between the $150,000 contract price and the $165,000 paid by the investor buyer. The wholesaler never owns the property.", incorrect: "Not quite. Wholesalers make money through assignment fees - the difference between their contract price and what the end buyer pays. They never own the property and do not earn cash flow or appreciation." },
+    q5: { correct: "Correct! The wealth building ladder is clear - reinvest early income into your first property, your business, or your education. Lifestyle upgrades come later.", incorrect: "Not quite. The module is direct: reinvest early income rather than spending it on lifestyle. The first investment property does not have to be big - but acquiring it early puts all four income pillars to work for you." }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1', 'q2', 'q3', 'q4', 'q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5! Excellent - you understand how real estate generates wealth. You are ready for Module 4: Understanding Property Value.</strong>';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5. Review the lessons above and try again. Understanding the four income pillars is foundational.</strong>';
+    }
+  }
+</script>
+</body>
+</html>

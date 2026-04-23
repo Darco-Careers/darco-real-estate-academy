@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Commercial Real Estate — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F2340;
+    --navy-mid: #1A3A5C;
+    --navy-light: #2A5380;
+    --navy-pale: #EBF0F7;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #FBF5E6;
+    --cream: #FAF8F3;
+    --cream-dark: #F0EBE0;
+    --text-dark: #1A1A18;
+    --text-mid: #4A4A42;
+    --text-light: #8A8A7A;
+    --white: #FFFFFF;
+    --border: rgba(15,35,64,0.1);
+    --shadow-soft: 0 4px 24px rgba(15,35,64,0.1);
+    --shadow-card: 0 2px 16px rgba(15,35,64,0.07);
+    --forest: #1B4D3E;
+    --forest-dark: #0F2E24;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--navy);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo {
+    width: 36px;
+    height: 36px;
+    background: var(--gold);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--navy);
+  }
+
+  .nav-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .nav-tagline {
+    font-size: 11px;
+    color: var(--gold-light);
+    letter-spacing: 0.5px;
+    font-weight: 300;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-back {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.85) !important;
+    padding: 7px 16px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.2s !important;
+  }
+
+  .nav-back:hover { background: rgba(255,255,255,0.18) !important; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    background: var(--navy-pale);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  .breadcrumb a { color: var(--navy-mid); text-decoration: none; font-weight: 500; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb .sep { opacity: 0.4; }
+  .breadcrumb .current { color: var(--navy); font-weight: 600; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, #1E4A7A 100%);
+    padding: 5rem 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 55%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .track-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: left;
+  }
+
+  .hero-stat .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .hero-stat .label {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 3px;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-visual {
+    width: 180px;
+    height: 180px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    flex-shrink: 0;
+  }
+
+  /* ── CONTENT ── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-eyebrow {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--navy-mid);
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.25;
+    margin-bottom: 1.1rem;
+  }
+
+  .section-title em { color: var(--navy-mid); font-style: italic; }
+
+  .gold-divider {
+    width: 50px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .lead-text {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    max-width: 720px;
+  }
+
+  /* ── WHAT IS THIS ── */
+  .what-section {
+    background: var(--white);
+    padding: 4rem 0;
+  }
+
+  .highlight-box {
+    background: var(--navy-pale);
+    border-left: 4px solid var(--navy-mid);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 2rem;
+    margin: 1.5rem 0;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* ── PROPERTY TYPES ── */
+  .property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .property-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    transition: all 0.25s;
+  }
+
+  .property-card:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
+    border-color: rgba(15,35,64,0.2);
+  }
+
+  .property-icon {
+    font-size: 28px;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .property-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .property-card p {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* ── DAY IN THE LIFE ── */
+  .day-section {
+    background: var(--cream);
+    padding: 4rem 0;
+  }
+
+  .timeline {
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--navy-mid), rgba(15,35,64,0.1));
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+    position: relative;
+  }
+
+  .timeline-dot {
+    width: 58px;
+    height: 38px;
+    background: var(--navy);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold-light);
+    flex-shrink: 0;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-content {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.4rem;
+    flex: 1;
+    transition: box-shadow 0.2s;
+  }
+
+  .timeline-content:hover { box-shadow: var(--shadow-card); }
+
+  .timeline-content h4 {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-content p {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* ── SKILLS ── */
+  .skills-section {
+    background: var(--white);
+    padding: 4rem 0;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .skill-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: all 0.25s;
+  }
+
+  .skill-card:hover {
+    background: var(--white);
+    box-shadow: var(--shadow-card);
+  }
+
+  .skill-level {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 10px;
+  }
+
+  .skill-label.essential {
+    background: #EBF0F7;
+    color: var(--navy-mid);
+  }
+
+  .skill-label.helpful {
+    background: var(--gold-pale);
+    color: #8A6A20;
+  }
+
+  .skill-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+  }
+
+  .skill-card p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* ── EARNINGS ── */
+  .earnings-section {
+    background: var(--navy);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .earnings-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  }
+
+  .earnings-section .section-eyebrow { color: var(--gold-light); }
+  .earnings-section .section-title { color: var(--white); }
+  .earnings-section .section-title em { color: var(--gold-light); }
+
+  .earnings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .earnings-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 14px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.25s;
+  }
+
+  .earnings-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .earnings-role {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .earnings-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .earnings-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+  }
+
+  .earnings-disclaimer {
+    margin-top: 1.5rem;
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.4);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* ── GET STARTED ── */
+  .started-section {
+    background: var(--cream);
+    padding: 4rem 0;
+  }
+
+  .steps {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    transition: all 0.25s;
+  }
+
+  .step:hover {
+    box-shadow: var(--shadow-card);
+    border-color: rgba(15,35,64,0.18);
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    background: var(--navy);
+    color: var(--gold-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .step-content h4 {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .step-content p {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  .step-content a {
+    color: var(--navy-mid);
+    font-weight: 500;
+  }
+
+  /* ── IS THIS RIGHT FOR YOU ── */
+  .fit-section {
+    background: var(--white);
+    padding: 4rem 0;
+  }
+
+  .fit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .fit-card {
+    border-radius: 14px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+
+  .fit-card.yes {
+    background: #EBF5F0;
+    border-color: rgba(27,77,62,0.15);
+  }
+
+  .fit-card.no {
+    background: #FBF0EE;
+    border-color: rgba(180,60,40,0.12);
+  }
+
+  .fit-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .fit-card.yes h4 { color: var(--forest); }
+  .fit-card.no h4 { color: #8B2F20; }
+
+  .fit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .fit-list li {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    display: flex;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .fit-list li::before {
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 14px;
+  }
+
+  .fit-card.yes .fit-list li::before { content: '✓'; color: var(--forest); font-weight: 700; }
+  .fit-card.no .fit-list li::before { content: '✗'; color: #C0392B; font-weight: 700; }
+
+  /* ── KEY TERMS ── */
+  .terms-section {
+    background: var(--navy-pale);
+    padding: 4rem 0;
+  }
+
+  .terms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .term-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .term-card:hover { box-shadow: var(--shadow-card); }
+
+  .term-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .term-card p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-section h2 em { color: var(--gold-light); font-style: italic; }
+
+  .cta-section p {
+    color: rgba(255,255,255,0.6);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 12px 26px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: var(--gold-light); }
+
+  .btn-outline-white {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.3);
+  }
+
+  .btn-outline-white:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  footer p { font-size: 12px; color: rgba(255,255,255,0.35); }
+  footer .footer-gold { color: var(--gold-light); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 3rem 1.5rem; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .container { padding: 0 1.25rem; }
+    .fit-grid { grid-template-columns: 1fr; }
+    .breadcrumb { padding: 0.75rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">All Careers</a></li>
+    <li><a href="index.html#resources">Resources</a></li>
+    <li><a href="module-1.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a>
+  <span class="sep">›</span>
+  <a href="index.html#careers">Career Paths</a>
+  <span class="sep">›</span>
+  <span class="current">Commercial Real Estate</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="track-badge">🏢 Career Track</div>
+      <h1>Commercial<br><em>Real Estate</em></h1>
+      <p class="hero-sub">Where the biggest deals are made, the largest fortunes are built, and the most ambitious minds in real estate come to play. This is the corporate side of property — and it is anything but boring.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="number">$17T+</div>
+          <div class="label">US commercial RE market</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">$85K–$500K+</div>
+          <div class="label">Annual earning range</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">No degree</div>
+          <div class="label">required to start</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">🏢</div>
+  </div>
+</div>
+
+<!-- WHAT IS THIS CAREER -->
+<section class="what-section">
+  <div class="container">
+    <p class="section-eyebrow">The Basics</p>
+    <h2 class="section-title">What <em>is</em> commercial real estate?</h2>
+    <div class="gold-divider"></div>
+
+    <p class="lead-text">Commercial real estate (CRE) refers to any property used for business purposes or to generate income — as opposed to a home someone lives in. Think office buildings, shopping centers, apartment complexes of 5+ units, warehouses, hotels, self-storage facilities, and more.</p>
+
+    <p class="lead-text">As a commercial real estate professional, you could be a broker helping investors buy and sell income-producing properties, an agent leasing office space to businesses, or an investor owning the buildings yourself. The field is broad, the deals are large, and the rewards can be extraordinary.</p>
+
+    <div class="highlight-box">
+      <p>"Commercial real estate is everywhere. Every building you walk past, every office you work in, every store you shop in — someone owns it, someone manages it, someone sold it. That someone could be you."</p>
+    </div>
+
+    <p class="lead-text">What separates commercial from residential real estate is how properties are valued. Residential homes are priced based on comparable sales in the neighborhood. Commercial properties are valued based on the <strong>income they generate</strong> — specifically the Net Operating Income (NOI). This is a crucial distinction that opens up enormous opportunities for investors who understand it.</p>
+
+    <!-- PROPERTY TYPES -->
+    <p class="section-eyebrow" style="margin-top: 2.5rem;">Property Types</p>
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text-dark); margin-bottom: 1.5rem;">The many faces of commercial property</h3>
+
+    <div class="property-grid">
+      <div class="property-card fade-in">
+        <span class="property-icon">🏢</span>
+        <h4>Office Buildings</h4>
+        <p>Class A, B & C offices leased to businesses. Often triple net leases.</p>
+      </div>
+      <div class="property-card fade-in">
+        <span class="property-icon">🏬</span>
+        <h4>Retail & Shopping Centers</h4>
+        <p>Strip malls, power centers, anchor-tenant plazas.</p>
+      </div>
+      <div class="property-card fade-in">
+        <span class="property-icon">🏘️</span>
+        <h4>Apartment Complexes</h4>
+        <p>5+ unit multifamily buildings — the most investor-friendly asset class.</p>
+      </div>
+      <div class="property-card fade-in">
+        <span class="property-icon">🏭</span>
+        <h4>Industrial & Warehouse</h4>
+        <p>Distribution centers, manufacturing plants, flex spaces.</p>
+      </div>
+      <div class="property-card fade-in">
+        <span class="property-icon">🏨</span>
+        <h4>Hotels & Hospitality</h4>
+        <p>From boutique hotels to large resort properties.</p>
+      </div>
+      <div class="property-card fade-in">
+        <span class="property-icon">📦</span>
+        <h4>Self-Storage</h4>
+        <p>Low maintenance, recession-resistant, growing demand.</p>
+      </div>
+      <div class="property-card fade-in">
+        <span class="property-icon">🏥</span>
+        <h4>Medical & Special Use</h4>
+        <p>Medical offices, restaurants, gas stations, car washes.</p>
+      </div>
+      <div class="property-card fade-in">
+        <span class="property-icon">🚗</span>
+        <h4>Mobile Home Parks</h4>
+        <p>Land-lease communities — one of the highest cash-flow niches.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS SECTION -->
+<section style="background: var(--navy-pale); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Watch & Learn</p>
+    <h2 class="section-title">Learn from the <em>best in the business</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">These are hand-picked videos to give you a strong visual foundation in commercial real estate. Peter Harris has the most-watched commercial real estate YouTube channel in the world — and his content is completely free.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem; margin-top: 2rem;">
+
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card);">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+          <iframe
+            src="https://www.youtube.com/embed/dTc0JQKF1Bc"
+            title="Commercial Real Estate for Beginners — Peter Harris (Full Audiobook)"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div style="padding: 1.25rem 1.5rem;">
+          <div style="display: inline-block; background: #EBF0F7; color: var(--navy-mid); font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 10px; margin-bottom: 0.6rem;">Start Here</div>
+          <h4 style="font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.35;">Commercial Real Estate for Beginners</h4>
+          <p style="font-size: 13px; color: var(--text-mid); line-height: 1.6;">Peter Harris reads his full bestselling book — the same book available free at CommercialPropertyAdvisors.com. An essential listen for anyone starting out in commercial real estate.</p>
+          <p style="font-size: 12px; color: var(--text-light); margin-top: 0.5rem;">By Peter Harris · Commercial Property Advisors</p>
+        </div>
+      </div>
+
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card);">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+          <iframe
+            src="https://www.youtube.com/embed/jxfGBQK3ZGk"
+            title="Commercial Real Estate for Beginners — Step by Step Tutorial"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div style="padding: 1.25rem 1.5rem;">
+          <div style="display: inline-block; background: var(--gold-pale); color: #8A6A20; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 10px; margin-bottom: 0.6rem;">Step by Step</div>
+          <h4 style="font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.35;">Commercial Real Estate for Beginners — Full Tutorial</h4>
+          <p style="font-size: 13px; color: var(--text-mid); line-height: 1.6;">A comprehensive step-by-step walkthrough of commercial real estate fundamentals — property types, deal analysis, financing, and how to get started with your first investment.</p>
+          <p style="font-size: 12px; color: var(--text-light); margin-top: 0.5rem;">Whiteboard Finance · YouTube</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="background: var(--white); border: 1px solid rgba(15,35,64,0.12); border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1.5rem; display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 20px; flex-shrink: 0;">📺</span>
+      <p style="font-size: 13.5px; color: var(--text-mid); line-height: 1.6;">Want more? Peter Harris has over <strong>50 million views</strong> on his YouTube channel with hundreds of free videos covering every aspect of commercial real estate.
+        <a href="https://www.youtube.com/channel/UCxO3rVNFN2gDHcSaPjR-YTA" target="_blank" style="color: var(--navy-mid); font-weight: 600; margin-left: 4px;">Visit the Commercial Property Advisors channel →</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- DAY IN THE LIFE -->
+<section class="day-section">
+  <div class="container">
+    <p class="section-eyebrow">Real World</p>
+    <h2 class="section-title">A day in the life of a <em>CRE professional</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">No two days are exactly the same in commercial real estate — but here's what a typical day might look like for a commercial broker or investor just getting their feet under them.</p>
+
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">8am</div>
+        <div class="timeline-content">
+          <h4>Morning market review</h4>
+          <p>Check new listings on LoopNet and CoStar. Review emails from brokers about off-market deals. Follow up on two active listings.</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">10am</div>
+        <div class="timeline-content">
+          <h4>Property tour</h4>
+          <p>Walk a 12-unit apartment building with a prospective buyer. Point out value-add opportunities — below-market rents, deferred maintenance that can be fixed to force appreciation.</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">12pm</div>
+        <div class="timeline-content">
+          <h4>Lunch with a lender</h4>
+          <p>Relationship building with a commercial loan officer. Discuss current lending rates, what deals banks are loving right now, and get referrals going both ways.</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">2pm</div>
+        <div class="timeline-content">
+          <h4>Deal analysis</h4>
+          <p>Run the numbers on a strip center that just came to market. Calculate NOI, cap rate, cash-on-cash return. Determine if the asking price makes sense or if you need to negotiate down.</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">4pm</div>
+        <div class="timeline-content">
+          <h4>Offer negotiation</h4>
+          <p>Present a purchase offer on an office building. Back and forth with the seller's broker. Negotiate price, credits, and terms. This is where the money is made.</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">6pm</div>
+        <div class="timeline-content">
+          <h4>Networking event</h4>
+          <p>Local commercial real estate association meetup. This is where deals get whispered before they hit the market. Every person in the room is a potential partner, buyer, or seller.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section">
+  <div class="container">
+    <p class="section-eyebrow">What You'll Need</p>
+    <h2 class="section-title">Skills that make you <em>dangerous in this field</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">The great news about commercial real estate is that most of what you need can be learned. You don't need a finance degree. You need curiosity, persistence, and a willingness to understand numbers well enough to spot a good deal.</p>
+
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <div class="skill-level"><span class="skill-label essential">Essential</span></div>
+        <h4>Financial Analysis</h4>
+        <p>Understanding NOI, cap rates, cash-on-cash returns, and debt service. You need to be able to evaluate whether a deal makes money.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-level"><span class="skill-label essential">Essential</span></div>
+        <h4>Relationship Building</h4>
+        <p>Commercial real estate is a people business. Your network is your net worth. Brokers, lenders, attorneys, and investors all need to know and trust you.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-level"><span class="skill-label essential">Essential</span></div>
+        <h4>Negotiation</h4>
+        <p>Every deal involves negotiation — price, terms, credits, timelines. The best negotiators make more money, period.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-level"><span class="skill-label essential">Essential</span></div>
+        <h4>Market Knowledge</h4>
+        <p>Know your local market inside and out. Which areas are growing? What are cap rates in each neighborhood? Where is the city planning to develop next?</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-level"><span class="skill-label helpful">Helpful</span></div>
+        <h4>Real Estate License</h4>
+        <p>Not required to invest, but required to represent buyers and sellers as a broker. In Florida, this means passing the state exam — covered in our Florida Licensing module.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-level"><span class="skill-label helpful">Helpful</span></div>
+        <h4>Due Diligence</h4>
+        <p>The ability to thoroughly investigate a property before buying — reviewing leases, financials, inspections, zoning, and environmental reports.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EARNINGS -->
+<section class="earnings-section">
+  <div class="container">
+    <p class="section-eyebrow">The Money</p>
+    <h2 class="section-title">What can you <em>realistically earn?</em></h2>
+    <div class="gold-divider" style="background: var(--gold);"></div>
+
+    <div class="earnings-grid">
+      <div class="earnings-card fade-in">
+        <div class="earnings-role">Junior Broker / Agent</div>
+        <div class="earnings-amount">$45K–$80K</div>
+        <div class="earnings-note">First 1–2 years. Building relationships and learning the market.</div>
+      </div>
+      <div class="earnings-card fade-in">
+        <div class="earnings-role">Established Broker</div>
+        <div class="earnings-amount">$80K–$200K</div>
+        <div class="earnings-note">3–7 years in. Consistent deal flow and a solid client base.</div>
+      </div>
+      <div class="earnings-card fade-in">
+        <div class="earnings-role">Top Producer</div>
+        <div class="earnings-amount">$200K–$500K+</div>
+        <div class="earnings-note">Specialised niche, strong reputation, high-volume deal flow.</div>
+      </div>
+      <div class="earnings-card fade-in">
+        <div class="earnings-role">Investor / Owner</div>
+        <div class="earnings-amount">Unlimited</div>
+        <div class="earnings-note">Income from owned properties. One good deal can change everything.</div>
+      </div>
+    </div>
+    <p class="earnings-disclaimer">* Ranges are approximate and vary by market, deal size, and individual performance. Florida market figures may differ.</p>
+  </div>
+</section>
+
+<!-- HOW TO GET STARTED -->
+<section class="started-section">
+  <div class="container">
+    <p class="section-eyebrow">Your Roadmap</p>
+    <h2 class="section-title">How to <em>get started</em> in commercial real estate</h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">You don't need a degree, a fortune, or years of experience to begin. Here is a clear, step-by-step path from where you are right now to your first deal in commercial real estate.</p>
+
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Master the fundamentals</h4>
+          <p>Complete the Darco Real Estate Academy core modules — especially Module 4 (Deal Analysis) and Module 5 (Financing Fundamentals). Read <a href="https://www.commercialpropertyadvisors.com" target="_blank">Peter Harris's free book</a> and Brian Murray's "Crushing It." Know your NOI, cap rate, and cash-on-cash return cold.</p>
+        </div>
+      </div>
+      <div class="step fade-in">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Get your Florida Real Estate License (optional but powerful)</h4>
+          <p>A license lets you represent buyers and sellers and earn commissions on deals. See our standalone Florida Licensing Prep module. The exam is very passable with the right preparation.</p>
+        </div>
+      </div>
+      <div class="step fade-in">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Start in your own backyard</h4>
+          <p>As Peter Harris says — start local. Drive your market. Know which buildings are vacant, which are thriving, which neighborhoods are up and coming. Your local knowledge is a competitive advantage no out-of-town investor has.</p>
+        </div>
+      </div>
+      <div class="step fade-in">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Build your team</h4>
+          <p>You need a commercial real estate attorney, a CPA who understands real estate, a commercial lender, and eventually a property manager. These relationships take time — start building them now before you need them.</p>
+        </div>
+      </div>
+      <div class="step fade-in">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>Analyze 10 deals before making 1 offer</h4>
+          <p>Run the numbers on every deal you can find — even ones you'd never buy. Use LoopNet.com and CoStar to find listings. The more deals you analyze, the faster your instincts develop. By deal #10, you'll know a good deal when you see one.</p>
+        </div>
+      </div>
+      <div class="step fade-in">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h4>Make your first offer</h4>
+          <p>Your first offer will feel terrifying. Make it anyway. The worst that can happen is they say no. And every "no" teaches you something about the market, the seller, and yourself.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IS THIS RIGHT FOR YOU -->
+<section class="fit-section">
+  <div class="container">
+    <p class="section-eyebrow">Honest Assessment</p>
+    <h2 class="section-title">Is commercial real estate <em>right for you?</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">Commercial real estate rewards certain strengths and requires certain tolerances. Here's an honest look at who thrives in this field — and who might find it frustrating.</p>
+
+    <div class="fit-grid">
+      <div class="fit-card yes fade-in">
+        <h4>You'll thrive if you...</h4>
+        <ul class="fit-list">
+          <li>Love building relationships and networking</li>
+          <li>Are comfortable with numbers and analysis</li>
+          <li>Are patient — deals take weeks or months to close</li>
+          <li>Enjoy negotiating and don't take rejection personally</li>
+          <li>Are self-motivated and can work independently</li>
+          <li>Think long-term and are willing to plant seeds today</li>
+          <li>Are curious about markets, economics, and business</li>
+        </ul>
+      </div>
+      <div class="fit-card no fade-in">
+        <h4>You may struggle if you...</h4>
+        <ul class="fit-list">
+          <li>Need a steady paycheck from day one</li>
+          <li>Hate uncertainty or variable income</li>
+          <li>Are not willing to put in the hours to learn</li>
+          <li>Avoid difficult conversations or confrontation</li>
+          <li>Want immediate results — CRE is a long game</li>
+          <li>Prefer purely hands-on or physical work</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY TERMS -->
+<section class="terms-section">
+  <div class="container">
+    <p class="section-eyebrow">The Language</p>
+    <h2 class="section-title">Key terms every CRE professional <em>must know</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="terms-grid">
+      <div class="term-card fade-in">
+        <div class="term-name">NOI — Net Operating Income</div>
+        <p>Annual income minus annual operating expenses (excluding mortgage). The single most important number in commercial real estate.</p>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-name">Cap Rate — Capitalization Rate</div>
+        <p>NOI divided by purchase price, expressed as a percentage. Measures a property's return as if you paid all cash.</p>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-name">Cash-on-Cash Return</div>
+        <p>Annual cash flow divided by your initial cash investment. Measures how fast you get your down payment back.</p>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-name">Triple Net Lease (NNN)</div>
+        <p>A lease where the tenant pays rent PLUS property taxes, insurance, and maintenance. The ultimate passive income structure.</p>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-name">Debt Service</div>
+        <p>Your total annual mortgage payments (principal + interest). Must be subtracted from NOI to get true cash flow.</p>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-name">Due Diligence</div>
+        <p>The investigation period after your offer is accepted — reviewing leases, financials, inspections, and title before closing.</p>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-name">Forced Appreciation</div>
+        <p>Increasing a property's value by raising rents or reducing expenses — not waiting for the market. Commercial investors control this.</p>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-name">Value-Add</div>
+        <p>A property with below-market rents, high vacancy, or deferred maintenance — bought cheap, improved, and resold or refinanced at a higher value.</p>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-name">LoopNet / CoStar</div>
+        <p>The two dominant online marketplaces for finding commercial properties for sale and lease. Your daily research tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to go <em>deeper?</em></h2>
+  <p>We recommend starting with the <strong>Core Foundation</strong> before diving into this career track. The 10 Core Foundation modules cover everything you need — deal analysis, financing, valuation, negotiation, and leases — so that the CRE deep dive actually makes sense when you get there. Once you have completed all 10 modules, come back here and continue with CRE-1.</p>
+  <div class="cta-buttons" style="flex-direction:column;gap:1rem;align-items:center;">
+    <div style="text-align:center;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.5rem;">🎓 Recommended Starting Point</div>
+      <a href="module-1.html" class="btn btn-gold">Begin Core Foundation — Module 1 →</a>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;">✅ Already completed all 10 Core Modules?</div>
+      <a href="cre-module-1.html" class="btn btn-outline-white">Continue to CRE-1: The Profession →</a>
+    </div>
+    <a href="index.html#careers" class="btn btn-outline-white" style="margin-top:0.5rem;">← Explore All Careers</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top: 0.5rem; font-size: 11px;">Educational content only. Not financial or legal advice.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

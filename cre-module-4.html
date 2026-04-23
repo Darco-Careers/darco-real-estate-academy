@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>CRE Module 4: Landlord Representation — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#0F2340;--forest-mid:#1A3A5C;--forest-light:#2A5380;--forest-pale:#EBF0F7;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(15,35,64,0.1);--shadow-card:0 2px 16px rgba(15,35,64,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(15,35,64,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:57%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(15,35,64,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(15,35,64,0.25);}
+.module-hero{background:linear-gradient(135deg,#071828 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Process steps */
+.process-track{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
+.process-track::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--forest-pale);}
+.process-step{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:2rem;position:relative;}
+.process-step:last-child{padding-bottom:0;}
+.ps-circle{width:40px;height:40px;border-radius:50%;background:var(--forest);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:0.95rem;flex-shrink:0;z-index:1;}
+.ps-body{padding-top:6px;}
+.ps-body h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.ps-body .ps-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;background:var(--forest-pale);color:var(--forest-mid);margin-bottom:0.5rem;}
+.ps-body p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+
+/* Marketing channels */
+.channel-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin:2rem 0;}
+.channel-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.25s;}
+.channel-card:hover{box-shadow:var(--shadow-card);}
+.channel-card .cc-icon{font-size:1.75rem;margin-bottom:0.6rem;display:block;}
+.channel-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.channel-card .cc-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;margin-bottom:0.5rem;}
+.channel-card .cc-tag.primary{background:var(--forest-pale);color:var(--forest-mid);}
+.channel-card .cc-tag.secondary{background:var(--gold-pale);color:#8A6A20;}
+.channel-card .cc-tag.tertiary{background:#F0EBE0;color:var(--text-mid);}
+.channel-card p{font-size:12.5px;color:var(--text-mid);line-height:1.65;}
+
+/* Tenant qualification table */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px;}
+.compare-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;}
+.compare-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;line-height:1.6;}
+.compare-table td:first-child{font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--forest-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);}
+
+/* Negotiation items */
+.neg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.neg-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.4rem;transition:all 0.2s;}
+.neg-item:hover{box-shadow:var(--shadow-card);}
+.neg-item h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.neg-item .ni-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;margin-bottom:0.5rem;}
+.neg-item .ni-tag.protect{background:#FBE8E8;color:#8B2020;}
+.neg-item .ni-tag.leverage{background:var(--forest-pale);color:var(--forest-mid);}
+.neg-item .ni-tag.always{background:var(--gold-pale);color:#8A6A20;}
+.neg-item p{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.rc{background:var(--gold-pale);color:#8A6A20;}
+.video-badge.tc{background:var(--forest-pale);color:var(--forest-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#071828,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Side-by-side comparison */
+.side-by-side{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.sbs-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.sbs-card .sbs-header{padding:1rem 1.25rem;color:var(--white);}
+.sbs-card.tenant .sbs-header{background:#2A5C2A;}
+.sbs-card.landlord .sbs-header{background:var(--forest);}
+.sbs-card .sbs-header h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;}
+.sbs-card .sbs-header p{font-size:12px;color:rgba(255,255,255,0.7);margin-top:0.15rem;}
+.sbs-card .sbs-body{padding:1.1rem 1.25rem;}
+.sbs-card .sbs-body ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.sbs-card .sbs-body ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.6;}
+.sbs-card .sbs-body ul li::before{content:'→';color:var(--forest-mid);font-weight:700;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+/* Next module */
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--forest-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .channel-grid{grid-template-columns:1fr;}
+  .neg-grid{grid-template-columns:1fr;}
+  .side-by-side{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="commercial-real-estate.html">CRE Career Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="commercial-real-estate.html">Commercial Real Estate</a><span class="sep">›</span>
+  <span class="current">CRE-4: Landlord Representation</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">CRE Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="cre-module-1.html" class="prog-dot complete" title="CRE-1">✓</a>
+    <a href="cre-module-2.html" class="prog-dot complete" title="CRE-2">✓</a>
+    <a href="cre-module-3.html" class="prog-dot complete" title="CRE-3">✓</a>
+    <div class="prog-dot active">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Commercial Real Estate Track · Module 4 of 7</div>
+    <h1>Landlord <em>Representation</em></h1>
+    <p>In CRE-3 you saw the transaction from the tenant's side. Now flip the table. Landlord representation means advocating for the property owner — marketing their vacant space, attracting the right tenants, qualifying prospects, and negotiating lease terms that protect the landlord's asset and income stream for years to come. Understanding both sides of every transaction is what makes a complete commercial real estate professional.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>45–55 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What landlord representation is — <em>and how it differs from tenant rep</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">A landlord rep broker — also called a listing broker or leasing agent — represents the building owner's interests in a commercial leasing transaction. Their job is the mirror image of the tenant rep's job: where the tenant rep is hunting for space, the landlord rep is marketing it. Where the tenant rep is negotiating for concessions, the landlord rep is protecting against them.</p>
+
+    <p class="lesson-text">Both roles require the same foundational skills — market knowledge, financial analysis, negotiation, and relationship building. But the goals are fundamentally different. The tenant rep wins by securing the best possible terms for their client as a business occupying space. The landlord rep wins by securing the best possible terms for their client as the owner of a revenue-producing asset.</p>
+
+    <div class="side-by-side">
+      <div class="sbs-card tenant fade-in">
+        <div class="sbs-header">
+          <h4>🏃 Tenant Rep — CRE-3</h4>
+          <p>Advocate for the business seeking space</p>
+        </div>
+        <div class="sbs-body">
+          <ul>
+            <li>Search the market for available options</li>
+            <li>Gather tenant financials for landlord review</li>
+            <li>Compare and tour multiple properties</li>
+            <li>Negotiate rent and concessions down</li>
+            <li>Maximize TI allowance and free rent</li>
+            <li>Push for renewal options and fixed escalations</li>
+            <li>Paid by the landlord — costs tenant nothing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sbs-card landlord fade-in">
+        <div class="sbs-header">
+          <h4>🏢 Landlord Rep — CRE-4</h4>
+          <p>Advocate for the property owner</p>
+        </div>
+        <div class="sbs-body">
+          <ul>
+            <li>Market the vacant space to attract tenants</li>
+            <li>Review and qualify incoming prospects</li>
+            <li>Evaluate tenant use and fit for the property</li>
+            <li>Protect rent — minimize concessions</li>
+            <li>Limit TI exposure and free rent periods</li>
+            <li>Secure personal guarantees and credit protection</li>
+            <li>Paid by the landlord as a percentage of lease value</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Listing Agreement</div>
+      <p>Before a landlord rep can market a property, they need to sign a listing agreement with the property owner. This document establishes the broker's exclusive right to represent the property for a defined period — typically six months to one year — and sets the commission rate, usually expressed as a percentage of total lease value or a dollar amount per square foot. An exclusive listing agreement is important because it gives the broker the certainty to invest time and marketing dollars knowing they will be compensated if a deal closes. Without it, any broker could bring a tenant and claim a commission.</p>
+    </div>
+
+    <h3 class="sub-title">What a landlord rep broker actually does day to day</h3>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Activity</th><th>What It Involves</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>Property Assessment</td>
+            <td>Walk the space thoroughly. Understand the existing tenant mix, the property's strengths and weaknesses, the surrounding submarket, and what types of tenants would be a natural fit.</td>
+          </tr>
+          <tr>
+            <td>Pricing Analysis</td>
+            <td>Research comparable lease transactions in the submarket to establish an asking rent that attracts qualified tenants while maximizing the landlord's return. Overpriced space sits vacant. Underpriced space leaves money on the table.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Marketing the Space</td>
+            <td>List on commercial platforms, create professional signage, prepare a marketing flyer or offering memorandum, and conduct targeted outreach to businesses that would be a good fit for the space.</td>
+          </tr>
+          <tr>
+            <td>Fielding Inquiries</td>
+            <td>Respond to inbound interest, answer questions, schedule tours, and pre-screen prospects before bringing them to the landlord for consideration.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Tenant Qualification</td>
+            <td>Review financials, evaluate the proposed use, assess the tenant's track record, and determine whether the tenant meets the landlord's creditworthiness standards.</td>
+          </tr>
+          <tr>
+            <td>Negotiating the Lease</td>
+            <td>Work through the LOI and lease terms on behalf of the landlord — protecting rent, limiting TI and free rent, securing personal guarantees, and ensuring the lease terms hold up over the full term.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Closing and Handoff</td>
+            <td>Coordinate the lease execution, connect the landlord with their attorney, and ensure a clean handoff to property management once the tenant is in place.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Raphael Collazo: <em>The landlord rep process step by step</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Raphael Collazo — CCIM-designated broker — walks through the landlord representation process from his own current work with a retail strip center: understanding the tenant mix, identifying target uses, vetting incoming prospects, evaluating financial standing, and negotiating from the landlord's position based on market dynamics. Direct to camera, practical, and a perfect companion to his tenant rep video from CRE-3.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/jMK6HMHxKYk" title="What Is Landlord Rep — Raphael Collazo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge rc">Raphael Collazo · YouTube</span>
+        <h4>What Is Landlord Rep? — The Process Explained</h4>
+        <p>A step-by-step walkthrough of the landlord representation process — assessing the existing tenant mix, targeting the right uses, vetting prospect financials, understanding market leverage, and negotiating from the landlord's position. The perfect mirror to the tenant rep video from CRE-3. Directly reinforces Lesson 1 of this module.</p>
+        <p class="credit">Raphael Collazo · YouTube 2022 · 8 min · Evergreen content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Marketing vacant space — <em>how landlord reps fill vacancies</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The landlord rep's first job after signing the listing agreement is generating interest from qualified tenants. Unlike residential real estate, there is no central MLS database that all commercial brokers share. This means finding tenants requires a multi-channel approach — and the broker who relies on just one channel will consistently underperform against the broker who works all of them simultaneously.</p>
+
+    <div class="channel-grid">
+      <div class="channel-card fade-in">
+        <span class="cc-icon">🤝</span>
+        <h4>Broker Network Outreach</h4>
+        <div class="cc-tag primary">Most Effective</div>
+        <p>Call tenant rep brokers who are actively working with businesses looking for space in your submarket. They have qualified tenants ready to move — your job is to make sure they know about your listing before they find something else. Co-brokerage is how the majority of commercial leases get done. Build relationships with every active tenant rep in your market.</p>
+      </div>
+      <div class="channel-card fade-in">
+        <span class="cc-icon">🎯</span>
+        <h4>Targeted Direct Outreach</h4>
+        <div class="cc-tag primary">Most Effective</div>
+        <p>Identify businesses that would be a natural fit for the space based on the property's location, size, and existing tenant mix — then reach out to them directly. A strip center with a nail salon and tanning studio might target other beauty-adjacent businesses. A medical office building targets physicians and healthcare providers. Targeted outreach creates deals that never hit the public market.</p>
+      </div>
+      <div class="channel-card fade-in">
+        <span class="cc-icon">💻</span>
+        <h4>Online Listing Platforms</h4>
+        <div class="cc-tag secondary">Important</div>
+        <p>List on LoopNet, CoStar, and CREXi with complete, accurate information — square footage, ceiling height, loading docks, parking, lease rate, and high-quality photos. These platforms generate inbound inquiries but tend to attract less sophisticated prospects than direct broker outreach. Be as detailed as possible to pre-screen poor fits before they waste your time with tours.</p>
+      </div>
+      <div class="channel-card fade-in">
+        <span class="cc-icon">📋</span>
+        <h4>Professional Signage</h4>
+        <div class="cc-tag secondary">Important</div>
+        <p>Place large, professional signage on the property — minimum 4x4 feet, visible from the road. Include the broker's contact information and basic space details. Well-executed signage captures local business owners who are already familiar with and interested in the area. A generic "For Lease" sign from a hardware store signals unprofessional management — which actively deters quality tenants.</p>
+      </div>
+      <div class="channel-card fade-in">
+        <span class="cc-icon">📄</span>
+        <h4>Marketing Flyer / OM</h4>
+        <div class="cc-tag tertiary">Supporting</div>
+        <p>Prepare a professional one-page marketing flyer or offering memorandum covering the space details, location highlights, asking rent, and contact information. This gets distributed to broker networks, sent to prospective tenants, and posted online. Quality marketing materials signal a professional landlord operation and attract higher-quality prospects.</p>
+      </div>
+      <div class="channel-card fade-in">
+        <span class="cc-icon">📞</span>
+        <h4>Return Every Call</h4>
+        <div class="cc-tag tertiary">Non-Negotiable</div>
+        <p>Tyler Cauble's most consistent piece of advice: return every phone call. Tenants calling on a listing are ready to move — and if you do not pick up, they will call the next listing. Business owners actively searching for space are often shocked to find a broker who actually answers. Responsiveness alone is a competitive advantage in a field where many brokers are notoriously hard to reach.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Tyler Cauble</div>
+      <p>"I can't tell you how many times the business owner looking for space has been surprised and literally said to me 'you're the only person that's answered the phone.' If you're going to get the space leased, you need to put a bit of effort into it."</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Tyler Cauble: <em>How to find tenants for your commercial space</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Tyler Cauble — Nashville-based commercial broker and author of Open For Business — covers the three most effective strategies for filling vacant commercial space: hiring a commercial broker, listing online, and placing professional signage. He also makes the case clearly for why commercial real estate has no centralized MLS and why the broker network is the most powerful leasing channel available. Plus the bonus tip that most investors ignore — returning phone calls.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/klamn9zxWSE" title="How to Find Tenants for Your Commercial Space — Tyler Cauble" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge tc">Tyler Cauble · YouTube</span>
+        <h4>How to Find Tenants for Your Commercial Space [The 3 Best Ways]</h4>
+        <p>Three proven strategies for filling vacant commercial space — working with a broker, listing online, and professional signage — plus why the absence of a commercial MLS makes broker relationships the most powerful tenant-finding tool available. Directly reinforces Lesson 2 of this module.</p>
+        <p class="credit">Tyler Cauble · YouTube 2020 · Evergreen content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Qualifying tenants — <em>protecting the landlord's asset</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Not every business that wants your space should get it. A bad tenant costs a landlord far more than an extended vacancy — missed rent, eviction costs, legal fees, property damage, and months of downtime before the next tenant can move in. The landlord rep's job is to be selective before executing a lease, not to discover problems after the tenant is already in.</p>
+
+    <p class="lesson-text">Qualifying a prospective tenant means evaluating three things: the use, the financials, and the fit with the existing property ecosystem.</p>
+
+    <h3 class="sub-title">Step 1 — Evaluate the proposed use</h3>
+    <p class="lesson-text">Before looking at any financials, understand what the business actually does and whether that use is appropriate for the property. Some uses that seem benign create serious problems. Smoke shops and cannabis dispensaries can make refinancing difficult — many lenders will not underwrite properties with these tenants. Dog grooming and daycare facilities create noise and odor complaints from neighboring tenants. Nail salons and dry cleaners produce chemical smells that permeate adjacent spaces. Auto mechanics bring broken-down vehicles that clutter the parking lot.</p>
+
+    <p class="lesson-text">Always confirm with the landlord which uses are absolutely prohibited and document those in the listing agreement before you start marketing. The landlord's preferences should shape who you target — not be revealed as a surprise after a prospect has already toured the space.</p>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Prohibited Uses Affect Financing</div>
+      <p>Some tenant uses can directly impact a landlord's ability to refinance or sell the property in the future. Cannabis dispensaries, smoke shops, payday lenders, and certain other uses are on the restricted list for many commercial lenders. If a landlord plans to refinance within the next few years, these tenant types can create serious complications even if the lease terms are otherwise favorable. Always ask the landlord about their financing plans before accepting any tenant whose use might trigger lender restrictions.</p>
+    </div>
+
+    <h3 class="sub-title">Step 2 — Evaluate the tenant mix fit</h3>
+    <p class="lesson-text">In retail especially, the combination of tenants in a center creates an ecosystem — and the wrong addition can undermine the entire property. A strip center targeting beauty and wellness businesses gains value from adding complementary uses. A competing nail salon directly adjacent to an existing nail salon creates conflict. A restaurant with a strong loyal following draws foot traffic that benefits every other tenant. A low-traffic use like an insurance office may pay rent but contribute nothing to the energy of the center.</p>
+
+    <p class="lesson-text">Think about the tenant mix the way a chef thinks about a menu — every addition should either complement what is already there or add something genuinely new that makes the whole stronger.</p>
+
+    <h3 class="sub-title">Step 3 — Evaluate financial standing</h3>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Tenant Type</th><th>What to Request</th><th>What to Look For</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>National / Credit Tenant</td>
+            <td>Corporate financials, credit rating, lease signed by corporate entity</td>
+            <td>Investment-grade credit, corporate guarantee — minimal risk</td>
+          </tr>
+          <tr>
+            <td>Multi-Location Operator</td>
+            <td>2–3 years of business financials, PFS if warranted</td>
+            <td>Consistent revenue growth, positive retained earnings, rent line item in expenses</td>
+          </tr>
+          <tr class="highlight">
+            <td>Established Local Business</td>
+            <td>2–3 years tax returns, balance sheet, P&L, personal financial statement</td>
+            <td>Track record of profitability, assets that back the lease obligation</td>
+          </tr>
+          <tr>
+            <td>Startup / First Location</td>
+            <td>Business plan, personal financial statement, bank statements, credit check</td>
+            <td>Personal assets and willingness to personally guarantee, realistic business plan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Startups Are Not Automatic Rejections</div>
+      <p>Experienced landlord reps do not automatically reject startup tenants — they manage the risk differently. A startup with a personal guarantee from someone with $5 million in personal assets and 15 years of relevant business experience is a far safer bet than an established business with thin margins and no guarantor. The question is never just "how long has this business been open?" — it is "how dependable is it that rent shows up on the first of the month, and who ultimately stands behind that obligation?"</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Negotiating from the landlord's side — <em>protecting the asset</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Once a qualified tenant submits an LOI, the landlord rep's job is to negotiate lease terms that protect the landlord's income, limit exposure, and ensure the property remains a well-performing asset over the full lease term. The negotiation tactics are the mirror image of what a tenant rep does — where the tenant rep pushes for concessions, the landlord rep defends against them.</p>
+
+    <p class="lesson-text">Market conditions determine how hard you can push. In a tight market with low vacancy, the landlord has significant leverage. In a soft market with high vacancy and competing availabilities, concessions become necessary to attract and keep good tenants. Know your market before you walk into any negotiation.</p>
+
+    <div class="neg-grid">
+      <div class="neg-item fade-in">
+        <h4>Protect Base Rent</h4>
+        <div class="ni-tag protect">Protect</div>
+        <p>The asking rent should be anchored in current comparable transactions — not what the landlord wishes the market were. Overpriced space stays vacant longer, which costs more than a modest rent reduction would have. Know the comps cold and be prepared to justify your asking rate with real data.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Limit TI Exposure</h4>
+        <div class="ni-tag protect">Protect</div>
+        <p>Tenant improvement allowances are the landlord's largest upfront cost. Push for tenants to contribute their own capital to the buildout. For startups with weak credit, consider limiting TI but extending more free rent instead — free rent is lower risk because you have not yet spent any money on construction.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Secure Personal Guarantees</h4>
+        <div class="ni-tag protect">Protect</div>
+        <p>For any tenant without strong corporate credit, require a personal guarantee from the business owner. While personal guarantees are difficult to enforce after the fact, they create a meaningful psychological commitment and deter tenants who are not serious about their obligations. Push for full-term guarantees on new businesses — negotiate to limit guarantee periods for established tenants.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Control Rent Escalations</h4>
+        <div class="ni-tag leverage">Leverage</div>
+        <p>Fixed annual increases of 2–4% protect the landlord from inflation eroding real returns over a long term. In high-growth markets, push for fair market value resets at renewal rather than fixed increases — this allows the landlord to capture upside if the market moves significantly. Know which structure benefits your landlord given their market and hold timeline.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Limit Renewal Options</h4>
+        <div class="ni-tag leverage">Leverage</div>
+        <p>Renewal options benefit the tenant — they lock in the tenant's right to stay but give the landlord no reciprocal certainty. In strong markets, push to limit renewal option terms or tie renewal rents to fair market value rather than fixed rates. In soft markets, generous renewal options can be a negotiating chip to attract a strong tenant to a longer initial term.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Control Permitted Use</h4>
+        <div class="ni-tag always">Always</div>
+        <p>Define the permitted use clause tightly. A broad use clause gives the tenant flexibility to change their business in ways the landlord never anticipated — including uses that conflict with other tenants or trigger financing restrictions. Be specific: "restaurant serving Vietnamese cuisine" is better than "food and beverage" which could mean anything.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Manage Exclusivity Carefully</h4>
+        <div class="ni-tag always">Always</div>
+        <p>When tenants request exclusivity provisions, define them precisely and narrowly. Broad exclusivities compound over time — a center with five different tenants each holding broad exclusivities can become impossible to lease. Negotiate exclusivities by specific product category or menu item rather than broad category descriptions that could encompass unrelated businesses.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Trade Concessions Strategically</h4>
+        <div class="ni-tag leverage">Leverage</div>
+        <p>When a tenant asks for a rent reduction, offer TI or free rent instead — these are one-time costs that do not permanently reduce the rent roll. A lower rent permanently diminishes the NOI and therefore the property value. A one-time TI or free rent period shows on the lease as full rent, which supports valuation and future financing.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Rent Roll Is the Asset</div>
+      <p>In commercial real estate, the property's value is a direct function of its NOI — which is driven by rent. Every dollar of permanent rent reduction reduces NOI and reduces property value by a multiple of that dollar. A $500/month rent reduction on a property with a 6% cap rate reduces property value by $100,000. This is why experienced landlord reps fight much harder to preserve base rent than they fight over one-time concessions like TI or free rent. Give away the one-time costs. Protect the permanent income.</p>
+    </div>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to move to CRE-5. They are here for students who want to develop deeper expertise in landlord representation before moving on.</p>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Tyler Cauble — Tenant Improvement Allowances Explained</strong><br>A dedicated deep dive into TI allowances — what they are, how they are calculated, what landlords typically offer by asset class, how they affect lease economics, and how to structure them to protect the landlord's position. Essential knowledge for any landlord rep broker since TI is usually the largest negotiating point in any leasing deal.</p>
+      <a href="https://www.youtube.com/watch?v=3GGWOjh33Gw" target="_blank">Watch →</a>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Adventures in CRE — Letter of Intent Walkthrough</strong><br>A detailed walkthrough of how a commercial real estate LOI is structured — the document that captures the agreed business terms before the full lease is drafted. Understanding the LOI from both sides is essential for any broker operating in leasing. Already recommended in CRE-3 as Go Deeper but equally valuable from the landlord rep perspective.</p>
+      <a href="https://www.youtube.com/watch?v=pbp55rkoFu8" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 CRE-4 Key Takeaways</h3>
+    <ul>
+      <li>Landlord representation is the mirror image of tenant representation — same skills, opposite goals. Where tenant rep negotiates concessions, landlord rep defends against them. Understanding both sides makes you a complete commercial real estate professional.</li>
+      <li>The listing agreement is the foundation of the landlord rep relationship — it establishes exclusive representation rights, defines the commission structure, and gives the broker the certainty to invest marketing resources in the property.</li>
+      <li>There is no commercial MLS. Filling vacant space requires a multi-channel approach: broker network outreach, targeted direct outreach to ideal tenants, online listings, professional signage, and returning every phone call. The broker network is the most powerful channel — most deals get done through co-brokerage.</li>
+      <li>Qualifying tenants means evaluating three things: the proposed use and whether it fits the property, the tenant mix fit with existing tenants, and the financial standing of the business and its principals. A bad tenant costs far more than extended vacancy.</li>
+      <li>Some tenant uses — cannabis, smoke shops, certain chemicals — can restrict the landlord's future financing options. Always confirm prohibited uses with the landlord before marketing begins.</li>
+      <li>In lease negotiations, preserve base rent at all costs — every permanent rent reduction reduces NOI and therefore property value by a multiple. Offer one-time concessions like TI or free rent instead of permanent rent reductions.</li>
+      <li>Market conditions determine leverage. In tight markets push harder. In soft markets manage expectations and focus on the terms that matter most to the landlord's long-term asset value.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A property owner asks if they really need an exclusive listing agreement or if they can just let any broker bring tenants on an open basis. What is the correct advice?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> An open listing is better — more brokers means more exposure and faster leasing</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> An exclusive listing agreement is essential — it gives the broker certainty to invest time and marketing resources knowing they will be compensated, and typically produces better results through focused representation</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Listing agreements are optional — most deals happen informally without them</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> The landlord should always handle leasing themselves to avoid paying commissions</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A landlord rep is marketing a retail strip center and receives interest from a smoke shop operator with strong financials and a personal guarantee. Why should the broker still discuss this carefully with the landlord before proceeding?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Smoke shops are always prohibited in retail centers by zoning law</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Certain tenant uses including smoke shops can restrict the landlord's ability to refinance the property in the future since many lenders will not underwrite buildings with these tenants</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> The personal guarantee eliminates all risk so the use does not matter</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Strong financials mean the tenant should be accepted regardless of the use</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A tenant offers to sign a lease but requests a $30,000 reduction in total rent over the 5-year term OR $30,000 in additional TI allowance. From a landlord's perspective, which is the better concession to grant?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> The rent reduction — it avoids the landlord spending money on construction</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> The additional TI — it is a one-time cost that does not permanently reduce NOI or property value, while a permanent rent reduction reduces both NOI and property value by a multiple</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> They are equivalent — $30,000 is $30,000 regardless of how it is structured</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Neither — landlords should never grant any concessions to tenants</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Why is the broker co-brokerage network more effective than online listing platforms for finding qualified commercial tenants?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Online platforms are free while co-brokerage requires paying a commission split</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Commercial real estate has no centralized MLS — tenant rep brokers know which businesses are actively searching for space right now, including many who have not yet publicly started their search</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Online platforms are only used by residential brokers and are not visible to commercial tenants</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Co-brokerage is required by law in most states for commercial lease transactions</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. A retail strip center landlord rep has a vacancy. A startup restaurant with no track record approaches expressing strong interest. The operator has 15 years of food service management experience and $2 million in personal assets. Should the landlord rep recommend proceeding?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> No — startup businesses should always be rejected due to the high failure rate of new restaurants</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> Only if the operator can prove they have operated a restaurant before under the same concept</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> Yes — with appropriate risk management. The operator's $2M in personal assets and 15 years of relevant experience substantially mitigate the startup risk. Proceed with a personal guarantee and thorough financial review, and ensure the use fits the center's tenant mix.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Only if the landlord reduces rent to offset the startup risk</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — CRE-5: Breaking Into Commercial Real Estate</h3>
+    <p>You now understand the profession, the asset classes, and both sides of the leasing transaction. The next module shifts from what CRE professionals do to how you actually break in — getting your first job, building your network from zero, what the interview process looks like at major firms, and how to position yourself for maximum career traction in your first two years.</p>
+    <a href="cre-module-5.html" class="next-module-cta">CRE-5: Breaking Into Commercial Real Estate →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="cre-module-3.html" class="btn btn-outline">← CRE-3: Tenant Representation</a>
+  <div class="module-nav-info">
+    <p>Commercial Real Estate Track</p>
+    <strong>Module 4 of 7</strong>
+  </div>
+  <a href="cre-module-5.html" class="btn btn-gold">CRE-5: Breaking In →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! An exclusive listing agreement is essential for effective landlord representation. Without it, no individual broker has the incentive to invest significant time and marketing resources into the property — because any other broker could bring a tenant and take the commission. Exclusive listings produce focused, committed representation. Open listings produce half-hearted effort from many brokers and are generally less effective than exclusive representation by a single qualified firm.",
+      incorrect: "Not quite. An exclusive listing agreement is essential for effective landlord representation. Without exclusivity, no broker has sufficient incentive to invest significant marketing resources because another broker could close the deal and collect the commission. Open listings tend to produce scattered, low-commitment effort while exclusive listings produce focused, professional representation from a broker who has staked their time on your property."
+    },
+    q2: {
+      correct: "Correct! Certain tenant uses — including smoke shops, cannabis dispensaries, payday lenders, and some others — are on the restricted list for many commercial lenders. A landlord who accepts one of these tenants today may find it difficult or impossible to refinance the property in the future. Even with a personal guarantee and strong tenant financials, the use itself can create a financing problem that persists for the entire lease term. Always discuss prohibited uses with the landlord before marketing and clarify their future financing plans.",
+      incorrect: "Not quite. Even with strong financials and a personal guarantee, certain tenant uses — including smoke shops — can restrict the landlord's ability to refinance the property in the future because many lenders place these uses on restricted lists. The tenant's financial strength does not eliminate the lender restriction problem. This is why confirming prohibited uses with the landlord before marketing begins is a critical first step in the landlord rep process."
+    },
+    q3: {
+      correct: "Correct! This is the most important financial insight in landlord representation: protect base rent, offer one-time concessions. A $30,000 TI is a one-time expense — it does not change the rent roll or the NOI going forward. A $30,000 rent reduction permanently reduces NOI. At a 6% cap rate, every $500/month of rent reduction reduces property value by $100,000. Experienced landlord reps trade one-time costs like TI and free rent against permanent rent reductions because the compounding effect on property value is enormous over time.",
+      incorrect: "Not quite. From a landlord's perspective, $30,000 in TI and $30,000 in rent reduction are not equivalent. The TI is a one-time cost with no ongoing impact on NOI or property value. The rent reduction permanently reduces NOI — and at a 6% cap rate, every dollar of permanent monthly rent reduction reduces property value by $200 (annual reduction ÷ cap rate). Experienced landlord reps always prefer to grant one-time concessions like TI or free rent rather than permanent rent reductions."
+    },
+    q4: {
+      correct: "Correct! Commercial real estate has no centralized MLS equivalent to the residential market. This means there is no single database where all available spaces are listed and all searching tenants are visible. Tenant rep brokers fill this gap — they maintain direct relationships with businesses actively looking for space, including many who have not yet publicly announced their search. Co-brokerage through the broker network consistently produces higher-quality, more qualified prospects than inbound inquiries from online platforms.",
+      incorrect: "Not quite. The key advantage of the broker network is that commercial real estate has no centralized MLS. Unlike residential real estate where buyers search Zillow, commercial tenants do not have a single platform to browse all available space. Tenant rep brokers know which businesses are actively searching right now — including off-market prospects who have not yet started a visible search. This access to active, qualified prospects is what makes co-brokerage through the broker network more effective than online listings."
+    },
+    q5: {
+      correct: "Correct! Startups are not automatic rejections — they require different risk management, not automatic disqualification. This operator's $2 million in personal assets and 15 years of food service management experience substantially reduce the startup risk. The right approach: proceed with a thorough financial review, require a personal guarantee backed by those assets, confirm the restaurant concept fits the center's tenant mix and existing use restrictions, and ensure the buildout rights protect the landlord's TI investment. The combination of personal assets, relevant experience, and appropriate lease protections makes this a viable candidate.",
+      incorrect: "Not quite. Startups are not automatic rejections — the risk management approach changes, not the decision. This operator has $2 million in personal assets backing a personal guarantee and 15 years of directly relevant experience. That is a meaningful risk profile — far stronger than a startup operator with no track record and no personal assets. The right approach is to proceed with thorough financial vetting, require a personal guarantee, confirm use fit with the tenant mix, and structure the lease protections appropriately."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you understand landlord representation. You are ready for CRE-5: Breaking Into Commercial Real Estate.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons above before moving on. Understanding both sides of the leasing transaction is foundational for CRE-5 and beyond.';
+    }
+  }
+</script>
+
+</body>
+</html>

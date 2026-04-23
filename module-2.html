@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 2: The Language of Real Estate — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:#1B4D3E;--forest-mid:#2A6B56;--forest-light:#3A8A6E;--forest-pale:#E8F5EE;
+    --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+    --cream:#FAF8F3;--cream-dark:#F0EBE0;
+    --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+    --white:#FFFFFF;--border:rgba(27,77,62,0.1);
+    --shadow-card:0 2px 16px rgba(27,77,62,0.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+  nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+  .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--forest);}
+  .nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+  .nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+  .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+  .nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold-light);}
+  .nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+  .breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+  .breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+  .breadcrumb a:hover{text-decoration:underline;}
+  .breadcrumb .sep{opacity:0.4;}
+  .breadcrumb .current{color:var(--forest);font-weight:600;}
+  .progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+  .progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+  .progress-track{flex:1;height:6px;background:rgba(27,77,62,0.15);border-radius:3px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:20%;transition:width 0.5s ease;}
+  .progress-modules{display:flex;gap:6px;}
+  .prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+  .prog-dot.active{background:var(--forest);color:var(--gold-light);}
+  .prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+  .prog-dot.locked{background:rgba(27,77,62,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(27,77,62,0.25);}
+  .module-hero{background:linear-gradient(135deg,#0D2820 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+  .module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+  .module-hero-inner{max-width:860px;margin:0 auto;}
+  .module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+  .module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+  .module-hero h1 em{color:var(--gold-light);font-style:italic;}
+  .module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+  .module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+  .meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+  .meta-item span{color:var(--gold-light);font-weight:600;}
+  .module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+  .lesson-section{margin-bottom:3.5rem;}
+  .section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+  .section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+  h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+  h2.lesson-title em{color:var(--forest);font-style:italic;}
+  h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+  .lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+  .lesson-text strong{color:var(--text-dark);font-weight:600;}
+  .gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+  .callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+  .callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+  .callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+  .callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+  .callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+  .callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+  .callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+  .callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+  .callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+  .callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+  .term-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin:1.75rem 0;}
+  .term-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.25s;border-top:3px solid var(--forest-pale);}
+  .term-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);border-top-color:var(--forest-mid);}
+  .term-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--forest);margin-bottom:0.4rem;}
+  .term-category{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-bottom:0.6rem;}
+  .term-card p{font-size:13.5px;color:var(--text-mid);line-height:1.65;}
+  .term-card .example{font-size:12.5px;color:var(--forest-mid);margin-top:0.5rem;font-style:italic;padding-top:0.5rem;border-top:1px solid var(--border);}
+  .video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+  .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+  .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+  .video-info{padding:1.25rem 1.5rem;}
+  .video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+  .video-badge.ph{background:var(--forest-pale);color:var(--forest-mid);}
+  .video-badge.bp{background:#E8F0FB;color:#1A4E7A;}
+  .video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+  .video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+  .video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+  .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem;margin:1.75rem 0;}
+  .takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+  .takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+  .takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+  .takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+  .takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+  .takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+  .knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+  .knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+  .knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+  .question{margin-bottom:1.75rem;}
+  .question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+  .options{display:flex;flex-direction:column;gap:0.5rem;}
+  .option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+  .option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+  .option.selected{border-color:var(--forest-mid);background:var(--forest-pale);}
+  .option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+  .option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+  .option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+  .option.correct .option-letter{background:var(--forest);color:var(--white);}
+  .option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+  .explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+  .explanation.show{display:block;}
+  .explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+  .explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+  .check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+  .check-btn:hover{background:var(--forest-mid);}
+  .check-btn:disabled{background:var(--text-light);cursor:default;}
+  .score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+  .score-result.show{display:block;}
+  .score-result.pass{background:var(--forest-pale);color:var(--forest);}
+  .score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+  .skills-connection{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+  .skills-connection h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+  .skills-connection p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+  .career-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .career-tag{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--text-dark);}
+  .module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+  .module-nav-info{text-align:center;}
+  .module-nav-info p{font-size:12px;color:var(--text-light);}
+  .module-nav-info strong{font-size:14px;color:var(--text-dark);}
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;}
+  .btn-forest{background:var(--forest);color:var(--white);}
+  .btn-forest:hover{background:var(--forest-mid);}
+  .btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+  .btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+  .btn-gold{background:var(--gold);color:var(--forest);}
+  .btn-gold:hover{background:var(--gold-light);}
+  footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+  footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+  footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+  footer .footer-gold{color:var(--gold-light);}
+  .fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+  @media(max-width:640px){
+    nav{padding:0 1.25rem;}.nav-links{display:none;}
+    .module-hero{padding:2.5rem 1.5rem;}
+    .module-body{padding:2rem 1.25rem;}
+    .progress-bar{padding:0.75rem 1.25rem;}
+    .breadcrumb{padding:0.75rem 1.25rem;}
+    .module-nav{padding:1rem 1.25rem;}
+    .video-grid{grid-template-columns:1fr;}
+    .prog-dot{width:24px;height:24px;font-size:10px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">Career Paths</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="index.html#begin">Core Foundation</a><span class="sep">›</span>
+  <span class="current">Module 2: The Language of Real Estate</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Your Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <div class="prog-dot active">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+    <div class="prog-dot locked">9</div>
+    <div class="prog-dot locked">10</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📚 Core Foundation · Module 2 of 10</div>
+    <h1>The Language of <em>Real Estate</em></h1>
+    <p>Real estate has its own vocabulary — and the people who know it get taken seriously. The ones who don't get talked past. This module gives you the core terms you'll hear in every conversation, every deal, and every career path in this industry.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>35–45 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+      <div class="meta-item">✅ Knowledge check: <span>5 questions</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Why language is the <em>first skill you develop</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Imagine walking into a room full of doctors. They're discussing a patient's diagnosis — using clinical terms you've never heard. You can tell it's important. You can tell some of it concerns you. But you can't fully follow the conversation, and you're certainly not contributing to it.</p>
+
+    <p class="lesson-text">That's exactly how most newcomers feel when they first step into a real estate conversation. Terms like <strong>cap rate</strong>, <strong>NOI</strong>, <strong>escrow</strong>, <strong>LTV</strong>, and <strong>due diligence</strong> get thrown around like everyone already knows what they mean. And if you don't — you either stay quiet or you fake it.</p>
+
+    <p class="lesson-text">Neither of those is where you want to be.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"The first time I walked into a commercial real estate meeting, I nodded along like I understood everything being said. I didn't. I spent the next two weeks learning every term I'd heard so I'd never be in that position again. Learning the language is the fastest way to feel — and actually be — competent."</p>
+    </div>
+
+    <p class="lesson-text">Here's the good news: real estate has a finite vocabulary. You don't need to know hundreds of terms to have a confident conversation. You need to know the right ones. The terms in this module are the ones that come up constantly — across every career path, every deal type, and every market.</p>
+
+    <p class="lesson-text">By the end of this module you won't know everything — but you'll know enough to follow any real estate conversation, ask smart questions, and signal to the people around you that you belong in the room.</p>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The language of <em>property</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">These are the terms that describe physical real estate — what it is, how it's classified, and how ownership is defined. Every real estate professional uses these regardless of their career path.</p>
+
+    <div class="term-grid">
+      <div class="term-card fade-in">
+        <div class="term-category">Ownership</div>
+        <div class="term-name">Title</div>
+        <p>The legal right to own a property. When you "hold title" to a property, you are the legal owner. Title is transferred at closing via a deed.</p>
+        <div class="example">Example: "The title search showed no liens on the property, so we were clear to close."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Ownership</div>
+        <div class="term-name">Deed</div>
+        <p>The legal document that transfers ownership of a property from one party to another. The deed is recorded with the county when a sale closes.</p>
+        <div class="example">Example: "The seller signed the deed at closing and ownership transferred to the buyer."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Value</div>
+        <div class="term-name">Equity</div>
+        <p>The difference between what a property is worth and what is owed on it. If a property is worth $300,000 and you owe $200,000 — you have $100,000 in equity.</p>
+        <div class="example">Example: "After 5 years of mortgage payments and appreciation, she had built significant equity."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Value</div>
+        <div class="term-name">Appreciation</div>
+        <p>The increase in a property's value over time. Appreciation can be natural (market-driven) or forced (through renovations and improvements).</p>
+        <div class="example">Example: "The neighborhood appreciated 15% over two years, growing his net worth without him doing anything."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Value</div>
+        <div class="term-name">Appraisal</div>
+        <p>A professional estimate of a property's market value, performed by a licensed appraiser. Lenders typically require an appraisal before approving a mortgage.</p>
+        <div class="example">Example: "The appraisal came in at $280,000, which supported the purchase price we had negotiated."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Classification</div>
+        <div class="term-name">Zoning</div>
+        <p>Government regulations that determine how a property can be used — residential, commercial, industrial, mixed-use, etc. You cannot use a property in a way that violates its zoning.</p>
+        <div class="example">Example: "The lot was zoned residential, so the developer had to apply for a variance to build retail."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Classification</div>
+        <div class="term-name">Asset Class</div>
+        <p>The category of real estate a property belongs to — multifamily, office, retail, industrial, hospitality, self-storage, etc. Different asset classes behave differently in different markets.</p>
+        <div class="example">Example: "He focused exclusively on the multifamily asset class because of its stable demand."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Condition</div>
+        <div class="term-name">Comps (Comparables)</div>
+        <p>Recent sales of similar properties in the same area, used to estimate what a property is worth. Agents and investors both rely heavily on comps to price and evaluate properties.</p>
+        <div class="example">Example: "The comps in that neighborhood suggested a value of around $350,000 — right in line with the asking price."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The language of <em>money</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Real estate is ultimately a numbers business. These are the financial terms that investors, lenders, and agents use to evaluate whether a deal makes sense. Understanding these terms is what separates people who can analyze a deal from those who can only look at it.</p>
+
+    <div class="term-grid">
+      <div class="term-card fade-in">
+        <div class="term-category">Income</div>
+        <div class="term-name">NOI — Net Operating Income</div>
+        <p>Total income a property generates minus all operating expenses — but before mortgage payments. NOI is the foundational number in commercial real estate analysis.</p>
+        <div class="example">Example: "The property had $120,000 in rent income and $40,000 in expenses — an NOI of $80,000."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Income</div>
+        <div class="term-name">Cash Flow</div>
+        <p>The money left over after ALL expenses including the mortgage. Positive cash flow means the property pays you every month. This is what investors are ultimately chasing.</p>
+        <div class="example">Example: "After the mortgage, taxes, insurance, and management fees, the property cash flowed $800 per month."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Value</div>
+        <div class="term-name">Cap Rate — Capitalization Rate</div>
+        <p>NOI divided by purchase price. Expressed as a percentage, it tells you the return a property generates independent of financing. Higher cap rate = higher return but often higher risk.</p>
+        <div class="example">Example: "An NOI of $80,000 on a $1,000,000 property is an 8% cap rate."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Returns</div>
+        <div class="term-name">Cash-on-Cash Return</div>
+        <p>Annual cash flow divided by total cash invested. Shows you the return on the actual money you put in — one of the most practical return metrics for investors.</p>
+        <div class="example">Example: "She invested $50,000 down and earned $5,000 annually — a 10% cash-on-cash return."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Financing</div>
+        <div class="term-name">LTV — Loan to Value</div>
+        <p>The loan amount as a percentage of the property's value. A lender offering 80% LTV on a $500,000 property will lend $400,000 — requiring a $100,000 down payment.</p>
+        <div class="example">Example: "The lender required a maximum 75% LTV, so we needed a 25% down payment to qualify."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Financing</div>
+        <div class="term-name">DSCR — Debt Service Coverage Ratio</div>
+        <p>NOI divided by annual mortgage payments. Lenders use this to determine if a property generates enough income to safely cover its debt. A DSCR above 1.25 is typically required.</p>
+        <div class="example">Example: "The property's DSCR of 1.35 meant it comfortably covered the mortgage — the bank approved the loan."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Financing</div>
+        <div class="term-name">Amortization</div>
+        <p>The process of paying off a loan over time through regular monthly payments. Each payment covers both interest and principal — gradually building equity as the balance decreases.</p>
+        <div class="example">Example: "On a 30-year amortization schedule, the early payments are mostly interest — principal builds slowly at first."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Renovation</div>
+        <div class="term-name">ARV — After Repair Value</div>
+        <p>The estimated market value of a property after renovations are completed. Used by fix-and-flip investors and wholesalers to determine the maximum price they can pay for a distressed property.</p>
+        <div class="example">Example: "The ARV was $400,000. After $60,000 in repairs, the numbers worked for a flip."</div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Key Insight</div>
+      <p>You don't need to memorize every formula right now — that's what Module 4 (Analyzing a Deal) is for. What matters at this stage is that you recognize these terms when you hear them, understand what they're measuring, and can ask an intelligent follow-up question. That alone puts you ahead of most beginners in any real estate conversation.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Peter Harris: The 5 key terms that drive <em>every deal</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Before we cover the language of transactions, watch Peter Harris walk through the five financial terms that drive every commercial real estate analysis. He keeps it simple, practical, and directly tied to real numbers — exactly how you want to learn this material for the first time.</p>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/m8QIzxXRMGA" title="Analyzing Commercial Real Estate Quickly and Easily — Peter Harris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge ph">Peter Harris · Commercial Property Advisors</span>
+        <h4>Analyzing Commercial Real Estate Quickly and Easily</h4>
+        <p>Peter Harris breaks down the 5 key terms — Income, Expenses, NOI, Cash Flow, Cash-on-Cash Return, and Cap Rate — using real numbers. After watching this, the financial language in Lesson 3 will click in a completely different way.</p>
+        <p class="credit">Commercial Property Advisors · YouTube</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The language of <em>transactions</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Every real estate deal goes through a process — from finding a property to closing on it. These are the terms that describe the transaction itself. Whether you're an agent, an investor, a wholesaler, or a lender, you'll encounter every one of these terms when a deal is in motion.</p>
+
+    <div class="term-grid">
+      <div class="term-card fade-in">
+        <div class="term-category">Process</div>
+        <div class="term-name">Due Diligence</div>
+        <p>The research and investigation period after a property goes under contract. Buyers inspect the property, review financials, check title, and verify everything they were told before committing to close.</p>
+        <div class="example">Example: "During due diligence, the inspector found a roof issue — we renegotiated the price down $15,000."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Process</div>
+        <div class="term-name">Escrow</div>
+        <p>A neutral third party — typically a title company — that holds funds and documents during a transaction until all conditions are met and the deal can close. Money "in escrow" is protected until closing.</p>
+        <div class="example">Example: "We sent the earnest money to escrow once the contract was signed by both parties."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Contract</div>
+        <div class="term-name">Earnest Money</div>
+        <p>A deposit made by the buyer when going under contract — typically 1–3% of the purchase price. It shows the seller the buyer is serious. If the buyer backs out without a valid reason, they may lose it.</p>
+        <div class="example">Example: "He put down $10,000 in earnest money to show the seller he was committed to closing."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Contract</div>
+        <div class="term-name">Contingency</div>
+        <p>A condition that must be met for the contract to remain valid. Common contingencies include financing (the buyer must get approved for a loan) and inspection (the property must pass inspection).</p>
+        <div class="example">Example: "The contract had a financing contingency — if the buyer couldn't get a loan, they could walk away and keep their deposit."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Process</div>
+        <div class="term-name">Closing</div>
+        <p>The final step of a real estate transaction where ownership officially transfers. Documents are signed, funds are exchanged, and the deed is recorded. "Closing day" is the finish line of every deal.</p>
+        <div class="example">Example: "We closed on Friday — the seller got their check and we got the keys."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Compensation</div>
+        <div class="term-name">Commission</div>
+        <p>The fee paid to real estate agents for their services — typically a percentage of the sale price. Traditionally 5–6% split between buyer's and seller's agents, though this varies and is always negotiable.</p>
+        <div class="example">Example: "The 5% commission on a $400,000 sale was $20,000 — split between both agents."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Finance</div>
+        <div class="term-name">Pre-Approval</div>
+        <p>A lender's written commitment to loan a buyer up to a specific amount, based on their income, credit, and assets. Sellers take buyers with pre-approval letters far more seriously than those without one.</p>
+        <div class="example">Example: "She got pre-approved for $350,000 before she started shopping — it made her offers much stronger."</div>
+      </div>
+      <div class="term-card fade-in">
+        <div class="term-category">Investment</div>
+        <div class="term-name">Value-Add</div>
+        <p>A property with the potential to increase in value through improvements — renovations, better management, rent increases, adding units. Value-add is one of the most common investment strategies.</p>
+        <div class="example">Example: "The building was underperforming. With better management and unit upgrades, it was a classic value-add opportunity."</div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ One Thing to Watch Out For</div>
+      <p>Real estate professionals sometimes use jargon to test whether you know what you're talking about — or to rush past details they'd rather you not ask about. Now that you know these terms, slow down any conversation where something doesn't add up. The right question at the right moment protects you. Never be embarrassed to ask for clarification — it's a sign of intelligence, not ignorance.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Real estate vocabulary explained — <em>starting from zero</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">This video covers 31 real estate terms starting from absolute basics — wholesalers, flippers, agents, the offer process, inspection, escrow, and closing. It's designed specifically for people who are brand new to real estate and need each term explained clearly before moving on. After the lessons above, every term in this video will land.</p>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/hrGClLdamDA" title="Real Estate For Dummies — 31 Terms Explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge bp">ThisisJohnWilliams · YouTube</span>
+        <h4>Real Estate For Dummies — 31 Essential Terms Explained</h4>
+        <p>John Williams covers 31 real estate terms in 14 minutes — starting from the very beginning. He walks through what agents, wholesalers, and flippers do, then takes you through the full transaction process from making an offer all the way to closing. Clear, conversational, and built for beginners.</p>
+        <p class="credit">ThisisJohnWilliams · YouTube</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📋 Key Takeaways — Module 2</h3>
+    <ul>
+      <li>Knowing the language of real estate signals competence. People take you more seriously, explain more to you, and include you in conversations that matter when you clearly understand the vocabulary.</li>
+      <li>Property terms — title, deed, equity, appreciation, zoning, comps — describe what real estate is and how ownership works. These come up in every career path.</li>
+      <li>Financial terms — NOI, cap rate, cash flow, LTV, DSCR, ARV — are how investors and lenders evaluate whether a deal makes sense. You don't need to master the math yet, but you need to understand what each term is measuring.</li>
+      <li>Transaction terms — due diligence, escrow, contingency, closing, earnest money — describe the process every deal goes through. Every professional in this industry navigates these steps.</li>
+      <li>Language fluency builds over time through exposure. The best way to accelerate it is to listen to real estate podcasts, watch deal analysis videos, and get into real conversations with industry professionals as soon as possible.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in" id="knowledgeCheck">
+    <h3>✅ Knowledge Check</h3>
+    <p class="kc-sub">5 questions to test your understanding of the key terms. Select the best answer for each.</p>
+
+    <div class="question" id="q1">
+      <p>1. A property generates $150,000 in annual rent and has $50,000 in operating expenses. What is its NOI?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> $50,000</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> $150,000</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> $100,000</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> $200,000</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A property is worth $500,000 and has a mortgage balance of $320,000. How much equity does the owner have?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> $500,000</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> $320,000</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> $180,000</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> $820,000</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. During which phase of a transaction does the buyer inspect the property, review financials, and verify everything they were told before committing to close?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Closing</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Pre-approval</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Due diligence</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Escrow</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. An investor buys a property for $800,000 with an NOI of $64,000. What is the cap rate?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> 6%</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> 8%</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> 10%</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> 12%</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. A buyer makes an offer on a house with a financing contingency. Their mortgage application is denied. What most likely happens to their earnest money?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> The seller keeps the earnest money as compensation for taking the home off the market.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> The buyer gets their earnest money back because the financing contingency was not met.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> The earnest money stays in escrow indefinitely until both parties agree on what to do with it.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The earnest money is split evenly between buyer and seller.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- SKILLS CONNECTION -->
+  <div class="skills-connection fade-in">
+    <h3>🔗 How This Module Connects to Your Career Path</h3>
+    <p>Every term in this module will appear in your specific career path — some more than others. Agents need to understand comps, equity, and closing. Investors live and die by NOI, cap rate, and cash flow. Wholesalers need to know ARV and comps cold. Property managers talk cash flow and value-add constantly. Contractors who understand these terms get better clients and command higher fees. The language is universal — your depth of use will depend on which path you take.</p>
+    <div class="career-tags">
+      <span class="career-tag">🏠 Residential Agent</span>
+      <span class="career-tag">🏢 Commercial RE</span>
+      <span class="career-tag">🏘️ Investing</span>
+      <span class="career-tag">🔑 Property Management</span>
+      <span class="career-tag">🏗️ Development</span>
+      <span class="career-tag">💵 Mortgage & Lending</span>
+      <span class="career-tag">🔄 Wholesaling</span>
+      <span class="career-tag">🔧 Maintenance & Repair</span>
+      <span class="career-tag">📸 Photography</span>
+    </div>
+  </div>
+
+  <!-- GLOSSARY DOWNLOAD -->
+  <div class="fade-in" style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:16px;padding:1.75rem 2rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.4rem;">📖 Study Resource</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;">Real Estate Terms You Need to Be Familiar With</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6;">Keep studying them and do a search online if you need more explanation or examples. You got this — before you know it you'll be fluent in all these terms.</div>
+    </div>
+    <a href="darco-glossary.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;">⬇ Download Glossary</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="module-1.html" class="btn btn-outline">← Module 1</a>
+  <div class="module-nav-info">
+    <p>Core Foundation</p>
+    <strong>Module 2 of 10 — The Language of Real Estate</strong>
+  </div>
+  <a href="module-3.html" class="btn btn-gold">Next: Module 3 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: { correct: "Correct! NOI is calculated as gross income minus all operating expenses, but before debt service. It is the most important number in commercial real estate valuation.", incorrect: "Not quite. NOI equals gross income minus operating expenses, but does not include mortgage payments. It is calculated before debt service." },
+    q2: { correct: "Correct! The cap rate formula is NOI divided by property value. It measures the return on a property as if purchased with all cash, with no mortgage.", incorrect: "Not quite. Cap rate equals NOI divided by purchase price. It represents the unlevered return on a property - the return you would get if you paid all cash." },
+    q3: { correct: "Correct! Equity is the difference between what a property is worth and what is owed on it. As the property appreciates and the loan is paid down, equity grows.", incorrect: "Not quite. Equity is the difference between the market value of a property and the outstanding loan balance. It grows through appreciation and loan paydown." },
+    q4: { correct: "Correct! A lease is a legal contract between a landlord and tenant specifying the terms of occupancy including rent, duration, and responsibilities.", incorrect: "Not quite. A lease is the legal contract between landlord and tenant that governs the rental relationship, including rent amount, duration, and the rights and responsibilities of each party." },
+    q5: { correct: "Correct! Due diligence is the investigation period before closing a purchase where the buyer verifies all information about the property - financials, condition, legal status, and more.", incorrect: "Not quite. Due diligence is the investigation process a buyer conducts before closing to verify everything about a property - its condition, financials, legal status, and any other relevant factors." }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1', 'q2', 'q3', 'q4', 'q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5! Excellent. You are building a strong real estate vocabulary. Ready for Module 3.</strong>';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5. Review the vocabulary sections above and try again.</strong>';
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 7: Finding & Evaluating Properties — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1B4D3E;--forest-mid:#2A6B56;--forest-light:#3A8A6E;--forest-pale:#E8F5EE;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(27,77,62,0.1);--shadow-card:0 2px 16px rgba(27,77,62,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--forest);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(27,77,62,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:70%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(27,77,62,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(27,77,62,0.25);}
+.module-hero{background:linear-gradient(135deg,#0D2820 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Source cards */
+.source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin:2rem 0;}
+.source-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.source-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.source-card.sc1::before{background:var(--forest);}
+.source-card.sc2::before{background:var(--gold);}
+.source-card.sc3::before{background:#4A6FA5;}
+.source-card.sc4::before{background:#C0392B;}
+.source-card.sc5::before{background:#8A4A90;}
+.source-card.sc6::before{background:#2A8A6E;}
+.source-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.source-card .source-icon{font-size:24px;margin-bottom:0.5rem;display:block;}
+.source-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.source-card .source-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-bottom:0.5rem;}
+.source-card.sc1 .source-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.source-card.sc2 .source-tag{background:var(--gold-pale);color:#8A6A20;}
+.source-card.sc3 .source-tag{background:#EBF0FB;color:#2A4A8A;}
+.source-card.sc4 .source-tag{background:#FBF0EE;color:#8B2F20;}
+.source-card.sc5 .source-tag{background:#F2EBF8;color:#5A3A7A;}
+.source-card.sc6 .source-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.source-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* Market criteria table */
+.criteria-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.criteria-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.criteria-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.criteria-table td:first-child{font-weight:600;color:var(--text-dark);}
+.criteria-table tr:hover td{background:var(--forest-pale);}
+.criteria-table tr.highlight td{background:var(--gold-pale);font-weight:600;}
+
+/* Screening steps */
+.steps-list{display:flex;flex-direction:column;gap:1.25rem;margin:1.75rem 0;}
+.step-item{display:flex;gap:1.25rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;}
+.step-number{width:36px;height:36px;border-radius:50%;background:var(--forest);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;flex-shrink:0;}
+.step-content h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.step-content p{font-size:13.5px;color:var(--text-mid);line-height:1.65;}
+
+/* Compare table */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px;}
+.compare-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:center;font-weight:600;}
+.compare-table th:first-child{text-align:left;}
+.compare-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.compare-table td:not(:first-child){text-align:center;font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--forest-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);font-weight:700;color:var(--forest);}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.cpa{background:var(--forest-pale);color:var(--forest-mid);}
+.video-badge.bp{background:#E8F0FB;color:#1A4E7A;}
+.video-badge.cc{background:#EBF0FB;color:#1A4E7A;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#0D2820,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Glossary */
+.glossary-box{background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:14px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.glossary-box p{font-size:14px;color:var(--text-dark);line-height:1.6;}
+.glossary-box p strong{color:var(--forest);}
+.glossary-btn{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+/* Skills connection */
+.skills-connection{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.skills-connection h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.skills-connection p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.career-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.career-tag{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--text-dark);text-decoration:none;}
+
+/* Nav */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .source-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">Career Paths</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="index.html#begin">Core Foundation</a><span class="sep">›</span>
+  <span class="current">Module 7: Finding &amp; Evaluating Properties</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Your Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <a href="module-4.html" class="prog-dot complete" title="Module 4">✓</a>
+    <a href="module-5.html" class="prog-dot complete" title="Module 5">✓</a>
+    <a href="module-6.html" class="prog-dot complete" title="Module 6">✓</a>
+    <div class="prog-dot active">7</div>
+    <div class="prog-dot locked">8</div>
+    <div class="prog-dot locked">9</div>
+    <div class="prog-dot locked">10</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📚 Core Foundation · Module 7 of 10</div>
+    <h1>Finding &amp; Evaluating <em>Properties</em></h1>
+    <p>You now know how to value a property, analyze a deal, and finance it. The next question is: how do you find one worth pursuing in the first place? This module teaches you how to pick the right market, where properties actually come from, how to screen deals quickly, and how to build a pipeline that works consistently over time.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>45–55 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Pick the market before you pick <em>the property</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most beginners make the same mistake: they start searching for properties before they have chosen a market. They open LoopNet, Zillow, or Crexi, search nationally, get overwhelmed by thousands of listings, and go nowhere. The right sequence is the opposite — <strong>market first, property second.</strong></p>
+
+    <p class="lesson-text">A great property in a declining market is still a bad investment. A mediocre property in a strong, growing market will outperform it over time. The market you invest in determines rent trends, vacancy rates, appreciation potential, and the quality of the tenants you will attract. Getting the market right is the foundation of everything else.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"The investors I have seen build real wealth all had one thing in common — they became experts in one market before they bought anything. They knew the neighborhoods, the rent ranges, the vacancy rates, the brokers, the property managers. When a good deal appeared they recognized it instantly. Beginners spread themselves across five markets and master none."</p>
+    </div>
+
+    <h3 class="sub-title">What makes a market worth investing in</h3>
+    <p class="lesson-text">You do not need expensive data subscriptions to evaluate a market. The signals that matter most are publicly available and easy to find. Here is what experienced investors look at:</p>
+
+    <table class="criteria-table">
+      <thead>
+        <tr>
+          <th>Signal</th>
+          <th>What to Look For</th>
+          <th>Why It Matters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>Job Growth</td>
+          <td>Major employers expanding, new companies relocating, low unemployment</td>
+          <td>Jobs bring people. People need housing. No jobs = no tenants.</td>
+        </tr>
+        <tr>
+          <td>Population Growth</td>
+          <td>Net in-migration — more people moving in than moving out</td>
+          <td>Growing population drives demand for rentals and pushes rents up over time</td>
+        </tr>
+        <tr class="highlight">
+          <td>Vacancy Rates</td>
+          <td>Under 5% is healthy. Rising vacancy is a warning sign.</td>
+          <td>High vacancy means oversupply or weak demand — both hurt cash flow</td>
+        </tr>
+        <tr>
+          <td>Rent Trends</td>
+          <td>Rents growing year over year, even modestly</td>
+          <td>Rising rents = rising NOI = rising property value (income approach)</td>
+        </tr>
+        <tr class="highlight">
+          <td>Landlord-Friendly Laws</td>
+          <td>Reasonable eviction timelines, no rent control</td>
+          <td>Markets with tenant-heavy laws create operational risk for investors</td>
+        </tr>
+        <tr>
+          <td>Affordability</td>
+          <td>Property prices where the numbers still work at current rates</td>
+          <td>A great market where nothing pencils as a deal is still a bad market for you</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Sun City and Satellite City Framework</div>
+      <p>A simple way to find great markets: start by identifying a fast-growing major city — your economic sun. This is a city with strong job diversity, major employers, and clear population growth (think Nashville, Raleigh, Charlotte, Houston, Phoenix). Then look one level smaller — the suburban satellite cities orbiting that sun. These smaller towns often have more affordable property prices, less competition from institutional investors, and they benefit from the economic engine of the bigger city nearby. A tenant in the suburb can commute to the city for work. You buy affordably and still get the rent the market supports.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Where properties actually come from — <em>on-market vs. off-market</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Once you have chosen a market, the next question is where to find properties. There are two worlds: on-market and off-market. Most beginners only look at one. Experienced investors work both — but they know which one produces the best deals.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Peter Harris — Commercial Property Advisors</div>
+      <p>"The best deals are never found on the market. If a deal hits LoopNet or Crexi and it is truly great, it is gone in a day — long before a beginner ever sees it. The agent already showed it to their A-list clients first. The real opportunity is going direct to the seller."</p>
+    </div>
+
+    <h3 class="sub-title">On-Market Sources</h3>
+    <p class="lesson-text">On-market means the property is actively listed for sale. For residential properties that means MLS platforms like Zillow or Realtor.com. For commercial and multifamily it means dedicated commercial platforms. These are the starting point for most beginners — and they are legitimate sources, especially in softer markets when broker inventory builds up.</p>
+
+    <div class="source-grid">
+      <div class="source-card sc1 fade-in">
+        <span class="source-icon">🏢</span>
+        <h4>LoopNet</h4>
+        <div class="source-tag">Commercial · Free</div>
+        <p>The most visited commercial real estate marketplace. Covers multifamily, retail, office, industrial. Free to search — paid tiers unlock more data. Good starting point for commercial beginners.</p>
+      </div>
+      <div class="source-card sc2 fade-in">
+        <span class="source-icon">📊</span>
+        <h4>Crexi</h4>
+        <div class="source-tag">Commercial · Free + Paid</div>
+        <p>Growing competitor to LoopNet with strong data tools — debt information, comparable sales, market analytics. Brokers use it heavily. Creating a free account gets you into broker networks and deal flow alerts.</p>
+      </div>
+      <div class="source-card sc3 fade-in">
+        <span class="source-icon">🏠</span>
+        <h4>Zillow / Realtor.com</h4>
+        <div class="source-tag">Residential · Free</div>
+        <p>Best for 1–4 unit residential properties. Free rent estimator tool lets you quickly check if a listed property's numbers make sense before digging deeper. Good for house hacking and small multifamily searches.</p>
+      </div>
+      <div class="source-card sc4 fade-in">
+        <span class="source-icon">🤝</span>
+        <h4>Commercial Brokers</h4>
+        <div class="source-tag">Commercial · Relationship</div>
+        <p>The most important on-market source for commercial deals. Brokers control deal flow — they show their best listings to their top buyers first, before anything hits the public platforms. Getting on a broker's list is one of the highest-value moves a beginner can make.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Off-Market Sources</h3>
+    <p class="lesson-text">Off-market means the property is not listed anywhere. The owner has not yet decided to sell — or they have, but they have not hired a broker. These deals typically have less competition, more flexible terms, and more motivated sellers. They require more work to find but often produce better prices.</p>
+
+    <div class="source-grid">
+      <div class="source-card sc5 fade-in">
+        <span class="source-icon">✉️</span>
+        <h4>Direct Mail</h4>
+        <div class="source-tag">Off-Market · Proactive</div>
+        <p>Send letters or postcards directly to property owners in your target area. Pull mailing addresses from county tax records. The key is consistency — touch owners quarterly. Very few investors use this in commercial real estate, which means less competition when it works.</p>
+      </div>
+      <div class="source-card sc6 fade-in">
+        <span class="source-icon">🚗</span>
+        <h4>Driving for Dollars</h4>
+        <div class="source-tag">Off-Market · Proactive</div>
+        <p>Drive through your target neighborhoods looking for properties showing signs of neglect — overgrown grass, deferred maintenance, boarded windows. Owners of distressed properties are often the most motivated sellers. Knock on doors. Most investors will not do this — that is your edge.</p>
+      </div>
+      <div class="source-card sc1 fade-in">
+        <span class="source-icon">🌐</span>
+        <h4>Networking</h4>
+        <div class="source-tag">Off-Market · Relationship</div>
+        <p>Other investors, property managers, contractors, and real estate attorneys all hear about deals before they hit the market. Attend local real estate meetups. Join investor groups. The more people who know what you are looking for, the more deals will come to you.</p>
+      </div>
+      <div class="source-card sc2 fade-in">
+        <span class="source-icon">📱</span>
+        <h4>Social Media</h4>
+        <div class="source-tag">Off-Market · Modern</div>
+        <p>Posting publicly about what markets and property types you are looking for puts your criteria in front of people who may know a seller. LinkedIn works well for commercial. Instagram and Facebook for residential and smaller multifamily. The wider your reach, the more likely someone surfaces a deal.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Broker Relationship Is Everything in Commercial</div>
+      <p>In residential real estate, deals are mostly public — anyone can see them on Zillow. In commercial real estate, it is fundamentally different. Commercial brokers have a list of preferred buyers. When a strong deal comes in, they call that list first. Only after their top buyers pass does it appear on LoopNet or Crexi — and by then it has already been seen by every serious investor in the market. <strong>Getting on broker lists in your target market is the single most important action you can take as a commercial investor.</strong> Email brokers directly. Introduce yourself. Tell them your buy criteria. Ask to be added to their deal flow. Do it in every market you are targeting.</p>
+    </div>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Residential</th>
+            <th>Commercial 5+ Units</th>
+            <th>Competition Level</th>
+            <th>Deal Quality</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Zillow / MLS</td><td>✅ Primary</td><td>❌ Not applicable</td><td>High</td><td>Market rate</td></tr>
+          <tr><td>LoopNet / Crexi</td><td>🟡 Some small multifamily</td><td>✅ Good starting point</td><td>High</td><td>Market rate</td></tr>
+          <tr class="highlight"><td>Broker relationships</td><td>✅ Investor agents</td><td>✅ Essential</td><td>Medium</td><td>Pre-market access</td></tr>
+          <tr><td>Direct mail</td><td>✅ Works well</td><td>✅ Underused — big advantage</td><td>Low</td><td>Below market possible</td></tr>
+          <tr><td>Driving for dollars</td><td>✅ Classic strategy</td><td>✅ Works for smaller buildings</td><td>Very low</td><td>Below market possible</td></tr>
+          <tr class="highlight"><td>Networking</td><td>✅</td><td>✅ Essential at scale</td><td>Very low</td><td>Best deals often here</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Tyler Cauble: How to find off-market commercial real estate deals — <em>5 proven methods</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Tyler Cauble has acquired over $50 million in commercial real estate — most of it off-market. In this video he walks through the five strategies his team uses to find deals that never appear on LoopNet: networking, direct mail, driving for dollars, social media, and hiring a commercial broker. He includes a real example of buying an office tower in Chattanooga through Instagram, and a direct mail deal he bought for $435K that appraised at $650K before closing. This is the off-market side of deal finding made completely practical.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/kOA3ByzZ53o" title="How I Find Off-Market Commercial Real Estate Deals — Tyler Cauble" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cc">Tyler Cauble · Commercial Real Estate</span>
+        <h4>How I Find Off-Market Commercial Real Estate Deals (5 Methods)</h4>
+        <p>A concise, no-fluff breakdown of the five strategies an active commercial investor and broker uses to find deals others never see — with real examples from his own portfolio. Covers networking, direct mail, driving for dollars, social media, and leveraging other brokers. Directly reinforces Lesson 2 of this module.</p>
+        <p class="credit">Tyler Cauble · YouTube 2023 · 5 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">How to quickly screen a property — <em>the first-pass filter</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Not every property you find deserves a full analysis. Before you spend hours running numbers, building spreadsheets, and requesting financials, you need a fast filter — a way to decide in five minutes whether a deal is worth pursuing further. This is called the first-pass screen.</p>
+
+    <p class="lesson-text">The goal is not to determine if a deal is great — that comes later. The goal is to eliminate the deals that obviously do not work as quickly as possible, so you can focus your time on the ones that might.</p>
+
+    <div class="steps-list">
+
+      <div class="step-item fade-in">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Does the location make sense?</h4>
+          <p>Is this in your target market or submarket? Do you know the neighborhood? Is it in an area with the job growth and population trends you identified in Lesson 1? If you would not invest in this location, stop here — no amount of strong numbers will make a bad location work long term.</p>
+        </div>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Does the price-to-rent ratio make sense?</h4>
+          <p>Take the asking price and divide by the annual gross rent. Is the resulting cap rate in a range that works for this market? For commercial multifamily, anything below a 5% cap rate at the asking price deserves serious scrutiny. This is a 30-second calculation that eliminates most overpriced listings immediately.</p>
+        </div>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Are the financials real or pro forma?</h4>
+          <p>Is the income figure on the listing what the property currently produces — or what the seller hopes it will produce after renovations and rent increases? Pro forma numbers are the seller's optimistic projection. You always analyze based on verified actual income. If only pro forma numbers are available, discount them significantly until you can verify the real figures.</p>
+        </div>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Is the property condition a deal or a disaster?</h4>
+          <p>What does the property look like from photos, street view, or an in-person drive-by? Minor deferred maintenance on a well-located asset can be a value-add opportunity. A property that needs a full structural overhaul in a weak submarket is a different risk entirely. Condition affects both your renovation budget and your timeline — both of which affect your financing and returns.</p>
+        </div>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>Can you finance it?</h4>
+          <p>Does the deal fit into a loan type you can access? Is the purchase price within a range you can fund — either personally, with partners, or through the financing strategies in Module 6? A great deal you cannot close is not a great deal for you. Think about financing feasibility before you invest significant time in due diligence.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Pro Forma Trap</div>
+      <p>Pro forma income is the most common way beginners overpay for properties. A seller lists a 10-unit building at a 7% cap rate — but that cap rate is based on fully renovated rents that do not yet exist. The actual current NOI produces a 4.5% cap rate at the asking price. Always run your own numbers using verified actual income. The seller's pro forma is a sales pitch, not a financial statement.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Coach Carson: How to analyze any real estate market <em>in 15 minutes for free</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Coach Carson walks through his complete step-by-step system for picking a real estate market — using only free tools like Google, Wikipedia, and Zillow. He covers how to identify a fast-growing economic hub, find a more affordable satellite city nearby, verify rent ranges, and check recent sold properties to confirm deals actually exist at prices that work. This is the market selection process from Lesson 1 shown live on a real example. The same framework applies whether you are buying a single-family rental or a small apartment building.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/_ORTQ_2S-mE" title="How I Analyze ANY Real Estate Market in 15 Minutes for FREE — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cc">Coach Carson · YouTube</span>
+        <h4>How I Analyze ANY Real Estate Market in 15 Minutes for FREE</h4>
+        <p>A practical live demonstration of market selection using only free tools — Google, Wikipedia, and Zillow. Coach Carson picks a sun city, identifies a satellite city, checks rent ranges, and verifies actual sold properties to confirm the market has deals worth pursuing. Clean, beginner-friendly, and directly applicable to the market selection process in Lesson 1. Note: examples use residential properties — the same framework applies to commercial markets.</p>
+        <p class="credit">Coach Carson · YouTube 2024 · 18 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Building a deal pipeline — <em>finding deals as a system, not a search</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most beginners think about finding deals as a one-time search — they look when they are ready to buy. Experienced investors think about it differently. They build a pipeline: a consistent flow of leads coming in continuously, so that when they are ready to buy, they already have options to evaluate.</p>
+
+    <p class="lesson-text">A pipeline is built over time through relationships and consistent activity. It does not produce results immediately — but once it is running, it compounds. The investor who spent six months building broker relationships, sending direct mail quarterly, and attending local meetups will have a fundamentally different experience than the investor who searches LoopNet for the first time the week they have capital to deploy.</p>
+
+    <h3 class="sub-title">The Pareto Principle in brokerage</h3>
+    <p class="lesson-text">In every commercial real estate market, roughly 20% of brokers do 80% of the deals. Your job is to identify those brokers, introduce yourself, communicate your buying criteria clearly, and get on their deal flow lists. When a good deal comes in, they will call you before it hits any platform. This one relationship can be worth more than any search tool you could ever pay for.</p>
+
+    <h3 class="sub-title">What a pipeline looks like in practice</h3>
+    <p class="lesson-text">A simple pipeline for a beginning investor might include: a list of 5–10 active commercial brokers in their target market who send them deals, a direct mail campaign reaching 50–100 property owners per quarter, attendance at one local real estate meetup per month, and a Crexi or LoopNet alert set up for their specific property criteria. None of these activities is expensive. All of them compound over time.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 How to Approach a Broker for the First Time</div>
+      <p>Keep it simple and specific. Email or call and say: <em>"I am an investor focused on [X market]. I am looking for [property type — e.g. 5–20 unit multifamily] in the [price range]. I am a serious buyer and I close on what I commit to. I would love to be on your deal flow list and hear about anything that matches before it hits the market."</em> That is it. Brokers hear vague inquiries all day. Someone who knows exactly what they want and signals they can close stands out immediately.</p>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"The market right now is actually favorable for beginners building broker relationships. For the last few years brokers did not need anyone — demand was so high that listings sold before they were even finished. Today brokers are calling buyers back. They want qualified buyers on their list. If you reach out to ten brokers in your target market this week, at least five of them will respond. That window will not stay open forever."</p>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="glossary-box fade-in">
+    <p><strong>📘 New terms in this module:</strong> On-Market, Off-Market, Deal Flow, Buy Box, Pro Forma, First-Pass Screen, Direct Mail, Driving for Dollars, LoopNet, Crexi, CoStar, Offering Memorandum, Broker List, Pipeline — all defined in the Darco Master Glossary.</p>
+    <a href="darco-glossary.pdf" download class="glossary-btn">⬇ Download Glossary</a>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>The resources below are not required to complete this module or move to Module 8. They are here for students who want to build deeper skills in finding deals — whether for a commercial investing career, a wholesaling career, or simply because sourcing deals is a skill you want to develop seriously.</p>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🏢 Commercial Deal Finding</div>
+
+    <div class="deeper-link">
+      <p><strong>Gino Barbaro (Jake &amp; Gino) — How To Buy Your First Multifamily In This Market</strong><br>Gino breaks down three practical steps for buying multifamily right now: picking one market and becoming the expert, learning the 20% of brokers who do 80% of the deals, and figuring out what deal size you can realistically afford. Also covers seller financing and syndication as alternatives when traditional financing is tight. Current market conditions as of Q4 2025.</p>
+      <a href="https://www.youtube.com/watch?v=w0D1oRz8SZs" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>Tyler Cauble — How to Find Commercial Real Estate Deals (7 Ways That Actually Work)</strong><br>An expanded version of the off-market strategies from Video 1 — seven methods including cold calling, driving for dollars, referral networks, social media, direct mail, broker relationships, and auction sites. More depth on each strategy with examples from Tyler's own deal history.</p>
+      <a href="https://www.youtube.com/watch?v=4IuMITVLmgA" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🏠 Residential Deal Finding</div>
+
+    <div class="deeper-link">
+      <p><strong>BiggerPockets Rookie — How to Find Off-Market Properties in 2025 (as a Complete Beginner)</strong><br>Covers off-market deal finding strategies specifically for residential and small multifamily investors — wholesalers, direct mail, agent networks, and driving for dollars. Beginner-accessible with practical action steps.</p>
+      <a href="https://www.youtube.com/watch?v=RrwmLN2hUCw" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>Coach Carson — 4 Underrated Ways to Find Off-Market Property Deals</strong><br>Coach Carson and a guest investor share four specific off-market strategies that most investors overlook — wholesaler buyer lists, referral networks, direct mail, and online marketing. Practical and low-cost, with a real investor walking through their own process.</p>
+      <a href="https://www.youtube.com/watch?v=cL_Xw-vPqRI" target="_blank">Watch →</a>
+    </div>
+
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 7 Key Takeaways</h3>
+    <ul>
+      <li>Pick the market before you pick the property. Job growth, population trends, vacancy rates, and rent direction determine whether your investment will perform over time — the property itself is secondary.</li>
+      <li>The best commercial deals are never on the public market. By the time a strong deal appears on LoopNet or Crexi it has already been seen by every serious buyer on the broker's list. Getting on that list is the most important action a beginning commercial investor can take.</li>
+      <li>Off-market deal finding requires consistent effort — direct mail quarterly, networking monthly, relationships ongoing. It does not produce immediate results. It compounds over time and produces the best deals.</li>
+      <li>Screen quickly and screen often. A first-pass filter — location, price-to-rent ratio, actual vs. pro forma income, property condition, financing feasibility — lets you eliminate 80% of deals in five minutes and focus your time on the ones worth pursuing.</li>
+      <li>The pro forma trap kills beginners. Always analyze based on verified actual income. The seller's projections are a sales pitch. Current bank statements are reality.</li>
+      <li>Building a pipeline means treating deal finding as a system, not a one-time search. Investors with consistent pipelines see more deals, make faster decisions, and close on better terms than those who search reactively.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A beginning investor opens LoopNet and finds a 12-unit apartment building listed at a 7.5% cap rate in a city they have never researched. They are excited and want to make an offer. What is the most important thing they are missing before pursuing this deal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> They have not yet calculated the cash-on-cash return</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> They have not evaluated the market — job growth, population trends, vacancy rates, and rent direction in that city</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> They have not checked if the building has a property manager</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> They have not confirmed the listing is still available</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A commercial broker has a strong 8-unit apartment listing. In what order will they typically show it to potential buyers?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Post it on LoopNet immediately so it gets maximum exposure</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Show it to their preferred buyer list first — only putting it on LoopNet or Crexi after those buyers pass</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Auction it to the highest bidder on day one</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Show it to whoever calls first regardless of buyer history</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A seller is marketing a 6-unit building at a 6.8% cap rate. The listing notes that this cap rate is based on "pro forma rents after renovation." The current actual rents produce a 4.2% cap rate at the asking price. How should you approach this deal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Use the 6.8% pro forma cap rate since that is the seller's advertised number</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Average the two cap rates and use 5.5% as your analysis figure</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Analyze based on the actual verified 4.2% cap rate, factor in renovation costs and realistic timeline, and decide if the deal works at that price — not the seller's projection</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Walk away immediately — any gap between actual and pro forma is always a red flag</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Which of the following best describes the "Sun City and Satellite City" framework for market selection?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Buy only in warm-weather cities because they have the most population growth</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Identify a major growing city as your economic hub, then look at smaller suburban towns nearby that offer more affordable prices while still benefiting from that city's job market</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Only invest in the largest metro areas because they have the strongest appreciation</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Avoid suburban markets because they have weaker rental demand than urban cores</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. An investor is evaluating a market and notices that vacancy rates have risen from 4% to 9% over the past 18 months, while rents have declined slightly. What does this signal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> This is a great buying opportunity — vacancy always recovers quickly</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> This is normal and should not affect the investment analysis</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Supply is outpacing demand in this market — a warning sign that cash flow projections should be underwritten conservatively with lower rent assumptions and higher vacancy reserves</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The market is in recession and should be avoided entirely</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- SKILLS CONNECTION -->
+  <div class="skills-connection fade-in">
+    <h3>🔗 How This Connects to Your Career Path</h3>
+    <p>Finding and evaluating properties is a core skill across almost every real estate career. Agents need to know where their investor clients should be looking. Investors live and die by their deal pipeline. Wholesalers build entire businesses on finding off-market properties. Commercial brokers are the gatekeepers of deal flow. Property managers often hear about buildings for sale before they hit the market. Understanding how deals surface — and how to position yourself to see them first — is valuable everywhere.</p>
+    <div class="career-tags">
+      <a href="residential-agent.html" class="career-tag">🏠 Residential Agent</a>
+      <a href="real-estate-investing.html" class="career-tag">📈 Real Estate Investing</a>
+      <a href="commercial-real-estate.html" class="career-tag">🏢 Commercial Real Estate</a>
+      <a href="wholesaling.html" class="career-tag">🔄 Wholesaling</a>
+      <a href="mortgage-lending.html" class="career-tag">💼 Mortgage Lending</a>
+      <a href="property-management.html" class="career-tag">🔑 Property Management</a>
+      <a href="real-estate-development.html" class="career-tag">🏗️ Development</a>
+      <a href="maintenance-repair.html" class="career-tag">🔧 Maintenance &amp; Repair</a>
+      <a href="real-estate-photography.html" class="career-tag">📸 Photography</a>
+    </div>
+  </div>
+
+</div><!-- end module-body -->
+
+<div class="module-nav">
+  <a href="module-6.html" class="btn btn-outline">← Module 6: Financing Fundamentals</a>
+  <div class="module-nav-info">
+    <p>Core Foundation</p>
+    <strong>Module 7 of 10</strong>
+  </div>
+  <a href="module-8.html" class="btn btn-gold">Module 8: Negotiation &amp; Making Offers →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! Market evaluation always comes before property evaluation. A 7.5% cap rate in a city with declining jobs and rising vacancy is a trap. The same cap rate in a growing market with strong rent trends is a solid deal. The numbers on the listing mean nothing until you understand the market they are sitting in.",
+      incorrect: "Not quite. The most important missing step is market evaluation. Before analyzing any property, you need to understand the market it is in — job growth, population trends, vacancy rates, and rent direction. A 7.5% cap rate in a declining market is very different from a 7.5% cap rate in a growing one."
+    },
+    q2: {
+      correct: "Correct! Commercial brokers show strong listings to their preferred buyer list first — always. By the time a deal appears on LoopNet or Crexi it has already been passed over by every serious buyer on that list. Getting on broker lists in your target market gives you access to deals before they become public.",
+      incorrect: "Not quite. Commercial brokers always show strong listings to their preferred buyer list first. Only after those buyers pass does a deal appear on LoopNet or Crexi. This is why broker relationships are more valuable than any search platform in commercial real estate."
+    },
+    q3: {
+      correct: "Correct! You always analyze based on verified actual income — never pro forma. The seller's projected rents are a sales pitch. The actual current NOI at the asking price produces a 4.2% cap rate. That is the real deal you are being offered. The value-add potential may be real, but you need to factor in renovation costs, timeline, and the risk that projected rents may not be achievable.",
+      incorrect: "Not quite. Always analyze based on actual verified income — never pro forma. The 6.8% cap rate is the seller's projection, not the current reality. At the asking price, you are buying a 4.2% cap rate asset with the hope of improving it. Walking away immediately is too extreme — value-add deals can work — but you must underwrite on actual numbers and factor in renovation costs and timeline."
+    },
+    q4: {
+      correct: "Correct! The Sun City and Satellite City framework is about finding the balance between economic strength and affordability. Start with a major growing city as your economic hub, then look at the smaller suburban towns nearby. They benefit from the same job market but offer more affordable prices and less institutional competition.",
+      incorrect: "Not quite. The Sun City and Satellite City framework is about picking a major growing city as your economic hub, then investing in the smaller suburban towns that orbit it. These satellite cities benefit from the same job market but offer more affordable prices and less competition from large institutional investors."
+    },
+    q5: {
+      correct: "Correct! Rising vacancy combined with declining rents is a clear signal that supply is outpacing demand. This does not necessarily mean avoid the market entirely, but it does mean you need to underwrite conservatively — lower rent assumptions, higher vacancy reserves, and a clear thesis for why conditions will improve before your investment horizon ends.",
+      incorrect: "Not quite. Rising vacancy from 4% to 9% combined with declining rents is a serious warning sign — supply is outpacing demand. This does not mean automatically avoid the market, but it means you must underwrite very conservatively with lower rent projections and higher vacancy reserves, and understand why you believe conditions will improve over your holding period."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you understand how to find and evaluate properties. You are ready for Module 8: Negotiation and Making Offers.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons above and try again. Market selection and deal sourcing are foundational skills that every module going forward builds on.';
+    }
+  }
+</script>
+
+</body>
+</html>

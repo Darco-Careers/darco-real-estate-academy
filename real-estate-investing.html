@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Real Estate Investing — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burg: #5C1A2E; --burg-mid: #7D2A42; --burg-light: #9E4060; --burg-pale: #F9EEF1;
+    --gold: #C9A84C; --gold-light: #E8C97A; --gold-pale: #FBF5E6;
+    --cream: #FAF8F3; --cream-dark: #F0EBE0;
+    --text-dark: #1A1A18; --text-mid: #4A4A42; --text-light: #8A8A7A;
+    --white: #FFFFFF; --border: rgba(92,26,46,0.1);
+    --shadow-card: 0 2px 16px rgba(92,26,46,0.07); --shadow-soft: 0 4px 24px rgba(92,26,46,0.1);
+    --forest: #1B4D3E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+
+  nav { background: var(--burg); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.2); }
+  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo { width: 36px; height: 36px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; color: var(--burg); }
+  .nav-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--white); }
+  .nav-tagline { font-size: 11px; color: var(--gold-light); letter-spacing: 0.5px; font-weight: 300; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-back { background: rgba(255,255,255,0.1) !important; color: rgba(255,255,255,0.85) !important; padding: 7px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); }
+
+  .breadcrumb { background: var(--burg-pale); border-bottom: 1px solid var(--border); padding: 0.75rem 2.5rem; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-light); }
+  .breadcrumb a { color: var(--burg-mid); text-decoration: none; font-weight: 500; }
+  .breadcrumb .sep { opacity: 0.4; }
+  .breadcrumb .current { color: var(--burg); font-weight: 600; }
+
+  .hero { background: linear-gradient(135deg, var(--burg) 0%, var(--burg-mid) 55%, #A04060 100%); padding: 5rem 2.5rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -40%; right: -10%; width: 55%; height: 200%; background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3rem; }
+  .track-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(--gold-light); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.25rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 1rem; }
+  .hero h1 em { color: var(--gold-light); font-style: italic; }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); max-width: 560px; line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+  .hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .hero-stat .number { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
+  .hero-stat .label { font-size: 11.5px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+  .hero-visual { width: 180px; height: 180px; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 72px; flex-shrink: 0; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+  .section-eyebrow { font-size: 11.5px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--burg-mid); margin-bottom: 0.6rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--text-dark); line-height: 1.25; margin-bottom: 1.1rem; }
+  .section-title em { color: var(--burg-mid); font-style: italic; }
+  .gold-divider { width: 50px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1rem 0 1.5rem; }
+  .lead-text { font-size: 1.05rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1.25rem; max-width: 720px; }
+
+  .highlight-box { background: var(--burg-pale); border-left: 4px solid var(--burg-mid); border-radius: 0 12px 12px 0; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+  .highlight-box p { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--burg); font-style: italic; line-height: 1.7; }
+
+  .ways-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .way-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; text-align: center; transition: all 0.25s; }
+  .way-card:hover { box-shadow: var(--shadow-card); transform: translateY(-2px); }
+  .way-number { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--burg-pale); line-height: 1; margin-bottom: 0.5rem; }
+  .way-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--burg); margin-bottom: 0.4rem; }
+  .way-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .strategy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .strategy-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: all 0.25s; }
+  .strategy-card:hover { box-shadow: var(--shadow-soft); transform: translateY(-2px); }
+  .strategy-header { background: var(--burg); padding: 1rem 1.4rem; display: flex; align-items: center; gap: 10px; }
+  .strategy-header.mid { background: var(--burg-mid); }
+  .strategy-header.light { background: var(--burg-light); }
+  .strategy-icon { font-size: 20px; width: 38px; height: 38px; background: rgba(255,255,255,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+  .strategy-header h3 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--white); }
+  .strategy-header p { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 1px; }
+  .strategy-body { padding: 1.25rem 1.4rem; }
+  .strategy-body p { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; margin-bottom: 0.75rem; }
+  .s-tag { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 10px; background: var(--burg-pale); color: var(--burg); display: inline-block; margin: 2px; }
+
+  .timeline { margin-top: 2rem; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--burg-mid), rgba(92,26,46,0.1)); }
+  .timeline-item { display: flex; gap: 1.5rem; margin-bottom: 1.75rem; }
+  .timeline-dot { width: 58px; height: 38px; background: var(--burg); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--gold-light); flex-shrink: 0; position: relative; z-index: 1; }
+  .timeline-content { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.4rem; flex: 1; }
+  .timeline-content:hover { box-shadow: var(--shadow-card); }
+  .timeline-content h4 { font-weight: 600; font-size: 0.9rem; color: var(--burg); margin-bottom: 0.3rem; }
+  .timeline-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.6; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .skill-card { background: var(--cream); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: all 0.25s; }
+  .skill-card:hover { background: var(--white); box-shadow: var(--shadow-card); }
+  .skill-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 10px; display: inline-block; margin-bottom: 0.75rem; }
+  .skill-label.essential { background: var(--burg-pale); color: var(--burg-mid); }
+  .skill-label.helpful { background: var(--gold-pale); color: #8A6A20; }
+  .skill-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; }
+  .skill-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .earnings-section { background: var(--burg); padding: 4rem 0; position: relative; overflow: hidden; }
+  .earnings-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 60%); }
+  .earnings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .earnings-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 14px; padding: 1.5rem; text-align: center; transition: all 0.25s; }
+  .earnings-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(201,168,76,0.3); }
+  .earnings-role { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: rgba(255,255,255,0.55); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .earnings-amount { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 0.4rem; }
+  .earnings-note { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+  .steps { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .step { display: flex; gap: 1.25rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.6rem; transition: all 0.25s; }
+  .step:hover { box-shadow: var(--shadow-card); border-color: rgba(92,26,46,0.18); }
+  .step-number { width: 36px; height: 36px; background: var(--burg); color: var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; flex-shrink: 0; }
+  .step-content h4 { font-weight: 600; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.3rem; }
+  .step-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; }
+  .step-content a { color: var(--burg-mid); font-weight: 500; }
+
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+  .fit-card { border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); }
+  .fit-card.yes { background: #EBF5F0; border-color: rgba(27,77,62,0.15); }
+  .fit-card.no { background: #FBF0EE; border-color: rgba(180,60,40,0.12); }
+  .fit-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; }
+  .fit-card.yes h4 { color: var(--forest); }
+  .fit-card.no h4 { color: #8B2F20; }
+  .fit-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .fit-list li { font-size: 13.5px; color: var(--text-mid); display: flex; gap: 8px; line-height: 1.5; }
+  .fit-card.yes .fit-list li::before { content: '✓'; color: var(--forest); font-weight: 700; flex-shrink: 0; }
+  .fit-card.no .fit-list li::before { content: '✗'; color: #C0392B; font-weight: 700; flex-shrink: 0; }
+
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .term-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: box-shadow 0.2s; }
+  .term-card:hover { box-shadow: var(--shadow-card); }
+  .term-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--burg); margin-bottom: 0.4rem; }
+  .term-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .video-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card); }
+  .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+  .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .video-info { padding: 1.25rem 1.5rem; }
+  .video-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 10px; margin-bottom: 0.6rem; }
+  .video-badge.peter { background: var(--burg-pale); color: var(--burg-mid); }
+  .video-badge.bp { background: #E3EFF9; color: #1A4E7A; }
+  .video-badge.brian { background: var(--gold-pale); color: #8A6A20; }
+  .video-info h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.35; }
+  .video-info p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .video-info .credit { font-size: 12px; color: var(--text-light); margin-top: 0.5rem; }
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+
+  .podcast-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .podcast-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; gap: 1.25rem; align-items: flex-start; transition: all 0.25s; text-decoration: none; }
+  .podcast-card:hover { box-shadow: var(--shadow-card); transform: translateX(4px); border-color: rgba(92,26,46,0.2); }
+  .podcast-art { width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+  .podcast-art.bp-rookie { background: linear-gradient(135deg, #0A3E7A, #1A6ABF); }
+  .podcast-art.bp-main { background: linear-gradient(135deg, #0A6E3F, #12A05C); }
+  .podcast-art.brian-ep { background: linear-gradient(135deg, #A0793A, #C9A84C); }
+  .podcast-art.peter-pod { background: linear-gradient(135deg, var(--burg), var(--burg-mid)); }
+  .podcast-meta { flex: 1; }
+  .podcast-show { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--burg-mid); margin-bottom: 0.3rem; }
+  .podcast-meta h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.35; }
+  .podcast-meta p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .podcast-arrow { font-size: 22px; color: var(--text-light); align-self: center; transition: all 0.2s; }
+  .podcast-card:hover .podcast-arrow { color: var(--burg-mid); transform: translateX(4px); }
+
+  .resource-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .resource-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; transition: box-shadow 0.2s; }
+  .resource-card:hover { box-shadow: var(--shadow-card); }
+  .book-cover { width: 52px; height: 70px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; text-align: center; line-height: 1.3; color: var(--white); flex-shrink: 0; }
+  .book-harris { background: linear-gradient(145deg, #1B4D3E, #2A6B56); }
+  .book-murray { background: linear-gradient(145deg, var(--burg), var(--burg-mid)); }
+  .resource-card h3 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); line-height: 1.35; }
+  .resource-card .author { font-size: 12px; color: var(--text-light); }
+  .resource-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .free-badge { display: inline-block; background: #E8F4EE; color: var(--forest); font-size: 10.5px; font-weight: 700; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; }
+
+  .btn { display: inline-flex; align-items: center; gap: 7px; padding: 12px 26px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+  .btn-burg { background: var(--burg); color: var(--white); }
+  .btn-burg:hover { background: var(--burg-mid); }
+  .btn-gold { background: var(--gold); color: var(--burg); }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline-white { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.08); }
+
+  .cta-section { background: var(--burg); padding: 4rem 2rem; text-align: center; }
+  .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+  .cta-section h2 em { color: var(--gold-light); font-style: italic; }
+  .cta-section p { color: rgba(255,255,255,0.6); font-size: 1rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.8; font-weight: 300; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  footer { background: var(--burg); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; }
+  footer .footer-brand { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.35); }
+  footer .footer-gold { color: var(--gold-light); }
+
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; } .nav-links { display: none; }
+    .hero { padding: 3rem 1.5rem; } .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; }
+    .container { padding: 0 1.25rem; } .fit-grid { grid-template-columns: 1fr; }
+    .breadcrumb { padding: 0.75rem 1.25rem; } .video-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">All Careers</a></li>
+    <li><a href="index.html#resources">Resources</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a>
+  <span class="sep">›</span>
+  <a href="index.html#careers">Career Paths</a>
+  <span class="sep">›</span>
+  <span class="current">Real Estate Investing</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="track-badge">🏘️ Career Track</div>
+      <h1>Real Estate<br><em>Investing</em></h1>
+      <p class="hero-sub">You don't need to be rich to start. You don't need a degree. You don't even need to quit your job. What you need is knowledge, patience, and the courage to make your first move. One deal can change everything.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="number">$20T+</div><div class="label">US real estate market</div></div>
+        <div class="hero-stat"><div class="number">No license</div><div class="label">required to invest</div></div>
+        <div class="hero-stat"><div class="number">Unlimited</div><div class="label">earning potential</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">🏘️</div>
+  </div>
+</div>
+
+<!-- WHAT IS -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Foundation</p>
+    <h2 class="section-title">What does it mean to <em>invest in real estate?</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">Real estate investing means buying property with the goal of generating a financial return — either through monthly rental income, long-term appreciation, or both. Unlike a job where you trade time for money, real estate can generate income whether you're working, sleeping, or on vacation.</p>
+    <p class="lead-text">This is what Peter Harris calls escaping the "rat race" — building a portfolio of income-producing properties whose combined cash flow eventually exceeds your monthly expenses. At that point, your money works for you rather than the other way around.</p>
+    <div class="highlight-box">
+      <p>"Brian Murray was a teacher making a modest salary when he bought his first commercial building almost on a whim. Less than 10 years later, he won the Gold Stevie Award for National Real Estate Company of the Year. He didn't have special connections or a trust fund. He had a plan, a work ethic, and the willingness to start."</p>
+    </div>
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-dark); margin: 2rem 0 0.75rem;">The 4 ways real estate builds wealth</h3>
+    <div class="ways-grid">
+      <div class="way-card fade-in">
+        <div class="way-number">01</div>
+        <h4>Cash Flow</h4>
+        <p>Monthly rental income after all expenses and mortgage payments. Your ongoing paycheck from the property.</p>
+      </div>
+      <div class="way-card fade-in">
+        <div class="way-number">02</div>
+        <h4>Appreciation</h4>
+        <p>Properties increase in value over time. In commercial, you can force appreciation by raising rents and increasing NOI.</p>
+      </div>
+      <div class="way-card fade-in">
+        <div class="way-number">03</div>
+        <h4>Equity Build-Up</h4>
+        <p>Every mortgage payment your tenants make reduces your loan balance — automatically building your net worth.</p>
+      </div>
+      <div class="way-card fade-in">
+        <div class="way-number">04</div>
+        <h4>Tax Advantages</h4>
+        <p>Depreciation, mortgage interest deductions, and 1031 exchanges legally shelter a large portion of your income from taxes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIES -->
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Your Options</p>
+    <h2 class="section-title">Real estate investing <em>strategies explained</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">There's no single right way to invest. Different strategies suit different personalities, budgets, and goals. Here's an honest breakdown of the most important ones for a beginner.</p>
+    <div class="strategy-grid">
+      <div class="strategy-card fade-in">
+        <div class="strategy-header">
+          <div class="strategy-icon">🏠</div>
+          <div><h3>Buy & Hold Rental</h3><p>The classic wealth-building strategy</p></div>
+        </div>
+        <div class="strategy-body">
+          <p>Buy a property, rent it out, collect monthly income, and hold it for long-term appreciation. Brian Murray built his entire empire on this strategy.</p>
+          <div><span class="s-tag">Steady income</span><span class="s-tag">Long-term wealth</span><span class="s-tag">Beginner friendly</span></div>
+        </div>
+      </div>
+      <div class="strategy-card fade-in">
+        <div class="strategy-header mid">
+          <div class="strategy-icon">🏘️</div>
+          <div><h3>Multifamily / Apartments</h3><p>Scale faster with multiple units</p></div>
+        </div>
+        <div class="strategy-body">
+          <p>One loan, one roof, one manager — but 8, 20, or 50 income streams. Peter Harris's top recommendation for new investors wanting to build wealth quickly.</p>
+          <div><span class="s-tag">Higher cash flow</span><span class="s-tag">Economies of scale</span><span class="s-tag">Bank friendly</span></div>
+        </div>
+      </div>
+      <div class="strategy-card fade-in">
+        <div class="strategy-header light">
+          <div class="strategy-icon">💡</div>
+          <div><h3>Value-Add Investing</h3><p>Buy distressed, improve, profit</p></div>
+        </div>
+        <div class="strategy-body">
+          <p>Find properties with below-market rents or deferred maintenance. Fix the problems, raise rents, increase NOI — and you've forced the property to be worth significantly more.</p>
+          <div><span class="s-tag">Forced appreciation</span><span class="s-tag">Higher returns</span><span class="s-tag">Requires work</span></div>
+        </div>
+      </div>
+      <div class="strategy-card fade-in">
+        <div class="strategy-header">
+          <div class="strategy-icon">🔄</div>
+          <div><h3>BRRRR Method</h3><p>Recycle your cash indefinitely</p></div>
+        </div>
+        <div class="strategy-body">
+          <p>Buy, Rehab, Rent, Refinance, Repeat. Buy distressed below market, fix it up, rent it out, refinance to pull your cash back out — then do it again. BiggerPockets' most popular strategy.</p>
+          <div><span class="s-tag">Capital recycling</span><span class="s-tag">Scale quickly</span><span class="s-tag">Widely taught</span></div>
+        </div>
+      </div>
+      <div class="strategy-card fade-in">
+        <div class="strategy-header mid">
+          <div class="strategy-icon">🏠</div>
+          <div><h3>House Hacking</h3><p>Live for free while building wealth</p></div>
+        </div>
+        <div class="strategy-body">
+          <p>Buy a small multifamily, live in one unit and rent out the others. Your tenants cover your mortgage — sometimes entirely. The lowest-risk way to get started in real estate.</p>
+          <div><span class="s-tag">Low risk entry</span><span class="s-tag">Owner-occupied rates</span><span class="s-tag">Perfect first deal</span></div>
+        </div>
+      </div>
+      <div class="strategy-card fade-in">
+        <div class="strategy-header light">
+          <div class="strategy-icon">🏖️</div>
+          <div><h3>Short-Term Rentals</h3><p>Airbnb & vacation rentals</p></div>
+        </div>
+        <div class="strategy-body">
+          <p>In the right market, short-term rentals generate 2–3x the income of long-term rentals. Miami is one of the strongest STR markets in the country — a major opportunity for Florida investors.</p>
+          <div><span class="s-tag">High income potential</span><span class="s-tag">More management</span><span class="s-tag">Florida opportunity</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY IN THE LIFE -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Real World</p>
+    <h2 class="section-title">A day in the life of a <em>real estate investor</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">Real estate investing is not passive from day one — especially while you're building. Here's what an active investor's typical day might look like in the growth phase.</p>
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">8am</div>
+        <div class="timeline-content"><h4>Morning review</h4><p>Check emails from property manager. Review occupancy on your 12-unit. One unit turned over — get it listed and screened quickly to minimize vacancy loss.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">10am</div>
+        <div class="timeline-content"><h4>Deal hunting</h4><p>Browse LoopNet and BiggerPockets for new listings. Run quick numbers on a 20-unit apartment. The cap rate looks low — note it and keep searching. Analyze 10+ before making one offer.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">12pm</div>
+        <div class="timeline-content"><h4>Property walkthrough</h4><p>Tour a value-add opportunity a broker flagged. Deferred maintenance visible — but location is solid and rents are 20% below market. This has real potential. Request the financials.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">2pm</div>
+        <div class="timeline-content"><h4>Due diligence call</h4><p>Call with your attorney on a duplex under contract. Review inspection findings. Negotiate a seller credit for deferred maintenance. This conversation is where money is made or lost.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">4pm</div>
+        <div class="timeline-content"><h4>Lender meeting</h4><p>Meet with a commercial lender about your next acquisition. Your track record means better terms this time. These relationships take time to build — start early.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">6pm</div>
+        <div class="timeline-content"><h4>Keep learning</h4><p>BiggerPockets Rookie podcast during the commute home. One idea from one episode can be worth tens of thousands. The investors who keep learning keep growing.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section style="background: var(--burg-pale); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Watch & Learn</p>
+    <h2 class="section-title">The best free videos to <em>get you started</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">These videos are hand-picked from Peter Harris, Brian Murray, and BiggerPockets — the same sources that form the backbone of this entire curriculum. Watch these and you'll be ahead of 90% of beginners.</p>
+
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--burg); margin: 2rem 0 1rem;">🏘️ Peter Harris — Commercial Property Advisors</h3>
+    <div class="video-grid">
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/a7s77KwpwyE" title="Buying an Apartment Building for Beginners — Peter Harris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge peter">Start Here — Peter Harris</span>
+          <h4>Buying an Apartment Building for Beginners</h4>
+          <p>Peter Harris answers the 10 most asked questions about buying your first apartment building — financing, management, finding deals, and getting started with no experience.</p>
+          <p class="credit">Peter Harris · Apartment Investor Pro</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/VYLjWN0hrpU" title="How to Get Your 1st Multifamily Deal — Peter Harris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge peter">Peter Harris Live 2026</span>
+          <h4>How to Get Your 1st Multifamily Deal</h4>
+          <p>A recent live training from Peter Harris walking you step-by-step through exactly how a beginner can land their first multifamily deal — the strategies, the mindset, and the roadmap.</p>
+          <p class="credit">Peter Harris · Commercial Property Advisors (Feb 2026)</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 1.25rem;">
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/LeJ2ZL3HvX4" title="Evaluate Any Multifamily Deal in 5 Minutes — Peter Harris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge peter">Deal Analysis · Peter Harris Live</span>
+          <h4>Evaluate Any Multifamily Deal in 5 Minutes</h4>
+          <p>Peter's exact 5-minute deal evaluation framework — used across $20M+ in commercial real estate acquisitions. Master this skill and you'll instantly know when a deal is worth pursuing and when to walk away.</p>
+          <p class="credit">Peter Harris · Commercial Property Advisors (March 2026)</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--burg); margin: 2.5rem 0 1rem;">🎓 Brian Murray & BiggerPockets</h3>
+    <div class="video-grid">
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/c7OgHPgYHds" title="Crushing It in Commercial Real Estate — Brian Murray" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge brian">Brian Murray</span>
+          <h4>Crushing It in Commercial Real Estate</h4>
+          <p>Brian Murray — whose book "Crushing It in Apartments and Commercial Real Estate" is a core resource in this curriculum — shares the strategies he used to go from teacher to award-winning real estate CEO.</p>
+          <p class="credit">Brian Murray interview · 2024</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/JERpaTX60jg" title="9 Steps to Invest in Real Estate — BiggerPockets #874" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge bp">BiggerPockets · Episode #874</span>
+          <h4>How to Invest in Real Estate — 9 Beginner Steps</h4>
+          <p>One of BiggerPockets' most-watched beginner episodes. A complete step-by-step roadmap for getting started — clear, practical, and built for someone starting from zero.</p>
+          <p class="credit">BiggerPockets Real Estate Podcast · YouTube</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1.5rem; display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 20px; flex-shrink: 0;">📺</span>
+      <p style="font-size: 13.5px; color: var(--text-mid); line-height: 1.6;">Peter Harris has over <strong>50 million views</strong> on YouTube — hundreds of free videos on every aspect of multifamily and commercial investing.
+        <a href="https://www.youtube.com/channel/UCxO3rVNFN2gDHcSaPjR-YTA" target="_blank" style="color: var(--burg-mid); font-weight: 600; margin-left: 4px;">Visit the Commercial Property Advisors channel →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PODCASTS -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Listen & Learn</p>
+    <h2 class="section-title">Podcasts that will <em>accelerate your education</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">The best real estate investors in the world share their deals, mistakes, and strategies on these shows — completely free. Listen during your commute, workout, or downtime. These are the specific shows and episodes we recommend most for beginners.</p>
+
+    <div class="podcast-cards">
+      <a href="https://www.biggerpockets.com/podcasts/real-estate-rookie" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art bp-rookie">🎙️</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">BiggerPockets · Start Here First</div>
+          <h4>Real Estate Rookie Podcast</h4>
+          <p>Built specifically for beginners — hosted by Ashley Kehr and Tony J. Robinson. Every episode answers the questions you're afraid to ask: first deals, creative financing, how to find and analyze properties. This is your show right now. Subscribe and start from the beginning.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+
+      <a href="https://www.biggerpockets.com/podcasts/real-estate" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art bp-main">🎧</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">BiggerPockets · The Flagship Show</div>
+          <h4>BiggerPockets Real Estate Podcast</h4>
+          <p>The #1 real estate investing podcast in the world with 1,100+ episodes. Hosted by Dave Meyer, this is where the best investors in the country share their strategies, deals, and hard-earned lessons. Listen once you've completed the Rookie episodes.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+
+      <a href="https://www.biggerpockets.com/blog/biggerpockets-podcast-285" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art brian-ep">📖</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">BiggerPockets · Must-Listen Episode</div>
+          <h4>Brian Murray: Buying a 115-Unit Complex With None of His Own Money</h4>
+          <p>One of the most referenced BiggerPockets episodes ever. Brian Murray — whose book is a cornerstone of this course — walks through exactly how he acquired a 115-unit apartment complex without using any of his own cash. Essential listening for any beginner investor.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+
+      <a href="https://www.commercialpropertyadvisors.com" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art peter-pod">🏢</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">Peter Harris · Commercial Property Advisors</div>
+          <h4>Free 10-Hour Commercial Real Estate Video Course</h4>
+          <p>Peter Harris offers a completely free 10-hour video course covering every aspect of commercial real estate investing — widely considered the best free commercial investing education available anywhere. Visit CommercialPropertyAdvisors.com to access it free.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">What You'll Need</p>
+    <h2 class="section-title">Skills that make you <em>a great investor</em></h2>
+    <div class="gold-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Deal Analysis</h4><p>Calculate NOI, cap rate, cash flow, and cash-on-cash return quickly and confidently. This is the foundation of every investing decision you'll ever make.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Patience & Long-Term Thinking</h4><p>Real estate is a long game. The investors who win hold assets through market cycles, reinvest their cash flow, and resist the urge to sell too early.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Market Knowledge</h4><p>Know your local market — which neighborhoods are growing, what rents look like, what cap rates are typical. Brian Murray calls this your "Homefield Advantage."</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Cash Preservation</h4><p>Brian Murray's #1 principle. Every dollar you save and reinvest is your rocket fuel. Avoid unnecessary spending early on — even when you start generating income.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Negotiation</h4><p>The best deals are rarely the asking price. Knowing how to negotiate price, seller credits, and financing terms is a skill that pays for itself on every single deal.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Team Building</h4><p>You need a great attorney, CPA, lender, property manager, and contractor. Build these relationships before you need them — so you can move fast when the right deal appears.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EARNINGS -->
+<section class="earnings-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color: var(--gold-light);">The Upside</p>
+    <h2 class="section-title" style="color: var(--white);">What can real estate investing <em style="color: var(--gold-light);">actually earn you?</em></h2>
+    <div class="gold-divider"></div>
+    <p style="color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; max-width: 680px; margin-bottom: 2rem; font-weight: 300;">Unlike a salary, real estate income has no ceiling. What you earn depends on the size of your portfolio, how well you manage it, and how aggressively you reinvest. Here's a realistic picture at different stages.</p>
+    <div class="earnings-grid">
+      <div class="earnings-card fade-in"><div class="earnings-role">1–2 Properties</div><div class="earnings-amount">$500–$2K</div><div class="earnings-note">Monthly cash flow. Supplemental income while keeping your day job.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Small Portfolio (5–15 units)</div><div class="earnings-amount">$2K–$8K</div><div class="earnings-note">Monthly cash flow. Many investors hit financial freedom at this stage.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Mid Portfolio (20–50 units)</div><div class="earnings-amount">$8K–$25K</div><div class="earnings-note">Monthly cash flow. Full-time income replaced. True financial independence.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Large Portfolio (50+ units)</div><div class="earnings-amount">$25K–$100K+</div><div class="earnings-note">Monthly cash flow. Generational wealth territory. Unlimited ceiling.</div></div>
+    </div>
+    <p style="margin-top: 1.5rem; font-size: 12.5px; color: rgba(255,255,255,0.4); font-style: italic; text-align: center;">* Estimates vary by market, leverage, and management. Florida figures may differ.</p>
+  </div>
+</section>
+
+<!-- GET STARTED -->
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Your Roadmap</p>
+    <h2 class="section-title">How to <em>get started</em> as a real estate investor</h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">Peter Harris didn't need experience to buy his first apartment building. Brian Murray didn't need a real estate background. They needed knowledge, courage, and a first step. Here's yours.</p>
+    <div class="steps">
+      <div class="step fade-in"><div class="step-number">1</div><div class="step-content"><h4>Get educated first — seriously</h4><p>Complete the Darco Academy core modules. Read Peter Harris's free book. Read Brian Murray's "Crushing It." Subscribe to BiggerPockets Rookie podcast. Do this before anything else. Knowledge is your most important asset at the start.</p></div></div>
+      <div class="step fade-in"><div class="step-number">2</div><div class="step-content"><h4>Define your "Rat Race Number"</h4><p>Peter Harris's concept — calculate your bare minimum monthly expenses. Once your real estate cash flow consistently hits this number, you are financially free. Write it down and put it somewhere you'll see it every day.</p></div></div>
+      <div class="step fade-in"><div class="step-number">3</div><div class="step-content"><h4>Start in your own backyard</h4><p>Brian Murray's Homefield Advantage — your local knowledge is your competitive edge. Drive your market. Know the neighborhoods. Talk to local brokers. You know things about your city that no outside investor does.</p></div></div>
+      <div class="step fade-in"><div class="step-number">4</div><div class="step-content"><h4>Analyze 20 deals before making your first offer</h4><p>Use <a href="https://www.loopnet.com" target="_blank">LoopNet</a>, <a href="https://www.biggerpockets.com" target="_blank">BiggerPockets</a>, and your local MLS. Run the numbers on everything. By deal #20 you'll know instantly when something is a good deal. This is how instincts develop.</p></div></div>
+      <div class="step fade-in"><div class="step-number">5</div><div class="step-content"><h4>Build your team before you need them</h4><p>Find a real estate attorney, a CPA who invests themselves, a commercial lender, and a property manager you trust. Have these relationships ready before your first deal so you can move quickly when the right opportunity appears.</p></div></div>
+      <div class="step fade-in"><div class="step-number">6</div><div class="step-content"><h4>Bootstrap ruthlessly</h4><p>Brian Murray ran his company out of a closet under basement stairs. Every dollar you don't spend on unnecessary overhead is a dollar for your next deal. Cash is your rocket fuel — don't burn it on things that don't build your portfolio.</p></div></div>
+      <div class="step fade-in"><div class="step-number">7</div><div class="step-content"><h4>Make your first offer</h4><p>The most important step of all. Everything before this is preparation. But preparation without action is just education. At some point you have to make the offer. The worst they can say is no — and every no brings you closer to yes.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Honest Assessment</p>
+    <h2 class="section-title">Is real estate investing <em>right for you?</em></h2>
+    <div class="gold-divider"></div>
+    <div class="fit-grid">
+      <div class="fit-card yes fade-in">
+        <h4>You'll thrive if you...</h4>
+        <ul class="fit-list">
+          <li>Think long-term — years, not months</li>
+          <li>Can delay gratification and reinvest cash flow</li>
+          <li>Are comfortable with some financial risk</li>
+          <li>Enjoy learning about markets and economics</li>
+          <li>Are patient through slow periods and setbacks</li>
+          <li>Are motivated by financial freedom as a goal</li>
+          <li>Can manage relationships calmly under pressure</li>
+        </ul>
+      </div>
+      <div class="fit-card no fade-in">
+        <h4>You may struggle if you...</h4>
+        <ul class="fit-list">
+          <li>Need immediate, guaranteed income from day one</li>
+          <li>Refuse to learn the financial numbers</li>
+          <li>Panic during market downturns or vacancies</li>
+          <li>Avoid difficult conversations with tenants or sellers</li>
+          <li>Expect quick wins — real estate rewards patience</li>
+          <li>Spend cash flow instead of reinvesting it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY TERMS -->
+<section style="background: var(--burg-pale); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Language</p>
+    <h2 class="section-title">Key terms every investor <em>must know cold</em></h2>
+    <div class="gold-divider"></div>
+    <div class="terms-grid">
+      <div class="term-card fade-in"><div class="term-name">NOI — Net Operating Income</div><p>Annual income minus all operating expenses (excluding mortgage). The single most important number in real estate investing.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Cash Flow</div><p>NOI minus your annual debt service (mortgage). What's left is your actual profit — the money that hits your account.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Cap Rate</div><p>NOI divided by purchase price. Used to compare properties and measure return as if you paid all cash.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Cash-on-Cash Return</div><p>Annual cash flow divided by initial cash invested. Tells you how fast you'll get your down payment back. Target 10%+ for strong deals.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Forced Appreciation</div><p>Increasing your property's value by raising rents or reducing expenses — not waiting passively for the market to move.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Value-Add</div><p>A property with below-market rents or deferred maintenance — bought at a discount with the plan to unlock its hidden value.</p></div>
+      <div class="term-card fade-in"><div class="term-name">BRRRR</div><p>Buy, Rehab, Rent, Refinance, Repeat — a strategy for recycling the same cash into multiple properties over time.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Homefield Advantage</div><p>Brian Murray's concept — your deep knowledge of your own local market is a genuine edge over outside investors. Start where you live.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Debt Service</div><p>Your total annual mortgage payments (principal + interest). Subtract from NOI to get your true annual cash flow.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<section style="background: var(--cream-dark); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Recommended Reading</p>
+    <h2 class="section-title">The books behind <em>this entire curriculum</em></h2>
+    <div class="gold-divider"></div>
+    <div class="resource-cards">
+      <div class="resource-card fade-in">
+        <div style="display: flex; gap: 14px; align-items: flex-start;">
+          <div class="book-cover book-harris">COMMERCIAL<br>RE FOR<br>BEGINNERS</div>
+          <div><h3>Commercial Real Estate for Beginners</h3><p class="author">by Peter Harris &nbsp;<span class="free-badge">Free Download</span></p></div>
+        </div>
+        <p>The book that starts most investors on this journey. Peter Harris covers every concept in plain English — NOI, cap rates, deal analysis, property types, financing. He gives it away free because he believes in education over gatekeeping.</p>
+        <a href="https://www.commercialpropertyadvisors.com" target="_blank" class="btn btn-burg" style="font-size: 13px; padding: 9px 18px; margin-top: 0.25rem;">Get Free Book →</a>
+      </div>
+      <div class="resource-card fade-in">
+        <div style="display: flex; gap: 14px; align-items: flex-start;">
+          <div class="book-cover book-murray">CRUSHING IT<br>IN APTS &<br>COMMERCIAL</div>
+          <div><h3>Crushing It in Apartments & Commercial Real Estate</h3><p class="author">by Brian H. Murray</p></div>
+        </div>
+        <p>A teacher who had zero real estate experience and built an award-winning company. Brian's approach is practical, honest, and bootstrapped. One of the most useful beginner books ever written on real estate investing.</p>
+        <a href="https://www.amazon.com/Crushing-Apartments-Commercial-Real-Estate/dp/0998381624" target="_blank" class="btn btn-gold" style="font-size: 13px; padding: 9px 18px; margin-top: 0.25rem;">Find on Amazon →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to go <em>deeper?</em></h2>
+  <p>You've seen the full picture of real estate investing. Now build the knowledge foundation that makes all of this possible — starting with Module 1.</p>
+  <div class="cta-buttons">
+    <a href="module-1.html" class="btn btn-gold">Start Module 1 →</a>
+    <a href="index.html#careers" class="btn btn-outline-white">← Explore All Careers</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top: 0.5rem; font-size: 11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals before investing.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

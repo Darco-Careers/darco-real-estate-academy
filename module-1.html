@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 1: The Real Estate Mindset — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1B4D3E; --forest-mid: #2A6B56; --forest-light: #3A8A6E; --forest-pale: #E8F5EE;
+    --gold: #C9A84C; --gold-light: #E8C97A; --gold-pale: #FBF5E6;
+    --cream: #FAF8F3; --cream-dark: #F0EBE0;
+    --text-dark: #1A1A18; --text-mid: #4A4A42; --text-light: #8A8A7A;
+    --white: #FFFFFF; --border: rgba(27,77,62,0.1);
+    --shadow-card: 0 2px 16px rgba(27,77,62,0.07); --shadow-soft: 0 4px 24px rgba(27,77,62,0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.75; overflow-x: hidden; }
+
+  /* NAV */
+  nav { background: var(--forest); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo { width: 36px; height: 36px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; color: var(--forest); }
+  .nav-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--white); }
+  .nav-tagline { font-size: 11px; color: var(--gold-light); letter-spacing: 0.5px; font-weight: 300; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-back { background: rgba(255,255,255,0.1) !important; color: rgba(255,255,255,0.88) !important; padding: 7px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.18); }
+
+  /* BREADCRUMB */
+  .breadcrumb { background: var(--forest-pale); border-bottom: 1px solid var(--border); padding: 0.75rem 2.5rem; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-light); }
+  .breadcrumb a { color: var(--forest-mid); text-decoration: none; font-weight: 500; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb .sep { opacity: 0.4; }
+  .breadcrumb .current { color: var(--forest); font-weight: 600; }
+
+  /* PROGRESS BAR */
+  .progress-bar { background: var(--forest-pale); border-bottom: 1px solid var(--border); padding: 0.75rem 2.5rem; display: flex; align-items: center; gap: 1rem; }
+  .progress-label { font-size: 12px; font-weight: 600; color: var(--forest-mid); white-space: nowrap; }
+  .progress-track { flex: 1; height: 6px; background: rgba(27,77,62,0.15); border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--forest-mid); border-radius: 3px; width: 10%; transition: width 0.5s ease; }
+  .progress-modules { display: flex; gap: 6px; }
+  .prog-dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
+  .prog-dot.active { background: var(--forest); color: var(--gold-light); }
+  .prog-dot.complete { background: var(--forest-mid); color: var(--white); }
+  .prog-dot.locked { background: rgba(27,77,62,0.12); color: var(--text-light); }
+
+  /* HERO */
+  .module-hero { background: linear-gradient(135deg, #0D2820 0%, var(--forest) 55%, var(--forest-mid) 100%); padding: 3.5rem 2.5rem; position: relative; overflow: hidden; }
+  .module-hero::before { content: ''; position: absolute; top: -40%; right: -10%; width: 55%; height: 200%; background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%); pointer-events: none; }
+  .module-hero-inner { max-width: 860px; margin: 0 auto; }
+  .module-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(--gold-light); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 1rem; }
+  .module-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 0.75rem; }
+  .module-hero h1 em { color: var(--gold-light); font-style: italic; }
+  .module-hero p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 600px; line-height: 1.8; font-weight: 300; margin-bottom: 1.5rem; }
+  .module-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .meta-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: rgba(255,255,255,0.6); }
+  .meta-item span { color: var(--gold-light); font-weight: 600; }
+
+  /* LAYOUT */
+  .module-body { max-width: 860px; margin: 0 auto; padding: 3rem 2rem; }
+
+  /* LESSON SECTIONS */
+  .lesson-section { margin-bottom: 3.5rem; }
+  .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--forest-mid); margin-bottom: 0.6rem; }
+  .section-label .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+
+  h2.lesson-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 1.85rem); font-weight: 700; color: var(--text-dark); line-height: 1.25; margin-bottom: 1.25rem; }
+  h2.lesson-title em { color: var(--forest); font-style: italic; }
+
+  h3.sub-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--text-dark); margin: 2rem 0 0.75rem; }
+
+  .lesson-text { font-size: 1.05rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 1.25rem; }
+  .lesson-text strong { color: var(--text-dark); font-weight: 600; }
+
+  .gold-divider { width: 50px; height: 3px; background: var(--gold); border-radius: 2px; margin: 0.75rem 0 1.5rem; }
+
+  /* CALLOUT BOXES */
+  .callout { border-radius: 14px; padding: 1.5rem 1.75rem; margin: 1.75rem 0; }
+  .callout-mentor { background: var(--forest-pale); border-left: 4px solid var(--forest-mid); border-radius: 0 14px 14px 0; }
+  .callout-mentor .callout-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--forest-mid); margin-bottom: 0.5rem; }
+  .callout-mentor p { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--forest); font-style: italic; line-height: 1.75; }
+  .callout-insight { background: var(--gold-pale); border-left: 4px solid var(--gold); border-radius: 0 14px 14px 0; }
+  .callout-insight .callout-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-mid, #8A6A20); margin-bottom: 0.5rem; }
+  .callout-insight p { font-size: 1rem; color: var(--text-dark); line-height: 1.8; }
+  .callout-warning { background: #FDF5E8; border-left: 4px solid #D4881A; border-radius: 0 14px 14px 0; }
+  .callout-warning .callout-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #D4881A; margin-bottom: 0.5rem; }
+  .callout-warning p { font-size: 1rem; color: var(--text-dark); line-height: 1.8; }
+
+  /* CONCEPT CARDS */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin: 1.75rem 0; }
+  .concept-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; transition: all 0.25s; }
+  .concept-card:hover { box-shadow: var(--shadow-card); transform: translateY(-2px); }
+  .concept-card .concept-icon { font-size: 28px; margin-bottom: 0.6rem; display: block; }
+  .concept-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--forest); margin-bottom: 0.4rem; }
+  .concept-card p { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+
+  /* COMPARISON TABLE */
+  .compare-table { width: 100%; border-collapse: collapse; margin: 1.75rem 0; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-card); }
+  .compare-table th { background: var(--forest); color: var(--white); padding: 1rem 1.25rem; text-align: left; font-size: 13px; font-weight: 600; letter-spacing: 0.3px; }
+  .compare-table th:first-child { background: var(--forest); }
+  .compare-table th.highlight { background: var(--forest-mid); }
+  .compare-table td { padding: 0.9rem 1.25rem; font-size: 13.5px; color: var(--text-mid); border-bottom: 1px solid var(--border); }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--cream); }
+  .compare-table .check { color: var(--forest-mid); font-weight: 700; }
+  .compare-table .cross { color: #C0392B; font-weight: 700; }
+
+  /* VIDEO */
+  .video-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card); margin: 1.75rem 0; }
+  .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+  .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .video-info { padding: 1.25rem 1.5rem; }
+  .video-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 10px; margin-bottom: 0.5rem; background: var(--forest-pale); color: var(--forest-mid); }
+  .video-info h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.35rem; }
+  .video-info p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* KEY TAKEAWAYS */
+  .takeaways { background: var(--forest); border-radius: 16px; padding: 2rem 2.25rem; margin: 2rem 0; position: relative; overflow: hidden; }
+  .takeaways::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.07) 0%, transparent 60%); }
+  .takeaways h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--gold-light); margin-bottom: 1rem; position: relative; }
+  .takeaways ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; position: relative; }
+  .takeaways ul li { font-size: 14px; color: rgba(255,255,255,0.85); display: flex; gap: 10px; line-height: 1.65; }
+  .takeaways ul li::before { content: '✓'; color: var(--gold-light); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* KNOWLEDGE CHECK */
+  .knowledge-check { background: var(--white); border: 2px solid var(--forest-pale); border-radius: 16px; padding: 2rem 2.25rem; margin: 2rem 0; }
+  .knowledge-check h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--forest); margin-bottom: 0.4rem; }
+  .knowledge-check .kc-sub { font-size: 13px; color: var(--text-light); margin-bottom: 1.5rem; }
+  .question { margin-bottom: 1.75rem; }
+  .question p { font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.75rem; line-height: 1.6; }
+  .options { display: flex; flex-direction: column; gap: 0.5rem; }
+  .option { display: flex; align-items: flex-start; gap: 10px; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.2s; font-size: 13.5px; color: var(--text-mid); }
+  .option:hover { border-color: var(--forest-mid); background: var(--forest-pale); }
+  .option.selected { border-color: var(--forest-mid); background: var(--forest-pale); color: var(--text-dark); font-weight: 500; }
+  .option.selected { border-color: var(--forest-mid); background: var(--forest-pale); }
+  .option.correct { border-color: var(--forest-mid); background: var(--forest-pale); color: var(--forest); font-weight: 500; }
+  .option.incorrect { border-color: #C0392B; background: #FBF0EE; color: #8B2F20; }
+  .option-letter { width: 22px; height: 22px; border-radius: 50%; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; color: var(--text-mid); }
+  .option.correct .option-letter { background: var(--forest); color: var(--white); }
+  .option.incorrect .option-letter { background: #C0392B; color: var(--white); }
+  .explanation { margin-top: 0.6rem; padding: 0.75rem 1rem; border-radius: 8px; font-size: 13px; line-height: 1.6; display: none; }
+  .explanation.show { display: block; }
+  .explanation.correct-exp { background: var(--forest-pale); color: var(--forest); }
+  .explanation.incorrect-exp { background: #FBF0EE; color: #8B2F20; }
+  .check-btn { background: var(--forest); color: var(--white); border: none; padding: 11px 28px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 1.5rem; font-family: 'DM Sans', sans-serif; }
+  .check-btn:hover { background: var(--forest-mid); }
+  .check-btn:disabled { background: var(--text-light); cursor: default; }
+  .score-result { margin-top: 1.25rem; padding: 1rem 1.25rem; border-radius: 10px; font-size: 14px; font-weight: 600; display: none; }
+  .score-result.show { display: block; }
+  .score-result.pass { background: var(--forest-pale); color: var(--forest); }
+  .score-result.fail { background: var(--gold-pale); color: #8A6A20; }
+
+  /* SKILLS CONNECTION */
+  .skills-connection { background: var(--cream-dark); border-radius: 16px; padding: 2rem 2.25rem; margin: 2rem 0; }
+  .skills-connection h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem; }
+  .skills-connection p { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 1rem; }
+  .career-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .career-tag { font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 20px; background: var(--white); border: 1px solid var(--border); color: var(--text-dark); }
+
+  /* NAVIGATION FOOTER */
+  .module-nav { background: var(--white); border-top: 1px solid var(--border); padding: 1.5rem 2.5rem; display: flex; align-items: center; justify-content: space-between; max-width: 100%; }
+  .module-nav-info { text-align: center; }
+  .module-nav-info p { font-size: 12px; color: var(--text-light); }
+  .module-nav-info strong { font-size: 14px; color: var(--text-dark); }
+  .btn { display: inline-flex; align-items: center; gap: 7px; padding: 11px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; }
+  .btn-forest { background: var(--forest); color: var(--white); }
+  .btn-forest:hover { background: var(--forest-mid); }
+  .btn-outline { background: transparent; color: var(--text-mid); border: 1.5px solid var(--border); }
+  .btn-outline:hover { border-color: var(--forest-mid); color: var(--forest); }
+  .btn-gold { background: var(--gold); color: var(--forest); }
+  .btn-gold:hover { background: var(--gold-light); }
+
+  footer { background: var(--forest); border-top: 1px solid rgba(255,255,255,0.08); padding: 1.5rem 2rem; text-align: center; }
+  footer .footer-brand { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem; }
+  footer p { font-size: 11.5px; color: rgba(255,255,255,0.35); }
+  footer .footer-gold { color: var(--gold-light); }
+
+  .fade-in { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; } .nav-links { display: none; }
+    .module-hero { padding: 2.5rem 1.5rem; }
+    .module-body { padding: 2rem 1.25rem; }
+    .progress-bar { padding: 0.75rem 1.25rem; }
+    .breadcrumb { padding: 0.75rem 1.25rem; }
+    .module-nav { padding: 1rem 1.25rem; }
+    .compare-table { font-size: 12px; }
+    .prog-dot { width: 24px; height: 24px; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">Career Paths</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a>
+  <span class="sep">›</span>
+  <a href="index.html#begin">Core Foundation</a>
+  <span class="sep">›</span>
+  <span class="current">Module 1: The Real Estate Mindset</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Your Progress</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-modules">
+    <div class="prog-dot active">1</div>
+    <div class="prog-dot locked">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+    <div class="prog-dot locked">9</div>
+    <div class="prog-dot locked">10</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📚 Core Foundation · Module 1 of 10</div>
+    <h1>The Real Estate <em>Mindset</em></h1>
+    <p>Before you learn a single term, analyze a single deal, or walk into a single property — you need to understand how successful people in real estate actually think. This module isn't about tactics. It's about building the mental foundation that everything else in this curriculum sits on.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>25–35 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">✅ Knowledge check: <span>5 questions</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Why most people never get started — <em>and why you will</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Here's the truth nobody tells you at the beginning: real estate is not complicated. The concepts are learnable. The skills are developable. The opportunities are everywhere — in every city, every state, and every market condition.</p>
+
+    <p class="lesson-text">So if it's not complicated, why do so many people who want to build a career in real estate never actually get started?</p>
+
+    <p class="lesson-text">Three reasons come up again and again:</p>
+
+    <div class="concept-grid">
+      <div class="concept-card fade-in">
+        <span class="concept-icon">😰</span>
+        <h4>Fear of the unknown</h4>
+        <p>Real estate has its own language, its own rules, and its own culture. When you don't understand it yet, it can feel like everyone else knows something you don't. They did once — and then they learned it.</p>
+      </div>
+      <div class="concept-card fade-in">
+        <span class="concept-icon">⏳</span>
+        <h4>Waiting to feel "ready"</h4>
+        <p>Many people want to know everything before they take action. But readiness doesn't come from studying — it comes from doing. You build confidence by starting, not by waiting.</p>
+      </div>
+      <div class="concept-card fade-in">
+        <span class="concept-icon">🎭</span>
+        <h4>Wrong mental picture</h4>
+        <p>Movies and TV make real estate look like it's only for people who are already rich, already connected, or already experienced. That's not real. Real estate is full of people who started with nothing but a willingness to learn.</p>
+      </div>
+    </div>
+
+    <p class="lesson-text">The fact that you're here — reading this, taking this seriously — already puts you ahead of most people who talk about getting into real estate but never take a single step toward it.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"Peter Harris was an engineer with zero real estate experience when he bought his first apartment building. Brian Murray was a teacher. The most successful people in this industry didn't start with an advantage — they started with a decision. The decision you're making right now."</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The difference between an <em>employee mindset and an owner mindset</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Real estate — in every career path — rewards people who think like owners. Not everyone who works in real estate owns property. But the best agents, brokers, managers, photographers, and contractors all share one thing: they treat their career like a business.</p>
+
+    <p class="lesson-text">Understanding the difference between an employee mindset and an owner mindset is one of the most important shifts you can make — and it's one of the reasons this is Module 1.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Situation</th>
+          <th>Employee Mindset</th>
+          <th class="highlight">Owner Mindset</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A deal falls through</td>
+          <td>"That's unlucky. Nothing I could do."</td>
+          <td>"What can I learn from this? What would I do differently?"</td>
+        </tr>
+        <tr>
+          <td>A client is difficult</td>
+          <td>"This person is impossible. Not my problem."</td>
+          <td>"How do I navigate this relationship professionally and still get the outcome they need?"</td>
+        </tr>
+        <tr>
+          <td>A slow market</td>
+          <td>"Nobody is doing deals right now. Just waiting it out."</td>
+          <td>"What's happening in the market? Where are the opportunities right now?"</td>
+        </tr>
+        <tr>
+          <td>Making mistakes</td>
+          <td>"I hope nobody noticed."</td>
+          <td>"I'm going to own this, fix it, and make sure it doesn't happen again."</td>
+        </tr>
+        <tr>
+          <td>Building relationships</td>
+          <td>"I'll network when I need something."</td>
+          <td>"Every person I meet is a potential partner, client, or referral. I invest in relationships constantly."</td>
+        </tr>
+        <tr>
+          <td>Learning new things</td>
+          <td>"Nobody is paying me to study."</td>
+          <td>"The more I know, the more valuable I am. My education is my competitive advantage."</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="lesson-text">Notice that the owner mindset isn't about being aggressive or cutthroat. It's about taking <strong>responsibility</strong>. For your results, your relationships, your reputation, and your growth.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Key Insight</div>
+      <p>The most successful people in every real estate career path — agents, investors, contractors, photographers — treat setbacks as feedback, relationships as assets, and their own development as an ongoing investment. This is the mindset that separates the ones who thrive from the ones who quit when things get hard.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Real estate rewards <em>the long game</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">One of the most important things to understand about real estate — before you start — is that it is almost never a get-rich-quick field. The people you will hear about who made a fortune overnight are the exception, not the rule. And they usually had years of groundwork you didn't hear about.</p>
+
+    <p class="lesson-text">Real estate rewards consistency, patience, and compounding. Here's what that looks like in practice:</p>
+
+    <h3 class="sub-title">The Compounding Effect in Real Estate</h3>
+    <p class="lesson-text">An investor who buys one rental property today and manages it well for 10 years will likely end up with significant equity, consistent income, and the credibility and knowledge to buy the next one on better terms. That's compounding — not just financially, but in skills, relationships, and reputation.</p>
+
+    <p class="lesson-text">An agent who consistently prospects, serves clients well, and asks for referrals will find that their business gets easier every year — not harder. The relationships they built in year one are still paying dividends in year five.</p>
+
+    <p class="lesson-text">A contractor who shows up on time, communicates clearly, and does quality work will find themselves fully booked without advertising — because their reputation compounded.</p>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Honest Warning</div>
+      <p>The most common reason people fail in real estate is not lack of intelligence or lack of capital — it's lack of patience. They expect results faster than the market delivers them, get frustrated, and quit right before things would have started to click. Know this going in: the first few months of any real estate career are the hardest. Push through them.</p>
+    </div>
+
+    <h3 class="sub-title">What "playing the long game" actually looks like day to day</h3>
+    <p class="lesson-text">It doesn't mean being passive or slow. Playing the long game means:</p>
+
+    <div class="concept-grid">
+      <div class="concept-card fade-in">
+        <span class="concept-icon">📅</span>
+        <h4>Showing up consistently</h4>
+        <p>Doing the work every day — even when results aren't immediately visible. Prospecting, learning, networking, practicing. The days nobody sees are the ones that build the foundation.</p>
+      </div>
+      <div class="concept-card fade-in">
+        <span class="concept-icon">🌱</span>
+        <h4>Planting seeds early</h4>
+        <p>Building relationships before you need them. Learning things before they're immediately relevant. Every seed you plant today is income, opportunity, or knowledge that arrives in 6, 12, or 24 months.</p>
+      </div>
+      <div class="concept-card fade-in">
+        <span class="concept-icon">📈</span>
+        <h4>Reinvesting in yourself</h4>
+        <p>Your first year's income in real estate should be heavily reinvested — in tools, education, marketing, and relationships. The people who spend early gains on lifestyle end up stuck. The ones who reinvest compound their business.</p>
+      </div>
+      <div class="concept-card fade-in">
+        <span class="concept-icon">🔁</span>
+        <h4>Staying in the game</h4>
+        <p>Every market cycle — boom, slowdown, correction — produces winners. The winners are the ones who stayed in the game long enough to learn the cycle. Quitters never learn what the survivors do.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This</div>
+    <h2 class="lesson-title">The mindset behind <em>real wealth in real estate</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Peter Harris built a multimillion-dollar real estate portfolio starting as an engineer with no experience. In this talk he shares the mindset principles that made the difference — not the tactics, not the deals, the way of thinking that made everything else possible. This is exactly what this module is about.</p>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/3cMR2puIz-g" title="Peter Harris — If I Had to Start Over, This is What I Would Do" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">📖 Recommended Viewing</span>
+        <h4>If I Had to Start Over — This Is What I Would Do | Peter Harris</h4>
+        <p>Peter Harris breaks down exactly what he would do if he had to rebuild from scratch — and Step 1 is fixing your mindset. This video covers everything in this module in action: overcoming fear, starting small, the long game, and what it really takes to build something lasting in real estate. Watch the full 18 minutes.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Your job right now: <em>become a student of real estate</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The most successful real estate professionals — at every level, in every career path — are continuous learners. Not because they lack confidence, but because the market is always changing and the ones who stay curious always have an edge.</p>
+
+    <p class="lesson-text">Here's what being a student of real estate actually looks like — starting today, before you've done a single deal:</p>
+
+    <div class="concept-grid">
+      <div class="concept-card fade-in">
+        <span class="concept-icon">🚗</span>
+        <h4>Drive your market</h4>
+        <p>Get in your car and drive the neighborhoods around you. Notice what's being built. Notice what's vacant. Notice what's being renovated. Start seeing real estate everywhere you go — because it is everywhere.</p>
+      </div>
+      <div class="concept-card fade-in">
+        <span class="concept-icon">🎧</span>
+        <h4>Listen on the go</h4>
+        <p>Every commute, every workout, every walk is an opportunity to learn. The BiggerPockets Real Estate Rookie podcast turns dead time into education. Start listening this week.</p>
+      </div>
+      <div class="concept-card fade-in">
+        <span class="concept-icon">📰</span>
+        <h4>Follow local real estate news</h4>
+        <p>What's happening in Miami real estate right now? What neighborhoods are growing? What are the latest interest rate changes doing to the market? Staying informed makes every conversation you have sharper.</p>
+      </div>
+      <div class="concept-card fade-in">
+        <span class="concept-icon">🤝</span>
+        <h4>Talk to people in the industry</h4>
+        <p>Every agent, investor, contractor, or property manager you can have a real conversation with is priceless. Ask questions. People who love what they do love talking about it. Find those people.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"You don't need to wait until you have a license, a deal, or a portfolio to start thinking like a real estate professional. You can start right now — by paying attention, asking questions, and treating every conversation and every drive-by as an opportunity to learn. The people who arrive at their first deal already thinking this way close it faster, negotiate better, and make fewer costly mistakes than those who start learning after they've already committed."</p>
+    </div>
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📋 Key Takeaways — Module 1</h3>
+    <ul>
+      <li>Most people don't get started in real estate because of fear, waiting to feel "ready," or a wrong mental picture of who this field is for — not because they lack the ability.</li>
+      <li>The owner mindset — taking responsibility for your results, relationships, and growth — is the single most important mental shift you can make regardless of which career path you choose.</li>
+      <li>Real estate rewards the long game. Consistency, patience, and compounding — in skills, relationships, and reputation — are what build lasting success.</li>
+      <li>You don't have to wait to start learning. Drive your market, listen to podcasts, follow local news, and talk to people already in the industry. Start building the mindset now.</li>
+      <li>The curriculum ahead will give you the knowledge and skills you need. But the mindset — that's on you. And you already started building it by being here.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in" id="knowledgeCheck">
+    <h3>✅ Knowledge Check</h3>
+    <p class="kc-sub">5 quick questions to test your understanding. Select the best answer for each.</p>
+
+    <!-- Q1 -->
+    <div class="question" id="q1">
+      <p>1. According to this module, what is the most common reason people never get started in real estate?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this, 'q1', false)" data-correct="false">
+          <div class="option-letter">A</div> They don't have enough money to invest.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q1', false)" data-correct="false">
+          <div class="option-letter">B</div> Real estate requires a college degree they don't have.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q1', true)" data-correct="true">
+          <div class="option-letter">C</div> Fear of the unknown, waiting to feel ready, and a wrong mental picture of the industry.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q1', false)" data-correct="false">
+          <div class="option-letter">D</div> The market is too competitive for newcomers.
+        </div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" id="q2">
+      <p>2. Which of the following best describes the "owner mindset" as explained in this module?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this, 'q2', false)" data-correct="false">
+          <div class="option-letter">A</div> Always putting your own financial gain first in every situation.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q2', true)" data-correct="true">
+          <div class="option-letter">B</div> Taking responsibility for your results, relationships, and growth — and treating setbacks as feedback.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q2', false)" data-correct="false">
+          <div class="option-letter">C</div> Only networking when you personally need something from someone.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q2', false)" data-correct="false">
+          <div class="option-letter">D</div> Working harder than everyone else at all times regardless of results.
+        </div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" id="q3">
+      <p>3. What does the module say is the most common reason people fail in real estate?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this, 'q3', false)" data-correct="false">
+          <div class="option-letter">A</div> Lack of intelligence or technical knowledge.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q3', false)" data-correct="false">
+          <div class="option-letter">B</div> Not having enough starting capital.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q3', false)" data-correct="false">
+          <div class="option-letter">C</div> Choosing the wrong career path within real estate.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q3', true)" data-correct="true">
+          <div class="option-letter">D</div> Lack of patience — expecting results faster than the market delivers them and quitting too early.
+        </div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question" id="q4">
+      <p>4. Someone with an owner mindset makes a costly mistake on a deal. What is the most likely response?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this, 'q4', false)" data-correct="false">
+          <div class="option-letter">A</div> Hope nobody notices and move on quietly.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q4', false)" data-correct="false">
+          <div class="option-letter">B</div> Blame the market conditions or other people involved.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q4', true)" data-correct="true">
+          <div class="option-letter">C</div> Own the mistake, fix what can be fixed, and learn from it to prevent it next time.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q4', false)" data-correct="false">
+          <div class="option-letter">D</div> Take a break from real estate until confidence returns.
+        </div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question" id="q5">
+      <p>5. According to this module, when should you start building your real estate knowledge and mindset?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this, 'q5', false)" data-correct="false">
+          <div class="option-letter">A</div> After you get your real estate license.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q5', false)" data-correct="false">
+          <div class="option-letter">B</div> Once you have enough money saved to make your first investment.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q5', false)" data-correct="false">
+          <div class="option-letter">C</div> When you have identified which specific career path you want to pursue.
+        </div>
+        <div class="option" onclick="selectOption(this, 'q5', true)" data-correct="true">
+          <div class="option-letter">D</div> Right now — by driving your market, listening to podcasts, following local news, and talking to people in the industry.
+        </div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- SKILLS CONNECTION -->
+  <div class="skills-connection fade-in">
+    <h3>🔗 How This Module Connects to Your Career Path</h3>
+    <p>The mindset you're building in this module is not career-specific — it applies to every single path in the Darco Real Estate Academy. Whether you become an agent, an investor, a developer, a photographer, or a contractor, the owner mindset, the long game mentality, and the commitment to continuous learning are the foundation of success in all of them.</p>
+    <p>As you move through the Core Foundation modules and then into your specific career track, keep coming back to what you learned here. When things get hard — and they will get hard — the mindset is what you fall back on.</p>
+    <div class="career-tags">
+      <span class="career-tag">🏠 Residential Agent</span>
+      <span class="career-tag">🏢 Commercial RE</span>
+      <span class="career-tag">🏘️ Investing</span>
+      <span class="career-tag">🔑 Property Management</span>
+      <span class="career-tag">🏗️ Development</span>
+      <span class="career-tag">💵 Mortgage & Lending</span>
+      <span class="career-tag">🔄 Wholesaling</span>
+      <span class="career-tag">🔧 Maintenance & Repair</span>
+      <span class="career-tag">📸 Photography</span>
+    </div>
+  </div>
+
+  <!-- GLOSSARY DOWNLOAD -->
+  <div class="fade-in" style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:16px;padding:1.75rem 2rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-mid,#8A6A20);margin-bottom:0.4rem;">📖 Study Resource</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;">Real Estate Terms You Need to Be Familiar With</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6;">Keep studying them and do a search online if you need more explanation or examples. You got this — before you know it you'll be fluent in all these terms.</div>
+    </div>
+    <a href="darco-glossary.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;">⬇ Download Glossary</a>
+  </div>
+
+</div><!-- end module-body -->
+
+<!-- MODULE NAVIGATION -->
+<div class="module-nav">
+  <a href="index.html#begin" class="btn btn-outline">← Back to Modules</a>
+  <div class="module-nav-info">
+    <p>Core Foundation</p>
+    <strong>Module 1 of 10 — The Real Estate Mindset</strong>
+  </div>
+  <a href="module-2.html" class="btn btn-gold">Next: Module 2 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: { correct: "Correct! Real estate is one of the only assets that generates returns in four ways simultaneously: cash flow, appreciation, loan paydown, and tax benefits.", incorrect: "Not quite. Real estate uniquely generates returns through four simultaneous streams: cash flow, appreciation, loan paydown, and tax benefits." },
+    q2: { correct: "Correct! The owner mindset means you build assets that work for you. The employee mindset trades time for money. Real estate is a path to the owner mindset.", incorrect: "Not quite. The owner mindset is about building assets that generate income for you rather than trading your time for a paycheck." },
+    q3: { correct: "Correct! Discipline in the early years is what separates people who build wealth from those who earn well but never accumulate it. The long game requires patience and reinvestment.", incorrect: "Not quite. The long game in real estate requires patience, discipline, and reinvestment of early income rather than spending it on lifestyle upgrades." },
+    q4: { correct: "Correct! Becoming a student means continuing to learn from those who have already done what you want to do. Mentors, books, and communities accelerate your growth significantly.", incorrect: "Not quite. Becoming a student means actively seeking out knowledge from mentors, books, podcasts, and communities of people who are already doing what you want to do." },
+    q5: { correct: "Correct! Every real estate career path benefits from understanding the full picture. An agent who understands investing gives better advice. A contractor who understands value-add becomes indispensable.", incorrect: "Not quite. Understanding the full real estate ecosystem makes you more valuable in any career. An agent who understands investing, a contractor who understands value-add renovation - all benefit from broader knowledge." }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1', 'q2', 'q3', 'q4', 'q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5! Excellent work. You are ready for Module 2: The Language of Real Estate.</strong>';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5. Review the lessons above and try again before moving on.</strong>';
+    }
+  }
+</script>
+
+</body>
+</html>

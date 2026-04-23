@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>CRE Module 3: Tenant Representation — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#0F2340;--forest-mid:#1A3A5C;--forest-light:#2A5380;--forest-pale:#EBF0F7;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(15,35,64,0.1);--shadow-card:0 2px 16px rgba(15,35,64,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(15,35,64,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:42%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(15,35,64,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(15,35,64,0.25);}
+.module-hero{background:linear-gradient(135deg,#071828 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Process steps */
+.process-track{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
+.process-track::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--forest-pale);}
+.process-step{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:2rem;position:relative;}
+.process-step:last-child{padding-bottom:0;}
+.ps-circle{width:40px;height:40px;border-radius:50%;background:var(--forest);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:0.95rem;flex-shrink:0;z-index:1;}
+.ps-body{padding-top:6px;}
+.ps-body h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.ps-body .ps-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;background:var(--forest-pale);color:var(--forest-mid);margin-bottom:0.5rem;}
+.ps-body p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+
+/* Tenant vs Landlord compare */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px;}
+.compare-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;}
+.compare-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;line-height:1.6;}
+.compare-table td:first-child{font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--forest-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);}
+
+/* Lease type cards */
+.lease-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem;margin:2rem 0;}
+.lease-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all 0.25s;}
+.lease-card:hover{box-shadow:var(--shadow-card);}
+.lease-card .lc-header{padding:1rem 1.25rem;color:var(--white);}
+.lease-card.nnn .lc-header{background:var(--forest);}
+.lease-card.fsg .lc-header{background:#2A5C2A;}
+.lease-card.mg .lc-header{background:#5C3A1A;}
+.lease-card .lc-header h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;margin-bottom:0.15rem;}
+.lease-card .lc-header .lc-abbr{font-size:11px;color:rgba(255,255,255,0.7);}
+.lease-card .lc-body{padding:1.1rem 1.25rem;}
+.lease-card .lc-body .who-pays{font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:0.35rem;}
+.lease-card .lc-body .pays-label{font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:0.6rem;}
+.lease-card .lc-body p{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+.lease-card .lc-body .lc-found{font-size:11px;font-weight:600;color:var(--forest-mid);margin-top:0.6rem;padding-top:0.6rem;border-top:1px solid var(--border);}
+
+/* Negotiation items */
+.neg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.neg-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.4rem;transition:all 0.2s;}
+.neg-item:hover{box-shadow:var(--shadow-card);}
+.neg-item h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.neg-item .ni-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;margin-bottom:0.5rem;}
+.neg-item .ni-tag.high{background:#FBE8E8;color:#8B2020;}
+.neg-item .ni-tag.medium{background:var(--gold-pale);color:#8A6A20;}
+.neg-item .ni-tag.always{background:var(--forest-pale);color:var(--forest-mid);}
+.neg-item p{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.tc{background:var(--forest-pale);color:var(--forest-mid);}
+.video-badge.rc{background:var(--gold-pale);color:#8A6A20;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#071828,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+/* Next module */
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--forest-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .lease-grid{grid-template-columns:1fr;}
+  .neg-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="commercial-real-estate.html">CRE Career Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="commercial-real-estate.html">Commercial Real Estate</a><span class="sep">›</span>
+  <span class="current">CRE-3: Tenant Representation</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">CRE Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="cre-module-1.html" class="prog-dot complete" title="CRE-1">✓</a>
+    <a href="cre-module-2.html" class="prog-dot complete" title="CRE-2">✓</a>
+    <div class="prog-dot active">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Commercial Real Estate Track · Module 3 of 7</div>
+    <h1>Tenant <em>Representation</em></h1>
+    <p>Tenant representation is one of the most client-facing and relationship-driven roles in commercial real estate. You are not selling a product — you are advocating for a business. You help them find the right space, negotiate the best possible terms, and navigate a process most tenants have never been through before. This module covers the full tenant rep process from first conversation to signed lease.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>45–55 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>3</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What tenant representation is — <em>and why businesses need it</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">When a business needs commercial space — a restaurant looking for its first location, a law firm needing a new office, a distribution company outgrowing its warehouse — they face a market they do not understand, negotiating against a landlord who does it every day and has their own broker in their corner. That asymmetry is the entire reason tenant representation exists.</p>
+
+    <p class="lesson-text">A tenant rep broker represents only the tenant's interests in a transaction. Not the landlord. Not both sides. The tenant alone. Their job is to level the playing field — bringing market knowledge, negotiation experience, and access to options the tenant would never find on their own.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Tyler Cauble</div>
+      <p>"You could scour the internet for options, use your free time to drive the market hunting for 'available' signs, and call your friends and family in hopes they know someone who knows of something available. Or, you could save yourself countless hours and likely a pounding headache and enlist the help of a commercial real estate broker."</p>
+    </div>
+
+    <h3 class="sub-title">The four core advantages a tenant rep delivers</h3>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Advantage</th><th>What It Means In Practice</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>Your Interests First</td>
+            <td>The landlord's broker represents the landlord — even if they seem helpful. A tenant rep's sole goal is to get the tenant the best possible outcome. No conflict of interest.</td>
+          </tr>
+          <tr>
+            <td>Variety of Options</td>
+            <td>A landlord's broker only needs to sell you one space. A tenant rep searches the entire market and presents multiple options so you can make an informed comparison — not a pressured decision.</td>
+          </tr>
+          <tr class="highlight">
+            <td>Off-Market Access</td>
+            <td>Many of the best commercial spaces are taken before they are ever publicly listed. An experienced tenant rep's network of other brokers, developers, and property owners opens doors that simply do not exist for unrepresented tenants.</td>
+          </tr>
+          <tr>
+            <td>Negotiation Expertise</td>
+            <td>Rent, tenant improvement allowances, rent abatement, lease term, renewal options, exclusivity clauses — all of it is negotiable. A tenant rep knows what the market will bear and how to push for it without killing the deal.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 It Costs the Tenant Nothing</div>
+      <p>One of the most important things to understand about tenant representation — and one of the most common points of confusion for business owners — is that tenant rep fees are paid by the landlord, not the tenant. Brokerage fees are already built into every commercial deal on the market. The tenant rep's commission comes out of what the landlord was already going to pay. Using a tenant rep does not cost the business owner anything — but going without one almost always costs them money in worse lease terms.</p>
+    </div>
+
+    <h3 class="sub-title">Tenant rep vs. landlord rep — understanding both sides</h3>
+    <p class="lesson-text">Every commercial lease transaction has two sides. Understanding both is important — whether you eventually specialize in tenant rep, landlord rep, or both.</p>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Dimension</th><th>Tenant Rep Broker</th><th>Landlord Rep Broker</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>Who They Represent</td>
+            <td>The business looking for space</td>
+            <td>The building owner or landlord</td>
+          </tr>
+          <tr>
+            <td>Primary Goal</td>
+            <td>Find the best space at the best terms for the tenant</td>
+            <td>Lease the space at the best terms for the landlord</td>
+          </tr>
+          <tr class="highlight">
+            <td>Who Pays Them</td>
+            <td>The landlord pays — split from the total commission</td>
+            <td>The landlord pays — full commission if no tenant rep</td>
+          </tr>
+          <tr>
+            <td>How They Win Clients</td>
+            <td>Cold calling businesses, referrals, corporate accounts, national tenant relationships</td>
+            <td>Property owners and investors with vacant space to lease</td>
+          </tr>
+          <tr class="highlight">
+            <td>Key Skill</td>
+            <td>Market knowledge, client advocacy, negotiation on behalf of the tenant</td>
+            <td>Marketing, qualifying tenants, protecting landlord's lease terms</td>
+          </tr>
+          <tr>
+            <td>Conflict of Interest</td>
+            <td>None — exclusively represents the tenant</td>
+            <td>None — exclusively represents the landlord</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Tyler Cauble: <em>What is tenant representation?</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Tyler Cauble — commercial real estate broker, investor, and author of Open For Business — explains what tenant representation is, why businesses need it, and the four key advantages a tenant rep delivers. Focused, direct, and covers the most important point: tenant representation costs the business owner nothing because the fees are already built into every deal on the market.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/uVpBCGZ72Ac" title="What Is Tenant Representation — Tyler Cauble" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge tc">Tyler Cauble · YouTube</span>
+        <h4>What Is Tenant Representation? [Leasing Commercial Space]</h4>
+        <p>A clear, direct overview of what tenant representation is and why businesses need it — your interests first, variety of options, off-market access, negotiation expertise, and why it costs the tenant nothing. The best 4-minute introduction to tenant rep available. Directly reinforces Lesson 1 of this module.</p>
+        <p class="credit">Tyler Cauble · YouTube 2021 · 4 min · Evergreen content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The tenant rep process — <em>from first call to signed lease</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Tenant representation is not just finding a space and negotiating rent. It is a structured process that begins before you ever search a single listing and continues well after the lease is signed. Understanding the full process — and where each step matters — is what separates a competent tenant rep from a great one.</p>
+
+    <div class="process-track">
+      <div class="process-step fade-in">
+        <div class="ps-circle">1</div>
+        <div class="ps-body">
+          <div class="ps-tag">Before You Search</div>
+          <h4>Gather Financial Documents</h4>
+          <p>If the tenant is not a large well-known corporate entity, start by collecting financial documents — personal financial statements, tax returns, and business financials. This serves two purposes: it tells you whether the tenant can actually qualify for the space they want, and it gets you ahead of the landlord's inevitable request. Walking into a deal already prepared with financials signals professionalism and accelerates the process significantly.</p>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="ps-circle">2</div>
+        <div class="ps-body">
+          <div class="ps-tag">Foundation</div>
+          <h4>Define Requirements</h4>
+          <p>Before you search a single listing, get crystal clear on what the tenant actually needs. Size requirements — minimum and maximum square footage. Budget — what they can afford monthly and what their total lease commitment ceiling is. Location criteria — what does their customer or workforce need? A retail tenant needs high traffic and visibility. An industrial tenant needs highway access and loading docks. A medical tenant needs parking and ADA compliance. A location that is perfect for one use may be completely wrong for another.</p>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="ps-circle">3</div>
+        <div class="ps-body">
+          <div class="ps-tag">Market Research</div>
+          <h4>Execute the Search</h4>
+          <p>Search your local commercial listing service for available spaces that match the requirements. Set up drip campaigns so new listings come to you automatically. Simultaneously conduct direct outreach — call property owners, send mailers, tap your broker network for off-market availability. Many great spaces never hit public listing platforms. The tenant rep who only searches online is missing a significant portion of the market. Your network is your competitive advantage here.</p>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="ps-circle">4</div>
+        <div class="ps-body">
+          <div class="ps-tag">Site Selection</div>
+          <h4>Tour and Shortlist</h4>
+          <p>Once you have identified a set of viable options, organize tours. Give the tenant enough options to make a genuine comparison — not so many that decision paralysis sets in. Two to five serious options is typically the right range. After touring, help the tenant evaluate each option against their requirements — not just on rent but on layout, location, condition, landlord reputation, and long-term fit with their business plan.</p>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="ps-circle">5</div>
+        <div class="ps-body">
+          <div class="ps-tag">Negotiation</div>
+          <h4>Negotiate the Letter of Intent</h4>
+          <p>Once the tenant selects a preferred space, submit a Letter of Intent outlining the proposed business terms — rent, lease term, tenant improvement allowance, rent abatement, renewal options, and any special provisions. This is where your market knowledge becomes leverage. Know what comparable spaces are leasing for. Know what concessions landlords in this submarket are willing to offer right now. If the market is soft, push harder. If it is tight, manage expectations and focus on the terms that matter most to your specific tenant.</p>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="ps-circle">6</div>
+        <div class="ps-body">
+          <div class="ps-tag">Execution</div>
+          <h4>Coordinate the Lease and Close</h4>
+          <p>Once the LOI is agreed, the formal lease is drafted. Connect your tenant with a commercial real estate attorney to review the lease — this is non-negotiable. Also connect them with any other parties they need: contractors for the buildout, engineers, space planners, or environmental consultants if relevant. Your job at this stage is project management — keeping all parties moving toward closing and flagging any issues before they become deal-killers.</p>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="ps-circle">7</div>
+        <div class="ps-body">
+          <div class="ps-tag">Long-Term Relationship</div>
+          <h4>Follow Up and Stay Connected</h4>
+          <p>The deal closing is not the end of the relationship — it is the beginning of a long-term client. Check in periodically. Businesses grow, shrink, relocate, and expand. The tenant rep who stays connected with their clients becomes their first call for every future real estate decision. This is how you build a book of business that produces repeat and referral deals for decades.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Raphael Collazo: The tenant rep process <em>step by step</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Raphael Collazo — CCIM-designated broker and commercial real estate investor — walks through the full tenant representation workflow from a practitioner's perspective: gathering financial documents, defining requirements, executing searches, negotiating terms, connecting tenants with their professional team, and following up to build long-term client relationships. Direct to camera, practical, and closely mirrors the process laid out in Lesson 2.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/SO-E41jsJVg" title="What Is Tenant Rep — Raphael Collazo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge rc">Raphael Collazo · YouTube</span>
+        <h4>What Is Tenant Rep? — The Full Process Explained</h4>
+        <p>A step-by-step walkthrough of the tenant representation process from a working broker — gathering financials, defining requirements, executing searches, negotiating, connecting with partners, and following up to build a long-term book of business. Directly reinforces Lesson 2 of this module.</p>
+        <p class="credit">Raphael Collazo · YouTube 2022 · 8 min · Evergreen content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Lease structures — <em>what every tenant rep must know cold</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">A tenant rep broker who does not understand lease structures cannot serve their clients. The lease structure determines how much the tenant actually pays — and the difference between a well-negotiated lease structure and a poorly understood one can cost a tenant tens of thousands of dollars over the term. You need to know these three structures instinctively.</p>
+
+    <div class="lease-grid">
+      <div class="lease-card nnn fade-in">
+        <div class="lc-header">
+          <h4>Triple Net</h4>
+          <div class="lc-abbr">NNN Lease</div>
+        </div>
+        <div class="lc-body">
+          <div class="who-pays">Operating Expenses Paid By</div>
+          <div class="pays-label">Tenant</div>
+          <p>Tenant pays base rent plus the three nets — property taxes, building insurance, and common area maintenance (CAM). Landlord's costs are mostly passed through. Rent is quoted as base rate — actual occupancy cost is higher.</p>
+          <div class="lc-found">Most common in: Retail, freestanding properties, industrial</div>
+        </div>
+      </div>
+      <div class="lease-card fsg fade-in">
+        <div class="lc-header">
+          <h4>Full Service Gross</h4>
+          <div class="lc-abbr">FSG Lease</div>
+        </div>
+        <div class="lc-body">
+          <div class="who-pays">Operating Expenses Paid By</div>
+          <div class="pays-label">Landlord</div>
+          <p>Tenant pays one all-inclusive rent. Landlord covers all operating costs — utilities, CAM, taxes, insurance, janitorial. The simplest structure. Tenant knows their exact cost. Landlord takes all cost risk.</p>
+          <div class="lc-found">Most common in: Office buildings, some lower-quality retail</div>
+        </div>
+      </div>
+      <div class="lease-card mg fade-in">
+        <div class="lc-header">
+          <h4>Modified Gross</h4>
+          <div class="lc-abbr">MG Lease</div>
+        </div>
+        <div class="lc-body">
+          <div class="who-pays">Operating Expenses Paid By</div>
+          <div class="pays-label">Split — Negotiated</div>
+          <p>A hybrid between NNN and FSG. Any combination of expenses can fall on either party. Landlord may cover insurance while tenant pays utilities. Or tenant pays CAM but not taxes. Every deal is different — get it in writing.</p>
+          <div class="lc-found">Most common in: Any property type — very flexible</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Total Occupancy Cost Trap</div>
+      <p>Business owners and inexperienced brokers frequently compare lease rates without accounting for the lease structure. A $28/sqft NNN lease may cost more than a $35/sqft FSG lease once taxes, insurance, and CAM are added. Always convert all options to a total occupancy cost per square foot before comparing. A tenant rep who presents options without doing this math is not doing their job.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Third</div>
+    <h2 class="lesson-title">Tyler Cauble: NNN, FSG, and MG — <em>commercial lease structures explained</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Tyler Cauble walks through the three most common commercial lease structures — Triple Net, Full Service Gross, and Modified Gross — explaining what each means, who pays what, why each structure exists, and the pros and cons for both landlords and tenants. This is essential knowledge for any tenant rep broker. You will be explaining these structures to clients on a regular basis. <em>Note: If you completed Core Foundation Module 9 (Leases & Contracts), you have seen this video before — revisit it here with the commercial tenant rep context in mind.</em></p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/UFZpEu_Z0Do" title="NNN FSG MG Lease Structures — Tyler Cauble" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge tc">Tyler Cauble · YouTube</span>
+        <h4>Triple Net, Full Service Gross, and Modified Gross Leases Explained</h4>
+        <p>A clear breakdown of the three most common commercial lease structures — what each one means, who pays what, why landlords and tenants prefer each, and the key differences. Every tenant rep broker needs to know these structures cold and be able to explain them to a client in plain English. Directly reinforces Lesson 3 of this module.</p>
+        <p class="credit">Tyler Cauble · YouTube · Evergreen content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">What to negotiate — <em>the lease terms that matter most</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most tenants focus exclusively on the rent number. Experienced tenant rep brokers know that rent is just one of many terms that determine the true value of a lease. Some of the most important concessions a tenant can win cost the landlord relatively little but can save the tenant enormous amounts of money over the lease term. Know every item on this list before you walk into a negotiation.</p>
+
+    <div class="neg-grid">
+      <div class="neg-item fade-in">
+        <h4>Base Rent</h4>
+        <div class="ni-tag always">Always Negotiate</div>
+        <p>The headline number but often not the most flexible item in a tight market. Know comparable rents in the submarket cold. Your ability to cite specific comps is your most powerful negotiating tool.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Tenant Improvement Allowance (TI)</h4>
+        <div class="ni-tag high">High Value</div>
+        <p>Money the landlord contributes toward building out the space for the tenant. Measured in dollars per square foot. On a 5,000 sqft space, the difference between $20/sqft and $50/sqft TI is $150,000. This is often more negotiable than rent.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Free Rent / Rent Abatement</h4>
+        <div class="ni-tag high">High Value</div>
+        <p>Months at the beginning of the lease where the tenant pays no rent while buildout is occurring. One to six months of free rent on a $15,000/month lease is $15,000 to $90,000 of value. Landlords often prefer this to lowering the base rent because it keeps the rent roll looking strong.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Lease Term</h4>
+        <div class="ni-tag always">Always Negotiate</div>
+        <p>Longer terms give landlords certainty — which is leverage to negotiate better TI and rent abatement. Shorter terms give tenants flexibility but less negotiating power. Find the balance that matches the tenant's business plan and risk tolerance.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Renewal Options</h4>
+        <div class="ni-tag always">Always Negotiate</div>
+        <p>The right (not obligation) to extend the lease at a pre-agreed rate or formula. Critically important for businesses that invest heavily in a location. Without a renewal option, the tenant can be displaced or priced out at expiration.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Annual Rent Escalations</h4>
+        <div class="ni-tag medium">Watch Carefully</div>
+        <p>Fixed percentage increases (commonly 2–4%) vs. CPI-based increases vs. fair market value resets at renewal. Fixed increases are predictable. Fair market value resets can result in enormous jumps — especially in high-growth markets. Fight hard for fixed escalations for your tenant.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Exclusivity Clauses</h4>
+        <div class="ni-tag medium">Asset Dependent</div>
+        <p>Prohibits the landlord from leasing to a competing business in the same center. Critical for restaurants, fitness studios, pharmacies, and any concept where a nearby competitor directly impacts revenue. Be very specific — vague exclusivity clauses create endless disputes.</p>
+      </div>
+      <div class="neg-item fade-in">
+        <h4>Personal Guarantee</h4>
+        <div class="ni-tag always">Always Negotiate</div>
+        <p>Many landlords require the business owner to personally guarantee the lease — making them personally liable if the business fails. Push to limit the guarantee period (e.g. first two years only) or cap the amount rather than accepting a full-term unlimited personal guarantee.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Always Hire an Attorney</div>
+      <p>The single most consistent piece of advice from experienced commercial brokers: never let a tenant sign a commercial lease without having a commercial real estate attorney review it first. Business owners who skip this step to save $2,000–$3,000 in legal fees routinely discover — mid-lease or at renewal — that they are personally responsible for a 15-year-old HVAC system, have no renewal option, or have given the landlord rights they did not understand. As a tenant rep, connecting your clients with a good attorney is part of the job.</p>
+    </div>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to move to CRE-4. They are here for students who want to build deeper expertise in tenant representation and commercial leasing before moving on.</p>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Tyler Cauble — 7 Basics of Commercial Real Estate Leasing</strong><br>A deeper walkthrough of commercial leasing fundamentals — lease types, how rent is calculated, what landlords look for in tenants, and the key provisions every tenant should understand before signing. A solid complement to Lesson 3 and 4 of this module.</p>
+      <a href="https://www.youtube.com/watch?v=02RMDfiJ2-Q" target="_blank">Watch →</a>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Adventures in CRE — Letter of Intent Walkthrough</strong><br>A detailed walkthrough of a commercial real estate Letter of Intent — what goes in it, how it is structured, and why getting the LOI right before moving to the full lease matters so much. The LOI is the tenant rep's primary negotiation document. Understanding it in depth is essential.</p>
+      <a href="https://www.youtube.com/watch?v=pbp55rkoFu8" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 CRE-3 Key Takeaways</h3>
+    <ul>
+      <li>Tenant representation means representing only the tenant's interests — not the landlord, not both sides. The tenant rep's sole job is to find the best space at the best terms for the business they represent.</li>
+      <li>Tenant rep fees are paid by the landlord — already built into every deal on the market. Using a tenant rep costs the business owner nothing. Not using one almost always costs them money in worse lease terms.</li>
+      <li>The tenant rep process has seven steps: gather financials, define requirements, execute the search, tour and shortlist, negotiate the LOI, coordinate the lease and close, then follow up to build a long-term relationship.</li>
+      <li>Understanding all three lease structures — NNN, FSG, and Modified Gross — is non-negotiable. Always convert options to total occupancy cost before comparing. A lower quoted rent on an NNN lease can cost more than a higher quoted rate on an FSG lease.</li>
+      <li>Rent is just one negotiating point. TI allowance, free rent, lease term, renewal options, annual escalations, exclusivity clauses, and personal guarantees all determine the true value of a lease. An experienced tenant rep fights on every line item, not just the headline number.</li>
+      <li>Always connect tenants with a commercial real estate attorney before they sign. This is part of the tenant rep's job and protects both the client and your reputation.</li>
+      <li>Commercial real estate is a relationship business. The tenant rep who follows up, stays connected, and becomes the trusted advisor for every future real estate decision builds a book of business that compounds over time.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A business owner says they do not want to use a tenant rep broker because they do not want to pay the commission. What is the correct response?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> They are right — tenant rep fees come out of the tenant's budget and reduce their negotiating power</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Tenant rep fees are paid by the landlord and already built into every deal — using a tenant rep costs the business owner nothing</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> The tenant pays the fee but it is usually offset by rent savings</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Tenant rep fees are negotiable — some brokers work for free and others charge upfront</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A tenant rep broker is comparing two options for their client. Option A is $28/sqft NNN with $6/sqft in estimated pass-throughs. Option B is $32/sqft Full Service Gross. Which costs more?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Option A — $28/sqft is lower so it is the better deal</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Option B — $32/sqft is always more expensive than $28/sqft</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Option A — $28 + $6 in pass-throughs = $34/sqft total vs $32/sqft FSG, making Option A more expensive despite the lower quoted rate</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> They are the same — NNN and FSG always produce the same total cost</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. What is the first step a tenant rep broker should take when beginning to work with a new tenant client?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Immediately start searching listing platforms for available spaces that match general criteria</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Submit a Letter of Intent to the landlord of the tenant's preferred building</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Gather financial documents — this qualifies the tenant and gets ahead of the landlord's eventual request, saving time and preventing surprises later</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Schedule property tours to show the tenant what is available before defining requirements</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A restaurant tenant is negotiating a 10-year lease. The landlord offers $40/sqft with $50/sqft TI allowance and 2 months free rent — or $36/sqft with no TI and no free rent. For a 2,000 sqft space — which is the better deal for the tenant?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> The $36/sqft option — lower rent always means a better deal over a long lease term</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> The $40/sqft option — $100,000 in TI plus $80,000 in free rent = $180,000 in upfront value that far outweighs the $4/sqft rent difference of $8,000/year</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> They are equal — TI and free rent always cancel out any rent difference</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> The $36/sqft option — avoiding TI means avoiding construction complexity and delays</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Why is following up with tenant clients after their lease is signed considered part of the tenant rep's job — not just optional courtesy?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> It is required by law in most states for licensed commercial brokers to maintain client contact</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> It is courtesy only — the transaction is complete once the lease is signed</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> Businesses grow, expand, relocate, and sublease — staying connected means you become the first call for every future real estate decision, building a book of business that compounds through repeat and referral deals over time</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Landlords require tenant reps to monitor their clients during the first year of the lease</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — CRE-4: Landlord Representation</h3>
+    <p>You have now seen the transaction from the tenant's side. The next module flips the table — covering landlord representation, how to list and market commercial space, how to qualify and evaluate tenants, and how to negotiate from the landlord's position. Understanding both sides of every transaction is what makes a truly complete commercial real estate professional.</p>
+    <a href="cre-module-4.html" class="next-module-cta">CRE-4: Landlord Representation →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="cre-module-2.html" class="btn btn-outline">← CRE-2: The Asset Classes</a>
+  <div class="module-nav-info">
+    <p>Commercial Real Estate Track</p>
+    <strong>Module 3 of 7</strong>
+  </div>
+  <a href="cre-module-4.html" class="btn btn-gold">CRE-4: Landlord Representation →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! Tenant representation fees are paid by the landlord — they are already baked into every commercial deal on the market, just like buyer's agent fees in residential real estate. The business owner pays nothing extra to have a tenant rep in their corner. In fact, going unrepresented often costs more in the form of worse lease terms, missed concessions, and avoidable mistakes.",
+      incorrect: "Not quite. Tenant representation fees are paid by the landlord, not the tenant. They are already built into every deal on the market. A business owner who skips using a tenant rep does not save money — they just ensure the full commission goes to the landlord's broker instead, leaving no one at the table representing their interests."
+    },
+    q2: {
+      correct: "Correct! This is the total occupancy cost calculation every tenant rep must know. Option A: $28/sqft base + $6/sqft in pass-throughs = $34/sqft total occupancy cost. Option B: $32/sqft FSG all-in. Option A actually costs more despite the lower headline rate. Always convert all options to total occupancy cost before comparing — this is one of the most common and costly mistakes unrepresented tenants make.",
+      incorrect: "Not quite. You need to calculate total occupancy cost — not just compare quoted rates. Option A: $28 base + $6 pass-throughs = $34/sqft total. Option B: $32/sqft all-in. Option A costs $2/sqft more than Option B despite its lower quoted rate. This is exactly why lease structure analysis matters and why comparing headline rents without accounting for pass-throughs is a serious mistake."
+    },
+    q3: {
+      correct: "Correct! Gathering financial documents is the right first step — before any searching begins. This accomplishes two critical things: it tells you whether the tenant can actually qualify for the type of space they want, and it gets you ahead of the landlord's inevitable request for financials. Walking into a deal already prepared with a complete financial package signals professionalism, accelerates the process, and prevents surprises that could kill a deal at the wrong moment.",
+      incorrect: "Not quite. The first step in the tenant rep process is gathering financial documents — before searching, before touring, and before any outreach. This qualifies the tenant upfront and gets ahead of the landlord's financial review request. Starting searches before knowing whether the tenant can actually qualify for the space they want wastes everyone's time."
+    },
+    q4: {
+      correct: "Correct! This is the kind of analysis a tenant rep must do for every deal. For a 2,000 sqft space: The $40/sqft option delivers $50/sqft × 2,000 = $100,000 in TI allowance, plus 2 months × ($40 × 2,000 / 12) = approximately $13,333/month × 2 = $26,667 in free rent — total upfront value of roughly $126,667. The rent difference is $4/sqft × 2,000 = $8,000/year. At 10 years that is $80,000 more in rent — but the upfront concessions still make the $40 option significantly better. Brokers who focus only on the rent number miss the real value in a deal.",
+      incorrect: "Not quite. Look at the full picture. For a 2,000 sqft space, the $40/sqft option gives $100,000 in TI allowance (2,000 × $50) plus roughly $13,000+ in free rent. The $36/sqft option gives nothing upfront. The $4/sqft rent difference is $8,000/year — over 10 years that is $80,000 in extra rent, but the $100,000+ in upfront concessions more than offset it. Tenant reps who only negotiate rent miss where most of the value actually lives."
+    },
+    q5: {
+      correct: "Correct! Follow-up is not courtesy — it is business development. Businesses are dynamic: they grow and need more space, they downsize, they open second locations, they want to sublease unused space, they have lease renewals coming up. The tenant rep who stays connected becomes the first call for every future real estate decision. A single client can generate multiple transactions over a decade. This is how top tenant rep brokers build books of business that produce consistent income through repeat deals and referrals rather than constantly chasing new clients.",
+      incorrect: "Not quite. Following up with tenants after lease signing is a core business development activity — not optional courtesy. Businesses evolve constantly: they expand, relocate, sublease, or renew. The broker who stays connected becomes the trusted advisor for every future real estate decision. One well-served tenant can generate multiple transactions over many years. Building long-term client relationships is the most reliable way to create a sustainable book of business in tenant rep brokerage."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you understand tenant representation. You are ready for CRE-4: Landlord Representation.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons above before moving on. Understanding tenant rep fully sets you up to understand landlord rep in CRE-4.';
+    }
+  }
+</script>
+
+</body>
+</html>

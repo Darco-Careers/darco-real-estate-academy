@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 4: Understanding Property Value — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1B4D3E;--forest-mid:#2A6B56;--forest-light:#3A8A6E;--forest-pale:#E8F5EE;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(27,77,62,0.1);--shadow-card:0 2px 16px rgba(27,77,62,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--forest);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(27,77,62,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:40%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(27,77,62,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(27,77,62,0.25);}
+.module-hero{background:linear-gradient(135deg,#0D2820 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Approach cards */
+.approach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin:2rem 0;}
+.approach-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.approach-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.approach-card.a1::before{background:linear-gradient(90deg,var(--forest),var(--forest-mid));}
+.approach-card.a2::before{background:linear-gradient(90deg,var(--gold),var(--gold-light));}
+.approach-card.a3::before{background:linear-gradient(90deg,#4A6FA5,#7A9FD5);}
+.approach-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.approach-num{font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.5rem;}
+.a1 .approach-num{color:var(--forest-mid);}
+.a2 .approach-num{color:#8A6A20;}
+.a3 .approach-num{color:#4A6FA5;}
+.approach-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;}
+.approach-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.approach-card .used-for{font-size:11.5px;font-weight:600;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);color:var(--text-light);}
+
+/* Comp rules */
+.comp-rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0;}
+.comp-rule{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;gap:12px;align-items:flex-start;transition:box-shadow 0.2s;}
+.comp-rule:hover{box-shadow:var(--shadow-card);}
+.rule-num{width:28px;height:28px;background:var(--forest);color:var(--gold-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:700;flex-shrink:0;}
+.rule-content h4{font-weight:600;font-size:0.9rem;color:var(--text-dark);margin-bottom:0.25rem;}
+.rule-content p{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+
+/* Example calc box */
+.calc-box{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.calc-box .calc-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.75rem;}
+.calc-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;}
+.calc-row{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:13.5px;}
+.calc-row:last-child{border-bottom:none;}
+.calc-row .lbl{color:var(--text-mid);}
+.calc-row .val{font-weight:600;color:var(--text-dark);}
+.calc-row.result{font-weight:700;padding-top:0.75rem;border-top:2px solid var(--border);margin-top:4px;}
+.calc-row.result .val{color:var(--forest);font-size:15px;}
+.calc-formula{background:var(--forest-pale);border-radius:8px;padding:0.75rem 1rem;margin:0.75rem 0;font-size:13px;color:var(--forest);font-weight:600;text-align:center;font-family:'Playfair Display',serif;}
+
+/* Steps list */
+.steps-list{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
+.step-item{display:flex;gap:1.25rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.6rem;transition:all 0.25s;}
+.step-item:hover{box-shadow:var(--shadow-card);border-color:rgba(27,77,62,0.2);}
+.step-num{width:36px;height:36px;background:var(--forest);color:var(--gold-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;flex-shrink:0;}
+.step-content h4{font-weight:600;font-size:0.95rem;color:var(--text-dark);margin-bottom:0.3rem;}
+.step-content p{font-size:13.5px;color:var(--text-mid);line-height:1.65;}
+
+/* Tools grid */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin:2rem 0;}
+.tool-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.25s;}
+.tool-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.tool-icon{font-size:26px;margin-bottom:0.6rem;display:block;}
+.tool-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.tool-card p{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+.tool-tag{font-size:10.5px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--forest-mid);margin-top:0.5rem;display:block;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.bp{background:var(--forest-pale);color:var(--forest-mid);}
+.video-badge.dee{background:var(--gold-pale);color:#8A6A20;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deeper link */
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.skills-connection{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.skills-connection h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.skills-connection p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.career-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.career-tag{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--text-dark);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;}
+.btn-forest{background:var(--forest);color:var(--white);}
+.btn-forest:hover{background:var(--forest-mid);}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .approach-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">Career Paths</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="index.html#begin">Core Foundation</a><span class="sep">›</span>
+  <span class="current">Module 4: Understanding Property Value</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Your Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <div class="prog-dot active">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+    <div class="prog-dot locked">9</div>
+    <div class="prog-dot locked">10</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📚 Core Foundation · Module 4 of 10</div>
+    <h1>Understanding <em>Property Value</em></h1>
+    <p>Before you can analyze whether a deal is good or bad, you need to know what a property is actually worth. This is one of the most employable skills in all of real estate — agents use it, investors use it, wholesalers live by it, lenders require it, and developers build entire projects around it.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>40–50 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+      <div class="meta-item">✅ Knowledge check: <span>5 questions</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Why property valuation is <em>the most employable skill in real estate</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Here's a question that gets asked constantly in real estate: <strong>"What's this property worth?"</strong> It sounds simple. But the answer — and more importantly, knowing <em>how</em> to find the answer — is what separates professionals from amateurs in every single real estate career.</p>
+
+    <p class="lesson-text">Think about it from every angle:</p>
+
+    <div class="comp-rules" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+      <div class="comp-rule fade-in">
+        <div class="rule-num" style="background:var(--forest);font-size:18px;width:32px;height:32px;">🏠</div>
+        <div class="rule-content"><h4>Residential Agent</h4><p>Must price listings accurately. Too high — it sits on the market. Too low — the seller loses money and fires you. Pricing is everything.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num" style="background:var(--forest);font-size:18px;width:32px;height:32px;">🏘️</div>
+        <div class="rule-content"><h4>Real Estate Investor</h4><p>Must know what a property is worth before making an offer. Overpay and you destroy your returns before you even start.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num" style="background:var(--forest);font-size:18px;width:32px;height:32px;">🔄</div>
+        <div class="rule-content"><h4>Wholesaler</h4><p>Lives and dies by ARV — After Repair Value. If you get this wrong, your investor buyer won't close and you lose the deal and your reputation.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num" style="background:var(--forest);font-size:18px;width:32px;height:32px;">💵</div>
+        <div class="rule-content"><h4>Mortgage Lender</h4><p>Can only lend a percentage of appraised value. Understanding valuation is essential to knowing whether a loan can be approved.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num" style="background:var(--forest);font-size:18px;width:32px;height:32px;">🏗️</div>
+        <div class="rule-content"><h4>Developer</h4><p>Must estimate what a finished project will sell or rent for before spending a dollar on construction. Valuation is the foundation of every pro forma.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num" style="background:var(--forest);font-size:18px;width:32px;height:32px;">🔧</div>
+        <div class="rule-content"><h4>Contractor</h4><p>Knows which renovations actually add value and which don't. Advising clients on value-add improvements makes you indispensable.</p></div>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"I have never met a truly successful real estate professional — agent, investor, developer, or lender — who couldn't quickly and accurately estimate what a property was worth. It's the single most fundamental skill in this industry. Master this and every door opens faster."</p>
+    </div>
+
+    <p class="lesson-text">In this module you will learn the three formal approaches to valuing real estate, how to run comparable sales, how to calculate ARV, and how to use the income approach to value investment properties. By the end, you'll be able to walk into any property conversation and hold your own on the question of value.</p>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The three approaches to <em>valuing real estate</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Appraisers — the licensed professionals who formally determine property value for lenders — use three distinct approaches depending on the type of property. Every real estate professional should understand all three, because each one tells you something different about value.</p>
+
+    <div class="approach-grid">
+      <div class="approach-card a1 fade-in">
+        <div class="approach-num">Approach 1</div>
+        <h4>Sales Comparison Approach</h4>
+        <p>Value is determined by comparing the subject property to similar properties that have recently sold in the same area — called <strong>comparables or "comps."</strong> Adjustments are made for differences in size, condition, features, and location.</p>
+        <div class="used-for">📌 Used for: Residential homes, condos, vacant land</div>
+      </div>
+      <div class="approach-card a2 fade-in">
+        <div class="approach-num">Approach 2</div>
+        <h4>Income Approach</h4>
+        <p>Value is determined by the income a property generates. The most common method: <strong>NOI ÷ Cap Rate = Property Value</strong>. If the market cap rate for similar properties is 7% and your NOI is $70,000 — the property is worth approximately $1,000,000.</p>
+        <div class="used-for">📌 Used for: Multifamily, commercial, investment properties</div>
+      </div>
+      <div class="approach-card a3 fade-in">
+        <div class="approach-num">Approach 3</div>
+        <h4>Cost Approach</h4>
+        <p>Value is determined by estimating what it would cost to rebuild the property from scratch today — land value plus construction cost, minus depreciation for age and condition. Used when comparable sales are scarce.</p>
+        <div class="used-for">📌 Used for: Unique properties, new construction, special-use buildings</div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Which Approach Matters Most to You?</div>
+      <p>If you're headed toward residential real estate — agent, investor, wholesaler, or flipper — the <strong>Sales Comparison Approach</strong> (running comps) will be your primary tool. If you're headed toward commercial or multifamily investing, the <strong>Income Approach</strong> will dominate your analysis. Most serious investors learn both. The Cost Approach is important to understand but less commonly used in day-to-day deal making.</p>
+    </div>
+
+    <h3 class="sub-title">The Income Approach — a deeper look</h3>
+    <p class="lesson-text">The income approach is particularly powerful because it directly ties value to performance. A property isn't worth what it looks like — it's worth what it produces. Here's how the formula works:</p>
+
+    <div class="calc-formula">Property Value = NOI ÷ Cap Rate</div>
+
+    <div class="calc-box fade-in">
+      <div class="calc-label">📊 Income Approach Example</div>
+      <h4>An 8-unit apartment building</h4>
+      <div class="calc-row"><span class="lbl">Gross Annual Rent (8 units × $1,500 × 12)</span><span class="val">$144,000</span></div>
+      <div class="calc-row"><span class="lbl">Vacancy Loss (5%)</span><span class="val">− $7,200</span></div>
+      <div class="calc-row"><span class="lbl">Effective Gross Income</span><span class="val">$136,800</span></div>
+      <div class="calc-row"><span class="lbl">Operating Expenses (taxes, insurance, mgmt, maintenance)</span><span class="val">− $54,720</span></div>
+      <div class="calc-row"><span class="lbl">Net Operating Income (NOI)</span><span class="val">$82,080</span></div>
+      <div class="calc-row"><span class="lbl">Market Cap Rate for similar buildings in this area</span><span class="val">7%</span></div>
+      <div class="calc-row result"><span class="lbl">Estimated Property Value (NOI ÷ Cap Rate)</span><span class="val">≈ $1,172,571</span></div>
+    </div>
+
+    <p class="lesson-text">This is why improving NOI directly increases property value in commercial real estate. If you raise rents by $100/unit on that 8-unit building — that's $9,600 more in gross annual rent. After accounting for vacancy (5%) and operating expenses (40%), the actual increase in NOI is approximately <strong>$5,472</strong>. At a 7% cap rate, that NOI increase adds roughly <strong>$78,000 in property value</strong> — from a $100/unit rent increase. This is the power of the income approach and why savvy investors focus obsessively on NOI.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Forced Appreciation Formula</div>
+      <p>Increase NOI → Increase property value. This is forced appreciation in mathematical form. Every dollar of <em>net</em> NOI you create — after vacancy and expenses are accounted for — multiplies into significantly more property value at prevailing cap rates. A $100/unit rent increase doesn't add $100 straight to NOI — vacancy and expense ratios reduce the actual impact. But even the net number is powerful: $78,000 in added value from a modest rent increase on 8 units. This is why multifamily investors are so focused on operational improvements.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Seth Ferguson: All 3 valuation approaches — <em>from a multifamily investor's perspective</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Seth Ferguson — a multifamily investor and educator — walks through all three valuation approaches the way a practicing investor actually uses them. He specifically highlights why the comparable approach alone does not work for income-producing properties and why the income approach is the primary tool for commercial and multifamily real estate. Watch this after Lesson 2 to see the three approaches in practical context.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/MmHvV_zo4iI" title="3 Ways To Value Real Estate — Seth Ferguson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge dee">Seth Ferguson · Multifamily Investor</span>
+        <h4>3 Ways To Value Real Estate — Real Estate Valuation Methods</h4>
+        <p>All three valuation approaches — Comparable, Income, and Cost — explained from a multifamily investor's perspective. Seth explains why the income approach is the primary tool for commercial and rental properties, and how rent comps work alongside income analysis. Practical, clear, and investor-focused throughout.</p>
+        <p class="credit">Seth Ferguson · YouTube 2022</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">How to run comps — <em>the 8 rules every investor uses</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Running comparables — "comps" — is the practical skill of finding recently sold similar properties to estimate what a subject property is worth today. It's what agents do when pricing a listing, what wholesalers do to calculate ARV, and what investors do before making any offer. The better you are at running comps, the more accurate your numbers and the more confident your decisions.</p>
+
+    <p class="lesson-text">Jamil Damji — who built the largest wholesale network in the country — uses 8 specific rules when running comps. These rules mirror what licensed appraisers use. Follow them and your value estimates will be defensible and accurate.</p>
+
+    <div class="comp-rules">
+      <div class="comp-rule fade-in">
+        <div class="rule-num">1</div>
+        <div class="rule-content"><h4>Same Subdivision or Neighborhood</h4><p>Comps must be in the same immediate area. A sale two miles away in a different neighborhood tells you almost nothing about your subject property's value.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num">2</div>
+        <div class="rule-content"><h4>Within 200 Square Feet</h4><p>The comp's living space should be within approximately 200 sq ft of your subject property. Bigger or smaller properties sell for different prices per square foot.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num">3</div>
+        <div class="rule-content"><h4>Same Property Type</h4><p>Single-family homes comp against single-family homes. Condos against condos. A condo sale does not tell you what a detached house in the same zip code is worth.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num">4</div>
+        <div class="rule-content"><h4>Similar Age of Construction</h4><p>A 1960s home comps against other 1960s homes — not against a newly built home. Age affects condition, systems, and buyer expectations significantly.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num">5</div>
+        <div class="rule-content"><h4>Sold Within the Last 6 Months</h4><p>Markets move. A sale from two years ago may not reflect today's value at all. Stay within 6 months — 3 months is even better in fast-moving markets.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num">6</div>
+        <div class="rule-content"><h4>Adjust for Property Value Differences</h4><p>If your comp has an extra bathroom or a larger garage, you must adjust the price to account for those differences. Raw comp prices are a starting point, not a final answer.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num">7</div>
+        <div class="rule-content"><h4>Adjust for Location Within the Neighborhood</h4><p>A home on a quiet cul-de-sac is worth more than the same home on a busy road. A property backing a highway or commercial lot adjusts downward. Location within a neighborhood matters.</p></div>
+      </div>
+      <div class="comp-rule fade-in">
+        <div class="rule-num">8</div>
+        <div class="rule-content"><h4>Adjust for ADUs and Basements</h4><p>Accessory Dwelling Units (in-law suites, garage apartments) and finished basements add value — but typically at a lower price per square foot than main living space. Adjust accordingly.</p></div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Step-by-step: How to actually run comps</h3>
+    <div class="steps-list">
+      <div class="step-item fade-in">
+        <div class="step-num">1</div>
+        <div class="step-content"><h4>Gather the subject property details</h4><p>Square footage, bed/bath count, year built, lot size, condition, and any special features. You can't compare what you don't know. Pull this from tax records, the MLS, Zillow, or Redfin.</p></div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="step-num">2</div>
+        <div class="step-content"><h4>Find 3–5 recently sold comparable properties</h4><p>Use Zillow, Redfin, the MLS (if you have access), or PropStream. Filter by location, property type, square footage, and sale date. You want at least 3 solid comps — ideally 5 or more.</p></div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="step-num">3</div>
+        <div class="step-content"><h4>Calculate the price per square foot on each comp</h4><p>Divide the sale price by the square footage. This gives you a normalized number you can use to compare across different-sized properties. Average the price per square foot across your comps.</p></div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="step-num">4</div>
+        <div class="step-content"><h4>Apply the average price per square foot to your subject</h4><p>Multiply your average comp price per square foot by the subject property's square footage. This gives you a baseline value estimate before adjustments.</p></div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="step-num">5</div>
+        <div class="step-content"><h4>Make adjustments</h4><p>Add or subtract value for differences — an extra bathroom, a pool, updated kitchen, larger lot, or inferior condition. Use your judgment and local market knowledge. This is where experience matters most.</p></div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="step-num">6</div>
+        <div class="step-content"><h4>Arrive at a value range — not a single number</h4><p>Good comp analysis produces a range — "this property is worth between $380,000 and $420,000." A single precise number creates false confidence. Work in ranges and refine from there.</p></div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Most Common Comping Mistake</div>
+      <p>Using too few comps or comps that are too different from the subject property. One sale does not make a market. If your three comps are all very different from your subject property in size, age, or condition — keep looking. The quality of your comps determines the quality of your value estimate. Garbage in, garbage out.</p>
+    </div>
+
+    <h3 class="sub-title">Free tools for running comps</h3>
+    <div class="tools-grid">
+      <div class="tool-card fade-in"><span class="tool-icon">🔴</span><h4>Zillow</h4><p>Filter recently sold homes by location, property type, size, and date. The "Recently Sold" feature is your starting point for residential comps.</p><span class="tool-tag">Free · Residential</span></div>
+      <div class="tool-card fade-in"><span class="tool-icon">🔵</span><h4>Redfin</h4><p>Often more accurate than Zillow for recent sales data. Shows days on market, price reductions, and sold history. Strong for residential comps.</p><span class="tool-tag">Free · Residential</span></div>
+      <div class="tool-card fade-in"><span class="tool-icon">🏛️</span><h4>County Tax Records</h4><p>Every property sale is recorded publicly. County property appraiser websites show sale history, square footage, and assessed values for free.</p><span class="tool-tag">Free · All Property Types</span></div>
+      <div class="tool-card fade-in"><span class="tool-icon">📊</span><h4>PropStream</h4><p>Paid tool used by investors and wholesalers. Pulls MLS data, tax records, and sale history in one place. Industry standard for serious investors.</p><span class="tool-tag">Paid · All Property Types</span></div>
+      <div class="tool-card fade-in"><span class="tool-icon">🔑</span><h4>MLS Access</h4><p>The most accurate and complete source of comp data. Only accessible to licensed agents and brokers — another reason getting licensed is valuable even for investors.</p><span class="tool-tag">Licensed Agents Only</span></div>
+      <div class="tool-card fade-in"><span class="tool-icon">🤝</span><h4>Local Agents</h4><p>Building a relationship with an active local agent gives you access to MLS comps. Many agents will run comps for investors they work with regularly — for free.</p><span class="tool-tag">Free with Relationships</span></div>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">🏠 For single-family homes: Jamil Damji's 8 comping rules — <em>how appraisers value residential property</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">This video is specifically for <strong>single-family residential properties</strong> — homes, condos, townhouses, and 1–4 unit properties where comparable sales drive valuation. Jamil Damji walks through the 8 rules appraisers use when comparing properties. If you are headed toward residential agency, wholesaling, or fix-and-flip investing, these rules are essential. Note: these rules do NOT apply to multifamily or commercial properties — for those, see Video 3 below.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/zEXQ7uaiGfA" title="How to Run Comps on a House — BiggerPockets / Jamil Damji" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge bp">BiggerPockets · Single-Family Residential</span>
+        <h4>How to Run Comps on a House — The 8 Appraisal Rules (Single-Family)</h4>
+        <p>Jamil Damji's 8 rules for accurately comping single-family homes — same subdivision, within 200 sq ft, same property type, similar age, sold within 6 months, and how to adjust for differences. The foundation of residential property valuation for agents, wholesalers, and flippers.</p>
+        <p class="credit">BiggerPockets · YouTube 2022</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Third</div>
+    <h2 class="lesson-title">🏢 For multifamily properties: Jamil Damji on comping <em>the income way</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">This video is specifically for <strong>multifamily and commercial properties</strong> — duplexes, fourplexes, apartment buildings, and any income-producing real estate. Jamil makes it crystal clear: the 8 rules from Video 2 do NOT apply here. Multifamily is income-approached. Watch this back to back with Video 2 and the distinction between residential and commercial valuation will be locked in permanently.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/1Ij4XYkQyfE" title="HOW To COMP MULTI FAMILY — Jamil Damji" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge bp" style="background:#E8F0FB;color:#1A4E7A;">Jamil Damji · Multifamily & Commercial</span>
+        <h4>HOW To COMP MULTI FAMILY — Income Approach, NOI & Cap Rates</h4>
+        <p>Jamil explains exactly why the 8 single-family rules do not apply to multifamily — and what to use instead. Covers the income approach, NOI, gross income multipliers, cap rates, and how market demand affects multifamily values. A perfect companion to Video 2.</p>
+        <p class="credit">Jamil Damji · YouTube 2022</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADDITIONAL RESOURCES -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Go Deeper</div>
+    <h2 class="lesson-title">Additional resources to <em>sharpen your valuation skills</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">The three videos above give you a solid foundation. If you want to go deeper on any specific area, here are the best additional resources — each covering a different angle of property valuation.</p>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🏗️ Commercial & Multifamily Valuation</div>
+
+    <div class="deeper-link">
+      <p><strong>Peter Harris — Analyzing Commercial Real Estate with 5 Key Terms</strong><br>Peter Harris walks through NOI, Cash Flow, Cash-on-Cash Return, and Cap Rate with a full deal example. The income approach in action from one of the leading commercial real estate educators in the country.</p>
+      <a href="https://www.youtube.com/watch?v=m8QIzxXRMGA" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>Chad Griffiths — What is a Cap Rate? (A Commercial Real Estate Documentary)</strong><br>Chad Griffiths interviews 12 industry experts to get to the real truth about cap rates — how they're used, where professionals disagree, and what they actually mean in practice. Unusually honest and deeply informative. One of the best cap rate videos on YouTube.</p>
+      <a href="https://www.youtube.com/watch?v=jY1W2gPtQfk" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🏠 Running Comps — Practical Tools</div>
+
+    <div class="deeper-link">
+      <p><strong>Real Estate Skills — How to Comp Real Estate for Beginners (60-min Deep Dive)</strong><br>A comprehensive hour-long guide covering advanced comping techniques, making adjustments, and handling unique properties that don't have many comparable sales. The most thorough beginner comping resource available.</p>
+      <a href="https://www.youtube.com/watch?v=fWYEpS8JIXM" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>Jamil Damji — How to Comp Real Estate Using the Free Zillow App (Live Demo)</strong><br>Jamil demonstrates the 8 comping rules in real time using the free Zillow app — screen share walkthrough on an actual property. Bridges the gap between knowing the rules and actually using them on a live deal.</p>
+      <a href="https://www.youtube.com/watch?v=Q0ZnL-iXt4U" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>BiggerPockets — How to Estimate ARV in 3 Steps (Rookie Podcast)</strong><br>Tony Robinson walks through ARV step by step — gathering property info, pulling comps, and using comp data to estimate after-repair value. Designed specifically for beginners.</p>
+      <a href="https://www.youtube.com/watch?v=0mQgtO9JdnM" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🏡 For Residential Agents: The CMA</div>
+
+    <div class="deeper-link">
+      <p><strong>The Close — How To Do A Comparative Market Analysis (CMA)</strong><br>Written specifically for agents — covers the full CMA process step by step, from pulling comps to presenting value to clients. Comes with a free downloadable CMA guide and template. Essential viewing for anyone on the residential agent path.</p>
+      <a href="https://www.youtube.com/watch?v=30uZoiNRY54" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Calculating ARV — <em>the wholesaler's and flipper's most important number</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">ARV — After Repair Value — is the estimated market value of a property <em>after</em> all planned renovations are completed and it's in full retail condition. It is the starting point for every fix-and-flip analysis and every wholesale deal. Get the ARV right and everything else can work. Get it wrong and the deal collapses — often expensively.</p>
+
+    <h3 class="sub-title">How to calculate ARV</h3>
+    <p class="lesson-text">ARV is simply what your property will be worth once it looks like the nicest, most updated version of itself in that neighborhood. To find it, you run comps — but specifically on <strong>fully renovated, move-in-ready properties</strong> in the same area. You're not looking at what distressed properties sold for. You're looking at what finished, updated properties sold for. That's your ARV target.</p>
+
+    <div class="calc-box fade-in">
+      <div class="calc-label">📊 ARV Calculation Example</div>
+      <h4>A distressed 3-bedroom, 2-bathroom house in need of full renovation</h4>
+      <div class="calc-row"><span class="lbl">Comp 1 — Updated 3/2, 1,450 sqft, sold 2 months ago</span><span class="val">$285,000</span></div>
+      <div class="calc-row"><span class="lbl">Comp 2 — Updated 3/2, 1,380 sqft, sold 3 months ago</span><span class="val">$271,000</span></div>
+      <div class="calc-row"><span class="lbl">Comp 3 — Updated 3/2, 1,510 sqft, sold 1 month ago</span><span class="val">$298,000</span></div>
+      <div class="calc-row"><span class="lbl">Average price per square foot across comps</span><span class="val">≈ $197/sqft</span></div>
+      <div class="calc-row"><span class="lbl">Subject property: 1,450 sqft × $197/sqft</span><span class="val">$285,650</span></div>
+      <div class="calc-row result"><span class="lbl">Estimated ARV</span><span class="val">≈ $285,000</span></div>
+    </div>
+
+    <h3 class="sub-title">The difference between current value and ARV</h3>
+    <p class="lesson-text">The subject property above might be currently worth only $160,000 in its distressed condition. The ARV is $285,000. That $125,000 gap — minus renovation costs and profit margin — is where investors, wholesalers, and flippers make their money. Understanding this gap is the foundation of every value-add real estate strategy.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"The ability to look at a distressed property and accurately estimate what it will be worth after renovation — before spending a dollar on it — is genuinely rare. Most people can't do it. The ones who can are invaluable to investors, brokers, and developers. Learn this skill, practice it constantly, and you will never struggle to find work or opportunity in real estate."</p>
+    </div>
+
+    <h3 class="sub-title">Rent comps — valuing a property's income potential</h3>
+    <p class="lesson-text">For rental properties, you also need to run <strong>rent comps</strong> — comparable rents being charged for similar units in the same area. This tells you what the market will bear in monthly rent, which directly determines your NOI, which directly determines the property's value under the income approach.</p>
+    <p class="lesson-text">Tools for finding rent comps include Zillow Rentals, Apartments.com, Rentometer, and simply calling property managers in the area. A good property manager will tell you exactly what comparable units are renting for — and they'll often become a valuable relationship in the process.</p>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📋 Key Takeaways — Module 4</h3>
+    <ul>
+      <li>Property valuation is the most universally employable skill in real estate — every career path depends on it. Agents use it to price listings, investors use it to make offers, wholesalers use it to calculate ARV, lenders require it to approve loans.</li>
+      <li>There are three formal valuation approaches: the Sales Comparison Approach (comps), the Income Approach (NOI ÷ Cap Rate), and the Cost Approach (replacement cost minus depreciation). Residential professionals primarily use comps. Commercial and multifamily investors primarily use the income approach.</li>
+      <li>Running comps correctly requires following 8 key rules: same neighborhood, within 200 sq ft, same property type, similar age, sold within 6 months, adjusted for value differences, adjusted for location within the neighborhood, and adjusted for ADUs and basements.</li>
+      <li>ARV — After Repair Value — is what a distressed property will be worth after full renovation, based on comps of updated properties. The gap between current distressed value and ARV is where fix-and-flip and wholesale profits live.</li>
+      <li>In commercial real estate, every dollar of additional <em>net</em> NOI you create multiplies into significantly more property value at prevailing cap rates. A $100/unit rent increase on an 8-unit building adds roughly $78,000 in property value at a 7% cap rate — after accounting for vacancy and expenses. This is forced appreciation in mathematical form.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in" id="knowledgeCheck">
+    <h3>✅ Knowledge Check</h3>
+    <p class="kc-sub">5 questions to test your understanding of property valuation.</p>
+
+    <div class="question" id="q1">
+      <p>1. An apartment building generates an NOI of $95,000 per year. The market cap rate for similar buildings in the area is 6.5%. What is the estimated value of the property using the income approach?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> $617,500</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> $950,000</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> $1,461,538</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> $1,250,000</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. You're running comps on a 3-bedroom, 1,500 sq ft house built in 1985. Which of the following would be the BEST comparable to use?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> A 4-bedroom, 2,100 sq ft house built in 1985 that sold 4 months ago, two blocks away.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> A 3-bedroom, 1,450 sq ft house built in 1988 that sold 2 months ago in the same subdivision.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> A 3-bedroom, 1,500 sq ft condo built in 1985 that sold last month in the same zip code.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> A 3-bedroom, 1,600 sq ft house built in 1985 that sold 14 months ago in the same neighborhood.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A distressed property currently worth $140,000 has an estimated ARV of $260,000. Renovation costs are estimated at $55,000. What is the potential profit margin before other costs?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> $120,000</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> $65,000</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> $195,000</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> $55,000</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A landlord raises rents on a 10-unit building by $100/unit/month. The market cap rate is 7%. Approximately how much does this rent increase add to the property's value?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> $12,000</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> $100,000</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> $171,429</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> $85,000</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Which valuation approach would a real estate agent most likely use to price a 3-bedroom residential home for sale?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> The Income Approach — dividing NOI by the cap rate.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> The Cost Approach — estimating the cost to rebuild minus depreciation.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> The Sales Comparison Approach — comparing recent sales of similar homes in the same area.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The Gross Rent Multiplier — dividing the price by the annual rent.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- SKILLS CONNECTION -->
+  <div class="skills-connection fade-in">
+    <h3>🔗 How This Module Connects to Your Career Path</h3>
+    <p>Property valuation is the skill that makes you immediately useful on day one in any real estate career. An agent who can accurately run comps gets hired by serious clients. An investor who understands the income approach makes smarter offers. A wholesaler who nails ARV builds a reputation that generates referrals. A contractor who understands what renovations actually add value becomes an advisor — not just a laborer. Whatever path you're on, this module directly increases your employability.</p>
+    <div class="career-tags">
+      <span class="career-tag">🏠 Residential Agent</span>
+      <span class="career-tag">🏢 Commercial RE</span>
+      <span class="career-tag">🏘️ Investing</span>
+      <span class="career-tag">🔑 Property Management</span>
+      <span class="career-tag">🏗️ Development</span>
+      <span class="career-tag">💵 Mortgage & Lending</span>
+      <span class="career-tag">🔄 Wholesaling</span>
+      <span class="career-tag">🔧 Maintenance & Repair</span>
+      <span class="career-tag">📸 Photography</span>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="fade-in" style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:16px;padding:1.75rem 2rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.4rem;">📖 Study Resource</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;">Real Estate Terms You Need to Be Familiar With</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6;">Keep studying them and do a search online if you need more explanation or examples. You got this — before you know it you'll be fluent in all these terms.</div>
+    </div>
+    <a href="darco-glossary.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;">⬇ Download Glossary</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="module-3.html" class="btn btn-outline">← Module 3</a>
+  <div class="module-nav-info">
+    <p>Core Foundation</p>
+    <strong>Module 4 of 10 — Understanding Property Value</strong>
+  </div>
+  <a href="module-5.html" class="btn btn-gold">Next: Module 5 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: { correct: "Correct! Property Value = NOI divided by Cap Rate. $95,000 divided by 0.065 = $1,461,538. This is the income approach formula - the primary valuation method for commercial and multifamily properties.", incorrect: "Not quite. The income approach formula is: Property Value = NOI divided by Cap Rate. $95,000 divided by 0.065 = $1,461,538. Always divide NOI by the cap rate expressed as a decimal." },
+    q2: { correct: "Correct! Option B is the best comp - same bedroom count, within 200 sq ft, similar age, sold within 6 months, same subdivision. It hits nearly every rule. Option A is too large, Option C is a different property type, and Option D is too old a sale.", incorrect: "Not quite. The best comp should match as many of the 8 rules as possible - same neighborhood, within 200 sq ft, same property type, similar age, sold within 6 months. Option B is the closest match on all criteria." },
+    q3: { correct: "Correct! ARV ($260,000) minus current purchase price ($140,000) minus renovation costs ($55,000) = $65,000 potential profit before closing costs, holding costs, and other expenses.", incorrect: "Not quite. The profit calculation is: ARV minus Purchase Price minus Renovation Costs = $260,000 minus $140,000 minus $55,000 = $65,000. This is before closing costs and other expenses." },
+    q4: { correct: "Correct! 10 units times $100 per month times 12 months = $12,000 additional annual NOI. At a 7% cap rate: $12,000 divided by 0.07 = $171,429 added to property value. This is forced appreciation through the income approach.", incorrect: "Not quite. The additional annual NOI is 10 x $100 x 12 = $12,000. Divided by the 7% cap rate: $12,000 divided by 0.07 = $171,429. Every dollar of NOI increase multiplies into significant value at prevailing cap rates." },
+    q5: { correct: "Correct! Residential agents use the Sales Comparison Approach - comparing the subject property to recently sold similar homes in the same area to establish market value. This is what a Comparative Market Analysis (CMA) is based on.", incorrect: "Not quite. Residential agents use the Sales Comparison Approach (comps/CMA) for pricing homes. The Income Approach is used for investment properties, and the Cost Approach is used for unique or new construction properties." }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1', 'q2', 'q3', 'q4', 'q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5! Excellent - you understand how to value real estate. You are ready for Module 5: Analyzing a Deal.</strong>';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5. Review the lessons above and try again. Property valuation is foundational - Module 5 builds directly on these skills.</strong>';
+    }
+  }
+</script>
+</body>
+</html>

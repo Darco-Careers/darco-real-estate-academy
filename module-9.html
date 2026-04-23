@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 9: Leases & Contracts — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1B4D3E;--forest-mid:#2A6B56;--forest-light:#3A8A6E;--forest-pale:#E8F5EE;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(27,77,62,0.1);--shadow-card:0 2px 16px rgba(27,77,62,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--forest);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(27,77,62,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:90%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(27,77,62,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(27,77,62,0.25);}
+.module-hero{background:linear-gradient(135deg,#0D2820 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Lease type cards */
+.lease-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin:2rem 0;}
+.lease-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden;transition:all 0.25s;}
+.lease-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.lease-card.lc1::before{background:var(--forest);}
+.lease-card.lc2::before{background:var(--gold);}
+.lease-card.lc3::before{background:#4A6FA5;}
+.lease-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.lease-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.lease-card .lease-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-bottom:0.6rem;}
+.lease-card.lc1 .lease-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.lease-card.lc2 .lease-tag{background:var(--gold-pale);color:#8A6A20;}
+.lease-card.lc3 .lease-tag{background:#EBF0FB;color:#2A4A8A;}
+.lease-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.lease-card .lease-who{margin-top:0.75rem;font-size:12px;font-weight:600;color:var(--text-dark);padding:6px 10px;border-radius:8px;background:var(--cream-dark);}
+
+/* Clause cards */
+.clause-list{display:flex;flex-direction:column;gap:1rem;margin:1.75rem 0;}
+.clause-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;}
+.clause-item:hover{box-shadow:var(--shadow-card);}
+.clause-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.clause-content h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;}
+.clause-content p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* Protected classes table */
+.protected-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.protected-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.protected-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.protected-table td:first-child{font-weight:600;color:var(--text-dark);}
+.protected-table tr:hover td{background:var(--forest-pale);}
+.protected-table tr.highlight td{background:var(--gold-pale);}
+
+/* Compare table */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px;}
+.compare-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:center;font-weight:600;}
+.compare-table th:first-child{text-align:left;}
+.compare-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.compare-table td:not(:first-child){text-align:center;font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--forest-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);font-weight:700;color:var(--forest);}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.tc{background:var(--forest-pale);color:var(--forest-mid);}
+.video-badge.lu{background:#EBF0FB;color:#1A4E7A;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#0D2820,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Glossary */
+.glossary-box{background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:14px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.glossary-box p{font-size:14px;color:var(--text-dark);line-height:1.6;}
+.glossary-box p strong{color:var(--forest);}
+.glossary-btn{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+/* Skills */
+.skills-connection{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.skills-connection h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.skills-connection p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.career-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.career-tag{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--text-dark);text-decoration:none;}
+
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .lease-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">Career Paths</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="index.html#begin">Core Foundation</a><span class="sep">›</span>
+  <span class="current">Module 9: Leases &amp; Contracts</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Your Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <a href="module-4.html" class="prog-dot complete" title="Module 4">✓</a>
+    <a href="module-5.html" class="prog-dot complete" title="Module 5">✓</a>
+    <a href="module-6.html" class="prog-dot complete" title="Module 6">✓</a>
+    <a href="module-7.html" class="prog-dot complete" title="Module 7">✓</a>
+    <a href="module-8.html" class="prog-dot complete" title="Module 8">✓</a>
+    <div class="prog-dot active">9</div>
+    <div class="prog-dot locked">10</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📚 Core Foundation · Module 9 of 10</div>
+    <h1>Leases &amp; <em>Contracts</em></h1>
+    <p>Every real estate transaction ends in a document — a lease, a purchase contract, or both. This module teaches you what those documents contain, what every clause means, the difference between commercial and residential leases, how Fair Housing law protects tenants and governs everyone who works in leasing, and what it takes to be a professional in a leasing role.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>45–55 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Why every real estate professional needs to <em>understand leases and contracts</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">A lease is not just a piece of paper — it is the legal foundation of a real estate investment. It defines the relationship between landlord and tenant, protects both parties, governs income, and determines how disputes are resolved. Every single real estate career path in this curriculum intersects with leases and contracts in some form.</p>
+
+    <p class="lesson-text">You do not need to be a lawyer. But you do need to know what you are signing, what you are presenting to tenants, and what protects you when something goes wrong. The investor who does not read their leases will eventually lose money on a lease clause they did not understand. The leasing agent who does not know Fair Housing law will eventually face a complaint. The residential agent who does not understand contingencies will eventually cost a client a deal.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"Every experienced investor I know has a story about a lease clause that cost them money — a renewal option they did not notice, a tenant improvement allowance they did not plan for, an escalation clause that surprised them. Read every document you sign. If you do not understand something, ask before you sign — not after."</p>
+    </div>
+
+    <h3 class="sub-title">Who this module is for</h3>
+    <p class="lesson-text">This module serves two audiences simultaneously. <strong>Investors and owners</strong> need to understand leases to protect their asset, structure deals, and manage tenant relationships. <strong>Leasing professionals</strong> — people who work in the leasing department of an apartment community or commercial property — need to understand leases to do their job, present units professionally, execute agreements correctly, and stay legally compliant. Both audiences are equally important and this module covers both.</p>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Lease fundamentals — <em>residential vs. commercial, and the key clauses that matter</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Not all leases are the same. A residential lease and a commercial lease are entirely different documents with different rules, different protections, and different levels of negotiability. Understanding the difference is foundational for anyone working in real estate.</p>
+
+    <h3 class="sub-title">Residential leases</h3>
+    <p class="lesson-text">Residential leases govern the rental of homes, apartments, and small multifamily units. They are heavily regulated by state and local law — many of the terms are legally required and cannot be waived. Residential tenants have significant legal protections including security deposit limits, required notice periods, habitability standards, and anti-discrimination rules. Most residential leases follow a standard template specific to each state.</p>
+
+    <h3 class="sub-title">Commercial leases</h3>
+    <p class="lesson-text">Commercial leases govern the rental of office, retail, industrial, and multifamily (5+ units) properties. They are far less regulated than residential leases — most terms are negotiable between landlord and tenant. Commercial tenants are expected to be sophisticated enough to protect their own interests. This is why understanding commercial lease structures is critical for any investor, commercial broker, or property manager.</p>
+
+    <h3 class="sub-title">The key clauses in every lease</h3>
+    <p class="lesson-text">Whether residential or commercial, every lease contains a set of core clauses. Understanding each one puts you in control of the document rather than at the mercy of it.</p>
+
+    <div class="clause-list">
+      <div class="clause-item fade-in">
+        <div class="clause-icon">💵</div>
+        <div class="clause-content">
+          <h4>Rent Amount and Due Date</h4>
+          <p>The base rent, when it is due, and the grace period before late fees apply. In commercial leases this may be quoted as a price per square foot annually. In residential it is typically a flat monthly amount.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">📅</div>
+        <div class="clause-content">
+          <h4>Lease Term</h4>
+          <p>The start and end date of the lease. Residential leases are typically 12 months. Commercial leases range from 1 to 10+ years. Longer terms give tenants stability and landlords income security — but reduce flexibility for both parties.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">📈</div>
+        <div class="clause-content">
+          <h4>Rent Escalation</h4>
+          <p>How and when rent increases during the lease term. Residential leases typically have fixed rent for the term with increases only at renewal. Commercial leases often include annual escalations tied to CPI or a fixed percentage — for example, 3% per year. This directly affects NOI and property value.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">🔒</div>
+        <div class="clause-content">
+          <h4>Security Deposit</h4>
+          <p>Money held by the landlord to cover damages or unpaid rent. Residential security deposits are heavily regulated — most states cap the amount and require return within a specific timeframe. Commercial deposits are negotiated and often larger relative to the lease value.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">🔄</div>
+        <div class="clause-content">
+          <h4>Renewal Option</h4>
+          <p>The tenant's right to extend the lease at the end of the term, often at a predetermined rent or formula. For commercial tenants, this is a critical negotiating point — it provides business continuity. For landlords, it locks in income but reduces future flexibility to re-lease at market rates.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">🔧</div>
+        <div class="clause-content">
+          <h4>Maintenance Responsibilities</h4>
+          <p>Who is responsible for what repairs and maintenance. Residential leases typically place structural and major systems maintenance on the landlord. Commercial leases vary widely by lease type — NNN tenants handle most expenses themselves while gross lease tenants rely on the landlord for almost everything.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">🚪</div>
+        <div class="clause-content">
+          <h4>Early Termination and Default</h4>
+          <p>What happens if either party wants to exit the lease early or fails to meet their obligations. This clause defines penalties, notice requirements, and the landlord's rights in the event of non-payment. Understanding the default and eviction process in your state is essential before signing any lease.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Commercial Lease Comparison at a Glance</div>
+      <p>The three commercial lease types — NNN, Full Service Gross, and Modified Gross — differ primarily in who pays operating expenses. In a <strong>Triple Net (NNN)</strong> lease, the tenant pays base rent plus their share of taxes, insurance, and maintenance. In a <strong>Full Service Gross (FSG)</strong> lease, the landlord covers all operating expenses and the tenant pays one all-in rent. A <strong>Modified Gross (MG)</strong> lease is a negotiated hybrid — some expenses go to the landlord, some to the tenant, depending on what both parties agree to. Video 1 below covers all three in detail.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Tyler Cauble: Commercial lease structures — <em>NNN, Full Service Gross, and Modified Gross explained</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Tyler Cauble — commercial real estate broker, investor, and author — breaks down the three main commercial lease structures clearly and concisely. He covers what each lease type means, who pays what, why each structure is used, and the pros and cons for both landlords and tenants. After this video you will be able to participate in any commercial leasing conversation — whether as an investor, agent, property manager, or leasing professional.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/UFZpEu_Z0Do" title="Commercial Lease Structures — NNN, FSG, and MG Explained — Tyler Cauble" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge tc">Tyler Cauble · Commercial Real Estate</span>
+        <h4>Commercial Lease Structures — What NNN, FSG, and MG Mean</h4>
+        <p>A clear, no-fluff breakdown of the three commercial lease types — Triple Net, Full Service Gross, and Modified Gross — with explanations of why each is used and the advantages and disadvantages for both landlords and tenants. Directly reinforces Lesson 2 of this module. About 6 minutes.</p>
+        <p class="credit">Tyler Cauble · YouTube 2020 · 6 min · Evergreen content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Fair Housing law — <em>what every leasing professional must know</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Fair Housing law is the most important legal framework anyone working in leasing needs to understand. Violations can result in <strong>federal civil penalties — tens of thousands of dollars for a first offense, and exceeding $100,000 for repeat violations</strong> — plus loss of a real estate license and lasting damage to your reputation. This is not a theoretical concern — Fair Housing testers regularly call and visit properties specifically to test compliance, and complaints are taken seriously.</p>
+
+    <p class="lesson-text">The Fair Housing Act was established as part of the Civil Rights Act of 1968 and is enforced by HUD — the Department of Housing and Urban Development. It prohibits discrimination in the sale, rental, or financing of housing based on membership in a protected class.</p>
+
+    <h3 class="sub-title">The 7 Protected Classes</h3>
+
+    <table class="protected-table">
+      <thead>
+        <tr>
+          <th>Protected Class</th>
+          <th>What It Means in Practice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>Race</td>
+          <td>Cannot refuse to rent, show, or negotiate based on race — includes steering tenants toward or away from certain neighborhoods</td>
+        </tr>
+        <tr>
+          <td>Color</td>
+          <td>Cannot discriminate based on skin color, regardless of national origin</td>
+        </tr>
+        <tr class="highlight">
+          <td>National Origin</td>
+          <td>Cannot discriminate based on where someone is from — including accents or language</td>
+        </tr>
+        <tr>
+          <td>Religion</td>
+          <td>Cannot steer tenants toward or away from properties based on religious affiliation or community composition</td>
+        </tr>
+        <tr class="highlight">
+          <td>Sex</td>
+          <td>Has been expanded to include sexual orientation and gender identity — cannot discriminate based on any of these</td>
+        </tr>
+        <tr>
+          <td>Familial Status</td>
+          <td>Cannot refuse families with children under 18 — "I prefer a single person, less wear and tear" is a Fair Housing violation</td>
+        </tr>
+        <tr class="highlight">
+          <td>Disability</td>
+          <td>Must make reasonable accommodations. Cannot refuse ESA (emotional support animals) or service animals with valid documentation — pet policies do not apply to disability-related animals</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Biggest Mistakes Leasing Agents Make</div>
+      <p><strong>Following the owner's instructions blindly.</strong> If a property owner tells you they do not want families with children, or do not want a certain type of tenant, you cannot follow those instructions — even if they are the client. You are the licensed professional and you are responsible for Fair Housing compliance regardless of what the owner requests. "The owner told me to" is not a defense.</p>
+      <p style="margin-top:0.75rem;"><strong>Steering in listing descriptions.</strong> Writing "easy walk to the park" discriminates against people who cannot walk. Mentioning the religious character of a neighborhood steers based on religion. Descriptions must use objective facts about the property — not subjective language that implies a preferred tenant profile.</p>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 First Come, First Served — The Safest Standard</div>
+      <p>The safest and most defensible tenant selection process is to use objective, consistently applied criteria — credit score, income requirements, rental history — and select applicants either by best application or first-come-first-served. Document your criteria in writing before you start showing units. Apply them equally to every applicant. Never make exceptions based on any protected class characteristic, and never let an owner override a qualified applicant for a non-objective reason.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Matt Easton: 7 basics of leasing apartments — <em>a framework for leasing professionals</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Matt Easton is the founder of Leasing University and has trained thousands of leasing professionals at major property management companies. In this video he lays out the seven fundamentals that separate professional leasing agents from amateurs: having a process, curating information for each prospect instead of dumping it all at once, distinguishing objections from complaints, solving problems rather than just presenting features, always setting a next step, and thinking like a top performer. If you are heading into a leasing role — or any client-facing real estate career — this framework is your starting point.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/02RMDfiJ2-Q" title="7 Basics of Leasing Apartments — Matt Easton Leasing University" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge lu">Leasing University · Matt Easton</span>
+        <h4>7 Basics of Leasing Apartments</h4>
+        <p>Matt Easton — founder of Leasing University — walks through the seven foundational habits of professional leasing agents: process over trial and error, curating vs. dumping information, objections vs. complaints, problem-solving, always setting a next step, and top-performer mindset. Practical, beginner-friendly, and directly applicable to anyone starting a career in leasing or property management.</p>
+        <p class="credit">Matt Easton · Leasing University · YouTube 2020 · 10 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The leasing professional's role — <em>process, presentation, and protecting yourself</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Leasing is one of the most accessible entry points into a real estate career. Property management companies hire leasing agents with no prior real estate experience — you learn on the job. But the professionals who advance quickly are the ones who treat it like a career from day one, not a temporary job.</p>
+
+    <h3 class="sub-title">The leasing process — from inquiry to signed lease</h3>
+
+    <div class="clause-list">
+      <div class="clause-item fade-in">
+        <div class="clause-icon">📞</div>
+        <div class="clause-content">
+          <h4>Answer the inquiry professionally</h4>
+          <p>Whether by phone, email, or in-person walk-in, your first impression sets the tone. Avoid phrases like "how can I help you" — it is an implied guarantee you may not be able to keep. Instead: "What can I get you information on?" is direct, professional, and sets the right expectation immediately.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">❓</div>
+        <div class="clause-content">
+          <h4>Discover the prospect's real needs</h4>
+          <p>Do not dump every feature of the property on the prospect. Ask questions first. Why are they moving? What is not working about their current situation? What matters most to them — quiet, location, space, price? The answers tell you which two or three things to emphasize. Curate a solution, do not present a catalog.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">🏠</div>
+        <div class="clause-content">
+          <h4>Show the unit strategically</h4>
+          <p>Walk through the unit with the prospect's specific needs in mind. If they mentioned noise was a problem at their current place, point out the building's construction and the quiet of the specific unit. Connect every feature to their stated concern. You are not showing an apartment — you are solving a problem.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">📋</div>
+        <div class="clause-content">
+          <h4>Handle objections — not complaints</h4>
+          <p>Every prospect will have concerns. An objection is something that must be resolved for them to lease. A complaint is normal stress about moving — it does not need to be solved, just acknowledged. Learning to tell the difference saves enormous time and keeps the process moving forward.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">✍️</div>
+        <div class="clause-content">
+          <h4>Application, screening, and lease execution</h4>
+          <p>Once a prospect decides to proceed, they complete an application. You screen them against your objective, pre-established criteria — income requirements, credit score, rental history, references. If approved, you execute the lease agreement together, walk through every clause, answer questions, and collect the security deposit and first month's rent.</p>
+        </div>
+      </div>
+      <div class="clause-item fade-in">
+        <div class="clause-icon">➡️</div>
+        <div class="clause-content">
+          <h4>Always set the next step</h4>
+          <p>Never end any interaction — phone call, tour, or follow-up — without a clear next step agreed upon by both parties. "I will send you the application today and follow up tomorrow morning." Top performers are obsessed with next steps because they know that every conversation without a defined follow-up is a lead that quietly disappears.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">When to use an attorney</h3>
+    <p class="lesson-text">Leases and contracts carry legal weight. As a beginning professional you will be working with standard templates — but as you advance, transactions get more complex. Use an attorney when you are negotiating a non-standard commercial lease, when you are dealing with a dispute or default, when a tenant requests significant modifications to lease terms, or when you are structuring any seller financing or creative deal. The cost of a real estate attorney is almost always less than the cost of a poorly drafted clause.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"The best leasing agents I have ever seen treated every prospect like they were the most important person who walked through the door that day. They had a process, they followed it, and they were genuinely curious about what each person needed. They did not wing it. They did not trust their gut. They trusted their process — and their results showed it."</p>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="glossary-box fade-in">
+    <p><strong>📘 New terms in this module:</strong> NNN / Triple Net Lease, Full Service Gross Lease, Modified Gross Lease, CAM (Common Area Maintenance), Rent Escalation, Renewal Option, Security Deposit, Familial Status, ESA (Emotional Support Animal), HUD, Steering, Habitability — all defined in the Darco Master Glossary.</p>
+    <a href="darco-glossary.pdf" download class="glossary-btn">⬇ Download Glossary</a>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to complete this module or move to Module 10. They are here for students heading into leasing, property management, or residential agency careers where legal compliance and professional leasing skills are essential daily tools.</p>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">⚖️ Fair Housing</div>
+
+    <div class="deeper-link">
+      <p><strong>Cameron Tope — What You Need to Know About Fair Housing Laws</strong><br>A practical, plain-language overview of the 7 protected classes, HUD enforcement, and federal civil penalties that can reach tens of thousands of dollars for a first violation and exceed $100,000 for repeat offenses. Covers the most common violations in leasing — families with children, disability pets and ESA animals, steering in listing descriptions, and the dangers of following owner instructions that violate Fair Housing. Essential viewing for anyone working in leasing or property management.</p>
+      <a href="https://www.youtube.com/watch?v=k_DqrzMIEDY" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">📄 Residential Lease Clauses</div>
+
+    <div class="deeper-link">
+      <p><strong>Smart Money Bro — 15 Key Clauses You Must Include in Every Lease Agreement</strong><br>A comprehensive walkthrough of 15 residential lease clauses every landlord and leasing professional should include — covering rent, late fees, security deposits, pets, maintenance, entry rights, subletting, early termination, and more. Practical and beginner-accessible.</p>
+      <a href="https://www.youtube.com/watch?v=3Vd92Y77_LU" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🏢 Commercial Leasing — Advanced</div>
+
+    <div class="deeper-link">
+      <p><strong>Tyler Cauble — How to Find Commercial Space for Rent</strong><br>The tenant-side perspective on commercial leasing — how businesses find space, what they look for, and how brokers help them navigate the process. Useful for students interested in commercial leasing, tenant representation, or commercial brokerage.</p>
+      <a href="https://www.youtube.com/watch?v=4IuMITVLmgA" target="_blank">Watch →</a>
+    </div>
+
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 9 Key Takeaways</h3>
+    <ul>
+      <li>Every real estate professional needs to understand leases and contracts — not to be a lawyer, but to know what they are signing, what they are presenting, and what protects them when something goes wrong.</li>
+      <li>Residential leases are heavily regulated by state law with significant tenant protections. Commercial leases are largely negotiable between the parties — which makes understanding the terms even more important.</li>
+      <li>The three commercial lease structures — NNN, Full Service Gross, and Modified Gross — differ primarily in who pays operating expenses. The market and property type typically determine which structure is standard in a given situation.</li>
+      <li>Fair Housing law prohibits discrimination based on 7 protected classes — race, color, national origin, religion, sex, familial status, and disability. Violations carry federal civil penalties — tens of thousands for a first offense, over $100,000 for repeat violations — and are enforced by HUD. Leasing agents cannot defer to an owner's discriminatory preferences.</li>
+      <li>Professional leasing is a process — not instinct. The best leasing agents follow a step-by-step system: discover needs, curate solutions, handle objections (not complaints), and always set the next step. Trial and error is not a strategy.</li>
+      <li>Always use an attorney for non-standard commercial lease negotiations, any lease dispute or default situation, and any creative deal structure involving lease modifications or seller financing.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A retail tenant signs a lease at $28 per square foot triple net, with $6 per square foot in pass-throughs. What does the tenant pay, and what do the pass-throughs cover?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> The tenant pays $28/sqft and the landlord covers all expenses including taxes and insurance</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> The tenant pays $28/sqft base rent plus $6/sqft covering their share of common area maintenance, property taxes, and building insurance</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> The tenant pays $34/sqft all-in and the landlord handles all operating expenses</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> The pass-throughs are optional fees the tenant can negotiate away</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A landlord owner tells their leasing agent: "I would prefer not to rent to families with kids — less wear and tear on the unit." What should the leasing agent do?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Follow the owner's instructions — the owner sets the qualification criteria for their own property</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Apply the preference only informally without writing it down</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Refuse to follow this instruction — familial status is a protected class under Fair Housing law and this preference is illegal regardless of what the owner wants</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Follow the instruction since the owner takes legal responsibility for their property</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A tenant has a disability and provides a valid doctor's note for an emotional support animal. The property has a no-pets policy. What must the landlord do?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Enforce the no-pets policy equally — no exceptions allowed under Fair Housing</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Allow the animal but charge the standard pet deposit</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Allow the animal as a reasonable accommodation — ESA animals are not subject to pet policies when the tenant has a valid disability-related documentation</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Ask the tenant to find a different property that allows pets</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. What is the main difference between a Full Service Gross lease and a Triple Net lease?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> A Full Service Gross lease is only used in residential properties while Triple Net is commercial only</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> In a Full Service Gross lease the landlord pays all operating expenses. In a Triple Net lease the tenant pays their share of taxes, insurance, and common area maintenance on top of base rent</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> A Full Service Gross lease has a higher base rent but no pass-throughs, while Triple Net has a lower base rent but unlimited landlord charges</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> They are essentially the same structure with different names used in different markets</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. A leasing agent is showing an apartment to a prospect who mentions their current place is noisy. The agent immediately responds: "Our building is brand new construction — super quiet, you will not hear your neighbors." What did the agent do wrong?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Nothing — highlighting relevant building features is good leasing technique</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> They dumped information instead of asking follow-up questions to understand the real problem — the noise could be from the neighborhood, not the building, which this unit may not solve</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> They spoke too quickly and should have waited for the prospect to finish talking</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> They should not mention construction quality unless the prospect asks directly</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- SKILLS CONNECTION -->
+  <div class="skills-connection fade-in">
+    <h3>🔗 How This Connects to Your Career Path</h3>
+    <p>Leases and contracts are the legal backbone of every real estate career. Investors sign and manage leases on every property they own. Leasing professionals execute leases daily. Residential agents guide buyers and sellers through purchase contracts. Property managers enforce lease terms and handle disputes. Commercial brokers negotiate lease terms for landlords and tenants. Even maintenance professionals work within the boundaries defined by lease agreements when it comes to access, repairs, and tenant responsibilities.</p>
+    <div class="career-tags">
+      <a href="residential-agent.html" class="career-tag">🏠 Residential Agent</a>
+      <a href="real-estate-investing.html" class="career-tag">📈 Real Estate Investing</a>
+      <a href="commercial-real-estate.html" class="career-tag">🏢 Commercial Real Estate</a>
+      <a href="property-management.html" class="career-tag">🔑 Property Management</a>
+      <a href="wholesaling.html" class="career-tag">🔄 Wholesaling</a>
+      <a href="mortgage-lending.html" class="career-tag">💼 Mortgage Lending</a>
+      <a href="real-estate-development.html" class="career-tag">🏗️ Development</a>
+      <a href="maintenance-repair.html" class="career-tag">🔧 Maintenance &amp; Repair</a>
+      <a href="real-estate-photography.html" class="career-tag">📸 Photography</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="module-8.html" class="btn btn-outline">← Module 8: Negotiation &amp; Offers</a>
+  <div class="module-nav-info">
+    <p>Core Foundation</p>
+    <strong>Module 9 of 10</strong>
+  </div>
+  <a href="module-10.html" class="btn btn-gold">Module 10: Running It Like a Business →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! In a Triple Net lease the tenant pays base rent plus pass-throughs — their proportionate share of common area maintenance, property taxes, and building insurance. So $28/sqft base plus $6/sqft in NNN charges means the tenant's total occupancy cost is $34/sqft. The pass-throughs are not optional — they are part of the lease obligation.",
+      incorrect: "Not quite. In a Triple Net (NNN) lease, the tenant pays base rent AND their proportionate share of the three nets: common area maintenance (CAM), property taxes, and building insurance. The $6/sqft pass-throughs are in addition to the $28/sqft base rent, bringing the total effective rent to $34/sqft."
+    },
+    q2: {
+      correct: "Correct! Familial status — which includes families with children under 18 — is one of the 7 protected classes under the Fair Housing Act. A leasing agent cannot follow owner instructions that violate Fair Housing law. The agent is the licensed professional and is legally responsible regardless of what the owner requests.",
+      incorrect: "Not quite. Familial status is a federally protected class under the Fair Housing Act. An owner's preference to exclude families with children is illegal, and a leasing agent cannot follow that instruction. The leasing agent — as the licensed professional — is legally responsible for Fair Housing compliance and cannot use the owner's preference as a defense."
+    },
+    q3: {
+      correct: "Correct! Emotional support animals and service animals are not pets under Fair Housing law. When a tenant has a documented disability and valid medical documentation for an ESA, the landlord must make a reasonable accommodation — regardless of a no-pets policy. Pet deposits do not apply to disability-related animals.",
+      incorrect: "Not quite. Under the Fair Housing Act, disability is a protected class and landlords must make reasonable accommodations. An ESA with valid documentation is not a pet — it is a medical accommodation. The no-pets policy does not apply, and no pet deposit can be charged for a disability-related animal."
+    },
+    q4: {
+      correct: "Correct! In a Full Service Gross lease the landlord covers all operating expenses — utilities, CAM, taxes, insurance, janitorial — and the tenant pays one all-in rent. In a Triple Net lease the tenant pays base rent plus their share of the three nets (CAM, taxes, insurance). The difference is who is responsible for operating expenses.",
+      incorrect: "Not quite. The core difference is who pays operating expenses. Full Service Gross means the landlord pays everything — the tenant pays one all-in rent amount. Triple Net means the tenant pays base rent plus their proportionate share of CAM, property taxes, and building insurance. Both are used in commercial real estate, primarily in different property types."
+    },
+    q5: {
+      correct: "Correct! The agent made the classic amateur mistake of providing information instead of curating a solution. The prospect said their current place is noisy — but that could mean the apartment, the building, or the neighborhood. In this case it was the neighborhood, not the building construction. By jumping to present features without asking follow-up questions, the agent potentially recommended a unit that does not solve the actual problem.",
+      incorrect: "Not quite. The agent made the mistake of providing information instead of first understanding the real problem. When the prospect mentioned noise, the agent should have asked follow-up questions — is the noise from inside the apartment, the building, or the neighborhood? In this case it was the neighborhood. Brand new construction does not solve a neighborhood noise problem. Professionals discover the why behind the complaint before presenting solutions."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you understand leases, contracts, and Fair Housing fundamentals. You are ready for the final module: Module 10: Running It Like a Business.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons above and try again. Lease knowledge and Fair Housing compliance are non-negotiable for every career path in real estate.';
+    }
+  }
+</script>
+
+</body>
+</html>

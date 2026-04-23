@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>CRE Module 5: Breaking Into Commercial Real Estate — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#0F2340;--forest-mid:#1A3A5C;--forest-light:#2A5380;--forest-pale:#EBF0F7;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(15,35,64,0.1);--shadow-card:0 2px 16px rgba(15,35,64,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(15,35,64,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:71%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(15,35,64,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(15,35,64,0.25);}
+.module-hero{background:linear-gradient(135deg,#071828 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Process steps */
+.process-track{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
+.process-track::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--forest-pale);}
+.process-step{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:2rem;position:relative;}
+.process-step:last-child{padding-bottom:0;}
+.ps-circle{width:40px;height:40px;border-radius:50%;background:var(--forest);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:0.95rem;flex-shrink:0;z-index:1;}
+.ps-body{padding-top:6px;}
+.ps-body h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.ps-body .ps-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;background:var(--forest-pale);color:var(--forest-mid);margin-bottom:0.5rem;}
+.ps-body p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+
+/* Job path cards */
+.path-grid{display:flex;flex-direction:column;gap:1.25rem;margin:2rem 0;}
+.path-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s;}
+.path-card:hover{box-shadow:var(--shadow-card);}
+.path-card .pc-header{padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;}
+.path-card.p1 .pc-header{background:linear-gradient(135deg,var(--forest),var(--forest-mid));}
+.path-card.p2 .pc-header{background:linear-gradient(135deg,#2A5C2A,#3A8A3A);}
+.path-card.p3 .pc-header{background:linear-gradient(135deg,#5C3A1A,#8A5A2A);}
+.path-card .pc-icon{font-size:1.6rem;flex-shrink:0;}
+.path-card .pc-header h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.15rem;}
+.path-card .pc-header .pc-sub{font-size:12px;color:rgba(255,255,255,0.7);}
+.path-card .pc-body{padding:1.25rem 1.5rem;}
+.path-card .pc-body p{font-size:13.5px;color:var(--text-mid);line-height:1.75;margin-bottom:0.75rem;}
+.path-card .pc-body p:last-child{margin-bottom:0;}
+.path-stats{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);}
+.path-stat{flex:1;min-width:110px;}
+.path-stat .stat-label{font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:0.2rem;}
+.path-stat .stat-value{font-size:13px;font-weight:600;color:var(--text-dark);}
+
+/* Optimize cards */
+.opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin:2rem 0;}
+.opt-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;transition:all 0.2s;}
+.opt-card:hover{box-shadow:var(--shadow-card);}
+.opt-card .oc-icon{font-size:1.5rem;margin-bottom:0.5rem;display:block;}
+.opt-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.opt-card .oc-path{font-size:11px;font-weight:700;color:var(--forest-mid);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;}
+.opt-card p{font-size:12.5px;color:var(--text-mid);line-height:1.65;}
+
+/* Network table */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px;}
+.compare-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;}
+.compare-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;line-height:1.6;}
+.compare-table td:first-child{font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--forest-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.cre{background:#EBF0FB;color:#1A4E7A;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#071828,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--forest-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .opt-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="commercial-real-estate.html">CRE Career Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="commercial-real-estate.html">Commercial Real Estate</a><span class="sep">›</span>
+  <span class="current">CRE-5: Breaking Into Commercial Real Estate</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">CRE Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="cre-module-1.html" class="prog-dot complete" title="CRE-1">✓</a>
+    <a href="cre-module-2.html" class="prog-dot complete" title="CRE-2">✓</a>
+    <a href="cre-module-3.html" class="prog-dot complete" title="CRE-3">✓</a>
+    <a href="cre-module-4.html" class="prog-dot complete" title="CRE-4">✓</a>
+    <div class="prog-dot active">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Commercial Real Estate Track · Module 5 of 7</div>
+    <h1>Breaking Into <em>Commercial Real Estate</em></h1>
+    <p>You now understand the profession, the asset classes, and both sides of the leasing transaction. This module shifts from what CRE professionals do to how you actually get your foot in the door — what roles to target, how to run the job search in the right order, what firms are looking for, and how to build a network and reputation that makes every future career move easier.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>45–55 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The three best entry-level paths — <em>for people without a real estate background</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">One of the most paralyzing questions for anyone trying to break into commercial real estate is where to even start. The industry has dozens of roles — and many of them require experience to get. But there are three specific entry-level paths that consistently offer a combination of accessibility, skill development, and long-term career optionality for people coming from outside the industry.</p>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Experience Trap</div>
+      <p>Many CRE job postings say "entry level" but require two to three years of industry experience. This is real — and it can feel discouraging. The way around it is not to keep applying to the same roles. It is to target the specific roles that genuinely do not require prior experience, build the technical skills that make you competitive, and use your network to get in front of hiring managers before your resume hits the black hole of online applications.</p>
+    </div>
+
+    <div class="path-grid">
+
+      <div class="path-card p1 fade-in">
+        <div class="pc-header">
+          <div class="pc-icon">📊</div>
+          <div>
+            <h3>Path 1 — Investment Sales Analyst</h3>
+            <div class="pc-sub">Major brokerage firms: CBRE, JLL, Cushman & Wakefield, Eastdil</div>
+          </div>
+        </div>
+        <div class="pc-body">
+          <p>Investment sales analyst roles at major brokerage firms are one of the best entry points into CRE for people without prior industry experience. These firms look for candidates who have demonstrated an ability to work hard over a sustained period and a strong understanding of real estate finance and Excel — but they do not require multiple years of industry experience to get your foot in the door.</p>
+          <p>In this role you will learn how to underwrite deals, read commercial leases, conduct market research, and build a compelling investment thesis. You will also be introduced to a wide range of investment and development firms that are actively buying and selling commercial real estate — building relationships with companies that could be your future employers.</p>
+          <p>A very common career move after two to three years in this role is to go work for a client — typically in an acquisitions role with a more senior title. This is one of the most reliable pathways into real estate private equity.</p>
+          <div class="path-stats">
+            <div class="path-stat"><div class="stat-label">Work Hours</div><div class="stat-value">Long — sell-side culture</div></div>
+            <div class="path-stat"><div class="stat-label">Pay (yr 3–4)</div><div class="stat-value">$150K–$250K+ on top teams</div></div>
+            <div class="path-stat"><div class="stat-label">Exit Options</div><div class="stat-value">Best in class</div></div>
+            <div class="path-stat"><div class="stat-label">Competition</div><div class="stat-value">High but accessible</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="path-card p2 fade-in">
+        <div class="pc-header">
+          <div class="pc-icon">🏦</div>
+          <div>
+            <h3>Path 2 — Debt & Equity Placement Analyst</h3>
+            <div class="pc-sub">Capital markets teams at major brokerage firms and advisory shops</div>
+          </div>
+        </div>
+        <div class="pc-body">
+          <p>Debt and equity placement analyst roles are very similar to investment sales analyst roles but with an emphasis on the capital side of transactions. You will learn how to find both debt and equity for investment and development firms — working on loan terms, lender underwriting, equity partnership structures, and how capital sources affect investment returns.</p>
+          <p>These roles expose you to a wider variety of asset classes than most other analyst positions since you work on deals across all property types. If you are not yet sure which asset class you want to specialize in, this is an excellent path to explore multiple sectors before committing.</p>
+          <p>For students who want to become real estate entrepreneurs — doing their own deals — this path builds deep relationships with capital providers that can fund your future projects.</p>
+          <div class="path-stats">
+            <div class="path-stat"><div class="stat-label">Work Hours</div><div class="stat-value">Long — deadline driven</div></div>
+            <div class="path-stat"><div class="stat-label">Asset Classes</div><div class="stat-value">All types — great exposure</div></div>
+            <div class="path-stat"><div class="stat-label">Exit Options</div><div class="stat-value">Bank lending, in-house capital markets, own firm</div></div>
+            <div class="path-stat"><div class="stat-label">Best For</div><div class="stat-value">Future entrepreneurs</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="path-card p3 fade-in">
+        <div class="pc-header">
+          <div class="pc-icon">🏢</div>
+          <div>
+            <h3>Path 3 — Asset Management Analyst</h3>
+            <div class="pc-sub">Real estate investment firms, REITs, private equity funds</div>
+          </div>
+        </div>
+        <div class="pc-body">
+          <p>Asset management analyst roles at real estate investment firms are significantly less competitive to land than acquisitions analyst positions — which are among the most coveted titles in the industry. If you have limited real estate experience through internships or coursework, targeting these positions can make a lot of sense as a first step.</p>
+          <p>These roles give you an inside look at how properties actually perform after they are acquired — the real numbers, not the clean pro forma projections. This operational insight is enormously valuable for future underwriting, investing, and decision-making. You will see rent rolls, operating statements, capital expenditure decisions, and the actual day-to-day management of a real estate portfolio.</p>
+          <p>The main tradeoff is stability versus upside — asset management roles typically pay less than analyst roles on high-producing brokerage teams, but they offer more predictable hours, greater job security, and a deeper operational education.</p>
+          <div class="path-stats">
+            <div class="path-stat"><div class="stat-label">Work Hours</div><div class="stat-value">Manageable</div></div>
+            <div class="path-stat"><div class="stat-label">Job Security</div><div class="stat-value">High — stable through cycles</div></div>
+            <div class="path-stat"><div class="stat-label">Best For</div><div class="stat-value">Operations-focused learners</div></div>
+            <div class="path-stat"><div class="stat-label">Competition</div><div class="stat-value">Lower than acquisitions</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Break Into CRE: The three best commercial real estate <em>jobs for beginners</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Break Into CRE walks through the three best entry-level commercial real estate jobs for people without a real estate background — investment sales analyst, debt and equity placement analyst, and asset management analyst — covering what each role involves, what skills you build, where you can take your career from each starting point, and which path is best based on your goals and work-life priorities. The April 2025 publication date makes this one of the most current career guidance videos available.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/hf7UdcI215k" title="Best CRE Jobs For Beginners — Break Into CRE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cre">Break Into CRE · YouTube</span>
+        <h4>The BEST Commercial Real Estate Jobs For Beginners</h4>
+        <p>Three specific entry-level paths for people without a real estate background — what each role involves, what you build, where it leads, and the work-life tradeoffs of each. The clearest answer available to the question beginners most often ask: where do I even start? Directly reinforces Lesson 1 of this module.</p>
+        <p class="credit">Break Into CRE · YouTube April 2025 · 8 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The job search in the right order — <em>five steps that actually work</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The single most common mistake people make when trying to break into commercial real estate is starting with the job application and working backwards from there. The resume black hole is real in CRE — if all you are doing is submitting applications online without any prior groundwork, your chances of landing an interview are very low regardless of how qualified you are. The order you do the steps matters as much as the steps themselves.</p>
+
+    <div class="process-track">
+      <div class="process-step fade-in">
+        <div class="ps-circle">1</div>
+        <div class="ps-body">
+          <div class="ps-tag">Start Here</div>
+          <h4>Draft Your Resume First</h4>
+          <p>Before doing anything else, put together a first draft of your resume that tells the story of your background in the context of commercial real estate. This does not need to be perfect — it is a working document. Highlight any Excel skills, financial modeling experience, investment analysis, or analytical work you have done regardless of industry. The goal is to get your story on paper and identify the gaps you need to fill. You will come back and polish this later.</p>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="ps-circle">2</div>
+        <div class="ps-body">
+          <div class="ps-tag">Build Relationships First</div>
+          <h4>Start Informational Interviews</h4>
+          <p>Before you need a job — and this timing is critical — start reaching out for informational interviews with people working in commercial real estate. Begin with alumni from your university since these people are the most likely to respond to cold outreach. Use LinkedIn's advanced search to find alumni working in real estate in the city you are targeting. The goal is not to ask for a job. The goal is to learn, to make yourself a familiar face, and to build relationships that may become a backdoor into job opportunities later. Treat every conversation as a long-term investment.</p>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="ps-circle">3</div>
+        <div class="ps-body">
+          <div class="ps-tag">Build Technical Skills</div>
+          <h4>Learn Real Estate Financial Modeling</h4>
+          <p>Once you have started informational interviews and know which direction you want to go, build your technical skills in real estate financial modeling. This step comes third — not first — because by now you have clarity on which skills to build based on your conversations with people in the industry. Most analyst roles at major firms will require an Excel modeling exam during the interview process. You need to be able to build a simple dynamic pro forma, calculate return metrics, and interpret cash flows. This is not optional — it is a gate you must pass.</p>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="ps-circle">4</div>
+        <div class="ps-body">
+          <div class="ps-tag">Polish</div>
+          <h4>Finalize Your Resume</h4>
+          <p>Now that you have informational interview experience and new technical skills, go back to your resume and add them. Add any Excel courses, financial modeling certifications, or relevant training you have completed. Rewrite your experience bullets to emphasize skills directly applicable to the roles you are targeting. The goal is to make it immediately obvious that you can build a basic financial model and analyze a deal. This is the bar for most entry-level analyst applications.</p>
+        </div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="ps-circle">5</div>
+        <div class="ps-body">
+          <div class="ps-tag">Last Step — Not First</div>
+          <h4>Apply for Open Positions</h4>
+          <p>Only now — after your resume is polished, your network has connections in the industry, and you can pass an Excel modeling exam — do you start applying. With the right keywords on your resume, relationships that may be able to get your foot in the door, and the technical skills to make it through the interview process, you have a dramatically better chance of landing the jobs you are targeting than if you had started here at the beginning.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Break Into CRE</div>
+      <p>"This may seem counter-intuitive but by leaving the actual application process as the last step in the job search you're making sure you're putting your best foot forward in those applications and also making sure you have seasoned relationships that may be able to help you during this final step."</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Break Into CRE: A step-by-step guide to breaking into <em>commercial real estate</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Break Into CRE walks through a proven five-step job search process — in the right order — for breaking into commercial real estate. Covers why the order matters, why starting with applications is backwards, how to use informational interviews to build relationships before you need them, why building technical skills comes third not first, and how to finalize your resume before firing off applications. One of the clearest and most practical career entry guides available.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/YaSrJJVXqso" title="Step-By-Step Guide to Breaking Into CRE — Break Into CRE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cre">Break Into CRE · YouTube</span>
+        <h4>A Step-By-Step Guide To Breaking Into Commercial Real Estate</h4>
+        <p>Five steps in the right order — draft resume, build network via informational interviews, build technical skills, finalize resume, then apply. The key insight: most people do these in the wrong order and significantly hurt their chances. Directly reinforces Lesson 2 of this module.</p>
+        <p class="credit">Break Into CRE · YouTube June 2023 · 10 min · Evergreen content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Building your network from zero — <em>the relationships that open doors</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Commercial real estate is a relationship business at every level — from landing your first job to closing your biggest deal decades from now. The network you build in your first two to three years creates advantages that compound for the rest of your career. Start early, invest consistently, and treat every connection as a long-term relationship rather than a transactional interaction.</p>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Networking Channel</th><th>How to Use It</th><th>Best For</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>University Alumni</td>
+            <td>Search LinkedIn for alumni working in CRE in your target city. Cold outreach to alumni has significantly higher response rates than cold outreach to strangers. Ask for a 20-minute phone call to learn about their career path.</td>
+            <td>First connections — most likely to respond and help</td>
+          </tr>
+          <tr>
+            <td>ULI & NAIOP Events</td>
+            <td>Urban Land Institute and NAIOP Commercial Real Estate Development Association run local chapters in most major markets. Join their Young Leaders groups — typically for professionals under 30 or 35. These events create genuine relationships, not just business card exchanges.</td>
+            <td>Building a community of peers and mentors simultaneously</td>
+          </tr>
+          <tr class="highlight">
+            <td>LinkedIn</td>
+            <td>Use it to research people before informational interviews, stay visible to your network with thoughtful posts, and find connections at target firms. The advanced search is powerful for finding alumni and people in specific roles at specific companies.</td>
+            <td>Research, visibility, staying top of mind</td>
+          </tr>
+          <tr>
+            <td>Informational Interviews</td>
+            <td>30-minute conversations with people working in roles you want. Ask about their career path, what they wish they knew when starting, and what skills they look for in candidates. Do not ask for a job. The goal is to learn and to become a familiar name.</td>
+            <td>Converting cold contacts into warm advocates</td>
+          </tr>
+          <tr class="highlight">
+            <td>Peer Groups</td>
+            <td>If you do not have a local ULI or NAIOP chapter, start your own small group of peers working toward similar goals. Meet monthly to discuss what each person is working on, challenges they are running into, and goals for the next few months.</td>
+            <td>Accountability, referrals, long-term business partners</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Get to Your City Quickly</div>
+      <p>Commercial real estate relationships are built locally — not nationally. If you are living in one city and targeting a career in another, every month you delay your move is a month of network-building time you cannot recover. The relationships you build in the first two to three years of your career in a specific market will compound for decades. If you move markets later in your career you essentially reset your local network. Choose your target city as early as possible and get there.</p>
+    </div>
+
+    <h3 class="sub-title">What firms are actually looking for in entry-level candidates</h3>
+    <p class="lesson-text">Understanding what hiring managers at major CRE firms genuinely evaluate helps you prepare the right things rather than the conventional wisdom about what looks good on paper.</p>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>What They Say</th><th>What They Actually Mean</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>"Strong Excel skills"</td>
+            <td>Can you build a dynamic pro forma from scratch in Excel for Windows without a template? Can you pass a timed modeling exam under pressure? This is tested — not assumed from your resume.</td>
+          </tr>
+          <tr>
+            <td>"Strong work ethic"</td>
+            <td>Are you willing to work long hours, respond quickly, and deliver high-quality work under tight deadlines without complaining? The sell-side brokerage culture is demanding — they want evidence you can handle it.</td>
+          </tr>
+          <tr class="highlight">
+            <td>"Team player"</td>
+            <td>Will you support senior producers without ego, do the unglamorous work, and make everyone around you more productive? Early career in brokerage involves a lot of supporting others before you lead.</td>
+          </tr>
+          <tr>
+            <td>"Knowledge of real estate finance"</td>
+            <td>Do you understand cap rates, NOI, cash-on-cash return, IRR, debt service coverage ratio, and how they interact? Can you explain how a change in cap rate affects property value? These are tested in interviews.</td>
+          </tr>
+          <tr>
+            <td>"ARGUS experience a plus"</td>
+            <td>ARGUS Enterprise is the institutional software standard for underwriting complex office, retail, and industrial leases. It is not required for most entry-level roles — but knowing what it is, who uses it, and that you are actively learning it will set you apart. Explore free training at Altus Group's ARGUS University if you are targeting roles at major leasing or investment firms.</td>
+          </tr>
+          <tr class="highlight">
+            <td>"Passion for real estate"</td>
+            <td>Have you done anything — on your own time, with your own resources — to demonstrate genuine interest in real estate before applying? Reading books, taking courses, analyzing deals, attending events. Interest without action is not convincing.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">What to optimize for — <em>money, prestige, lifestyle, or impact</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Before making major decisions about which path to pursue, get clear on what you are actually trying to optimize for in your professional life. Many people enter the industry without answering this question honestly — and then find themselves on a career path that is in direct conflict with what they actually want. Each goal requires a different strategy and leads to a very different daily life.</p>
+
+    <div class="opt-grid">
+      <div class="opt-card fade-in">
+        <span class="oc-icon">💰</span>
+        <h4>Money</h4>
+        <div class="oc-path">→ Institutional brokerage or real estate entrepreneurship</div>
+        <p>Brokerage commissions on eight and nine-figure assets can be enormous. Top producing brokers in major gateway markets earn seven figures. Real estate entrepreneurship through promoted interest on profitable deals can also be very high. Both paths require multiple years of difficult, uncertain work before the income becomes significant. If money is the goal — this is the path. Accept the bumpy ride.</p>
+      </div>
+      <div class="opt-card fade-in">
+        <span class="oc-icon">🏆</span>
+        <h4>Prestige</h4>
+        <div class="oc-path">→ Large private equity firms or REITs in major gateway markets</div>
+        <p>Big institutional names — Blackstone, Brookfield, Starwood, AvalonBay — carry significant career credential value. Jobs in acquisitions and asset management at these firms are salaried with capped upside but extraordinary employability and exit options. The tradeoff: you are likely not maximizing pay, but you are maximizing the brand value of your resume.</p>
+      </div>
+      <div class="opt-card fade-in">
+        <span class="oc-icon">⚖️</span>
+        <h4>Lifestyle</h4>
+        <div class="oc-path">→ Lending, portfolio management, research, or valuation roles</div>
+        <p>Roles at large banks or insurance companies in real estate lending, portfolio management roles at investment firms, and research or valuation positions at advisory firms offer relatively set hours without heavy travel. The larger and more established the company — and the less it relies on transaction income — the more lifestyle-friendly the culture tends to be.</p>
+      </div>
+      <div class="opt-card fade-in">
+        <span class="oc-icon">🌱</span>
+        <h4>Impact</h4>
+        <div class="oc-path">→ Affordable housing, urban redevelopment, ESG roles</div>
+        <p>For those who want to make a tangible community impact, roles in affordable housing development, urban redevelopment, and ESG-focused investment firms exist and are meaningful. These are highly specialized roles that require seeking out specific organizations. The sooner you identify this goal and start moving toward relevant experience, the faster you progress.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Prepare for the Hard Years</div>
+      <p>Regardless of which path you choose, expect the first five to seven years to be genuinely difficult. In brokerage that looks like 80-hour weeks building BOVs and OMs while cold calling to build a client base. In acquisitions it looks like grinding through rent rolls and T-12s in Excel to learn to spot value. In every path there is a period of doing a lot of work that is not glamorous before the career starts producing what you came for. If you know that going in and you have an end goal in mind, you will get through that period. People who do not expect it often do not.</p>
+    </div>
+
+    <h3 class="sub-title">The fork in the road — plan to take a risk</h3>
+    <p class="lesson-text">Around the five to seven year mark in almost every CRE career, you will face a decision that requires betting on yourself — either striking out on your own, or taking on a new role with significantly more responsibility than you are comfortable with. Both require a real leap of faith. The professionals who build the most successful careers are almost always the ones who took that leap rather than staying in the safe lane indefinitely. Plan for it. Expect it. And when it comes, you want to already know which direction you are heading.</p>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to move to CRE-6. They are here for students who want more perspective on building a long-term CRE career before moving into the technical underwriting module.</p>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Break Into CRE — Starting Over In Real Estate In 2025</strong><br>What Break Into CRE would do differently if starting a CRE career from scratch in 2025 — after the difficult 2023–2024 market downturn. Covers the four things to optimize for, why things will inevitably get hard in the first five to seven years, and why you should plan in advance to take a significant risk at the fork-in-the-road moment. Honest and practical.</p>
+      <a href="https://www.youtube.com/watch?v=frVGpXncq70" target="_blank">Watch →</a>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Break Into CRE — Career Advice For My 22-Year Old Self</strong><br>Four principles the Break Into CRE founder wishes he had implemented when starting his career: get to your target city as quickly as possible, pick a product type to specialize in early, treat every company you work for like your own, and go to as many real estate events as you can while you are young and your calendar is still free. Practical and honest — especially the section on ULI and NAIOP young leaders groups.</p>
+      <a href="https://www.youtube.com/watch?v=Szmcm71KvkA" target="_blank">Watch →</a>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Break Into CRE — How to Build a CRE Network Quickly</strong><br>The three most impactful networking strategies for breaking into commercial real estate — leveraging university alumni affiliations, getting offline to ULI and NAIOP events, and ending every conversation with the one question that opens doors. Already recommended in the How to Show Up page but worth revisiting now with a specific CRE career-building lens.</p>
+      <a href="https://www.youtube.com/watch?v=obDP1WfrSKM" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 CRE-5 Key Takeaways</h3>
+    <ul>
+      <li>The three best entry-level paths for people without a CRE background are: investment sales analyst at a major brokerage firm (best exit opportunities), debt and equity placement analyst (best cross-sector exposure), and asset management analyst (most accessible, stable, deep operational learning).</li>
+      <li>The job search has a right order: draft resume first, build your network through informational interviews second, build technical skills third, finalize your resume fourth, apply last. Most people do the opposite — starting with applications — and wonder why they get no responses.</li>
+      <li>Building a CRE network starts with university alumni — they are the most likely to respond and help. Expand from there to ULI and NAIOP local events and young leaders groups. Get to your target city as quickly as possible — commercial real estate relationships are built locally and compound over decades.</li>
+      <li>Firms test for: ability to build a dynamic financial model in Excel under time pressure, genuine work ethic and ability to perform under demanding conditions, knowledge of fundamental real estate finance metrics, and evidence of genuine interest in real estate demonstrated through actions — not just stated interest.</li>
+      <li>Get clear on what you are optimizing for before choosing a path: money points toward brokerage or entrepreneurship, prestige points toward major institutional firms, lifestyle points toward lending and portfolio roles, and impact points toward affordable housing and ESG-focused organizations.</li>
+      <li>Every CRE career path involves five to seven years of genuinely hard work before it starts producing what you came for. Know that going in. Plan for the fork-in-the-road moment around year five to seven when you will need to bet on yourself. The professionals who build the most successful careers are almost always the ones who took that leap.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A person with three years of consulting experience and strong Excel skills wants to break into commercial real estate. They have submitted 40 online applications in the past month and received no responses. What is most likely the problem?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Their Excel skills are not strong enough — they need more technical training before applying</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> They are applying to the wrong firms — they should focus on smaller local boutique shops instead of major firms</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> They started with applications — the last step — before building the network, relationships, and polished resume that make applications competitive in a field with no centralized hiring database</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Consulting experience is not relevant to commercial real estate and they need to start over</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. What is the primary advantage of an investment sales analyst role at a major brokerage firm over an asset management analyst role for someone trying to maximize their long-term career options?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Investment sales analyst roles pay more from day one — higher starting salaries than asset management</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Investment sales analyst roles build deep transaction skills and direct relationships with major investment firms — creating a clear pathway to acquisitions roles and real estate private equity after two to three years</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Investment sales analyst roles have better work-life balance and more predictable hours</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Investment sales analyst roles are easier to land since they have lower competition than asset management roles</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. According to the step-by-step job search process, why should informational interviews come BEFORE building technical financial modeling skills?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Informational interviews can replace the need for financial modeling skills entirely</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Informational interviews give you clarity on exactly which skills to build — so you build the right things efficiently rather than guessing and learning skills that may not be relevant to your target role</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Firms will not grant informational interviews to candidates who already have financial modeling skills</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Financial modeling skills are not actually required for most entry-level commercial real estate roles</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A recent graduate is not sure which asset class they want to specialize in and is primarily motivated by wanting to eventually do their own deals. Which of the three entry-level paths best fits these goals?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Asset management analyst — the most stable path with the best work-life balance for someone still figuring out their direction</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Investment sales analyst — the best exit opportunities of any entry-level path</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Debt and equity placement analyst — exposes you to all asset classes on a daily basis while building relationships with capital providers who could fund your own future deals</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> All three paths are equivalent — the choice does not matter at the entry level</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Someone wants to maximize their income potential over a 20-year commercial real estate career and is willing to accept an uncertain and difficult first five years to get there. Which path does Break Into CRE recommend?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Acquisitions roles at large private equity firms — the highest salary and best brand name recognition</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> Asset management roles — the most job security and reliable income over a long career</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> Institutional brokerage or real estate entrepreneurship — both paths have uncapped income potential with top producers earning seven figures, and both require accepting difficult early years with uncertain income</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Lending roles at large banks — the most stable income with the highest long-term earnings potential</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — CRE-6: Commercial Underwriting in Depth</h3>
+    <p>You know where you are going and how to get there. The next module goes deep on the analytical skill that separates good CRE professionals from great ones — commercial underwriting. How to build a pro forma, how to stress-test assumptions, what the most common underwriting mistakes look like, and how to develop the judgment that protects you from the deals that look good on paper but are not.</p>
+    <a href="cre-module-6.html" class="next-module-cta">CRE-6: Commercial Underwriting in Depth →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="cre-module-4.html" class="btn btn-outline">← CRE-4: Landlord Representation</a>
+  <div class="module-nav-info">
+    <p>Commercial Real Estate Track</p>
+    <strong>Module 5 of 7</strong>
+  </div>
+  <a href="cre-module-6.html" class="btn btn-gold">CRE-6: Underwriting in Depth →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! The resume black hole is real in commercial real estate. If you start with online applications before building your network, polishing your resume around CRE-specific skills, and developing relationships that can get your application noticed, your response rate will be very low regardless of your qualifications. The right order is: draft resume → informational interviews → build technical skills → finalize resume → apply. Applications come last, not first.",
+      incorrect: "Not quite. The most likely problem is that they started at the wrong end of the process. The resume black hole is real in commercial real estate. Submitting 40 online applications without prior network-building, relationship development, or a resume specifically tailored around CRE skills and keywords almost always produces few or no responses. The right approach is to build the network and relationships first — so applications come through warm connections rather than cold submission portals."
+    },
+    q2: {
+      correct: "Correct! Investment sales analyst roles at major firms like CBRE, JLL, and Eastdil place you in daily contact with the major investment and development firms that are actively buying and selling commercial real estate. After two to three years, it is very common for analysts to move to work for one of those client firms — typically in an acquisitions role. This is one of the most reliable pathways into real estate private equity. Asset management roles offer more stability but fewer direct pathways to acquisitions and private equity.",
+      incorrect: "Not quite. The primary advantage of investment sales analyst roles is not pay or work hours — it is exit opportunities. These roles put you in daily contact with major investment and development firms as clients. After two to three years, analysts commonly move to work for those clients in acquisitions roles. This pathway into real estate private equity is one of the most reliable in the industry. Asset management roles offer more stability but different and generally fewer pathways to the most sought-after roles on the principal side."
+    },
+    q3: {
+      correct: "Correct! Informational interviews come before technical skills specifically because they give you clarity and efficiency. By talking to people already in the roles you are targeting, you learn exactly which skills they test for, which tools they use, and which product types you should focus on. This means when you start building technical skills in step three, you are building the right skills for your specific target — not guessing at what might be useful. Without that clarity you risk spending months learning tools and techniques that do not apply to the jobs you want.",
+      incorrect: "Not quite. The reason informational interviews come before technical skill-building is efficiency and clarity. By talking to people working in your target roles first, you learn exactly which skills they test for, which software they use, and which analytical approaches matter for your specific path. Then when you start building technical skills you are building the right ones. Without that context you risk spending significant time learning things that may not apply to your target role."
+    },
+    q4: {
+      correct: "Correct! Debt and equity placement analyst roles are the best fit for this person for two specific reasons. First, these roles expose you to all asset classes daily — multifamily, industrial, retail, office, and more — since you work on capital raising for deals across all property types. This lets you explore multiple sectors before committing to one. Second, these roles build deep relationships with lenders and equity partners — the capital providers who will eventually fund your own deals when you go out on your own. For someone who wants to eventually do their own deals, this is the most strategically aligned starting point.",
+      incorrect: "Not quite. For someone who wants to eventually do their own deals and is not yet sure which asset class to specialize in, debt and equity placement analyst roles are the best fit. These roles expose you to all asset classes on a daily basis — since you work on capital raising for deals across all property types — and they build direct relationships with the lenders and equity partners who will eventually fund your own projects. This combination of cross-sector exposure and capital provider relationships is uniquely aligned with the goal of becoming a real estate entrepreneur."
+    },
+    q5: {
+      correct: "Correct! For someone optimizing for maximum long-term income who is willing to accept a difficult and uncertain early period, Break Into CRE is clear: institutional brokerage and real estate entrepreneurship are the two paths that offer the highest earning potential. Top producing brokers in major gateway markets earn seven figures in commissions. Real estate entrepreneurs can generate promoted interest on multiple profitable deals that produces similarly extraordinary income. Both paths require years of hard work with uncertain income before reaching that level — but if money is the primary goal and you can survive the early years, nothing else compares.",
+      incorrect: "Not quite. For maximum long-term income potential with willingness to accept a difficult early period, Break Into CRE points clearly to institutional brokerage or real estate entrepreneurship. Brokerage commissions on large transactions can be enormous — top producers in major markets earn seven figures annually. Real estate entrepreneurship through promoted interest on profitable deals can produce similarly high income at scale. Both paths require multiple difficult years before reaching that level, but neither acquisitions roles at PE firms nor lending roles produce comparable income potential over a full career."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you understand how to break into commercial real estate. You are ready for CRE-6: Commercial Underwriting in Depth.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons and videos above before moving on. Understanding how to navigate the career entry process is foundational to making good decisions in CRE-6 and beyond.';
+    }
+  }
+</script>
+
+</body>
+</html>

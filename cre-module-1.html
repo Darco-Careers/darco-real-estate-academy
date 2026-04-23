@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>CRE Module 1: The Commercial Real Estate Profession — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#0F2340;--forest-mid:#1A3A5C;--forest-light:#2A5380;--forest-pale:#EBF0F7;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(15,35,64,0.1);--shadow-card:0 2px 16px rgba(15,35,64,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(27,77,62,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:14%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(27,77,62,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(27,77,62,0.25);}
+.module-hero{background:linear-gradient(135deg,#071828 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Path cards */
+.path-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.path-card{border-radius:14px;padding:1.5rem;border:1.5px solid var(--border);background:var(--white);transition:all 0.25s;}
+.path-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.path-card.sales{border-top:4px solid var(--gold);}
+.path-card.analyst{border-top:4px solid var(--forest);}
+.path-card h4{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.path-card .path-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-bottom:0.75rem;}
+.path-card.sales .path-tag{background:var(--gold-pale);color:#8A6A20;}
+.path-card.analyst .path-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.path-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.path-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.6;}
+.path-card ul li::before{content:'→';color:var(--forest-mid);font-weight:700;flex-shrink:0;}
+
+/* Commission breakdown */
+.commission-flow{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2rem 0;}
+.commission-flow h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:1.5rem;text-align:center;}
+.flow-steps{display:flex;flex-direction:column;gap:0;}
+.flow-step{display:flex;gap:1.25rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid var(--border);}
+.flow-step:last-child{border-bottom:none;}
+.flow-step .fs-num{width:34px;height:34px;border-radius:50%;background:var(--forest);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:0.9rem;flex-shrink:0;}
+.flow-step .fs-content h5{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.flow-step .fs-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.flow-step .fs-amount{margin-left:auto;text-align:right;flex-shrink:0;}
+.flow-step .fs-amount .amount{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--forest);}
+.flow-step .fs-amount .basis{font-size:11px;color:var(--text-light);}
+
+/* Career progression */
+.progression-track{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
+.progression-track::before{content:'';position:absolute;left:17px;top:0;bottom:0;width:2px;background:var(--forest-pale);}
+.prog-step{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:1.75rem;position:relative;}
+.prog-step:last-child{padding-bottom:0;}
+.prog-step .ps-dot{width:36px;height:36px;border-radius:50%;border:3px solid var(--forest-pale);background:var(--white);display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;}
+.prog-step.active .ps-dot{background:var(--forest);border-color:var(--forest);}
+.prog-step.active .ps-dot span{color:var(--gold-light);}
+.prog-step .ps-dot span{font-size:14px;}
+.prog-step .ps-content{padding-top:4px;}
+.prog-step .ps-content h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.prog-step .ps-content .ps-timeline{font-size:11px;font-weight:700;color:var(--forest-mid);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.3rem;}
+.prog-step .ps-content p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.prog-step .ps-content .ps-pay{display:inline-block;font-size:12px;font-weight:600;color:var(--forest);background:var(--forest-pale);padding:2px 10px;border-radius:8px;margin-top:0.4rem;}
+
+/* Broker vs Investor compare */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px;}
+.compare-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.compare-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;}
+.compare-table td:first-child{font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--forest-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);}
+
+/* Firm name cards */
+.firms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:1.75rem 0;}
+.firm-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center;transition:all 0.2s;}
+.firm-card:hover{box-shadow:var(--shadow-card);}
+.firm-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.firm-card .firm-type{font-size:11px;font-weight:600;color:var(--forest-mid);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.4rem;}
+.firm-card p{font-size:12px;color:var(--text-mid);line-height:1.5;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.cre{background:#EBF0FB;color:#1A4E7A;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#071828,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+/* Skills */
+.skills-connection{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.skills-connection h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.skills-connection p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;margin-top:0.5rem;}
+.next-module-cta:hover{background:var(--forest-mid);}
+
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .path-grid{grid-template-columns:1fr;}
+  .firms-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="commercial-real-estate.html">CRE Career Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="commercial-real-estate.html">Commercial Real Estate</a><span class="sep">›</span>
+  <span class="current">CRE-1: The Commercial Real Estate Profession</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">CRE Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <div class="prog-dot active">1</div>
+    <div class="prog-dot locked">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Commercial Real Estate Track · Module 1 of 7</div>
+    <h1>The Commercial Real Estate <em>Profession</em></h1>
+    <p>You have the foundation. Now it is time to understand the industry you are entering as a professional. This module covers what commercial real estate brokers and agents actually do day to day, how the profession is structured, how brokers get paid, and the critical difference between working as a broker versus working as an investor or principal.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>40–50 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What commercial real estate brokers <em>actually do</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most people outside the industry picture a commercial real estate broker as someone who shows buildings and collects a commission check. The reality is far more complex — and far more interesting. A commercial real estate broker is simultaneously a market analyst, a financial underwriter, a negotiator, a marketer, a relationship manager, and a deal strategist. On any given day they might be researching comparable sales, building a financial model, cold calling property owners, presenting to an institutional client, or walking a vacant warehouse with a tenant looking for space.</p>
+
+    <p class="lesson-text">The common thread across all of it is this: <strong>commercial real estate brokers facilitate transactions between buyers and sellers, landlords and tenants, borrowers and lenders.</strong> They are intermediaries — their job is to bring the two sides of a transaction together and guide both parties through to closing.</p>
+
+    <h3 class="sub-title">The two sides of every transaction</h3>
+    <p class="lesson-text">Every commercial real estate transaction has two sides — and brokers can represent either or both. Understanding this is foundational to understanding how the profession works.</p>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Transaction Type</th>
+            <th>Sell Side / Landlord Side</th>
+            <th>Buy Side / Tenant Side</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>Sales Transaction</td>
+            <td>Listing Broker — represents the seller, markets the property, brings buyers</td>
+            <td>Buyer's Broker — represents the buyer, searches for properties, negotiates terms</td>
+          </tr>
+          <tr>
+            <td>Leasing Transaction</td>
+            <td>Landlord Rep — represents the building owner, markets vacant space, qualifies tenants</td>
+            <td>Tenant Rep — represents the business looking for space, searches the market, negotiates the lease</td>
+          </tr>
+          <tr class="highlight">
+            <td>Debt &amp; Equity</td>
+            <td>Capital Markets — represents the borrower or sponsor, shops the deal to lenders and equity partners</td>
+            <td>Lender / LP — evaluates deals presented by capital markets brokers</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Where Most CRE Careers Start</div>
+      <p>The majority of commercial real estate professionals start their careers on the brokerage side — either in a sales/leasing role or as an analyst supporting senior brokers. Brokerage is where you build market knowledge, transaction experience, and the professional network that will carry your entire career. Even professionals who eventually move to the investment or development side often started in brokerage first.</p>
+    </div>
+
+    <h3 class="sub-title">The major commercial brokerage firms</h3>
+    <p class="lesson-text">Commercial real estate brokerage ranges from massive global firms with thousands of brokers to boutique local shops with five people. Each has a different culture, different training infrastructure, and different deal flow. Understanding the landscape helps you decide where to aim when you are ready to enter the industry.</p>
+
+    <div class="firms-grid">
+      <div class="firm-card fade-in">
+        <h4>CBRE</h4>
+        <div class="firm-type">Global · Full Service</div>
+        <p>Largest commercial real estate firm in the world. Strong analyst programs, institutional clients, all asset classes.</p>
+      </div>
+      <div class="firm-card fade-in">
+        <h4>JLL</h4>
+        <div class="firm-type">Global · Full Service</div>
+        <p>Jones Lang LaSalle. One of the top global firms with strong tenant rep, capital markets, and property management divisions.</p>
+      </div>
+      <div class="firm-card fade-in">
+        <h4>Cushman &amp; Wakefield</h4>
+        <div class="firm-type">Global · Full Service</div>
+        <p>Major global player with strong presence in office, industrial, and retail leasing and investment sales.</p>
+      </div>
+      <div class="firm-card fade-in">
+        <h4>Eastdil Secured</h4>
+        <div class="firm-type">National · Capital Markets</div>
+        <p>Focused exclusively on investment sales and debt/equity placement. Elite firm — extremely competitive to break into.</p>
+      </div>
+      <div class="firm-card fade-in">
+        <h4>Marcus &amp; Millichap</h4>
+        <div class="firm-type">National · Investment Sales</div>
+        <p>Dominant in middle-market investment sales. Known for its commission-only sales culture and intensive training program.</p>
+      </div>
+      <div class="firm-card fade-in">
+        <h4>Boutique Local Firms</h4>
+        <div class="firm-type">Local · Specialized</div>
+        <p>Thousands of local and regional firms specializing in specific markets or asset classes. Often offer faster responsibility and client contact for new brokers.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The two career paths — <em>sales vs. analyst</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">When you enter commercial real estate brokerage, there are two distinct paths. Understanding them before you start is one of the most important career decisions you will make — because they lead to very different daily experiences, compensation structures, and long-term opportunities. And as you will learn, switching between them later is much harder than choosing correctly at the start.</p>
+
+    <div class="path-grid">
+      <div class="path-card sales fade-in">
+        <h4>The Sales Path</h4>
+        <div class="path-tag">100% Commission · No Base</div>
+        <ul>
+          <li>Generate your own clients from day one</li>
+          <li>Heavy cold calling — often 50–100 calls per day</li>
+          <li>Middle market deals — typically $2M to $10M range</li>
+          <li>Work under a senior broker mentor early on</li>
+          <li>Little analytical work — relationship and sales focused</li>
+          <li>Income can be zero for 18–24 months to start</li>
+          <li>Upside is uncapped — top producers earn 7 figures</li>
+          <li>Common firms: Marcus &amp; Millichap, Matthews, smaller shops</li>
+        </ul>
+      </div>
+      <div class="path-card analyst fade-in">
+        <h4>The Analyst Path</h4>
+        <div class="path-tag">Base Salary + Bonus</div>
+        <ul>
+          <li>Support senior producers with underwriting and pitch materials</li>
+          <li>Build financial models, BOVs, and offering memorandums</li>
+          <li>Work on large institutional deals from day one</li>
+          <li>Extremely competitive to land — long interview process</li>
+          <li>Long hours and very high expectations for work product</li>
+          <li>Top analysts on high-producing teams can earn $200K+ by year 3–4</li>
+          <li>Best exit opportunities — easy transition to principal side</li>
+          <li>Common firms: CBRE, JLL, Cushman, Eastdil</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The One-Way Door</div>
+      <p>Moving from the analyst path to the principal side (acquisitions, asset management) is common and relatively easy — your skills translate directly. But moving from the sales/commission path to the analyst path or the principal side generally requires resetting your career clock by two to four years. If your long-term goal is to work in acquisitions or investment management, the analyst path is the right starting point even though it is harder to get into.</p>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Break Into CRE</div>
+      <p>"If I could go back and start over, I would do everything in my power to start my career in brokerage — specifically in an analyst role at a major firm. The transaction volume, the network you build, and the exit opportunities it opens are unmatched at any other entry point in the industry."</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Break Into CRE: The truth about starting <em>in commercial real estate brokerage</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Break Into CRE cuts through the noise on what starting a commercial real estate brokerage career actually looks like — covering both the sales path and the analyst path, what to expect in your first three to five years, the upside potential if you can survive the early grind, what the day-to-day looks like on each path, and the difference in exit opportunities between the two. This is the most honest and current overview of the CRE brokerage profession available for someone just entering the industry.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/GKpCkDZaSS8" title="The TRUTH About Starting in Commercial Real Estate Brokerage — Break Into CRE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cre">Break Into CRE · YouTube 2025</span>
+        <h4>The TRUTH About Starting in Commercial Real Estate Brokerage</h4>
+        <p>A clear-eyed overview of the two brokerage career paths, what to realistically expect in years one through five, the income upside for those who make it, and the critical difference in exit opportunities between the sales and analyst tracks. One of the most current and honest CRE career videos available. Directly reinforces Lesson 2 of this module.</p>
+        <p class="credit">Break Into CRE · YouTube October 2025 · 8 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">How commercial brokers get paid — <em>the commission structure explained</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Understanding how commercial real estate commissions work is essential whether you are entering the profession or hiring a broker. The structure is different from residential real estate — the amounts are larger, the splits are more complex, and the timing of when you actually get paid is longer.</p>
+
+    <h3 class="sub-title">How the commission is calculated</h3>
+    <p class="lesson-text">On a sale transaction, the total commission is typically negotiated as a percentage of the sale price. Commercial transaction commission rates are generally lower than residential — typically in the range of 1% to 4% depending on the deal size, property type, and market. Larger deals generally have lower percentage rates but still produce substantial dollar amounts.</p>
+
+    <p class="lesson-text">On a lease transaction, the commission is calculated differently — typically as a percentage of the total lease value over the lease term, or as a dollar amount per square foot. For example, a broker might earn 4% of the total rent over a five-year lease, or $8 per square foot on a 10,000 square foot office lease.</p>
+
+    <div class="commission-flow">
+      <h4>How a $2,000,000 Sale Commission Flows</h4>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="fs-num">1</div>
+          <div class="fs-content">
+            <h5>Total Commission Agreed</h5>
+            <p>Seller agrees to pay a 4% commission on a $2,000,000 sale. This is negotiated in the listing agreement before the property goes to market.</p>
+          </div>
+          <div class="fs-amount"><div class="amount">$80,000</div><div class="basis">4% of $2M</div></div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">2</div>
+          <div class="fs-content">
+            <h5>Co-Brokerage Split</h5>
+            <p>The listing broker offers half to a buyer's broker who brings a qualified buyer. This is called a co-brokerage arrangement and is standard in commercial real estate.</p>
+          </div>
+          <div class="fs-amount"><div class="amount">$40,000</div><div class="basis">Each broker's gross</div></div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">3</div>
+          <div class="fs-content">
+            <h5>Broker Split with Their Firm</h5>
+            <p>Each broker then splits their $40,000 with their brokerage firm. A typical split for a mid-level broker might be 60/40 — broker keeps 60%, firm gets 40%.</p>
+          </div>
+          <div class="fs-amount"><div class="amount">$24,000</div><div class="basis">Broker's net on one side</div></div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">4</div>
+          <div class="fs-content">
+            <h5>Team Split (if applicable)</h5>
+            <p>If the broker works on a team, there may be an additional split with team members who contributed to the deal — analysts, junior brokers, or a team lead.</p>
+          </div>
+          <div class="fs-amount"><div class="amount">Varies</div><div class="basis">Team dependent</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Commission Splits Improve With Experience</div>
+      <p>New brokers at major firms often start with splits as low as 50/50 with their firm. As they close more deals and prove their production, splits improve — 60/40, 70/30, and eventually some senior producers negotiate 80/20 or even 90/10 arrangements. At boutique firms, splits are often more favorable from the start but you trade that for less training infrastructure and deal flow.</p>
+    </div>
+
+    <h3 class="sub-title">When you actually get paid</h3>
+    <p class="lesson-text">This is one of the most important realities for anyone entering the sales path of commercial real estate brokerage. <strong>You do not get paid until a deal closes.</strong> From the moment you first contact a potential client to the moment a commission check hits your account, the timeline on a commercial transaction is typically six months to over a year. During that entire period you may be working the deal with no income from it. This is why the first 18 to 24 months in a commission-only role are financially the hardest — you are building a pipeline of deals that have not yet closed.</p>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Plan Your Finances Before You Start</div>
+      <p>Anyone entering a 100% commission brokerage role should have at minimum 12 months of living expenses saved before starting. 18 to 24 months is more realistic. This is not pessimism — it is the financial reality of the business model. The brokers who wash out in their first year almost always cite financial pressure as the reason they could not stay long enough for their pipeline to produce. The ones who make it planned for the dry period in advance.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Break Into CRE: What commercial real estate brokerage <em>is really like</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">This video goes deeper on the analyst path specifically — walking through what a real estate analyst at a major brokerage firm actually does every day, how compensation works and scales over time, and the fork in the road that comes around year four or five: stay in brokerage and become a full producer, or move to the principal side in acquisitions or capital markets. The optionality this career creates — and the one-way door between paths — is explained clearly and honestly.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/hBlOdqZUvfw" title="What Commercial Real Estate Brokerage is REALLY Like — Break Into CRE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cre">Break Into CRE · YouTube</span>
+        <h4>What Commercial Real Estate Brokerage is REALLY Like (Hours, Pay, Exit Opportunities)</h4>
+        <p>A detailed breakdown of the analyst role at major brokerage firms — day-to-day responsibilities, the sell-side culture, pay trajectory ($200K+ within 3–4 years on a top team), the fork in the road between staying in brokerage vs. moving to the principal side, and why brokerage is the best entry point for maximum career optionality. Directly reinforces Lessons 2 and 3 of this module.</p>
+        <p class="credit">Break Into CRE · YouTube 2022 · Evergreen content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Broker vs. investor — <em>understanding the difference</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">One of the most important distinctions to understand when entering commercial real estate is the difference between working as a broker and working as an investor or principal. These are two fundamentally different relationships to the same asset — and confusing them leads to confusion about career goals, compensation expectations, and daily work life.</p>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Dimension</th><th>Broker / Agent</th><th>Investor / Principal</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>Relationship to Property</td>
+            <td>Facilitates transactions on behalf of clients — does not own the property</td>
+            <td>Owns the property — has equity at stake in the outcome</td>
+          </tr>
+          <tr>
+            <td>How They Make Money</td>
+            <td>Commission fees paid at closing — typically by the seller or landlord</td>
+            <td>Cash flow, appreciation, loan paydown, and tax benefits over time</td>
+          </tr>
+          <tr class="highlight">
+            <td>Income Timing</td>
+            <td>Paid at closing — no ownership income between transactions</td>
+            <td>Ongoing monthly cash flow plus proceeds at sale</td>
+          </tr>
+          <tr>
+            <td>Capital Required</td>
+            <td>None to start — you earn before you invest</td>
+            <td>Significant — down payments, reserves, closing costs</td>
+          </tr>
+          <tr class="highlight">
+            <td>Risk Profile</td>
+            <td>Income risk — no deals means no income</td>
+            <td>Capital risk — bad deals can result in financial loss</td>
+          </tr>
+          <tr>
+            <td>Primary Skills</td>
+            <td>Relationships, market knowledge, sales, negotiation, financial analysis</td>
+            <td>Deal sourcing, underwriting, financing, asset management, capital raising</td>
+          </tr>
+          <tr class="highlight">
+            <td>Typical Career Entry</td>
+            <td>No capital required — start immediately after licensing</td>
+            <td>Typically requires saved capital, relationships, and track record first</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">They are not mutually exclusive</h3>
+    <p class="lesson-text">Many of the most successful commercial real estate professionals are both brokers and investors. They started in brokerage — building market knowledge, transaction experience, and a professional network — and then used those advantages to begin investing on the side as capital allowed. The broker who intimately knows a submarket, has relationships with every major owner, and sees every deal before it hits the market has an enormous advantage as an investor compared to someone who approaches the same market as an outsider.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"The smartest entry into commercial real estate investing I have ever seen is through brokerage first. You learn the market from the inside. You see hundreds of deals before you buy one. You build the relationships that give you access to off-market opportunities. And you earn income while you are building the knowledge and capital to eventually invest. That is not a coincidence — it is a strategy."</p>
+    </div>
+
+    <h3 class="sub-title">Your career progression in CRE brokerage</h3>
+
+    <div class="progression-track">
+      <div class="prog-step active fade-in">
+        <div class="ps-dot"><span>🎓</span></div>
+        <div class="ps-content">
+          <div class="ps-timeline">Year 0–1 — Entry</div>
+          <h4>Analyst / Junior Broker</h4>
+          <p>Learning the market, supporting senior producers, building your first contacts. On the sales path — heavy cold calling and prospecting. On the analyst path — underwriting, modeling, pitch materials.</p>
+          <div class="ps-pay">$40K–$80K base (analyst) · $0–$40K (commission)</div>
+        </div>
+      </div>
+      <div class="prog-step fade-in">
+        <div class="ps-dot"><span>📈</span></div>
+        <div class="ps-content">
+          <div class="ps-timeline">Year 2–4 — Building</div>
+          <h4>Associate / Senior Analyst</h4>
+          <p>Starting to close your own deals or lead analytical work. Building a client roster and book of business. Network begins to produce inbound deal flow. Income starts to accelerate significantly.</p>
+          <div class="ps-pay">$100K–$250K+ depending on production</div>
+        </div>
+      </div>
+      <div class="prog-step fade-in">
+        <div class="ps-dot"><span>🏆</span></div>
+        <div class="ps-content">
+          <div class="ps-timeline">Year 5+ — Fork in the Road</div>
+          <h4>Full Producer OR Move to Principal Side</h4>
+          <p>Stay in brokerage as a commission producer — uncapped income, significant autonomy. Or transition to acquisitions, capital markets, or asset management on the principal side using your brokerage experience and network as leverage.</p>
+          <div class="ps-pay">$300K–$1M+ (brokerage) · $150K–$400K+ (principal side)</div>
+        </div>
+      </div>
+      <div class="prog-step fade-in">
+        <div class="ps-dot"><span>🌟</span></div>
+        <div class="ps-content">
+          <div class="ps-timeline">Year 10+ — Senior Level</div>
+          <h4>Senior Producer / Principal / Partner</h4>
+          <p>Top producers at major firms. Team leads. Partners at boutique shops. Some transition to starting their own firms or investing full-time using the capital and network built over a decade in brokerage.</p>
+          <div class="ps-pay">Seven figures for top producers in major markets</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to move to CRE-2. They are here for students who want to build a deeper understanding of the commercial real estate career landscape before diving into the asset class specializations.</p>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>Break Into CRE — 5 Things To Know Before Getting Into Commercial Real Estate</strong><br>Five genuinely useful career insights that most people learn the hard way: why all CRE firms use Excel for Windows, how easy it is to get pigeonholed early in your career, why brokers out-earn their principal side peers in the early years, the income volatility that comes with commission-based roles in down cycles, and why CRE is a small world where your reputation follows you everywhere.</p>
+      <a href="https://www.youtube.com/watch?v=TCrbDdIvHY8" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>Break Into CRE — How to Build a Real Estate Network Quickly</strong><br>The three most impactful strategies for building your professional network in commercial real estate — leveraging university alumni affiliations, getting offline to ULI and NAIOP events, and ending every conversation with the question that opens doors. Already covered in the How to Show Up page but worth revisiting with a CRE-specific lens now that you understand the industry structure.</p>
+      <a href="https://www.youtube.com/watch?v=obDP1WfrSKM" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 CRE-1 Key Takeaways</h3>
+    <ul>
+      <li>Commercial real estate brokers are intermediaries — they facilitate transactions between buyers and sellers, landlords and tenants, borrowers and lenders. They do not own the properties they work with.</li>
+      <li>There are two distinct career entry paths in CRE brokerage: the sales path (100% commission, heavy prospecting, middle market deals) and the analyst path (base salary + bonus, institutional clients, analytical work, competitive to enter).</li>
+      <li>The analyst path offers significantly more exit opportunities. Moving from analyst to the principal side is common. Moving from the sales path to analyst or principal side requires resetting your career clock by two to four years.</li>
+      <li>Commission flows from the seller or landlord through co-brokerage splits between the two sides, then through firm splits with the individual broker. A new broker on a $2M transaction might net $24,000 after splits — which sounds good until you realize it may take 12 to 18 months of work to get there.</li>
+      <li>You do not get paid until a deal closes. The first 18 to 24 months in a commission-only role are financially the hardest. Plan accordingly — have 12 to 18 months of living expenses saved before starting.</li>
+      <li>Broker and investor are not mutually exclusive. The most successful path into commercial real estate investing often runs through brokerage first — building the market knowledge, deal flow access, and network that gives you an enormous advantage when you start investing your own capital.</li>
+      <li>Commercial real estate is a small world. Your reputation — how you treat clients, colleagues, and counterparties — follows you for your entire career. Start building it intentionally from day one.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A commercial real estate broker representing the seller on a transaction is called a:</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Tenant representative</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Listing broker — they represent the seller, market the property, and bring buyers</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Principal — they own equity in the property being sold</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Capital markets broker — they place debt and equity on behalf of borrowers</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A new broker on the 100% commission sales path should realistically expect:</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Strong income from month one — deals close quickly in commercial real estate</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> A base salary that covers living expenses while building their book of business</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Little or no income for 18 to 24 months while building a pipeline — financial planning before starting is essential</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Guaranteed commissions from their firm's existing deal flow during the ramp-up period</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. On a $3,000,000 commercial sale with a 4% total commission split equally between listing broker and buyer's broker, and the listing broker has a 60/40 split with their firm — how much does the listing broker net?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> $120,000 — the full commission</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> $60,000 — their half of the total commission before the firm split</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> $36,000 — their half of the total commission ($60,000) multiplied by their 60% firm split</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> $24,000 — the broker only earns on the final closing adjustment</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Why is the analyst path considered to have better exit opportunities than the 100% commission sales path?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> The analyst path pays more, making it easier to save money for future opportunities</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Analyst roles build deep financial modeling skills and institutional client relationships — both of which are required to transition to acquisitions or asset management on the principal side</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Analyst roles are less competitive so it is easier to find a new job after leaving</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> The sales path has a non-compete clause that prevents brokers from moving to other firms</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. What is the key advantage a commercial real estate broker has when they eventually decide to start investing their own capital?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Brokers receive discounts on purchase prices from sellers as a professional courtesy</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Brokers do not need to pay commissions on their own purchases saving significant money</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Years of brokerage gives them deep market knowledge, access to off-market deals before anyone else sees them, and established relationships with every major owner, lender, and operator in their market</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Brokerage commissions can be reinvested tax-free into real estate purchases</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="skills-connection fade-in">
+    <h3>⏭️ What's Next — CRE-2: The Asset Classes</h3>
+    <p>Now that you understand how the commercial real estate profession is structured — the paths, the firms, the compensation, and the broker vs. investor distinction — the next module dives into the five major asset classes: office, retail, industrial, multifamily, and land. Understanding what makes each one different is the foundation of specialization — and specialization is how the best commercial real estate professionals build lasting careers and competitive advantages.</p>
+    <a href="cre-module-2.html" class="next-module-cta">CRE-2: The Asset Classes →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="commercial-real-estate.html" class="btn btn-outline">← CRE Career Track</a>
+  <div class="module-nav-info">
+    <p>Commercial Real Estate Track</p>
+    <strong>Module 1 of 7</strong>
+  </div>
+  <a href="cre-module-2.html" class="btn btn-gold">CRE-2: The Asset Classes →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! The broker representing the seller is called the listing broker. They sign a listing agreement with the seller, market the property, qualify potential buyers, and negotiate on the seller's behalf. Their fiduciary responsibility is to the seller — not the buyer.",
+      incorrect: "Not quite. The broker representing the seller is called the listing broker. They are hired by the seller to market the property and bring qualified buyers. The buyer's broker (or buyer's representative) represents the other side of the transaction."
+    },
+    q2: {
+      correct: "Correct! The 100% commission sales path in commercial real estate is financially brutal in the early months. It typically takes 18 to 24 months — sometimes longer — before a new broker's pipeline produces consistent closings and income. Anyone entering this path without adequate savings to survive the ramp-up period is at serious risk of washing out before their deals start closing.",
+      incorrect: "Not quite. The 100% commission sales path in commercial real estate produces little or no income for the first 18 to 24 months. Commercial deals take 6 to 12 months from first contact to closing, and new brokers spend their early months building a pipeline that has not yet produced. Financial planning — having 12 to 18 months of savings — is essential before starting."
+    },
+    q3: {
+      correct: "Correct! Total commission: $3,000,000 × 4% = $120,000. Split equally between listing and buyer's broker: $60,000 each. Listing broker's 60% firm split: $60,000 × 60% = $36,000. This is the broker's net before any team splits and before taxes. On a single transaction this looks attractive — but remember it may represent 12 to 18 months of work.",
+      incorrect: "Not quite. Work through it step by step: Total commission = $3,000,000 × 4% = $120,000. Co-brokerage split (50/50) = $60,000 to the listing broker's side. Firm split (broker keeps 60%) = $60,000 × 0.60 = $36,000. The listing broker nets $36,000 before team splits and taxes."
+    },
+    q4: {
+      correct: "Correct! Analyst roles at major firms like CBRE, JLL, and Cushman build deep real estate financial modeling skills and put analysts in daily contact with major private equity firms and institutions as clients. Both of these — the technical skills and the institutional relationships — are exactly what acquisitions and asset management roles on the principal side require. The commission sales path builds sales skills and relationship skills but generally not the analytical depth required for principal side roles.",
+      incorrect: "Not quite. The analyst path's exit opportunities come from two specific things it builds: deep financial modeling skills (required for acquisitions and asset management roles) and direct relationships with institutional clients (who often hire the analysts they work with). The commission sales path builds valuable sales and relationship skills but typically lacks the analytical depth required to transition to the principal side of the business."
+    },
+    q5: {
+      correct: "Correct! A broker who has spent years in a specific market has three enormous advantages as an investor that an outsider cannot replicate: they know the market deeply from the inside, they see off-market deals before anyone else through their broker relationships, and they have established personal relationships with every major owner, lender, and operator in their market. These advantages translate directly into better deal access, better pricing, and better financing terms when they start investing their own capital.",
+      incorrect: "Not quite. The real advantage brokers have as investors is informational and relational — not financial. Years of brokerage builds deep market knowledge, access to off-market deal flow before it hits public platforms, and established relationships with every major player in the market. These advantages give broker-turned-investors access to better deals at better prices than someone approaching the same market as an outsider."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you understand how the commercial real estate profession is structured. You are ready for CRE-2: The Asset Classes.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons above and try again. Understanding the profession structure is foundational to everything else in this track.';
+    }
+  }
+</script>
+
+</body>
+</html>

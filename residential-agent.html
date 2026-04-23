@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Residential Agent & Broker — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0D6E6E; --teal-mid: #1A8A8A; --teal-light: #2AACAC; --teal-pale: #EAF6F6;
+    --gold: #C9A84C; --gold-light: #E8C97A; --gold-pale: #FBF5E6;
+    --cream: #FAF8F3; --cream-dark: #F0EBE0;
+    --text-dark: #1A1A18; --text-mid: #4A4A42; --text-light: #8A8A7A;
+    --white: #FFFFFF; --border: rgba(13,110,110,0.1);
+    --shadow-card: 0 2px 16px rgba(13,110,110,0.07); --shadow-soft: 0 4px 24px rgba(13,110,110,0.1);
+    --forest: #1B4D3E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+
+  nav { background: var(--teal); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo { width: 36px; height: 36px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; color: var(--teal); }
+  .nav-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--white); }
+  .nav-tagline { font-size: 11px; color: var(--gold-light); letter-spacing: 0.5px; font-weight: 300; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-back { background: rgba(255,255,255,0.12) !important; color: rgba(255,255,255,0.9) !important; padding: 7px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); }
+  .nav-back:hover { background: rgba(255,255,255,0.22) !important; }
+
+  .breadcrumb { background: var(--teal-pale); border-bottom: 1px solid var(--border); padding: 0.75rem 2.5rem; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-light); }
+  .breadcrumb a { color: var(--teal-mid); text-decoration: none; font-weight: 500; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb .sep { opacity: 0.4; }
+  .breadcrumb .current { color: var(--teal); font-weight: 600; }
+
+  .hero { background: linear-gradient(135deg, #084F4F 0%, var(--teal) 55%, var(--teal-mid) 100%); padding: 5rem 2.5rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -40%; right: -10%; width: 55%; height: 200%; background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3rem; }
+  .track-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(--gold-light); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.25rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 1rem; }
+  .hero h1 em { color: var(--gold-light); font-style: italic; }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.72); max-width: 560px; line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+  .hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .hero-stat .number { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
+  .hero-stat .label { font-size: 11.5px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+  .hero-visual { width: 180px; height: 180px; background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.2); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 72px; flex-shrink: 0; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+  .section-eyebrow { font-size: 11.5px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal-mid); margin-bottom: 0.6rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--text-dark); line-height: 1.25; margin-bottom: 1.1rem; }
+  .section-title em { color: var(--teal); font-style: italic; }
+  .gold-divider { width: 50px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1rem 0 1.5rem; }
+  .lead-text { font-size: 1.05rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1.25rem; max-width: 720px; }
+
+  .highlight-box { background: var(--teal-pale); border-left: 4px solid var(--teal-mid); border-radius: 0 12px 12px 0; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+  .highlight-box p { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--teal); font-style: italic; line-height: 1.7; }
+
+  /* ROLES GRID */
+  .roles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+  .role-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: all 0.25s; position: relative; overflow: hidden; }
+  .role-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--teal-mid); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+  .role-card:hover { box-shadow: var(--shadow-card); transform: translateY(-2px); }
+  .role-card:hover::before { transform: scaleX(1); }
+  .role-icon { font-size: 26px; margin-bottom: 0.75rem; display: block; }
+  .role-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--teal); margin-bottom: 0.4rem; }
+  .role-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* FLORIDA BOX */
+  .florida-box { background: linear-gradient(135deg, #084F4F, var(--teal)); border-radius: 16px; padding: 2rem 2.5rem; margin: 2.5rem 0; position: relative; overflow: hidden; }
+  .florida-box::before { content: '🌴'; position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); font-size: 64px; opacity: 0.15; }
+  .florida-box h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--gold-light); margin-bottom: 0.75rem; }
+  .florida-box p { font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.75; max-width: 620px; }
+  .florida-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .florida-step { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 1rem; }
+  .florida-step .step-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 0.4rem; }
+  .florida-step p { font-size: 12.5px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+  /* TIMELINE */
+  .timeline { margin-top: 2rem; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--teal-mid), rgba(13,110,110,0.1)); }
+  .timeline-item { display: flex; gap: 1.5rem; margin-bottom: 1.75rem; }
+  .timeline-dot { width: 58px; height: 38px; background: var(--teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--gold-light); flex-shrink: 0; position: relative; z-index: 1; }
+  .timeline-content { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.4rem; flex: 1; transition: box-shadow 0.2s; }
+  .timeline-content:hover { box-shadow: var(--shadow-card); }
+  .timeline-content h4 { font-weight: 600; font-size: 0.9rem; color: var(--teal); margin-bottom: 0.3rem; }
+  .timeline-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.6; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .skill-card { background: var(--cream); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: all 0.25s; }
+  .skill-card:hover { background: var(--white); box-shadow: var(--shadow-card); }
+  .skill-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 10px; display: inline-block; margin-bottom: 0.75rem; }
+  .skill-label.essential { background: var(--teal-pale); color: var(--teal-mid); }
+  .skill-label.helpful { background: var(--gold-pale); color: #8A6A20; }
+  .skill-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; }
+  .skill-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* EARNINGS */
+  .earnings-section { background: var(--teal); padding: 4rem 0; position: relative; overflow: hidden; }
+  .earnings-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.07) 0%, transparent 60%); }
+  .earnings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .earnings-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(201,168,76,0.15); border-radius: 14px; padding: 1.5rem; text-align: center; transition: all 0.25s; }
+  .earnings-card:hover { background: rgba(255,255,255,0.12); border-color: rgba(201,168,76,0.3); }
+  .earnings-role { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: rgba(255,255,255,0.55); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .earnings-amount { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 0.4rem; }
+  .earnings-note { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+  /* STEPS */
+  .steps { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .step { display: flex; gap: 1.25rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.6rem; transition: all 0.25s; }
+  .step:hover { box-shadow: var(--shadow-card); border-color: rgba(13,110,110,0.2); }
+  .step-number { width: 36px; height: 36px; background: var(--teal); color: var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; flex-shrink: 0; }
+  .step-content h4 { font-weight: 600; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.3rem; }
+  .step-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; }
+  .step-content a { color: var(--teal-mid); font-weight: 500; }
+
+  /* FIT */
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+  .fit-card { border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); }
+  .fit-card.yes { background: #EAF6F6; border-color: rgba(13,110,110,0.15); }
+  .fit-card.no { background: #FBF0EE; border-color: rgba(180,60,40,0.12); }
+  .fit-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; }
+  .fit-card.yes h4 { color: var(--teal); }
+  .fit-card.no h4 { color: #8B2F20; }
+  .fit-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .fit-list li { font-size: 13.5px; color: var(--text-mid); display: flex; gap: 8px; line-height: 1.5; }
+  .fit-card.yes .fit-list li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+  .fit-card.no .fit-list li::before { content: '✗'; color: #C0392B; font-weight: 700; flex-shrink: 0; }
+
+  /* TERMS */
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .term-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: box-shadow 0.2s; }
+  .term-card:hover { box-shadow: var(--shadow-card); }
+  .term-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--teal); margin-bottom: 0.4rem; }
+  .term-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* VIDEO */
+  .video-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card); }
+  .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+  .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .video-info { padding: 1.25rem 1.5rem; }
+  .video-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 10px; margin-bottom: 0.6rem; }
+  .video-badge.start { background: var(--teal-pale); color: var(--teal-mid); }
+  .video-badge.honest { background: #FDF3E3; color: #8A5A10; }
+  .video-badge.florida { background: #E3F4F9; color: #0A5A7A; }
+  .video-badge.life { background: #EDF7ED; color: #2A6A2A; }
+  .video-info h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.35; }
+  .video-info p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .video-info .credit { font-size: 12px; color: var(--text-light); margin-top: 0.5rem; }
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+
+  /* PODCAST */
+  .podcast-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .podcast-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; gap: 1.25rem; align-items: flex-start; transition: all 0.25s; text-decoration: none; }
+  .podcast-card:hover { box-shadow: var(--shadow-card); transform: translateX(4px); border-color: rgba(13,110,110,0.2); }
+  .podcast-art { width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+  .podcast-art.tom { background: linear-gradient(135deg, #084F4F, var(--teal)); }
+  .podcast-art.bp { background: linear-gradient(135deg, #0A6E3F, #12A05C); }
+  .podcast-art.kevin { background: linear-gradient(135deg, #7A3A0A, #C9A84C); }
+  .podcast-meta { flex: 1; }
+  .podcast-show { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--teal-mid); margin-bottom: 0.3rem; }
+  .podcast-meta h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.35; }
+  .podcast-meta p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .podcast-arrow { font-size: 22px; color: var(--text-light); align-self: center; transition: all 0.2s; }
+  .podcast-card:hover .podcast-arrow { color: var(--teal-mid); transform: translateX(4px); }
+
+  /* BUTTONS */
+  .btn { display: inline-flex; align-items: center; gap: 7px; padding: 12px 26px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+  .btn-teal { background: var(--teal); color: var(--white); }
+  .btn-teal:hover { background: var(--teal-mid); }
+  .btn-gold { background: var(--gold); color: var(--teal); }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline-white { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+  .cta-section { background: var(--teal); padding: 4rem 2rem; text-align: center; }
+  .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+  .cta-section h2 em { color: var(--gold-light); font-style: italic; }
+  .cta-section p { color: rgba(255,255,255,0.65); font-size: 1rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.8; font-weight: 300; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  footer { background: var(--teal); border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem; text-align: center; }
+  footer .footer-brand { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.35); }
+  footer .footer-gold { color: var(--gold-light); }
+
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; } .nav-links { display: none; }
+    .hero { padding: 3rem 1.5rem; } .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; }
+    .container { padding: 0 1.25rem; } .fit-grid { grid-template-columns: 1fr; }
+    .breadcrumb { padding: 0.75rem 1.25rem; } .video-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">All Careers</a></li>
+    <li><a href="index.html#resources">Resources</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a>
+  <span class="sep">›</span>
+  <a href="index.html#careers">Career Paths</a>
+  <span class="sep">›</span>
+  <span class="current">Residential Agent & Broker</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="track-badge">🏠 Career Track</div>
+      <h1>Residential<br><em>Agent & Broker</em></h1>
+      <p class="hero-sub">People trust you with the biggest financial decision of their lives. You guide them through buying or selling their home — and in return, you build a career where your income is limited only by your hustle, your knowledge, and your relationships.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="number">2M+</div><div class="label">licensed agents in the US</div></div>
+        <div class="hero-stat"><div class="number">$54K–$200K+</div><div class="label">Annual earning range</div></div>
+        <div class="hero-stat"><div class="number">63 hours</div><div class="label">Florida pre-license course</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">🏠</div>
+  </div>
+</div>
+
+<!-- WHAT IS -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Role</p>
+    <h2 class="section-title">What does a residential <em>agent actually do?</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">A residential real estate agent helps people buy and sell homes. You're the guide, the negotiator, the expert, and the trusted advisor all rolled into one. When someone decides to buy their first home or sell the house they raised their family in — you're the person they call.</p>
+    <p class="lead-text">As an agent, you earn a commission — typically 2.5–3% of the sale price — when a deal closes. On a $400,000 home that's $10,000–$12,000 from one transaction. On a $600,000 home in Miami, that's $15,000–$18,000. Every deal you close, every relationship you build, every referral you earn compounds into a real career and real income.</p>
+    <div class="highlight-box">
+      <p>"Real estate is the only profession where you can start with little experience, build genuine relationships in your own community, and create a six-figure income within your first two years — if you're willing to put in the work."</p>
+    </div>
+    <p class="lead-text">The difference between an average agent and a great one isn't luck — it's knowledge, consistency, and people skills. The agents who invest in truly understanding the market, who communicate honestly with clients, and who build a reputation for integrity don't just survive in this business — they thrive.</p>
+
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-dark); margin: 2rem 0 0.75rem;">The different roles in residential real estate</h3>
+    <div class="roles-grid">
+      <div class="role-card fade-in">
+        <span class="role-icon">🤝</span>
+        <h4>Buyer's Agent</h4>
+        <p>Represents people who want to purchase a home. You help them find properties, analyze the market, make offers, and navigate the closing process.</p>
+      </div>
+      <div class="role-card fade-in">
+        <span class="role-icon">📋</span>
+        <h4>Listing Agent</h4>
+        <p>Represents sellers. You advise on pricing, market the property, host showings, negotiate offers, and guide the seller to closing.</p>
+      </div>
+      <div class="role-card fade-in">
+        <span class="role-icon">🏢</span>
+        <h4>Real Estate Broker</h4>
+        <p>A more advanced license that allows you to open your own brokerage, supervise agents, and keep 100% of your commissions rather than splitting with a broker.</p>
+      </div>
+      <div class="role-card fade-in">
+        <span class="role-icon">🌟</span>
+        <h4>Realtor</h4>
+        <p>A licensed agent who is also a member of the National Association of Realtors (NAR). Subject to a code of ethics and gets access to the MLS and additional tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLORIDA LICENSING -->
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Florida Specific</p>
+    <h2 class="section-title">Getting your <em>Florida Real Estate License</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">Florida is one of the most active real estate markets in the country — and getting licensed here is straightforward if you follow the steps. Here's exactly what's required.</p>
+
+    <div class="florida-box">
+      <h3>🌴 Florida Real Estate License — Step by Step</h3>
+      <p>Florida requires a Sales Associate license to represent buyers and sellers. The process typically takes 2–4 months from start to finish and costs between $300–$600 total. No college degree required.</p>
+      <div class="florida-steps">
+        <div class="florida-step">
+          <div class="step-num">01</div>
+          <p>Meet basic requirements — 18+ years old, US Social Security number, high school diploma or equivalent</p>
+        </div>
+        <div class="florida-step">
+          <div class="step-num">02</div>
+          <p>Complete the 63-hour Florida pre-license course — available online or in person through approved schools</p>
+        </div>
+        <div class="florida-step">
+          <div class="step-num">03</div>
+          <p>Pass the Florida Real Estate Sales Associate Exam — administered by Pearson VUE testing centers statewide</p>
+        </div>
+        <div class="florida-step">
+          <div class="step-num">04</div>
+          <p>Submit your application to the Florida DBPR (Department of Business and Professional Regulation)</p>
+        </div>
+        <div class="florida-step">
+          <div class="step-num">05</div>
+          <p>Complete a background check and pay the licensing fee — currently $89 for the application</p>
+        </div>
+        <div class="florida-step">
+          <div class="step-num">06</div>
+          <p>Join a licensed brokerage to activate your license — you must work under a broker for at least 2 years before becoming a broker yourself</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="lead-text">The full Florida licensing prep module is available as a standalone section of the Darco Real Estate Academy — covering everything you need to pass the exam on your first attempt.</p>
+  </div>
+</section>
+
+<!-- DAY IN THE LIFE -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Real World</p>
+    <h2 class="section-title">A day in the life of a <em>residential agent</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">No two days are exactly the same — which is part of what makes this career exciting. Here's what a productive day might look like for a new-to-mid-level agent building their business.</p>
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">8am</div>
+        <div class="timeline-content"><h4>Morning prospecting</h4><p>Check new MLS listings in your target neighborhoods. Send follow-up messages to leads from last week. Call a past client to check in — referrals come from people who feel remembered and valued.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">10am</div>
+        <div class="timeline-content"><h4>Buyer consultation</h4><p>Meet a first-time buyer couple at your office. Walk them through the buying process, explain financing, discuss their budget and must-haves. Build trust before you ever show them a single house.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">12pm</div>
+        <div class="timeline-content"><h4>Property showings</h4><p>Drive clients through 3 homes in Coral Gables. Point out the good — and the not-so-good. Your honest assessment builds trust. Clients who trust you buy faster and refer their friends.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">2pm</div>
+        <div class="timeline-content"><h4>Listing appointment</h4><p>Meet homeowners who want to sell. Present your comparative market analysis showing what similar homes sold for. Recommend a price. Walk through your marketing plan — photos, MLS, social media, open house.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">4pm</div>
+        <div class="timeline-content"><h4>Offer negotiation</h4><p>Your buyers want to make an offer on a home listed at $485,000. You advise offering $475,000 with specific terms that make the offer stronger. Back and forth with the listing agent. This is where your market knowledge pays off.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">6pm</div>
+        <div class="timeline-content"><h4>Social media & marketing</h4><p>Post a new listing to Instagram. Engage with comments. Share a market update. In today's real estate, your online presence is your reputation. Agents who market themselves consistently always have leads.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section style="background: var(--teal-pale); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Watch & Learn</p>
+    <h2 class="section-title">Real talk from <em>real agents</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">These videos give you an honest, unfiltered look at the residential agent career — from how to get started and what a real day looks like, to the hard truths about what it takes to succeed. Watch all four before making your decision.</p>
+
+    <div class="video-grid">
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/sRioyTDzrPo" title="How I Became a Top Real Estate Agent" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge start">Start Here</span>
+          <h4>How I Became a Top Real Estate Agent in 2024</h4>
+          <p>An agent shares their exact journey from zero deals and no experience to the top 5% of agents nationally. The real strategies, the real grind, and what actually works.</p>
+          <p class="credit">YouTube · 2024</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/Bimf-gFXPyE" title="Should I Become a Real Estate Agent — The Hard Truth" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge honest">The Hard Truth</span>
+          <h4>Should I Become a Real Estate Agent? The Honest Answer</h4>
+          <p>One of the most watched and most honest videos about the real estate agent career. Before you commit, watch this — it covers what nobody tells beginners about the challenges ahead.</p>
+          <p class="credit">YouTube · 2024</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-grid" style="margin-top: 1.25rem;">
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/ExRkav3a1Mc" title="Realistic Day in the Life of a Real Estate Agent 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge life">Day in the Life</span>
+          <h4>A Realistic Day in the Life of a Real Estate Agent (2024)</h4>
+          <p>Follow an agent through a real working day — the good, the slow moments, and everything in between. This is the unfiltered picture of what the daily grind actually looks like.</p>
+          <p class="credit">YouTube · 2024</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/yOFb5W0Eve0" title="How to Become a Real Estate Agent in Florida" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge florida">Florida Specific</span>
+          <h4>How to Become a Real Estate Agent in Florida</h4>
+          <p>A step-by-step walkthrough of the Florida real estate licensing process — requirements, the 63-hour course, the state exam, finding a brokerage, and activating your license.</p>
+          <p class="credit">YouTube · 2025 — Florida focused</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PODCASTS -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Listen & Learn</p>
+    <h2 class="section-title">Podcasts to <em>level up your agent career</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">The top-producing agents never stop learning. These podcasts are where the best in the business share what's actually working — marketing, lead generation, negotiation, and building a sustainable career.</p>
+
+    <div class="podcast-cards">
+      <a href="https://www.tomferry.com/podcast/" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art tom">🎙️</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">Tom Ferry · #1 Real Estate Coach</div>
+          <h4>The Tom Ferry Podcast Experience</h4>
+          <p>Tom Ferry is the #1 ranked real estate coach in North America. His podcast covers lead generation, scripts, mindset, and business strategy. If you want to build a serious agent business — this is required listening. Tactical, motivating, and consistently excellent.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+
+      <a href="https://www.biggerpockets.com/podcasts/real-estate" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art bp">🎧</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">BiggerPockets · Broad RE Knowledge</div>
+          <h4>BiggerPockets Real Estate Podcast</h4>
+          <p>Essential for any agent who wants to understand the investor side of real estate. Many of your future clients will be investors — understanding how they think about deals, cap rates, and cash flow makes you a far more valuable advisor.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+
+      <a href="https://podcasts.apple.com/us/podcast/kevin-wards-yes-talk-real-estate-coaching-and-success/id960089084" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art kevin">🏆</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">Kevin Ward · Scripts & Systems</div>
+          <h4>Kevin Ward's YesMasters Real Estate Podcast</h4>
+          <p>Kevin Ward specializes in training new agents to get their first deals fast. His approach to scripts, objection handling, and lead conversion is practical and proven. Especially valuable in your first 12 months as a licensed agent.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">What You'll Need</p>
+    <h2 class="section-title">Skills that make you <em>a great agent</em></h2>
+    <div class="gold-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>People Skills & Empathy</h4><p>Buying a home is one of the most emotional experiences a person goes through. The ability to listen, understand, and communicate with warmth and patience separates great agents from average ones.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Market Knowledge</h4><p>Know your local market cold — recent sales, price trends, neighborhood dynamics, school ratings, development plans. Clients pay you for knowledge. The more you know, the more valuable you are.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Negotiation</h4><p>You negotiate on behalf of your clients on every single deal. Price, terms, repairs, closing costs, timelines. Great negotiators save (or make) their clients thousands of dollars per transaction.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Self-Motivation & Discipline</h4><p>Nobody gives you leads. Nobody holds you accountable. Your income is directly tied to your effort. The agents who thrive treat real estate like a business — with systems, goals, and daily habits.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Marketing & Social Media</h4><p>Today's clients find their agents online. Agents who post market updates, property tours, and helpful content consistently build an audience that turns into referrals and listings.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Financial Literacy</h4><p>Understanding mortgages, financing options, and investment value makes you a much better advisor — especially when working with buyers who are also thinking about real estate as an investment.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EARNINGS -->
+<section class="earnings-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color: var(--gold-light);">The Money</p>
+    <h2 class="section-title" style="color: var(--white);">What can a residential agent <em style="color: var(--gold-light);">realistically earn?</em></h2>
+    <div class="gold-divider"></div>
+    <p style="color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; max-width: 680px; margin-bottom: 2rem; font-weight: 300;">Agent income is commission-based — you earn when deals close. The first year is the hardest. But agents who build strong habits, consistent prospecting, and a referral network see income grow significantly year over year.</p>
+    <div class="earnings-grid">
+      <div class="earnings-card fade-in"><div class="earnings-role">Year 1 (Building)</div><div class="earnings-amount">$25K–$55K</div><div class="earnings-note">Learning the market, closing first deals, building your database.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Year 2–3 (Growing)</div><div class="earnings-amount">$55K–$100K</div><div class="earnings-note">Referrals kicking in, reputation building, consistent deal flow.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Established Agent</div><div class="earnings-amount">$100K–$200K</div><div class="earnings-note">Strong database, repeat clients, team building starts here.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Top Producer</div><div class="earnings-amount">$200K–$500K+</div><div class="earnings-note">High-volume agent or team leader in a strong market like Miami.</div></div>
+    </div>
+    <p style="margin-top: 1.5rem; font-size: 12.5px; color: rgba(255,255,255,0.4); font-style: italic; text-align: center;">* Income varies significantly by market, brokerage split, and individual effort. Florida market figures may differ.</p>
+  </div>
+</section>
+
+<!-- HOW TO GET STARTED -->
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Your Roadmap</p>
+    <h2 class="section-title">How to <em>launch your agent career</em> in Florida</h2>
+    <div class="gold-divider"></div>
+    <div class="steps">
+      <div class="step fade-in"><div class="step-number">1</div><div class="step-content"><h4>Complete the 63-hour pre-license course</h4><p>Take it online or in person through a Florida-approved school. Gold Coast Schools, Real Estate Express, and Kaplan are popular options. Budget 4–8 weeks depending on your pace. This course covers contracts, fair housing, financing, and Florida-specific law.</p></div></div>
+      <div class="step fade-in"><div class="step-number">2</div><div class="step-content"><h4>Pass the Florida state exam</h4><p>The exam is 100 multiple-choice questions, 3.5 hours, with a passing score of 75%. The most common reason people fail is not practicing enough. Use Pearson VUE prep materials and take as many practice tests as possible before your exam date.</p></div></div>
+      <div class="step fade-in"><div class="step-number">3</div><div class="step-content"><h4>Choose your brokerage carefully</h4><p>Your first brokerage matters more than most new agents realize. Look for training programs, mentorship, a strong local reputation, and a commission split that makes sense for where you are. Keller Williams, Compass, eXp Realty, and RE/MAX all have strong Florida presences — but local boutique brokerages can be equally valuable.</p></div></div>
+      <div class="step fade-in"><div class="step-number">4</div><div class="step-content"><h4>Build your sphere of influence from day one</h4><p>Your database is your business. Tell everyone you know that you're now a licensed agent. Friends, family, neighbors, former colleagues. Most new agents' first 3–5 deals come directly from their personal network. Don't be shy about it.</p></div></div>
+      <div class="step fade-in"><div class="step-number">5</div><div class="step-content"><h4>Learn your market obsessively</h4><p>Drive every neighborhood you want to work in. Study every listing that comes on the market and every sale that closes. Know the average price per square foot, the days on market, the seasonal trends. When clients ask questions, you need to have answers.</p></div></div>
+      <div class="step fade-in"><div class="step-number">6</div><div class="step-content"><h4>Show up consistently — especially when it's hard</h4><p>Most new agents quit within 18 months because they expected quicker results. The agents who make it are the ones who keep prospecting, keep learning, and keep showing up even during slow stretches. Your pipeline today is your income 60–90 days from now.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Honest Assessment</p>
+    <h2 class="section-title">Is this career <em>right for you?</em></h2>
+    <div class="gold-divider"></div>
+    <div class="fit-grid">
+      <div class="fit-card yes fade-in">
+        <h4>You'll thrive if you...</h4>
+        <ul class="fit-list">
+          <li>Genuinely enjoy meeting and helping people</li>
+          <li>Are self-motivated with no one managing your schedule</li>
+          <li>Can handle variable income and uncertainty</li>
+          <li>Are willing to prospect and market yourself consistently</li>
+          <li>Enjoy being out in the community and driving around</li>
+          <li>Are patient — first deals take time to materialize</li>
+          <li>Take pride in your local neighborhood knowledge</li>
+        </ul>
+      </div>
+      <div class="fit-card no fade-in">
+        <h4>You may struggle if you...</h4>
+        <ul class="fit-list">
+          <li>Need a guaranteed salary from the start</li>
+          <li>Don't enjoy cold outreach or following up with people</li>
+          <li>Get discouraged easily by rejection</li>
+          <li>Prefer working alone behind a desk all day</li>
+          <li>Are uncomfortable with confrontation or negotiation</li>
+          <li>Don't want to work evenings and weekends occasionally</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY TERMS -->
+<section style="background: var(--teal-pale); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Language</p>
+    <h2 class="section-title">Key terms every agent <em>must know</em></h2>
+    <div class="gold-divider"></div>
+    <div class="terms-grid">
+      <div class="term-card fade-in"><div class="term-name">MLS — Multiple Listing Service</div><p>The database where all listed properties are shared among agents. Your access to the MLS is one of the most valuable things your license gives you.</p></div>
+      <div class="term-card fade-in"><div class="term-name">CMA — Comparative Market Analysis</div><p>A report showing what similar homes sold for recently — used to help sellers price their home and buyers make competitive offers.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Commission</div><p>Your compensation — typically 2.5–3% of the sale price, paid at closing. Split with your broker according to your agreement.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Listing Agreement</div><p>A contract between you and a seller giving you the exclusive right to market and sell their property for a set period of time.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Buyer's Representation Agreement</div><p>A contract between you and a buyer establishing you as their exclusive agent and outlining how you'll be compensated.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Contingency</div><p>A condition in a purchase contract that must be met for the deal to proceed — financing contingency, inspection contingency, appraisal contingency.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Escrow</div><p>A neutral third party holds the buyer's deposit and all funds until closing conditions are met — protecting both buyer and seller.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Days on Market (DOM)</div><p>How long a property has been listed. A high DOM can indicate overpricing or problems. A low DOM suggests strong demand or a well-priced home.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Pre-Approval</div><p>A lender's written commitment to loan a buyer a certain amount. In competitive markets, sellers won't look at offers without one.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to take the <em>next step?</em></h2>
+  <p>Start with the core modules to build your real estate foundation — then come back to the Florida Licensing Prep module when you're ready to sit the exam.</p>
+  <div class="cta-buttons">
+    <a href="module-1.html" class="btn btn-gold">Start Module 1 →</a>
+    <a href="index.html#careers" class="btn btn-outline-white">← Explore All Careers</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top: 0.5rem; font-size: 11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

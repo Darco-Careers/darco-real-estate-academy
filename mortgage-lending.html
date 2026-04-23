@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Mortgage & Lending — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #3D1A6E; --purple-mid: #5430A0; --purple-light: #7055C0; --purple-pale: #F0EBF9;
+    --gold: #C9A84C; --gold-light: #E8C97A; --gold-pale: #FBF5E6;
+    --cream: #FAF8F3; --cream-dark: #F0EBE0;
+    --text-dark: #1A1A18; --text-mid: #4A4A42; --text-light: #8A8A7A;
+    --white: #FFFFFF; --border: rgba(61,26,110,0.1);
+    --shadow-card: 0 2px 16px rgba(61,26,110,0.07);
+    --forest: #1B4D3E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+
+  nav { background: var(--purple); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.2); }
+  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo { width: 36px; height: 36px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; color: var(--purple); }
+  .nav-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--white); }
+  .nav-tagline { font-size: 11px; color: var(--gold-light); letter-spacing: 0.5px; font-weight: 300; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-back { background: rgba(255,255,255,0.1) !important; color: rgba(255,255,255,0.88) !important; padding: 7px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.18); }
+
+  .breadcrumb { background: var(--purple-pale); border-bottom: 1px solid var(--border); padding: 0.75rem 2.5rem; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-light); }
+  .breadcrumb a { color: var(--purple-mid); text-decoration: none; font-weight: 500; }
+  .breadcrumb .sep { opacity: 0.4; }
+  .breadcrumb .current { color: var(--purple); font-weight: 600; }
+
+  .hero { background: linear-gradient(135deg, #220E40 0%, var(--purple) 55%, var(--purple-mid) 100%); padding: 5rem 2.5rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -40%; right: -10%; width: 55%; height: 200%; background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3rem; }
+  .track-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(--gold-light); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.25rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 1rem; }
+  .hero h1 em { color: var(--gold-light); font-style: italic; }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); max-width: 560px; line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+  .hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .hero-stat .number { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
+  .hero-stat .label { font-size: 11.5px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+  .hero-visual { width: 180px; height: 180px; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 72px; flex-shrink: 0; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+  .section-eyebrow { font-size: 11.5px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 0.6rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--text-dark); line-height: 1.25; margin-bottom: 1.1rem; }
+  .section-title em { color: var(--purple); font-style: italic; }
+  .gold-divider { width: 50px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1rem 0 1.5rem; }
+  .lead-text { font-size: 1.05rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1.25rem; max-width: 720px; }
+  .highlight-box { background: var(--purple-pale); border-left: 4px solid var(--purple-mid); border-radius: 0 12px 12px 0; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+  .highlight-box p { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--purple); font-style: italic; line-height: 1.7; }
+
+  .roles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+  .role-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: all 0.25s; }
+  .role-card:hover { box-shadow: var(--shadow-card); transform: translateY(-2px); }
+  .role-icon { font-size: 26px; margin-bottom: 0.75rem; display: block; }
+  .role-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--purple); margin-bottom: 0.4rem; }
+  .role-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .license-box { background: linear-gradient(135deg, #220E40, var(--purple)); border-radius: 16px; padding: 2rem 2.5rem; margin: 2.5rem 0; position: relative; overflow: hidden; }
+  .license-box::before { content: '📋'; position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); font-size: 64px; opacity: 0.12; }
+  .license-box h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--gold-light); margin-bottom: 0.75rem; }
+  .license-box p { font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.75; max-width: 620px; }
+  .license-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .license-step { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 1rem; }
+  .license-step .step-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 0.4rem; }
+  .license-step p { font-size: 12.5px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+  .timeline { margin-top: 2rem; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--purple-mid), rgba(61,26,110,0.1)); }
+  .timeline-item { display: flex; gap: 1.5rem; margin-bottom: 1.75rem; }
+  .timeline-dot { width: 58px; height: 38px; background: var(--purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--gold-light); flex-shrink: 0; position: relative; z-index: 1; }
+  .timeline-content { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.4rem; flex: 1; transition: box-shadow 0.2s; }
+  .timeline-content:hover { box-shadow: var(--shadow-card); }
+  .timeline-content h4 { font-weight: 600; font-size: 0.9rem; color: var(--purple); margin-bottom: 0.3rem; }
+  .timeline-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.6; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .skill-card { background: var(--cream); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: all 0.25s; }
+  .skill-card:hover { background: var(--white); box-shadow: var(--shadow-card); }
+  .skill-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 10px; display: inline-block; margin-bottom: 0.75rem; }
+  .skill-label.essential { background: var(--purple-pale); color: var(--purple-mid); }
+  .skill-label.helpful { background: var(--gold-pale); color: #8A6A20; }
+  .skill-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; }
+  .skill-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .earnings-section { background: var(--purple); padding: 4rem 0; position: relative; overflow: hidden; }
+  .earnings-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.07) 0%, transparent 60%); }
+  .earnings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .earnings-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(201,168,76,0.15); border-radius: 14px; padding: 1.5rem; text-align: center; transition: all 0.25s; }
+  .earnings-card:hover { background: rgba(255,255,255,0.11); border-color: rgba(201,168,76,0.3); }
+  .earnings-role { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .earnings-amount { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 0.4rem; }
+  .earnings-note { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+  .steps { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .step { display: flex; gap: 1.25rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.6rem; transition: all 0.25s; }
+  .step:hover { box-shadow: var(--shadow-card); border-color: rgba(61,26,110,0.2); }
+  .step-number { width: 36px; height: 36px; background: var(--purple); color: var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; flex-shrink: 0; }
+  .step-content h4 { font-weight: 600; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.3rem; }
+  .step-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; }
+
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+  .fit-card { border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); }
+  .fit-card.yes { background: var(--purple-pale); border-color: rgba(61,26,110,0.15); }
+  .fit-card.no { background: #FBF0EE; border-color: rgba(180,60,40,0.12); }
+  .fit-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; }
+  .fit-card.yes h4 { color: var(--purple); }
+  .fit-card.no h4 { color: #8B2F20; }
+  .fit-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .fit-list li { font-size: 13.5px; color: var(--text-mid); display: flex; gap: 8px; line-height: 1.5; }
+  .fit-card.yes .fit-list li::before { content: '✓'; color: var(--purple); font-weight: 700; flex-shrink: 0; }
+  .fit-card.no .fit-list li::before { content: '✗'; color: #C0392B; font-weight: 700; flex-shrink: 0; }
+
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .term-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: box-shadow 0.2s; }
+  .term-card:hover { box-shadow: var(--shadow-card); }
+  .term-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--purple); margin-bottom: 0.4rem; }
+  .term-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .video-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card); }
+  .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+  .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .video-info { padding: 1.25rem 1.5rem; }
+  .video-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 10px; margin-bottom: 0.6rem; }
+  .video-badge.start { background: var(--purple-pale); color: var(--purple-mid); }
+  .video-badge.steps { background: var(--gold-pale); color: #8A6A20; }
+  .video-badge.life { background: #EDF7ED; color: #2A6A2A; }
+  .video-badge.broker { background: #E3EFF9; color: #1A4E7A; }
+  .video-info h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.35; }
+  .video-info p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .video-info .credit { font-size: 12px; color: var(--text-light); margin-top: 0.5rem; }
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+
+  .podcast-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .podcast-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; gap: 1.25rem; align-items: flex-start; transition: all 0.25s; text-decoration: none; }
+  .podcast-card:hover { box-shadow: var(--shadow-card); transform: translateX(4px); border-color: rgba(61,26,110,0.2); }
+  .podcast-art { width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+  .podcast-art.purple { background: linear-gradient(135deg, var(--purple), var(--purple-mid)); }
+  .podcast-art.bp { background: linear-gradient(135deg, #0A6E3F, #12A05C); }
+  .podcast-art.gold { background: linear-gradient(135deg, #8A6A20, var(--gold)); }
+  .podcast-meta { flex: 1; }
+  .podcast-show { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--purple-mid); margin-bottom: 0.3rem; }
+  .podcast-meta h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.35; }
+  .podcast-meta p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .podcast-arrow { font-size: 22px; color: var(--text-light); align-self: center; transition: all 0.2s; }
+  .podcast-card:hover .podcast-arrow { color: var(--purple-mid); transform: translateX(4px); }
+
+  .btn { display: inline-flex; align-items: center; gap: 7px; padding: 12px 26px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+  .btn-gold { background: var(--gold); color: var(--purple); }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline-white { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+  .cta-section { background: var(--purple); padding: 4rem 2rem; text-align: center; }
+  .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+  .cta-section h2 em { color: var(--gold-light); font-style: italic; }
+  .cta-section p { color: rgba(255,255,255,0.65); font-size: 1rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.8; font-weight: 300; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  footer { background: var(--purple); border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem; text-align: center; }
+  footer .footer-brand { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.35); }
+  footer .footer-gold { color: var(--gold-light); }
+
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; } .nav-links { display: none; }
+    .hero { padding: 3rem 1.5rem; } .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; }
+    .container { padding: 0 1.25rem; } .fit-grid { grid-template-columns: 1fr; }
+    .breadcrumb { padding: 0.75rem 1.25rem; } .video-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">All Careers</a></li>
+    <li><a href="index.html#resources">Resources</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a>
+  <span class="sep">›</span>
+  <a href="index.html#careers">Career Paths</a>
+  <span class="sep">›</span>
+  <span class="current">Mortgage & Lending</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="track-badge">💵 Career Track</div>
+      <h1>Mortgage<br><em>& Lending</em></h1>
+      <p class="hero-sub">Without financing, most real estate deals simply don't happen. Mortgage brokers and loan officers sit at the center of every transaction — connecting buyers with capital and earning a fee on every deal that closes.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="number">$2T+</div><div class="label">US mortgage market annually</div></div>
+        <div class="hero-stat"><div class="number">$60K–$200K+</div><div class="label">Annual earning range</div></div>
+        <div class="hero-stat"><div class="number">NMLS license</div><div class="label">required in Florida</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">💵</div>
+  </div>
+</div>
+
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Role</p>
+    <h2 class="section-title">What do mortgage professionals <em>actually do?</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">Mortgage and lending professionals help buyers secure the financing they need to purchase real estate. Whether you work as a loan officer at a bank, a mortgage broker running your own shop, or a commercial lending specialist, your core job is the same — match borrowers with the right loan product and guide them through getting funded.</p>
+    <p class="lead-text">Every real estate transaction that involves financing — which is the vast majority — requires a mortgage professional. When the market is hot, you're busy with purchase loans. When rates drop, you're busy with refinances. There is always work if you know how to find it and build the right relationships.</p>
+    <div class="highlight-box">
+      <p>"Mortgage brokers and loan officers are the hidden engine of real estate. Investors, agents, and buyers all need financing — and the professionals who master the lending side of real estate are always in the room when the biggest deals get done."</p>
+    </div>
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-dark); margin: 2rem 0 0.75rem;">The different roles in mortgage & lending</h3>
+    <div class="roles-grid">
+      <div class="role-card fade-in"><span style="font-size:26px;display:block;margin-bottom:0.75rem;">🏦</span><h4>Loan Officer (Bank / Lender)</h4><p>Works for a bank or mortgage company. Originates loans using that institution's products. Salary plus commission — lower ceiling but more stability for beginners.</p></div>
+      <div class="role-card fade-in"><span style="font-size:26px;display:block;margin-bottom:0.75rem;">🔗</span><h4>Mortgage Broker</h4><p>Independent professional who shops multiple lenders for each client. Higher earning potential, more autonomy, and the ability to serve clients better than any single-lender loan officer.</p></div>
+      <div class="role-card fade-in"><span style="font-size:26px;display:block;margin-bottom:0.75rem;">🏢</span><h4>Commercial Loan Broker</h4><p>Specializes in financing commercial properties — apartments, retail, offices, industrial. Larger loan sizes mean larger fees per deal. Ideal for those with commercial real estate knowledge.</p></div>
+      <div class="role-card fade-in"><span style="font-size:26px;display:block;margin-bottom:0.75rem;">📈</span><h4>Hard Money / Private Lender</h4><p>Connects investors with private capital for fix-and-flip or bridge loans. Faster than traditional lending, higher rates. A niche that pairs well with real estate investing knowledge.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Florida Specific</p>
+    <h2 class="section-title">Getting your <em>Florida Mortgage License (NMLS)</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">In Florida, mortgage loan originators must be licensed through the Nationwide Multistate Licensing System (NMLS). The process takes about 2–3 months and is very achievable with focused preparation.</p>
+    <div class="license-box">
+      <h3>📋 Florida MLO License — Step by Step</h3>
+      <p>Florida requires a Mortgage Loan Originator (MLO) license to originate residential mortgage loans. Total cost is typically $300–$600 including education, exam fees, and the license application.</p>
+      <div class="license-steps">
+        <div class="license-step"><div class="step-num">01</div><p>Create your NMLS account at nmls.com and obtain your unique NMLS ID number</p></div>
+        <div class="license-step"><div class="step-num">02</div><p>Complete 20 hours of NMLS-approved pre-licensure education — available fully online</p></div>
+        <div class="license-step"><div class="step-num">03</div><p>Pass the SAFE MLO National Test — 125 questions, 3-hour exam, 75% passing score required</p></div>
+        <div class="license-step"><div class="step-num">04</div><p>Submit Florida state license application through NMLS with background check and credit report</p></div>
+        <div class="license-step"><div class="step-num">05</div><p>Get sponsored by a licensed Florida mortgage company to activate your license</p></div>
+        <div class="license-step"><div class="step-num">06</div><p>Renew annually — 8 hours of continuing education required each year</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Real World</p>
+    <h2 class="section-title">A day in the life of a <em>mortgage professional</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">Mortgage is a relationship-driven, deadline-driven business. Your days are a mix of client conversations, document review, lender communication, and deal management — often with multiple loans in various stages at once.</p>
+    <div class="timeline">
+      <div class="timeline-item fade-in"><div class="timeline-dot">8am</div><div class="timeline-content"><h4>Pipeline review</h4><p>Check all active loan files. Three loans are in underwriting — one needs additional documentation from the borrower. Send a clear, specific request with a deadline. Deals die from delayed documentation.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">9am</div><div class="timeline-content"><h4>New client intake</h4><p>A real estate agent referred a first-time buyer. Run a quick pre-qualification — pull credit, review income documents, calculate DTI. Can they qualify? At what purchase price? This call sets the entire relationship.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">11am</div><div class="timeline-content"><h4>Rate shopping</h4><p>A borrower needs the best rate on a $650K purchase. Shop your lender network — 6 lenders in 20 minutes. The difference between 6.875% and 7.125% is over $300/month. Your expertise just saved them real money.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">1pm</div><div class="timeline-content"><h4>Realtor lunch</h4><p>Lunch with two agents you want as referral partners. Your value proposition is simple — fast pre-approvals, clear communication, no surprises at closing. Agents send deals to lenders they trust unconditionally.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">3pm</div><div class="timeline-content"><h4>Underwriting condition</h4><p>Underwriter needs a letter of explanation for an employment gap on a VA loan. Help the borrower write it clearly and submit it fast. Smooth underwriting = on-time closings = repeat business and referrals.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">5pm</div><div class="timeline-content"><h4>Closing confirmed</h4><p>Tomorrow's closing is set — title company has the docs, wire is ready, borrower knows what to bring. A clean, on-time closing is the single best marketing tool in the mortgage business.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--purple-pale); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Watch & Learn</p>
+    <h2 class="section-title">The best free videos on <em>mortgage & lending careers</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">These videos give you a raw, honest look at what a mortgage career actually involves — the income potential, the daily reality, the licensing process, and how top producers build their business.</p>
+
+    <div class="video-grid">
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/X_nT8zUnL-U" title="Starting Your Career as a Loan Officer or Mortgage Broker" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge start">Start Here</span>
+          <h4>Starting Your Career as a Loan Officer or Mortgage Broker</h4>
+          <p>A raw, unfiltered look at what it truly takes to succeed — demolishing common misconceptions and giving you a realistic picture before you commit to this career path.</p>
+          <p class="credit">YouTube · December 2024</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/u2ydD_xT7ag" title="How to Become a Mortgage Loan Officer — Step by Step 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge steps">Step by Step Guide</span>
+          <h4>How to Become a Mortgage Loan Officer — Complete Guide 2024</h4>
+          <p>A complete walkthrough of the NMLS licensing process, how to find your first employer, and how to build your pipeline from zero clients to consistent loan volume.</p>
+          <p class="credit">YouTube · 2024</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-grid" style="margin-top: 1.25rem;">
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Sz7pts3tLGk" title="Day in the Life of a $50M Loan Officer — Top 1%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge life">Top Producer — Day in the Life</span>
+          <h4>Day in the Life of a $50 Million Loan Officer — Top 1%</h4>
+          <p>Follow a top-producing loan officer through a full working day. A compelling look at what the ceiling looks like in this career and what separates high producers from average ones.</p>
+          <p class="credit">YouTube · 2023</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/i-KwlSXhHAs" title="Day in the Life of a Mortgage Broker — Behind the Scenes" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge broker">Mortgage Broker POV</span>
+          <h4>Day in the Life of a Mortgage Broker — Behind the Scenes</h4>
+          <p>A mortgage broker takes you behind the scenes of running an independent brokerage — what separates brokers from bank loan officers and why independence matters.</p>
+          <p class="credit">YouTube · 2024</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Listen & Learn</p>
+    <h2 class="section-title">Podcasts to <em>sharpen your lending knowledge</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">The best mortgage professionals are always learning — about rate movements, loan products, underwriting guidelines, and the real estate market they serve. These resources keep you sharp.</p>
+    <div class="podcast-cards">
+      <a href="https://www.loanofficerpodcast.com" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art purple">🎙️</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">Industry Specific · Loan Officers</div>
+          <h4>The Loan Officer Podcast</h4>
+          <p>One of the most-listened-to podcasts specifically for mortgage professionals. Covers marketing, lead generation, referral partner relationships, and business growth strategies. Practical and tactical — built for people actively in the mortgage industry.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+      <a href="https://www.biggerpockets.com/podcasts/real-estate" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art bp">🎧</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">BiggerPockets · Investor Mindset</div>
+          <h4>BiggerPockets Real Estate Podcast</h4>
+          <p>Essential for any mortgage professional who wants to serve real estate investors well. Understanding how investors think about deals, financing structures, and leverage makes you a dramatically more valuable lending partner — and generates more referrals.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+      <a href="https://www.scotsmanguide.com/podcast" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art gold">📊</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">Scotsman Guide · Industry News</div>
+          <h4>Scotsman Guide Podcast</h4>
+          <p>The leading trade publication for mortgage professionals. Covers market trends, rate environment, regulatory changes, and industry news. Stay current on what's moving the mortgage market and you'll always have something valuable to say to clients and referral partners.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">What You'll Need</p>
+    <h2 class="section-title">Skills that make you <em>an exceptional mortgage professional</em></h2>
+    <div class="gold-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Financial Analysis</h4><p>Read tax returns, calculate debt-to-income ratios, analyze credit profiles, and evaluate whether a borrower qualifies — quickly and accurately. This is the core technical skill of the job.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Product Knowledge</h4><p>FHA, VA, conventional, jumbo, DSCR, hard money, construction loans — there are dozens of products. Knowing which fits which borrower in which situation separates great loan officers from average ones.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Relationship Building</h4><p>Your referral network — agents, financial advisors, CPAs, builders — is your business. Mortgage professionals who consistently win are trusted, reliable partners to the people who send them deals.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Communication & Speed</h4><p>Pre-approvals need to happen fast. Underwriting conditions need to be resolved fast. Status updates need to be proactive, not reactive. In a competitive market the loan officer who communicates best wins.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Real Estate Market Knowledge</h4><p>Understanding the market you serve — price trends, buyer behavior, investor activity — makes you a far more credible advisor to both clients and referral partners.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Personal Branding</h4><p>The best loan officers build personal brands — through social media, community involvement, and educational content. Your reputation is your pipeline.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="earnings-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color: var(--gold-light);">The Money</p>
+    <h2 class="section-title" style="color: var(--white);">What can mortgage professionals <em style="color: var(--gold-light);">realistically earn?</em></h2>
+    <div class="gold-divider"></div>
+    <p style="color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; max-width: 680px; margin-bottom: 2rem; font-weight: 300;">Mortgage income is commission-based — you earn a percentage of the loan amount (typically 0.5–2.5%) when deals close. In a strong market with solid referral relationships, the income ceiling is very high.</p>
+    <div class="earnings-grid">
+      <div class="earnings-card fade-in"><div class="earnings-role">First Year (Building)</div><div class="earnings-amount">$40K–$70K</div><div class="earnings-note">Learning products, building referral network, closing first loans.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Established LO (3–5 Years)</div><div class="earnings-amount">$80K–$150K</div><div class="earnings-note">Solid referral base, consistent pipeline, multiple lender relationships.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Top Producer</div><div class="earnings-amount">$150K–$300K+</div><div class="earnings-note">High-volume originator with strong agent relationships and personal brand.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Broker Owner</div><div class="earnings-amount">$200K–$500K+</div><div class="earnings-note">Running your own brokerage, keeping full commission, building a team.</div></div>
+    </div>
+    <p style="margin-top: 1.5rem; font-size: 12.5px; color: rgba(255,255,255,0.4); font-style: italic; text-align: center;">* Income varies by market conditions, loan volume, and commission structure.</p>
+  </div>
+</section>
+
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Your Roadmap</p>
+    <h2 class="section-title">How to <em>launch your mortgage career</em></h2>
+    <div class="gold-divider"></div>
+    <div class="steps">
+      <div class="step fade-in"><div class="step-number">1</div><div class="step-content"><h4>Complete the 20-hour NMLS pre-license education</h4><p>Take the required NMLS-approved course online — covers federal mortgage law, ethics, lending standards, and Florida-specific requirements. Most students finish in 2–4 weeks at their own pace.</p></div></div>
+      <div class="step fade-in"><div class="step-number">2</div><div class="step-content"><h4>Pass the SAFE MLO National Test</h4><p>125 questions, 3 hours, 75% passing score. Use CompuCram or PrepAgent for practice tests — and don't sit for the exam until you're scoring 80%+ on practice tests consistently.</p></div></div>
+      <div class="step fade-in"><div class="step-number">3</div><div class="step-content"><h4>Get sponsored by a mortgage company</h4><p>Your license isn't active until you're employed by a licensed company. Look for strong training programs, a diverse product lineup, and a culture of mentorship. Your first employer shapes your entire foundation.</p></div></div>
+      <div class="step fade-in"><div class="step-number">4</div><div class="step-content"><h4>Master your product lineup</h4><p>Learn every loan product your company offers — FHA, VA, conventional, jumbo. Know the guidelines, qualifying criteria, and which product fits which borrower. This knowledge is what clients and agents pay you for.</p></div></div>
+      <div class="step fade-in"><div class="step-number">5</div><div class="step-content"><h4>Build your real estate agent referral network</h4><p>Agents are your single best source of purchase loan referrals. Attend open houses, office meetings, and networking events. Offer fast pre-approvals, clear communication, and no surprises at closing.</p></div></div>
+      <div class="step fade-in"><div class="step-number">6</div><div class="step-content"><h4>Eventually go independent as a mortgage broker</h4><p>Once you have experience and a strong referral network, opening your own mortgage brokerage gives you access to dozens of lenders, higher commissions, and complete independence. Most successful brokers made this move after 3–5 years as a loan officer.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Honest Assessment</p>
+    <h2 class="section-title">Is mortgage & lending <em>right for you?</em></h2>
+    <div class="gold-divider"></div>
+    <div class="fit-grid">
+      <div class="fit-card yes fade-in">
+        <h4>You'll thrive if you...</h4>
+        <ul class="fit-list">
+          <li>Are detail-oriented and comfortable with numbers</li>
+          <li>Enjoy helping people navigate complex decisions</li>
+          <li>Are relationship-driven and enjoy building a referral network</li>
+          <li>Can handle variable income and commission-based pay</li>
+          <li>Work well under deadline pressure</li>
+          <li>Are proactive and communicate clearly without being asked</li>
+          <li>Want to be in real estate without owning property</li>
+        </ul>
+      </div>
+      <div class="fit-card no fade-in">
+        <h4>You may struggle if you...</h4>
+        <ul class="fit-list">
+          <li>Dislike compliance, regulations, and detailed paperwork</li>
+          <li>Need predictable income from the start</li>
+          <li>Are uncomfortable asking for referrals</li>
+          <li>Don't enjoy client-facing relationship work</li>
+          <li>Get stressed by multiple urgent deadlines at once</li>
+          <li>Are not willing to constantly update your product knowledge</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--purple-pale); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Language</p>
+    <h2 class="section-title">Key terms every mortgage professional <em>must know</em></h2>
+    <div class="gold-divider"></div>
+    <div class="terms-grid">
+      <div class="term-card fade-in"><div class="term-name">DTI — Debt-to-Income Ratio</div><p>Total monthly debt payments divided by gross monthly income. The primary qualifier for most loan programs. Most conventional loans require a DTI below 43–50%.</p></div>
+      <div class="term-card fade-in"><div class="term-name">LTV — Loan-to-Value Ratio</div><p>Loan amount divided by appraised value. A 90% LTV means 10% down. Higher LTV means more lender risk — and usually a higher rate or PMI requirement.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Pre-Approval</div><p>A lender's written commitment to loan a specific amount, based on verified income, credit, and assets. Much more powerful than a pre-qualification in a competitive market.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Underwriting</div><p>The process of verifying all borrower documentation and property info before approving the loan. Underwriters assess risk and ensure the loan meets all program guidelines.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Rate Lock</div><p>An agreement guaranteeing a specific interest rate for a set period — typically 30–60 days — while the loan is processed and the closing approaches.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Points</div><p>Upfront fees paid at closing to reduce the interest rate. One point = 1% of the loan amount. Buyers can "buy down" their rate by paying points.</p></div>
+      <div class="term-card fade-in"><div class="term-name">DSCR Loan</div><p>Debt Service Coverage Ratio loan — qualifies based on property cash flow rather than personal income. Increasingly popular with investors who have complex tax returns.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Origination Fee</div><p>The fee charged for processing the loan — typically 0.5–1% of the loan amount. Part of closing costs paid by the borrower at closing.</p></div>
+      <div class="term-card fade-in"><div class="term-name">NMLS</div><p>Nationwide Multistate Licensing System — the federal licensing system for mortgage professionals. Your NMLS ID must be disclosed in all advertising and client communications.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Ready to learn the <em>financial foundation?</em></h2>
+  <p>Module 5 of the Darco Academy — Financing Fundamentals — covers everything a mortgage professional needs to understand about how real estate deals get funded.</p>
+  <div class="cta-buttons">
+    <a href="module-1.html" class="btn btn-gold">Start Module 1 →</a>
+    <a href="index.html#careers" class="btn btn-outline-white">← Explore All Careers</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top: 0.5rem; font-size: 11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

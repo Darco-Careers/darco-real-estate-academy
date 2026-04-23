@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 10: Running It Like a Business — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1B4D3E;--forest-mid:#2A6B56;--forest-light:#3A8A6E;--forest-pale:#E8F5EE;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(27,77,62,0.1);--shadow-card:0 2px 16px rgba(27,77,62,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--forest);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(27,77,62,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--gold);border-radius:3px;width:100%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--gold);color:var(--forest);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(27,77,62,0.25);}
+.module-hero{background:linear-gradient(135deg,#0D2820 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.12) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.completion-banner{background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.3);border-radius:12px;padding:1rem 1.5rem;margin-top:1.5rem;display:flex;align-items:center;gap:12px;}
+.completion-banner span{font-size:1.5rem;}
+.completion-banner p{font-size:13.5px;color:var(--gold-light);font-weight:500;line-height:1.5;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Hobbyist vs Owner compare */
+.compare-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;}
+.compare-card.hobbyist{background:#FBF0EE;border:1.5px solid #E8C0B8;}
+.compare-card.owner{background:var(--forest-pale);border:1.5px solid var(--forest-mid);}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:1rem;}
+.compare-card.hobbyist h4{color:#8B2F20;}
+.compare-card.owner h4{color:var(--forest);}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.compare-card ul li{font-size:13px;line-height:1.6;display:flex;gap:8px;}
+.compare-card.hobbyist ul li{color:#6A3028;}
+.compare-card.owner ul li{color:var(--forest);}
+.compare-card.hobbyist ul li::before{content:'✗';font-weight:700;color:#C0392B;flex-shrink:0;}
+.compare-card.owner ul li::before{content:'✓';font-weight:700;color:var(--forest-mid);flex-shrink:0;}
+
+/* Entity table */
+.entity-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.entity-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.entity-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;}
+.entity-table td:first-child{font-weight:600;color:var(--text-dark);}
+.entity-table tr:hover td{background:var(--forest-pale);}
+.entity-table tr.highlight td{background:var(--gold-pale);}
+
+/* Team cards */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin:2rem 0;}
+.team-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;position:relative;overflow:hidden;transition:all 0.25s;}
+.team-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.team-card.tc1::before{background:var(--forest);}
+.team-card.tc2::before{background:var(--gold);}
+.team-card.tc3::before{background:#4A6FA5;}
+.team-card.tc4::before{background:#C0392B;}
+.team-card.tc5::before{background:#8A4A90;}
+.team-card.tc6::before{background:#2A8A6E;}
+.team-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.team-card .team-icon{font-size:26px;margin-bottom:0.5rem;display:block;}
+.team-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.team-card .team-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-bottom:0.5rem;}
+.team-card.tc1 .team-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.team-card.tc2 .team-tag{background:var(--gold-pale);color:#8A6A20;}
+.team-card.tc3 .team-tag{background:#EBF0FB;color:#2A4A8A;}
+.team-card.tc4 .team-tag{background:#FBF0EE;color:#8B2F20;}
+.team-card.tc5 .team-tag{background:#F2EBF8;color:#5A3A7A;}
+.team-card.tc6 .team-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.team-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.team-card .team-tip{margin-top:0.75rem;font-size:12px;font-weight:600;color:var(--forest);padding:6px 10px;border-radius:8px;background:var(--forest-pale);}
+
+/* Wealth pillars */
+.pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:2rem 0;}
+.pillar-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;text-align:center;transition:all 0.25s;}
+.pillar-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.pillar-card .pillar-icon{font-size:30px;margin-bottom:0.5rem;display:block;}
+.pillar-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.pillar-card p{font-size:12px;color:var(--text-mid);line-height:1.55;}
+
+/* Skyscraper visual */
+.skyscraper-box{background:linear-gradient(135deg,#0D2820,var(--forest));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.skyscraper-box::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.12) 0%,transparent 70%);}
+.skyscraper-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.skyscraper-principles{display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.skyscraper-principle{display:flex;gap:12px;align-items:flex-start;}
+.skyscraper-principle .sp-num{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--gold-light);flex-shrink:0;}
+.skyscraper-principle p{font-size:13.5px;color:rgba(255,255,255,0.82);line-height:1.65;}
+.skyscraper-principle p strong{color:var(--gold-light);}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.cc{background:#EBF0FB;color:#1A4E7A;}
+.video-badge.tc{background:var(--forest-pale);color:var(--forest-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#0D2820,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Glossary */
+.glossary-box{background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:14px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.glossary-box p{font-size:14px;color:var(--text-dark);line-height:1.6;}
+.glossary-box p strong{color:var(--forest);}
+.glossary-btn{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+/* Completion */
+.completion-section{background:linear-gradient(135deg,#0D2820,var(--forest) 60%,var(--forest-mid));border-radius:20px;padding:2.5rem;margin:3rem 0;text-align:center;position:relative;overflow:hidden;}
+.completion-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.15) 0%,transparent 65%);}
+.completion-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:700;color:var(--white);margin-bottom:0.75rem;position:relative;}
+.completion-section h2 em{color:var(--gold-light);font-style:italic;}
+.completion-section p{font-size:1rem;color:rgba(255,255,255,0.72);max-width:560px;margin:0 auto 2rem;line-height:1.8;position:relative;}
+.completion-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;}
+.btn-complete{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-complete-gold{background:var(--gold);color:var(--forest);}
+.btn-complete-gold:hover{background:var(--gold-light);}
+.btn-complete-outline{background:rgba(255,255,255,0.1);color:var(--white);border:1.5px solid rgba(255,255,255,0.25);}
+.btn-complete-outline:hover{background:rgba(255,255,255,0.18);}
+
+/* Skills */
+.skills-connection{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.skills-connection h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.skills-connection p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.career-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.career-tag{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--text-dark);text-decoration:none;}
+
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .compare-cards{grid-template-columns:1fr;}
+  .team-grid{grid-template-columns:1fr;}
+  .pillars-grid{grid-template-columns:1fr 1fr;}
+  .completion-actions{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">Career Paths</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="index.html#begin">Core Foundation</a><span class="sep">›</span>
+  <span class="current">Module 10: Running It Like a Business</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Your Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <a href="module-4.html" class="prog-dot complete" title="Module 4">✓</a>
+    <a href="module-5.html" class="prog-dot complete" title="Module 5">✓</a>
+    <a href="module-6.html" class="prog-dot complete" title="Module 6">✓</a>
+    <a href="module-7.html" class="prog-dot complete" title="Module 7">✓</a>
+    <a href="module-8.html" class="prog-dot complete" title="Module 8">✓</a>
+    <a href="module-9.html" class="prog-dot complete" title="Module 9">✓</a>
+    <div class="prog-dot active">10</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏆 Core Foundation · Final Module — 10 of 10</div>
+    <h1>Running It <em>Like a Business</em></h1>
+    <p>You have the knowledge. You understand markets, valuation, deals, financing, negotiation, and leases. Now the question is: how do you operate all of this as a professional — not just someone who got lucky once? This final module shows you how to think like a business owner, set up the right foundation, build a team, track your numbers, and build wealth that actually lasts.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>45–55 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+    <div class="completion-banner">
+      <span>🎯</span>
+      <p>You are one module away from completing the Core Foundation. After this, you will choose your career path and go deep.</p>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Thinking like a business owner — <em>not a hobbyist</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The single biggest difference between people who build lasting real estate careers and those who dabble is not skill, market knowledge, or even capital. It is how they think about what they are doing. A hobbyist treats real estate as something they do on the side when convenient. A business owner treats it as a professional operation — with systems, tracking, standards, and intentionality.</p>
+
+    <p class="lesson-text">You do not need a large portfolio to think like a business owner. You need the mindset from your very first deal. The habits you build now — tracking income and expenses, separating business finances from personal, responding to tenants professionally, following a process rather than trusting your gut — compound over time. The investor who starts with good habits builds a very different business than the one who plans to "get organized later."</p>
+
+    <div class="compare-cards">
+      <div class="compare-card hobbyist">
+        <h4>❌ The Hobbyist Mindset</h4>
+        <ul>
+          <li>Tracks nothing — guesses if deals are profitable</li>
+          <li>Mixes personal and business finances</li>
+          <li>Makes decisions based on gut feeling</li>
+          <li>Reacts to problems instead of preventing them</li>
+          <li>Has no process — figures it out each time</li>
+          <li>Measures success only by number of units</li>
+          <li>Grows fast without building a foundation first</li>
+        </ul>
+      </div>
+      <div class="compare-card owner">
+        <h4>✅ The Business Owner Mindset</h4>
+        <ul>
+          <li>Tracks every dollar — knows exactly what each property produces</li>
+          <li>Separate business accounts, records, and entity</li>
+          <li>Makes decisions based on data and verified numbers</li>
+          <li>Has systems that prevent problems before they arise</li>
+          <li>Follows a repeatable process on every deal</li>
+          <li>Measures success by freedom, cash flow, and time</li>
+          <li>Builds a deep foundation before scaling</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Coach Carson — 22 Years in Real Estate</div>
+      <p>"The purpose of your real estate business is to serve your life — not the other way around. Real estate should help you do what matters. Whatever that means to you. But if you are not intentional about how you build it, the business will eventually control you rather than the other way around."</p>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Start Before You Buy</div>
+      <p>Business thinking starts before your first property closes. The moment you decide you are going to invest in real estate, you are a real estate investor and you have a business. Start tracking expenses now — education, networking events, travel to evaluate properties, software subscriptions. These are business expenses. Open a dedicated bank account. Set up a simple bookkeeping system. The investors who build great businesses start before they have anything to track.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Setting up your business foundation — <em>entity, finances, and tracking</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">A professional real estate operation has three foundational elements in place before anything else: a legal entity, separate business finances, and a basic bookkeeping system. None of these is complicated to set up. All of them protect you, save you money, and make your business easier to run as it grows.</p>
+
+    <h3 class="sub-title">Entity structure — the basics</h3>
+    <p class="lesson-text">Most real estate investors eventually hold their properties inside a legal entity — most commonly an LLC (Limited Liability Company). An LLC separates your personal assets from your business assets. If something goes wrong with a property — a lawsuit, an accident, a dispute — the LLC creates a legal barrier between the problem and your personal savings, home, and retirement accounts. Always consult a real estate attorney and CPA before forming any entity, as the right structure depends on your state, your investing strategy, and your tax situation.</p>
+
+    <table class="entity-table">
+      <thead>
+        <tr><th>Structure</th><th>What It Is</th><th>Best For</th><th>Key Consideration</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sole Proprietor</td>
+          <td>No separate entity — you own everything personally</td>
+          <td>Absolute beginners before first purchase</td>
+          <td>No liability protection — your personal assets are exposed</td>
+        </tr>
+        <tr class="highlight">
+          <td>LLC</td>
+          <td>Separate legal entity with liability protection</td>
+          <td>Most real estate investors — residential and commercial</td>
+          <td>Most flexible structure — relatively simple to form and maintain</td>
+        </tr>
+        <tr>
+          <td>S-Corp</td>
+          <td>Corporation with pass-through taxation</td>
+          <td>Active real estate businesses with significant income</td>
+          <td>More complex — requires payroll, more administrative work</td>
+        </tr>
+        <tr>
+          <td>Series LLC</td>
+          <td>Single LLC with separate "cells" for each property</td>
+          <td>Investors with multiple properties in certain states</td>
+          <td>Not available in all states — requires attorney guidance</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-title">Separate your finances — immediately</h3>
+    <p class="lesson-text">The most important rule in real estate bookkeeping is also the simplest: <strong>never mix personal and business money.</strong> Open a dedicated business checking account and a dedicated business credit card. Every income and expense from your real estate activities runs through those accounts — nothing else. This one habit makes tax time easier, makes your books cleaner, protects you in an audit, and makes you look professional to lenders and investors.</p>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Commingling Is Expensive</div>
+      <p>Investors who mix personal and business finances end up paying bookkeepers or accountants significant fees just to separate thousands of transactions after the fact. One investor paid over $3,000 just to untangle a single year's worth of commingled records. It is far less expensive to open a second bank account today than to clean up mixed records later.</p>
+    </div>
+
+    <h3 class="sub-title">Bookkeeping — the superpower nobody talks about</h3>
+    <p class="lesson-text">Good bookkeeping tells you the real story of your business — what you actually earn, what you actually spend, and whether each property is truly performing the way you thought it was. Investors who track their numbers make better decisions, qualify more easily for loans, raise capital more credibly, and catch problems early. Investors without good books are operating blind.</p>
+
+    <p class="lesson-text">You do not need to be an accountant. Start simple — a tool like <strong>Stessa</strong> (free, built specifically for real estate investors) or a basic spreadsheet is enough for one to five properties. As you scale, migrate to QuickBooks. The key is consistency: enter transactions regularly, keep receipts organized digitally, and review your profit and loss report at least monthly. Hire a bookkeeper when your time is worth more than the cost of one.</p>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Tyler Cauble: Your real estate investing <em>power team</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Tyler Cauble has built a multi-million dollar commercial real estate portfolio in Nashville. In this video he walks through every professional you need on your team — commercial broker, real estate attorney, building inspector, general contractor, and commercial lender — explaining what each one does, how they get paid, what to watch out for, and when to engage them. His closing message is the most important one: hire right the first time. Cutting corners on your team costs far more than it saves.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/BsFryZ3aUXk" title="Real Estate Investing Power Team — Tyler Cauble" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge tc">Tyler Cauble · Commercial Real Estate</span>
+        <h4>Real Estate Investing Power Team — The Professionals to Help You Grow</h4>
+        <p>A practical walkthrough of every professional a commercial real estate investor needs: broker, attorney, building inspector, general contractor, and lender. Includes pro tips on how to engage each one, how they get paid, and what mistakes to avoid. Directly reinforces Lesson 3 of this module.</p>
+        <p class="credit">Tyler Cauble · YouTube 2020 · 10 min · Evergreen content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Building your team — <em>no one succeeds alone</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Every great real estate investor has a team behind them. Not necessarily a large team — even a small portfolio benefits from the right professionals in the right roles. The investors who try to do everything themselves — handle their own legal documents, skip the inspector, use the same contractor their neighbor recommended — consistently run into expensive problems that a good team would have prevented.</p>
+
+    <p class="lesson-text">Build your team before you need them. The time to find a good real estate attorney is not when a deal is about to close in three days. The time to cultivate a relationship with a commercial lender is not when you have a property under contract. Build the relationships now so they are in place when you need them.</p>
+
+    <div class="team-grid">
+
+      <div class="team-card tc1 fade-in">
+        <span class="team-icon">🏢</span>
+        <h4>Commercial Real Estate Broker</h4>
+        <div class="team-tag">Deal Flow & Negotiation</div>
+        <p>Knows the market inside and out. Brings you deals before they hit public platforms. Negotiates on your behalf. Paid by the seller — costs you nothing as a buyer. Your most important relationship in commercial real estate.</p>
+        <div class="team-tip">💡 Get on broker lists in your target market before you have capital to deploy.</div>
+      </div>
+
+      <div class="team-card tc2 fade-in">
+        <span class="team-icon">⚖️</span>
+        <h4>Real Estate Attorney</h4>
+        <div class="team-tag">Legal Protection</div>
+        <p>Reviews contracts, LOIs, leases, and closing documents. Protects you from clauses you might miss. Critical during any non-standard negotiation or dispute. Find one who focuses on real estate — not a general practice attorney.</p>
+        <div class="team-tip">💡 Ask your broker or another investor for a referral — find one who makes deals happen, not one who kills them.</div>
+      </div>
+
+      <div class="team-card tc3 fade-in">
+        <span class="team-icon">🔍</span>
+        <h4>Building Inspector</h4>
+        <div class="team-tag">Due Diligence</div>
+        <p>Provides objective eyes on every property before you close. Inspection reports can justify price reductions and reveal problems you cannot see. Has no stake in whether you buy — their job is to tell you the truth.</p>
+        <div class="team-tip">💡 Always inspect. Even in NNN leases where the tenant handles maintenance — when that tenant leaves, the condition becomes your problem.</div>
+      </div>
+
+      <div class="team-card tc4 fade-in">
+        <span class="team-icon">🔨</span>
+        <h4>General Contractor</h4>
+        <div class="team-tag">Renovation & Construction</div>
+        <p>Manages any construction or renovation work. Hire commercial contractors for commercial properties — they follow different codes and use different materials than residential GCs. Reputation for finishing on time and pulling permits is essential.</p>
+        <div class="team-tip">💡 Verify they are licensed for commercial work. Ask for references from recent commercial jobs specifically.</div>
+      </div>
+
+      <div class="team-card tc5 fade-in">
+        <span class="team-icon">🏦</span>
+        <h4>Commercial Lender</h4>
+        <div class="team-tag">Capital & Relationships</div>
+        <p>Commercial lending is relationship-driven. Banks lend to people they know, like, and trust. Start building lender relationships now — before you need money. Always have multiple lender options. Open accounts at banks you want to borrow from.</p>
+        <div class="team-tip">💡 Engage your lender as early as possible in a deal — do not wait until closing is three weeks away.</div>
+      </div>
+
+      <div class="team-card tc6 fade-in">
+        <span class="team-icon">📊</span>
+        <h4>CPA / Accountant</h4>
+        <div class="team-tag">Tax Strategy</div>
+        <p>A real estate-focused CPA does far more than file taxes — they plan strategy, help you minimize tax liability, advise on entity structure, and help you take advantage of real estate's powerful tax benefits. Hire one who specializes in real estate investors.</p>
+        <div class="team-tip">💡 Meet with your CPA at least twice per year — mid-year for planning, year-end for strategy. Real-time books make this possible.</div>
+      </div>
+
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Pro Tip on Lenders</div>
+      <p>Tyler Cauble's most actionable tip: if you want a loan from a specific bank, open accounts with them first. A checking account, a savings account — it does not matter. Having a banking relationship on record makes it dramatically easier to qualify for a loan when you need one. Do this now, even if your first deal is still a year away.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Coach Carson: The secret to building real estate wealth <em>that lasts</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">After 22 years as a real estate investor, Coach Carson has one clear message about how to build a real estate business: build a skyscraper, not a rocket. The rocket grows fast, burns bright — and often crashes. The skyscraper takes longer to build, but once it is up, it lasts for decades. Using Chick-fil-A and Patagonia as examples, he walks through seven principles of the skyscraper approach — mission-driven investing, deliberate growth, debt as a tool not a religion, and redefining success as time and freedom rather than unit count.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/HJ7utiNKOcU" title="The Secret to Building Real Estate Wealth That Lasts — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cc">Coach Carson · YouTube</span>
+        <h4>The Secret to Building Real Estate Wealth That Lasts</h4>
+        <p>Coach Carson makes the case for skyscraper-style growth over rocket-style growth — using Chick-fil-A and Patagonia as real-world examples of businesses built to last. Seven principles: mission-driven, deliberate pace, excellence in craft, deep relationships, debt as a tool, redefine success, and yes — you can still grow. Directly reinforces Lesson 4 of this module.</p>
+        <p class="credit">Coach Carson · YouTube June 2025 · 17 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Long-term wealth strategy — <em>building something that lasts</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Real estate builds wealth through four mechanisms working simultaneously. You learned them in Module 3. Now — at the end of the Core Foundation — it is worth revisiting them with fresh eyes. Because the business owner who understands all four is making very different decisions than the one who only thinks about cash flow.</p>
+
+    <div class="pillars-grid">
+      <div class="pillar-card fade-in">
+        <span class="pillar-icon">💵</span>
+        <h4>Cash Flow</h4>
+        <p>Monthly income after all expenses — the operating engine of your business</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <span class="pillar-icon">📈</span>
+        <h4>Appreciation</h4>
+        <p>Rising property value over time — often larger than cash flow over a full hold period</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <span class="pillar-icon">🏦</span>
+        <h4>Loan Paydown</h4>
+        <p>Tenants pay down your mortgage — equity builds automatically every month</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <span class="pillar-icon">🛡️</span>
+        <h4>Tax Benefits</h4>
+        <p>Depreciation, deductions, and 1031 exchanges — legally reduce your tax burden</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The rocket vs. the skyscraper</h3>
+    <p class="lesson-text">Coach Carson's framework from Video 2 is one of the most useful mental models in this entire curriculum. The rocket grows fast — maximum leverage, maximum speed, maximum risk. It makes it to the moon or it crashes and burns, and both happen regularly. The skyscraper starts with a deep foundation, builds floor by floor, and is still standing decades later.</p>
+
+    <div class="skyscraper-box">
+      <h3>🏗️ The 7 Principles of Skyscraper Growth</h3>
+      <div class="skyscraper-principles">
+        <div class="skyscraper-principle">
+          <div class="sp-num">1</div>
+          <p><strong>Mission-driven:</strong> Your business exists to serve your life — not the other way around. Know what you are building and why before you start.</p>
+        </div>
+        <div class="skyscraper-principle">
+          <div class="sp-num">2</div>
+          <p><strong>Tortoise, not hare:</strong> Slow, consistent growth beats fast and fragile. Endurance wins the long-term race every time.</p>
+        </div>
+        <div class="skyscraper-principle">
+          <div class="sp-num">3</div>
+          <p><strong>Excellence in craft:</strong> Get really good at finding deals, analyzing properties, and managing relationships. Grow your skills before you grow your portfolio.</p>
+        </div>
+        <div class="skyscraper-principle">
+          <div class="sp-num">4</div>
+          <p><strong>Deep relationships:</strong> Fewer, deeper relationships with lenders, tenants, contractors, and partners produce better results than a wide shallow network.</p>
+        </div>
+        <div class="skyscraper-principle">
+          <div class="sp-num">5</div>
+          <p><strong>Debt as a tool:</strong> Use leverage carefully — like a power saw. It builds faster but can cut you badly. Know when to put it back in the toolbox.</p>
+        </div>
+        <div class="skyscraper-principle">
+          <div class="sp-num">6</div>
+          <p><strong>Redefine success:</strong> The goal is not the most units. It is the most freedom — time with your family, flexibility to say yes to what matters, and financial security that holds.</p>
+        </div>
+        <div class="skyscraper-principle">
+          <div class="sp-num">7</div>
+          <p><strong>You can still grow:</strong> The skyscraper approach is not small thinking — it is smart thinking. You can build the biggest skyscraper around. It just takes longer and it lasts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 The Three Couples — Coach Carson</div>
+      <p>"There were two couples with 10 properties each — both earning $10,000 per month, both free to extend their European vacation for weeks because their systems ran without them. And there was a couple with 1,000 units earning $60,000 per month — who had to fly home early because the business needed them. Growth always comes at a cost. Size and complexity always come at a cost. The most expensive cost is your time."</p>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="glossary-box fade-in">
+    <p><strong>📘 New terms in this module:</strong> LLC, Sole Proprietor, S-Corp, Series LLC, Commingling, Bookkeeping, Profit and Loss, Balance Sheet, Stessa, QuickBooks, Power Team, Enrolled Agent, Tax Strategy, Skyscraper Growth — all defined in the Darco Master Glossary.</p>
+    <a href="darco-glossary.pdf" download class="glossary-btn">⬇ Download Glossary</a>
+  </div>
+
+  <!-- 1031 LESSON -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Tax Strategy</div>
+    <h2 class="lesson-title">The 1031 exchange — <em>the most powerful tax tool in real estate</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">One of the first questions every experienced real estate investor asks when considering a sale is: "Can I do a 1031?" If you work in real estate in any capacity — broker, investor, property manager, advisor — you will hear this question constantly. Not knowing what it means will make you look underprepared. Understanding it well will make you genuinely useful to clients and partners. More importantly, if you ever own investment real estate yourself, this is the tool that can change the trajectory of your wealth.</p>
+
+    <h3 class="sub-title">What a 1031 exchange is</h3>
+    <p class="lesson-text">A 1031 exchange — named after Section 1031 of the IRS tax code — allows a real estate investor to sell an investment property and <strong>defer paying capital gains taxes on the profit</strong>, as long as they reinvest all proceeds into a qualifying replacement property within a strict time window. Instead of paying taxes now and investing what is left, the investor rolls 100% of the equity into the next property — keeping more capital working and compounding.</p>
+
+    <p class="lesson-text">This is not a tax elimination — it is a tax deferral. The deferred gain carries forward into the replacement property. But for investors who continue exchanging upward rather than cashing out, the tax can be deferred indefinitely. Under current estate planning strategies, heirs can receive a stepped-up cost basis at death — effectively eliminating the accumulated deferred gain entirely. This is why Peter Harris calls the 1031 exchange "one of the most powerful tools that ever existed to build wealth in real estate."</p>
+
+    <p class="lesson-text">Peter used it himself early in his career: he sold a single-family rental, took 100% of his profits, and purchased a 44-unit apartment building — without paying taxes on the gain. That single exchange increased both his net worth and his cash flow enough that he was able to leave his engineering job. This is the real-world power of the 1031 done correctly.</p>
+
+    <h3 class="sub-title">The basic rules — what you must do to qualify</h3>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Core Requirements</div>
+      <p style="font-style:normal;font-family:'DM Sans',sans-serif;font-size:13.5px;line-height:1.85;color:var(--text-dark);"><strong>1. Like-Kind Property:</strong> The replacement must be "like-kind" — broadly interpreted in real estate. You can exchange a single-family rental for an apartment building, or a strip mall for a warehouse. You are not locked into the same property type.<br><br><strong>2. Equal or Greater Value:</strong> The replacement property must be equal to or greater in value than what you sold. Every dollar of equity must move forward. If you pocket any proceeds — even $50,000 out of $250,000 — you owe taxes on that amount. What is left behind is called <em>boot</em> and it is taxable.<br><br><strong>3. The 45-Day Rule:</strong> From the day your property closes, you have exactly 45 days to formally identify your replacement property in writing. This clock cannot be extended.<br><br><strong>4. The 180-Day Rule:</strong> You have 180 days total from your sale closing to actually close on the replacement property. Miss this deadline and the exchange fails — you owe the taxes.<br><br><strong>5. Qualified Intermediary Required:</strong> You cannot touch the sale proceeds. A Qualified Intermediary (QI) — a licensed exchange company — holds the money between transactions. The QI transfers the funds directly to the replacement purchase. Using the wrong person, or letting the money pass through your own account, disqualifies the exchange immediately.</p>
+    </div>
+
+    <h3 class="sub-title">The three identification rules during the 45-day window</h3>
+    <p class="lesson-text">During your 45-day identification window, the IRS gives you three options for how to identify your replacement property. You only need to use one:</p>
+
+    <div class="compare-wrap" style="overflow-x:auto;margin:1.25rem 0;">
+      <table class="compare-table" style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="background:var(--forest);color:white;">
+            <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">Rule</th>
+            <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">What It Allows</th>
+            <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:var(--gold-pale);">
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text-dark);">3-Property Rule</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);">Identify up to 3 properties regardless of their value. You must close on at least one of them.</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);">Most investors — this is the simplest and most commonly used rule</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text-dark);">200% Rule</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);">Identify any number of properties as long as their combined value does not exceed 200% of the relinquished property's value.</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);">Investors who want to compare many options across a range of sizes</td>
+          </tr>
+          <tr style="background:var(--forest-pale);">
+            <td style="padding:9px 14px;font-weight:600;color:var(--text-dark);">95% Rule</td>
+            <td style="padding:9px 14px;color:var(--text-mid);">Identify any number of properties at any value — but you must actually close on 95% of the total identified value.</td>
+            <td style="padding:9px 14px;color:var(--text-mid);">Rare — almost never used because the closing requirement is extremely difficult to meet</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">What does NOT qualify for a 1031 exchange</h3>
+    <p class="lesson-text">Not everything can be exchanged. The following cannot be used as either the relinquished property or the replacement property in a 1031 exchange:</p>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin:1rem 0 1.5rem;">
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:#C0392B;font-weight:700;flex-shrink:0;">✕</span> Your primary residence — the home you live in is not an investment property</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:#C0392B;font-weight:700;flex-shrink:0;">✕</span> Stocks, bonds, or shares in a business — the 1031 applies only to real property</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:#C0392B;font-weight:700;flex-shrink:0;">✕</span> Development lots — raw land held for development does not qualify</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:#C0392B;font-weight:700;flex-shrink:0;">✕</span> Foreign property — US real estate can only exchange into other US real estate</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:#C0392B;font-weight:700;flex-shrink:0;">✕</span> Master lease interests — you need legal title, not just equitable title, to qualify</li>
+    </ul>
+
+    <h3 class="sub-title">Two hidden benefits most beginners miss</h3>
+    <p class="lesson-text">Beyond the obvious tax deferral, the 1031 exchange delivers two additional wealth-building benefits that most new investors do not realize:</p>
+
+    <p class="lesson-text"><strong>Depreciation restart.</strong> When you have owned a property for many years you eventually exhaust your depreciation deductions — the annual tax write-offs based on the building's value. When you exchange into a new, larger property, depreciation restarts on the full value of the new building. This creates a fresh stream of tax deductions that shields cash flow from income tax for years. Peter Harris calls this "huge" — and it is.</p>
+
+    <p class="lesson-text"><strong>Forced portfolio upgrade.</strong> The 1031 is not just a tax tool — it is a portfolio strategy. Each exchange forces you to trade up to a larger, higher-performing asset. An investor who started with single-family rentals producing $300 per month can exchange into a multifamily property producing $2,800 per month — without writing a check to the IRS. The 1031 is the mechanism by which smart investors systematically move up the asset ladder over decades.</p>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/-zBXsOAuW8g" title="1031 Exchange Step By Step Case Study — Peter Harris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge" style="background:var(--forest-pale);color:var(--forest-mid);">Peter Harris · Commercial Property Advisors</span>
+        <h4>1031 Exchange Step By Step Case Study</h4>
+        <p>Peter Harris walks through the complete 1031 exchange process with a real case study: selling a $500,000 single-family rental, rolling $250,000 in proceeds into a $750,000 apartment building through a Qualified Intermediary, calculating NOI and cash flow on the new property, and showing how cash flow jumped from $300/month to nearly $2,900/month — completely tax deferred. The three identification rules, the 45/180-day deadlines, what does not qualify, and the depreciation restart benefit are all covered in detail.</p>
+        <p class="credit">Commercial Property Advisors · YouTube 2019 · Evergreen content — 1031 rules are stable</p>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ This Is Educational — Not Tax Advice</div>
+      <p>1031 exchanges involve complex tax law. This lesson explains the concept so you can speak intelligently about it with clients and partners. Always consult a qualified CPA or tax attorney before executing a 1031 exchange. Rules, timelines, and state tax treatment vary, and a mistake is costly and often irreversible.</p>
+    </div>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to move forward. They are here for students who want to build stronger business systems and a deeper understanding of the long-term wealth strategy behind real estate investing.</p>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">📊 Business Systems & Bookkeeping</div>
+
+    <div class="deeper-link">
+      <p><strong>Coach Carson — 2025 Real Estate Bookkeeping Made Easy</strong><br>A 47-minute deep dive with a former CPA turned full-time investor, covering why bookkeeping matters, the basics of categorizing transactions, best bank account practices, software recommendations (Stessa for beginners, QuickBooks for scale), bookkeeping schedules, profit and loss vs. balance sheet, hiring a bookkeeper vs. DIY, and working with a CPA. The most practical bookkeeping guide specifically for real estate investors available anywhere.</p>
+      <a href="https://www.youtube.com/watch?v=V79ATubqPDo" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🏆 Long-Term Wealth Philosophy</div>
+
+    <div class="deeper-link">
+      <p><strong>Coach Carson — Why 10 Rental Properties Are Better Than 1,000</strong><br>The story of three real estate investing couples who started at the same time — 15 years later, two couples with 10 and 50 units have complete freedom, while the couple with 1,000 units had to cut their European vacation short to go back to work. One of the most powerful illustrations of the relationship between portfolio size and life freedom you will find anywhere. 7 minutes.</p>
+      <a href="https://www.youtube.com/watch?v=KnFDChynyjA" target="_blank">Watch →</a>
+    </div>
+
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 10 Key Takeaways</h3>
+    <ul>
+      <li>The difference between hobbyists and professionals is not skill or capital — it is mindset and systems. Business owner thinking starts before your first deal, not after your tenth.</li>
+      <li>Set up your business foundation early: a legal entity for liability protection, separate business finances, and a simple bookkeeping system. These three things protect you, save you money, and make your operation professional from day one.</li>
+      <li>Never commingle personal and business finances. Open dedicated accounts and run all real estate income and expenses through them exclusively. This one habit pays for itself many times over.</li>
+      <li>Build your team before you need them. A commercial broker, real estate attorney, building inspector, general contractor, commercial lender, and CPA are not optional — they are the infrastructure of a professional operation. Hire right the first time.</li>
+      <li>Real estate builds wealth through four simultaneous mechanisms: cash flow, appreciation, loan paydown, and tax benefits. Investors who understand all four make better decisions than those who only focus on one.</li>
+      <li>Build a skyscraper, not a rocket. Deep foundations, deliberate growth, excellent craft, strong relationships, careful use of debt, and a clear definition of what success means to you — these are the principles of a business built to last for decades.</li>
+      <li>The 1031 exchange — Section 1031 of the IRS tax code — lets investors sell investment property and defer all capital gains taxes by rolling 100% of proceeds into a like-kind replacement property of equal or greater value. Key rules: 45 days to identify the replacement, 180 days to close, all funds held by a Qualified Intermediary (you cannot touch the money). Any proceeds kept are called "boot" and are immediately taxable. What does not qualify: your primary residence, stocks, development lots, master lease interests. Two hidden benefits: depreciation restarts on the new property, and each exchange forces a portfolio upgrade to a higher-performing asset. Used over decades, the 1031 is one of the most powerful wealth-compounding tools available in real estate. Always work with a CPA and QI.</li>
+      <li>Success is not the most units or the fastest growth. It is having enough — enough money, enough freedom, and enough time to live the life you are building this business to support.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check — Final Module</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. An investor owns three rental properties but keeps all their income and expenses mixed with their personal bank account. What is the primary risk of this approach?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> They will have difficulty finding tenants without a separate business address</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> They lose liability protection, make bookkeeping and tax preparation far more difficult, and risk having to pay expensive fees to untangle commingled records later</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> They cannot qualify for an LLC without a separate bank account</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> There is no significant risk if the investor keeps mental notes of which transactions belong to real estate</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. Tyler Cauble says commercial lending is heavily based on relationships. What is his most practical tip for building a lending relationship before you need a loan?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Submit a formal loan application before you have a deal under contract to get pre-approved</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Only approach banks that have advertised commercial real estate loan products</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Open accounts at the banks you want to borrow from — a checking or savings account builds a banking history that makes it easier to qualify for a loan when you need one</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Wait until you have a property under contract before speaking to a lender to show them you are a serious buyer</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. What does Coach Carson mean when he says your business should serve your life — not the other way around?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> You should never work more than 10 hours per week on your real estate business</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Real estate investing is not suitable for people with families or other responsibilities</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> You should build your real estate business intentionally around what matters to you — freedom, time, financial security — rather than growing as fast as possible and hoping your life fits around it</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> You should only invest in real estate part-time and keep your day job permanently</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. In Coach Carson's "rocket vs. skyscraper" framework, what is the key difference between the two approaches to growth?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Rocket investors focus on commercial real estate while skyscraper investors focus on residential</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Rocket growth is fast, highly leveraged, and fragile — it either makes it or crashes. Skyscraper growth starts with a deep foundation, builds deliberately floor by floor, and is built to last for decades</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Skyscraper investors use no debt while rocket investors use maximum leverage</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Rocket investors always fail while skyscraper investors always succeed</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. A beginning investor asks: "Should I set up a bookkeeping system now, or wait until I have more properties to track?" What is the correct answer?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Wait until you have at least three properties — it is not worth the effort for just one</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Wait until your first property closes — there is nothing to track before then</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Start now — the moment you decide to invest in real estate you have a business. Education, networking events, software, and travel to evaluate properties are all business expenses worth tracking from day one</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Hire a bookkeeper before doing anything yourself — DIY bookkeeping always creates problems</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-section fade-in">
+    <h2>🎓 You Have Completed the <em>Core Foundation</em></h2>
+    <p>Ten modules. Every core skill a real estate professional needs — mindset, language, wealth mechanics, valuation, deal analysis, financing, finding properties, negotiation, leases, and now running it like a business. You are ready to go deeper into the career path that fits you.</p>
+    <div class="completion-actions">
+      <a href="how-to-show-up.html" class="btn-complete btn-complete-gold">→ How to Show Up First</a>
+      <a href="index.html" class="btn-complete btn-complete-outline">← Back to Academy Home</a>
+    </div>
+  </div>
+
+  <!-- SKILLS CONNECTION -->
+  <div class="skills-connection fade-in">
+    <h3>🔗 How This Connects to Your Career Path</h3>
+    <p>Running it like a business is the capstone skill that makes every other module work in practice. Investors use it to build portfolios that produce real freedom. Agents use it to build repeatable client pipelines. Property managers use it to run efficient operations. Brokers use it to build client relationships that compound over time. Leasing professionals use it to track performance and get promoted. Whatever path you choose, the business owner mindset is what separates the professionals from the people who dabble.</p>
+    <div class="career-tags">
+      <a href="residential-agent.html" class="career-tag">🏠 Residential Agent</a>
+      <a href="real-estate-investing.html" class="career-tag">📈 Real Estate Investing</a>
+      <a href="commercial-real-estate.html" class="career-tag">🏢 Commercial Real Estate</a>
+      <a href="wholesaling.html" class="career-tag">🔄 Wholesaling</a>
+      <a href="mortgage-lending.html" class="career-tag">💼 Mortgage Lending</a>
+      <a href="property-management.html" class="career-tag">🔑 Property Management</a>
+      <a href="real-estate-development.html" class="career-tag">🏗️ Development</a>
+      <a href="maintenance-repair.html" class="career-tag">🔧 Maintenance &amp; Repair</a>
+      <a href="real-estate-photography.html" class="career-tag">📸 Photography</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="module-9.html" class="btn btn-outline">← Module 9: Leases &amp; Contracts</a>
+  <div class="module-nav-info">
+    <p>Core Foundation — Complete</p>
+    <strong>Module 10 of 10 ✓</strong>
+  </div>
+  <a href="how-to-show-up.html" class="btn btn-gold">How to Show Up →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! Commingling personal and business finances creates multiple serious problems: it defeats the liability protection of an LLC (courts can 'pierce the corporate veil' when finances are mixed), it makes bookkeeping and tax preparation exponentially harder, and investors often end up paying accountants significant fees just to untangle mixed records retroactively.",
+      incorrect: "Not quite. The real risks of commingling personal and business finances are: losing LLC liability protection, making bookkeeping and tax preparation very difficult and expensive, and creating a mess that costs far more to clean up than it would have cost to open a separate account in the first place. Mental notes are not a substitute for separate financial records."
+    },
+    q2: {
+      correct: "Correct! Tyler Cauble's pro tip is to open bank accounts at the lenders you want to borrow from before you need a loan. This builds a banking history and relationship that makes it significantly easier to qualify when you do have a deal that needs financing. Start early — commercial lending is relationship-based and relationships take time.",
+      incorrect: "Not quite. Tyler Cauble's most actionable tip is to open checking or savings accounts at banks you want to borrow from before you need a loan. This builds a banking history and relationship. Commercial lending is heavily relationship-based — banks lend to people they know, like, and trust. Start those relationships early."
+    },
+    q3: {
+      correct: "Correct! Coach Carson's core message is that your real estate business is a tool to help you build the life you want — not an end in itself. This means being intentional about how you grow, knowing what 'enough' looks like for you, and building systems that give you freedom rather than creating obligations that trap you.",
+      incorrect: "Not quite. Coach Carson's message is that your business should be built intentionally around what matters to you personally — family time, freedom, financial security, flexibility. The danger of growth for its own sake is that the business eventually controls your life rather than serving it. Size is not the goal. Freedom is the goal."
+    },
+    q4: {
+      correct: "Correct! Rocket growth is fast, highly leveraged, maximum speed — you either make it to the moon or crash and burn, which happens regularly. Skyscraper growth starts with a deep foundation, builds floor by floor at a deliberate pace, and is built to last for decades. Both can reach great heights — but only one is built to stay there.",
+      incorrect: "Not quite. The rocket vs. skyscraper distinction is about pace and risk, not property type or debt philosophy. Rocket growth is fast, highly leveraged, and fragile — high upside but high crash risk. Skyscraper growth starts with a deep foundation and builds deliberately over time — slower to start but sustainable and lasting. Both approaches can use debt; it is about how carefully and how much."
+    },
+    q5: {
+      correct: "Correct! Bookkeeping starts the moment you decide you are a real estate investor — before you own a single property. Education costs, networking events, software subscriptions, travel to evaluate deals — these are all legitimate business expenses. Starting your tracking system early means cleaner records, better tax positions, and the habit already formed before things get complex.",
+      incorrect: "Not quite. You should start your bookkeeping system now — the moment you decide to invest in real estate you are in business. Education, networking, software, and travel to evaluate properties are all legitimate business expenses from day one. Waiting until you have multiple properties means you will have already lost months of trackable expenses and will be setting up systems under pressure rather than before you need them."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5 — Core Foundation Complete!</strong> You have finished all 10 modules. You now have the knowledge foundation every serious real estate professional needs. Time to choose your career path and go deep.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons above and try again. The business systems in this module are what hold everything else together — they are worth understanding deeply before moving to your career track.';
+    }
+  }
+</script>
+
+</body>
+</html>

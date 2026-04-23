@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Maintenance & Repair — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rust:#8B3A1A;--rust-mid:#B04A22;--rust-light:#D0622E;--rust-pale:#FAF0EA;
+    --bronze:#7A5C2E;--bronze-mid:#A07840;
+    --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+    --cream:#FAF8F3;--cream-dark:#F0EBE0;
+    --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+    --white:#FFFFFF;--border:rgba(139,58,26,0.1);
+    --shadow-card:0 2px 16px rgba(139,58,26,0.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.7;overflow-x:hidden;}
+  nav{background:var(--rust);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+  .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--rust);}
+  .nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+  .nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+  .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+  .nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold-light);}
+  .nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+  .breadcrumb{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+  .breadcrumb a{color:var(--rust-mid);text-decoration:none;font-weight:500;}
+  .breadcrumb .sep{opacity:0.4;}
+  .breadcrumb .current{color:var(--rust);font-weight:600;}
+  .hero{background:linear-gradient(135deg,#4A1A08 0%,var(--rust) 55%,var(--rust-mid) 100%);padding:5rem 2.5rem 4rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+  .hero-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
+  .track-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:1.25rem;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:1rem;}
+  .hero h1 em{color:var(--gold-light);font-style:italic;}
+  .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.7);max-width:560px;line-height:1.8;font-weight:300;margin-bottom:2rem;}
+  .hero-stats{display:flex;gap:2rem;flex-wrap:wrap;}
+  .hero-stat .number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold-light);line-height:1;}
+  .hero-stat .label{font-size:11.5px;color:rgba(255,255,255,0.5);margin-top:3px;}
+  .hero-visual{width:180px;height:180px;background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.2);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:72px;flex-shrink:0;}
+  .container{max-width:900px;margin:0 auto;padding:0 2rem;}
+  .section-eyebrow{font-size:11.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.6rem;}
+  .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.1rem;}
+  .section-title em{color:var(--rust);font-style:italic;}
+  .gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:1rem 0 1.5rem;}
+  .lead-text{font-size:1.05rem;color:var(--text-mid);line-height:1.85;margin-bottom:1.25rem;max-width:720px;}
+  .highlight-box{background:var(--rust-pale);border-left:4px solid var(--rust-mid);border-radius:0 12px 12px 0;padding:1.5rem 2rem;margin:1.5rem 0;}
+  .highlight-box p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--rust);font-style:italic;line-height:1.7;}
+  .trades-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin:2rem 0;}
+  .trade-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.25s;}
+  .trade-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+  .trade-icon{font-size:28px;margin-bottom:0.6rem;display:block;}
+  .trade-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--rust);margin-bottom:0.35rem;}
+  .trade-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+  .trade-rate{font-size:12px;font-weight:700;color:var(--rust-mid);margin-top:0.5rem;}
+  .timeline{margin-top:2rem;position:relative;}
+  .timeline::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--rust-mid),rgba(139,58,26,0.1));}
+  .timeline-item{display:flex;gap:1.5rem;margin-bottom:1.75rem;}
+  .timeline-dot{width:58px;height:38px;background:var(--rust);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--gold-light);flex-shrink:0;position:relative;z-index:1;}
+  .timeline-content{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.4rem;flex:1;transition:box-shadow 0.2s;}
+  .timeline-content:hover{box-shadow:var(--shadow-card);}
+  .timeline-content h4{font-weight:600;font-size:0.9rem;color:var(--rust);margin-bottom:0.3rem;}
+  .timeline-content p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:2rem;}
+  .skill-card{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:all 0.25s;}
+  .skill-card:hover{background:var(--white);box-shadow:var(--shadow-card);}
+  .skill-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:0.75rem;}
+  .skill-label.essential{background:var(--rust-pale);color:var(--rust-mid);}
+  .skill-label.helpful{background:var(--gold-pale);color:#8A6A20;}
+  .skill-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;}
+  .skill-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+  .earnings-section{background:var(--rust);padding:4rem 0;position:relative;overflow:hidden;}
+  .earnings-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.08) 0%,transparent 60%);}
+  .earnings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.25rem;margin-top:2rem;}
+  .earnings-card{background:rgba(255,255,255,0.07);border:1px solid rgba(201,168,76,0.15);border-radius:14px;padding:1.5rem;text-align:center;transition:all 0.25s;}
+  .earnings-card:hover{background:rgba(255,255,255,0.11);border-color:rgba(201,168,76,0.3);}
+  .earnings-role{font-size:12px;font-weight:600;letter-spacing:0.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:0.75rem;}
+  .earnings-amount{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:0.4rem;}
+  .earnings-note{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;}
+  .steps{margin-top:2rem;display:flex;flex-direction:column;gap:1rem;}
+  .step{display:flex;gap:1.25rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.6rem;transition:all 0.25s;}
+  .step:hover{box-shadow:var(--shadow-card);border-color:rgba(139,58,26,0.2);}
+  .step-number{width:36px;height:36px;background:var(--rust);color:var(--gold-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;flex-shrink:0;}
+  .step-content h4{font-weight:600;font-size:0.95rem;color:var(--text-dark);margin-bottom:0.3rem;}
+  .step-content p{font-size:13.5px;color:var(--text-mid);line-height:1.65;}
+  .fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2rem;}
+  .fit-card{border-radius:14px;padding:1.5rem;border:1px solid var(--border);}
+  .fit-card.yes{background:var(--rust-pale);border-color:rgba(139,58,26,0.15);}
+  .fit-card.no{background:#FBF0EE;border-color:rgba(180,60,40,0.12);}
+  .fit-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;margin-bottom:0.75rem;}
+  .fit-card.yes h4{color:var(--rust);}
+  .fit-card.no h4{color:#8B2F20;}
+  .fit-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+  .fit-list li{font-size:13.5px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5;}
+  .fit-card.yes .fit-list li::before{content:'✓';color:var(--rust);font-weight:700;flex-shrink:0;}
+  .fit-card.no .fit-list li::before{content:'✗';color:#C0392B;font-weight:700;flex-shrink:0;}
+  .terms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem;}
+  .term-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem;transition:box-shadow 0.2s;}
+  .term-card:hover{box-shadow:var(--shadow-card);}
+  .term-name{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--rust);margin-bottom:0.4rem;}
+  .term-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+  .video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);}
+  .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+  .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+  .video-info{padding:1.25rem 1.5rem;}
+  .video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.6rem;}
+  .video-badge.start{background:var(--rust-pale);color:var(--rust-mid);}
+  .video-badge.jobs{background:var(--gold-pale);color:#8A6A20;}
+  .video-badge.pay{background:#EDF7ED;color:#2A6A2A;}
+  .video-badge.skills{background:#E3EFF9;color:#1A4E7A;}
+  .video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;line-height:1.35;}
+  .video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+  .video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.5rem;}
+  .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem;margin-top:1.5rem;}
+  .podcast-cards{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+  .podcast-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.6rem;display:flex;gap:1.25rem;align-items:flex-start;transition:all 0.25s;text-decoration:none;}
+  .podcast-card:hover{box-shadow:var(--shadow-card);transform:translateX(4px);border-color:rgba(139,58,26,0.2);}
+  .podcast-art{width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+  .podcast-art.rust{background:linear-gradient(135deg,var(--rust),var(--rust-mid));}
+  .podcast-art.bronze{background:linear-gradient(135deg,var(--bronze),var(--bronze-mid));}
+  .podcast-art.bp{background:linear-gradient(135deg,#0A6E3F,#12A05C);}
+  .podcast-meta{flex:1;}
+  .podcast-show{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.3rem;}
+  .podcast-meta h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;line-height:1.35;}
+  .podcast-meta p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+  .podcast-arrow{font-size:22px;color:var(--text-light);align-self:center;transition:all 0.2s;}
+  .podcast-card:hover .podcast-arrow{color:var(--rust-mid);transform:translateX(4px);}
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;}
+  .btn-gold{background:var(--gold);color:var(--rust);}
+  .btn-gold:hover{background:var(--gold-light);}
+  .btn-outline-white{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.3);}
+  .btn-outline-white:hover{background:rgba(255,255,255,0.1);}
+  .cta-section{background:var(--rust);padding:4rem 2rem;text-align:center;}
+  .cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--white);margin-bottom:0.75rem;}
+  .cta-section h2 em{color:var(--gold-light);font-style:italic;}
+  .cta-section p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:500px;margin:0 auto 2rem;line-height:1.8;font-weight:300;}
+  .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+  footer{background:var(--rust);border-top:1px solid rgba(255,255,255,0.08);padding:2rem;text-align:center;}
+  footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--white);margin-bottom:0.4rem;}
+  footer p{font-size:12px;color:rgba(255,255,255,0.35);}
+  footer .footer-gold{color:var(--gold-light);}
+  .fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+  @media(max-width:640px){
+    nav{padding:0 1.25rem;}.nav-links{display:none;}
+    .hero{padding:3rem 1.5rem;}.hero-inner{grid-template-columns:1fr;}.hero-visual{display:none;}
+    .container{padding:0 1.25rem;}.fit-grid{grid-template-columns:1fr;}
+    .breadcrumb{padding:0.75rem 1.25rem;}.video-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">All Careers</a></li>
+    <li><a href="index.html#resources">Resources</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a>
+  <span class="sep">›</span>
+  <a href="index.html#careers">Career Paths</a>
+  <span class="sep">›</span>
+  <span class="current">Maintenance & Repair</span>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="track-badge">🔧 Career Track</div>
+      <h1>Maintenance<br><em>& Repair</em></h1>
+      <p class="hero-sub">Every single property in real estate needs maintenance. Skilled tradespeople — plumbers, electricians, HVAC technicians, general contractors, and handymen — are among the most in-demand professionals in the real estate world, and the best ones never lack for work.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="number">$50–$200+</div><div class="label">Per hour for skilled trades</div></div>
+        <div class="hero-stat"><div class="number">Always in demand</div><div class="label">in any market condition</div></div>
+        <div class="hero-stat"><div class="number">No degree</div><div class="label">required for most trades</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">🔧</div>
+  </div>
+</div>
+
+<section style="background:var(--white);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Opportunity</p>
+    <h2 class="section-title">Why trades are one of the best <em>real estate careers nobody talks about</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">Real estate is physical. Every building eventually needs a leaking pipe fixed, an HVAC system replaced, a roof repaired, an electrical panel upgraded, or a full renovation. The people who do this work are essential to the entire real estate ecosystem — and they are in chronic short supply.</p>
+    <p class="lead-text">Skilled tradespeople who understand the real estate world — who speak the language of investors, property managers, and developers — are not just maintenance workers. They become trusted partners who get called first, paid well, and referred constantly. The combination of a trade skill and real estate knowledge is genuinely powerful.</p>
+    <div class="highlight-box">
+      <p>"The most successful real estate investors all say the same thing: finding a reliable, honest, skilled contractor is harder than finding a good deal. If you can be that person — the one who shows up, does quality work, and communicates clearly — you will never be out of work."</p>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--text-dark);margin:2rem 0 0.75rem;">The most in-demand trades in real estate</h3>
+    <div class="trades-grid">
+      <div class="trade-card fade-in"><span class="trade-icon">🚿</span><h4>Plumbing</h4><p>Leaks, clogs, water heaters, pipe replacement, bathroom and kitchen work. One of the highest-demand trades in residential real estate.</p><p class="trade-rate">$75–$150/hr</p></div>
+      <div class="trade-card fade-in"><span class="trade-icon">⚡</span><h4>Electrical</h4><p>Panel upgrades, wiring, outlets, code compliance. Essential for renovations and increasingly in demand with EV charging and solar installations.</p><p class="trade-rate">$80–$160/hr</p></div>
+      <div class="trade-card fade-in"><span class="trade-icon">❄️</span><h4>HVAC</h4><p>Heating, cooling, and ventilation. In Florida's climate, HVAC is not optional — and the technicians who service it are always busy year-round.</p><p class="trade-rate">$75–$150/hr</p></div>
+      <div class="trade-card fade-in"><span class="trade-icon">🏗️</span><h4>General Contractor</h4><p>Manages full renovation projects — coordinating subcontractors, materials, timelines, and budgets for investors and property owners.</p><p class="trade-rate">10–20% of project cost</p></div>
+      <div class="trade-card fade-in"><span class="trade-icon">🔨</span><h4>Handyman</h4><p>The most versatile entry point — drywall, painting, minor plumbing, carpentry, general repairs. Perfect for building relationships with property managers and landlords.</p><p class="trade-rate">$50–$100/hr</p></div>
+      <div class="trade-card fade-in"><span class="trade-icon">🏠</span><h4>Roofing & Flooring</h4><p>Roof replacement and repair, hardwood, tile, LVP installation. High-ticket items investors need on nearly every value-add project.</p><p class="trade-rate">Project-based</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Real World</p>
+    <h2 class="section-title">A day in the life of a <em>real estate maintenance professional</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">Whether you're a solo handyman serving a portfolio of landlords or running a contracting crew on a full renovation, your days are active, tangible, and financially rewarding when you run the business right.</p>
+    <div class="timeline">
+      <div class="timeline-item fade-in"><div class="timeline-dot">7am</div><div class="timeline-content"><h4>Early start</h4><p>Load the van, check today's job schedule. Three jobs booked — a leaking faucet at a rental property, drywall repair in a vacant unit, and an estimate for a full kitchen rehab for an investor client.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">8am</div><div class="timeline-content"><h4>Urgent repair</h4><p>Property manager called — leaking pipe in a tenant's unit. Diagnose, fix, document with photos. Responsive, reliable service is what keeps property managers calling you back over anyone else.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">10am</div><div class="timeline-content"><h4>Vacant unit turnaround</h4><p>Drywall damage in an empty unit — patched and painted before the new tenant moves in Friday. Turnaround speed matters to every landlord with a vacant unit losing rent daily.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">1pm</div><div class="timeline-content"><h4>Investor walkthrough</h4><p>Walk a newly acquired 8-unit with an investor client. Assess every unit, note deferred maintenance, estimate costs. Your detailed scope of work gives the investor confidence to move forward.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">3pm</div><div class="timeline-content"><h4>Materials & scheduling</h4><p>Pick up materials for tomorrow. Return calls, confirm appointments, update your job management app. Running a trades business is 70% skill and 30% organization and communication.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">5pm</div><div class="timeline-content"><h4>Invoice and follow up</h4><p>Send invoices for today's completed work. Follow up on last week's estimate — the investor is ready to start. Schedule the crew. The business grows one well-executed job at a time.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--rust-pale);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Watch & Learn</p>
+    <h2 class="section-title">The best free videos on <em>building a trades career in real estate</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">These videos cover the business side of skilled trades — the highest-paying jobs, how to build a profitable handyman business, and what skills the market pays top dollar for.</p>
+
+    <div class="video-grid">
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/AmnT6GX4Sss" title="Top 5 Most Profitable Handyman Jobs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge start">Start Here</span>
+          <h4>Top 5 Most Profitable Handyman Jobs You Can Do Today</h4>
+          <p>The highest-paying handyman services you can start offering immediately — the jobs that real estate investors and property managers need most and pay premium rates for.</p>
+          <p class="credit">YouTube · 2025</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_ceDpcNeYRc" title="Top 10 Most Common Handyman Jobs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge jobs">Most Common Jobs</span>
+          <h4>Top 10 Most Common Handyman Jobs to Be Prepared For</h4>
+          <p>The 10 most frequently requested handyman jobs in residential real estate — from door repairs and painting to minor plumbing and carpentry. Master these and you'll always have work.</p>
+          <p class="credit">YouTube · 2023</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-grid" style="margin-top:1.25rem;">
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/7_d4aXSVGss" title="Top 4 Handyman Jobs That Pay $200 Per Hour" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge pay">High Earning Jobs</span>
+          <h4>Top 4 Handyman Jobs That Pay $200 Per Hour</h4>
+          <p>The specific high-value jobs where skilled handymen and contractors command premium rates — and exactly what you need to be able to do to charge them.</p>
+          <p class="credit">YouTube · 2025</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_vJNpEgyMTs" title="What Skills Does a Professional Handyman Need?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge skills">Skills Deep Dive</span>
+          <h4>What Skills Does a Professional Handyman Need?</h4>
+          <p>Tool proficiency, business operations, and interpersonal skills — what separates professional handymen from hobbyists and what it takes to build a sustainable real estate maintenance business.</p>
+          <p class="credit">YouTube · 2024</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Listen & Learn</p>
+    <h2 class="section-title">Resources to <em>build your trades business</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lead-text">Understanding the investor and property manager perspective is what separates average contractors from the ones who get called first, paid promptly, and referred constantly.</p>
+    <div class="podcast-cards">
+      <a href="https://www.youtube.com/results?search_query=handyman+business+real+estate" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art rust">🔧</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">YouTube · Trades Business</div>
+          <h4>Handyman Business YouTube Channels</h4>
+          <p>Search YouTube for "handyman business" to find dozens of channels run by working tradespeople sharing pricing strategies, client acquisition tips, and what it actually takes to run a profitable one-person trades business serving real estate clients. The Handyman Business channel is a great starting point.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+      <a href="https://www.biggerpockets.com/podcasts/real-estate" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art bp">🎧</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">BiggerPockets · Investor Perspective</div>
+          <h4>BiggerPockets Real Estate Podcast</h4>
+          <p>Understanding how real estate investors think about renovation budgets, contractor relationships, and maintenance is essential for anyone building a trades business in real estate. The investors who are your best clients speak this language — and so should you.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+      <a href="https://www.getjobber.com/academy" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art bronze">🏗️</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">Jobber Academy · Business Systems</div>
+          <h4>Jobber Academy — Running a Home Services Business</h4>
+          <p>Jobber is the industry-leading software for managing a home services or trades business. Their free Jobber Academy covers quoting, invoicing, scheduling, and customer communication — all directly applicable to a real estate maintenance operation.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">What You'll Need</p>
+    <h2 class="section-title">Skills that build a <em>thriving trades business</em></h2>
+    <div class="gold-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Technical Trade Skills</h4><p>Your hands-on skill is your product. Whether plumbing, electrical, HVAC, or carpentry — invest in training, apprenticeships, and certifications to level up continuously.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Reliability & Communication</h4><p>The number one complaint about contractors is they don't show up and don't communicate. The tradesperson who shows up on time, does what they said, and calls proactively is worth their weight in gold to any investor.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Accurate Estimating</h4><p>Walk a property, assess scope, and provide an accurate written estimate. Underbidding kills profit. Overbidding loses jobs. Accuracy wins long-term relationships with repeat clients.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Real Estate Vocabulary</h4><p>Understanding ARV, NOI, value-add, and turnovers makes you a smarter partner and more trusted advisor. Investors and property managers refer tradespeople who speak their language.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Business Management</h4><p>Tools like Jobber or Housecall Pro turn a skilled tradesperson into a professional business — better clients, higher rates, fewer headaches, faster payments.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Florida Licensing</h4><p>Florida requires licenses for electrical, plumbing, and general contracting above certain thresholds. A license means higher rates and larger projects. Check the Florida DBPR for your trade's requirements.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="earnings-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color:var(--gold-light);">The Money</p>
+    <h2 class="section-title" style="color:var(--white);">What can a skilled tradesperson <em style="color:var(--gold-light);">actually earn?</em></h2>
+    <div class="gold-divider"></div>
+    <p style="color:rgba(255,255,255,0.65);font-size:1rem;line-height:1.8;max-width:680px;margin-bottom:2rem;font-weight:300;">Trades income varies widely by skill level, specialization, and whether you work for someone else or run your own operation. The ceiling for a skilled contractor running their own business is genuinely high.</p>
+    <div class="earnings-grid">
+      <div class="earnings-card fade-in"><div class="earnings-role">Entry Level / Helper</div><div class="earnings-amount">$18–$25/hr</div><div class="earnings-note">Working for a licensed contractor. Learning the trade.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Skilled Tradesperson</div><div class="earnings-amount">$45K–$80K</div><div class="earnings-note">Annual income working for a company or early self-employment.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Self-Employed Handyman</div><div class="earnings-amount">$80K–$150K</div><div class="earnings-note">Serving a steady base of property managers and investors directly.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Licensed Contractor / Crew Owner</div><div class="earnings-amount">$150K–$400K+</div><div class="earnings-note">Running crews on larger investor renovation projects.</div></div>
+    </div>
+    <p style="margin-top:1.5rem;font-size:12.5px;color:rgba(255,255,255,0.4);font-style:italic;text-align:center;">* Income varies by trade, market, and business model.</p>
+  </div>
+</section>
+
+<section style="background:var(--cream);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Your Roadmap</p>
+    <h2 class="section-title">How to <em>build a trades career in real estate</em></h2>
+    <div class="gold-divider"></div>
+    <div class="steps">
+      <div class="step fade-in"><div class="step-number">1</div><div class="step-content"><h4>Choose your trade and start learning</h4><p>Pick the trade that best matches your existing skills and interests. YouTube is a powerful free training resource. For licensed trades, enroll in a community college program or apprenticeship — the Florida DBPR website lists all licensing requirements by trade.</p></div></div>
+      <div class="step fade-in"><div class="step-number">2</div><div class="step-content"><h4>Get your Florida contractor's license</h4><p>Florida requires licenses for plumbing, electrical, HVAC, and general contracting above certain project values. A license dramatically expands your market and commands significantly higher rates. Check floridabuilding.org for your specific requirements.</p></div></div>
+      <div class="step fade-in"><div class="step-number">3</div><div class="step-content"><h4>Target property managers and investors directly</h4><p>These are your best clients — recurring work, prompt payment, and referrals when you do good work. Introduce yourself at local real estate investor meetups. Drop off business cards at property management offices. Be the person they call first.</p></div></div>
+      <div class="step fade-in"><div class="step-number">4</div><div class="step-content"><h4>Learn real estate investor language</h4><p>Complete the Darco Academy core modules — especially Modules 2 and 3. When you can talk to investors about NOI, value-add potential, and what repairs actually increase property value, you become a trusted advisor — not just a contractor.</p></div></div>
+      <div class="step fade-in"><div class="step-number">5</div><div class="step-content"><h4>Build professional business systems</h4><p>Use Jobber or Housecall Pro to manage quotes, jobs, invoices, and scheduling. A professional system means faster payments, fewer miscommunications, and the ability to grow without dropping anything.</p></div></div>
+      <div class="step fade-in"><div class="step-number">6</div><div class="step-content"><h4>Consider the investor path</h4><p>Many successful real estate investors started in the trades. Understanding construction costs and what work adds real value gives you an enormous advantage when evaluating investment deals. Your trade skill is a foundation for everything else in this curriculum.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Honest Assessment</p>
+    <h2 class="section-title">Is a trades career in real estate <em>right for you?</em></h2>
+    <div class="gold-divider"></div>
+    <div class="fit-grid">
+      <div class="fit-card yes fade-in">
+        <h4>You'll thrive if you...</h4>
+        <ul class="fit-list">
+          <li>Enjoy hands-on, physical, tangible work</li>
+          <li>Like solving problems and seeing immediate results</li>
+          <li>Are reliable — you show up and finish what you start</li>
+          <li>Want to build a business with minimal startup capital</li>
+          <li>Like variety — no two jobs or properties are the same</li>
+          <li>Are interested in eventually owning investment properties</li>
+          <li>Want income that is largely recession-resistant</li>
+        </ul>
+      </div>
+      <div class="fit-card no fade-in">
+        <h4>You may struggle if you...</h4>
+        <ul class="fit-list">
+          <li>Dislike physical, outdoor, or hands-on work</li>
+          <li>Are not willing to invest time learning a trade</li>
+          <li>Have poor follow-through or struggle with deadlines</li>
+          <li>Prefer purely office-based or intellectual work</li>
+          <li>Are not comfortable with urgent, unexpected problems</li>
+          <li>Don't want to manage client relationships</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--rust-pale);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Language</p>
+    <h2 class="section-title">Key terms every trades professional <em>in real estate must know</em></h2>
+    <div class="gold-divider"></div>
+    <div class="terms-grid">
+      <div class="term-card fade-in"><div class="term-name">Scope of Work</div><p>A detailed written description of exactly what repairs will be completed, materials used, and price. Protects you and your client from misunderstandings and scope creep.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Deferred Maintenance</div><p>Repairs postponed over time — leaking roofs, aging HVAC, old plumbing. Investors buying value-add properties specifically look for these and budget for fixing them.</p></div>
+      <div class="term-card fade-in"><div class="term-name">CapEx — Capital Expenditure</div><p>Major long-term improvements — new roof, HVAC replacement, foundation work. Different from routine maintenance and tracked separately by property investors.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Turnover</div><p>Preparing a vacant rental unit for a new tenant — cleaning, painting, repairs, carpet replacement. Fast, quality turnovers are extremely valuable to property managers.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Punch List</div><p>A final list of small outstanding items to complete before a project is done. Knocking out the punch list promptly is what gets you final payment and repeat business.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Permit</div><p>Government approval required for certain types of work. Licensed contractors pull their own permits. Unpermitted work can create major legal issues for property owners at resale.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Value-Add</div><p>Renovations that directly increase a property's market value or rental income. Investors prioritize these over purely cosmetic repairs when budgeting a rehab.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Lien</div><p>A legal claim against a property for unpaid work. Contractors who aren't paid can file a mechanic's lien in Florida. Know your lien rights — they protect you.</p></div>
+      <div class="term-card fade-in"><div class="term-name">GC — General Contractor</div><p>The contractor who manages the overall project — hiring and coordinating subcontractors, tracking the budget, and delivering the finished renovation on time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Ready to understand <em>the full picture?</em></h2>
+  <p>The more you understand about how real estate investing works, the more valuable you become as a trades professional. Start with the core modules and see how everything connects.</p>
+  <div class="cta-buttons">
+    <a href="module-1.html" class="btn btn-gold">Start Module 1 →</a>
+    <a href="index.html#careers" class="btn btn-outline-white">← Explore All Careers</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

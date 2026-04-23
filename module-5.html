@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 5: Analyzing a Deal — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1B4D3E;--forest-mid:#2A6B56;--forest-light:#3A8A6E;--forest-pale:#E8F5EE;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(27,77,62,0.1);--shadow-card:0 2px 16px rgba(27,77,62,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--forest);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(27,77,62,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:50%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(27,77,62,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(27,77,62,0.25);}
+.module-hero{background:linear-gradient(135deg,#0D2820 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Metrics grid */
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin:2rem 0;}
+.metric-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.metric-card.m1::before{background:var(--forest);}
+.metric-card.m2::before{background:var(--gold);}
+.metric-card.m3::before{background:#4A6FA5;}
+.metric-card.m4::before{background:#8A4A90;}
+.metric-card.m5::before{background:#2A8A6E;}
+.metric-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.metric-icon{font-size:24px;margin-bottom:0.5rem;display:block;}
+.metric-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.metric-card .formula{font-size:12px;font-weight:700;color:var(--forest-mid);background:var(--forest-pale);padding:3px 8px;border-radius:6px;display:inline-block;margin:0.3rem 0;}
+.metric-card p{font-size:12.5px;color:var(--text-mid);line-height:1.6;margin-top:0.4rem;}
+
+/* Deal table */
+.deal-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.deal-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.deal-table th:not(:first-child){text-align:right;}
+.deal-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.deal-table td:not(:first-child){text-align:right;font-weight:500;color:var(--text-dark);}
+.deal-table tr:hover td{background:var(--forest-pale);}
+.deal-table tr.section-header td{background:var(--forest-pale);font-weight:700;color:var(--forest);font-size:12px;letter-spacing:0.5px;text-transform:uppercase;}
+.deal-table tr.total td{background:var(--forest);color:var(--white);font-weight:700;font-size:14px;}
+.deal-table tr.total td:not(:first-child){color:var(--gold-light);}
+.deal-table tr.result td{background:var(--forest-pale);font-weight:700;color:var(--forest);font-size:13.5px;}
+
+/* Comparison table */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px;}
+.compare-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:center;font-weight:600;}
+.compare-table th:first-child{text-align:left;}
+.compare-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.compare-table td:not(:first-child){text-align:center;font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--forest-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);font-weight:700;color:var(--forest);}
+
+/* 70% rule box */
+.rule-box{background:var(--white);border:2px solid var(--gold);border-radius:16px;padding:1.75rem 2rem;margin:1.75rem 0;}
+.rule-box .rule-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:0.75rem;}
+.rule-formula{background:var(--forest);color:var(--gold-light);font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;text-align:center;padding:1rem;border-radius:10px;margin:1rem 0;}
+.rule-example{background:var(--cream-dark);border-radius:10px;padding:1.25rem;margin-top:1rem;}
+.rule-example p{font-size:13.5px;color:var(--text-mid);line-height:1.75;}
+
+/* Excel download box */
+.excel-box{background:linear-gradient(135deg,var(--forest) 0%,var(--forest-mid) 100%);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;position:relative;overflow:hidden;}
+.excel-box::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.excel-box-text .label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;}
+.excel-box-text h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;}
+.excel-box-text p{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;max-width:420px;}
+.excel-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--forest);padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:all 0.2s;position:relative;z-index:1;}
+.excel-btn:hover{background:var(--gold-light);}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.cpa{background:var(--forest-pale);color:var(--forest-mid);}
+.video-badge.bp{background:#E8F0FB;color:#1A4E7A;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deeper links */
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.skills-connection{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.skills-connection h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.skills-connection p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.career-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.career-tag{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--text-dark);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .excel-box{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">Career Paths</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="index.html#begin">Core Foundation</a><span class="sep">›</span>
+  <span class="current">Module 5: Analyzing a Deal</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Your Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <a href="module-4.html" class="prog-dot complete" title="Module 4">✓</a>
+    <div class="prog-dot active">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+    <div class="prog-dot locked">9</div>
+    <div class="prog-dot locked">10</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📚 Core Foundation · Module 5 of 10</div>
+    <h1>Analyzing <em>a Deal</em></h1>
+    <p>You know what a property is worth. Now you need to answer a different question: at this price, with these numbers, should you actually buy it? This module teaches you how to run a full deal analysis — the numbers, the metrics, and the decision framework that separates disciplined investors from gamblers.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>45–55 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+      <div class="meta-item">📊 Download: <span>Deal Analyzer Spreadsheet</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The difference between <em>investing and gambling</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">In Module 4 you learned how to determine what a property is worth. That answered the question: <em>"What is the fair market value of this asset?"</em> But knowing fair value is only the starting point. The real question every investor must answer before writing a check is: <strong>"At this price and with these numbers, does this deal actually work?"</strong></p>
+
+    <p class="lesson-text">The difference between investing and gambling is this: gamblers rely on hope and intuition. Investors rely on numbers. A beautiful property in a hot neighborhood can still be a terrible investment at the wrong price. A beat-up building in an unglamorous area can be a spectacular deal if the numbers are right. The numbers are always right or wrong — the property's appearance is irrelevant.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"Every experienced investor I have ever met has a story about a deal they passed on because the numbers didn't work — a deal that looked great on the surface. And every one of them is grateful they passed. The discipline to say no when the numbers say no is what keeps you in business long enough to find the deals that actually work."</p>
+    </div>
+
+    <p class="lesson-text">Deal analysis is not complicated. It requires five numbers, four metrics, and a decision framework. By the end of this module you will know all three — and you will have a downloadable spreadsheet that does the calculations for you on any property you analyze.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Where Module 4 Ends and Module 5 Begins</div>
+      <p><strong>Module 4 answered:</strong> What is this property worth? (Valuation — comps, income approach, ARV)<br><strong>Module 5 answers:</strong> Should I buy it at this price? (Deal analysis — cash flow, NOI, cap rate, cash-on-cash, the 70% rule)<br>You need both. Valuation tells you if you're overpaying. Deal analysis tells you if the investment actually performs.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The five key metrics — <em>every deal needs these numbers</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">There are dozens of metrics investors use to analyze real estate. But five of them appear in virtually every deal conversation, every underwriting spreadsheet, and every lender's analysis. Learn these five and you can participate in any real estate investment discussion at any level.</p>
+
+    <div class="metrics-grid">
+      <div class="metric-card m1 fade-in">
+        <span class="metric-icon">📥</span>
+        <h4>Gross Rental Income</h4>
+        <div class="formula">Units × Rent × 12</div>
+        <p>Total rent collected if every unit is full and paying. This is the ceiling — the best-case income scenario. Always start here.</p>
+      </div>
+      <div class="metric-card m2 fade-in">
+        <span class="metric-icon">📊</span>
+        <h4>Net Operating Income (NOI)</h4>
+        <div class="formula">Gross Income − Operating Expenses</div>
+        <p>Income after all operating costs are paid — but before the mortgage. NOI is the most important number in commercial real estate. It determines property value.</p>
+      </div>
+      <div class="metric-card m3 fade-in">
+        <span class="metric-icon">💵</span>
+        <h4>Cash Flow</h4>
+        <div class="formula">NOI − Annual Debt Service</div>
+        <p>What's left after the mortgage is paid. Positive cash flow means the property pays you. Negative means you're subsidizing it from your own pocket every month.</p>
+      </div>
+      <div class="metric-card m4 fade-in">
+        <span class="metric-icon">📈</span>
+        <h4>Cap Rate</h4>
+        <div class="formula">NOI ÷ Purchase Price</div>
+        <p>The return on the property as if you bought it all cash — no mortgage. Used to compare properties across markets regardless of financing. Also used to determine value.</p>
+      </div>
+      <div class="metric-card m5 fade-in">
+        <span class="metric-icon">💰</span>
+        <h4>Cash-on-Cash Return</h4>
+        <div class="formula">Annual Cash Flow ÷ Down Payment</div>
+        <p>The actual return on the cash you invested — your down payment. This is the metric most relevant to your real-world experience as an investor because it accounts for your mortgage.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Cap Rate vs. Cash-on-Cash — The Key Difference</div>
+      <p>Cap rate ignores financing — it's the property's return as if you paid all cash. Cash-on-cash return reflects your actual leveraged return with a mortgage. A property with a 6.5% cap rate and 25% down can produce a very different cash-on-cash return depending on your interest rate. Both metrics matter. Neither one alone tells the full story.</p>
+    </div>
+
+    <h3 class="sub-title">Example 1: The Fourplex (from Module 3) — fully analyzed</h3>
+    <p class="lesson-text">You already know this property. Now let's run the complete deal analysis on it — the same numbers, but organized the way a professional investor would present them.</p>
+
+    <table class="deal-table">
+      <thead><tr><th>Line Item</th><th>Monthly</th><th>Annual</th></tr></thead>
+      <tbody>
+        <tr class="section-header"><td colspan="3">INCOME</td></tr>
+        <tr><td>3 Rented Units × $2,500/month</td><td>$7,500</td><td>$90,000</td></tr>
+        <tr><td>Your Unit (owner-occupied)</td><td>$0</td><td>$0</td></tr>
+        <tr class="result"><td>Total Rental Income</td><td>$7,500</td><td>$90,000</td></tr>
+        <tr class="section-header"><td colspan="3">OPERATING EXPENSES (before mortgage)</td></tr>
+        <tr><td>Property Taxes</td><td>$900</td><td>$10,800</td></tr>
+        <tr><td>Insurance</td><td>$350</td><td>$4,200</td></tr>
+        <tr><td>Maintenance Reserve (5%)</td><td>$375</td><td>$4,500</td></tr>
+        <tr><td>Vacancy Reserve (5%)</td><td>$375</td><td>$4,500</td></tr>
+        <tr class="result"><td>Total Operating Expenses</td><td>$2,000</td><td>$24,000</td></tr>
+        <tr class="total"><td>NET OPERATING INCOME (NOI)</td><td>$5,500</td><td>$66,000</td></tr>
+        <tr class="section-header"><td colspan="3">DEBT SERVICE</td></tr>
+        <tr><td>Mortgage ($850K @ 6.5% / 30yr)</td><td>$5,373</td><td>$64,471</td></tr>
+        <tr class="total"><td>MONTHLY CASH FLOW</td><td>$127</td><td>$1,529</td></tr>
+      </tbody>
+    </table>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead><tr><th>Metric</th><th>Value</th><th>What It Means</th></tr></thead>
+        <tbody>
+          <tr><td>Cap Rate — Owner-Occupied <em style="font-size:12px;color:var(--text-light);font-style:normal;">(3 rented units only — actual income collected)</em></td><td>6.6%</td><td>Realistic return based on what you actually collect today</td></tr>
+          <tr><td>Cap Rate — Fully Rented <em style="font-size:12px;color:var(--text-light);font-style:normal;">(all 4 units at market rent — used for valuation)</em></td><td>9.3%</td><td>Full earning potential if you move out and rent your unit too</td></tr>
+          <tr><td>Cash-on-Cash Return</td><td>1.0%</td><td>Low — but you're living for free</td></tr>
+          <tr><td>Monthly Cash Flow</td><td>$127</td><td>Property pays you while you live in it</td></tr>
+          <tr class="highlight"><td>Effective Housing Cost</td><td>$0</td><td>Your personal housing expense = zero</td></tr>
+          <tr><td>Year 1 Loan Paydown</td><td>$9,501</td><td>Tenants build your equity monthly</td></tr>
+          <tr class="highlight"><td>Combined Annual Return</td><td>$41,030</td><td>27.4% on $150,000 invested</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Why Two Cap Rates?</div>
+      <p>The owner-occupied cap rate (6.6%) reflects actual income collected — only 3 units are rented since you live in the 4th. The fully-rented cap rate (9.3%) shows what the property would produce if all 4 units were rented at market rent — which is what matters for valuation purposes and for when you eventually move out and rent your unit. Both numbers are useful. The 6.6% tells you your real-world return today. The 9.3% tells you the property's long-term earning potential.</p>
+    </div>
+
+    <h3 class="sub-title">Example 2: The 8-Unit Building — pure investment deal</h3>
+    <p class="lesson-text">Now let's analyze a larger pure investment property — no owner-occupancy, professional management included, commercial loan at a slightly higher rate. This is what a typical mid-size multifamily deal looks like on paper.</p>
+
+    <table class="deal-table">
+      <thead><tr><th>Line Item</th><th>Monthly</th><th>Annual</th></tr></thead>
+      <tbody>
+        <tr class="section-header"><td colspan="3">INCOME</td></tr>
+        <tr><td>8 Units × $1,950/month</td><td>$15,600</td><td>$187,200</td></tr>
+        <tr class="section-header"><td colspan="3">OPERATING EXPENSES (before mortgage)</td></tr>
+        <tr><td>Property Taxes</td><td>$1,600</td><td>$19,200</td></tr>
+        <tr><td>Insurance</td><td>$700</td><td>$8,400</td></tr>
+        <tr><td>Property Management (8%)</td><td>$1,248</td><td>$14,976</td></tr>
+        <tr><td>Maintenance Reserve (5%)</td><td>$780</td><td>$9,360</td></tr>
+        <tr><td>Vacancy Reserve (5%)</td><td>$780</td><td>$9,360</td></tr>
+        <tr><td>CapEx Reserve (5%)</td><td>$780</td><td>$9,360</td></tr>
+        <tr class="result"><td>Total Operating Expenses</td><td>$5,888</td><td>$70,656</td></tr>
+        <tr class="total"><td>NET OPERATING INCOME (NOI)</td><td>$9,712</td><td>$116,544</td></tr>
+        <tr class="section-header"><td colspan="3">DEBT SERVICE</td></tr>
+        <tr><td>Mortgage ($1,312,500 @ 7.0% / 30yr)</td><td>$8,732</td><td>$104,786</td></tr>
+        <tr class="total"><td>MONTHLY CASH FLOW</td><td>$980</td><td>$11,759</td></tr>
+      </tbody>
+    </table>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead><tr><th>Metric</th><th>Value</th><th>What It Means</th></tr></thead>
+        <tbody>
+          <tr><td>Cap Rate</td><td>6.66%</td><td>Solid for a mid-size multifamily deal</td></tr>
+          <tr><td>Cash-on-Cash Return</td><td>2.69%</td><td>Modest — typical at today's commercial rates</td></tr>
+          <tr class="highlight"><td>Monthly Cash Flow</td><td>$980</td><td>$980/month profit deposited every month</td></tr>
+          <tr><td>Year 1 Loan Paydown</td><td>$13,333</td><td>Tenants reducing your loan balance</td></tr>
+          <tr class="highlight"><td>Combined Annual Return</td><td>$77,591</td><td>17.7% on $437,500 invested</td></tr>
+          <tr><td>Income Approach Value @ 6.5%</td><td>$1,793,000</td><td>Property worth more than purchase price ✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Why the 8-Unit Has a Lower Cash-on-Cash Despite More Cash Flow</div>
+      <p>The 8-unit produces $980/month in cash flow vs. $127 on the fourplex — but its cash-on-cash return is only 2.69% vs. 1.0%. That's because it required <strong>$437,500 down</strong> vs. <strong>$150,000</strong>. More cash in = lower percentage return on that cash, even if total dollars are higher. This is why cash-on-cash return must always be read alongside total dollars — and why the combined return including appreciation and loan paydown tells the fuller story.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Peter Harris: 3 simple steps to evaluate <em>any multifamily deal</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Peter Harris from Commercial Property Advisors walks through his 3-step deal evaluation system — gathering property information, calculating the key metrics (NOI, cash flow, cap rate, cash-on-cash), and applying a "go or no-go" decision framework. This is exactly what Lesson 2 teaches, shown by a seasoned professional on a real deal. Watch this and the five metrics will lock in permanently.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/TPzSZth3yNI" title="3 Simple Steps to Evaluate Any Multifamily Investment — Peter Harris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cpa">Commercial Property Advisors · Peter Harris</span>
+        <h4>3 Simple Steps to Evaluate Any Multifamily Investment in 5 Minutes</h4>
+        <p>Peter Harris walks through his complete 3-step multifamily evaluation system — gathering property data, calculating NOI, cash flow, cash-on-cash return and cap rate, then applying a go/no-go decision framework. Practical, fast, and directly applicable to both examples in this module.</p>
+        <p class="credit">Commercial Property Advisors · YouTube 2024</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The 70% rule — <em>the investor's fast screening tool</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">When you're evaluating a large volume of potential deals — especially in wholesaling, fix-and-flip investing, or BRRRR strategy — you can't run a full analysis on every single property. You need a quick filter to screen deals in or out before doing the deep dive. That's what the 70% rule is for.</p>
+
+    <div class="rule-box">
+      <div class="rule-title">📐 The 70% Rule</div>
+      <div class="rule-formula">Maximum Offer = (ARV × 70%) − Estimated Repair Costs</div>
+      <p style="font-size:14px;color:var(--text-mid);margin:0.75rem 0;">The rule says: your all-in cost — what you pay for the property plus what you spend to repair it — should be no more than 70% of the After Repair Value. The remaining 30% covers closing costs, holding costs, financing, and your profit margin.</p>
+      <div class="rule-example">
+        <p><strong>Example:</strong> A distressed property has an ARV of $300,000. Estimated repairs are $45,000.<br><br>
+        Maximum offer = ($300,000 × 70%) − $45,000<br>
+        Maximum offer = $210,000 − $45,000 = <strong>$165,000</strong><br><br>
+        If the seller is asking $200,000 — you pass. If they'll accept $155,000 — you have a deal with margin to spare.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The 70% Rule is a Filter — Not a Substitute for Analysis</div>
+      <p>The 70% rule is a fast screening tool, not a complete analysis. It tells you quickly whether a deal is worth investigating further. Once a deal passes the 70% filter, you still need to run a full analysis — verify ARV with real comps, get actual repair estimates, and calculate your full cost and return. Investors who rely only on the 70% rule without deeper analysis get burned regularly. Use it to screen, then analyze what survives.</p>
+    </div>
+
+    <h3 class="sub-title">When the 70% rule applies — and when it doesn't</h3>
+    <p class="lesson-text">The 70% rule is primarily used for <strong>fix-and-flip and wholesale deals</strong> on single-family and small multifamily residential properties. It does not apply to buy-and-hold rental analysis, commercial deals, or new construction. For rental properties, you use NOI, cap rate, and cash-on-cash return — not the 70% rule. Understanding which tool to use in which situation is what separates sophisticated investors from beginners who apply rules blindly.</p>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">How to know if a deal is good, bad, <em>or a pass</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Running the numbers is a skill. Knowing what the numbers mean — and having the discipline to act on them — is a different skill. This lesson is about building your personal decision framework so you know exactly what you're looking for before you ever start analyzing a deal.</p>
+
+    <h3 class="sub-title">Setting your own criteria</h3>
+    <p class="lesson-text">Every investor has different goals, different markets, and different risk tolerances. There is no universal "good deal" threshold that applies to everyone everywhere. But here are the benchmarks most experienced investors use as starting points:</p>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead><tr><th>Metric</th><th>Minimum Target</th><th>Strong Deal</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Cap Rate</td><td>5–6%</td><td>7%+</td><td>Varies significantly by market and asset class</td></tr>
+          <tr><td>Cash-on-Cash Return</td><td>6–8%</td><td>10%+</td><td>Higher rates mean tighter cash flow today</td></tr>
+          <tr><td>Monthly Cash Flow</td><td>$100/unit</td><td>$200+/unit</td><td>Rule of thumb — not universal</td></tr>
+          <tr><td>Break-Even Occupancy</td><td>Below 85%</td><td>Below 75%</td><td>% of units needed to cover all expenses</td></tr>
+          <tr><td>70% Rule (flip/wholesale)</td><td>At or below 70%</td><td>Below 65%</td><td>More room = more profit margin and safety</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Today's Market Reality</div>
+      <p>At current interest rates (6.5–7%+), it is genuinely difficult to hit 8–10% cash-on-cash returns on leveraged deals in most markets. Many experienced investors are currently accepting 2–4% cash-on-cash on strong properties in appreciation markets — banking on the combined return including NOI growth, appreciation, and loan paydown. Know what market you're in and what you're actually buying. Don't chase a number that the market won't support.</p>
+    </div>
+
+    <h3 class="sub-title">When to walk away</h3>
+    <p class="lesson-text">The most important skill in deal analysis is knowing when a deal doesn't work — and having the discipline to say no. Here are the clearest signals to walk away:</p>
+
+    <div class="metrics-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+      <div class="metric-card m1 fade-in">
+        <span class="metric-icon">🚫</span>
+        <h4>Negative Cash Flow</h4>
+        <p>Unless you have a very specific value-add plan and timeline, a property that requires you to write a check every month to cover expenses is not an investment — it's a liability.</p>
+      </div>
+      <div class="metric-card m2 fade-in">
+        <span class="metric-icon">🚫</span>
+        <h4>Seller's Numbers Don't Verify</h4>
+        <p>If a seller presents expenses that are unrealistically low or income that can't be verified with actual leases and bank statements — walk away. Pro formas lie. Actual financials tell the truth.</p>
+      </div>
+      <div class="metric-card m3 fade-in">
+        <span class="metric-icon">🚫</span>
+        <h4>Overpaid for the Asset</h4>
+        <p>If the purchase price significantly exceeds what the income approach or comps support — you're paying for hope, not value. The market will not reward overpaying no matter how good the property looks.</p>
+      </div>
+      <div class="metric-card m4 fade-in">
+        <span class="metric-icon">🚫</span>
+        <h4>Break-Even Too High</h4>
+        <p>If you need 95% occupancy just to cover all expenses, one or two vacant units puts you in the red. A safe deal can withstand vacancies without crisis.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"There is no deal so good that you can't walk away from it. And there's no shortage of deals — there will always be another one. The investors who get into serious trouble are the ones who fall in love with a property and start bending their criteria to make the numbers work. The numbers either work or they don't. Your job is to find the ones that do."</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Teifke Real Estate: How to analyze a multifamily deal — <em>NOI, cap rate, and value-add in action</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">This video walks through a 10-unit apartment building deal from start to finish — income, vacancy, operating expenses, NOI, cap rate, debt service, and cash flow. Then it shows something powerful: what happens to all those numbers when you raise rents from $1,000 to $1,500/unit. The NOI nearly doubles. The cap rate jumps from 5.4% to 10.8%. This is the value-add principle from Module 4 in live deal analysis form — and it directly mirrors the 8-unit example in this module.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/t4ojQ23NFlo" title="How to Analyze Multifamily Properties — Teifke Real Estate" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge bp" style="background:#E8F0FB;color:#1A4E7A;">Teifke Real Estate · Multifamily</span>
+        <h4>How to Analyze Multifamily Properties — A Step by Step Guide</h4>
+        <p>A clean, beginner-friendly walkthrough of multifamily deal analysis — income, vacancy, NOI, cap rate, debt service, and cash flow. The value-add section is particularly powerful: watch how raising rents from $1,000 to $1,500/unit transforms every metric in the deal. This is exactly what Module 4 taught about NOI driving property value — now applied to a live deal.</p>
+        <p class="credit">Teifke Real Estate · YouTube 2023</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXCEL DOWNLOAD -->
+  <div class="excel-box fade-in">
+    <div class="excel-box-text">
+      <div class="label">📊 Free Download — Module 5 Tool</div>
+      <h3>Darco Deal Analyzer Spreadsheet</h3>
+      <p>Plug in any property's numbers and every metric calculates automatically — NOI, cap rate, cash flow, cash-on-cash return, combined annual return, and more. Includes both module examples pre-loaded, plus a blank tab for your own deals. Blue cells = your inputs. Everything else calculates.</p>
+    </div>
+    <a href="darco_deal_analyzer.xlsx" download class="excel-btn">⬇ Download Deal Analyzer</a>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Go Deeper</div>
+    <h2 class="lesson-title">Additional resources to <em>sharpen your deal analysis skills</em></h2>
+    <div class="gold-divider"></div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1rem 0 0.5rem;">📐 The Key Formulas</div>
+
+    <div class="deeper-link">
+      <p><strong>BiggerPockets Rookie — 4 Real Estate Calculations Every Investor Should Know</strong><br>NOI, cap rate, cash-on-cash return and gross rent multiplier explained clearly for beginners — with worked examples. Great reference to bookmark and return to when running your own deals.</p>
+      <a href="https://www.youtube.com/watch?v=pgEoqqFBUyI" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>RE Mentor / David Lindall — How to Analyze a Multifamily Deal in 5 Minutes (Like a Pro)</strong><br>Covers cap rate, cash-on-cash return, and the debt coverage ratio — the three metrics lenders, investors, and sponsors all care about. Introduces the "Trinity" formula (cap 8%+, CoC 12%+, DCR 1.6+) as a conservative investing standard. Excellent framework for serious deal screening.</p>
+      <a href="https://www.youtube.com/watch?v=4hZsDvk26n4" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>BiggerPockets — How To Analyze A Rental Property (The Quick & Dirty Way)</strong><br>Brandon Turner's 10-minute walkthrough of rental property analysis. Great for practicing the skill quickly on any deal you find online.</p>
+      <a href="https://www.youtube.com/watch?v=2uogn4qtZ8U" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>Chandler David Smith — How To Analyze a Multi-Family Rental Property (12-unit live walkthrough)</strong><br>Chandler walks through a real 12-unit apartment building deal from the MLS — area, photos, rents, expenses, and a full cash-on-cash analysis. He ultimately passes on the deal and explains exactly why. A rare and honest example of disciplined deal screening in action. Note: uses 2020 interest rates — the framework and decision process apply regardless of rate.</p>
+      <a href="https://www.youtube.com/watch?v=h9zjpuh5o6Q" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">📐 The 70% Rule — Full Breakdown</div>
+
+    <div class="deeper-link">
+      <p><strong>BiggerPockets / Brandon Turner — The 2%, 50% & 70% Rules</strong><br>Covers all three quick-screen rules in one video — including when they work and when they don't. Essential context for understanding the 70% rule's limitations alongside its usefulness.</p>
+      <a href="https://www.youtube.com/watch?v=2GUe5Y41sbU" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>InvestFourMore — How Does the 70% Rule Work When Analyzing House Flips?</strong><br>An honest deep dive into the 70% rule with real flip examples — including cases where the rule works well and cases where it leads investors astray. Refreshingly balanced perspective.</p>
+      <a href="https://www.youtube.com/watch?v=yeWbO6x-SSE" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📋 Key Takeaways — Module 5</h3>
+    <ul>
+      <li>Deal analysis answers a different question than valuation. Valuation asks: what is this property worth? Deal analysis asks: at this price, with these numbers, should I buy it? You need both answers before committing to any deal.</li>
+      <li>The five key metrics are: Gross Rental Income, NOI, Cash Flow, Cap Rate, and Cash-on-Cash Return. Learn these five and you can analyze any rental property and participate in any real estate investment conversation.</li>
+      <li>The fourplex house hack produces $127/month cash flow with a 1.0% cash-on-cash return — but a 27.4% combined annual return when appreciation and loan paydown are included. The 8-unit produces $980/month cash flow with a 2.69% cash-on-cash — and a 17.7% combined return. Both work. Both require different capital and different strategies.</li>
+      <li>The 70% rule (Maximum Offer = ARV × 70% − Repairs) is a fast screening tool for fix-and-flip and wholesale deals. It is not a substitute for full deal analysis, and it does not apply to buy-and-hold rentals.</li>
+      <li>Know when to walk away. Negative cash flow, unverifiable income, overpayment, and unsustainable break-even occupancy are all clear signals to pass. The best investors are disciplined about saying no — because no deal is better than a bad deal.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in" id="knowledgeCheck">
+    <h3>✅ Knowledge Check</h3>
+    <p class="kc-sub">5 questions to test your deal analysis skills.</p>
+
+    <div class="question" id="q1">
+      <p>1. A rental property generates $120,000 in annual gross rent. After all operating expenses (taxes, insurance, management, maintenance, vacancy), the NOI is $78,000. The purchase price is $1,100,000. What is the cap rate?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> 10.9%</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> 7.09%</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> 5.5%</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> 8.3%</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. An investor buys a property for $500,000 with 20% down ($100,000). The annual cash flow after all expenses including the mortgage is $7,500. What is the cash-on-cash return?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> 1.5%</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> 7.5%</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> 3.75%</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> 12%</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. Using the 70% rule: A distressed property has an ARV of $350,000. Estimated repair costs are $60,000. What is the maximum offer price an investor should make?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> $245,000</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> $290,000</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> $185,000</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> $224,000</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. What is the key difference between cap rate and cash-on-cash return?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Cap rate accounts for mortgage payments. Cash-on-cash does not.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Cap rate ignores financing entirely. Cash-on-cash reflects your actual leveraged return based on the cash you invested.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> They measure the same thing — cap rate is just expressed differently.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Cash-on-cash only applies to commercial properties. Cap rate applies to all types.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. A property shows $180,000 in annual gross rent on the seller's pro forma, but actual bank statements only show $140,000 collected last year. The seller explains the difference as "below market rents that are being raised." What should you do?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Use the $180,000 pro forma number since that's what the property will generate once rents are raised.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Split the difference and analyze using $160,000.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Analyze based on actual verified income ($140,000), verify rent comps independently, and factor in the realistic timeline and risk of achieving higher rents.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Walk away immediately — any discrepancy between pro forma and actual income is an automatic deal killer.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- SKILLS CONNECTION -->
+  <div class="skills-connection fade-in">
+    <h3>🔗 How This Module Connects to Your Career Path</h3>
+    <p>Deal analysis is the skill that turns knowledge into action. An agent who can run numbers helps investor clients make better decisions — and earns referrals for life. A property manager who understands NOI advises owners on how to increase property value through operational improvements. A wholesaler who masters the 70% rule finds deals others miss and builds a reputation as someone who brings real opportunity. A lender who understands cap rates and cash flow underwrites deals with confidence. Whatever path you're on, this module directly increases your ability to add value to every conversation you enter.</p>
+    <div class="career-tags">
+      <span class="career-tag">🏠 Residential Agent</span>
+      <span class="career-tag">🏢 Commercial RE</span>
+      <span class="career-tag">🏘️ Investing</span>
+      <span class="career-tag">🔑 Property Management</span>
+      <span class="career-tag">🏗️ Development</span>
+      <span class="career-tag">💵 Mortgage & Lending</span>
+      <span class="career-tag">🔄 Wholesaling</span>
+      <span class="career-tag">🔧 Maintenance & Repair</span>
+      <span class="career-tag">📸 Photography</span>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="fade-in" style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:16px;padding:1.75rem 2rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.4rem;">📖 Study Resource</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;">Real Estate Terms You Need to Be Familiar With</div>
+      <div style="font-size:13px;color:var(--text-mid);line-height:1.6;">Keep studying them and do a search online if you need more explanation or examples. You got this — before you know it you'll be fluent in all these terms.</div>
+    </div>
+    <a href="darco-glossary.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;">⬇ Download Glossary</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="module-4.html" class="btn btn-outline">← Module 4</a>
+  <div class="module-nav-info">
+    <p>Core Foundation</p>
+    <strong>Module 5 of 10 — Analyzing a Deal</strong>
+  </div>
+  <a href="module-6.html" class="btn btn-gold">Next: Module 6 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+  // Fade-in observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Quiz
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! Cap Rate = NOI divided by Purchase Price. $78,000 divided by $1,100,000 = 7.09%. Always use NOI in the cap rate formula — not gross rent.",
+      incorrect: "Not quite. Cap Rate = NOI divided by Purchase Price. $78,000 divided by $1,100,000 = 7.09%. Use NOI — not gross rent — in the formula."
+    },
+    q2: {
+      correct: "Correct! Cash-on-Cash Return = Annual Cash Flow divided by Down Payment. $7,500 divided by $100,000 = 7.5%. Always divide by your cash invested, not the full purchase price.",
+      incorrect: "Not quite. Cash-on-Cash Return = Annual Cash Flow divided by Down Payment. $7,500 divided by $100,000 = 7.5%. Divide by the down payment ($100,000), not the purchase price ($500,000)."
+    },
+    q3: {
+      correct: "Correct! Maximum Offer = (ARV x 70%) minus Repairs. ($350,000 x 0.70) minus $60,000 = $245,000 minus $60,000 = $185,000.",
+      incorrect: "Not quite. The formula is: (ARV x 70%) minus Repairs. ($350,000 x 0.70) minus $60,000 = $245,000 minus $60,000 = $185,000."
+    },
+    q4: {
+      correct: "Correct! Cap rate ignores financing entirely — it is NOI divided by purchase price as if you paid all cash. Cash-on-cash reflects your actual leveraged return after the mortgage is paid.",
+      incorrect: "Not quite. Cap rate ignores financing completely — NOI divided by purchase price with no mortgage. Cash-on-cash divides actual cash flow after the mortgage by your down payment. They measure different things."
+    },
+    q5: {
+      correct: "Correct! Always analyze based on verified actual income, not pro formas. Verify rent comps independently and factor in the realistic timeline and risk of achieving higher rents.",
+      incorrect: "Not quite. Always use verified actual income ($140,000) not the pro forma. Walking away immediately is too extreme — a rent gap can be a value-add opportunity if verified carefully."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var qEl = document.getElementById(qId);
+    var opts = qEl.querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].classList.remove('selected');
+    }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var score = 0;
+    var allAnswered = true;
+
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+
+    quizDone = true;
+
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+
+      if (ans.isCorrect) {
+        ans.element.classList.remove('selected');
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.remove('selected');
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') {
+            allOpts[j].classList.add('correct');
+          }
+        }
+      }
+    }
+
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you can analyze a real estate deal. You are ready for Module 6: Financing Fundamentals.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons and examples above and try again. Deal analysis is the core skill — everything in the curriculum builds on this.';
+    }
+  }
+</script>
+</body>
+</html>

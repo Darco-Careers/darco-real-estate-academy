@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Real Estate Development — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --char: #2A2A2A; --char-mid: #3D3D3D; --char-light: #555555; --char-pale: #F0EEEC;
+    --orange: #D4621A; --orange-mid: #E07030; --orange-light: #F08C50; --orange-pale: #FDF0E8;
+    --gold: #C9A84C; --gold-light: #E8C97A; --gold-pale: #FBF5E6;
+    --cream: #FAF8F3; --cream-dark: #F0EBE0;
+    --text-dark: #1A1A18; --text-mid: #4A4A42; --text-light: #8A8A7A;
+    --white: #FFFFFF; --border: rgba(42,42,42,0.1);
+    --shadow-card: 0 2px 16px rgba(42,42,42,0.08); --shadow-soft: 0 4px 24px rgba(42,42,42,0.1);
+    --forest: #1B4D3E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+
+  nav { background: var(--char); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.25); }
+  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo { width: 36px; height: 36px; background: var(--orange); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; color: var(--white); }
+  .nav-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--white); }
+  .nav-tagline { font-size: 11px; color: var(--orange-light); letter-spacing: 0.5px; font-weight: 300; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange-light); }
+  .nav-back { background: rgba(255,255,255,0.1) !important; color: rgba(255,255,255,0.88) !important; padding: 7px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.18); }
+
+  .breadcrumb { background: var(--char-pale); border-bottom: 1px solid var(--border); padding: 0.75rem 2.5rem; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-light); }
+  .breadcrumb a { color: var(--orange); text-decoration: none; font-weight: 500; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb .sep { opacity: 0.4; }
+  .breadcrumb .current { color: var(--char); font-weight: 600; }
+
+  .hero { background: linear-gradient(135deg, #1A1A1A 0%, var(--char) 50%, #383838 100%); padding: 5rem 2.5rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -40%; right: -10%; width: 55%; height: 200%; background: radial-gradient(ellipse, rgba(212,98,26,0.12) 0%, transparent 70%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), var(--orange-mid), transparent); }
+  .hero-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3rem; }
+  .track-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,98,26,0.15); border: 1px solid rgba(212,98,26,0.3); color: var(--orange-light); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.25rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 1rem; }
+  .hero h1 em { color: var(--orange-light); font-style: italic; }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); max-width: 560px; line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+  .hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .hero-stat .number { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--orange-light); line-height: 1; }
+  .hero-stat .label { font-size: 11.5px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+  .hero-visual { width: 180px; height: 180px; background: rgba(255,255,255,0.04); border: 1px solid rgba(212,98,26,0.25); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 72px; flex-shrink: 0; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+  .section-eyebrow { font-size: 11.5px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.6rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--text-dark); line-height: 1.25; margin-bottom: 1.1rem; }
+  .section-title em { color: var(--orange); font-style: italic; }
+  .orange-divider { width: 50px; height: 3px; background: var(--orange); border-radius: 2px; margin: 1rem 0 1.5rem; }
+  .lead-text { font-size: 1.05rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1.25rem; max-width: 720px; }
+
+  .highlight-box { background: var(--orange-pale); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+  .highlight-box p { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--orange); font-style: italic; line-height: 1.7; }
+
+  /* DEV TYPES */
+  .types-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+  .type-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: all 0.25s; }
+  .type-card:hover { box-shadow: var(--shadow-card); transform: translateY(-2px); }
+  .type-header { background: var(--char); padding: 1rem 1.25rem; display: flex; align-items: center; gap: 10px; }
+  .type-header.orange { background: var(--orange); }
+  .type-header.mid { background: var(--char-mid); }
+  .type-header.dark { background: #1A1A1A; }
+  .type-icon { font-size: 20px; }
+  .type-header h4 { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 600; color: var(--white); }
+  .type-body { padding: 1.1rem 1.25rem; }
+  .type-body p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* PROCESS PIPELINE */
+  .pipeline { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
+  .pipeline-step { display: flex; gap: 1.5rem; align-items: flex-start; position: relative; padding-bottom: 1.5rem; }
+  .pipeline-step:last-child { padding-bottom: 0; }
+  .pipeline-step::before { content: ''; position: absolute; left: 20px; top: 44px; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--orange), rgba(212,98,26,0.1)); }
+  .pipeline-step:last-child::before { display: none; }
+  .pipeline-num { width: 42px; height: 42px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white); flex-shrink: 0; position: relative; z-index: 1; }
+  .pipeline-content { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.4rem; flex: 1; transition: box-shadow 0.2s; }
+  .pipeline-content:hover { box-shadow: var(--shadow-card); }
+  .pipeline-content h4 { font-weight: 600; font-size: 0.9rem; color: var(--char); margin-bottom: 0.3rem; }
+  .pipeline-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.6; }
+  .pipeline-duration { font-size: 11px; font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem; }
+
+  /* TIMELINE */
+  .timeline { margin-top: 2rem; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--orange), rgba(212,98,26,0.1)); }
+  .timeline-item { display: flex; gap: 1.5rem; margin-bottom: 1.75rem; }
+  .timeline-dot { width: 58px; height: 38px; background: var(--char); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--orange-light); flex-shrink: 0; position: relative; z-index: 1; }
+  .timeline-content { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.4rem; flex: 1; transition: box-shadow 0.2s; }
+  .timeline-content:hover { box-shadow: var(--shadow-card); }
+  .timeline-content h4 { font-weight: 600; font-size: 0.9rem; color: var(--char); margin-bottom: 0.3rem; }
+  .timeline-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.6; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .skill-card { background: var(--cream); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: all 0.25s; }
+  .skill-card:hover { background: var(--white); box-shadow: var(--shadow-card); }
+  .skill-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 10px; display: inline-block; margin-bottom: 0.75rem; }
+  .skill-label.essential { background: var(--orange-pale); color: var(--orange); }
+  .skill-label.helpful { background: var(--gold-pale); color: #8A6A20; }
+  .skill-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; }
+  .skill-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* EARNINGS */
+  .earnings-section { background: var(--char); padding: 4rem 0; position: relative; overflow: hidden; }
+  .earnings-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 80% 50%, rgba(212,98,26,0.1) 0%, transparent 60%); }
+  .earnings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .earnings-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(212,98,26,0.2); border-radius: 14px; padding: 1.5rem; text-align: center; transition: all 0.25s; }
+  .earnings-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(212,98,26,0.4); }
+  .earnings-role { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .earnings-amount { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--orange-light); line-height: 1; margin-bottom: 0.4rem; }
+  .earnings-note { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+  /* STEPS */
+  .steps { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .step { display: flex; gap: 1.25rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.6rem; transition: all 0.25s; }
+  .step:hover { box-shadow: var(--shadow-card); border-color: rgba(212,98,26,0.2); }
+  .step-number { width: 36px; height: 36px; background: var(--orange); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; flex-shrink: 0; }
+  .step-content h4 { font-weight: 600; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.3rem; }
+  .step-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; }
+  .step-content a { color: var(--orange); font-weight: 500; }
+
+  /* FIT */
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+  .fit-card { border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); }
+  .fit-card.yes { background: #FDF0E8; border-color: rgba(212,98,26,0.15); }
+  .fit-card.no { background: #FBF0EE; border-color: rgba(180,60,40,0.12); }
+  .fit-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; }
+  .fit-card.yes h4 { color: var(--orange); }
+  .fit-card.no h4 { color: #8B2F20; }
+  .fit-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .fit-list li { font-size: 13.5px; color: var(--text-mid); display: flex; gap: 8px; line-height: 1.5; }
+  .fit-card.yes .fit-list li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+  .fit-card.no .fit-list li::before { content: '✗'; color: #C0392B; font-weight: 700; flex-shrink: 0; }
+
+  /* TERMS */
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .term-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: box-shadow 0.2s; }
+  .term-card:hover { box-shadow: var(--shadow-card); }
+  .term-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--orange); margin-bottom: 0.4rem; }
+  .term-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* VIDEO */
+  .video-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card); }
+  .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+  .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .video-info { padding: 1.25rem 1.5rem; }
+  .video-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 10px; margin-bottom: 0.6rem; }
+  .video-badge.start { background: var(--orange-pale); color: var(--orange); }
+  .video-badge.process { background: var(--char-pale); color: var(--char); }
+  .video-badge.howit { background: #E3EFF9; color: #1A4E7A; }
+  .video-badge.full { background: var(--gold-pale); color: #8A6A20; }
+  .video-info h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.35; }
+  .video-info p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .video-info .credit { font-size: 12px; color: var(--text-light); margin-top: 0.5rem; }
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+
+  /* PODCAST */
+  .podcast-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .podcast-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; gap: 1.25rem; align-items: flex-start; transition: all 0.25s; text-decoration: none; }
+  .podcast-card:hover { box-shadow: var(--shadow-card); transform: translateX(4px); border-color: rgba(212,98,26,0.2); }
+  .podcast-art { width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+  .podcast-art.char { background: linear-gradient(135deg, #1A1A1A, var(--char)); }
+  .podcast-art.orange { background: linear-gradient(135deg, var(--orange), var(--orange-mid)); }
+  .podcast-art.bp { background: linear-gradient(135deg, #0A6E3F, #12A05C); }
+  .podcast-meta { flex: 1; }
+  .podcast-show { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.3rem; }
+  .podcast-meta h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; line-height: 1.35; }
+  .podcast-meta p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .podcast-arrow { font-size: 22px; color: var(--text-light); align-self: center; transition: all 0.2s; }
+  .podcast-card:hover .podcast-arrow { color: var(--orange); transform: translateX(4px); }
+
+  .btn { display: inline-flex; align-items: center; gap: 7px; padding: 12px 26px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+  .btn-orange { background: var(--orange); color: var(--white); }
+  .btn-orange:hover { background: var(--orange-mid); }
+  .btn-outline-white { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+  .cta-section { background: var(--char); padding: 4rem 2rem; text-align: center; }
+  .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+  .cta-section h2 em { color: var(--orange-light); font-style: italic; }
+  .cta-section p { color: rgba(255,255,255,0.6); font-size: 1rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.8; font-weight: 300; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  footer { background: var(--char); border-top: 1px solid rgba(255,255,255,0.07); padding: 2rem; text-align: center; }
+  footer .footer-brand { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.35); }
+  footer .footer-orange { color: var(--orange-light); }
+
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; } .nav-links { display: none; }
+    .hero { padding: 3rem 1.5rem; } .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; }
+    .container { padding: 0 1.25rem; } .fit-grid { grid-template-columns: 1fr; }
+    .breadcrumb { padding: 0.75rem 1.25rem; } .video-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">All Careers</a></li>
+    <li><a href="index.html#resources">Resources</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a>
+  <span class="sep">›</span>
+  <a href="index.html#careers">Career Paths</a>
+  <span class="sep">›</span>
+  <span class="current">Real Estate Development</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="track-badge">🏗️ Career Track</div>
+      <h1>Real Estate<br><em>Development</em></h1>
+      <p class="hero-sub">Every building you have ever walked into was once an empty lot, a raw idea, and a developer willing to take the risk. Real estate development is how cities are built, communities are created, and generational fortunes are made from the ground up.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="number">$1T+</div><div class="label">US construction market annually</div></div>
+        <div class="hero-stat"><div class="number">$100K–$1M+</div><div class="label">Developer profit per project</div></div>
+        <div class="hero-stat"><div class="number">Long game</div><div class="label">Projects take 2–5+ years</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">🏗️</div>
+  </div>
+</div>
+
+<!-- WHAT IS -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Discipline</p>
+    <h2 class="section-title">What is real estate <em>development?</em></h2>
+    <div class="orange-divider"></div>
+    <p class="lead-text">Real estate development is the process of creating value from land — by building something new on it, or by significantly transforming an existing structure. Developers identify opportunities, assemble land, secure financing, manage design and construction, and ultimately deliver a finished product that is worth far more than the sum of its parts.</p>
+    <p class="lead-text">A developer is the conductor of a very large orchestra — coordinating architects, engineers, attorneys, lenders, contractors, city planners, and investors all at once. The role requires vision, patience, financial sophistication, and an unusually high tolerance for complexity and risk.</p>
+    <div class="highlight-box">
+      <p>"Development is the highest-risk, highest-reward career in real estate. One well-executed project can generate more profit than a decade of brokerage commissions. But it requires more capital, more time, more expertise, and more persistence than any other path in this field."</p>
+    </div>
+    <p class="lead-text">Most successful developers started somewhere else in real estate — as investors, brokers, or contractors — before moving into development. The knowledge you build in other areas of this curriculum feeds directly into your ability to execute as a developer.</p>
+
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-dark); margin: 2rem 0 0.75rem;">Types of real estate development</h3>
+    <div class="types-grid">
+      <div class="type-card fade-in">
+        <div class="type-header orange"><div class="type-icon">🏘️</div><h4>Residential Development</h4></div>
+        <div class="type-body"><p>Building single-family homes, townhomes, condos, or apartment complexes for sale or rent. The most accessible entry point for small developers — especially infill housing in growing markets like Miami.</p></div>
+      </div>
+      <div class="type-card fade-in">
+        <div class="type-header mid"><div class="type-icon">🏢</div><h4>Commercial Development</h4></div>
+        <div class="type-body"><p>Building office buildings, retail centers, hotels, or mixed-use properties. Larger capital requirements but larger returns — and often driven by long-term anchor tenant commitments.</p></div>
+      </div>
+      <div class="type-card fade-in">
+        <div class="type-header dark"><div class="type-icon">🏭</div><h4>Industrial Development</h4></div>
+        <div class="type-body"><p>Warehouses, distribution centers, and flex industrial space. One of the fastest growing asset classes due to e-commerce demand. Simpler to build, and pre-leasing to logistics companies is common.</p></div>
+      </div>
+      <div class="type-card fade-in">
+        <div class="type-header orange"><div class="type-icon">🔄</div><h4>Adaptive Reuse</h4></div>
+        <div class="type-body"><p>Converting existing buildings — old factories, churches, warehouses — into new uses like apartments, hotels, or offices. Often more profitable than ground-up because the structure already exists.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE DEVELOPMENT PROCESS -->
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Process</p>
+    <h2 class="section-title">How a development project <em>gets built</em></h2>
+    <div class="orange-divider"></div>
+    <p class="lead-text">Development is not a single action — it's a series of sequential phases, each with its own risks, costs, and decision points. Understanding this pipeline is essential before attempting your first project.</p>
+
+    <div class="pipeline">
+      <div class="pipeline-step fade-in">
+        <div class="pipeline-num">1</div>
+        <div class="pipeline-content">
+          <div class="pipeline-duration">Weeks to Months</div>
+          <h4>Site Selection & Feasibility</h4>
+          <p>Identify a site, analyze its potential, run a feasibility study (what can be built, what it will cost, what it will sell or rent for), and determine if the numbers justify moving forward. Most deals are killed here — and that's a good thing.</p>
+        </div>
+      </div>
+      <div class="pipeline-step fade-in">
+        <div class="pipeline-num">2</div>
+        <div class="pipeline-content">
+          <div class="pipeline-duration">Months</div>
+          <h4>Land Acquisition & Entitlements</h4>
+          <p>Secure the land under contract. Work through zoning approvals, permits, variances, environmental reviews, and community input. Entitlement is often the longest and most uncertain phase — and where many deals die.</p>
+        </div>
+      </div>
+      <div class="pipeline-step fade-in">
+        <div class="pipeline-num">3</div>
+        <div class="pipeline-content">
+          <div class="pipeline-duration">Months</div>
+          <h4>Design & Architecture</h4>
+          <p>Work with architects and engineers to create construction drawings. Refine the project to balance design quality, construction cost, and market demand. Every design decision has a cost implication — great developers understand both.</p>
+        </div>
+      </div>
+      <div class="pipeline-step fade-in">
+        <div class="pipeline-num">4</div>
+        <div class="pipeline-content">
+          <div class="pipeline-duration">Months</div>
+          <h4>Financing & Capital Stack</h4>
+          <p>Secure construction financing — typically a combination of equity (yours or investors') and a construction loan from a lender. The capital stack must work at your projected construction cost and exit value for the deal to pencil.</p>
+        </div>
+      </div>
+      <div class="pipeline-step fade-in">
+        <div class="pipeline-num">5</div>
+        <div class="pipeline-content">
+          <div class="pipeline-duration">Months to Years</div>
+          <h4>Construction</h4>
+          <p>Break ground and build. Manage the general contractor, monitor budget and schedule, solve problems daily, and keep lenders and investors updated. Construction management is where the project succeeds or fails financially.</p>
+        </div>
+      </div>
+      <div class="pipeline-step fade-in">
+        <div class="pipeline-num">6</div>
+        <div class="pipeline-content">
+          <div class="pipeline-duration">Months</div>
+          <h4>Lease-Up, Sale & Exit</h4>
+          <p>For rental projects — lease up the units and stabilize occupancy, then refinance or sell. For for-sale projects — sell units or the entire building. This is where you realize the profit from years of work. The exit is everything.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY IN THE LIFE -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Real World</p>
+    <h2 class="section-title">A day in the life of a <em>real estate developer</em></h2>
+    <div class="orange-divider"></div>
+    <p class="lead-text">Development is not glamorous on a daily basis — it's a series of meetings, problems, decisions, and follow-ups. Here's what a developer with one active project might experience on a typical working day.</p>
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">8am</div>
+        <div class="timeline-content"><h4>Contractor call</h4><p>Daily check-in with the general contractor on your 24-unit apartment project. Concrete pour was delayed two days due to weather. Assess the schedule impact. Can we make it up elsewhere, or does this push the completion date?</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">10am</div>
+        <div class="timeline-content"><h4>Zoning meeting</h4><p>City planning department meeting about a new site you're considering for a mixed-use retail/residential project. Understand what's permitted, what would require a variance, and how long the entitlement process is likely to take in this municipality.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">12pm</div>
+        <div class="timeline-content"><h4>Lender draw request</h4><p>Prepare the monthly construction draw request for your bank — documenting work completed to justify releasing the next tranche of construction loan funds. Accuracy and documentation here is non-negotiable.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">2pm</div>
+        <div class="timeline-content"><h4>Site visit</h4><p>Walk the active construction site with the project superintendent. Unit 12 has a framing issue that needs to be corrected before drywall goes up. Catching problems before they're buried in walls saves thousands.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">4pm</div>
+        <div class="timeline-content"><h4>Investor update</h4><p>Monthly update call with your equity partner. Report on construction progress, budget variance (you're 3% over on lumber — within tolerance), and projected delivery timeline. Investor relations is a full-time job within development.</p></div>
+      </div>
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot">6pm</div>
+        <div class="timeline-content"><h4>Market research</h4><p>Study comparable rents for recently completed projects in your submarket. Your pro forma assumed $1,800/unit — market data suggests you might achieve $1,950. That $150/unit difference at 24 units changes your exit valuation significantly.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section style="background: var(--orange-pale); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Watch & Learn</p>
+    <h2 class="section-title">The best free videos on <em>real estate development</em></h2>
+    <div class="orange-divider"></div>
+    <p class="lead-text">These videos give you a clear picture of what real estate development actually involves — from how to break in as a beginner, to how the full development process works from land to finished building.</p>
+
+    <div class="video-grid">
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/fCk6ZruDghc" title="How to Become a Real Estate Developer in 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge start">Start Here</span>
+          <h4>How to Become a Real Estate Developer in 2024</h4>
+          <p>An experienced developer and agent breaks down exactly how to break into real estate development — what experience you need, how to find your first project, and what the path actually looks like for a beginner.</p>
+          <p class="credit">YouTube · 2024</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/yiKS1s28e9Y" title="How Real Estate Development Works — From Land to Building" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge howit">How It Works</span>
+          <h4>How Real Estate Development Works — From Land to Building</h4>
+          <p>A clear, visual explanation of the full development process — from raw land acquisition through design, permitting, construction, and delivering a finished building. Essential foundation knowledge for any aspiring developer.</p>
+          <p class="credit">Real Estate Simply Explained · February 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-grid" style="margin-top: 1.25rem;">
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/9R9AWNfd4mc" title="How to Become a Real Estate Developer — Step by Step Process" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge process">Step by Step Process</span>
+          <h4>How to Become a Real Estate Developer — The Full Process</h4>
+          <p>Terry Harris walks through the development process step by step — site selection, working with architects, navigating permits, managing construction, and getting from concept to completed project.</p>
+          <p class="credit">YouTube · 2023</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/ME-GVA6uGJA" title="Real Estate Development 101 — A Complete Beginner's Guide" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge full">Beginner's Complete Guide</span>
+          <h4>Real Estate Development 101 — A Complete Beginner's Guide</h4>
+          <p>A comprehensive beginner-level overview of real estate development — what it is, how it works, what the different types of development look like, and what it takes to get started in this field.</p>
+          <p class="credit">YouTube · 2024</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PODCASTS -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Listen & Learn</p>
+    <h2 class="section-title">Podcasts to <em>build your development knowledge</em></h2>
+    <div class="orange-divider"></div>
+    <p class="lead-text">Development is a field where experience is the best teacher — and podcasts let you learn from developers who have already made the costly mistakes, navigated the complex deals, and built the projects you aspire to build.</p>
+
+    <div class="podcast-cards">
+      <a href="https://www.biggerpockets.com/podcasts/real-estate" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art bp">🎧</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">BiggerPockets · Foundation Knowledge</div>
+          <h4>BiggerPockets Real Estate Podcast</h4>
+          <p>Many BiggerPockets episodes feature developers, builders, and ground-up investors sharing their process, their deals, and their hard lessons. Essential listening for anyone wanting to understand the investor side of development — which every developer must master.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=fCk6ZruDghc" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art orange">🏗️</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">Development Focused · YouTube</div>
+          <h4>Real Estate Development Deep Dives on YouTube</h4>
+          <p>Search YouTube for "real estate development case study," "ground up development," and "small developer project walkthrough." The most valuable education in development comes from watching practitioners walk through real projects — deal by deal, decision by decision.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+
+      <a href="https://www.naiop.org" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art char">🏢</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">NAIOP · Professional Association</div>
+          <h4>NAIOP — Commercial Real Estate Development Association</h4>
+          <p>NAIOP is the leading professional association for commercial real estate developers. Their courses, events, and resources are gold-standard for developers working in office, industrial, and retail development. If you're serious about development as a career, NAIOP membership is the move.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">What You'll Need</p>
+    <h2 class="section-title">Skills that make you <em>a successful developer</em></h2>
+    <div class="orange-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Financial Modeling</h4><p>Development deals live and die by the numbers. Pro forma analysis, construction cost estimating, return on cost, IRR, and equity waterfall structures must be second nature before you commit capital to a project.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Risk Tolerance & Patience</h4><p>Projects take years. Costs overrun. Permits get delayed. Markets shift. The developers who succeed are those who can manage risk thoughtfully — and stay calm while others panic.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Team Assembly</h4><p>You need architects, engineers, attorneys, contractors, lenders, and investors — and you need the right ones. Development is a team sport. Your ability to assemble and manage an expert team determines your outcome.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Entitlement & Permitting</h4><p>Understanding zoning, land use regulations, permitting timelines, and how to work with city planning departments is a core competency. Entitlement risk is one of the biggest wildcards in any development project.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Construction Knowledge</h4><p>You don't need to swing a hammer — but understanding construction sequencing, materials costs, and building systems makes you a much better developer and a harder target for contractor overcharges.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Capital Raising</h4><p>Most development projects require outside equity. The ability to present opportunities compellingly, structure investor partnerships, and navigate securities regulations is a major force multiplier for your deal capacity.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EARNINGS -->
+<section class="earnings-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color: var(--orange-light);">The Upside</p>
+    <h2 class="section-title" style="color: var(--white);">What can development <em style="color: var(--orange-light);">actually earn you?</em></h2>
+    <div class="orange-divider"></div>
+    <p style="color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; max-width: 680px; margin-bottom: 2rem; font-weight: 300;">Development income is highly variable — project-based, not salary-based. The wins are large, but they are infrequent and take years to materialize. Here's a realistic picture across different project scales.</p>
+    <div class="earnings-grid">
+      <div class="earnings-card fade-in"><div class="earnings-role">Small Infill Project (3–10 units)</div><div class="earnings-amount">$100K–$500K</div><div class="earnings-note">Developer profit per project. Good entry-level scale for first-time developers.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Mid-Size Multifamily (20–50 units)</div><div class="earnings-amount">$500K–$2M</div><div class="earnings-note">Profit per project. Typically 2–3 year timeline from concept to exit.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Large Project (100+ units)</div><div class="earnings-amount">$2M–$10M+</div><div class="earnings-note">Profit per project. Institutional-scale development. Long timeline, major capital.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Development as a Business</div><div class="earnings-amount">Unlimited</div><div class="earnings-note">Serial developers running multiple concurrent projects can generate extraordinary wealth.</div></div>
+    </div>
+    <p style="margin-top: 1.5rem; font-size: 12.5px; color: rgba(255,255,255,0.4); font-style: italic; text-align: center;">* Profit ranges vary widely by market, project type, execution quality, and market timing. Not guaranteed.</p>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section style="background: var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Your Roadmap</p>
+    <h2 class="section-title">How to <em>break into development</em></h2>
+    <div class="orange-divider"></div>
+    <p class="lead-text">Nobody starts as a developer. The most common path is through investing, brokerage, or construction — building the financial knowledge, market expertise, and relationships that development requires before taking on the full complexity of a development project.</p>
+    <div class="steps">
+      <div class="step fade-in"><div class="step-number">1</div><div class="step-content"><h4>Master real estate fundamentals first</h4><p>Complete the Darco Academy core modules — especially deal analysis, financing fundamentals, and the commercial and investing career tracks. Development is downstream of everything else. You cannot underwrite a development deal without understanding cap rates, NOI, construction financing, and exit strategies.</p></div></div>
+      <div class="step fade-in"><div class="step-number">2</div><div class="step-content"><h4>Get experience in adjacent fields</h4><p>Work in real estate investing, brokerage, construction management, or commercial property management. Each of these teaches you something development requires — markets, finance, construction, or operations. Most successful developers spent 3–10 years in adjacent roles before their first development project.</p></div></div>
+      <div class="step fade-in"><div class="step-number">3</div><div class="step-content"><h4>Study your local market obsessively</h4><p>Know where growth is happening in your city. Track building permits, zoning changes, infrastructure investments, and demographic shifts. Development opportunities are born from understanding where a city is heading before everyone else does.</p></div></div>
+      <div class="step fade-in"><div class="step-number">4</div><div class="step-content"><h4>Start small — infill and adaptive reuse</h4><p>Your first development project should be a small infill (2–4 units on an underutilized lot) or adaptive reuse of an existing structure. These projects carry less risk, require less capital, and teach you the full development process on a manageable scale.</p></div></div>
+      <div class="step fade-in"><div class="step-number">5</div><div class="step-content"><h4>Build your professional team</h4><p>Find a real estate attorney who specializes in development, a CPA familiar with construction accounting, an architect comfortable with small residential projects, and a general contractor you trust. This team is your competitive advantage.</p></div></div>
+      <div class="step fade-in"><div class="step-number">6</div><div class="step-content"><h4>Understand construction financing</h4><p>Development requires construction loans — short-term, interest-only financing drawn in stages as work is completed. Learn how these work, what lenders require (feasibility, cost breakdown, permits, contractor bids), and what your equity contribution needs to be.</p></div></div>
+      <div class="step fade-in"><div class="step-number">7</div><div class="step-content"><h4>Execute your first project with obsessive attention</h4><p>Your first project will take longer and cost more than you planned. That's normal. Manage it closely, document everything, maintain lender and investor relationships, and deliver a quality product. One successful project opens doors for the next five.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section style="background: var(--white); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Honest Assessment</p>
+    <h2 class="section-title">Is development <em>right for you?</em></h2>
+    <div class="orange-divider"></div>
+    <div class="fit-grid">
+      <div class="fit-card yes fade-in">
+        <h4>You'll thrive if you...</h4>
+        <ul class="fit-list">
+          <li>Think in years, not months or weeks</li>
+          <li>Are comfortable with large amounts of financial risk</li>
+          <li>Have the ability to manage complex multi-party projects</li>
+          <li>Are energized by building something tangible from nothing</li>
+          <li>Can stay focused and persistent through long uncertainty</li>
+          <li>Enjoy learning about design, construction, and cities</li>
+          <li>Have or can raise significant capital</li>
+        </ul>
+      </div>
+      <div class="fit-card no fade-in">
+        <h4>You may struggle if you...</h4>
+        <ul class="fit-list">
+          <li>Need income certainty and predictable cash flow</li>
+          <li>Get overwhelmed managing multiple priorities simultaneously</li>
+          <li>Are risk-averse or need quick results</li>
+          <li>Are not willing to spend years building prerequisite knowledge</li>
+          <li>Dislike working with contractors, city officials, and bureaucracy</li>
+          <li>Don't have or can't access significant startup capital</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY TERMS -->
+<section style="background: var(--char-pale); padding: 4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Language</p>
+    <h2 class="section-title">Key terms every developer <em>must know</em></h2>
+    <div class="orange-divider"></div>
+    <div class="terms-grid">
+      <div class="term-card fade-in"><div class="term-name">Pro Forma</div><p>A financial projection showing projected costs, revenue, and returns for a development project. The foundation of every development decision — if the pro forma doesn't work, the project doesn't happen.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Return on Cost</div><p>Projected stabilized NOI divided by total project cost. The key metric developers use to evaluate whether a project creates enough value to justify the risk. Target varies by market and asset class.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Entitlement</div><p>The process of obtaining government approvals — zoning, permits, variances, environmental clearance — that authorize a specific development project on a specific piece of land.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Capital Stack</div><p>The layers of financing in a development project — typically senior debt (construction loan), mezzanine debt, preferred equity, and common equity. Each layer has different risk and return.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Construction Loan</div><p>Short-term financing that funds construction costs, drawn in stages as work is completed. Typically converted to permanent financing (or repaid through sale) upon project completion.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Stabilized Value</div><p>The appraised value of a property once it reaches full or near-full occupancy at market rents. The primary benchmark developers target when underwriting their exit.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Infill Development</div><p>Building on underutilized land within an existing urban or suburban area — rather than on greenfield land at the city's edge. Usually lower risk due to existing infrastructure and proven demand.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Hard Costs vs. Soft Costs</div><p>Hard costs are the physical construction costs. Soft costs are everything else — architecture, engineering, permits, legal, financing fees, and carrying costs. Both must be modeled accurately.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Adaptive Reuse</div><p>Converting an existing building to a different use — a warehouse into lofts, a church into offices, a hotel into apartments. Often more profitable than ground-up due to existing structure and character.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to learn the <em>foundations?</em></h2>
+  <p>Development is downstream of everything else in this curriculum. Master the core modules first — especially deal analysis and financing — then return to this track with the knowledge to execute.</p>
+  <div class="cta-buttons">
+    <a href="module-1.html" class="btn btn-orange">Start Module 1 →</a>
+    <a href="index.html#careers" class="btn btn-outline-white">← Explore All Careers</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-orange">A Darco Organization Program</span></p>
+  <p style="margin-top: 0.5rem; font-size: 11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals before investing.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

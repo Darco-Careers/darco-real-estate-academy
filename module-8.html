@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 8: Negotiation & Making Offers — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1B4D3E;--forest-mid:#2A6B56;--forest-light:#3A8A6E;--forest-pale:#E8F5EE;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(27,77,62,0.1);--shadow-card:0 2px 16px rgba(27,77,62,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--forest);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(27,77,62,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:80%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(27,77,62,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(27,77,62,0.25);}
+.module-hero{background:linear-gradient(135deg,#0D2820 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* LOI terms grid */
+.loi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin:2rem 0;}
+.loi-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;position:relative;overflow:hidden;transition:all 0.25s;}
+.loi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.loi-card.lc1::before{background:var(--forest);}
+.loi-card.lc2::before{background:var(--gold);}
+.loi-card.lc3::before{background:#4A6FA5;}
+.loi-card.lc4::before{background:#C0392B;}
+.loi-card.lc5::before{background:#8A4A90;}
+.loi-card.lc6::before{background:#2A8A6E;}
+.loi-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.loi-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.loi-card .loi-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-bottom:0.5rem;}
+.loi-card.lc1 .loi-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.loi-card.lc2 .loi-tag{background:var(--gold-pale);color:#8A6A20;}
+.loi-card.lc3 .loi-tag{background:#EBF0FB;color:#2A4A8A;}
+.loi-card.lc4 .loi-tag{background:#FBF0EE;color:#8B2F20;}
+.loi-card.lc5 .loi-tag{background:#F2EBF8;color:#5A3A7A;}
+.loi-card.lc6 .loi-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.loi-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* Negotiation tactics list */
+.tactics-list{display:flex;flex-direction:column;gap:1.25rem;margin:1.75rem 0;}
+.tactic-item{display:flex;gap:1.25rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;}
+.tactic-icon{font-size:24px;flex-shrink:0;margin-top:2px;}
+.tactic-content h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.tactic-content p{font-size:13.5px;color:var(--text-mid);line-height:1.65;}
+
+/* Offer price table */
+.deal-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.deal-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.deal-table th:not(:first-child){text-align:right;}
+.deal-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.deal-table td:not(:first-child){text-align:right;font-weight:500;color:var(--text-dark);}
+.deal-table tr:hover td{background:var(--forest-pale);}
+.deal-table tr.section-header td{background:var(--forest-pale);font-weight:700;color:var(--forest);font-size:12px;letter-spacing:0.5px;text-transform:uppercase;}
+.deal-table tr.total td{background:var(--forest);color:var(--white);font-weight:700;font-size:14px;}
+.deal-table tr.total td:not(:first-child){color:var(--gold-light);}
+.deal-table tr.result td{background:var(--forest-pale);font-weight:700;color:var(--forest);font-size:13.5px;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.bp{background:#E8F0FB;color:#1A4E7A;}
+.video-badge.cpa{background:var(--forest-pale);color:var(--forest-mid);}
+.video-badge.acre{background:#EBF0FB;color:#1A4E7A;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#0D2820,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Glossary */
+.glossary-box{background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:14px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.glossary-box p{font-size:14px;color:var(--text-dark);line-height:1.6;}
+.glossary-box p strong{color:var(--forest);}
+.glossary-btn{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+/* Skills connection */
+.skills-connection{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.skills-connection h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.skills-connection p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.career-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.career-tag{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--text-dark);text-decoration:none;}
+
+/* Nav */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .loi-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">Career Paths</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="index.html#begin">Core Foundation</a><span class="sep">›</span>
+  <span class="current">Module 8: Negotiation &amp; Making Offers</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Your Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <a href="module-4.html" class="prog-dot complete" title="Module 4">✓</a>
+    <a href="module-5.html" class="prog-dot complete" title="Module 5">✓</a>
+    <a href="module-6.html" class="prog-dot complete" title="Module 6">✓</a>
+    <a href="module-7.html" class="prog-dot complete" title="Module 7">✓</a>
+    <div class="prog-dot active">8</div>
+    <div class="prog-dot locked">9</div>
+    <div class="prog-dot locked">10</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📚 Core Foundation · Module 8 of 10</div>
+    <h1>Negotiation &amp; <em>Making Offers</em></h1>
+    <p>You have found a deal, analyzed it, and confirmed the financing. Now comes the part most beginners fear: making the offer and negotiating the terms. This module teaches you how negotiation actually works in real estate, what every offer needs to include, how to determine your price from the numbers — and the mindset and tactics that separate investors who close deals from those who never pull the trigger.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>45–55 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">How negotiation actually works — <em>it is not what you think</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most people picture negotiation as a high-pressure battle — two parties fighting over price, each trying to outwit the other. That mental model is wrong, and it is the reason so many negotiations fail before they ever really start.</p>
+
+    <p class="lesson-text">Real estate negotiation is built on two things: <strong>rapport</strong> and <strong>information.</strong> Rapport means the seller trusts you and likes you enough to do business with you. Information means you understand what the seller actually needs — which is almost never just the highest price. When you have both, you have the foundation to close deals that other investors cannot.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 J Scott — Author, The Book on Negotiating Real Estate</div>
+      <p>"Good negotiators are not good salespeople. They are people who are good at building relationships, building rapport, and gathering information. It does not matter if you are an introvert or an extrovert — as long as you are good at building relationships and gathering information, you can negotiate well."</p>
+    </div>
+
+    <h3 class="sub-title">The biggest mistake beginners make</h3>
+    <p class="lesson-text">Too many beginners treat negotiation as a one-dimensional price battle. If the seller wants $500,000 and you want to pay $400,000, there is no overlap — and if neither side has anything to offer beyond price, the deal dies. But most sellers want something other than just the highest price. They want certainty that the deal will close. They want a specific timeline. They want someone to handle the complexity of moving. They want income over time instead of a lump sum. They want not to pay capital gains taxes this year.</p>
+
+    <p class="lesson-text"><strong>The investor who discovers what the seller actually wants — and structures their offer around it — wins deals that other investors never could.</strong> This requires asking questions and listening. Not presenting. Not pitching. Asking and listening.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Question That Opens Everything</div>
+      <p>J Scott's favorite question when meeting a seller: <em>"What do you plan to do with the money from the sale?"</em> This single question reveals more about a seller's real motivation than anything else you could ask. If they say they are throwing it in a savings account, you have just opened the door to a seller financing conversation. If they say their daughter's wedding is next month, you know they need liquidity on a specific timeline. If they struggle to answer, they may not be as motivated as they seem. Ask it. Then listen.</p>
+    </div>
+
+    <h3 class="sub-title">Negotiation is a long game</h3>
+    <p class="lesson-text">Real estate negotiations can last 30, 60, even 90 days from first contact to closing. A lot can go wrong in that time — inspections, financing, title issues, renegotiation points. The relationship you build at the beginning is the thing that holds the deal together when problems arise. An adversarial negotiation falls apart at the first obstacle. A relationship-based negotiation survives it.</p>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">What goes into an offer — <em>every term is a lever</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">In commercial real estate, the standard way to make a first offer is with a <strong>Letter of Intent (LOI)</strong> — a short, non-binding document that lays out the basic terms of the deal. An LOI is typically one to two pages. A full purchase and sale agreement (PSA) is ten to twenty pages. The LOI gets the basic terms agreed on first, then the PSA handles all the legal detail.</p>
+
+    <p class="lesson-text">The LOI is not legally binding — both parties can walk away. That is a feature, not a flaw. It means you can make many offers quickly and cheaply, without attorney fees, without earnest money deposits, and without fear. Peter Harris recommends making at least one offer per week using an LOI precisely because there is no downside to submitting one.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Why the LOI Changes Your Psychology</div>
+      <p>Most beginners make their first offer once they are certain they want to buy. That is backwards. The LOI is designed to be submitted before you are certain — as a way of testing the seller's interest and opening a negotiation. Because it is non-binding and free to send, there is no reason not to make offers constantly. The investor who submits ten LOIs per month will close more deals than the investor who sends one perfectly crafted offer every six months.</p>
+    </div>
+
+    <h3 class="sub-title">The key terms in every offer</h3>
+    <p class="lesson-text">Every offer — whether an LOI or a full purchase contract — contains a set of terms that are each a negotiating lever. Price is only one of them. Understanding all of them puts you in a far stronger position than focusing on price alone.</p>
+
+    <div class="loi-grid">
+
+      <div class="loi-card lc1 fade-in">
+        <h4>Purchase Price</h4>
+        <div class="loi-tag">The Headline Term</div>
+        <p>The total amount you are offering to pay. This is what sellers focus on — but as you will learn in Lesson 3, it is determined entirely by the numbers, not by what the seller is asking.</p>
+      </div>
+
+      <div class="loi-card lc2 fade-in">
+        <h4>Earnest Money Deposit</h4>
+        <div class="loi-tag">Shows Good Faith</div>
+        <p>A deposit that demonstrates you are serious. Typically 1–3% of the purchase price for commercial deals. More earnest money signals a stronger buyer. Whether it is refundable or non-refundable is itself a negotiating point — non-refundable earnest money often commands a lower price or better terms in return.</p>
+      </div>
+
+      <div class="loi-card lc3 fade-in">
+        <h4>Due Diligence Period</h4>
+        <div class="loi-tag">Your Investigation Window</div>
+        <p>The time you have to inspect the property, verify financials, review leases, and confirm the deal works before you are fully committed. Typically 30 days for commercial. This is when you request rent rolls, tax returns, insurance loss runs, and physical inspection reports.</p>
+      </div>
+
+      <div class="loi-card lc4 fade-in">
+        <h4>Closing Timeline</h4>
+        <div class="loi-tag">Speed Is a Lever</div>
+        <p>When the transaction will close — typically 30 days after the due diligence period ends. A faster closing is a powerful negotiating tool. A motivated seller who needs to close quickly will often accept a lower price from a buyer who can move fast over a higher price from a buyer who needs 60 days.</p>
+      </div>
+
+      <div class="loi-card lc5 fade-in">
+        <h4>Financing Contingency</h4>
+        <div class="loi-tag">Your Protection</div>
+        <p>A clause that allows you to exit the deal if you cannot secure financing on acceptable terms. Sellers prefer buyers who can waive this contingency — it signals certainty. Cash buyers or buyers with pre-arranged financing often use this as a negotiating advantage.</p>
+      </div>
+
+      <div class="loi-card lc6 fade-in">
+        <h4>LOI Expiration</h4>
+        <div class="loi-tag">Creates Urgency</div>
+        <p>Your LOI should have an expiration date — typically 2 to 5 business days. This creates gentle urgency, prevents the seller from shopping your offer indefinitely, and keeps your deal flow moving. If they do not respond, move on to the next deal.</p>
+      </div>
+
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Terms vs. Price — The Trade You Can Make</div>
+      <p>Every term in an offer is a trade. A buyer who offers a faster closing, larger earnest money, and fewer contingencies is a more attractive buyer — even at a lower price. A buyer who asks for 60-day due diligence, small earnest money, and maximum contingencies is a weaker buyer even at a higher price. Understand what the seller values most — certainty, speed, income, or simplicity — and structure your terms around that. Often you can get a lower price by being a better buyer on terms.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">J Scott: How to get sellers to say yes — <em>Real Estate Negotiation 101</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">J Scott co-authored The Book on Negotiating Real Estate with BiggerPockets after flipping 500+ houses and thousands of negotiations across his career. In this episode he breaks down the two foundations of every successful negotiation — rapport and information — and walks through the specific tactics that work: how to build a relationship before talking money, how to find what the seller really wants beyond price, how to make lowball offers without insulting anyone, the questions to ask, and how to know when to walk away. The stories in this video — particularly the seller who needed help moving and the Christmas card story — are the clearest illustrations of relationship-based negotiation you will find anywhere.</p>
+    <div class="callout callout-insight">
+      <div class="callout-label">⏭️ Where to Start</div>
+      <p>Content starts at the <strong>0:37 mark</strong>. The full video is 41 minutes — feel free to watch it in sections. The most important segments are: <strong>8:00 — Best Negotiating Tactics</strong>, <strong>21:34 — Making Lowball Offers</strong>, and <strong>28:00 — Questions to Ask Sellers.</strong></p>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/qMsLZ47PJV8?start=37" title="How to Get Sellers to Say YES — Real Estate Negotiation 101 — BiggerPockets Rookie" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge bp">BiggerPockets Rookie · YouTube</span>
+        <h4>How to Get Sellers to Say YES (Real Estate Negotiation 101)</h4>
+        <p>J Scott — co-author of The Book on Negotiating Real Estate — delivers a full masterclass on real estate negotiation: rapport, information gathering, seller motivation, lowball offers, questions to ask, how to stand out in a competitive market, and when to end a negotiation. Packed with real stories and immediately applicable tactics. Universal — applies to residential and commercial negotiations.</p>
+        <p class="credit">BiggerPockets Real Estate Rookie · YouTube 2025 · 41 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">How to determine your offer price — <em>let the numbers decide</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The most common negotiating mistake beginners make is anchoring their offer to the seller's asking price. The asking price is the seller's number — not yours. Your offer price should be determined entirely by the returns you require, worked backwards from the numbers. If the deal works at $800,000 but not at $900,000, then $800,000 is your number regardless of what the seller is asking.</p>
+
+    <p class="lesson-text">This is where Modules 4 and 5 become directly actionable. You know how to value a property using the income approach. You know how to calculate NOI, cap rate, cash flow, and cash-on-cash return. Those skills now tell you exactly what you can pay.</p>
+
+    <h3 class="sub-title">Working backwards from your required return</h3>
+    <p class="lesson-text">Here is how a disciplined investor determines their maximum offer price on a commercial property:</p>
+
+    <table class="deal-table">
+      <thead><tr><th>Step</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr class="section-header"><td colspan="2">Start with what you know</td></tr>
+        <tr><td>Verified annual gross income (actual rents)</td><td>$120,000</td></tr>
+        <tr><td>Operating expenses (taxes, insurance, management, reserves)</td><td>$38,000</td></tr>
+        <tr class="result"><td>Net Operating Income (NOI)</td><td>$82,000</td></tr>
+        <tr class="section-header"><td colspan="2">Apply your required cap rate</td></tr>
+        <tr><td>Your minimum acceptable cap rate for this market</td><td>7.0%</td></tr>
+        <tr class="total"><td>Maximum offer price (NOI ÷ Cap Rate)</td><td>$1,171,428</td></tr>
+        <tr class="section-header"><td colspan="2">Verify with cash flow check</td></tr>
+        <tr><td>Loan at 75% LTV, 7.5% rate, 25yr amort</td><td>$878,571 loan</td></tr>
+        <tr><td>Annual debt service</td><td>$73,800</td></tr>
+        <tr class="result"><td>Annual cash flow (NOI minus debt service)</td><td>$8,200</td></tr>
+        <tr class="result"><td>Cash-on-Cash return on $293K down payment</td><td>2.8%</td></tr>
+      </tbody>
+    </table>
+
+    <p class="lesson-text">In this example your maximum offer price is approximately $1.17 million. If the seller is asking $1.4 million, that is not your problem — that is their problem. You offer $1.17 million or less and explain the math if asked. If the seller accepts, great. If not, you move on and wait for a seller whose price matches the numbers.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Finding the Floor — The Mortgage Balance Trick</div>
+      <p>When making a lowball offer, J Scott recommends finding out how much the seller owes on their mortgage. That number is often the floor — the lowest price where they will not have to bring cash to the closing table. They might be insulted by an offer at that price, but they will not walk away. Research it through public records, use tools like PropStream, or simply ask: <em>"Have you refinanced this property in the last several years?"</em> and estimate from there. This gives you your starting point.</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Start Lower Than You Think You Should</div>
+      <p>Most beginners offer too close to what they are willing to pay, leaving no room to negotiate upward. Your opening offer should be as low as possible while still keeping the seller at the table. If they counter, you have room to move. If you start at your real number, you have nowhere to go — and you will either overpay or lose the deal. The worst they can say is no. And even a no can turn into a deal months later if you leave the relationship intact.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Adventures in CRE: Letter of Intent for multifamily — <em>template walkthrough</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Real estate attorney Ron Rode walks through an actual multifamily LOI line by line — property details, purchase price, earnest money, due diligence period, extensions, closing timeline, transaction expenses, PSA timeline, confidentiality, and LOI expiration. He also covers the escrow holdback strategy — a powerful tool for bridging the gap between buyer and seller price expectations when future income is uncertain. This video shows you exactly what a professional offer document looks like and why each term matters.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/pbp55rkoFu8" title="Letter of Intent for Multifamily Real Estate — Template Walkthrough — Adventures in CRE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge acre">Adventures in CRE · YouTube</span>
+        <h4>Letter of Intent for Multifamily Real Estate — Template Walkthrough</h4>
+        <p>Real estate attorney Ron Rode walks through every term of a multifamily LOI — purchase price, earnest money, due diligence, extensions, closing timeline, confidentiality, and expiration. Includes an explanation of the escrow holdback strategy for bridging buyer-seller price gaps when future lease renewals are uncertain. Practical, commercial-focused, and beginner-accessible.</p>
+        <p class="credit">Adventures in CRE · Ron Rode Law · YouTube 2023 · 11 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Negotiation strategies that actually work — <em>and when to walk away</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The tactics that close deals are simpler than most people expect. They are not tricks or pressure techniques. They are habits and frameworks that put you in a consistently stronger position than the average buyer.</p>
+
+    <div class="tactics-list">
+
+      <div class="tactic-item fade-in">
+        <div class="tactic-icon">🤝</div>
+        <div class="tactic-content">
+          <h4>Build the relationship before you talk money</h4>
+          <p>Show up with something — coffee, genuine curiosity, a real conversation. Ask about the property, about them, about what comes next. The best negotiators spend the first meeting building a relationship, not presenting an offer. By the time price comes up, you are already someone they trust.</p>
+        </div>
+      </div>
+
+      <div class="tactic-item fade-in">
+        <div class="tactic-icon">❓</div>
+        <div class="tactic-content">
+          <h4>Ask open-ended questions and listen</h4>
+          <p>The goal of every early seller conversation is to gather information. What do they plan to do with the money? Why are they selling now? What would make the perfect deal for them? These questions reveal the real motivation — and the real motivation almost always creates an opportunity that price alone cannot.</p>
+        </div>
+      </div>
+
+      <div class="tactic-item fade-in">
+        <div class="tactic-icon">⚡</div>
+        <div class="tactic-content">
+          <h4>Offer certainty and speed</h4>
+          <p>The most motivated sellers do not want the highest price — they want certainty that the deal will close. A buyer who can move fast, has financing in place, puts up meaningful earnest money, and has a track record of closing is worth more to a motivated seller than a higher offer from an unknown buyer with contingencies. Speed and certainty are free to offer and enormously powerful.</p>
+        </div>
+      </div>
+
+      <div class="tactic-item fade-in">
+        <div class="tactic-icon">🔢</div>
+        <div class="tactic-content">
+          <h4>Send lots of LOIs</h4>
+          <p>Deal finding is a numbers game and so is making offers. Most LOIs will not lead to deals. That is expected and normal. The investor who submits ten LOIs per month and has five conversations will close far more deals than the investor who spends a month perfecting one offer. The LOI is free, non-binding, and takes 20 minutes to write. Send more of them.</p>
+        </div>
+      </div>
+
+      <div class="tactic-item fade-in">
+        <div class="tactic-icon">🚪</div>
+        <div class="tactic-content">
+          <h4>Leave every door open</h4>
+          <p>Most deals you pursue will not close — at least not immediately. The seller who turns you down today may call you in six months when circumstances change. Always end a negotiation graciously. Leave your contact information. Say something like: "I completely understand. If anything changes or if you know anyone else looking to sell, I would love to hear from you." Then add them to your follow-up list. Some of the best deals in real estate came from a seller who said no — and then called back a year later.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 class="sub-title">When to walk away</h3>
+    <p class="lesson-text">Walk away when the gap between what you can pay and what the seller will accept cannot be bridged — and when you have exhausted creative alternatives. If the seller's only motivation is money, their floor is above your ceiling, and no creative structure changes that, there is nothing left to negotiate. Say so directly, leave the door open, and move on. Staying too long in a dead negotiation wastes time and energy that should go toward finding the next deal.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"The discipline to walk away is what keeps you from making bad deals. Every bad deal I have ever seen started with someone who stayed in a negotiation too long — wanting it to work so badly that they convinced themselves the numbers were close enough. The numbers are never close enough. Either they work or they do not."</p>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="glossary-box fade-in">
+    <p><strong>📘 New terms in this module:</strong> LOI (Letter of Intent), PSA (Purchase and Sale Agreement), Earnest Money, Due Diligence Period, Financing Contingency, Escrow Holdback, Non-Binding, Closing Timeline, Renegotiation, Seller Motivation — all defined in the Darco Master Glossary.</p>
+    <a href="darco-glossary.pdf" download class="glossary-btn">⬇ Download Glossary</a>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to complete this module or move to Module 9. They are here for students who want to develop stronger negotiation skills and a deeper understanding of the offer and contract process — particularly relevant for anyone pursuing a career in commercial real estate, residential agency, or investing.</p>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">📄 Making Offers</div>
+
+    <div class="deeper-link">
+      <p><strong>Peter Harris — Using a Letter of Intent for Making Offers on Commercial Real Estate</strong><br>A concise 5-minute overview of what an LOI is, its three main purposes (bridge to a contract, simplify the offer, get basic agreement), and three advantages (make more offers, free to send, non-binding so no fear). Includes a downloadable LOI template that Peter Harris uses on his own commercial deals. A great companion to the Adventures in CRE walkthrough above.</p>
+      <a href="https://www.youtube.com/watch?v=hqovi3kA2Ts" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🤝 Negotiation Skills</div>
+
+    <div class="deeper-link">
+      <p><strong>Jake &amp; Gino — How to Negotiate Your Next Real Estate Deal</strong><br>Gino Barbaro discusses principled vs. positional negotiation — focusing on relationships vs. winning at all costs — and how to structure seller financing deals through the negotiation process. Also covers the importance of listening and preparation. January 2026.</p>
+      <a href="https://www.youtube.com/watch?v=siUq1wu6lnQ" target="_blank">Watch →</a>
+    </div>
+
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 8 Key Takeaways</h3>
+    <ul>
+      <li>Negotiation is built on rapport and information — not pressure tactics. The investor who builds trust and discovers what the seller actually needs will consistently close deals that other buyers cannot.</li>
+      <li>Most sellers want something beyond just the highest price — certainty, speed, a specific timeline, help with moving, seller financing income. Finding that motivation and structuring your offer around it is the real edge.</li>
+      <li>The LOI (Letter of Intent) is your primary offer tool in commercial real estate. It is one to two pages, non-binding, free, and fast. Make a lot of them. One offer per week is a reasonable goal.</li>
+      <li>Every term in an offer is a negotiating lever — not just price. Earnest money, closing timeline, due diligence period, and contingencies all signal strength or weakness to the seller. Being a better buyer on terms often gets you a lower price.</li>
+      <li>Your offer price is determined by the numbers — not the asking price. Work backwards from your required cap rate and cash-on-cash return to find your maximum. If the deal does not work at the asking price, that is the seller's problem, not yours.</li>
+      <li>Start lower than you think you should. Leave room to negotiate upward. The worst they can say is no — and a no today often becomes a deal months later if you leave the relationship intact.</li>
+      <li>Walk away when the numbers cannot be made to work and no creative structure bridges the gap. The discipline to say no is what keeps you out of bad deals.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A seller is asking $1.2 million for a 10-unit building. Your analysis shows the verified NOI is $72,000 and your required cap rate is 7%. What is your maximum offer price?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> $1.2 million — the asking price is reasonable so you should offer full price</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> $1.08 million — 10% below asking is a standard starting point</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> $1,028,571 — NOI divided by required cap rate ($72,000 divided by 0.07)</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> $900,000 — always offer 25% below asking on commercial deals</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. What is the key difference between a Letter of Intent (LOI) and a Purchase and Sale Agreement (PSA)?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> An LOI requires a larger earnest money deposit than a PSA</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> A PSA is used for residential deals and an LOI is used only for commercial</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> An LOI is non-binding, short (1–2 pages), and free — used to agree on basic terms before executing a legally binding PSA (10–20 pages)</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> An LOI requires attorney review but a PSA does not</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. You are meeting a seller for the first time. What is J Scott's recommended first priority before discussing price or making an offer?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Present your offer immediately — sellers respect directness and do not want small talk</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Ask them what their lowest price is so you know the range before investing time</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Build rapport and gather information — ask open-ended questions, listen, and find out what the seller actually needs beyond just the highest price</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Have your attorney present to ensure everything discussed is documented</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A seller owns a property free and clear and tells you they plan to put the sale proceeds in a savings account for a few months until they figure out where to move. What opportunity does this reveal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> The seller is in financial trouble and you should offer significantly below market</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> The seller has no immediate need for liquidity — this opens the door to a seller financing conversation where they earn a higher return than a savings account</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> The seller is not motivated and you should move on</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Nothing — the seller's plans for the money are not relevant to the transaction</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. You have made an offer, the seller has countered three times, and you are now $40,000 apart. The seller's only stated motivation is getting the highest possible price and they have made clear they are in no hurry to sell. What is the right move?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Split the difference and meet them halfway — $20,000 is not worth losing the deal</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Come up to their price — a deal at the wrong price is better than no deal</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Walk away graciously, leave your contact information, and move on — if money is the only motivation and the gap cannot be bridged, there is nothing left to negotiate</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Hire a real estate attorney to apply pressure and force a resolution</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- SKILLS CONNECTION -->
+  <div class="skills-connection fade-in">
+    <h3>🔗 How This Connects to Your Career Path</h3>
+    <p>Negotiation is the skill that connects every real estate career to actual results. Agents negotiate purchase prices and terms for clients on every transaction. Investors negotiate acquisition prices, seller financing structures, and creative deal terms. Wholesalers negotiate their way into deals that other buyers cannot access. Commercial brokers negotiate on behalf of buyers and sellers and earn their fee by doing it well. Property managers negotiate lease renewals. Even contractors negotiate scope and cost on renovation projects. This module is relevant to every path in the curriculum.</p>
+    <div class="career-tags">
+      <a href="residential-agent.html" class="career-tag">🏠 Residential Agent</a>
+      <a href="real-estate-investing.html" class="career-tag">📈 Real Estate Investing</a>
+      <a href="commercial-real-estate.html" class="career-tag">🏢 Commercial Real Estate</a>
+      <a href="wholesaling.html" class="career-tag">🔄 Wholesaling</a>
+      <a href="mortgage-lending.html" class="career-tag">💼 Mortgage Lending</a>
+      <a href="property-management.html" class="career-tag">🔑 Property Management</a>
+      <a href="real-estate-development.html" class="career-tag">🏗️ Development</a>
+      <a href="maintenance-repair.html" class="career-tag">🔧 Maintenance &amp; Repair</a>
+      <a href="real-estate-photography.html" class="career-tag">📸 Photography</a>
+    </div>
+  </div>
+
+</div><!-- end module-body -->
+
+<div class="module-nav">
+  <a href="module-7.html" class="btn btn-outline">← Module 7: Finding Properties</a>
+  <div class="module-nav-info">
+    <p>Core Foundation</p>
+    <strong>Module 8 of 10</strong>
+  </div>
+  <a href="module-9.html" class="btn btn-gold">Module 9: Leases &amp; Contracts →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! Your offer price is determined by the numbers, not the asking price. Maximum offer = NOI divided by required cap rate. $72,000 divided by 0.07 = $1,028,571. The seller's $1.2 million asking price is their number. Your number is $1,028,571 or less. If the deal does not work at the asking price, that is the seller's problem to solve.",
+      incorrect: "Not quite. Your offer price should always be determined by the numbers. Maximum offer = NOI divided by required cap rate. $72,000 divided by 0.07 = $1,028,571. Offering based on a percentage below asking or at the full asking price ignores the fundamental question: do the numbers work at this price?"
+    },
+    q2: {
+      correct: "Correct! An LOI is non-binding, typically one to two pages, and free to send — no attorney fees, no earnest money required. It gets the basic terms agreed on before anyone spends the time and money on a full purchase and sale agreement. Because it is non-binding, there is no reason not to send many of them.",
+      incorrect: "Not quite. The key difference is that an LOI is non-binding and short — one to two pages covering basic terms only. A PSA is the full legally binding contract at ten to twenty pages. The LOI comes first to get basic agreement, then the PSA handles all the legal detail. The LOI can be used in both residential and commercial transactions."
+    },
+    q3: {
+      correct: "Correct! J Scott is clear on this: the first priority is always rapport and information gathering — not presenting an offer. Ask open-ended questions, listen to the answers, and find out what the seller actually needs beyond money. That information is what allows you to structure a deal that works for both sides.",
+      incorrect: "Not quite. J Scott's first priority is always building rapport and gathering information. You ask open-ended questions and listen before you ever discuss price. The seller who trusts you and likes you is far more likely to accept a creative offer or a lower price than a seller who sees you as an adversary."
+    },
+    q4: {
+      correct: "Correct! A seller who is going to park their money in a savings account has no pressing need for immediate liquidity and no specific plan for the funds. That is the perfect opening for a seller financing conversation. You could offer to pay them a higher return than a savings account — 6 or 7 percent on a seller carry note — which gets you better terms and saves them from finding a new investment.",
+      incorrect: "Not quite. When a seller tells you they plan to put proceeds in a savings account, that is a powerful signal. They have no urgent need for the money and no specific plan. This opens the door to seller financing — you could offer them a better return than a savings account by having them carry a note on the property, potentially getting you better purchase terms in the process."
+    },
+    q5: {
+      correct: "Correct! When money is the seller's only motivation and the gap cannot be bridged through creative structure, there is nothing left to negotiate. Walk away graciously, leave your contact information, and move on. Splitting the difference or paying above your number to save the deal is exactly how investors end up with bad deals. Discipline here is what protects your returns.",
+      incorrect: "Not quite. When the seller's only motivation is price and their floor is above your ceiling, the negotiation is over. Splitting the difference or paying above your number locks in a deal that does not work financially. Walk away graciously, leave your contact information, and move on to the next deal. The right move is always to let the numbers decide."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you understand how to negotiate and make offers. You are ready for Module 9: Leases and Contracts.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons above and try again. Negotiation and offer mechanics are skills you will use on every single deal throughout your career.';
+    }
+  }
+</script>
+
+</body>
+</html>

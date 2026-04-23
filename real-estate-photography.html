@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Real Estate Photography — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#1C1A18;--dark-mid:#2E2B28;--dark-light:#4A4540;--dark-pale:#F5F2EE;--warm:#C8A96A;--warm-mid:#A8893A;--warm-light:#DFC88A;--warm-pale:#FBF7EE;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(28,26,24,0.1);--shadow-card:0 2px 16px rgba(28,26,24,0.08);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.7;overflow-x:hidden;}
+nav{background:var(--dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.3);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--warm);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--dark);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--warm-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--warm-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--dark-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--dark-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--dark);font-weight:600;}
+.hero{background:linear-gradient(135deg,#0E0D0C 0%,var(--dark) 55%,var(--dark-mid) 100%);padding:5rem 2.5rem 4rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(200,169,106,0.1) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--warm-light),transparent);}
+.hero-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
+.track-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,106,0.15);border:1px solid rgba(200,169,106,0.3);color:var(--warm-light);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:1.25rem;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:1rem;}
+.hero h1 em{color:var(--warm-light);font-style:italic;}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:560px;line-height:1.8;font-weight:300;margin-bottom:2rem;}
+.hero-stats{display:flex;gap:2rem;flex-wrap:wrap;}
+.hero-stat .number{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--warm-light);line-height:1;}
+.hero-stat .label{font-size:11.5px;color:rgba(255,255,255,0.45);margin-top:3px;}
+.hero-visual{width:180px;height:180px;background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,106,0.2);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:72px;flex-shrink:0;}
+.container{max-width:900px;margin:0 auto;padding:0 2rem;}
+.section-eyebrow{font-size:11.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.6rem;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.1rem;}
+.section-title em{color:var(--dark);font-style:italic;}
+.warm-divider{width:50px;height:3px;background:var(--warm);border-radius:2px;margin:1rem 0 1.5rem;}
+.lead-text{font-size:1.05rem;color:var(--text-mid);line-height:1.85;margin-bottom:1.25rem;max-width:720px;}
+.highlight-box{background:var(--warm-pale);border-left:4px solid var(--warm-mid);border-radius:0 12px 12px 0;padding:1.5rem 2rem;margin:1.5rem 0;}
+.highlight-box p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--warm-mid);font-style:italic;line-height:1.7;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin:2rem 0;}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.25s;}
+.service-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.service-icon{font-size:26px;margin-bottom:0.6rem;display:block;}
+.service-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--dark);margin-bottom:0.35rem;}
+.service-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+.service-rate{font-size:12px;font-weight:700;color:var(--warm-mid);margin-top:0.5rem;}
+.gear-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0;}
+.gear-card{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;gap:12px;align-items:flex-start;transition:box-shadow 0.2s;}
+.gear-card:hover{box-shadow:var(--shadow-card);}
+.gear-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.gear-card h4{font-weight:600;font-size:0.9rem;color:var(--dark);margin-bottom:0.25rem;}
+.gear-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+.gear-price{font-size:11.5px;font-weight:600;color:var(--warm-mid);margin-top:0.3rem;}
+.timeline{margin-top:2rem;position:relative;}
+.timeline::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--dark-mid),rgba(28,26,24,0.1));}
+.timeline-item{display:flex;gap:1.5rem;margin-bottom:1.75rem;}
+.timeline-dot{width:58px;height:38px;background:var(--dark);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--warm-light);flex-shrink:0;position:relative;z-index:1;}
+.timeline-content{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.4rem;flex:1;transition:box-shadow 0.2s;}
+.timeline-content:hover{box-shadow:var(--shadow-card);}
+.timeline-content h4{font-weight:600;font-size:0.9rem;color:var(--dark);margin-bottom:0.3rem;}
+.timeline-content p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:2rem;}
+.skill-card{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:all 0.25s;}
+.skill-card:hover{background:var(--white);box-shadow:var(--shadow-card);}
+.skill-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:0.75rem;}
+.skill-label.essential{background:var(--dark-pale);color:var(--dark-mid);}
+.skill-label.helpful{background:var(--warm-pale);color:var(--warm-mid);}
+.skill-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;}
+.skill-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.earnings-section{background:var(--dark);padding:4rem 0;position:relative;overflow:hidden;}
+.earnings-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(200,169,106,0.08) 0%,transparent 60%);}
+.earnings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.25rem;margin-top:2rem;}
+.earnings-card{background:rgba(255,255,255,0.06);border:1px solid rgba(200,169,106,0.15);border-radius:14px;padding:1.5rem;text-align:center;transition:all 0.25s;}
+.earnings-card:hover{background:rgba(255,255,255,0.1);border-color:rgba(200,169,106,0.3);}
+.earnings-role{font-size:12px;font-weight:600;letter-spacing:0.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:0.75rem;}
+.earnings-amount{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--warm-light);line-height:1;margin-bottom:0.4rem;}
+.earnings-note{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;}
+.steps{margin-top:2rem;display:flex;flex-direction:column;gap:1rem;}
+.step{display:flex;gap:1.25rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.6rem;transition:all 0.25s;}
+.step:hover{box-shadow:var(--shadow-card);border-color:rgba(28,26,24,0.2);}
+.step-number{width:36px;height:36px;background:var(--dark);color:var(--warm-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;flex-shrink:0;}
+.step-content h4{font-weight:600;font-size:0.95rem;color:var(--text-dark);margin-bottom:0.3rem;}
+.step-content p{font-size:13.5px;color:var(--text-mid);line-height:1.65;}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2rem;}
+.fit-card{border-radius:14px;padding:1.5rem;border:1px solid var(--border);}
+.fit-card.yes{background:var(--warm-pale);border-color:rgba(168,137,58,0.2);}
+.fit-card.no{background:#FBF0EE;border-color:rgba(180,60,40,0.12);}
+.fit-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;margin-bottom:0.75rem;}
+.fit-card.yes h4{color:var(--warm-mid);}
+.fit-card.no h4{color:#8B2F20;}
+.fit-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.fit-list li{font-size:13.5px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5;}
+.fit-card.yes .fit-list li::before{content:'✓';color:var(--warm-mid);font-weight:700;flex-shrink:0;}
+.fit-card.no .fit-list li::before{content:'✗';color:#C0392B;font-weight:700;flex-shrink:0;}
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem;}
+.term-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem;transition:box-shadow 0.2s;}
+.term-card:hover{box-shadow:var(--shadow-card);}
+.term-name{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:0.4rem;}
+.term-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.6rem;}
+.video-badge.start{background:var(--dark-pale);color:var(--dark-mid);}
+.video-badge.market{background:var(--warm-pale);color:var(--warm-mid);}
+.video-badge.beginner{background:#EDF7ED;color:#2A6A2A;}
+.video-badge.business{background:#E3EFF9;color:#1A4E7A;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;line-height:1.35;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.5rem;}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem;margin-top:1.5rem;}
+.podcast-cards{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+.podcast-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.6rem;display:flex;gap:1.25rem;align-items:flex-start;transition:all 0.25s;text-decoration:none;}
+.podcast-card:hover{box-shadow:var(--shadow-card);transform:translateX(4px);border-color:rgba(28,26,24,0.2);}
+.podcast-art{width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.podcast-art.dark{background:linear-gradient(135deg,var(--dark),var(--dark-mid));}
+.podcast-art.warm{background:linear-gradient(135deg,var(--warm-mid),var(--warm));}
+.podcast-art.bp{background:linear-gradient(135deg,#0A6E3F,#12A05C);}
+.podcast-meta{flex:1;}
+.podcast-show{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.3rem;}
+.podcast-meta h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;line-height:1.35;}
+.podcast-meta p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.podcast-arrow{font-size:22px;color:var(--text-light);align-self:center;transition:all 0.2s;}
+.podcast-card:hover .podcast-arrow{color:var(--dark-mid);transform:translateX(4px);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;}
+.btn-warm{background:var(--warm);color:var(--dark);}
+.btn-warm:hover{background:var(--warm-light);}
+.btn-outline-white{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.3);}
+.btn-outline-white:hover{background:rgba(255,255,255,0.1);}
+.cta-section{background:var(--dark);padding:4rem 2rem;text-align:center;}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--white);margin-bottom:0.75rem;}
+.cta-section h2 em{color:var(--warm-light);font-style:italic;}
+.cta-section p{color:rgba(255,255,255,0.6);font-size:1rem;max-width:500px;margin:0 auto 2rem;line-height:1.8;font-weight:300;}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,0.07);padding:2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--white);margin-bottom:0.4rem;}
+footer p{font-size:12px;color:rgba(255,255,255,0.35);}
+footer .footer-warm{color:var(--warm-light);}
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){nav{padding:0 1.25rem;}.nav-links{display:none;}.hero{padding:3rem 1.5rem;}.hero-inner{grid-template-columns:1fr;}.hero-visual{display:none;}.container{padding:0 1.25rem;}.fit-grid{grid-template-columns:1fr;}.breadcrumb{padding:0.75rem 1.25rem;}.video-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">All Careers</a></li>
+    <li><a href="index.html#resources">Resources</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="index.html#careers">Career Paths</a><span class="sep">›</span>
+  <span class="current">Real Estate Photography</span>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="track-badge">📸 Career Track</div>
+      <h1>Real Estate<br><em>Photography</em></h1>
+      <p class="hero-sub">In today's market, how a property looks online determines whether it gets shown at all. Professional real estate photographers are in constant demand, work flexible hours, serve every type of real estate professional — and the best ones build thriving businesses with low overhead and high margins.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="number">$150–$500+</div><div class="label">Per shoot average</div></div>
+        <div class="hero-stat"><div class="number">Flexible</div><div class="label">schedule & low overhead</div></div>
+        <div class="hero-stat"><div class="number">No license</div><div class="label">required to start</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">📸</div>
+  </div>
+</div>
+
+<section style="background:var(--white);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Opportunity</p>
+    <h2 class="section-title">Why real estate photography is a <em>genuinely great business</em></h2>
+    <div class="warm-divider"></div>
+    <p class="lead-text">Every property that goes on the market needs photos. Every real estate agent, every investor selling a renovated flip, every property manager listing a vacant unit, every developer marketing new construction — they all need high-quality visual content. And in a world where buyers scroll through dozens of listings in minutes, photography is the difference between a showing and a swipe.</p>
+    <p class="lead-text">What makes real estate photography particularly strong as a business is the repeat nature of the work. A productive agent lists dozens of properties per year — and needs a photographer for every single one. Once you build relationships with a handful of active agents, you have a consistent, recurring revenue stream that grows with their business.</p>
+    <div class="highlight-box">
+      <p>"The first thing every buyer does is look at the photos. If the photos are dark, cluttered, or shot at the wrong angle, they don't even schedule a showing. Great photography doesn't just sell the property — it sells the agent who listed it."</p>
+    </div>
+    <p class="lead-text">Miami is a particularly strong market for real estate photography — luxury listings, waterfront properties, and a highly competitive agent market where visual quality is a genuine differentiator. This is a strong city to launch.</p>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--text-dark);margin:2rem 0 0.75rem;">Services real estate photographers offer</h3>
+    <div class="services-grid">
+      <div class="service-card fade-in"><span class="service-icon">📷</span><h4>Standard Photography</h4><p>Interior and exterior stills — the core service every agent needs for every listing. The foundation of any photography business.</p><p class="service-rate">$150–$300 per shoot</p></div>
+      <div class="service-card fade-in"><span class="service-icon">🎬</span><h4>Video Walkthrough</h4><p>Property video tours for MLS, social media, and agent marketing. Significantly increases listing engagement and increasingly expected by sellers.</p><p class="service-rate">$250–$500 add-on</p></div>
+      <div class="service-card fade-in"><span class="service-icon">🚁</span><h4>Aerial / Drone</h4><p>FAA Part 107 licensed drone photography for exterior, land, and luxury properties. A high-value add-on that commands premium pricing.</p><p class="service-rate">$150–$300 add-on</p></div>
+      <div class="service-card fade-in"><span class="service-icon">🏠</span><h4>Virtual Staging</h4><p>Digitally furnish empty rooms to help buyers visualize the space. Lower cost than physical staging — increasingly popular with investors.</p><p class="service-rate">$30–$75 per room</p></div>
+      <div class="service-card fade-in"><span class="service-icon">🔄</span><h4>3D / Matterport Tours</h4><p>Interactive 3D walkthroughs. Particularly valuable for luxury and out-of-state buyer markets — buyers tour without visiting.</p><p class="service-rate">$200–$400 add-on</p></div>
+      <div class="service-card fade-in"><span class="service-icon">✨</span><h4>Twilight Photography</h4><p>Photos at dusk with interior lights on and a deep blue sky. Popular for luxury and waterfront properties throughout Florida.</p><p class="service-rate">$100–$200 add-on</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Getting Started</p>
+    <h2 class="section-title">The gear you actually <em>need to start</em></h2>
+    <div class="warm-divider"></div>
+    <p class="lead-text">One of the most appealing things about real estate photography is that you can start with modest equipment and upgrade as your business grows. Here's what you actually need versus what can wait.</p>
+    <div class="gear-grid">
+      <div class="gear-card fade-in"><div class="gear-icon">📷</div><div><h4>Camera Body</h4><p>Sony A7 series, Canon R series, or Nikon Z series. A good crop sensor camera is perfectly adequate to start — don't let gear paralysis stop you.</p><p class="gear-price">$800–$2,500</p></div></div>
+      <div class="gear-card fade-in"><div class="gear-icon">🔭</div><div><h4>Wide Angle Lens</h4><p>10–18mm for crop sensor or 16–35mm for full frame. The single most important piece of glass for interior photography. Non-negotiable.</p><p class="gear-price">$300–$800</p></div></div>
+      <div class="gear-card fade-in"><div class="gear-icon">💡</div><div><h4>Flash / Speedlite</h4><p>At least one off-camera flash for interior work. Proper lighting separates professional images from amateur ones — more important than the camera body.</p><p class="gear-price">$150–$400</p></div></div>
+      <div class="gear-card fade-in"><div class="gear-icon">📐</div><div><h4>Sturdy Tripod</h4><p>Essential for sharp interiors, HDR bracketing, and twilight shots. Get a quality ball head and you'll use it on every single shoot.</p><p class="gear-price">$100–$250</p></div></div>
+      <div class="gear-card fade-in"><div class="gear-icon">💻</div><div><h4>Lightroom / Editing Software</h4><p>Lightroom Classic is the industry standard. Adobe Creative Cloud subscription includes Lightroom and Photoshop for advanced compositing.</p><p class="gear-price">$55/month</p></div></div>
+      <div class="gear-card fade-in"><div class="gear-icon">🚁</div><div><h4>Drone (Add Later)</h4><p>DJI Mini 4 Pro or Air 3. Requires FAA Part 107 license to shoot commercially. Add this once photography is generating consistent revenue.</p><p class="gear-price">$500–$1,000</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Real World</p>
+    <h2 class="section-title">A day in the life of a <em>real estate photographer</em></h2>
+    <div class="warm-divider"></div>
+    <p class="lead-text">Real estate photography is one of the most schedule-friendly businesses in real estate. Most shoots happen weekday mornings and afternoons — leaving evenings and weekends largely free.</p>
+    <div class="timeline">
+      <div class="timeline-item fade-in"><div class="timeline-dot">8am</div><div class="timeline-content"><h4>First shoot — vacant condo</h4><p>A Brickell condo listing for an agent you've worked with for two years. Vacant unit means full control of the space. Set up flash, shoot HDR brackets in every room, do the exterior. Done in 90 minutes.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">10am</div><div class="timeline-content"><h4>Second shoot — occupied home</h4><p>A family home in Coral Gables. Work through each room methodically. Calm, professional communication with agents and sellers is part of what makes people book you again over cheaper alternatives.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">12pm</div><div class="timeline-content"><h4>Editing session</h4><p>Edit yesterday's shoots. Lightroom culling, color correction, HDR blending, sky replacement. Deliver finished galleries via Pixieset. Agents who get fast, clean turnaround recommend you constantly.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">2pm</div><div class="timeline-content"><h4>Drone shoot</h4><p>Aerial photography for a waterfront property in Miami Beach. Check weather and airspace, fly for exterior and aerial shots. This add-on service adds $250 to the invoice for 30 extra minutes of work.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">4pm</div><div class="timeline-content"><h4>Deliver galleries</h4><p>Upload final edited photos via Pixieset with download links to the agent. Fast, professional delivery is part of your product — not just the photos themselves.</p></div></div>
+      <div class="timeline-item fade-in"><div class="timeline-dot">5pm</div><div class="timeline-content"><h4>Business development</h4><p>Follow up with two agents from last week's networking event. Send a sample gallery and pricing sheet. Building your agent client base is the most important activity outside the shoots themselves.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--dark-pale);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Watch & Learn</p>
+    <h2 class="section-title">The best free videos on <em>starting a real estate photography business</em></h2>
+    <div class="warm-divider"></div>
+    <p class="lead-text">These videos cover everything from beginner camera technique to how to build a full-time business — honest, practical, and directly applicable to launching in the Miami market.</p>
+    <div class="video-grid">
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/bPokso3JT9c" title="Beginner to Pro Real Estate Photographer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge start">Start Here</span>
+          <h4>Beginner to Pro Real Estate Photographer — The Complete Path</h4>
+          <p>The fastest path from beginner to professional — gear, technique, editing workflow, and how to land your first paying clients. One of the most comprehensive free resources available for real estate photographers.</p>
+          <p class="credit">REPP Launch · YouTube 2023</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/iKpG7X_IPss" title="Watch This Before Starting a Real Estate Photography Business 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge market">Market Reality Check</span>
+          <h4>Watch This Before Starting a Real Estate Photography Business (2024)</h4>
+          <p>An honest look at the current real estate photography market — what's changed, what's working, and what you need to know before launching your business today.</p>
+          <p class="credit">REPP Launch · YouTube 2024</p>
+        </div>
+      </div>
+    </div>
+    <div class="video-grid" style="margin-top:1.25rem;">
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/uK61dhBDAJo" title="Real Estate Photography for Beginners" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge beginner">Technique for Beginners</span>
+          <h4>Real Estate Photography for Beginners — Equipment, Technique & Settings</h4>
+          <p>Learn how to take great real estate photos in under 10 minutes — camera equipment, shooting techniques, composition, and settings that work in every property. Perfect starting point.</p>
+          <p class="credit">YouTube · 2024</p>
+        </div>
+      </div>
+      <div class="video-card fade-in">
+        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/BbSJMQoWtd0" title="How to Start a Real Estate Photography Business 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="video-info">
+          <span class="video-badge business">Starting the Business</span>
+          <h4>How to Start a Real Estate Photography Business Right Now (2024)</h4>
+          <p>The business side — pricing, finding clients, building agent relationships, delivering work professionally, and growing from your first shoots to a full-time income.</p>
+          <p class="credit">YouTube · 2024</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Listen & Learn</p>
+    <h2 class="section-title">Resources to <em>grow your photography business</em></h2>
+    <div class="warm-divider"></div>
+    <p class="lead-text">Understanding the real estate agent and investor world is what separates photographers who scramble for clients from those who get referrals without asking.</p>
+    <div class="podcast-cards">
+      <a href="https://www.youtube.com/@REPPLaunch" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art dark">📸</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">REPP Launch · Photography Specific</div>
+          <h4>REPP Launch — Real Estate Photography YouTube Channel</h4>
+          <p>The most comprehensive free education resource specifically for real estate photographers. Covers camera technique, editing workflows, business systems, pricing, and client acquisition — everything you need to build a serious photography business in real estate. Subscribe and watch consistently.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+      <a href="https://www.tomferry.com/podcast/" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art warm">🎙️</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">Tom Ferry · Real Estate Agent Podcast</div>
+          <h4>The Tom Ferry Podcast Experience</h4>
+          <p>Understanding how top real estate agents think about marketing and listings is essential for photographers who want to serve them well. The agents who invest most in professional marketing are your best clients — and this podcast shows you how they think and what they value.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+      <a href="https://www.biggerpockets.com/podcasts/real-estate" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-art bp">🎧</div>
+        <div class="podcast-meta">
+          <div class="podcast-show">BiggerPockets · Investor Perspective</div>
+          <h4>BiggerPockets Real Estate Podcast</h4>
+          <p>Real estate investors are an underserved photography market — fix-and-flip listings, before-and-after renovation photos, and rental property marketing all need quality visuals. Understanding the investor world opens a second client stream alongside agents.</p>
+        </div>
+        <div class="podcast-arrow">›</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">What You'll Need</p>
+    <h2 class="section-title">Skills that build a <em>thriving photography business</em></h2>
+    <div class="warm-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Camera & Lighting Technique</h4><p>Understanding exposure, white balance, HDR bracketing, and off-camera flash is what separates professional images from amateur phone photos. This is fully learnable through YouTube and deliberate practice.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Editing & Post-Processing</h4><p>Lightroom is the industry standard. Fast, consistent editing with a clean, bright, neutral style is what agents want. Many photographers outsource editing once volume increases — but learn it yourself first.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Speed & Reliability</h4><p>Agents need photos delivered fast — same day or next morning. The photographer who delivers quality work on time, every time, gets rebooked without needing to market themselves at all.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label essential">Essential</span><h4>Agent Relationship Building</h4><p>One productive agent books 30–50 shoots per year. Build genuine relationships, remember their preferences, and be genuinely easy to work with. These relationships are your business.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Drone / FAA Part 107</h4><p>The FAA Part 107 test is manageable with a prep course. Once licensed, drone capability significantly increases your average job value — especially in the Miami luxury market.</p></div>
+      <div class="skill-card fade-in"><span class="skill-label helpful">Helpful</span><h4>Video Production</h4><p>Video is the fastest-growing segment of real estate media. Adding listing video to your menu doubles your potential income per shoot and positions you ahead of photographers who only do stills.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="earnings-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color:var(--warm-light);">The Money</p>
+    <h2 class="section-title" style="color:var(--white);">What can a real estate photographer <em style="color:var(--warm-light);">realistically earn?</em></h2>
+    <div class="warm-divider"></div>
+    <p style="color:rgba(255,255,255,0.65);font-size:1rem;line-height:1.8;max-width:680px;margin-bottom:2rem;font-weight:300;">Photography income is project-based. The key to real income is volume combined with upsells — drone, video, and virtual staging. In a strong market like Miami, the numbers can be very good.</p>
+    <div class="earnings-grid">
+      <div class="earnings-card fade-in"><div class="earnings-role">Getting Started</div><div class="earnings-amount">$1K–$3K/mo</div><div class="earnings-note">Building your client base. Part-time volume while learning your workflow.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Established Photographer</div><div class="earnings-amount">$4K–$8K/mo</div><div class="earnings-note">Consistent agent relationships, 2–4 shoots per day, multiple services offered.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Full Service Business</div><div class="earnings-amount">$8K–$15K/mo</div><div class="earnings-note">Photography + video + drone + virtual staging. Premium market clientele.</div></div>
+      <div class="earnings-card fade-in"><div class="earnings-role">Agency / Team</div><div class="earnings-amount">$15K–$40K+/mo</div><div class="earnings-note">Multiple photographers and videographers under one brand. Scalable operation.</div></div>
+    </div>
+    <p style="margin-top:1.5rem;font-size:12.5px;color:rgba(255,255,255,0.4);font-style:italic;text-align:center;">* Income varies by market, service mix, and client volume. Miami figures may exceed national averages.</p>
+  </div>
+</section>
+
+<section style="background:var(--cream);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Your Roadmap</p>
+    <h2 class="section-title">How to <em>launch your real estate photography business</em></h2>
+    <div class="warm-divider"></div>
+    <div class="steps">
+      <div class="step fade-in"><div class="step-number">1</div><div class="step-content"><h4>Learn the craft first</h4><p>Watch the REPP Launch YouTube channel from the beginning. Understand HDR shooting, off-camera flash, and Lightroom editing before taking on paying clients. Practice on homes of friends or vacant rentals until your work looks genuinely professional.</p></div></div>
+      <div class="step fade-in"><div class="step-number">2</div><div class="step-content"><h4>Build a portfolio of 10–15 strong shoots</h4><p>Agents won't hire you without seeing your work. Offer free or heavily discounted shoots to a few agents in exchange for using the images in your portfolio. Five great listings are worth more than any marketing campaign.</p></div></div>
+      <div class="step fade-in"><div class="step-number">3</div><div class="step-content"><h4>Set up your business professionally</h4><p>Create a clean website with your portfolio and pricing. Set up professional booking and delivery systems — Google Calendar for scheduling, Pixieset for gallery delivery, and a simple contract. Looking professional gets you paid professional rates.</p></div></div>
+      <div class="step fade-in"><div class="step-number">4</div><div class="step-content"><h4>Target active real estate agents directly</h4><p>Look up the top-producing agents in your market on the MLS or Zillow — agents listing 20+ properties per year are your ideal clients. Email them, call them, introduce yourself at open houses. One agent who loves your work can keep you consistently busy.</p></div></div>
+      <div class="step fade-in"><div class="step-number">5</div><div class="step-content"><h4>Get your FAA Part 107 drone license</h4><p>Study with a prep course like Pilot Institute — the test is straightforward with preparation. Once licensed, add aerial photography to your menu. Most Miami-area listings benefit from aerial content and it meaningfully increases your per-shoot invoice.</p></div></div>
+      <div class="step fade-in"><div class="step-number">6</div><div class="step-content"><h4>Add video and scale</h4><p>Once you have consistent photography bookings, add short-form listing video. Agents with video content get dramatically higher listing engagement. Video doubles your service menu and commands 50–100% higher pricing per shoot.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">Honest Assessment</p>
+    <h2 class="section-title">Is real estate photography <em>right for you?</em></h2>
+    <div class="warm-divider"></div>
+    <div class="fit-grid">
+      <div class="fit-card yes fade-in">
+        <h4>You'll thrive if you...</h4>
+        <ul class="fit-list">
+          <li>Have a creative eye and enjoy visual work</li>
+          <li>Are self-motivated and can manage your own schedule</li>
+          <li>Are reliable — agents depend on total consistency</li>
+          <li>Are comfortable with technology and willing to keep learning</li>
+          <li>Enjoy variety — every property and shoot is different</li>
+          <li>Like working independently without an office or boss</li>
+          <li>Want a business with low overhead and flexible hours</li>
+        </ul>
+      </div>
+      <div class="fit-card no fade-in">
+        <h4>You may struggle if you...</h4>
+        <ul class="fit-list">
+          <li>Don't enjoy photography or visual storytelling</li>
+          <li>Are not willing to invest time in learning editing software</li>
+          <li>Need a guaranteed salary from the start</li>
+          <li>Are uncomfortable with client-facing communication</li>
+          <li>Dislike driving between locations and working outdoors</li>
+          <li>Are not detail-oriented — consistency matters deeply here</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--dark-pale);padding:4rem 0;">
+  <div class="container">
+    <p class="section-eyebrow">The Language</p>
+    <h2 class="section-title">Key terms every real estate photographer <em>must know</em></h2>
+    <div class="warm-divider"></div>
+    <div class="terms-grid">
+      <div class="term-card fade-in"><div class="term-name">HDR — High Dynamic Range</div><p>Shooting multiple exposures (bright, normal, dark) and blending them in editing to capture detail in both shadows and highlights — the standard interior technique.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Flash Ambient Blend</div><p>Shooting with a combination of off-camera flash and natural ambient light, then blending the results in Photoshop. Industry-standard technique for professional interior photography.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Wide Angle Lens</div><p>A short focal length lens (10–24mm) that captures more of a room in a single frame. Essential for interior real estate photography — without it, small rooms look even smaller.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Virtual Staging</div><p>Digitally adding furniture and decor to photos of empty rooms. Cost-effective alternative to physical staging that helps buyers visualize a vacant space.</p></div>
+      <div class="term-card fade-in"><div class="term-name">FAA Part 107</div><p>The Federal Aviation Administration license required to fly a drone commercially. A knowledge test is required before you can legally charge for drone photography.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Twilight Photography</div><p>Photos taken at dusk when interior lights are on and the sky has a deep blue tone. Creates dramatic, premium-feeling images — effective for luxury and waterfront properties.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Matterport / 3D Tour</div><p>Interactive 3D walkthroughs that allow buyers to virtually tour a property online from any angle — valuable for luxury and out-of-state buyer markets.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Sky Replacement</div><p>Replacing a dull or overcast sky in exterior photos with a more appealing blue sky in post-processing. A standard editing technique used on nearly every exterior image.</p></div>
+      <div class="term-card fade-in"><div class="term-name">Listing Photos</div><p>The primary set of interior and exterior still images used for MLS, Zillow, Realtor.com, and agent marketing. The core deliverable of every real estate photography shoot.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Ready to explore the <em>full real estate world?</em></h2>
+  <p>Photography is one of the best entry points into real estate — and the knowledge you build here connects directly to every other career in this curriculum. Start with Module 1.</p>
+  <div class="cta-buttons">
+    <a href="module-1.html" class="btn btn-warm">Start Module 1 →</a>
+    <a href="index.html#careers" class="btn btn-outline-white">← Explore All Careers</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">🏛️ Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey &nbsp;·&nbsp; <span class="footer-warm">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

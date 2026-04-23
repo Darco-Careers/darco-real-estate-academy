@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>CRE Module 6: Commercial Underwriting in Depth — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#0F2340;--forest-mid:#1A3A5C;--forest-light:#2A5380;--forest-pale:#EBF0F7;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(15,35,64,0.1);--shadow-card:0 2px 16px rgba(15,35,64,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(15,35,64,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:86%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(15,35,64,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(15,35,64,0.25);}
+.module-hero{background:linear-gradient(135deg,#071828 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-danger{background:#FBF0EE;border-left:4px solid #C0392B;border-radius:0 14px 14px 0;}
+.callout-danger .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8B2F20;margin-bottom:0.5rem;}
+.callout-danger p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* 7-step framework */
+.steps-wrap{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
+.steps-wrap::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--forest-pale);}
+.step-item{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:1.75rem;position:relative;}
+.step-item:last-child{padding-bottom:0;}
+.si-num{width:40px;height:40px;border-radius:50%;background:var(--forest);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:0.95rem;flex-shrink:0;z-index:1;}
+.si-body{padding-top:6px;}
+.si-body h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;}
+.si-body .si-source{font-size:11px;font-weight:700;color:var(--forest-mid);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.4rem;}
+.si-body p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+
+/* Landmine cards */
+.landmine-grid{display:flex;flex-direction:column;gap:1.1rem;margin:2rem 0;}
+.landmine-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all 0.25s;}
+.landmine-card:hover{box-shadow:var(--shadow-card);}
+.landmine-card .lm-header{padding:1rem 1.5rem;display:flex;align-items:center;gap:0.75rem;background:linear-gradient(135deg,#3A1818,#8B2F20);}
+.landmine-card .lm-num{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold-light);}
+.landmine-card .lm-header h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);}
+.landmine-card .lm-body{padding:1.1rem 1.5rem;}
+.landmine-card .lm-body p{font-size:13.5px;color:var(--text-mid);line-height:1.75;margin-bottom:0.6rem;}
+.landmine-card .lm-body p:last-child{margin-bottom:0;}
+.landmine-card .lm-lesson{font-size:12px;font-weight:600;color:var(--forest-mid);border-top:1px solid var(--border);padding-top:0.6rem;margin-top:0.6rem;}
+
+/* Compare tables */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px;}
+.compare-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;}
+.compare-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;line-height:1.6;}
+.compare-table td:first-child{font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--forest-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);}
+
+/* Stress test scenarios */
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin:2rem 0;}
+.scenario-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;transition:all 0.2s;}
+.scenario-card:hover{box-shadow:var(--shadow-card);}
+.scenario-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.scenario-card .sc-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;margin-bottom:0.5rem;}
+.scenario-card .sc-tag.base{background:var(--forest-pale);color:var(--forest-mid);}
+.scenario-card .sc-tag.stress{background:#FBE8E8;color:#8B2020;}
+.scenario-card .sc-tag.worst{background:#3A1818;color:var(--gold-light);}
+.scenario-card p{font-size:12.5px;color:var(--text-mid);line-height:1.65;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.cre{background:#EBF0FB;color:#1A4E7A;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#071828,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--forest-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .scenario-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="commercial-real-estate.html">CRE Career Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="commercial-real-estate.html">Commercial Real Estate</a><span class="sep">›</span>
+  <span class="current">CRE-6: Commercial Underwriting in Depth</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">CRE Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="cre-module-1.html" class="prog-dot complete" title="CRE-1">✓</a>
+    <a href="cre-module-2.html" class="prog-dot complete" title="CRE-2">✓</a>
+    <a href="cre-module-3.html" class="prog-dot complete" title="CRE-3">✓</a>
+    <a href="cre-module-4.html" class="prog-dot complete" title="CRE-4">✓</a>
+    <a href="cre-module-5.html" class="prog-dot complete" title="CRE-5">✓</a>
+    <div class="prog-dot active">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Commercial Real Estate Track · Module 6 of 7</div>
+    <h1>Commercial Underwriting <em>in Depth</em></h1>
+    <p>Underwriting is the analytical core of commercial real estate — the process of building projections, testing assumptions, and arriving at a defensible value for a property. It is what separates the professionals who make good decisions from those who get burned. This module covers the full underwriting process, the most common mistakes that destroy deals, and how to stress-test your assumptions so the numbers you rely on are actually trustworthy.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>50–65 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What underwriting is — <em>and why it matters more than anything else</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Underwriting is the process of building projections about the performance of a real estate acquisition or development opportunity — and then using those projections to assess the risk and value of the deal. In commercial real estate, the price you pay for a property is not based primarily on what similar properties sold for nearby. It is based on the income that property produces — or is projected to produce — and what that income stream is worth to an investor given current market conditions.</p>
+
+    <p class="lesson-text">This is the fundamental difference between residential and commercial real estate valuation. In residential, you look at comps — what did similar houses sell for? In commercial, you build a pro forma — what will this property earn, what will it cost to operate, what can I sell it for at the end, and what return does that produce at today's asking price?</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Income Approach in One Formula</div>
+      <p><strong>Value = NOI ÷ Cap Rate</strong> — Net Operating Income divided by the capitalization rate. If a property generates $200,000 in NOI and the market cap rate is 5%, the property is worth $4,000,000. If cap rates rise to 6%, the same $200,000 NOI is worth only $3,333,333. A 1% increase in cap rate on a $4M property destroys $666,667 of value without a single dollar of income changing. This is why cap rate assumptions are the highest-stakes numbers in any commercial underwriting.</p>
+    </div>
+
+    <h3 class="sub-title">What a pro forma is and what it is not</h3>
+    <p class="lesson-text">A pro forma is a projected financial model showing expected income, expenses, debt service, and returns for a property over a defined holding period. It is a planning tool — a structured way to organize your assumptions and see what they produce. A well-built pro forma is the foundation of every acquisition decision, every development budget, and every investor pitch in commercial real estate.</p>
+
+    <p class="lesson-text">But here is the critical thing to understand: <strong>a pro forma is only as reliable as the assumptions that go into it.</strong> Garbage assumptions produce garbage projections — and garbage projections produce deals that blow up after closing. Every experienced CRE professional has seen beautiful pro formas attached to disastrous deals. The pro forma was perfect. The assumptions were wrong.</p>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Pro Forma ≠ Reality</div>
+      <p>The seller's pro forma — provided in their offering memorandum — shows what the property could earn under optimistic assumptions. It is not what the property actually earns. It is not what you should underwrite to. Your job as a buyer or analyst is to throw away the seller's pro forma and build your own using verified actual numbers. The single most reliable predictor of a bad deal is an investor who underwrote to the seller's projected income rather than the trailing actual income.</p>
+    </div>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Document</th><th>What It Shows</th><th>Trust Level</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>Seller's Pro Forma</td>
+            <td>Projected income under optimistic assumptions — often includes income from vacant spaces and assumes rents the property has never actually achieved</td>
+            <td>🔴 Do not underwrite to this</td>
+          </tr>
+          <tr>
+            <td>Rent Roll</td>
+            <td>Current lease information for each tenant — base rent, lease start and end dates, escalation schedule, reimbursements</td>
+            <td>🟡 Verify against actual leases</td>
+          </tr>
+          <tr class="highlight">
+            <td>T-12 Financial Statements</td>
+            <td>Trailing 12 months of actual revenue and expenses — what the property actually collected and spent</td>
+            <td>🟢 Best starting point — still verify</td>
+          </tr>
+          <tr>
+            <td>Tax Returns (2–3 years)</td>
+            <td>Filed financials that are harder to manipulate — useful for identifying discrepancies vs. T-12</td>
+            <td>🟢 High reliability — cross-reference</td>
+          </tr>
+          <tr class="highlight">
+            <td>Actual Leases</td>
+            <td>The legal contracts — the ultimate source of truth on rent, term, escalations, and tenant obligations</td>
+            <td>🟢 Primary source — always review</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Break Into CRE: Real estate underwriting <em>explained</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Break Into CRE walks through the complete commercial real estate underwriting process — from collecting in-place financials and building operating assumptions, through debt assumptions and sale projections, to arriving at a final valuation based on target returns. Particular attention is paid to the exit cap rate assumption — why it is the highest-stakes number in any underwriting model, and how investors decide where to set it based on interest rate and demand expectations. Published August 2025 — the most current underwriting overview available.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/2yG7oduinDg" title="Real Estate Underwriting Explained — Break Into CRE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cre">Break Into CRE · YouTube</span>
+        <h4>Real Estate Underwriting Explained</h4>
+        <p>The complete underwriting process from in-place financials through operating assumptions, debt assumptions, exit cap rate projections, and final valuation — with specific focus on why the exit cap rate assumption is the highest-stakes number in any commercial model. Directly reinforces Lesson 1 of this module.</p>
+        <p class="credit">Break Into CRE · YouTube August 2025 · 8 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The 7-step underwriting process — <em>what to build and where to get the data</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Understanding the underwriting process at the conceptual level is not enough — you need to know exactly what data goes into each step and where to get it. The hardest part of underwriting for most beginners is not the math. It is knowing which numbers to trust, which to verify, and which require going directly to a third-party source rather than relying on what the seller provided.</p>
+
+    <div class="steps-wrap">
+      <div class="step-item fade-in">
+        <div class="si-num">1</div>
+        <div class="si-body">
+          <div class="si-source">Data Source: Offering Memorandum / Public Records</div>
+          <h4>Property Details</h4>
+          <p>Add basic descriptive information about the property — year built, address, total acreage, leasable square footage, number of units or suites. This step is primarily about making sure you understand what you are actually buying before you start crunching numbers. Many analysts skip past this step — do not. The physical characteristics of a property directly affect assumptions about capital expenditures, marketability, and tenant demand.</p>
+        </div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="si-num">2</div>
+        <div class="si-body">
+          <div class="si-source">Data Source: Rent Roll + Actual Leases</div>
+          <h4>In-Place Lease Information</h4>
+          <p>Enter current lease data for every tenant — suite square footage, lease start and end dates, scheduled rent escalations, and any expense reimbursement structures. The rent roll gives you a summary. The actual leases are the primary source. Always verify the rent roll against the underlying leases — discrepancies between the two are a yellow flag that warrants further investigation.</p>
+        </div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="si-num">3</div>
+        <div class="si-body">
+          <div class="si-source">Data Source: CoStar, Leasing Brokers, LoopNet, Crexi</div>
+          <h4>Re-Leasing Assumptions</h4>
+          <p>Project what happens when in-place leases expire — renewal probability for each tenant, expected downtime between leases if they vacate, market rent for each suite, free rent periods, TI allowances, and leasing commissions. This is one of the hardest parts of any underwriting because it requires genuine market knowledge. Do not guess — call a leasing broker active in the submarket. They know current rents, concession levels, and absorption rates that no database fully captures.</p>
+        </div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="si-num">4</div>
+        <div class="si-body">
+          <div class="si-source">Data Source: T-12, Insurance Broker, Tax Assessor, Property Manager</div>
+          <h4>Operating Expenses</h4>
+          <p>Project ongoing expenses: repairs and maintenance, insurance, property taxes, property management fees, and other operating costs. The seller's T-12 is a useful starting point — but do not accept it uncritically. Three expense line items require independent verification: insurance (get your own quote — rates have increased dramatically in many markets), property taxes (research when and how the property will be reassessed after your purchase — it often resets significantly higher), and property management fees (call a local PM company for market rates).</p>
+        </div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="si-num">5</div>
+        <div class="si-body">
+          <div class="si-source">Data Source: General Contractor</div>
+          <h4>Capital / Construction Costs</h4>
+          <p>Estimate the cost and timing of any renovation or value-add work. Add a contingency percentage — typically 10% to 20% on top of your base estimates. Never accept your own rough estimate as a capital budget. Always get a number from an experienced general contractor who has walked the property. Construction costs that blow out are one of the most common ways value-add deals destroy investor returns.</p>
+        </div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="si-num">6</div>
+        <div class="si-body">
+          <div class="si-source">Data Source: Mortgage Broker / Lender</div>
+          <h4>Debt Assumptions</h4>
+          <p>Add loan terms — projected loan amount, interest rate, amortization period, loan term, any interest-only period, and refinance projections if the initial term is shorter than your hold period. You cannot get concrete loan terms before a property is under contract — but a mortgage broker can give you a reliable ballpark before you submit an offer. Underwriting with debt assumptions that are materially off from what you can actually obtain is a common mistake that distorts your projected returns.</p>
+        </div>
+      </div>
+      <div class="step-item fade-in">
+        <div class="si-num">7</div>
+        <div class="si-body">
+          <div class="si-source">Data Source: Market Comps / Broker / Interest Rate Outlook</div>
+          <h4>Sale Assumptions and Valuation</h4>
+          <p>Project the sale price by selecting an exit cap rate — the cap rate the next buyer will apply to your last year of NOI. This is the highest-stakes assumption in the model. A conservative exit cap rate assumes cap rates expand from today's levels. An aggressive exit cap rate assumes compression. When interest rates are expected to rise, underwrite cap rates expanding. When rates are expected to fall, underwrite flat or slight compression. Then adjust your purchase price until the projected returns hit your target IRR, equity multiple, or cash-on-cash.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Break Into CRE</div>
+      <p>"The exit cap rate assumption can have such a big impact on projected returns on a deal. If interest rates are expected to rise and demand for commercial real estate is expected to fall, investors will typically underwrite cap rates expanding. And if interest rates are expected to fall and demand is expected to rise, investors will typically underwrite cap rates to either stay the same — to be conservative — or even sometimes to compress slightly during the projected hold period."</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Break Into CRE: A 7-step framework for underwriting <em>commercial real estate</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Break Into CRE walks through the same seven-step underwriting framework in practitioner depth — covering not just what each step involves but exactly where the data comes from for each input. The re-leasing assumptions section is particularly valuable: it covers renewal probabilities, downtime between leases, TI allowances, CoStar, leasing broker relationships, and why this step is the hardest part of any commercial underwriting. Essential viewing for anyone targeting analyst roles or building their first pro forma.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/UkZV8oCvWds" title="7-Step Framework for Underwriting CRE — Break Into CRE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cre">Break Into CRE · YouTube</span>
+        <h4>A 7-Step Framework For Underwriting Commercial Real Estate</h4>
+        <p>The complete seven-step underwriting process in practitioner depth — covering what goes into each step, where to get the data for each input, and why re-leasing assumptions are the hardest part of any commercial underwriting. Includes a walkthrough of an actual Break Into CRE pro forma model. Directly reinforces Lesson 2 of this module.</p>
+        <p class="credit">Break Into CRE · YouTube August 2023 · 10 min · Evergreen content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The four landmines — <em>underwriting mistakes that destroy deals</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most commercial real estate losses do not come from bad luck or unpredictable market forces. They come from predictable, avoidable underwriting mistakes that experienced investors learn to recognize — and beginners do not. Peter Harris calls them landmines: they are buried in plain sight, invisible to those who do not know to look, and devastating when triggered. Every one of these has destroyed real deals with real investor capital. Learn them before you need them.</p>
+
+    <div class="landmine-grid">
+      <div class="landmine-card fade-in">
+        <div class="lm-header">
+          <div class="lm-num">💣 1</div>
+          <h4>Never Trust the Seller's Numbers</h4>
+        </div>
+        <div class="lm-body">
+          <p>The seller's financial statements are prepared to sell the property at the highest possible price. Some sellers keep meticulous records. Others operate on what insiders call "shoebox accounting" — receipts stuffed in a box, numbers reconstructed from memory, income and expenses that are inconsistent, unverifiable, or simply wrong.</p>
+          <p>Your job as a buyer or analyst is to independently verify every material number before you rely on it. Request tax returns alongside the T-12. Cross-reference rent collected against the actual leases. Request utility bills, insurance invoices, and property tax statements directly. If numbers cannot be verified, assume the worst-case scenario — not the presented scenario. Deals that close on unverified seller numbers frequently disappoint after closing.</p>
+          <div class="lm-lesson">→ The rule: verify everything independently. Trust nothing that cannot be documented.</div>
+        </div>
+      </div>
+
+      <div class="landmine-card fade-in">
+        <div class="lm-header">
+          <div class="lm-num">💣 2</div>
+          <h4>Pro Forma Income Is Not Real Income</h4>
+        </div>
+        <div class="lm-body">
+          <p>A pro forma is a projection. It shows what a seller believes or hopes the property could earn under favorable conditions. The offering memorandum pro forma almost always includes income from currently vacant spaces leased at optimistic market rents, assumes rent bumps that tenants may not accept, and excludes expenses the seller is not currently incurring but you will be.</p>
+          <p>Always underwrite to actual trailing income — what the property has actually collected over the last 12 months — not projected pro forma income. Value a property on its actual performance. Then build a separate model showing what the property could earn if your value-add business plan succeeds. Use that model to calculate upside — not to justify your purchase price.</p>
+          <div class="lm-lesson">→ The rule: buy on actual. Model upside separately. Never pay for income that does not yet exist.</div>
+        </div>
+      </div>
+
+      <div class="landmine-card fade-in">
+        <div class="lm-header">
+          <div class="lm-num">💣 3</div>
+          <h4>Emotion and Competition Bypass Judgment</h4>
+        </div>
+        <div class="lm-body">
+          <p>When you have spent months finding a deal and competing against other buyers, the pressure to win can override the discipline to walk away. Sellers and their brokers know this — and some create artificial urgency specifically to trigger it. Auction-style bidding processes, manufactured best-and-final deadlines, and hints of competing offers are all designed to get you to move faster and think less carefully than you should.</p>
+          <p>Peter Harris puts it simply: when emotion goes up, intelligence goes down. The most dangerous moment in any deal is when you want it so badly that you start finding reasons to ignore the problems rather than finding reasons to confirm the opportunity. Establish your maximum price before you start competing — and do not exceed it regardless of what competing bids are doing.</p>
+          <div class="lm-lesson">→ The rule: set your walk-away price before the process starts. Never exceed it. The best deals you ever do are often the ones you walked away from.</div>
+        </div>
+      </div>
+
+      <div class="landmine-card fade-in">
+        <div class="lm-header">
+          <div class="lm-num">💣 4</div>
+          <h4>Underestimated Expenses Destroy Returns</h4>
+        </div>
+        <div class="lm-body">
+          <p>Three expense categories are consistently underestimated by inexperienced buyers — and consistently cause post-closing surprises that destroy projected returns.</p>
+          <p><strong>Property taxes:</strong> In many jurisdictions, a property sale triggers a reassessment at the new purchase price. The seller was paying taxes on a value from years ago. You will pay taxes on what you just paid — which may be dramatically higher. Research the reassessment rules for your specific jurisdiction before closing.</p>
+          <p><strong>Insurance:</strong> Commercial insurance premiums have increased significantly in many markets since 2020 — particularly in coastal states, fire-prone areas, and any market where carriers have exited. Never assume your insurance cost will match the seller's. Get your own quote before you close.</p>
+          <p><strong>Capital reserves:</strong> Every property has deferred maintenance, aging systems, and components that will need replacement. A roof, HVAC system, elevator, or parking lot that is ten years old is a capital expense that is coming. Build reserves into your model based on realistic replacement schedules — not on the hope that everything will hold until you sell.</p>
+          <div class="lm-lesson">→ The rule: get independent quotes on insurance and taxes. Budget capital reserves based on the age and condition of every major system.</div>
+        </div>
+      </div>
+
+      <div class="landmine-card fade-in">
+        <div class="lm-header">
+          <div class="lm-num">💣 5</div>
+          <h4>Over-Reliance on the Listing Broker</h4>
+        </div>
+        <div class="lm-body">
+          <p>The listing broker represents the seller. Their fiduciary duty runs to the seller — not to you. They may be knowledgeable, professional, and genuinely helpful. They are also motivated to close the deal at the highest possible price. Any information, analysis, or market data provided by the listing broker should be treated as a starting point for your own independent research — not as a conclusion you can rely on.</p>
+          <p>This does not mean listing brokers are dishonest. Most are not. It means their information is filtered through a perspective that is inherently different from yours. Build your own market analysis. Talk to tenant rep brokers who have no interest in the deal closing. Talk to property managers about operating costs. Talk to lenders about what the property will actually finance for. The listing broker's job is to sell the property. Your job is to buy it at a price that makes sense.</p>
+          <div class="lm-lesson">→ The rule: use the listing broker's information as a starting point. Do your own independent research on every material assumption.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Stress-testing your assumptions — <em>what happens when things go wrong</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">A pro forma built on base-case assumptions shows you what happens if everything goes as planned. Professional underwriters do not stop there — they stress-test. They ask: what happens if my best tenant does not renew? What if it takes longer to lease the vacant space? What if interest rates rise at refinance? What if cap rates expand at exit? What if construction costs go over budget? A deal that only works if everything goes right is not a good deal. A deal that still produces acceptable returns under a range of adverse scenarios is.</p>
+
+    <div class="scenario-grid">
+      <div class="scenario-card fade-in">
+        <h4>Base Case</h4>
+        <div class="sc-tag base">Model This First</div>
+        <p>Your best honest projection of what will happen if you execute your business plan as intended. Current tenants mostly renew. Vacancies lease at market rates on expected timelines. Expenses match your research. Debt terms are as quoted. Exit cap rate is flat to current going-in cap rate.</p>
+      </div>
+      <div class="scenario-card fade-in">
+        <h4>Conservative Case</h4>
+        <div class="sc-tag stress">Then Model This</div>
+        <p>Vacancy 10–15% higher than base case. Key tenant does not renew — space stays dark for 6–12 months. Rent growth flat rather than projected. Insurance and taxes 15% higher than expected. Construction costs 15% over budget. Exit cap rate 50–75 basis points wider than going-in cap rate.</p>
+      </div>
+      <div class="scenario-card fade-in">
+        <h4>Stress Case</h4>
+        <div class="sc-tag stress">Survivability Test</div>
+        <p>Two major tenants vacate simultaneously. Leasing market softens — 18–24 months to re-lease. Operating costs spike 20%. Interest rates rise 150 basis points at refinance. Exit cap rate expands 100 basis points. Construction blows 25% over budget. Can you service the debt and stay solvent?</p>
+      </div>
+      <div class="scenario-card fade-in">
+        <h4>Worst Case</h4>
+        <div class="sc-tag worst">Know Your Floor</div>
+        <p>The question is not "will this happen" but "if it does, what do I lose?" What is the minimum value the property produces in a genuine distress scenario? What is your loan covenant exposure? Can you hold through a downturn or are you forced to sell at the worst moment? Know your absolute floor before you close.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The metrics that matter — how returns are measured</h3>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Metric</th><th>What It Measures</th><th>How It Works</th><th>Typical Target</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>IRR (Internal Rate of Return)</td>
+            <td>Total return over time — accounts for when cash flows occur</td>
+            <td>The annualized return that makes NPV of all cash flows zero. Earlier cash flows increase IRR; later cash flows reduce it.</td>
+            <td>10–20%+ depending on risk profile</td>
+          </tr>
+          <tr>
+            <td>Equity Multiple</td>
+            <td>Total dollars returned per dollar invested — regardless of time</td>
+            <td>Total distributions ÷ total equity invested. A 2.0x means you doubled your money. Does not account for how long it took.</td>
+            <td>1.5x–2.5x+ over hold period</td>
+          </tr>
+          <tr class="highlight">
+            <td>Cash-on-Cash Return</td>
+            <td>Annual cash return as a % of equity invested</td>
+            <td>Annual pre-tax cash flow ÷ total equity invested. Year-by-year measure of how much cash the investment returns annually before the sale.</td>
+            <td>6–10%+ depending on leverage</td>
+          </tr>
+          <tr>
+            <td>Cap Rate (Going-In)</td>
+            <td>Initial yield on total purchase price</td>
+            <td>Year 1 NOI ÷ purchase price. Higher cap rates mean more income relative to price — generally indicates more risk or less desirable market.</td>
+            <td>Market dependent — 4–8%</td>
+          </tr>
+          <tr class="highlight">
+            <td>DSCR (Debt Service Coverage Ratio)</td>
+            <td>How much income cushion exists above debt payments</td>
+            <td>NOI ÷ Annual Debt Service. Lenders typically require 1.20–1.25x minimum. Below 1.0x means the property cannot cover its debt payments from operations.</td>
+            <td>1.20–1.35x minimum</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-danger">
+      <div class="callout-label">🚨 The Most Dangerous Underwriting Mistake</div>
+      <p>The most dangerous thing you can do in commercial real estate underwriting is assume that an aggressive exit cap rate will bail out a deal with weak in-place fundamentals. A property with shaky tenants, below-market NOI, and uncertain expenses cannot be made into a good deal by projecting a cap rate compression that assumes market conditions you cannot control. Exit cap rate assumptions should be conservative — usually flat to current or slightly expanded. If a deal only works with a compressed exit cap rate, the deal does not work.</p>
+    </div>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to move to CRE-7. They are here for students who want to go deeper on underwriting mechanics and deal structure before completing the track.</p>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">📊 A Note on Tools — ARGUS and Excel</div>
+      <p style="font-style:normal;font-family:'DM Sans',sans-serif;font-size:13.5px;line-height:1.8;color:var(--text-dark);">This module taught you <em>how</em> underwriting works — the logic, the process, the data sources, and the judgment required. What it did not teach is how to build the actual models in software. Two tools matter most in professional CRE:<br><br><strong>Excel:</strong> The universal tool for pro forma modeling across all property types. Every analyst role will require it. The free <a href="https://www.breakintocre.com/free-crash-course/" target="_blank" style="color:var(--forest-mid);font-weight:600;">Break Into CRE Real Estate Financial Modeling Crash Course</a> is the best starting point available — free, structured, and taught by the same voice you have heard throughout this module.<br><br><strong>ARGUS Enterprise:</strong> The industry-standard software used by institutional firms for underwriting office, retail, and industrial properties with complex lease structures. If you are targeting analyst roles at major firms like CBRE, JLL, Cushman & Wakefield, or top private equity funds, expect to be asked about ARGUS in your first interview. The <a href="https://www.altusgroup.com/argus/argus-university/" target="_blank" style="color:var(--forest-mid);font-weight:600;">Altus Group ARGUS University</a> offers training directly from the software maker.</p>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>Break Into CRE — Commercial Real Estate Fee Structures Explained</strong><br>The four most common partnership-level fee structures in CRE syndications and funds — acquisition fee (0.5–2% of purchase price), asset management fee (1–2% of gross revenue or 0.5–1.5% of equity), construction management fee (4–8% of construction costs), and disposition fee (0.5–2% of sale proceeds). Essential for understanding how GP fees affect LP returns — and how to evaluate whether a deal's fee structure is fair before investing.</p>
+      <a href="https://www.youtube.com/watch?v=8y1slll1qnU" target="_blank">Watch →</a>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Peter Harris — Commercial Property Advisors: 3-Step Multifamily Analysis</strong><br>Peter Harris walks through his three-step framework for quickly evaluating a multifamily deal — estimating NOI, applying a cap rate to get value, and checking whether the numbers work at the asking price. A fast practical tool for initial deal screening before committing to a full underwriting. Already used in Core Foundation Module 5 but worth revisiting with the deeper underwriting context from this module.</p>
+      <a href="https://www.youtube.com/watch?v=TPzSZth3yNI" target="_blank">Watch →</a>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Adventures in CRE — Letter of Intent Walkthrough</strong><br>Understanding how the LOI captures the key economic terms of a deal — purchase price, earnest money, due diligence period, closing timeline — matters directly for underwriting since the due diligence period is when you verify all your assumptions. The LOI sets the window you have to complete that verification.</p>
+      <a href="https://www.youtube.com/watch?v=pbp55rkoFu8" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 CRE-6 Key Takeaways</h3>
+    <ul>
+      <li>Commercial real estate is valued on income — not comparable sales. Value = NOI ÷ Cap Rate. A 1% change in cap rate on a $4M property destroys $666,667 of value — roughly 17% of the property's value — without a single dollar of income changing. Cap rate assumptions are the highest-stakes numbers in any model.</li>
+      <li>A pro forma is only as reliable as the assumptions that go into it. Always underwrite to actual trailing income — not the seller's projected pro forma income. Buy on what the property actually earns. Model upside separately.</li>
+      <li>The 7-step underwriting process: property details, in-place leases, re-leasing assumptions, operating expenses, capital costs, debt assumptions, and sale assumptions. Each step has specific data sources — many require independent third-party verification, not just the seller's provided materials.</li>
+      <li>The five underwriting landmines: trusting seller numbers without verification, underwriting to pro forma income rather than actual trailing income, letting emotion and competition override analytical discipline, underestimating expenses (especially property taxes post-reassessment, insurance, and capital reserves), and over-relying on the listing broker's information.</li>
+      <li>Always stress-test your model: base case, conservative case, stress case, and worst case. A deal that only works if everything goes right is not a good deal. Know your floor before you close.</li>
+      <li>The five key return metrics: IRR (time-weighted total return), equity multiple (total dollars returned per dollar invested), cash-on-cash (annual income return), going-in cap rate (income yield at purchase price), and DSCR (income cushion above debt service — lenders require 1.20–1.25x minimum).</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A commercial property generates $180,000 in NOI. It is listed at a 5% cap rate. Interest rates then rise, pushing market cap rates to 6.5%. What happens to the property's value?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Value stays the same — NOI did not change so value is unchanged</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> Value increases slightly — higher cap rates reflect stronger market demand</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> Value falls from $3,600,000 to $2,769,231 — a $830,769 loss on the same income with no operational changes</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Value falls modestly — cap rate changes only affect value if the property is being sold</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A seller provides T-12 financials showing $40,000 in annual insurance expense. You get your own insurance quote and it comes back at $67,000. What should you do?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Use the seller's number — they have been running the property and know the actual cost</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Use your $67,000 quote in your underwriting — independent verification revealed the true cost, which is 67.5% higher than the seller's figure</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Average the two figures — split the difference between seller's historical and your quote</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Reject the deal immediately — a discrepancy this large signals fraud</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. The seller's offering memorandum shows a pro forma NOI of $420,000 — including $80,000 of income from currently vacant spaces leased at "market rate." The trailing actual NOI from T-12 statements is $340,000. What NOI should be used to determine your offer price?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> $420,000 — the pro forma reflects what the property will be worth once stabilized</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> $380,000 — split the difference between actual and pro forma</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> $340,000 — offer price is based on actual trailing income; the $80,000 of projected lease-up income can be modeled separately as upside if the business plan succeeds</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> $420,000 is acceptable if the market rents used are verified against comparables</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A property's NOI is $300,000 and annual debt service is $260,000. What is the DSCR and should a conservative lender approve this loan?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> DSCR is 1.15x — acceptable to most lenders since it is above 1.0x</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> DSCR is 1.15x — most lenders require 1.20–1.25x minimum so this deal likely does not qualify without a reduced loan amount or improved NOI</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> DSCR is 0.87x — the property cannot cover its debt payments and the loan should be rejected</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> DSCR is 1.35x — this deal comfortably exceeds lender minimums</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. An investor models a commercial deal and it only produces an acceptable IRR if the exit cap rate compresses 75 basis points from the going-in cap rate. What should the investor conclude?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> The deal is attractive — cap rate compression is common in strong markets and adds significant return upside</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> The deal is acceptable — as long as the cap rate compression assumption is defensible with market data</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> The deal does not work — relying on exit cap rate compression to achieve target returns means the in-place fundamentals are not strong enough at today's price; underwrite to flat or expanding cap rates</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The deal works — cap rate compression is a conservative assumption since rates are expected to fall</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — CRE-7: Building a Commercial Real Estate Career</h3>
+    <p>You have completed the analytical foundation of commercial real estate. The final module brings everything together — how to build a CRE career that compounds over decades, how to develop genuine market expertise, how to build the relationships that create deal flow, and how to position yourself for the opportunities that define long-term success in this industry.</p>
+    <a href="cre-module-7.html" class="next-module-cta">CRE-7: Building a CRE Career →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="cre-module-5.html" class="btn btn-outline">← CRE-5: Breaking In</a>
+  <div class="module-nav-info">
+    <p>Commercial Real Estate Track</p>
+    <strong>Module 6 of 7</strong>
+  </div>
+  <a href="cre-module-7.html" class="btn btn-gold">CRE-7: Building a Career →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! Value = NOI ÷ Cap Rate. At 5%: $180,000 ÷ 0.05 = $3,600,000. At 6.5%: $180,000 ÷ 0.065 = $2,769,231. The property lost $830,769 in value — a 23% drop — without a single dollar of income changing. This is why cap rate risk is one of the most significant risks in commercial real estate investing, and why underwriting with conservative exit cap rate assumptions is so important.",
+      incorrect: "Not quite. Work through the math: Value = NOI ÷ Cap Rate. At 5% cap rate: $180,000 ÷ 0.05 = $3,600,000. At 6.5% cap rate: $180,000 ÷ 0.065 = $2,769,231. The value fell by $830,769 — 23% — with no change in actual income. This illustrates why cap rate movement is such a powerful force in commercial real estate and why exit cap rate assumptions carry so much risk in any underwriting."
+    },
+    q2: {
+      correct: "Correct! You obtained an independent insurance quote — this is exactly the kind of verification an underwriter should do. The seller's historical premium of $40,000 reflected their coverage, their claims history, and potentially market conditions from years ago. Your quote of $67,000 reflects what you will actually pay as the new owner. Underwriting to the seller's lower number would produce a $27,000 annual shortfall in your projected expenses — which directly inflates projected NOI and distorts your returns.",
+      incorrect: "Not quite. The seller's $40,000 figure reflects their historical premium — not what you will pay as the new owner. Insurance premiums vary based on the owner's claims history, coverage amounts, and current market rates. Your independent quote of $67,000 is the number you should use in your underwriting because it represents your actual future cost. Using the seller's lower number would overstate your NOI by $27,000 annually and distort your projected returns."
+    },
+    q3: {
+      correct: "Correct! The core principle of sound commercial underwriting is: buy on actual, model upside separately. The trailing T-12 NOI of $340,000 is what the property actually earns right now and is the appropriate basis for your offer price. The $80,000 of projected income from vacant spaces that are not yet leased does not exist — it is aspirational. If you underwrite to $420,000 and pay a price based on that projection, you are paying for income you do not yet have. If the vacant spaces lease as projected, that is your upside. If they do not, you overpaid.",
+      incorrect: "Not quite. The offer price should be based on the actual trailing NOI of $340,000 — not the seller's pro forma projection of $420,000. The $80,000 difference represents income from spaces that are currently vacant — income that does not exist yet. Paying for projected income means you are paying for an outcome you do not control. The correct approach is to base your price on actual performance and treat the lease-up of vacant spaces as the upside case modeled separately."
+    },
+    q4: {
+      correct: "Correct! DSCR = NOI ÷ Annual Debt Service = $300,000 ÷ $260,000 = 1.15x. Most conservative commercial lenders require a minimum DSCR of 1.20x to 1.25x — meaning the NOI must be at least 20–25% higher than debt payments to provide sufficient cushion for expense surprises or income shortfalls. At 1.15x this deal likely falls short of most lenders' requirements. To get the deal done the borrower would need to either reduce the loan amount (which reduces debt service) or demonstrate that NOI can be improved.",
+      incorrect: "Not quite. DSCR = $300,000 ÷ $260,000 = 1.15x — not 0.87x or 1.35x. Most conservative commercial lenders require 1.20–1.25x minimum DSCR. At 1.15x this property generates income that is 15% above its debt payments — which sounds adequate but falls below what most lenders consider sufficient cushion. A minor drop in income or unexpected expense increase could push the property toward difficulty servicing its debt. Most lenders would require either a reduced loan amount or demonstrated path to higher NOI."
+    },
+    q5: {
+      correct: "Correct! This is one of the most important principles in commercial real estate underwriting: never rely on exit cap rate compression to make a deal work. Exit cap rate assumptions should be conservative — typically flat to current going-in cap rates, or even slightly expanded to account for the uncertainty of future market conditions. If a deal only generates acceptable returns assuming the next buyer will pay a higher price per dollar of income than you paid, the deal has a structural problem. The right fix is to either lower the purchase price until the deal works at a flat or expanding cap rate — or pass on the deal.",
+      incorrect: "Not quite. A deal that only achieves target returns by assuming exit cap rate compression of 75 basis points is not a sound deal — it is a bet on market appreciation that the investor cannot control. Professional underwriting uses conservative exit cap rate assumptions — typically flat to current or slightly expanded — so that returns are achievable based on the property's actual income performance rather than future market movement. If the only path to acceptable returns runs through cap rate compression, the price is too high and needs to be renegotiated."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you understand commercial underwriting at the level that separates professionals who make good decisions from those who get burned. You are ready for the final module: CRE-7.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons above before moving on. Underwriting is the analytical core of this entire field — these concepts need to be second nature before you move into practice.';
+    }
+  }
+</script>
+
+</body>
+</html>

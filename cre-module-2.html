@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>CRE Module 2: The Asset Classes — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#0F2340;--forest-mid:#1A3A5C;--forest-light:#2A5380;--forest-pale:#EBF0F7;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(15,35,64,0.1);--shadow-card:0 2px 16px rgba(15,35,64,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(15,35,64,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:28%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(15,35,64,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(15,35,64,0.25);}
+.module-hero{background:linear-gradient(135deg,#071828 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Asset class cards */
+.asset-grid{display:flex;flex-direction:column;gap:1.5rem;margin:2rem 0;}
+.asset-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s;}
+.asset-card:hover{box-shadow:var(--shadow-card);}
+.asset-header{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);}
+.asset-header.office{background:linear-gradient(135deg,#1A3A5C,#2A5380);}
+.asset-header.retail{background:linear-gradient(135deg,#2A5C2A,#3A8A3A);}
+.asset-header.industrial{background:linear-gradient(135deg,#5C3A1A,#8A5A2A);}
+.asset-header.multifamily{background:linear-gradient(135deg,#5C1A3A,#8A2A5A);}
+.asset-header.land{background:linear-gradient(135deg,#3A3A1A,#5A5A2A);}
+.asset-header.storage{background:linear-gradient(135deg,#1A4A5C,#2A6A7A);}
+.asset-header.flex{background:linear-gradient(135deg,#3A1A5C,#5A2A8A);}
+.asset-icon{font-size:2rem;flex-shrink:0;}
+.asset-header h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.2rem;}
+.asset-header .asset-sub{font-size:12px;color:rgba(255,255,255,0.65);}
+.asset-body{padding:1.25rem 1.5rem;}
+.asset-body p{font-size:13.5px;color:var(--text-mid);line-height:1.75;margin-bottom:0.75rem;}
+.asset-body p:last-child{margin-bottom:0;}
+.asset-stats{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);}
+.asset-stat{flex:1;min-width:100px;}
+.asset-stat .stat-label{font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:0.2rem;}
+.asset-stat .stat-value{font-size:13px;font-weight:600;color:var(--text-dark);}
+
+/* Comparison table */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:600px;}
+.compare-table th{background:var(--forest);color:var(--white);padding:10px 12px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;}
+.compare-table td:first-child{font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--forest-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);}
+
+/* Cycle chart */
+.cycle-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2rem 0;}
+.cycle-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:1.5rem;text-align:center;}
+.cycle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;}
+.cycle-item{text-align:center;padding:1rem;background:var(--cream);border-radius:12px;}
+.cycle-item .ci-icon{font-size:1.5rem;margin-bottom:0.4rem;display:block;}
+.cycle-item h5{font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.cycle-item p{font-size:12px;color:var(--text-mid);line-height:1.5;}
+
+/* Specialization guide */
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.spec-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:all 0.25s;}
+.spec-card:hover{box-shadow:var(--shadow-card);}
+.spec-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.spec-card .spec-fit{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-bottom:0.6rem;background:var(--forest-pale);color:var(--forest-mid);}
+.spec-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.cpa{background:var(--forest-pale);color:var(--forest-mid);}
+.video-badge.cre{background:#EBF0FB;color:#1A4E7A;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#071828,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+/* Next module */
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--forest-mid);}
+
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .spec-grid{grid-template-columns:1fr;}
+  .cycle-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="commercial-real-estate.html">CRE Career Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="commercial-real-estate.html">Commercial Real Estate</a><span class="sep">›</span>
+  <span class="current">CRE-2: The Asset Classes</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">CRE Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="cre-module-1.html" class="prog-dot complete" title="CRE-1">✓</a>
+    <div class="prog-dot active">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Commercial Real Estate Track · Module 2 of 7</div>
+    <h1>The <em>Asset Classes</em></h1>
+    <p>Commercial real estate is not one thing — it is a collection of fundamentally different property types, each with its own tenants, lease structures, financing options, market cycles, and career opportunities. Understanding the asset classes is the foundation of specialization, and specialization is how the best CRE professionals build lasting competitive advantages.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>50–60 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The traditional four — <em>office, retail, industrial, and multifamily</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Every commercial real estate professional needs a working knowledge of all the major asset classes — even if they specialize in just one. Understanding what makes each property type different shapes how you analyze deals, how you talk to clients, and how you position yourself in a job search. Start here before you decide where to specialize.</p>
+
+    <div class="asset-grid">
+
+      <div class="asset-card fade-in">
+        <div class="asset-header office">
+          <div class="asset-icon">🏢</div>
+          <div>
+            <h3>Office</h3>
+            <div class="asset-sub">CBD, Suburban, Medical, Creative, Mixed-Use</div>
+          </div>
+        </div>
+        <div class="asset-body">
+          <p>Office buildings house businesses and their employees — from single-tenant corporate headquarters to multi-tenant high-rises in downtown cores. Office is split into Class A (trophy buildings, top rents, best locations), Class B (functional but not premium), and Class C (older buildings, lower rents). The sector has faced significant headwinds from remote work since 2020 — national vacancy rates are in the high teens — but new construction has fallen sharply, which is beginning to stabilize fundamentals for well-located newer product.</p>
+          <p><strong>Typical tenants:</strong> Law firms, financial services, tech companies, healthcare, government agencies. <strong>Lease terms:</strong> 5 to 10+ years. Usually Full Service Gross or Modified Gross. <strong>Career note:</strong> Lower competition for analyst roles right now — and the transferable skills (lease analysis, Argus, tenant site selection) are highly marketable across all asset classes.</p>
+          <div class="asset-stats">
+            <div class="asset-stat"><div class="stat-label">Typical Lease Term</div><div class="stat-value">5–10+ years</div></div>
+            <div class="asset-stat"><div class="stat-label">Common Lease Type</div><div class="stat-value">FSG / Modified Gross</div></div>
+            <div class="asset-stat"><div class="stat-label">Current Market</div><div class="stat-value">Recovering slowly</div></div>
+            <div class="asset-stat"><div class="stat-label">Barrier to Entry</div><div class="stat-value">Moderate</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card fade-in">
+        <div class="asset-header retail">
+          <div class="asset-icon">🛍️</div>
+          <div>
+            <h3>Retail</h3>
+            <div class="asset-sub">Strip Centers, Shopping Centers, Net Lease, Restaurants, Big Box</div>
+          </div>
+        </div>
+        <div class="asset-body">
+          <p>Retail encompasses any property where goods or services are sold to consumers — from freestanding fast food restaurants to large regional malls. Strip centers and neighborhood retail are the most common investment targets for beginning investors and smaller operators. Net lease retail (NNN) — where a national tenant like Starbucks, Dollar General, or CVS signs a long-term lease and pays all operating expenses — is particularly popular for its passive income characteristics and investment-grade credit quality.</p>
+          <p><strong>Typical tenants:</strong> Restaurants, grocery stores, pharmacies, fitness, personal services, national chains. <strong>Lease terms:</strong> 5 to 20 years for national tenants, shorter for local. Usually Triple Net. <strong>Current market:</strong> Extremely strong fundamentals — availability rates below 5% nationally, new construction down 75% since 2015. One of the most underrated asset classes to enter right now.</p>
+          <div class="asset-stats">
+            <div class="asset-stat"><div class="stat-label">Typical Lease Term</div><div class="stat-value">5–20 years</div></div>
+            <div class="asset-stat"><div class="stat-label">Common Lease Type</div><div class="stat-value">NNN dominant</div></div>
+            <div class="asset-stat"><div class="stat-label">Current Market</div><div class="stat-value">Very strong</div></div>
+            <div class="asset-stat"><div class="stat-label">Barrier to Entry</div><div class="stat-value">Moderate</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card fade-in">
+        <div class="asset-header industrial">
+          <div class="asset-icon">🏭</div>
+          <div>
+            <h3>Industrial</h3>
+            <div class="asset-sub">Warehouses, Distribution, Manufacturing, Flex, Cold Storage, Data Centers</div>
+          </div>
+        </div>
+        <div class="asset-body">
+          <p>Industrial real estate is the backbone of the supply chain — warehouses, distribution centers, manufacturing facilities, and last-mile logistics hubs. The sector was the undisputed star performer of the last decade, with property values rising over 100% since 2015 and rents increasing over 50% since 2021. The e-commerce boom drove insatiable demand. However the sector is now experiencing a supply correction — vacancy rates rose from 3% in 2022 to over 7% in 2025 as massive amounts of new construction were delivered simultaneously.</p>
+          <p><strong>Typical tenants:</strong> Amazon, FedEx, UPS, manufacturers, third-party logistics companies, local distributors. <strong>Lease terms:</strong> 5 to 15 years. Usually NNN or Modified Gross. <strong>Career note:</strong> Highest transaction volume of any asset class. Strong demand for analysts comfortable with development modeling and ground-up construction underwriting.</p>
+          <div class="asset-stats">
+            <div class="asset-stat"><div class="stat-label">Typical Lease Term</div><div class="stat-value">5–15 years</div></div>
+            <div class="asset-stat"><div class="stat-label">Common Lease Type</div><div class="stat-value">NNN / Modified Gross</div></div>
+            <div class="asset-stat"><div class="stat-label">Current Market</div><div class="stat-value">Supply correction</div></div>
+            <div class="asset-stat"><div class="stat-label">Barrier to Entry</div><div class="stat-value">High (capital intensive)</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card fade-in">
+        <div class="asset-header multifamily">
+          <div class="asset-icon">🏘️</div>
+          <div>
+            <h3>Multifamily</h3>
+            <div class="asset-sub">5+ Units — Garden, Mid-Rise, High-Rise, Student, Senior</div>
+          </div>
+        </div>
+        <div class="asset-body">
+          <p>Multifamily is apartment buildings of five units or more — the most popular asset class in commercial real estate by investment volume. America is approximately 4 million homes short of meeting housing demand, which creates a structural floor for long-term multifamily performance. The sector experienced a challenging 2023–2025 period as record new supply hit simultaneously with rising interest rates — but as construction pipelines normalize and demand continues, the long-term outlook remains strong.</p>
+          <p><strong>Typical tenants:</strong> Residential renters of all demographics. <strong>Lease terms:</strong> 12 months residential — much shorter than commercial. Usually standard residential leases. <strong>Career note:</strong> Highest investment sales volume of any asset class ($155B+ over the last 12 months). Strong Excel modeling focus — most multifamily firms do not use Argus. Development opportunities substantial through 2030.</p>
+          <div class="asset-stats">
+            <div class="asset-stat"><div class="stat-label">Typical Lease Term</div><div class="stat-value">12 months</div></div>
+            <div class="asset-stat"><div class="stat-label">Common Lease Type</div><div class="stat-value">Residential</div></div>
+            <div class="asset-stat"><div class="stat-label">Current Market</div><div class="stat-value">Stabilizing</div></div>
+            <div class="asset-stat"><div class="stat-label">Barrier to Entry</div><div class="stat-value">Moderate — competitive</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Land and the niche asset classes — <em>beyond the traditional four</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Beyond the traditional four asset classes, a growing portion of commercial real estate activity happens in land, niche property types, and alternative assets. These sectors often have less competition, more creative deal structures, and emerging institutional interest — making them worth understanding even if you specialize elsewhere.</p>
+
+    <div class="asset-grid">
+
+      <div class="asset-card fade-in">
+        <div class="asset-header land">
+          <div class="asset-icon">🌱</div>
+          <div>
+            <h3>Land</h3>
+            <div class="asset-sub">Raw Land, Entitled Land, Infill, Agricultural, Development Sites</div>
+          </div>
+        </div>
+        <div class="asset-body">
+          <p>Land is the most speculative of the major asset classes — it produces no income while you own it, but its value is entirely driven by what can be built on it. Entitled land (land with approved zoning and permits for development) commands a significant premium over raw land. The key skills in land are understanding entitlements, zoning, infrastructure costs, and the development feasibility of a site. Land brokers and developers need to understand what a site can become — not just what it is today.</p>
+          <p><strong>Common uses:</strong> Residential development, commercial development, agricultural, conservation. <strong>Valuation method:</strong> Comparables and residual land value analysis — what a developer can afford to pay after subtracting all costs from projected revenues. <strong>Key risk:</strong> No income while holding, entitlement risk, market timing risk.</p>
+          <div class="asset-stats">
+            <div class="asset-stat"><div class="stat-label">Income While Holding</div><div class="stat-value">None (usually)</div></div>
+            <div class="asset-stat"><div class="stat-label">Valuation Method</div><div class="stat-value">Residual / Comps</div></div>
+            <div class="asset-stat"><div class="stat-label">Key Skill</div><div class="stat-value">Entitlements & zoning</div></div>
+            <div class="asset-stat"><div class="stat-label">Risk Level</div><div class="stat-value">Highest</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card fade-in">
+        <div class="asset-header storage">
+          <div class="asset-icon">📦</div>
+          <div>
+            <h3>Self-Storage</h3>
+            <div class="asset-sub">Climate-Controlled, Drive-Up, Mixed-Use, Boat & RV</div>
+          </div>
+        </div>
+        <div class="asset-body">
+          <p>Self-storage facilities rent small spaces — essentially garages — to individuals and businesses on month-to-month agreements. The sector is known for its passive characteristics, low maintenance, and strong cash flow. 77% of all self-storage facilities are owned by individual investors rather than institutional operators — which means there is still significant opportunity to acquire mom-and-pop facilities at reasonable prices. As Peter Harris notes, ancillary income (boxes, locks, insurance, U-Haul rentals, EV charging) can meaningfully supplement rental income.</p>
+          <div class="asset-stats">
+            <div class="asset-stat"><div class="stat-label">Lease Term</div><div class="stat-value">Month-to-month</div></div>
+            <div class="asset-stat"><div class="stat-label">Management</div><div class="stat-value">Highly passive</div></div>
+            <div class="asset-stat"><div class="stat-label">Competition</div><div class="stat-value">Rising — secret is out</div></div>
+            <div class="asset-stat"><div class="stat-label">Best For</div><div class="stat-value">Passive income seekers</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card fade-in">
+        <div class="asset-header flex">
+          <div class="asset-icon">🔧</div>
+          <div>
+            <h3>Flex Space</h3>
+            <div class="asset-sub">Small Bay Industrial, Office-Warehouse, Creative, Mixed-Use Business</div>
+          </div>
+        </div>
+        <div class="asset-body">
+          <p>Flex space is a hybrid between office and industrial — typically small-bay spaces that can accommodate a wide variety of businesses: mechanics, cabinet makers, fitness studios, small manufacturers, tech companies. The versatility creates high tenant loyalty because tenants invest equipment into their space and rarely leave. Most flex space deals are found off-market through direct relationships with owners — making it a relationship-driven asset class with lower competition than the traditional four.</p>
+          <div class="asset-stats">
+            <div class="asset-stat"><div class="stat-label">Tenant Profile</div><div class="stat-value">Small businesses</div></div>
+            <div class="asset-stat"><div class="stat-label">Competition</div><div class="stat-value">Low — underknown</div></div>
+            <div class="asset-stat"><div class="stat-label">Deal Source</div><div class="stat-value">Mostly off-market</div></div>
+            <div class="asset-stat"><div class="stat-label">Best For</div><div class="stat-value">Niche profit seekers</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Emerging Asset Classes Worth Knowing</div>
+      <p><strong>Data Centers</strong> — one of the fastest-growing sectors in commercial real estate. US data center inventory grew 47.5% year-over-year in Q4 2024 while vacancy dropped to 1.6%. Driven by AI infrastructure spending from Microsoft, Google, Meta, and Amazon. <strong>Build-to-Rent Single Family</strong> — homes built specifically as rental units rather than for sale. Surging in popularity as homeownership affordability hits historic lows. Almost 10% of homes that broke ground in 2024 were being built as rentals. Both sectors are attracting significant institutional capital and creating new career opportunities.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Peter Harris: Choosing the right commercial real estate <em>asset type</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Peter Harris — 25-year veteran and author of Commercial Real Estate Investing for Dummies — puts five commercial real estate asset types in a head-to-head comparison: multifamily, mobile home parks, self-storage, flex space, and mixed-use. For each he covers the pros, the cons, and what most people do not know — including the forced appreciation strategy in multifamily, the passive income advantages of self-storage, the tenant loyalty dynamics of flex space, and the placemaking opportunity in mixed-use. The summary at the end is one of the clearest asset class decision frameworks available.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/Yx1Y1cnMY98" title="Choosing the Right Commercial Real Estate Asset Type — Peter Harris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cpa">Peter Harris · Commercial Property Advisors</span>
+        <h4>Choosing the Right Commercial Real Estate Asset Type</h4>
+        <p>A head-to-head comparison of five commercial real estate asset types from the investor perspective — multifamily, mobile home parks, self-storage, flex space, and mixed-use. Covers pros, cons, and the key insights most investors miss about each. Excellent complement to the written lessons covering office, retail, industrial, and land.</p>
+        <p class="credit">Commercial Property Advisors · YouTube January 2026 · 17 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Break Into CRE: Multifamily vs. industrial vs. retail vs. office — <em>the best place to start in 2026</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Break Into CRE compares the four traditional asset classes from a career entry perspective — with current 2025 market data on vacancy rates, rent growth, investment volumes, and new construction for each. The contrarian takes here are particularly valuable: office has less competition for analyst roles right now than any other sector, and retail has some of the strongest fundamentals of any asset class despite its negative reputation. The closing message — careers are long and you should specialize in what you are excited to become an expert in long term, not just what is hot today — is one of the most important pieces of career advice in this entire track.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/W9Jjp4FBq-M" title="Multifamily vs Industrial vs Retail vs Office — Best Place to Start in 2026 — Break Into CRE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cre">Break Into CRE · YouTube</span>
+        <h4>Multifamily vs. Industrial vs. Retail vs. Office — The Best Place to Start in 2026</h4>
+        <p>A career-focused comparison of the four traditional asset classes with current 2025 market data. Covers what makes each sector attractive, current fundamentals and headwinds, and the most important insight: specialize in what you want to become an expert in long term — not just what is hot today. Directly reinforces Lesson 3 of this module.</p>
+        <p class="credit">Break Into CRE · YouTube December 2025 · 8 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">How asset classes perform differently — <em>cycles, demand drivers, and risk profiles</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">One of the most important things to understand about commercial real estate is that different asset classes do not move together. When office is struggling, industrial may be thriving. When multifamily faces a supply correction, retail may be hitting record low vacancies. This cyclical divergence is what creates opportunity — and it is why understanding all the asset classes helps you spot where value is emerging even as others are running from it.</p>
+
+    <div class="cycle-box">
+      <h4>What Drives Demand in Each Asset Class</h4>
+      <div class="cycle-grid">
+        <div class="cycle-item">
+          <span class="ci-icon">🏢</span>
+          <h5>Office</h5>
+          <p>Job growth in knowledge industries, return-to-office trends, urban density</p>
+        </div>
+        <div class="cycle-item">
+          <span class="ci-icon">🛍️</span>
+          <h5>Retail</h5>
+          <p>Consumer spending, population density, household income, traffic counts</p>
+        </div>
+        <div class="cycle-item">
+          <span class="ci-icon">🏭</span>
+          <h5>Industrial</h5>
+          <p>E-commerce growth, supply chain activity, port proximity, manufacturing output</p>
+        </div>
+        <div class="cycle-item">
+          <span class="ci-icon">🏘️</span>
+          <h5>Multifamily</h5>
+          <p>Population growth, job creation, homeownership affordability, household formation</p>
+        </div>
+        <div class="cycle-item">
+          <span class="ci-icon">🌱</span>
+          <h5>Land</h5>
+          <p>Development activity, zoning approvals, infrastructure investment, population migration</p>
+        </div>
+        <div class="cycle-item">
+          <span class="ci-icon">📦</span>
+          <h5>Storage</h5>
+          <p>Life transitions — moving, divorce, downsizing, military deployment</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Cycle Trap</div>
+      <p>The biggest mistake beginning investors and career professionals make is choosing an asset class based on what is hot right now. By the time a sector is receiving maximum media attention and everyone is rushing in, the best returns are often already behind you. Industrial was the obvious winner from 2015 to 2022 — and by 2024 it was oversupplied in many markets. The contrarian insight: the best time to enter a sector is often when it is unpopular, not when it is celebrated. Office and retail are both receiving negative attention right now — which is exactly when fundamentals for well-positioned operators are quietly improving.</p>
+    </div>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Asset Class</th><th>Income Stability</th><th>Value-Add Potential</th><th>Management Intensity</th><th>Capital Required</th><th>Career Competition</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Office</td><td>Moderate</td><td>High (repositioning)</td><td>Moderate</td><td>High</td><td>Low right now</td></tr>
+          <tr class="highlight"><td>Retail (NNN)</td><td>Very High</td><td>Moderate</td><td>Very Low</td><td>Moderate</td><td>Low right now</td></tr>
+          <tr><td>Industrial</td><td>High</td><td>Moderate</td><td>Low</td><td>Very High</td><td>High</td></tr>
+          <tr class="highlight"><td>Multifamily</td><td>High</td><td>High (value-add)</td><td>High</td><td>Moderate–High</td><td>Very High</td></tr>
+          <tr><td>Self-Storage</td><td>Moderate</td><td>High (operational)</td><td>Very Low</td><td>Moderate</td><td>Moderate</td></tr>
+          <tr class="highlight"><td>Flex Space</td><td>Moderate</td><td>High</td><td>Moderate</td><td>Low–Moderate</td><td>Low</td></tr>
+          <tr><td>Land</td><td>None</td><td>Very High (entitlement)</td><td>Low</td><td>Varies widely</td><td>Low</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Choosing your specialization — <em>the decision that shapes your career</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The most successful commercial real estate professionals all have one thing in common — they went deep in one asset class rather than staying shallow across many. Specialization creates expertise, and expertise creates opportunity. The broker who knows every multifamily deal in a submarket, every owner, every rent comp, and every lender who is active — that person sees opportunities invisible to generalists.</p>
+
+    <p class="lesson-text">But specialization is a long-term commitment. It takes two to three years to develop genuine market expertise in any asset class. Choose based on what genuinely interests you — not just what is performing well right now. Markets cycle. Your interest in a sector is what sustains you through the down cycles.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Break Into CRE</div>
+      <p>"Careers are very long and this industry is very cyclical. Whatever product type is hot today very likely will not be hot 10 years from now. The people I have seen become the most successful in this industry are the ones that are willing to double down and spend decades becoming experts in their specific niche. Whatever product type you are excited to become a student of long term is very likely where you will see the most success over a 20 or 30-year period."</p>
+    </div>
+
+    <h3 class="sub-title">Which asset class fits your goals?</h3>
+
+    <div class="spec-grid">
+      <div class="spec-card fade-in">
+        <h4>If you want maximum income potential</h4>
+        <div class="spec-fit">→ Industrial or Multifamily</div>
+        <p>Highest transaction volumes, most institutional capital, and the largest deal sizes. Expect the most competition for roles — but also the most upside for top producers.</p>
+      </div>
+      <div class="spec-card fade-in">
+        <h4>If you want to break in faster</h4>
+        <div class="spec-fit">→ Office or Retail</div>
+        <p>Both sectors are receiving less attention from job seekers right now — meaning smaller applicant pools for analyst roles. Strong fundamentals for those who position correctly in the recovery.</p>
+      </div>
+      <div class="spec-card fade-in">
+        <h4>If you want to invest your own capital first</h4>
+        <div class="spec-fit">→ Multifamily or Flex Space</div>
+        <p>Multifamily has the most accessible financing for beginners. Flex space has lower competition, off-market deal flow, and below-market purchase opportunities through direct owner relationships.</p>
+      </div>
+      <div class="spec-card fade-in">
+        <h4>If you want passive income and simplicity</h4>
+        <div class="spec-fit">→ Self-Storage or NNN Retail</div>
+        <p>Both offer minimal management, long lease terms (for NNN retail), and strong cash flow. Self-storage benefits from the 77% mom-and-pop ownership pool that provides acquisition opportunities.</p>
+      </div>
+      <div class="spec-card fade-in">
+        <h4>If you want development and ground-up projects</h4>
+        <div class="spec-fit">→ Industrial or Multifamily</div>
+        <p>Both sectors have active development pipelines through 2030. Industrial development modeling and multifamily pro formas are among the most transferable skills in the industry.</p>
+      </div>
+      <div class="spec-card fade-in">
+        <h4>If you are excited about emerging sectors</h4>
+        <div class="spec-fit">→ Data Centers or Build-to-Rent</div>
+        <p>Both are seeing massive institutional capital flows and are early enough that deep expertise is still rare. High risk, high reward — and very high growth potential for those who develop genuine expertise.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 You Do Not Have to Decide Today</div>
+      <p>Choosing a specialization does not have to happen before your first job or your first deal. Many professionals spend their first one to two years exploring different asset classes before committing to one. What matters is that you eventually do commit — because generalists compete against specialists and lose. Use this module to understand the landscape, use the next few modules in this track to see how deals actually work in practice, and let your natural interest point you toward where you will be willing to spend decades becoming genuinely great.</p>
+    </div>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to move to CRE-3. They are here for students who want to develop deeper knowledge of specific asset classes before choosing where to specialize.</p>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🛍️ Retail Deep Dive</div>
+
+    <div class="deeper-link">
+      <p><strong>Peter Harris — Shopping Center Investing for Beginners</strong><br>A 26-minute deep dive into retail real estate — types of shopping centers (regional mall, community center, strip center, neighborhood center), four critical things to know before buying, the three common lease structures used in retail, why investors love triple net deals, and investment guidelines for evaluating shopping center opportunities. Evergreen content on retail fundamentals.</p>
+      <a href="https://www.youtube.com/watch?v=kDsYNNjP6OQ" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🚀 Emerging Asset Classes</div>
+
+    <div class="deeper-link">
+      <p><strong>Break Into CRE — 2 Niche Property Types to Watch</strong><br>Data Centers and Build-to-Rent Single Family — two emerging institutional asset classes generating significant capital flows and career opportunities. Covers current market data, why each is surging, and what the opportunity looks like for professionals entering the industry now. Good context for students interested in being early to a sector rather than following the crowd.</p>
+      <a href="https://www.youtube.com/watch?v=HQAK4X9t97o" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 CRE-2 Key Takeaways</h3>
+    <ul>
+      <li>The four traditional asset classes — office, retail, industrial, and multifamily — each have distinct tenants, lease structures, demand drivers, and market cycles. Understanding all four is foundational even if you specialize in one.</li>
+      <li>Retail has some of the strongest current fundamentals of any asset class — availability below 5% nationally, new construction down 75% since 2015 — despite its negative reputation. Office is showing early signs of recovery as new construction collapses. Both have less career competition right now than industrial or multifamily.</li>
+      <li>Industrial was the star performer of the last decade but is now experiencing a supply correction after massive new construction delivery. Vacancy rose from 3% in 2022 to over 7% in 2025. Markets cycle.</li>
+      <li>Niche asset classes — self-storage, flex space, mobile home parks, mixed-use — often have lower competition, more off-market deal flow, and creative financing opportunities. 77% of self-storage facilities are still owned by individual investors rather than institutions.</li>
+      <li>Emerging asset classes — data centers and build-to-rent single family — are attracting massive institutional capital flows and creating new career paths for professionals willing to develop early expertise.</li>
+      <li>The most important career decision about asset classes is not which one is hot today — it is which one you are excited to spend decades becoming genuinely expert in. Careers are long. Markets cycle. Specialization is the long game.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A tenant in a Triple Net (NNN) lease signs a 15-year agreement at $35 per square foot. What does the tenant pay on top of that base rent?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Nothing — $35/sqft covers everything including utilities and maintenance</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Their proportionate share of property taxes, building insurance, and common area maintenance on top of the base rent</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Only utilities — the landlord still covers taxes and insurance</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> A variable amount determined each year by the landlord</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. According to Break Into CRE's 2025 data, which asset class has availability rates below 5% nationally with new construction completions down nearly 75% since 2015 — making it one of the most underrated sectors right now?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Industrial — still the strongest performer in commercial real estate</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Multifamily — demand from the 4 million home shortage keeps it strong</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Retail — extremely strong fundamentals despite its negative reputation</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Office — recovering from the remote work correction</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. What is the key advantage of flex space from a landlord's perspective?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> It commands the highest rents per square foot of any asset class</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> It qualifies for the most favorable financing terms from commercial lenders</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> High tenant loyalty — tenants invest their own equipment and money into their spaces and rarely leave, creating stable long-term occupancy</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> National credit tenants prefer flex space over all other property types</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Industrial property values rose over 100% between 2015 and 2024 — yet Break Into CRE flags the sector as facing major headwinds. What is the primary cause?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> E-commerce growth has slowed dramatically reducing demand for warehouse space</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> A massive wave of new supply was delivered simultaneously — vacancy rose from 3% in 2022 to over 7% in 2025 — outpacing demand in many markets</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Rising interest rates made industrial properties impossible to finance</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Most major institutional investors have exited the industrial sector</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Peter Harris's summary of asset class selection concludes with which framework?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Always choose multifamily first — it is the only asset class suitable for beginners</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Choose whichever asset class has the strongest current market fundamentals</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> Diversify across all five asset classes to reduce risk</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">D</div> Each asset class has a best-fit use and specific things to watch out for — match your choice to your goals, whether that is cash flow, passive income, niche profits, or professional wealth building</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — CRE-3: Tenant Representation</h3>
+    <p>Now that you understand what each asset class is and how they differ, the next module dives into one of the two primary brokerage roles — tenant representation. You will learn how to help businesses find commercial space, run the tenant rep process from needs assessment to lease signing, and negotiate leases from the tenant's side. This is one of the most client-facing and relationship-driven roles in the entire industry.</p>
+    <a href="cre-module-3.html" class="next-module-cta">CRE-3: Tenant Representation →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="cre-module-1.html" class="btn btn-outline">← CRE-1: The Profession</a>
+  <div class="module-nav-info">
+    <p>Commercial Real Estate Track</p>
+    <strong>Module 2 of 7</strong>
+  </div>
+  <a href="cre-module-3.html" class="btn btn-gold">CRE-3: Tenant Representation →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! In a Triple Net (NNN) lease the tenant pays base rent plus the three nets — their proportionate share of property taxes, building insurance, and common area maintenance (CAM). These pass-through expenses are in addition to the base rent. The total occupancy cost is higher than the headline rent figure.",
+      incorrect: "Not quite. In a Triple Net (NNN) lease the tenant pays base rent AND the three nets — their proportionate share of property taxes, building insurance, and common area maintenance. These are pass-through expenses on top of base rent. NNN leases are popular with landlords because cost increases pass directly to the tenant."
+    },
+    q2: {
+      correct: "Correct! Retail has some of the strongest current fundamentals of any commercial asset class — availability rates below 5% nationally and new construction completions down nearly 75% since 2015. This is a classic supply constraint story: very little new product is being built while demand remains steady, which supports rents and values for existing retail owners.",
+      incorrect: "Not quite. The asset class with availability rates below 5% and new construction down 75% since 2015 is retail. Despite its negative reputation, retail has extraordinarily strong supply-demand fundamentals right now. Industrial has been the star performer historically but is currently dealing with a supply correction with vacancy rising from 3% to over 7% since 2022."
+    },
+    q3: {
+      correct: "Correct! Flex space tenants invest their own money, equipment, and often custom buildouts into their spaces — a fitness studio installs equipment, a cabinet maker sets up machinery, a tech company wires its network. This investment creates powerful tenant loyalty because the cost and disruption of moving is enormous. Flex space landlords benefit from unusually low turnover compared to other asset classes.",
+      incorrect: "Not quite. The key advantage of flex space is tenant loyalty — tenants invest significant money and equipment into their spaces making them very unlikely to leave at lease renewal. This creates stable long-term occupancy that offsets the fact that flex space typically serves smaller local businesses rather than national credit tenants."
+    },
+    q4: {
+      correct: "Correct! Industrial's current challenges are a classic supply-cycle story. Strong demand from e-commerce drove massive new construction from 2020 to 2024. Too much new supply hit the market simultaneously, pushing vacancy from a historically tight 3% in 2022 to over 7% in 2025. This is not a demand problem — it is a supply overshoot. Markets cycle, and industrial will likely recover as new construction slows.",
+      incorrect: "Not quite. Industrial's headwinds are supply-driven, not demand-driven. The huge wave of new construction delivered between 2020 and 2024 outpaced absorption in many markets, pushing vacancy from 3% in 2022 to over 7% in 2025. Leasing activity also fell by almost 50% over four years. This is a classic commercial real estate supply cycle correction — demand is still fundamentally strong."
+    },
+    q5: {
+      correct: "Correct! Peter Harris's summary framework matches each asset class to its best-fit purpose: multifamily for beginners and forced appreciation, mobile home parks for cash flow, self-storage for passive income, flex space for niche profits, and mixed-use for professional investors seeking diversified income. The key insight is that the right choice depends on your specific goals — not on which asset class is currently most popular.",
+      incorrect: "Not quite. Peter Harris's summary matches each asset class to a specific investor goal: multifamily for beginners, mobile home parks for cash flow, self-storage for passive income, flex space for niche profits, and mixed-use for professional investors who want diversified income and can handle complexity. The framework is goal-based — not market-trend-based."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you understand the major commercial real estate asset classes. You are ready for CRE-3: Tenant Representation.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons and videos above before moving on. Understanding the asset classes is foundational to everything that follows in this track.';
+    }
+  }
+</script>
+
+</body>
+</html>

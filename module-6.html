@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 6: Financing Fundamentals — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1B4D3E;--forest-mid:#2A6B56;--forest-light:#3A8A6E;--forest-pale:#E8F5EE;--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;--cream:#FAF8F3;--cream-dark:#F0EBE0;--text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;--white:#FFFFFF;--border:rgba(27,77,62,0.1);--shadow-card:0 2px 16px rgba(27,77,62,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--forest);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--forest);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--forest-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--forest);font-weight:600;}
+.progress-bar{background:var(--forest-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--forest-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(27,77,62,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest-mid);border-radius:3px;width:60%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--forest);color:var(--gold-light);}
+.prog-dot.complete{background:var(--forest-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(27,77,62,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(27,77,62,0.25);}
+.module-hero{background:linear-gradient(135deg,#0D2820 0%,var(--forest) 55%,var(--forest-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--forest);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--forest-pale);border-left:4px solid var(--forest-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--forest-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--forest);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Loan type cards */
+.loan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin:2rem 0;}
+.loan-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden;transition:all 0.25s;}
+.loan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.loan-card.lc1::before{background:var(--forest);}
+.loan-card.lc2::before{background:#4A6FA5;}
+.loan-card.lc3::before{background:#6B4A8A;}
+.loan-card.lc4::before{background:var(--gold);}
+.loan-card.lc5::before{background:#C0392B;}
+.loan-card.lc6::before{background:#2A8A6E;}
+.loan-card:hover{box-shadow:var(--shadow-card);transform:translateY(-2px);}
+.loan-card .loan-icon{font-size:26px;margin-bottom:0.6rem;display:block;}
+.loan-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.loan-card .loan-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-bottom:0.6rem;letter-spacing:0.5px;}
+.loan-card.lc1 .loan-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.loan-card.lc2 .loan-tag{background:#EBF0FB;color:#2A4A8A;}
+.loan-card.lc3 .loan-tag{background:#F2EBF8;color:#5A3A7A;}
+.loan-card.lc4 .loan-tag{background:var(--gold-pale);color:#8A6A20;}
+.loan-card.lc5 .loan-tag{background:#FBF0EE;color:#8B2F20;}
+.loan-card.lc6 .loan-tag{background:var(--forest-pale);color:var(--forest-mid);}
+.loan-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.loan-card .loan-specs{margin-top:0.75rem;display:flex;flex-direction:column;gap:4px;}
+.loan-spec{font-size:12px;color:var(--text-mid);display:flex;gap:6px;}
+.loan-spec strong{color:var(--text-dark);min-width:85px;flex-shrink:0;}
+
+/* Lender criteria table */
+.criteria-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.criteria-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.criteria-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.criteria-table td:first-child{font-weight:600;color:var(--text-dark);}
+.criteria-table tr:hover td{background:var(--forest-pale);}
+.criteria-table tr.highlight td{background:var(--gold-pale);font-weight:600;}
+
+/* Comparison table */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px;}
+.compare-table th{background:var(--forest);color:var(--white);padding:10px 14px;text-align:center;font-weight:600;}
+.compare-table th:first-child{text-align:left;}
+.compare-table td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.compare-table td:not(:first-child){text-align:center;font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--forest-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);font-weight:700;color:var(--forest);}
+
+/* Extra deep dive banner */
+.deep-dive-banner{background:linear-gradient(135deg,#0D2820,var(--forest));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+
+/* Deeper links */
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.bp{background:#E8F0FB;color:#1A4E7A;}
+.video-badge.cpa{background:var(--forest-pale);color:var(--forest-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Glossary download */
+.glossary-box{background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:14px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.glossary-box p{font-size:14px;color:var(--text-dark);line-height:1.6;}
+.glossary-box p strong{color:var(--forest);}
+.glossary-btn{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--forest);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--forest-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--forest);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--forest-mid);background:var(--forest-pale);}
+.option.selected{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--forest-mid);background:var(--forest-pale);color:var(--forest);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--forest);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--forest-pale);color:var(--forest);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--forest-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--forest-pale);color:var(--forest);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+/* Skills connection */
+.skills-connection{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.skills-connection h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.skills-connection p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.career-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.career-tag{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);border:1px solid var(--border);color:var(--text-dark);}
+
+/* Nav */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--forest-mid);color:var(--forest);}
+.btn-gold{background:var(--gold);color:var(--forest);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--forest);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .loan-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#careers">Career Paths</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="index.html#begin">Core Foundation</a><span class="sep">›</span>
+  <span class="current">Module 6: Financing Fundamentals</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Your Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <a href="module-4.html" class="prog-dot complete" title="Module 4">✓</a>
+    <a href="module-5.html" class="prog-dot complete" title="Module 5">✓</a>
+    <div class="prog-dot active">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+    <div class="prog-dot locked">9</div>
+    <div class="prog-dot locked">10</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📚 Core Foundation · Module 6 of 10</div>
+    <h1>Financing <em>Fundamentals</em></h1>
+    <p>You know how to find a deal, value it, and analyze it. Now the question becomes: how do you actually pay for it? This module breaks down the loan landscape — the main types, what lenders look at, and the creative strategies investors use to acquire properties even when traditional financing is out of reach.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>40–50 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+      <div class="meta-item">📘 Extras: <span>Deep Dive Resources</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Why financing knowledge makes you <em>more powerful in any role</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most people think financing is only relevant if you are the one borrowing money. That is a mistake. Understanding how real estate gets financed makes you sharper, more credible, and more valuable no matter what role you step into.</p>
+
+    <p class="lesson-text">A residential agent who understands loan types can help a buyer choose the right strategy — not just find a house. A property manager who understands debt service knows why cash flow targets matter to the owner. A wholesaler who understands what lenders require can find deals that actually close. A contractor who understands what an investor needs financially can position themselves as a true business partner, not just a vendor.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"The people who rise fastest in every real estate career are the ones who understand the whole transaction — not just their piece of it. When you understand financing, you understand what makes a deal work or not work. That knowledge is worth more than any certification."</p>
+    </div>
+
+    <p class="lesson-text">Financing is also where deals live or die. You can find the right property at the right price with the right seller — and still lose the deal because the financing did not come together. Understanding the loan landscape means you can anticipate problems, structure deals creatively, and move faster than the competition.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 What This Module Covers — And What It Does Not</div>
+      <p>This module gives you a working understanding of the main loan types, what lenders evaluate, and the creative strategies experienced investors use. It is intentionally designed as a foundation — not an exhaustive guide to every loan product in existence. The goal is that after this module, you can participate in any financing conversation with confidence. The deep-dive resources at the end are there for students who want to go significantly further.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The main loan types — <em>what they are and who uses them</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">There is not one kind of mortgage. There are dozens of loan products, each designed for a different type of borrower, property, or investment strategy. Here are the six you will encounter most often in real estate conversations.</p>
+
+    <div class="loan-grid">
+
+      <div class="loan-card lc1 fade-in">
+        <span class="loan-icon">🏦</span>
+        <h4>Conventional Loan</h4>
+        <div class="loan-tag">Primary or Investment</div>
+        <p>The standard mortgage backed by Fannie Mae or Freddie Mac. The most common loan type — lowest rates, strictest qualification.</p>
+        <div class="loan-specs">
+          <div class="loan-spec"><strong>Down Payment:</strong> 3–5% primary / 15–25% investment</div>
+          <div class="loan-spec"><strong>Qualification:</strong> W2 income, credit score 660+, DTI under 43%</div>
+          <div class="loan-spec"><strong>Best For:</strong> W2 earners buying primary homes or first investment properties</div>
+        </div>
+      </div>
+
+      <div class="loan-card lc2 fade-in">
+        <span class="loan-icon">🏛️</span>
+        <h4>FHA Loan</h4>
+        <div class="loan-tag">Primary Residence Only</div>
+        <p>Government-backed loan with lower down payment and more flexible credit requirements. Works on 1–4 unit properties if you live in one unit.</p>
+        <div class="loan-specs">
+          <div class="loan-spec"><strong>Down Payment:</strong> 3.5% minimum</div>
+          <div class="loan-spec"><strong>Qualification:</strong> Credit score 580+, must occupy the property</div>
+          <div class="loan-spec"><strong>Best For:</strong> First-time buyers and house hackers with limited savings</div>
+        </div>
+      </div>
+
+      <div class="loan-card lc3 fade-in">
+        <span class="loan-icon">🎖️</span>
+        <h4>VA Loan</h4>
+        <div class="loan-tag">Veterans &amp; Military</div>
+        <p>Available to veterans and active-duty military. No down payment, no PMI, lower rates than any other loan type. The most powerful financing tool in real estate.</p>
+        <div class="loan-specs">
+          <div class="loan-spec"><strong>Down Payment:</strong> 0% — no down payment required</div>
+          <div class="loan-spec"><strong>Qualification:</strong> Military service eligibility, must occupy the property</div>
+          <div class="loan-spec"><strong>Best For:</strong> Any veteran — this is the single best loan available</div>
+        </div>
+      </div>
+
+      <div class="loan-card lc4 fade-in">
+        <span class="loan-icon">📊</span>
+        <h4>DSCR Loan</h4>
+        <div class="loan-tag">Investment Property</div>
+        <p>Debt Service Coverage Ratio — qualifies based on the property's rental income, not your personal income. No W2 or tax returns required.</p>
+        <div class="loan-specs">
+          <div class="loan-spec"><strong>Down Payment:</strong> 20–25% typical</div>
+          <div class="loan-spec"><strong>Qualification:</strong> Rent must cover debt service (DSCR of 1.0+), credit 660+</div>
+          <div class="loan-spec"><strong>Best For:</strong> Self-employed investors, scaling a portfolio beyond 10 loans</div>
+        </div>
+      </div>
+
+      <div class="loan-card lc5 fade-in">
+        <span class="loan-icon">⚡</span>
+        <h4>Hard Money Loan</h4>
+        <div class="loan-tag">Short-Term Bridge</div>
+        <p>Asset-based short-term loan from private lenders. Closes in days, not months. Designed for fix-and-flip or BRRRR before refinancing to long-term financing.</p>
+        <div class="loan-specs">
+          <div class="loan-spec"><strong>Down Payment:</strong> 10–30% depending on deal strength</div>
+          <div class="loan-spec"><strong>Qualification:</strong> Deal quality and collateral — less emphasis on credit/income</div>
+          <div class="loan-spec"><strong>Best For:</strong> Flippers, BRRRR investors, distressed property purchases</div>
+        </div>
+      </div>
+
+      <div class="loan-card lc6 fade-in">
+        <span class="loan-icon">🤝</span>
+        <h4>Private Money</h4>
+        <div class="loan-tag">Relationship-Based</div>
+        <p>Loans from individuals — not institutions. Terms are fully negotiable. Built on trust and relationship. The most flexible financing available, but takes time to access.</p>
+        <div class="loan-specs">
+          <div class="loan-spec"><strong>Down Payment:</strong> Varies — negotiated with lender</div>
+          <div class="loan-spec"><strong>Qualification:</strong> Relationship, deal quality, and track record</div>
+          <div class="loan-spec"><strong>Best For:</strong> Experienced investors with a network; long-term portfolio growth</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The House Hacking Gateway</div>
+      <p>One of the most powerful early strategies in real estate combines FHA or conventional primary-residence loans with multifamily properties. Buy a 2–4 unit building with 3.5–5% down, live in one unit, and rent the others. Your tenants cover most or all of your mortgage. After one year, move out, buy another one, and repeat. Three years later you have a small portfolio — built with a fraction of the capital a pure investment loan would have required. This is how many of the investors you will work with got started.</p>
+    </div>
+
+    <h3 class="sub-title">How the loan types compare</h3>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Loan Type</th>
+            <th>Min Down</th>
+            <th>Income Docs</th>
+            <th>Occupancy Required</th>
+            <th>Closes In</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>VA Loan</td><td>0%</td><td>Yes</td><td>Yes (primary)</td><td>30–45 days</td></tr>
+          <tr><td>FHA Loan</td><td>3.5%</td><td>Yes</td><td>Yes (primary)</td><td>30–45 days</td></tr>
+          <tr><td>Conventional (primary)</td><td>3–5%</td><td>Yes</td><td>Yes</td><td>30–45 days</td></tr>
+          <tr><td>Conventional (investment)</td><td>15–25%</td><td>Yes</td><td>No</td><td>30–45 days</td></tr>
+          <tr class="highlight"><td>DSCR Loan</td><td>20–25%</td><td>No</td><td>No</td><td>21–30 days</td></tr>
+          <tr><td>Hard Money</td><td>10–30%</td><td>Minimal</td><td>No</td><td>3–10 days</td></tr>
+          <tr><td>Private Money</td><td>Negotiated</td><td>Negotiated</td><td>No</td><td>Varies</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Peter Harris: Multifamily loan comparison — <em>Local Bank vs. Fannie Mae vs. DSCR</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Peter Harris compares the three most common loan types used for apartment investing — Local Bank loans, Fannie Mae government-backed loans, and DSCR loans — side by side. He breaks down the pros and cons of each, what they cost, when to use them, and then runs the same $750,000 loan through all three so you can see exactly how the numbers differ. By the end you will understand how lenders think about multifamily financing and which loan fits which situation.</p>
+    <div class="callout callout-insight">
+      <div class="callout-label">📅 A Note on This Video</div>
+      <p>This video was recorded when interest rates were lower than they are today — the specific rate numbers mentioned are dated. However, everything else is timeless: how each loan type works, what lenders look for, the pros and cons of each, and how to choose between them. Focus on the framework, not the specific rate figures.</p>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/TeCMuNso4zw" title="Multifamily Loan Comparison — Peter Harris Commercial Property Advisors" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cpa">Commercial Property Advisors · Peter Harris</span>
+        <h4>Multifamily Loan Comparison — Local Bank vs. Fannie Mae vs. DSCR</h4>
+        <p>A detailed side-by-side comparison of the three main apartment loan types — what each one costs, what lenders require, when each is the right choice, and a practical worked example using the same $750,000 loan across all three. Peter finishes with a real-world scenario and asks you to choose which loan fits best — a great way to test your understanding before the quiz below.</p>
+        <p class="credit">Commercial Property Advisors · Peter Harris · YouTube 2023 · 16 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">What lenders actually look at — <em>LTV, DTI, credit, and DSCR</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Every lender — regardless of loan type — is trying to answer one question: <strong>what is the probability that this borrower will not pay me back?</strong> The metrics they use to answer that question are the same across the industry. Understanding them puts you in control.</p>
+
+    <table class="criteria-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>What It Measures</th>
+          <th>What Lenders Want to See</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>LTV — Loan-to-Value</td>
+          <td>Loan amount divided by property value. The lower the LTV, the more equity the borrower has — and the safer the loan is if the borrower defaults.</td>
+          <td>80% LTV or lower preferred (20% down). Higher LTV requires PMI or higher rates.</td>
+        </tr>
+        <tr>
+          <td>DTI — Debt-to-Income</td>
+          <td>Your total monthly debt payments divided by your gross monthly income. Measures whether you can afford to take on another payment.</td>
+          <td>Under 43% for conventional loans. Lower is better. Investment income can sometimes be added.</td>
+        </tr>
+        <tr class="highlight">
+          <td>Credit Score</td>
+          <td>A numerical measure of your borrowing history. Higher scores mean lower risk to the lender — and lower rates to you.</td>
+          <td>660+ minimum for most investment loans. 740+ gets you the best pricing. Below 620 limits options significantly.</td>
+        </tr>
+        <tr>
+          <td>DSCR — Debt Service Coverage Ratio</td>
+          <td>For investment properties: rental income divided by total debt service (PITIA). Measures whether the property pays for itself.</td>
+          <td>1.0 minimum (rent covers all costs). 1.2+ is considered strong. Used instead of personal income on DSCR loans.</td>
+        </tr>
+        <tr>
+          <td>Reserves</td>
+          <td>Cash or liquid assets left after closing. Lenders want to know you have a cushion if something goes wrong.</td>
+          <td>Typically 3–6 months of PITIA reserves for investment properties. More properties = more reserves required.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Residential vs. Commercial Lending — The Key Difference</div>
+      <p>There are three main differences between residential and commercial lending, but the most important one is this: <strong>residential lenders qualify the borrower first</strong> — they look at your income, your credit, your debt-to-income ratio, and then the property second. <strong>Commercial lenders do the exact opposite</strong> — they qualify the property first, looking at its ability to produce enough income to support the expenses and the mortgage, and the borrower's qualifications are second priority. This is why a self-employed investor with a complicated tax return can still get a commercial loan — as long as the property's numbers work. This is also exactly why DSCR loans exist.</p>
+    </div>
+
+    <h3 class="sub-title">The DSCR formula in plain English</h3>
+    <p class="lesson-text">On a DSCR loan, the lender does not care about your W2 or your tax returns. They care about one ratio: does the property's rent cover everything the loan costs to service?</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 DSCR Example</div>
+      <p>A rental property brings in <strong>$2,400/month</strong> in rent. The full monthly cost of owning it — mortgage principal + interest + property taxes + insurance + HOA — totals <strong>$2,200/month</strong> (this is called PITIA).</p>
+      <p style="margin-top:0.75rem;"><strong>DSCR = $2,400 ÷ $2,200 = 1.09</strong></p>
+      <p style="margin-top:0.75rem;">A ratio of 1.09 means the property generates 9% more income than it costs to carry. Most lenders accept a minimum ratio of 1.0 — meaning the rent exactly covers the costs. The higher the ratio, the stronger the loan application.</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ What Hurts Your Borrowing Power</div>
+      <p>The fastest ways to reduce what lenders will lend you: high credit card balances (raises DTI), opening new credit accounts before applying, making a large purchase on credit, changing jobs right before applying, and letting collection accounts or missed payments sit on your credit report. If you are planning to buy real estate in the next 6–12 months, protect your credit aggressively.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Peter Harris: Apartment Loans 101 — <em>how commercial lending actually works</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Peter Harris breaks down everything a beginner needs to know about apartment loans — how they differ from residential mortgages, the 3 C's lenders use to evaluate deals (Cash flow, Collateral, Credit), what lenders like and don't like, the full 10-step loan process from application to closing, and the main loan types available including Fannie Mae and DSCR. This video completes the picture that Video 1 started — Video 1 covers the residential and FHA/VA side, this covers the commercial multifamily side.</p>
+    <div class="callout callout-insight">
+      <div class="callout-label">📅 A Note on This Video</div>
+      <p>This video was recorded when interest rates were lower than they are today. The rate numbers mentioned are dated — but everything else in the video is timeless: how lenders think, what they look for, how the loan process works, and how to position yourself for approval. That is why we chose it. Focus on the framework, not the specific rate figures.</p>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/23qNsfBffHQ" title="Apartment Loans 101 — Peter Harris Commercial Property Advisors" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge cpa">Commercial Property Advisors · Peter Harris</span>
+        <h4>Apartment Loans 101 — How Commercial Lending Works</h4>
+        <p>Peter Harris covers the two key differences between residential and apartment loans, the 3 C's of loan approval (Cash flow, Collateral, Credit), what lenders love and hate about deals, the full 10-step loan process, and the main loan products available including Fannie Mae small apartment loans and DSCR. The residential vs commercial qualification difference explained here connects directly to the callout in Lesson 3 above.</p>
+        <p class="credit">Commercial Property Advisors · Peter Harris · YouTube</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Creative financing strategies — <em>when the bank says no</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Traditional lenders are not the only path to financing a property. Experienced investors regularly use strategies that bypass conventional banks entirely — either because they cannot qualify, because they want better terms, or because the deal requires speed and flexibility that banks cannot offer.</p>
+
+    <p class="lesson-text">These strategies are not beginner tools. They require knowledge, relationships, and negotiation skill. But understanding they exist is part of your foundation — and the Go Deeper resources below go into each one in detail when you are ready.</p>
+
+    <h3 class="sub-title">Seller Financing</h3>
+    <p class="lesson-text">Instead of borrowing from a bank, the buyer makes payments directly to the seller. The seller becomes the bank. Terms — interest rate, down payment, repayment schedule — are fully negotiated. Works when sellers own properties free-and-clear or have significant equity and want a steady income stream rather than a lump sum. Can result in below-market rates and more flexible qualification.</p>
+
+    <h3 class="sub-title">The BRRRR Method</h3>
+    <p class="lesson-text"><strong>Buy, Rehab, Rent, Refinance, Repeat.</strong> Buy a distressed property with hard money or private money, renovate it to increase value, rent it out to qualify for a DSCR loan, then refinance into long-term financing — pulling out most or all of your original capital to deploy into the next deal. Done correctly, BRRRR allows investors to recycle the same pool of capital into multiple properties.</p>
+
+    <h3 class="sub-title">House Hacking</h3>
+    <p class="lesson-text">Buy a 2–4 unit property with a low-down-payment primary residence loan (FHA, VA, or conventional), live in one unit, and rent the others. The rental income offsets or eliminates your housing cost. After one year, move out and repeat — keeping the property as a rental and moving into a new one. The most accessible entry point into real estate investing for most people.</p>
+
+    <h3 class="sub-title">HELOC — Home Equity Line of Credit</h3>
+    <p class="lesson-text">For investors who already own a home with significant equity, a HELOC allows them to borrow against that equity and use it as a down payment on an investment property — without going through a full loan application on a new purchase. Think of it like a giant credit card secured by your home. It is not a tool for beginners who do not yet own property, but it is worth knowing exists — many experienced investors use their primary home equity to fund their next deal.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Mentor's Note</div>
+      <p>"Financing strategy is not separate from investment strategy — it is part of it. The investors who build portfolios fastest are not the ones who earn the most money. They are the ones who understand how to use leverage, structure deals creatively, and access capital that others do not even know exists."</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ A Word on Creative Financing</div>
+      <p>Seller financing, subject-to, and other non-traditional strategies involve legal complexity. Every market is different, every deal is different, and the details matter enormously. These strategies require working with qualified real estate attorneys and experienced mentors — not just watching a YouTube video. Use the resources below to build your knowledge, but always get professional guidance before executing any creative financing structure.</p>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="glossary-box fade-in">
+    <p><strong>📘 New terms in this module:</strong> LTV, DTI, DSCR, PMI, MIP, Conforming Loan, Jumbo Loan, Hard Money, Private Money, BRRRR, Seller Financing, PITIA, Debt Service, Pre-Approval — all defined in the Darco Master Glossary.</p>
+    <a href="darco-glossary.pdf" download class="glossary-btn">⬇ Download Glossary</a>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>The resources below are not required to complete this module or move to Module 7. They are here for students who want to develop genuine expertise in real estate financing — whether for a mortgage lending career, an investing career, or simply because this topic fascinates you. These are long-form, practitioner-level resources. Treat them like electives.</p>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🏠 Residential Investing, FHA, VA &amp; House Hacking</div>
+
+    <div class="deeper-link">
+      <p><strong>BiggerPockets — The Beginner's Guide to Rental Property Financing</strong><br>If your path is residential investing, house hacking, or you want to understand FHA and VA loans in depth — this is the video for you. Two investor-focused mortgage brokers cover FHA (3.5% down), VA (0% down for veterans), conventional, DSCR, hard money, PMI, loan limits, and the house hacking strategy of buying a fourplex with as little as 3.5% down and living in one unit. The two Peter Harris videos above focus on the commercial side — this one covers the residential side. Note: skip the first 60 seconds.</p>
+      <a href="https://www.youtube.com/watch?v=fvD_2kxc4x0" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">💼 Loan Types — Deep Dives</div>
+
+    <div class="deeper-link">
+      <p><strong>The Mortgage Patriot — Best Loan Options for Investment Properties 2025 (Conventional, DSCR &amp; HELOC)</strong><br>A clean, 11-minute side-by-side comparison of conventional loans, DSCR loans, and HELOCs — with clear credit score requirements, down payment amounts, and a worked example. Great reference video to bookmark.</p>
+      <a href="https://www.youtube.com/watch?v=-k1RPdN27u0" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>BiggerPockets On The Market — The Best Rental Property Financing and Investor Loans</strong><br>Two of the most prominent investor lenders in the country spend 50 minutes walking through every loan product serious investors use — conventional, DSCR, blanket loans, non-recourse, and portfolio loans. Practitioner-level content. Ideal for students considering the mortgage lending career path.</p>
+      <a href="https://www.youtube.com/watch?v=B9wuX1gnc6Y" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">🔄 Creative Financing Strategies</div>
+
+    <div class="deeper-link">
+      <p><strong>BiggerPockets Rookie — BRRRR Method: How to Use It to Infinitely Invest</strong><br>David Greene explains the full BRRRR cycle — Buy, Rehab, Rent, Refinance, Repeat — with a walkthrough of how to analyze a BRRRR deal and recycle capital into multiple properties using the same initial investment.</p>
+      <a href="https://www.youtube.com/watch?v=lVDK91wMwFw" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>BiggerPockets Rookie — Seller Financing 101: How to Buy Real Estate on Your Terms</strong><br>How to pitch seller financing, why sellers agree to it, and how to structure a deal where the seller acts as the bank. Includes Q&amp;A on how to minimize DTI when scaling and how to identify the best loan products for a growing portfolio.</p>
+      <a href="https://www.youtube.com/watch?v=7NoTaDB3OJk" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>Chandler David Smith — Seller Financing Explained: How to Buy Real Estate with No Bank</strong><br>Chandler walks through exactly what seller financing is, why to use it, how to find and negotiate these deals, and the real-world mechanics of making it work. Practical and beginner-accessible despite being an advanced topic.</p>
+      <a href="https://www.youtube.com/watch?v=VGWlxmrD9YQ" target="_blank">Watch →</a>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--forest-mid);margin:1.5rem 0 0.5rem;">⚡ Hard Money &amp; Private Money</div>
+
+    <div class="deeper-link">
+      <p><strong>Coach Carson — How to Get Easy Loans for Fixer Properties (Hard Money Explained)</strong><br>Coach Carson and active hard money lender Justin Foster break down hard money from both sides of the table — the 4 C's lenders evaluate (Collateral, Character, Cash, Credit), how costs work (interest rate + points), the risks of timeline pressure, and how hard money bridges the gap to long-term financing. The most practical hard money explanation available. 57 minutes — watch in sections.</p>
+      <a href="https://www.youtube.com/watch?v=gIEWFQ2xaUU" target="_blank">Watch →</a>
+    </div>
+
+    <div class="deeper-link">
+      <p><strong>Coach Carson — DSCR Loans Explained: How to Qualify Without a W2 or Tax Returns</strong><br>A 56-minute deep dive into DSCR loans with an active lender — covering flexibility, qualification criteria, prepayment penalties, refinancing strategies, and common mistakes. For students who want to truly master this product.</p>
+      <a href="https://www.youtube.com/watch?v=cEm90D-Wcxc" target="_blank">Watch →</a>
+    </div>
+
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 6 Key Takeaways</h3>
+    <ul>
+      <li>Financing knowledge makes you more valuable in every real estate career — not just investing. Understanding how deals get funded changes how you think about every transaction.</li>
+      <li>There is no single mortgage. VA loans offer zero down with no PMI for veterans. FHA loans allow 3.5% down on primary residences including small multifamily. DSCR loans qualify based on property income — not yours.</li>
+      <li>Lenders evaluate four things: LTV (how much equity exists), DTI (can you afford the payment), credit score (track record of repayment), and DSCR (does the property pay for itself).</li>
+      <li>Hard money loans are short-term, asset-based, and fast-closing — designed to bridge the gap between purchase and long-term financing on value-add deals. The cost is high, but the speed and flexibility justify it on the right deal.</li>
+      <li>Creative strategies like seller financing, BRRRR, and house hacking allow investors to acquire properties with less capital, better terms, or faster timelines than traditional lending allows. They require expertise and professional guidance to execute safely.</li>
+      <li>Protecting your credit, building reserves, and minimizing DTI before applying for a loan are the most controllable factors in your borrowing power. Start working on them now.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. You are self-employed and your tax returns show $50,000 in income, but your actual deposits show $120,000. A conventional loan requires full income documentation and your W2 income is too low to qualify. Which loan type is most likely your best path forward?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> VA loan — no income documentation required</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> DSCR loan — it qualifies based on the property's rental income, not your personal income</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> FHA loan — it has more flexible income requirements than conventional</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Hard money loan — it does not check income at all</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A property rents for $2,400 per month. The full monthly PITIA (principal, interest, taxes, insurance, HOA) totals $2,200. What is the DSCR ratio, and does it meet the typical lender minimum?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> DSCR of 0.92 — does not meet the minimum of 1.0</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> DSCR of 1.09 — meets the typical minimum of 1.0</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> DSCR of 1.33 — well above the minimum</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> DSCR cannot be calculated without knowing the purchase price</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A first-time buyer wants to house hack — buy a fourplex, live in one unit, and rent the other three. They have limited savings. Which loan gives them the LOWEST possible down payment?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Conventional investment property loan — 20% down</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> FHA loan on a primary residence fourplex — 3.5% down</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> DSCR loan — 20 to 25% down, no occupancy required</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Hard money loan — 10 to 15% down with fast closing</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Which best describes what LTV means and why lenders care about it?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> LTV is your monthly debt payments divided by your monthly income. Lenders use it to confirm you can afford the mortgage.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> LTV is the loan amount divided by the property value. The lower the LTV, the more equity the borrower has — and the less risk to the lender if the borrower defaults.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> LTV is the property's rent divided by its mortgage payment — used to determine if the property cash flows.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> LTV measures the borrower's creditworthiness based on their payment history.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. An investor finds a distressed property at a great price. The seller is motivated and needs to close in 10 days. The investor plans to renovate it over 4 months, then refinance into a long-term DSCR loan. Which loan type is designed for exactly this situation?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Conventional investment loan — it offers the lowest rate for renovation projects</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> FHA 203k loan — it covers both purchase and renovation in one government-backed loan</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Hard money loan — fast closing, asset-based underwriting, short-term bridge financing built for exactly this scenario</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> DSCR loan — no income documentation required and it can close in under 30 days</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- SKILLS CONNECTION -->
+  <div class="skills-connection fade-in">
+    <h3>🔗 How This Connects to Your Career Path</h3>
+    <p>Every real estate career involves financing at some level. Agents guide buyers through loan options. Investors structure deals around financing strategy. Mortgage lenders ARE the financing. Property managers understand debt service when evaluating owner decisions. Developers model entire projects around capital stack and loan terms. Wholesalers find deals that specific loan types can fund. This module is relevant to all of them.</p>
+    <div class="career-tags">
+      <a href="residential-agent.html" class="career-tag">🏠 Residential Agent</a>
+      <a href="real-estate-investing.html" class="career-tag">📈 Real Estate Investing</a>
+      <a href="commercial-real-estate.html" class="career-tag">🏢 Commercial Real Estate</a>
+      <a href="mortgage-lending.html" class="career-tag">💼 Mortgage Lending</a>
+      <a href="property-management.html" class="career-tag">🔑 Property Management</a>
+      <a href="wholesaling.html" class="career-tag">🔄 Wholesaling</a>
+      <a href="real-estate-development.html" class="career-tag">🏗️ Development</a>
+      <a href="maintenance-repair.html" class="career-tag">🔧 Maintenance &amp; Repair</a>
+      <a href="real-estate-photography.html" class="career-tag">📸 Photography</a>
+    </div>
+  </div>
+
+</div><!-- end module-body -->
+
+<div class="module-nav">
+  <a href="module-5.html" class="btn btn-outline">← Module 5: Analyzing a Deal</a>
+  <div class="module-nav-info">
+    <p>Core Foundation</p>
+    <strong>Module 6 of 10</strong>
+  </div>
+  <a href="module-7.html" class="btn btn-gold">Module 7: Finding Properties →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">info@darcocenter.org</span></p>
+</footer>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  var quizAnswers = {};
+  var quizDone = false;
+
+  var explanations = {
+    q1: {
+      correct: "Correct! DSCR (Debt Service Coverage Ratio) loans qualify based on the property's rental income covering its expenses — not your personal W2 or tax return income. This is specifically designed for self-employed investors or anyone whose taxes do not reflect their actual earnings.",
+      incorrect: "Not quite. The DSCR loan is the right answer. It qualifies based on whether the property's rental income covers its debt service — not your personal income. FHA and VA loans still require income documentation. Hard money has minimal documentation but is short-term and expensive — not the right fit here."
+    },
+    q2: {
+      correct: "Correct! DSCR = Gross Rent divided by PITIA. $2,400 divided by $2,200 = 1.09. A ratio of 1.0 or higher meets most lender minimums — meaning the rent at least covers all the costs. This property qualifies.",
+      incorrect: "Not quite. DSCR = Gross Rent divided by total PITIA. $2,400 divided by $2,200 = 1.09. Any ratio at or above 1.0 meets the typical minimum. This property qualifies with a ratio of 1.09 — meaning rent covers 109% of the total monthly cost."
+    },
+    q3: {
+      correct: "Correct! An FHA loan on a primary residence — including 2 to 4 unit properties — requires only 3.5% down as long as you live in one unit. A $500,000 fourplex would require $17,500 down instead of $100,000 with a conventional investment loan. This is the house hacking strategy in action.",
+      incorrect: "Not quite. The FHA loan is the answer. Because the buyer is living in one unit, it qualifies as a primary residence — and FHA primary residence loans require only 3.5% down, even on 2 to 4 unit properties. DSCR and conventional investment loans require 20%+ because no one is living there."
+    },
+    q4: {
+      correct: "Correct! LTV = Loan Amount divided by Property Value. A $200,000 loan on a $250,000 property = 80% LTV. The lower the LTV, the more equity the borrower has — and the safer the loan is for the lender if the borrower defaults. This is why lower down payments require PMI or carry higher rates.",
+      incorrect: "Not quite. LTV stands for Loan-to-Value. It is the loan amount divided by the appraised property value. DTI (debt-to-income) is the ratio that measures your ability to repay from income. DSCR is the ratio that measures rental income vs. debt service on investment properties. LTV measures how much equity exists in the property."
+    },
+    q5: {
+      correct: "Correct! Hard money loans are specifically designed for this scenario: fast closings (sometimes within days), asset-based underwriting, and short terms that bridge the gap between purchase and a long-term refinance. The higher cost is the tradeoff for speed and flexibility — which is exactly what a distressed deal with a motivated seller and a renovation timeline requires.",
+      incorrect: "Not quite. Hard money is the right answer. Conventional and DSCR loans take 21 to 45 days to close — not 10 days. FHA 203k is a primary residence renovation loan, not an investor product. Hard money closes in 3 to 10 days, underwrites based on the deal and property rather than lengthy documentation, and is built for exactly this buy-renovate-refinance strategy."
+    }
+  };
+
+  function selectOption(el, qId, isCorrect) {
+    if (quizDone) return;
+    var opts = document.getElementById(qId).querySelectorAll('.option');
+    for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+    el.classList.add('selected');
+    quizAnswers[qId] = { element: el, isCorrect: isCorrect };
+  }
+
+  function checkAnswers() {
+    var qIds = ['q1','q2','q3','q4','q5'];
+    var allAnswered = true;
+    for (var i = 0; i < qIds.length; i++) {
+      if (!quizAnswers[qIds[i]]) { allAnswered = false; break; }
+    }
+    if (!allAnswered) { alert('Please answer all 5 questions before checking.'); return; }
+    quizDone = true;
+    var score = 0;
+    for (var i = 0; i < qIds.length; i++) {
+      var qId = qIds[i];
+      var ans = quizAnswers[qId];
+      var expEl = document.getElementById(qId + '-exp');
+      ans.element.classList.remove('selected');
+      if (ans.isCorrect) {
+        ans.element.classList.add('correct');
+        expEl.className = 'explanation correct-exp show';
+        expEl.textContent = explanations[qId].correct;
+        score++;
+      } else {
+        ans.element.classList.add('incorrect');
+        expEl.className = 'explanation incorrect-exp show';
+        expEl.textContent = explanations[qId].incorrect;
+        var allOpts = document.getElementById(qId).querySelectorAll('.option');
+        for (var j = 0; j < allOpts.length; j++) {
+          if (allOpts[j].getAttribute('data-correct') === 'true') { allOpts[j].classList.add('correct'); }
+        }
+      }
+    }
+    var btn = document.getElementById('checkBtn');
+    btn.disabled = true;
+    btn.textContent = 'Answers Checked';
+    var scoreEl = document.getElementById('scoreResult');
+    if (score >= 4) {
+      scoreEl.className = 'score-result show pass';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5!</strong> Excellent — you understand the financing landscape. You are ready for Module 7: Finding and Evaluating Properties.';
+    } else {
+      scoreEl.className = 'score-result show fail';
+      scoreEl.innerHTML = '<strong>You scored ' + score + '/5.</strong> Review the lessons above and try again. Understanding loan types and lender criteria is foundational for every real estate career path.';
+    }
+  }
+</script>
+
+</body>
+</html>
