@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Investing Module 1: The Investor Mindset & Wealth Strategy — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --burg:#5C1A2E;--burg-mid:#7D2A42;--burg-light:#9E4060;--burg-pale:#F9EEF1;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(92,26,46,0.1);
+  --shadow-card:0 2px 16px rgba(92,26,46,0.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--burg);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--burg);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--burg-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--burg-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--burg);font-weight:600;}
+.progress-bar{background:var(--burg-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--burg-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(92,26,46,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--burg-mid);border-radius:3px;width:17%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--burg);color:var(--gold-light);}
+.prog-dot.locked{background:rgba(92,26,46,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(92,26,46,0.25);}
+.module-hero{background:linear-gradient(135deg,#3A0A1C 0%,var(--burg) 55%,var(--burg-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--burg-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--burg);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-mentor{background:var(--burg-pale);border-left:4px solid var(--burg-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--burg-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--burg);font-style:italic;line-height:1.75;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Why real estate grid */
+.why-grid{display:flex;flex-direction:column;gap:1.1rem;margin:2rem 0;}
+.why-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.5rem;transition:all 0.2s;}
+.why-card:hover{box-shadow:var(--shadow-card);}
+.why-card .wc-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;}
+.why-card .wc-icon{font-size:1.3rem;}
+.why-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);}
+.why-card p{font-size:13.5px;color:var(--text-mid);line-height:1.75;}
+.why-card p strong{color:var(--text-dark);}
+
+/* Rocket vs skyscraper */
+.compare-two{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;position:relative;overflow:hidden;}
+.compare-card.rocket{background:linear-gradient(135deg,#3A1A1A,#6A2020);border:1px solid rgba(180,60,60,0.3);}
+.compare-card.sky{background:linear-gradient(135deg,#1A2A3A,#2A4A6A);border:1px solid rgba(60,120,180,0.3);}
+.compare-card .cc-icon{font-size:2rem;margin-bottom:0.75rem;display:block;}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;}
+.compare-card .cc-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;margin-bottom:0.75rem;}
+.compare-card.rocket .cc-tag{background:rgba(220,60,60,0.2);color:#FF9999;}
+.compare-card.sky .cc-tag{background:rgba(60,160,220,0.2);color:#99DDFF;}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.compare-card ul li{font-size:12.5px;color:rgba(255,255,255,0.75);display:flex;gap:8px;line-height:1.55;}
+.compare-card.rocket ul li::before{content:'✕';color:#FF9999;font-weight:700;flex-shrink:0;}
+.compare-card.sky ul li::before{content:'✓';color:#99DDFF;font-weight:700;flex-shrink:0;}
+
+/* Forced appreciation example */
+.math-box{background:var(--burg-pale);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.math-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--burg);margin-bottom:1rem;}
+.math-steps{display:flex;flex-direction:column;gap:0.75rem;}
+.math-step{display:flex;align-items:center;gap:1rem;}
+.math-step .ms-label{font-size:12px;font-weight:700;color:var(--text-light);width:140px;flex-shrink:0;text-transform:uppercase;letter-spacing:0.5px;}
+.math-step .ms-value{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--burg);}
+.math-step .ms-note{font-size:12px;color:var(--text-mid);}
+.math-step.result .ms-value{color:var(--gold);font-size:1.3rem;}
+.math-divider{height:1px;background:var(--border);margin:0.5rem 0;}
+
+/* Wealth stages */
+.stages-track{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
+.stages-track::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--burg-pale);}
+.stage-item{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:1.75rem;position:relative;}
+.stage-item:last-child{padding-bottom:0;}
+.stage-num{width:40px;height:40px;border-radius:50%;background:var(--burg);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:0.9rem;flex-shrink:0;z-index:1;}
+.stage-body{padding-top:6px;}
+.stage-body h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;}
+.stage-body .stage-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;background:var(--burg-pale);color:var(--burg-mid);margin-bottom:0.4rem;}
+.stage-body p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.peter{background:var(--burg-pale);color:var(--burg-mid);}
+.video-badge.coach{background:#EBF5EE;color:#1B4D3E;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#3A0A1C,var(--burg));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--burg);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--burg);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--burg-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--burg);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--burg-mid);background:var(--burg-pale);}
+.option.selected{border-color:var(--burg-mid);background:var(--burg-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--burg-mid);background:var(--burg-pale);color:var(--burg);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--burg);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--burg-pale);color:var(--burg);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--burg);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--burg-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--burg-pale);color:var(--burg);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--burg);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--burg-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--burg-mid);color:var(--burg);}
+.btn-gold{background:var(--gold);color:var(--burg);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--burg);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .compare-two{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="real-estate-investing.html">Investing Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="real-estate-investing.html">Real Estate Investing</a><span class="sep">›</span>
+  <span class="current">Module 1: The Investor Mindset & Wealth Strategy</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Investing Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <div class="prog-dot active">1</div>
+    <div class="prog-dot locked">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏘️ Real Estate Investing Track · Module 1 of 6</div>
+    <h1>The Investor Mindset & <em>Wealth Strategy</em></h1>
+    <p>Before you analyze a single deal or evaluate a single property, you need to understand why real estate investing works as a wealth-building vehicle — and how the most successful investors think about building a portfolio that lasts. This module establishes the philosophical foundation everything else is built on.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>45–55 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Why real estate — <em>the case for investing in tangible assets</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most people who want to build wealth consider the stock market first. It is accessible, familiar, and endlessly discussed. Real estate tends to come later — often after someone inherits a property, lives next to a successful landlord, or reads a book that changes how they see money. But once people genuinely understand how real estate builds wealth, very few go back to thinking stocks alone are enough.</p>
+
+    <p class="lesson-text">Real estate is different from paper investments in five fundamental ways. Not better in every context — but different in ways that matter enormously for long-term wealth building.</p>
+
+    <div class="why-grid">
+
+      <div class="why-card fade-in">
+        <div class="wc-header"><div class="wc-icon">🏗️</div><h4>You own something tangible and permanent</h4></div>
+        <p>A stock represents a fractional claim on a company's future earnings — it exists as a database entry and can go to zero if the company fails. A property is land and structure. The land has been there for centuries. The building provides shelter that people will always need. Real estate cannot disappear the way a company can. This physical substance is the foundation of its enduring value.</p>
+      </div>
+
+      <div class="why-card fade-in">
+        <div class="wc-header"><div class="wc-icon">💰</div><h4>You generate cash flow from day one</h4></div>
+        <p>A rental property produces income every month — rent paid by tenants who need somewhere to live or somewhere to operate a business. After paying the mortgage, taxes, insurance, and operating expenses, what remains is cash flow. <strong>Cash flow is your freedom number</strong> — the monthly income from your properties that covers your living expenses. Every deal you acquire increases it. Build enough of it and work becomes optional.</p>
+      </div>
+
+      <div class="why-card fade-in">
+        <div class="wc-header"><div class="wc-icon">📈</div><h4>You can force appreciation — not just wait for it</h4></div>
+        <p>When you own a stock, appreciation is entirely outside your control. When you own income-producing real estate, you can <strong>force the value up</strong> by increasing income. This is the most powerful concept in commercial real estate investing. Raise rents, reduce vacancies, cut unnecessary expenses — and the property is worth more based on the income approach formula: Value = NOI ÷ Cap Rate. A $150/month rent increase across a 10-unit building adds $18,000 of annual NOI. At a 6% cap rate that single action creates $300,000 of new property value. No stock gives you that kind of direct control.</p>
+      </div>
+
+      <div class="why-card fade-in">
+        <div class="wc-header"><div class="wc-icon">🏦</div><h4>You use leverage — other people's money builds your wealth</h4></div>
+        <p>When you buy $200,000 worth of stocks, you need $200,000. When you buy a $1,000,000 property with 25% down, you need $250,000 — and you control $1,000,000 of asset with $250,000 of your own money. If that property appreciates 10%, you made $100,000 on a $250,000 investment — a 40% return on your actual capital. Leverage is why real estate creates wealth faster than almost any other asset class available to an ordinary investor.</p>
+      </div>
+
+      <div class="why-card fade-in">
+        <div class="wc-header"><div class="wc-icon">🛡️</div><h4>The tax advantages are extraordinary</h4></div>
+        <p>Real estate investors enjoy tax benefits unavailable in almost any other investment: <strong>depreciation</strong> (you deduct a portion of the building's value every year even as it appreciates), <strong>mortgage interest deduction</strong>, <strong>cost segregation</strong> (accelerating depreciation on qualifying components), and the <strong>1031 exchange</strong> (selling and rolling all proceeds into a larger property with no immediate capital gains tax). An investor who uses these tools intelligently can generate significant cash flow while paying very little in taxes.</p>
+      </div>
+
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Peter Harris</div>
+      <p>"Most of us invest in commercial real estate for mainly two reasons. The first reason is to design a life that you don't need a vacation from. And number two — to change your financial picture for the better, forever."</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Peter Harris: Four big reasons to invest in <em>commercial real estate</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Peter Harris opens with one of the most motivating framings in real estate education: you either have a sense of urgency today, or a sense of regret tomorrow. He then walks through four concrete reasons why investing in commercial real estate right now makes sense — covering rising demand for rentals, the forced appreciation math, cost segregation as a tax strategy, and why market conditions almost always favor the informed buyer who acts. The market context in this video is from 2022 — the principles and the forced appreciation math are fully evergreen.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/RlEDCJ6_tXg" title="4 BIG Reasons to Invest in Commercial Real Estate — Peter Harris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge peter">Peter Harris · Commercial Property Advisors</span>
+        <h4>4 BIG Reasons to Invest in Commercial Real Estate Now</h4>
+        <p>Peter Harris covers four reasons to invest — the urgency framing, rising rental demand, the forced appreciation math (rent increase → NOI → cap rate → property value), and cost segregation as a tax strategy. The forced appreciation example in this video directly reinforces Lesson 1 of this module. Note: market context is from 2022; the underlying principles are timeless.</p>
+        <p class="credit">Commercial Property Advisors · YouTube April 2022 · ~10 min · Evergreen principles</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Rocket or skyscraper — <em>how the best investors think about growth</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most real estate content online celebrates speed. How many units did you acquire this year? How fast did you scale? How quickly did you replace your income? The loudest voices in real estate investing built their portfolios during one of the most unusual periods in market history and now teach their approach as though it is the universal path. It is not.</p>
+
+    <p class="lesson-text">Coach Carson — Chad Carson — offers a different framework after 22 years of investing. He describes two fundamentally different ways to grow a real estate portfolio. One burns bright and fast. The other is built to last.</p>
+
+    <div class="compare-two">
+      <div class="compare-card rocket fade-in">
+        <span class="cc-icon">🚀</span>
+        <h4>The Rocket</h4>
+        <div class="cc-tag">Fast & Fragile</div>
+        <ul>
+          <li>Maximum speed, maximum leverage</li>
+          <li>Either you make it to the moon or you crash and burn</li>
+          <li>High stress, fragile to market shifts</li>
+          <li>Growth measured in units and speed</li>
+          <li>Business controls your life</li>
+          <li>Common in bull markets — looks brilliant until it doesn't</li>
+        </ul>
+      </div>
+      <div class="compare-card sky fade-in">
+        <span class="cc-icon">🏙️</span>
+        <h4>The Skyscraper</h4>
+        <div class="cc-tag">Slow & Lasting</div>
+        <ul>
+          <li>Deep foundation first — skills, relationships, systems</li>
+          <li>Deliberate, sustainable growth pace</li>
+          <li>Built to last 10, 20, 30 years</li>
+          <li>Success measured in freedom and time</li>
+          <li>Business serves your life</li>
+          <li>Outlasts market cycles — the tortoise wins</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="lesson-text">Chick-fil-A took decades to become the third largest fast food chain in America. They focused on one product, obsessed over quality, grew deliberately with almost no debt, and funded new locations from existing profits. Today they make nearly twice the revenue per location as the average McDonald's — and they are closed one day a week. Patagonia grew the same way: mission first, organic growth, no debt, decades of deliberate compounding.</p>
+
+    <p class="lesson-text">The parallel for real estate is direct. The investors who build lasting wealth are not the ones who acquired the most units the fastest. They are the ones who learned the craft deeply, chose good markets, treated tenants and partners well, used debt carefully, and stayed in the game through multiple market cycles. As Coach Carson puts it — <strong>there are no unreasonable goals. There are only unreasonable timelines.</strong></p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Redefine What Success Means</div>
+      <p>Coach Carson describes his goal as being a <strong>"time billionaire"</strong> — having an abundance of time, not just money. The purpose of a real estate investing business is not to pump cash flow any more than the purpose of your body is to pump blood. Cash flow is essential, but it is not the point. The point is the life that cash flow funds. Define that life first. Then build the business that serves it. How many properties do you actually need to fund the life you want? For most people, the answer is far fewer than they think.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Coach Carson: The secret to building real estate wealth <em>that lasts</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Chad Carson — 22 years of real estate investing, author of The Small and Mighty Real Estate Investor — makes the case for deliberate, sustainable growth over rocket-ship scaling. He uses Chick-fil-A and Patagonia as business case studies for the skyscraper approach: deep foundation, mission-driven, slow and steady, built to last. He then maps those principles directly to real estate investing — arguing that freedom and time are better measures of success than door count. Published June 2025 — Coach Carson's most current and concise statement of his investing philosophy.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/HJ7utiNKOcU" title="The Secret to Building Real Estate Wealth That Lasts — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge coach">Coach Carson · YouTube</span>
+        <h4>The Secret to Building Real Estate Wealth That Lasts</h4>
+        <p>Rocket vs. skyscraper growth, the Chick-fil-A and Patagonia analogies, debt as a power tool not a religion, redefining success as time and freedom, and why slow deliberate growth produces the biggest and most durable results. The philosophical counterweight to the fast-scaling content that dominates social media real estate education. Directly reinforces Lesson 2 of this module.</p>
+        <p class="credit">Coach Carson · YouTube June 2025 · ~18 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The forced appreciation formula — <em>how investors manufacture value</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The single most powerful concept separating commercial real estate investing from residential real estate investing is <strong>forced appreciation</strong>. In residential real estate, your home's value is largely determined by what comparable homes nearby sold for. You have very little control over it. In commercial real estate — where value is based on income rather than comparables — every improvement you make to a property's income is directly and immediately reflected in its value.</p>
+
+    <p class="lesson-text">This is not a theoretical concept. It is the mechanical engine behind most commercial real estate wealth creation. Here is how it works in practice:</p>
+
+    <div class="math-box">
+      <h4>📊 The Forced Appreciation Engine — A Real Example</h4>
+      <div class="math-steps">
+        <div class="math-step">
+          <div class="ms-label">The property</div>
+          <div class="ms-value">10 units</div>
+          <div class="ms-note">A 10-unit apartment building in a solid market</div>
+        </div>
+        <div class="math-divider"></div>
+        <div class="math-step">
+          <div class="ms-label">The opportunity</div>
+          <div class="ms-value">+$150/mo per unit</div>
+          <div class="ms-note">Rents are below market — you identify $150/month of upside per unit through renovation and management improvements</div>
+        </div>
+        <div class="math-divider"></div>
+        <div class="math-step">
+          <div class="ms-label">Annual NOI increase</div>
+          <div class="ms-value">+$18,000/year</div>
+          <div class="ms-note">10 units × $150 × 12 months = $18,000 additional annual net operating income</div>
+        </div>
+        <div class="math-divider"></div>
+        <div class="math-step">
+          <div class="ms-label">Market cap rate</div>
+          <div class="ms-value">6%</div>
+          <div class="ms-note">Properties in this market trade at a 6% capitalization rate</div>
+        </div>
+        <div class="math-divider"></div>
+        <div class="math-step result">
+          <div class="ms-label">Value created</div>
+          <div class="ms-value">+$300,000</div>
+          <div class="ms-note">$18,000 ÷ 0.06 = $300,000 of new property value — from one operational improvement</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="lesson-text">That is the income approach to value in action. The investor in this example did not wait for the market to appreciate. They did not rely on inflation or luck. They identified below-market rents, improved the property, raised rents to market rate, and the math did the rest. This is why Peter Harris says commercial real estate investors are not passive bystanders — they are active creators of value.</p>
+
+    <h3 class="sub-title">The three levers of forced appreciation</h3>
+    <p class="lesson-text"><strong>Increase income.</strong> Raise rents to market rate, reduce vacancy, add revenue streams like parking, storage, or laundry. Every dollar of new NOI creates $10–$25 of property value depending on the cap rate environment.</p>
+    <p class="lesson-text"><strong>Decrease expenses.</strong> Improve management efficiency, renegotiate service contracts, fix deferred maintenance that is causing ongoing costs. Lower expenses increase NOI the same way higher income does — and the value impact is identical.</p>
+    <p class="lesson-text"><strong>Improve the asset itself.</strong> Physical improvements that allow higher rents, attract better tenants, or reduce ongoing maintenance costs all feed directly into the income statement and therefore into value. The renovation budget becomes an investment with a calculable return on value created.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Why This Changes Everything</div>
+      <p>Most investors think about buying a good property and waiting for it to appreciate. The best investors think about buying a property with <strong>unrealized potential</strong> — where the current owner has left income on the table through poor management, deferred maintenance, below-market rents, or operational neglect. Finding those properties and unlocking that value is the repeatable skill that separates ordinary investors from extraordinary ones.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Where you are right now — <em>identifying your wealth stage and starting point</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">One of the most common mistakes new investors make is trying to apply a strategy designed for someone at a different wealth stage. The investor who is trying to pay off debt and build a cash reserve needs a completely different approach than the investor who has $200,000 in savings and is ready to deploy capital. Coach Carson's wealth stages framework is one of the most practical tools available for cutting through the noise and figuring out where you actually are — and what you should actually be doing.</p>
+
+    <div class="stages-track">
+      <div class="stage-item fade-in">
+        <div class="stage-num">1</div>
+        <div class="stage-body">
+          <div class="stage-tag">Survival</div>
+          <h4>Getting the bills paid</h4>
+          <p>Your priority right now is financial stability — digging out of a hole, covering monthly expenses, building an emergency fund. Real estate is a goal, not an immediate action. Focus on increasing income from your current job or a side hustle. Learn the business in your spare time. House hacking or becoming a part-time deal finder for other investors are realistic starting points at this stage.</p>
+        </div>
+      </div>
+      <div class="stage-item fade-in">
+        <div class="stage-num">2</div>
+        <div class="stage-body">
+          <div class="stage-tag">Stability</div>
+          <h4>Emergency fund, stable income, some savings</h4>
+          <p>You have financial oxygen — a cushion, a stable income, and the beginning of savings. This is when the real estate journey meaningfully begins. Master leasing, house hacking, wholesaling, or getting your real estate license to learn the market while earning. Your goal at this stage is learning while earning — not making a big investment move you are not ready for.</p>
+        </div>
+      </div>
+      <div class="stage-item fade-in">
+        <div class="stage-num">3</div>
+        <div class="stage-body">
+          <div class="stage-tag">Saver</div>
+          <h4>Actively accumulating capital to deploy</h4>
+          <p>You are saving aggressively and building capital specifically for real estate investment. House hacking to reduce living expenses, fix-and-flip to generate larger chunks of capital, or small buy-and-hold rental properties are all appropriate here. This is when most people close their first investment deal — and the experience of that first deal is worth more than any amount of additional education.</p>
+        </div>
+      </div>
+      <div class="stage-item fade-in">
+        <div class="stage-num">4</div>
+        <div class="stage-body">
+          <div class="stage-tag">Growth</div>
+          <h4>Building wealth — turning savings into a growing portfolio</h4>
+          <p>You have capital, some experience, and a clear strategy. You are now in pure investment mode — systematically acquiring properties, improving operations, refinancing to pull equity and reinvest. The debt snowball, the BRRRR strategy, 1031 exchanges — these wealth-building tools become available and powerful at this stage. This is where most of the real wealth in real estate is built.</p>
+        </div>
+      </div>
+      <div class="stage-item fade-in">
+        <div class="stage-num">5</div>
+        <div class="stage-body">
+          <div class="stage-tag">Income / Freedom</div>
+          <h4>Portfolio generates enough to fund your life</h4>
+          <p>Your rental income covers your living expenses. Work becomes optional. The goal shifts from accumulation to optimization — paying down debt, improving quality of holdings, reducing hassle, protecting and passing on what you have built. This is the destination. The path to it is long and nonlinear, but every stage above is a step closer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Most Important Question Before You Start</div>
+      <p>Before you research a single market, analyze a single deal, or make a single offer — answer this honestly: <strong>which stage are you actually in right now?</strong> Not which stage you want to be in. Not which stage the investor you follow on social media is in. Where are you, specifically, today? Your entire strategy depends on getting this right. Applying a Stage 4 strategy when you are in Stage 2 does not accelerate your journey — it derails it.</p>
+    </div>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to move to Module 2. They are here for students who want to go deeper on the investing philosophy and framework before moving into tactics.</p>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Coach Carson — Real Estate Investing 101: How to Get Started or Restarted</strong><br>A comprehensive 1.5-hour masterclass covering all nine steps of the real estate investing process — identifying your financial stage, choosing a strategy, picking a target market, deciding investment criteria, building your team, lining up financing, raising cash, finding deals, and scheduling your time. The #2 most downloaded episode in Coach Carson's history. Save this for when you are ready to move from mindset to action plan.</p>
+      <a href="https://www.youtube.com/watch?v=nckAJkfXewU" target="_blank">Watch →</a>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Peter Harris — Commercial Real Estate for Beginners (Full Audiobook)</strong><br>The complete audiobook version of Peter Harris's book, read by the author. Covers why you should be a commercial investor, the biggest pitfalls, which property types are best for beginners, how to analyze any commercial deal quickly, the language of commercial real estate, and the four guiding principles of commercial investment. Over 2.5 hours of foundational content — the best single free resource available for someone starting from zero.</p>
+      <a href="https://www.youtube.com/watch?v=dTc0JQKF1Bc" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 1 Key Takeaways</h3>
+    <ul>
+      <li>Real estate builds wealth through five mechanisms no paper investment can replicate: tangible asset ownership, monthly cash flow, forced appreciation through income improvements, leverage amplifying returns on your own capital, and extraordinary tax advantages including depreciation, cost segregation, and the 1031 exchange.</li>
+      <li>The forced appreciation formula is the most powerful concept in commercial real estate. Value = NOI ÷ Cap Rate. A $150/month rent increase across 10 units generates $18,000 of additional annual NOI which at a 6% cap rate creates $300,000 of new property value. You manufactured that value — it did not happen to you.</li>
+      <li>There are two ways to grow a portfolio: rocket style (fast, leveraged, fragile) and skyscraper style (deliberate, sustainable, built to last). The rocket gets attention on social media. The skyscraper builds generational wealth. Choose the approach that serves your life — not the one that performs best in a bull market.</li>
+      <li>Redefine success before you start. Cash flow is not the goal — the life that cash flow funds is the goal. How much monthly passive income do you actually need to have the freedom you want? That number is almost always lower than you think. Start there and build toward it deliberately.</li>
+      <li>Know your wealth stage before choosing a strategy. Survival, Stability, Saver, Growth, Income/Freedom — each stage requires a different approach. Applying the wrong strategy at the wrong stage does not accelerate the journey. It derails it.</li>
+      <li>The best investors are not passive bystanders waiting for appreciation. They are active value creators who find properties with unrealized potential — below-market rents, poor management, deferred maintenance — and systematically unlock that value through the income approach.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A 12-unit apartment building has rents $100/month below market. The market cap rate is 5%. If you raise rents to market rate, how much value do you create?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> $14,400 — you added $1,200/month in total income</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> $144,000 — ten times the annual income increase</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> $288,000 — 12 units × $100 × 12 months = $14,400 NOI increase ÷ 5% cap rate = $288,000 of new property value</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> $720,000 — cap rate of 5% means the property is worth 20x its annual income</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. Coach Carson describes two styles of building a real estate portfolio. Which one does he argue builds wealth that lasts?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Rocket growth — fast scaling with maximum leverage produces the highest long-term returns</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Skyscraper growth — deep foundation, deliberate pace, mission-driven, built to last through market cycles</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Neither — he argues that portfolio style doesn't affect long-term outcomes</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Hybrid growth — combining rocket speed with skyscraper foundations is the optimal approach</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. What distinguishes commercial real estate value from residential real estate value?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Commercial properties are always worth more than residential properties</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Commercial value is determined by comparable sales just like residential, but in a larger market</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Commercial value is determined by the income the property generates — not comparables — which means investors can directly force appreciation by improving NOI</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Commercial value is set by the government through assessed valuations and cannot be influenced by the owner</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. An investor is covering their monthly bills but has no savings and carries some credit card debt. According to the wealth stages framework, what is the most appropriate real estate strategy for them right now?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Buy a small multifamily property immediately — getting into the market early is the most important thing</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Begin the BRRRR strategy — buy, rehab, rent, refinance, repeat — to build equity quickly</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> Focus on stabilizing finances first — increase income, pay down debt, build an emergency fund — while learning the real estate business on the side</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Partner with an experienced investor immediately — their capital offsets the lack of personal savings</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Peter Harris says most investors get into commercial real estate for two reasons. What are they?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> To pay off their mortgage faster and to save for retirement</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> To beat the stock market and to own physical assets rather than paper ones</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> To design a life they don't need a vacation from, and to change their financial picture for the better — forever</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> To generate enough cash flow to quit their job within 12 months and to build a portfolio they can pass to their children</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 2: Asset Classes for Investors</h3>
+    <p>The mindset is set. Now let's talk about what to actually buy. Module 2 covers the investment-specific view of asset classes — multifamily, NNN retail, self-storage, mobile home parks, and more — through the lens of an investor evaluating cash flow, risk profile, management intensity, and wealth-building potential. Which asset class fits your stage, your market, and your goals?</p>
+    <a href="investing-module-2.html" class="next-module-cta">Module 2: Asset Classes for Investors →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="real-estate-investing.html" class="btn btn-outline">← Investing Track Overview</a>
+  <div class="module-nav-info">
+    <p>Real Estate Investing Track</p>
+    <strong>Module 1 of 6</strong>
+  </div>
+  <a href="investing-module-2.html" class="btn btn-gold">Module 2: Asset Classes →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{
+    correct:"Correct! The forced appreciation formula: 12 units × $100/month × 12 months = $14,400 additional annual NOI. Then $14,400 ÷ 0.05 (5% cap rate) = $288,000 of new property value. You did not wait for the market — you created that value by closing the rent gap. This is the engine behind most commercial real estate wealth creation.",
+    incorrect:"Not quite. Work through the formula: 12 units × $100/month × 12 months = $14,400 of additional annual NOI. Then apply the income approach: $14,400 ÷ 0.05 (5% cap rate) = $288,000 of new property value. The cap rate of 5% means buyers pay 20x the annual NOI — so every dollar of new NOI creates $20 of value. That multiplication effect is why forced appreciation is so powerful."
+  },
+  q2:{
+    correct:"Correct! Coach Carson's skyscraper growth model — deep foundation, deliberate and sustainable pace, mission-driven, built to outlast market cycles — is his argument for how wealth is built that lasts. The rocket model looks impressive in bull markets but is fragile and high-stress. The skyscraper takes longer to build but produces wealth that compounds for decades.",
+    incorrect:"Not quite. Coach Carson argues for skyscraper growth — deliberate, foundational, sustainable, and built to last through market cycles. The rocket model (fast, maximum leverage, high-stress) gets attention on social media but is fragile and often collapses when market conditions shift. The tortoise wins the long-term wealth race."
+  },
+  q3:{
+    correct:"Correct! This is the most important distinction in commercial real estate. Residential value is primarily driven by comparable sales — what did similar homes nearby sell for? Commercial value is driven by income — what does this property earn? Value = NOI ÷ Cap Rate. Because value is tied to income, investors can force appreciation by improving the income statement. This control over value creation is not available in residential real estate.",
+    incorrect:"Not quite. The key distinction is this: residential value is set by comparable sales in the surrounding market — largely outside the owner's control. Commercial value is set by the income the property generates, using the formula Value = NOI ÷ Cap Rate. Because value tracks income, investors who improve NOI directly increase the property's value. This is forced appreciation — manufacturing value rather than waiting for it."
+  },
+  q4:{
+    correct:"Correct! This investor is in Wealth Stage 1 or 2 — Survival or Stability. The appropriate strategy at this stage is not to make a big investment move but to stabilize the financial foundation first: increase income, reduce debt, build an emergency fund. Simultaneously learning about real estate investing is appropriate. Making a large property purchase before this foundation is solid often leads to financial stress and poor decision-making under pressure.",
+    incorrect:"Not quite. This investor is in Wealth Stage 1 — Survival. Applying a Stage 3 or 4 investing strategy (BRRRR, large multifamily purchase) before the financial foundation is stable almost always backfires. The correct approach is to stabilize first — pay down debt, build a cash reserve, increase income — while learning about real estate on the side. The Stage 1 strategy is not exciting, but it is what actually works at this stage."
+  },
+  q5:{
+    correct:"Correct! Peter Harris opens his video with this framing directly: most people invest in commercial real estate to design a life they don't need a vacation from, and to change their financial picture for the better — forever. These two reasons are the motivational foundation underneath every tactical decision in the rest of the track. Keep them in mind as you go deeper.",
+    incorrect:"Not quite. Peter Harris states it directly at the opening of his video: most investors get into commercial real estate for two reasons — to design a life they don't need a vacation from, and to change their financial picture for the better, forever. Those are not tactical goals. They are life goals. The tactics in the rest of this track are all in service of those two things."
+  }
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent — the investor mindset is locked in. You are ready for Module 2: Asset Classes for Investors.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above before moving on — the foundation matters more than any individual module that follows.';
+  }
+}
+</script>
+
+</body>
+</html>
