@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Investing Module 2: Asset Classes for Investors — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --burg:#5C1A2E;--burg-mid:#7D2A42;--burg-light:#9E4060;--burg-pale:#F9EEF1;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(92,26,46,0.1);
+  --shadow-card:0 2px 16px rgba(92,26,46,0.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--burg);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--burg);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--burg-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--burg-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--burg);font-weight:600;}
+.progress-bar{background:var(--burg-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--burg-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(92,26,46,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--burg-mid);border-radius:3px;width:33%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--burg);color:var(--gold-light);}
+.prog-dot.complete{background:var(--burg-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(92,26,46,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(92,26,46,0.25);}
+.module-hero{background:linear-gradient(135deg,#3A0A1C 0%,var(--burg) 55%,var(--burg-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--burg-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--burg);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-mentor{background:var(--burg-pale);border-left:4px solid var(--burg-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--burg-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--burg);font-style:italic;line-height:1.75;}
+
+/* Asset class cards */
+.asset-grid{display:flex;flex-direction:column;gap:1.25rem;margin:2rem 0;}
+.asset-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s;}
+.asset-card:hover{box-shadow:var(--shadow-card);}
+.asset-card .ac-header{padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;}
+.asset-card.sf .ac-header{background:linear-gradient(135deg,#1A2A3A,#2A4A6A);}
+.asset-card.sm .ac-header{background:linear-gradient(135deg,#1A3A2A,#2A6A4A);}
+.asset-card.mm .ac-header{background:linear-gradient(135deg,#3A2A1A,#6A4A2A);}
+.asset-card.ct .ac-header{background:linear-gradient(135deg,#2A1A3A,#4A2A6A);}
+.asset-card.mh .ac-header{background:linear-gradient(135deg,#1A1A3A,#2A2A6A);}
+.asset-card.cp .ac-header{background:linear-gradient(135deg,var(--burg),var(--burg-mid));}
+.asset-card .ac-icon{font-size:1.5rem;flex-shrink:0;}
+.asset-card .ac-header-text h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);}
+.asset-card .ac-header-text .ac-sub{font-size:11.5px;color:rgba(255,255,255,0.6);margin-top:2px;}
+.asset-card .ac-body{padding:1.25rem 1.5rem;}
+.asset-card .ac-body p{font-size:13.5px;color:var(--text-mid);line-height:1.75;margin-bottom:0.75rem;}
+.asset-card .ac-body p:last-child{margin-bottom:0;}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
+.pros-cons .pc-col h4{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.5rem;}
+.pros-cons .pc-col.pros h4{color:#1B6B3A;}
+.pros-cons .pc-col.cons h4{color:#8B2020;}
+.pros-cons .pc-col ul{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
+.pros-cons .pc-col ul li{font-size:12.5px;color:var(--text-mid);display:flex;gap:7px;line-height:1.5;}
+.pros-cons .pc-col.pros ul li::before{content:'✓';color:#1B6B3A;font-weight:700;flex-shrink:0;}
+.pros-cons .pc-col.cons ul li::before{content:'✕';color:#8B2020;font-weight:700;flex-shrink:0;}
+
+/* Time framework */
+.time-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:2rem 0;}
+.time-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:all 0.2s;}
+.time-card:hover{box-shadow:var(--shadow-card);}
+.time-card .tc-hrs{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--burg);line-height:1;margin-bottom:0.25rem;}
+.time-card .tc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-light);margin-bottom:0.75rem;}
+.time-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.time-card p{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+.time-card ul{list-style:none;display:flex;flex-direction:column;gap:0.3rem;margin-top:0.5rem;}
+.time-card ul li{font-size:12px;color:var(--text-mid);display:flex;gap:6px;}
+.time-card ul li::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;}
+
+/* Ideal property checklist */
+.checklist-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.cl-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.cl-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;display:flex;align-items:center;gap:8px;}
+.cl-card ul{list-style:none;display:flex;flex-direction:column;gap:0.3rem;}
+.cl-card ul li{font-size:12.5px;color:var(--text-mid);display:flex;gap:7px;line-height:1.55;}
+.cl-card ul li::before{content:'•';color:var(--gold);font-weight:700;flex-shrink:0;}
+
+/* Compare table */
+.compare-wrap{overflow-x:auto;margin:1.75rem 0;}
+.compare-table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:500px;}
+.compare-table th{background:var(--burg);color:var(--white);padding:9px 12px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;}
+.compare-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;line-height:1.6;}
+.compare-table td:first-child{font-weight:600;color:var(--text-dark);}
+.compare-table tr:hover td{background:var(--burg-pale);}
+.compare-table tr.highlight td{background:var(--gold-pale);}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.peter{background:var(--burg-pale);color:var(--burg-mid);}
+.video-badge.coach{background:#EBF5EE;color:#1B4D3E;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#3A0A1C,var(--burg));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--burg);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--burg);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--burg-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--burg);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--burg-mid);background:var(--burg-pale);}
+.option.selected{border-color:var(--burg-mid);background:var(--burg-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--burg-mid);background:var(--burg-pale);color:var(--burg);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--burg);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--burg-pale);color:var(--burg);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--burg);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--burg-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--burg-pale);color:var(--burg);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--burg);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--burg-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--burg-mid);color:var(--burg);}
+.btn-gold{background:var(--gold);color:var(--burg);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--burg);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .time-grid{grid-template-columns:1fr;}
+  .pros-cons{grid-template-columns:1fr;}
+  .checklist-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="real-estate-investing.html">Investing Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="real-estate-investing.html">Real Estate Investing</a><span class="sep">›</span>
+  <span class="current">Module 2: Asset Classes for Investors</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Investing Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="investing-module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <div class="prog-dot active">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏘️ Real Estate Investing Track · Module 2 of 6</div>
+    <h1>Asset Classes — <em>What to Buy and Why</em></h1>
+    <p>Before you analyze a single deal or send a single letter to a motivated seller, you need to understand what you are actually looking to buy — and why. Every property type has a different risk profile, a different financing landscape, a different management intensity, and a different ceiling. This module gives you the full picture so you can make an informed, deliberate choice about where to focus.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>50–60 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The core principle — <em>insist on value, be flexible on type</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The most common mistake new investors make when choosing a property type is falling in love with a category before they understand the numbers. They watch a documentary about self-storage and decide that is what they will do. They read a book about house hacking and decide duplexes are the only path. They attend a seminar about mobile home parks and go all in on a strategy without understanding their local market.</p>
+
+    <p class="lesson-text">Here is the truth that experienced investors understand: <strong>there are investors making excellent returns with every property type that exists.</strong> Single-family houses. Small multifamily. Medium apartments. Mobile home parks. Commercial NNN leases. Self-storage. Each has produced wealth for investors who understood it deeply and applied it consistently in the right market.</p>
+
+    <p class="lesson-text">The right mindset is this: <strong>insist on value — be flexible on type.</strong> A good deal is a property in a good location with good financial numbers. Those criteria are non-negotiable. What type of building sits on that good location? That is where flexibility serves you. The investor who stays open to different property types will find more opportunities than the investor who has decided in advance what kind of building they want to own.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 What Actually Makes a Good Deal</div>
+      <p>Three criteria — in this order. First: <strong>location</strong> — is this in an area where people want to live or operate a business, where population is stable or growing, where employment is healthy? Second: <strong>financial performance</strong> — do the numbers work at today's price? Does the rent cover expenses, debt service, and leave a cushion? Third: <strong>condition and risk</strong> — what does this property need, and are those costs knowable and manageable? A deal that passes all three criteria is a good deal regardless of whether it is a house, a duplex, a strip mall, or a self-storage facility.</p>
+    </div>
+
+    <p class="lesson-text">This module will walk you through the major property types available to small and mighty investors — their advantages, their challenges, their financing realities, and their management demands. By the end, you will have the vocabulary and framework to evaluate any property type intelligently, and you will have started thinking about which one or two types fit your market, your strategy, and your wealth stage.</p>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Residential asset classes — <em>the foundation of most small investor portfolios</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">For most investors building their first portfolio, the journey starts with residential real estate — homes and small apartment buildings. These properties are the most accessible, the most financeable, and the most understandable. They are also the most abundant — which means more deals to evaluate and more motivated sellers to find.</p>
+
+    <div class="asset-grid">
+
+      <div class="asset-card sf fade-in">
+        <div class="ac-header">
+          <div class="ac-icon">🏠</div>
+          <div class="ac-header-text">
+            <h3>Single-Family Houses</h3>
+            <div class="ac-sub">The most abundant investment property in America</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          <p>Single-family houses make up over 64% of all housing in the United States — which means they are the most available and most liquid investment property type for most investors. A house in a desirable neighborhood is a safe, steady investment even in down markets. People always need somewhere to live, and houses are the easiest to keep occupied.</p>
+          <p>What makes single-family unique is that they are <strong>hybrid investments</strong> — they generate cash flow from rent AND they appreciate in value independent of their income. Even a vacant house can increase in value if a buyer wants to live there. This dual-value driver is something multifamily and commercial properties do not have.</p>
+          <p>The main challenge with single-family houses is the price-to-income ratio. Because houses compete with owner-occupant buyers who buy on emotion, not math, they are often priced above what makes strong cash flow easy. In many markets, meaningful cash flow from a house comes years later as rents increase and the loan balance decreases.</p>
+          <div class="pros-cons">
+            <div class="pc-col pros">
+              <h4>Advantages</h4>
+              <ul>
+                <li>Most plentiful supply — more deals to find</li>
+                <li>Easiest financing — 30-year fixed loans widely available</li>
+                <li>Non-professional sellers — more room to negotiate</li>
+                <li>Longer-staying, more self-sufficient tenants</li>
+                <li>Can sell to tenants — saves commissions</li>
+                <li>Value independent of income</li>
+              </ul>
+            </div>
+            <div class="pc-col cons">
+              <h4>Challenges</h4>
+              <ul>
+                <li>Weaker price-to-rent ratio — cash flow harder to achieve</li>
+                <li>One vacancy = 100% income loss</li>
+                <li>Full maintenance responsibility on one unit</li>
+                <li>Competes with emotional owner-occupant buyers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card sm fade-in">
+        <div class="ac-header">
+          <div class="ac-icon">🏘️</div>
+          <div class="ac-header-text">
+            <h3>Small Multifamily — 2 to 4 Units</h3>
+            <div class="ac-sub">Duplexes, triplexes, fourplexes — the house hacker's best friend</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          <p>Small multifamily properties — duplexes (2 units), triplexes (3 units), and fourplexes (4 units) — are the favorite starting point for investors who want better cash flow than a single-family house while still having access to residential financing. They combine the best of both worlds: the financing advantages of a house and the income benefits of an apartment building.</p>
+          <p>The house hacking strategy — living in one unit and renting the others — is most commonly done with small multifamily. A new investor can move into a duplex, rent the other unit, and have their tenant cover most or all of their mortgage payment. Their effective housing cost drops to near zero while they build equity and cash flow simultaneously. It is one of the most powerful starting moves available to a beginning investor.</p>
+          <p>Owner-occupant buyers can get loans with <strong>as little as 0–10% down</strong> on small multifamily through FHA, VA, and conventional loan programs. And once you move out, the property continues as a pure investment with 30-year fixed financing already in place.</p>
+          <div class="pros-cons">
+            <div class="pc-col pros">
+              <h4>Advantages</h4>
+              <ul>
+                <li>Better cash flow than single-family houses</li>
+                <li>Still qualifies for residential financing (30-yr fixed)</li>
+                <li>House hacking possible — live for near free</li>
+                <li>Multiple income streams — one vacancy does not kill you</li>
+                <li>Less competition than large apartment buildings</li>
+              </ul>
+            </div>
+            <div class="pc-col cons">
+              <h4>Challenges</h4>
+              <ul>
+                <li>More management than a single-family house</li>
+                <li>Tenants share walls — noise complaints are real</li>
+                <li>Fewer available than single-family houses</li>
+                <li>Harder to sell — buyer pool is smaller</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card mm fade-in">
+        <div class="ac-header">
+          <div class="ac-icon">🏢</div>
+          <div class="ac-header-text">
+            <h3>Medium Multifamily — 5 to 100 Units</h3>
+            <div class="ac-sub">Commercial financing territory — value-add opportunity</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          <p>At 5 units and above you cross into commercial financing territory — and into a fundamentally different investing game. The price of a medium multifamily property is based entirely on its income, not comparable sales. This is the income approach to valuation: Value = NOI ÷ Cap Rate. Every dollar you add to net operating income by raising rents, reducing vacancies, or cutting expenses directly increases the property's value. This is forced appreciation — and it is the primary value-add strategy that has made many investors wealthy.</p>
+          <p>These properties sit in an interesting competitive gap: they are too small for the large national apartment investors who focus on 200+ unit complexes, but they are too large for most mom-and-pop investors who prefer houses and duplexes. This means <strong>less competition</strong> for investors willing to bridge the gap.</p>
+          <p>The financing shift is significant. With 5+ units you need commercial loans — typically 25–30% down, shorter loan terms (often 5–10 years with a balloon payment), and more complex underwriting. This is why understanding financing before targeting this property type is essential.</p>
+          <div class="pros-cons">
+            <div class="pc-col pros">
+              <h4>Advantages</h4>
+              <ul>
+                <li>Value-add potential — force appreciation through NOI</li>
+                <li>Less competition — sweet spot most investors skip</li>
+                <li>Multiple units — one vacancy is a small percentage</li>
+                <li>Commercial financing available at scale</li>
+              </ul>
+            </div>
+            <div class="pc-col cons">
+              <h4>Challenges</h4>
+              <ul>
+                <li>Commercial financing — 25–30% down required</li>
+                <li>Balloon payments — refinancing risk</li>
+                <li>All buyers are investors — price negotiations tougher</li>
+                <li>More management complexity — often needs a PM</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Peter Harris: Choosing the right commercial real estate <em>asset type</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Peter Harris walks through his framework for choosing the right commercial asset class — covering multifamily, mobile home parks, self-storage, flex space, and mixed-use. For each type he covers the investor profile it suits, the pros and cons, the current market conditions, and the management demands. Published January 2026 — the most current asset class comparison available from one of the most trusted voices in commercial real estate education.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/Yx1Y1cnMY98" title="Choosing the Right Commercial Real Estate Asset Type — Peter Harris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge peter">Peter Harris · Commercial Property Advisors</span>
+        <h4>Choosing the Right Commercial Real Estate Asset Type</h4>
+        <p>A head-to-head comparison of the major commercial asset classes — multifamily, mobile home parks, self-storage, flex space, and mixed-use — covering investor profile fit, pros and cons, market conditions, and management demands for each. Directly reinforces Lessons 2 and 3 of this module.</p>
+        <p class="credit">Commercial Property Advisors · YouTube January 2026 · ~15 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Beyond residential — <em>the asset classes most investors overlook</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most beginning investors default to residential real estate because it is familiar. But three asset classes that get far less attention from small investors offer some of the most compelling combinations of cash flow, passive management, and value-add potential available anywhere in real estate. Familiarity with these options gives you a competitive edge — because fewer investors understand them, there is less competition for the deals.</p>
+
+    <div class="asset-grid">
+
+      <div class="asset-card ct fade-in">
+        <div class="ac-header">
+          <div class="ac-icon">🏗️</div>
+          <div class="ac-header-text">
+            <h3>Condos and Townhomes</h3>
+            <div class="ac-sub">Affordable entry — but HOA risk requires careful due diligence</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          <p>Condos and townhomes are typically the most affordable properties in any market — which makes them appealing entry points for investors with limited capital. In high-cost markets they may be the only realistic option for getting started. They also tend to attract tenants who prefer lower-maintenance living, which can mean longer tenancies and less turnover.</p>
+          <p>The critical due diligence item with condos is the <strong>HOA (Homeowners Association)</strong>. A poorly managed HOA can levy surprise assessments — large one-time charges covering deferred maintenance like roof replacements — that can cost owners thousands of dollars with little warning. Before buying any condo as an investment, review the HOA's financials, reserve fund, and CC&Rs (Covenants, Conditions, and Restrictions) carefully. Some CC&Rs also restrict rental use or short-term rental platforms entirely.</p>
+          <div class="pros-cons">
+            <div class="pc-col pros">
+              <h4>Advantages</h4>
+              <ul>
+                <li>Most affordable entry point in high-cost markets</li>
+                <li>HOA handles exterior and common area maintenance</li>
+                <li>Attracts stable, lower-maintenance tenants</li>
+                <li>Amenities can command premium rents</li>
+              </ul>
+            </div>
+            <div class="pc-col cons">
+              <h4>Challenges</h4>
+              <ul>
+                <li>HOA assessments can be large and unpredictable</li>
+                <li>CC&Rs may restrict or prohibit rentals</li>
+                <li>Monthly HOA fees reduce cash flow</li>
+                <li>Less control over the property's condition</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card mh fade-in">
+        <div class="ac-header">
+          <div class="ac-icon">🏡</div>
+          <div class="ac-header-text">
+            <h3>Mobile Homes and Mobile Home Parks</h3>
+            <div class="ac-sub">Stigma creates opportunity — strong cash flow potential</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          <p>Manufactured homes (formerly called mobile homes) carry a stigma that most investors never look past — and that stigma is your competitive advantage. Because fewer investors pursue this asset class, there are more motivated sellers and better prices available for those willing to understand it. Since 1976, manufactured homes have been required to meet HUD federal construction standards, and modern manufactured homes match or exceed the quality of traditionally built houses.</p>
+          <p>The economics can be compelling. A newer manufactured home on owned land in the right location can rent for $1,200–$1,600 per month with a total cost basis of $100,000–$150,000 — a price-to-rent ratio that is difficult to achieve with traditional housing. The key challenges are financing (not all lenders lend on manufactured homes, so seller financing and private lending are common) and zoning (many jurisdictions restrict or prohibit manufactured homes).</p>
+          <p><strong>Mobile home parks</strong> take this a step further — you own the land and lease lots to mobile home owners. When you own both the land and the homes, you capture both the lot rent and the home rent. Parks with mismanaged prior owners often have strong value-add potential through improved management, updated rents, and better tenant screening.</p>
+          <div class="pros-cons">
+            <div class="pc-col pros">
+              <h4>Advantages</h4>
+              <ul>
+                <li>Stigma creates less competition and better prices</li>
+                <li>Excellent price-to-rent ratios possible</li>
+                <li>Long-term tenants — moving a home is difficult</li>
+                <li>Strong value-add potential in mismanaged parks</li>
+              </ul>
+            </div>
+            <div class="pc-col cons">
+              <h4>Challenges</h4>
+              <ul>
+                <li>Limited conventional financing — need creative solutions</li>
+                <li>Zoning restrictions in many jurisdictions</li>
+                <li>Older homes (pre-1990) require careful inspection</li>
+                <li>Turning around a distressed park is management-intensive</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card cp fade-in">
+        <div class="ac-header">
+          <div class="ac-icon">🏪</div>
+          <div class="ac-header-text">
+            <h3>Commercial Property — NNN, Self-Storage, and Small Commercial</h3>
+            <div class="ac-sub">Passive income, long leases, tenant pays the bills</div>
+          </div>
+        </div>
+        <div class="ac-body">
+          <p>Commercial real estate encompasses office, retail, industrial, self-storage, and senior housing — but for small investors the most compelling entry points are <strong>NNN (Triple Net) leases</strong> and <strong>self-storage</strong>.</p>
+          <p>With a NNN lease, the tenant — typically a national brand like a pharmacy, fast food chain, or dollar store — pays the base rent plus the property taxes, insurance, and maintenance. The landlord collects a check and does essentially nothing. Leases are often 10–20 years long. This is real passive income. The trade-off is that NNN properties command premium prices, yields are lower, and when a major tenant leaves at lease expiration the property can lose significant value quickly.</p>
+          <p>Self-storage has been one of the best-performing commercial real estate asset classes over the past decade. Low construction costs, minimal management intensity, recession-resistant demand (people need storage in good times and bad), and the ability to raise rents monthly on month-to-month leases make it attractive. The challenge is that new supply has increased significantly in many markets since 2020, compressing cap rates and occupancy in oversupplied submarkets.</p>
+          <p>Commercial real estate has the same fundamental financial benefits as residential — cash flow, appreciation, and tax advantages — but with generally less competition from small investors and more passive management options when structured correctly.</p>
+          <div class="pros-cons">
+            <div class="pc-col pros">
+              <h4>Advantages</h4>
+              <ul>
+                <li>NNN leases — tenant pays taxes, insurance, maintenance</li>
+                <li>Long lease terms — 10–20 years of predictable income</li>
+                <li>Self-storage: recession-resistant, easy to manage</li>
+                <li>Less competition from small investors</li>
+              </ul>
+            </div>
+            <div class="pc-col cons">
+              <h4>Challenges</h4>
+              <ul>
+                <li>NNN properties are expensive — lower initial yields</li>
+                <li>Major tenant departure devastates value</li>
+                <li>Self-storage: new supply has increased in many markets</li>
+                <li>Requires specialized knowledge and team members</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Property Type</th><th>Financing</th><th>Down Payment</th><th>Cash Flow</th><th>Management</th><th>Best For</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight"><td>Single-Family House</td><td>30-yr fixed conventional</td><td>5–25%</td><td>Moderate — builds over time</td><td>Lower — self-sufficient tenants</td><td>Beginners, stable long-term hold</td></tr>
+          <tr><td>Small Multifamily (2–4)</td><td>30-yr fixed conventional</td><td>0–25%</td><td>Good — better ratio than SFH</td><td>Moderate</td><td>House hackers, beginner investors</td></tr>
+          <tr class="highlight"><td>Medium Multifamily (5–100)</td><td>Commercial — balloon</td><td>25–30%</td><td>Strong — value-add potential</td><td>Higher — needs property manager</td><td>Experienced investors, value-add</td></tr>
+          <tr><td>Condos / Townhomes</td><td>30-yr fixed conventional</td><td>5–25%</td><td>Moderate — HOA reduces it</td><td>Lower — HOA handles exterior</td><td>High-cost markets, affordable entry</td></tr>
+          <tr class="highlight"><td>Mobile Homes / Parks</td><td>Seller financing, private</td><td>Varies widely</td><td>Excellent ratio possible</td><td>Moderate to high</td><td>Value-add seekers, less competition</td></tr>
+          <tr><td>NNN Commercial</td><td>Commercial — balloon</td><td>25–35%</td><td>Moderate — very passive</td><td>Minimal — tenant pays all</td><td>Passive income focus, experienced</td></tr>
+          <tr class="highlight"><td>Self-Storage</td><td>Commercial — SBA available</td><td>10–30%</td><td>Strong in right markets</td><td>Low — mostly automated</td><td>Investors wanting passive operations</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Coach Carson: Are you using the <em>wrong strategy?</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Before you choose a property type, you need to be honest about something most investors skip: how much time do you actually have to commit to real estate each week? Coach Carson's time-first strategy framework is one of the most practical tools available for cutting through the noise and matching your strategy to your real life — not to someone else's lifestyle on social media.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/4YH7Mg8oFjk" title="You're Using the Wrong Strategy — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge coach">Coach Carson · YouTube</span>
+        <h4>You're Using the Wrong Strategy</h4>
+        <p>The time-first strategy framework — 5-hour, 10-hour, and 20-hour investor profiles — and which strategies fit each. The boring rental strategy (turnkey properties, long-term financing, patience) for the time-constrained investor. Why trying to use a full-time strategy in a part-time life is the most common cause of overwhelm and failure. Directly reinforces Lesson 4 of this module.</p>
+        <p class="credit">Coach Carson · YouTube 2024 · ~13 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Matching strategy to your life — <em>the time-first framework and your ideal property</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Choosing a property type is not just about what performs best in the abstract. It is about what fits into your actual life — your time, your capital, your market, and your risk tolerance. The most important question to answer before committing to any strategy is the one most people never ask: <strong>how many hours per week can I realistically commit to real estate right now?</strong></p>
+
+    <p class="lesson-text">Not the hours you wish you had. Not the hours you plan to have once things calm down. The hours you actually have this week and every week. Because the strategy you choose needs to fit that number — not the other way around.</p>
+
+    <h3 class="sub-title">The three investor time profiles</h3>
+
+    <div class="time-grid">
+      <div class="time-card fade-in">
+        <div class="tc-hrs">5 hrs</div>
+        <div class="tc-label">Semi-Passive</div>
+        <h4>The Part-Time Investor</h4>
+        <p>Full-time job, family commitments, real estate fits in the gaps. Maybe 45 minutes at lunch, an hour on weekends.</p>
+        <ul>
+          <li>House hacking — live in one unit, rent the rest</li>
+          <li>Boring rentals — turnkey or light cosmetic work only</li>
+          <li>30-year fixed financing, larger down payments</li>
+          <li>Professional property manager from day one</li>
+          <li>Goal: 1 property per year, hold long-term</li>
+        </ul>
+      </div>
+      <div class="time-card fade-in">
+        <div class="tc-hrs">10 hrs</div>
+        <div class="tc-label">Semi-Active</div>
+        <h4>The Part-Time With Bandwidth</h4>
+        <p>Compressed schedule, flexible days off, or a partner with more time. Opens up more strategy options.</p>
+        <ul>
+          <li>Light BRRRR — buy, light remodel, rent, refinance</li>
+          <li>Off-market deal sourcing — letters, direct outreach</li>
+          <li>Short-term rental if market supports it</li>
+          <li>Small multifamily with self-management</li>
+          <li>Goal: 2–3 properties per year</li>
+        </ul>
+      </div>
+      <div class="time-card fade-in">
+        <div class="tc-hrs">20 hrs</div>
+        <div class="tc-label">Active Investor</div>
+        <h4>The Full-Time Builder</h4>
+        <p>Real estate is the primary focus. All strategies are on the table.</p>
+        <ul>
+          <li>Fix and flip for active income</li>
+          <li>Wholesaling as a deal-finding business</li>
+          <li>Major BRRRR projects</li>
+          <li>Medium multifamily with value-add</li>
+          <li>Goal: maximum portfolio growth</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Most Common Mistake</div>
+      <p>Most real estate content online is built for 20-hour investors. Most real people are 5-hour investors. When a 5-hour investor tries to execute a 20-hour strategy — major fix-and-flip projects, aggressive off-market marketing campaigns, full BRRRR cycles — the result is overwhelm, missed deadlines, blown budgets, and the feeling that real estate is not working. It is not that the strategy does not work. It is that the strategy does not fit the time available. Identify your actual time availability first. Then choose the strategy that fits it.</p>
+    </div>
+
+    <h3 class="sub-title">Building your ideal property criteria</h3>
+    <p class="lesson-text">Once you know your time profile and your preferred property type, the next step is getting specific about what you are actually looking for. Experienced investors do not browse randomly — they have a clearly defined target property profile that tells them immediately whether a deal is worth their time. Here are the criteria to define for yourself:</p>
+
+    <div class="checklist-grid">
+      <div class="cl-card fade-in">
+        <h4>🏠 Property Type & Size</h4>
+        <ul>
+          <li>Which property type — SFH, duplex, fourplex, apartment?</li>
+          <li>Number of bedrooms and bathrooms</li>
+          <li>Square footage range — smaller usually means better ROI</li>
+          <li>Garage or parking — increases tenant retention</li>
+          <li>Single story vs. multi-story preference</li>
+        </ul>
+      </div>
+      <div class="cl-card fade-in">
+        <h4>📍 Location Criteria</h4>
+        <ul>
+          <li>Target zip codes or neighborhoods</li>
+          <li>School district quality if targeting families</li>
+          <li>Proximity to employment centers</li>
+          <li>Neighborhood grade (A, B, C) — B is the sweet spot</li>
+          <li>Flood plain avoidance</li>
+        </ul>
+      </div>
+      <div class="cl-card fade-in">
+        <h4>💰 Financial Requirements</h4>
+        <ul>
+          <li>Target purchase price range</li>
+          <li>Minimum monthly cash flow per unit</li>
+          <li>Minimum cash-on-cash return percentage</li>
+          <li>Maximum repair budget at acquisition</li>
+          <li>Required cap rate or gross rent multiplier</li>
+        </ul>
+      </div>
+      <div class="cl-card fade-in">
+        <h4>🔧 Physical Condition</h4>
+        <ul>
+          <li>Turnkey, light cosmetic, or full value-add?</li>
+          <li>Roof age — replace above a certain age</li>
+          <li>HVAC age and condition</li>
+          <li>Low-maintenance materials preferred (brick, vinyl)</li>
+          <li>No flood plains, no major foundation issues</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Coach Carson — Small and Mighty Real Estate Investor</div>
+      <p>"Insist on value and be flexible on property type. Don't fall into the trap of thinking one type is automatically better than the others. There are investors who make money with all the property types. Instead, insist on good deals — buying a property in a good location with good financials. Those criteria are non-negotiable. But beyond those criteria, be open to investing in any property type that makes the most sense in your market."</p>
+    </div>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These are not required to move to Module 3. They are here for students who want to explore specific asset classes in more depth before deciding where to focus.</p>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Peter Harris — Self-Storage Investing for Beginners</strong><br>Self-storage has been one of the most resilient and highest-performing commercial asset classes of the past decade. Peter Harris covers what makes it attractive for investors, how to evaluate a self-storage deal, the management advantages, and the risks of oversupply in certain markets. Worth watching if self-storage is on your radar.</p>
+      <a href="https://www.youtube.com/watch?v=kDsYNNjP6OQ" target="_blank">Watch →</a>
+    </div>
+    <div class="deeper-link">
+      <p><strong>BiggerPockets — The House Hacking Strategy</strong><br>A comprehensive walkthrough of house hacking — buying a small multifamily, living in one unit, and using tenant rent to cover your mortgage. Covers duplex, triplex, and fourplex strategies, financing options including FHA with 3.5% down, and how to manage tenants who are also your neighbors. The most accessible entry point for most beginning investors with limited capital.</p>
+      <a href="https://www.youtube.com/watch?v=SrmOH4_QAH4" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 2 Key Takeaways</h3>
+    <ul>
+      <li>The core principle of property type selection: insist on value — be flexible on type. A good location and good financial numbers are non-negotiable. The type of building that sits on that good location is where flexibility serves you. There are successful investors in every property category.</li>
+      <li>Single-family houses: the most abundant investment property in America (64% of all US housing), easiest financing, longest-staying tenants, and hybrid value (appreciates independently of income). Main challenge: weaker price-to-rent ratio means cash flow often comes later as rents rise and loans pay down.</li>
+      <li>Small multifamily (2–4 units): the house hacker's best friend. Owner-occupants can get 0–10% down with residential financing. Multiple income streams mean one vacancy does not kill your cash flow. Best of both worlds — residential financing with apartment-style income.</li>
+      <li>Medium multifamily (5–100 units): commercial financing territory. Value is based entirely on income (Value = NOI ÷ Cap Rate) — which means every dollar of NOI improvement directly increases property value. Less competition because this size is too small for institutions but too large for most small investors.</li>
+      <li>Commercial alternatives — NNN (tenant pays taxes, insurance, and maintenance — extremely passive), self-storage (recession-resistant, easy to manage, month-to-month flexibility), mobile home parks (stigma creates opportunity, excellent cash flow ratios possible) — all offer compelling risk-reward profiles for investors willing to learn them.</li>
+      <li>The time-first framework: 5-hour investors (boring rentals, turnkey, professional management), 10-hour investors (light BRRRR, off-market sourcing), 20-hour investors (full active strategies). The single biggest cause of investor failure is using a 20-hour strategy on a 5-hour schedule.</li>
+      <li>Define your ideal property criteria before you start looking: target property type, location parameters, financial requirements (cash flow, cap rate, cash-on-cash), and physical condition standards. Knowing what you want makes deal evaluation faster and eliminates the paralysis of looking at everything.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A first-time investor wants to get started with minimal cash down and learn property management hands-on. Which property type and strategy is most aligned with their situation?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> A 20-unit apartment building — more units means more income to learn from</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> A duplex using the house hacking strategy — live in one unit, rent the other, with as little as 3.5% down using FHA financing</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> A NNN commercial property — the passive income eliminates management learning curve</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> A single-family house in the most expensive neighborhood in their market — premium locations always appreciate fastest</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. At what unit count does a multifamily property cross from residential financing into commercial financing territory — and why does this matter?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> 3 units — triplex financing is always considered commercial</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> 10 units — single digits stay residential regardless of financing</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> 5 units — at 5+ units you need commercial loans, typically requiring 25–30% down with balloon payments instead of 30-year fixed residential financing</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> 20 units — smaller buildings always use residential financing regardless of size</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. An investor is considering buying a condo as a rental. What is the single most important piece of due diligence specific to condos that does not apply to single-family houses?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Reviewing the school district ratings — condos are primarily rented to families with children</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Reviewing the HOA financials, reserve fund, and CC&Rs — a poorly funded HOA can levy large surprise assessments, and CC&Rs may prohibit or restrict rentals entirely</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Getting a commercial appraisal — condos always require commercial financing</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Checking the flood plain maps — condos are more vulnerable to flooding than houses</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Why do medium multifamily apartments (5–100 units) have less competition than single-family houses or large apartment complexes?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> They are less profitable than other property types so fewer investors are interested</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> They sit in a competitive gap — too small for large national investors who focus on 200+ unit complexes, but too large for most mom-and-pop investors who prefer houses and duplexes</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> They require unusual zoning that makes them rare in most markets</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Their commercial financing requirements scare away all but the most experienced investors</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. An investor works full-time, has two children, and can realistically commit about 5 hours per week to real estate. According to the time-first framework, which strategy is most appropriate?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Wholesaling — it generates income without requiring capital so it fits any schedule</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Major fix-and-flip projects — the profit per deal is highest so fewer deals are needed</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> The boring rental strategy — buying turnkey or lightly cosmetic properties with long-term fixed financing, hiring a property manager, and holding patiently for the long run</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The full BRRRR strategy — the refinancing step recovers cash so less initial capital is needed</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 3: Finding and Evaluating Deals</h3>
+    <p>You know what you are looking for. Now the question is how to find it — and how to quickly determine whether a deal is worth pursuing or worth walking away from. Module 3 covers the complete deal-finding system: building your buy box, the marketing channels that produce motivated sellers, how to run the numbers on a rental property in under 10 minutes, and how to identify the deals that most investors miss.</p>
+    <a href="investing-module-3.html" class="next-module-cta">Module 3: Finding & Evaluating Deals →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="investing-module-1.html" class="btn btn-outline">← Module 1: The Investor Mindset</a>
+  <div class="module-nav-info">
+    <p>Real Estate Investing Track</p>
+    <strong>Module 2 of 6</strong>
+  </div>
+  <a href="investing-module-3.html" class="btn btn-gold">Module 3: Finding Deals →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{
+    correct:"Correct! House hacking a duplex is the ideal starting point for a first-time investor with limited capital. FHA financing allows as little as 3.5% down for owner-occupants, so the barrier to entry is low. Living on-site makes tenant management straightforward and educational. The tenant's rent covers a significant portion of the mortgage. It is the single most accessible and practical entry point for most beginning investors.",
+    incorrect:"Not quite. The ideal strategy for a first-time investor with limited capital is house hacking a small multifamily — specifically a duplex, triplex, or fourplex. FHA financing allows owner-occupants to purchase with as little as 3.5% down. By living in one unit and renting the others, the investor learns property management hands-on while the tenants help cover the mortgage. This is the most accessible, lowest-barrier entry point available."
+  },
+  q2:{
+    correct:"Correct! At 5 units, a property crosses from residential to commercial financing. With 1–4 units, investors can access 30-year fixed residential loans with as little as 5–25% down through conventional, FHA, or VA programs. At 5+ units, those programs no longer apply — you need commercial loans which typically require 25–30% down, have shorter terms with balloon payments, and more complex underwriting. This financing shift is one of the biggest practical differences between small and medium multifamily investing.",
+    incorrect:"Not quite. The residential-to-commercial financing boundary is at 5 units. Properties with 1–4 units qualify for residential financing — 30-year fixed loans, lower down payments, simpler qualification. At 5 units and above, you need commercial financing with higher down payments (25–30%), balloon payments, and different underwriting requirements. This is a critical distinction for any investor considering apartment buildings."
+  },
+  q3:{
+    correct:"Correct! The HOA is the most important condo-specific due diligence item. A poorly managed HOA with an inadequate reserve fund can levy large special assessments — unexpected one-time charges for major repairs like roof replacements — that can cost condo owners thousands of dollars. The CC&Rs may also restrict or prohibit rentals entirely or limit short-term rental platforms, which would make the property unusable as an investment. Always review the HOA financials, reserve study, and CC&Rs before buying any condo as a rental.",
+    incorrect:"Not quite. The most important condo-specific due diligence item is reviewing the HOA (Homeowners Association) financials, reserve fund, and CC&Rs. A poorly funded HOA can levy surprise special assessments for major capital expenses, and CC&Rs may restrict or prohibit rentals entirely. These risks do not exist with single-family houses and are the primary reason condos require extra due diligence compared to other property types."
+  },
+  q4:{
+    correct:"Correct! Medium multifamily (5–100 units) sits in a competitive sweet spot that most investors miss. Large institutional investors focus on 200+ unit complexes where the economics of professional management and institutional capital deployment make sense. Small mom-and-pop investors prefer the simpler financing and management of houses and duplexes. The 5–100 unit range is too large for the small investors and too small for the big ones — which means the investor who targets this range faces less competition for quality deals.",
+    incorrect:"Not quite. Medium multifamily has less competition because of a competitive gap — these properties are too small for large institutional investors who focus on 200+ unit complexes, but too large for most small mom-and-pop investors who prefer houses and duplexes. This size range gets overlooked by both ends of the market, which means less competition and better opportunities for the investor who understands and pursues it deliberately."
+  },
+  q5:{
+    correct:"Correct! A 5-hour per week investor should use the boring rental strategy — buying turnkey or lightly cosmetic properties with long-term fixed financing, hiring a professional property manager, and holding patiently. Wholesaling, fix-and-flip, and full BRRRR are all strategies that require significantly more time investment to execute successfully. Trying to execute a 20-hour strategy on a 5-hour schedule leads to overwhelm, missed details, blown budgets, and the feeling that real estate does not work — when the real issue is the strategy does not fit the available time.",
+    incorrect:"Not quite. For a 5-hour per week investor, the right strategy is the boring rental approach — turnkey or lightly cosmetic properties, long-term fixed financing, professional property management, patient long-term hold. Wholesaling, fix-and-flip, and full BRRRR all require significantly more time to execute well. Coach Carson's time-first framework is clear: match your strategy to your actual available time, not to what sounds most exciting or produces the highest per-deal return."
+  }
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent — you understand the asset class landscape. You are ready for Module 3: Finding and Evaluating Deals.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above before moving on — knowing the asset classes well will directly improve your deal evaluation in Module 3.';
+  }
+}
+</script>
+
+</body>
+</html>
