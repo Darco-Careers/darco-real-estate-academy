@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Investing Module 3: Finding & Evaluating Deals — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --burg:#5C1A2E;--burg-mid:#7D2A42;--burg-light:#9E4060;--burg-pale:#F9EEF1;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(92,26,46,0.1);
+  --shadow-card:0 2px 16px rgba(92,26,46,0.07);
+  --green:#1B6B3A;--green-pale:#EAF5EE;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--burg);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--burg);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--burg-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--burg-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--burg);font-weight:600;}
+.progress-bar{background:var(--burg-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--burg-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(92,26,46,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--burg-mid);border-radius:3px;width:50%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--burg);color:var(--gold-light);}
+.prog-dot.complete{background:var(--burg-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(92,26,46,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(92,26,46,0.25);}
+.module-hero{background:linear-gradient(135deg,#3A0A1C 0%,var(--burg) 55%,var(--burg-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--burg-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--burg);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-mentor{background:var(--burg-pale);border-left:4px solid var(--burg-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--burg-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--burg);font-style:italic;line-height:1.75;}
+
+/* Deal funnel */
+.funnel-wrap{margin:2rem 0;}
+.funnel-step{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:1.5rem;position:relative;}
+.funnel-wrap::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--burg-pale);}
+.funnel-wrap{position:relative;}
+.funnel-step:last-child{padding-bottom:0;}
+.fs-num{width:40px;height:40px;border-radius:50%;background:var(--burg);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:0.9rem;flex-shrink:0;z-index:1;}
+.fs-body{padding-top:6px;}
+.fs-body h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;}
+.fs-body .fs-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;background:var(--burg-pale);color:var(--burg-mid);margin-bottom:0.4rem;}
+.fs-body p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+
+/* Formula cards */
+.formula-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.formula-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:all 0.2s;}
+.formula-card:hover{box-shadow:var(--shadow-card);}
+.formula-card .fc-name{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--burg-mid);margin-bottom:0.4rem;}
+.formula-card .fc-formula{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;padding:0.5rem 0.75rem;background:var(--burg-pale);border-radius:8px;display:inline-block;}
+.formula-card p{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:0.5rem;}
+.formula-card .fc-example{font-size:12px;color:var(--text-light);background:var(--cream-dark);padding:0.5rem 0.75rem;border-radius:6px;font-style:italic;}
+.formula-card .fc-target{font-size:11px;font-weight:700;color:var(--green);margin-top:0.4rem;}
+
+/* Math box */
+.math-box{background:var(--burg-pale);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.math-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--burg);margin-bottom:1rem;}
+.math-row{display:flex;align-items:center;gap:1rem;margin-bottom:0.6rem;padding:0.5rem 0;border-bottom:1px solid rgba(92,26,46,0.1);}
+.math-row:last-child{border-bottom:none;padding-top:0.75rem;margin-top:0.25rem;}
+.math-label{font-size:12px;font-weight:600;color:var(--text-light);width:160px;flex-shrink:0;text-transform:uppercase;letter-spacing:0.5px;}
+.math-value{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--burg);}
+.math-value.result{color:var(--gold);font-size:1.25rem;}
+.math-note{font-size:12px;color:var(--text-mid);flex:1;}
+
+/* Motivated seller tags */
+.seller-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.25rem 0;}
+.seller-tag{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:12.5px;color:var(--text-mid);font-weight:500;}
+.seller-tag.highlight{background:var(--burg-pale);border-color:var(--burg-mid);color:var(--burg);font-weight:600;}
+
+/* Marketing channels */
+.channel-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.channel-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:all 0.2s;}
+.channel-card:hover{box-shadow:var(--shadow-card);}
+.channel-card .ch-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;}
+.channel-card .ch-icon{font-size:1.3rem;}
+.channel-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);}
+.channel-card .ch-cost{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;margin-left:6px;}
+.channel-card .ch-cost.low{background:var(--green-pale);color:var(--green);}
+.channel-card .ch-cost.med{background:var(--gold-pale);color:#8A6A20;}
+.channel-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--burg-pale);color:var(--burg-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#3A0A1C,var(--burg));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--burg);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--burg);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--burg-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--burg);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--burg-mid);background:var(--burg-pale);}
+.option.selected{border-color:var(--burg-mid);background:var(--burg-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--burg-mid);background:var(--burg-pale);color:var(--burg);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--burg);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--burg-pale);color:var(--burg);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--burg);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--burg-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--burg-pale);color:var(--burg);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--burg);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--burg-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--burg-mid);color:var(--burg);}
+.btn-gold{background:var(--gold);color:var(--burg);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--burg);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .formula-grid{grid-template-columns:1fr;}
+  .channel-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="real-estate-investing.html">Investing Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="real-estate-investing.html">Real Estate Investing</a><span class="sep">›</span>
+  <span class="current">Module 3: Finding & Evaluating Deals</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Investing Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="investing-module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="investing-module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <div class="prog-dot active">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏘️ Real Estate Investing Track · Module 3 of 6</div>
+    <h1>Finding & Evaluating <em>Deals</em></h1>
+    <p>You know why you are investing and what you are looking to buy. Now comes the hardest skill in real estate — finding good deals and knowing quickly whether a property is worth pursuing. This module covers the complete deal-finding system, the essential financial formulas every investor needs to know, and how to identify the motivated sellers most investors never find.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>55–70 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The deal funnel — <em>why real estate is a numbers game at the top</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The most common complaint among beginning investors is "I can't find any good deals." And almost every time, the diagnosis is the same: they are not generating enough leads at the top of the funnel. They browse ten listings on Zillow, see nothing that excites them, and conclude the market is too competitive. What they have actually discovered is that ten listings is not enough to find a deal — not that deals do not exist.</p>
+
+    <p class="lesson-text">Real estate investing is a numbers game. Good deals are not sitting on the first page of Zillow highlighted with a badge that says "great investment opportunity." They are hidden beneath the surface — waiting for investors who build systems to surface them. The investors who consistently find and buy good deals do not get lucky. They build a funnel and work it every week.</p>
+
+    <div class="funnel-wrap">
+      <div class="funnel-step fade-in">
+        <div class="fs-num">1</div>
+        <div class="fs-body">
+          <div class="fs-tag">Top of Funnel — Widest</div>
+          <h4>Lead Generation</h4>
+          <p>Marketing systems consistently generate potential purchase opportunities. This is where most investors fail — they generate too few leads. The top of your funnel needs to be wide. Plan for 50–100 leads to produce 1 deal. More leads = more deals. This is the number one lever every investor can pull.</p>
+        </div>
+      </div>
+      <div class="funnel-step fade-in">
+        <div class="fs-num">2</div>
+        <div class="fs-body">
+          <div class="fs-tag">Pre-Screening</div>
+          <h4>Collect and Pre-Screen Leads</h4>
+          <p>Apply your buy box criteria quickly to eliminate properties that do not fit your investing profile. Is this in your target location? Is the property type right? Does a rough look at the numbers suggest it could work? This step saves you from spending time analyzing deals that were never going to work for you.</p>
+        </div>
+      </div>
+      <div class="funnel-step fade-in">
+        <div class="fs-num">3</div>
+        <div class="fs-body">
+          <div class="fs-tag">Investigation</div>
+          <h4>Gather Information About the Seller and Property</h4>
+          <p>For leads that pass the pre-screen, dig deeper. Talk to the seller. Understand their situation — why are they selling, what is their timeline, what problem are they trying to solve? Walk or drive the property. Get the financial details. This is where relationships are built and deals are shaped before any offer is made.</p>
+        </div>
+      </div>
+      <div class="funnel-step fade-in">
+        <div class="fs-num">4</div>
+        <div class="fs-body">
+          <div class="fs-tag">Offer Stage</div>
+          <h4>Make an Offer</h4>
+          <p>Based on your financial analysis, make an offer that works for your numbers. Good investors make a lot of offers — many of which are declined. That is expected and normal. An offer is not a commitment. It is a conversation opener.</p>
+        </div>
+      </div>
+      <div class="funnel-step fade-in">
+        <div class="fs-num">5</div>
+        <div class="fs-body">
+          <div class="fs-tag">Follow Up</div>
+          <h4>Follow Up If Needed</h4>
+          <p>Many of the best deals come from sellers who said no six months ago. Their situation changes. Their urgency increases. The investor who stays in contact — politely, without pressure — is the one who gets the call when the seller is ready to move. Most investors give up after one interaction. The deal-finders follow up consistently.</p>
+        </div>
+      </div>
+      <div class="funnel-step fade-in">
+        <div class="fs-num">6</div>
+        <div class="fs-body">
+          <div class="fs-tag">Contract</div>
+          <h4>Put Property Under Contract</h4>
+          <p>An accepted offer moves to contract. This gives you the legal right to buy the property and the due diligence period to verify everything you need to know before closing. The clock starts here.</p>
+        </div>
+      </div>
+      <div class="funnel-step fade-in">
+        <div class="fs-num">7</div>
+        <div class="fs-body">
+          <div class="fs-tag">Bottom of Funnel — Narrowest</div>
+          <h4>Due Diligence and Close</h4>
+          <p>Verify the financials, inspect the property, confirm title, finalize financing, and close. By the time you reach the bottom of the funnel you have a much smaller number of deals compared to the leads at the top. That is how it is supposed to work.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Diagnostic Tool</div>
+      <p>When investors tell Coach Carson they cannot find good deals, he can predict their problem 99% of the time before they finish the sentence: they are not generating enough leads at the top of the funnel. If you are not buying deals, work backwards. How many leads are you generating per month? How many offers are you making? Almost always, the solution is more volume at the top — not a change in strategy or market.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Coach Carson: How to analyze a rental property in 2026 — <em>no spreadsheets needed</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Coach Carson walks through the complete back-of-envelope rental property analysis framework — from the Warren Buffett rule for rental deals through the 1% rule, unleveraged yield, cap rate, cash flow, cash-on-cash return, and all four sources of equity growth. Published December 2025. No spreadsheets, no complicated calculators — just the mental math and frameworks experienced investors use to evaluate deals in real time. This is the most practical deal analysis video available for small and mighty investors.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/15oNl7c2eRs" title="How to Analyze a Rental Property in 2026 — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Coach Carson · YouTube</span>
+        <h4>How to Analyze a Rental Property in 2026 (No Spreadsheets or Calculators Needed)</h4>
+        <p>Back-of-envelope analysis, the Warren Buffett rule for rental deals, unleveraged yield, cap rate, cash-on-cash return, and all four equity growth sources — with a real duplex example at the end. The most comprehensive and current rental analysis walkthrough available. Directly reinforces Lesson 2 of this module.</p>
+        <p class="credit">Coach Carson · YouTube December 2025 · ~46 min · Comprehensive</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Running the numbers — <em>the formulas every investor must know</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The difference between a good deal and a bad deal is in the numbers. Not the feel of a property. Not the neighborhood name. Not what the seller is asking. The numbers. Every experienced investor has a set of formulas they run on every property — quickly, often in their head — to determine whether a deal is worth pursuing. Here are the essential ones.</p>
+
+    <h3 class="sub-title">Quick screening tools — run these first</h3>
+
+    <div class="formula-grid">
+      <div class="formula-card fade-in">
+        <div class="fc-name">The 1% Rule</div>
+        <div class="fc-formula">Monthly Rent ÷ Purchase Price ≥ 1%</div>
+        <p>The fastest initial screen. If a property's monthly rent is at least 1% of the purchase price, it has a chance of producing positive cash flow. This is a rough filter — not a final answer. Use it to quickly eliminate properties that will never work and focus your time on those that might.</p>
+        <div class="fc-example">Example: $200,000 property should rent for at least $2,000/month to pass the 1% screen.</div>
+        <div class="fc-target">Target: ≥ 1% — higher is better in expensive markets</div>
+      </div>
+      <div class="formula-card fade-in">
+        <div class="fc-name">Gross Rent Multiplier (GRM)</div>
+        <div class="fc-formula">Purchase Price ÷ Annual Gross Rent</div>
+        <p>Another quick screen. GRM tells you how many years of gross rent it would take to pay for the property at full price. Lower is generally better — it means you are paying less per dollar of gross income. Compare GRM across properties in the same market.</p>
+        <div class="fc-example">Example: $200,000 price ÷ $24,000 annual rent = GRM of 8.3. A market with GRM of 12+ is harder to cash flow.</div>
+        <div class="fc-target">Target: Varies by market — lower GRM = better cash flow potential</div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The 50% rule — fast NOI estimation</h3>
+    <p class="lesson-text">Once a property passes your quick screen, you need to estimate Net Operating Income (NOI) — the income the property generates after operating expenses but before mortgage payments. The long way is to estimate every expense line by line. The fast way is the <strong>50% rule</strong>: assume operating expenses equal approximately 50% of gross rent. What is left is your estimated NOI.</p>
+
+    <div class="math-box">
+      <h4>📊 The 50% Rule in Action</h4>
+      <div class="math-row">
+        <div class="math-label">Monthly Rent</div>
+        <div class="math-value">$1,500</div>
+        <div class="math-note">What a tenant pays each month</div>
+      </div>
+      <div class="math-row">
+        <div class="math-label">Annual Gross Rent</div>
+        <div class="math-value">$18,000</div>
+        <div class="math-note">$1,500 × 12 months</div>
+      </div>
+      <div class="math-row">
+        <div class="math-label">Operating Expenses (50%)</div>
+        <div class="math-value">$9,000</div>
+        <div class="math-note">Taxes, insurance, maintenance, vacancy, management — roughly half of gross rent</div>
+      </div>
+      <div class="math-row">
+        <div class="math-label">Estimated NOI</div>
+        <div class="math-value result">$9,000/yr</div>
+        <div class="math-note">$750/month — what the property generates before any mortgage payment</div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The 50% Rule Is a Starting Point</div>
+      <p>The 50% rule is a fast estimation tool — not a substitute for real underwriting. Actual operating expenses vary by property type, age, location, and management approach. Well-maintained properties in good areas often run 40–45%. Older properties with deferred maintenance may run 55–60%. Always verify actual expenses before committing to buy. The 50% rule tells you if a deal deserves more investigation — not whether to close on it.</p>
+    </div>
+
+    <h3 class="sub-title">Deeper analysis formulas</h3>
+
+    <div class="formula-grid">
+      <div class="formula-card fade-in">
+        <div class="fc-name">Unleveraged Yield (Cap Rate)</div>
+        <div class="fc-formula">NOI ÷ Purchase Price</div>
+        <p>Also called cap rate. This tells you what return you would get on the property if you paid all cash — no mortgage. It lets you compare properties on a level playing field regardless of financing. A 7% cap rate means $7 of annual income for every $100 of property value.</p>
+        <div class="fc-example">Example: $9,000 NOI ÷ $150,000 price = 6% unleveraged yield. Is 6% good? Depends on your market — compare to other local properties.</div>
+        <div class="fc-target">Target: Find out the going cap rate for your market and compare — above market rate = potential deal</div>
+      </div>
+      <div class="formula-card fade-in">
+        <div class="fc-name">Cash-on-Cash Return</div>
+        <div class="fc-formula">Annual Cash Flow ÷ Cash Invested</div>
+        <p>How much cash does the property return annually relative to the cash you put in? This accounts for your mortgage — so it reflects your actual leveraged return on investment. A 10% cash-on-cash means for every $30,000 you invested, you get $3,000 back per year in cash flow.</p>
+        <div class="fc-example">Example: $3,600 annual cash flow ÷ $30,000 down payment = 12% cash-on-cash return.</div>
+        <div class="fc-target">Target: 8–12%+ is strong. Below 6% is thin. Negative means the property costs you money monthly.</div>
+      </div>
+      <div class="formula-card fade-in">
+        <div class="fc-name">Monthly Cash Flow</div>
+        <div class="fc-formula">NOI − Annual Debt Service ÷ 12</div>
+        <p>What lands in your bank account each month after all expenses and the mortgage payment. This is the most concrete measure of a property's immediate financial performance. Positive cash flow means the property pays you. Negative means you subsidize it.</p>
+        <div class="fc-example">Example: $750/month NOI − $550/month mortgage payment = $200/month cash flow. Multiply by 12 = $2,400/year.</div>
+        <div class="fc-target">Target: Coach Carson's goal — at least $100–$200/month per unit as a minimum floor</div>
+      </div>
+      <div class="formula-card fade-in">
+        <div class="fc-name">Price Discount (Equity at Purchase)</div>
+        <div class="fc-formula">Market Value − Purchase Price</div>
+        <p>The fastest way to build equity is to buy below market value. A 10% discount on a $200,000 property creates $20,000 of instant equity the day you close. This margin of safety also protects you if the market softens after you buy.</p>
+        <div class="fc-example">Example: Buy at $180,000 with a 20% down payment ($36,000). Full value is $200,000. Instant equity = $200,000 − $144,000 loan = $56,000. Your $36,000 invested created $56,000 of equity.</div>
+        <div class="fc-target">Target: Any discount is good. Shoot for 10–20% below market as you build skills.</div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The four sources of equity growth</h3>
+    <p class="lesson-text">Cash flow gets the attention. But the full picture of why real estate builds wealth requires understanding all four ways a property grows your equity over time:</p>
+
+    <div class="funnel-wrap">
+      <div class="funnel-step fade-in">
+        <div class="fs-num" style="background:var(--gold);color:var(--burg);">1</div>
+        <div class="fs-body">
+          <h4>Price Discount — Instant equity at purchase</h4>
+          <p>Buying below market value immediately creates equity. A 10% discount on a $200,000 property creates $20,000 of wealth the day you close — without the market moving, without doing any work. The skill of finding motivated sellers and negotiating effectively is the primary engine of this equity source.</p>
+        </div>
+      </div>
+      <div class="funnel-step fade-in">
+        <div class="fs-num" style="background:var(--gold);color:var(--burg);">2</div>
+        <div class="fs-body">
+          <h4>Forced Appreciation — Value you create through improvement</h4>
+          <p>Physically improving a property (renovating, adding a unit, converting space), operationally improving it (raising rents to market, reducing vacancies, cutting unnecessary expenses), or legally improving it (rezoning, converting to condos) all increase NOI — which directly increases value using the income approach. This is the active wealth-creation engine of real estate investing.</p>
+        </div>
+      </div>
+      <div class="funnel-step fade-in">
+        <div class="fs-num" style="background:var(--gold);color:var(--burg);">3</div>
+        <div class="fs-body">
+          <h4>Passive Appreciation — Market carries value up over time</h4>
+          <p>Real estate in high-demand locations tends to appreciate passively as population grows, inflation rises, and housing supply fails to keep up. The US average long-term appreciation rate is approximately 3–4% annually — roughly matching the rate of inflation. In high-growth markets it is meaningfully higher. You do not earn this — you benefit from it by holding.</p>
+        </div>
+      </div>
+      <div class="funnel-step fade-in">
+        <div class="fs-num" style="background:var(--gold);color:var(--burg);">4</div>
+        <div class="fs-body">
+          <h4>Principal Paydown — Your tenant pays off your mortgage</h4>
+          <p>Every month your tenant's rent payment covers your mortgage — and a portion of each payment reduces the loan balance. This principal paydown starts small (most early payments go to interest) but compounds over time. After 10 years on a 30-year mortgage you have paid down roughly 10–15% of the original balance. After 20 years, significantly more. Your tenant built that equity for you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Motivated sellers — <em>who they are and why they sell below market</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most properties listed on the MLS are priced at market value. The sellers are patient, represented by agents, and expect to go through the standard process of listing, showing, and closing at the best price the market will pay. These sellers are not your primary target — not because they are bad people, but because the numbers rarely work at market price for an investor who needs a margin of safety.</p>
+
+    <p class="lesson-text">Your target is the <strong>motivated seller</strong> — a property owner with a problem to solve that outweighs their desire to maximize financial return. Motivated does not mean desperate. It means their situation has created urgency, and that urgency creates an opportunity for you to solve their problem while getting a property at a price that works for your criteria.</p>
+
+    <p class="lesson-text">Here is an important insight most beginners miss: <strong>motivation can come from anyone.</strong> It can come from an individual homeowner going through a difficult life event. It can also come from a seasoned investor who owns a problematic property they no longer want to manage. It can come from an institutional bank trying to get a foreclosed property off its books by end of quarter. The source of motivation does not matter. The urgency does.</p>
+
+    <h3 class="sub-title">Who motivated sellers are — the common categories</h3>
+
+    <div class="seller-tags">
+      <span class="seller-tag highlight">Burned-out landlords</span>
+      <span class="seller-tag highlight">Inherited properties / estates / probates</span>
+      <span class="seller-tag highlight">Pre-foreclosure — behind on payments</span>
+      <span class="seller-tag">Accidental landlords</span>
+      <span class="seller-tag">Expired MLS listings</span>
+      <span class="seller-tag">Divorce</span>
+      <span class="seller-tag">Balloon payment due</span>
+      <span class="seller-tag">Behind on property taxes</span>
+      <span class="seller-tag">Vacant houses</span>
+      <span class="seller-tag">Water or fire damage</span>
+      <span class="seller-tag">Code violations</span>
+      <span class="seller-tag">Moving to another state</span>
+      <span class="seller-tag">Need cash to buy another property</span>
+      <span class="seller-tag">Bankruptcy</span>
+      <span class="seller-tag">Income tax lien</span>
+      <span class="seller-tag highlight">Post-foreclosure / bank-owned (REO)</span>
+      <span class="seller-tag">Bad property management situation</span>
+      <span class="seller-tag">Years of deferred maintenance</span>
+    </div>
+
+    <p class="lesson-text">Notice how this list spans all kinds of people and situations. The three highlighted categories — burned-out landlords, inherited properties, and pre/post-foreclosure — represent the majority of motivated seller deals most small investors close. These are the categories worth learning to find and approach first.</p>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Coach Carson — Small and Mighty Real Estate Investor</div>
+      <p>"By learning to solve the problems of the human beings who own real estate, you can find and buy as many deals as you want. Real estate investing is only partly about the property. It is about the people. Finding motivated sellers and understanding their situation is what separates investors who consistently close deals from those who search endlessly and buy nothing."</p>
+    </div>
+
+    <p class="lesson-text">Approaching motivated sellers requires empathy first — understanding what problem they are trying to solve. If a landlord has been managing a difficult property for 15 years and is exhausted, the solution is not telling them they should have maintained it better. The solution is making the process of selling easy, fast, and certain. A clean offer with a flexible close date and no financing contingency solves their problem better than a higher offer with a 60-day close and bank approval risk.</p>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Coach Carson: Four underrated ways to find <em>off-market property deals</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Coach Carson and expert deal-finder Justin walk through four practical, low-cost strategies for finding off-market investment property deals — getting on wholesaler buyer's lists, building referral networks, direct mail campaigns, and online marketing. These are the same channels that have produced hundreds of deals for experienced investors. Published January 2024 — practical and evergreen deal-finding content.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/cL_Xw-vPqRI" title="4 Underrated Ways to Find Off Market Property Deals — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Coach Carson · YouTube</span>
+        <h4>4 Underrated Ways to Find Off Market Property Deals in 2024</h4>
+        <p>Four practical deal-finding channels: wholesaler buyer's lists, referral networks, direct mail, and online marketing. How to get started with each, what to expect, and the realistic effort required to generate consistent leads. Directly reinforces Lesson 4 of this module.</p>
+        <p class="credit">Coach Carson · YouTube January 2024 · ~50 min · Evergreen deal-finding strategies</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Your deal-finding system — <em>the four channels and how to work them</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The best real estate investors do not wait for deals to fall in their lap. They build systems that generate leads consistently — week after week, month after month — so that when a good deal surfaces, they are ready to act. A deal-finding system has two parts: your written buy box that defines exactly what you are looking for, and your marketing channels that bring those properties to your attention.</p>
+
+    <h3 class="sub-title">Your buy box — write it down</h3>
+    <p class="lesson-text">A buy box is a one-page written statement that defines a good deal for you. It is the GPS that guides your search. Any property outside your buy box you ignore — which frees up time and mental energy to focus only on properties that could actually work. Your buy box should include:</p>
+
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin:1rem 0 1.5rem;">
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">→</span><strong>Target location:</strong> Specific neighborhoods, zip codes, or city limits. Start small — you can expand later.</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">→</span><strong>Property class:</strong> A, B, C — choose one or two that match your strategy and risk tolerance.</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">→</span><strong>Property types:</strong> Single-family, duplex, fourplex — whatever types you decided in Module 2.</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">→</span><strong>Property characteristics:</strong> Square footage range, bedroom and bath count, age limits, condition standards.</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">→</span><strong>Financial criteria:</strong> Minimum cash flow per unit, minimum cash-on-cash return, 1% rule threshold, required price discount target.</li>
+    </ul>
+
+    <p class="lesson-text">Write your buy box down on a single page and share it with your real estate agent, property manager, and anyone else who might bring you leads. The clearer you are about what you want, the more useful your network becomes.</p>
+
+    <h3 class="sub-title">The four deal-finding channels</h3>
+
+    <div class="channel-grid">
+      <div class="channel-card fade-in">
+        <div class="ch-header">
+          <div class="ch-icon">📋</div>
+          <h4>Wholesaler Buyer's Lists <span class="ch-cost low">Low Cost</span></h4>
+        </div>
+        <p>Wholesalers are investors who specialize in finding motivated sellers and putting properties under contract — then assigning those contracts to end buyers for a fee. Getting on local wholesaler buyer's lists puts you first in line when they find a deal that matches your criteria. Find them at local REIA meetings, BiggerPockets local groups, and Facebook real estate investor groups. Build relationships — be responsive, be clear about your buy box, and close when you say you will.</p>
+      </div>
+      <div class="channel-card fade-in">
+        <div class="ch-header">
+          <div class="ch-icon">🤝</div>
+          <h4>Referral Networks <span class="ch-cost low">Low Cost</span></h4>
+        </div>
+        <p>Tell everyone you know that you are a real estate investor actively looking to buy. Share your buy box with your real estate agent, property manager, CPA, attorney, contractors, neighbors, and former colleagues. When someone in your network hears that a property owner wants to sell quickly, you want your name to be the first they think of. Referrals produce some of the best deals — they come pre-qualified because someone who knows you and the seller is vouching for both sides.</p>
+      </div>
+      <div class="channel-card fade-in">
+        <div class="ch-header">
+          <div class="ch-icon">✉️</div>
+          <h4>Direct Mail <span class="ch-cost med">Low-Medium Cost</span></h4>
+        </div>
+        <p>Send letters or postcards directly to owners of properties that fit your buy box. Target lists include: non-owner occupied landlords, absentee owners, owners who are behind on property taxes, estate properties, and owners of properties with code violations. Mailing lists are available from data providers. Response rates are typically 1–3% — which means you need volume. Plan for 500–1,000 pieces per month to generate consistent leads. The most important thing after mailing is following up on every response.</p>
+      </div>
+      <div class="channel-card fade-in">
+        <div class="ch-header">
+          <div class="ch-icon">💻</div>
+          <h4>Online Marketing <span class="ch-cost med">Medium Cost</span></h4>
+        </div>
+        <p>A simple website that says "We buy houses — fast, as-is, for cash" combined with targeted Google Ads or Facebook ads can generate inbound leads from motivated sellers actively searching for a buyer. This channel requires more setup and budget but can be highly scalable once optimized. Pair online marketing with a reliable follow-up system — many leads require 3–5 contacts before converting. Tools like DealMachine help automate the outreach and tracking process.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Most Important Thing About Deal-Finding</div>
+      <p>Pick one or two channels and work them consistently for at least 90 days before evaluating results. The biggest mistake investors make is trying three channels halfheartedly, getting no results in 30 days, and concluding "deal-finding doesn't work." It works — but it requires patience, volume, and consistency. A direct mail campaign that generates zero responses in month one may produce two leads in month three from sellers who finally reached their decision point. Stay in the market. Keep the funnel moving.</p>
+    </div>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to move to Module 4. They are here for students who want to go deeper on deal analysis and deal-finding before moving into financing.</p>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Coach Carson — Real Estate Investing 101: How to Get Started or Restarted</strong><br>The comprehensive 1.5-hour nine-step framework for the complete investing process — including steps 4 (investment property criteria), 7 (raising cash for down payments), and 8 (creating a plan to find deals) which directly complement this module's content. The #2 most downloaded Coach Carson episode of all time. Save it for a deep-focus session.</p>
+      <a href="https://www.youtube.com/watch?v=nckAJkfXewU" target="_blank">Watch →</a>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Coach Carson — If the 1% Rule Doesn't Work in Your Market, Try This Instead</strong><br>In many high-cost markets (California, New York, major coastal cities) the 1% rule is nearly impossible to hit. Coach Carson walks through five alternative approaches for making real estate investing work when the 1% rule is not achievable — including equity-focused investing, live-in flips, and creative financing strategies. Essential for investors in expensive markets.</p>
+      <a href="https://www.youtube.com/watch?v=2Q3rZ9VeXt4" target="_blank">Watch →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 3 Key Takeaways</h3>
+    <ul>
+      <li>Real estate is a numbers game at the top of the funnel. Most investors fail to find deals because they generate too few leads — not because deals do not exist. Plan for 50–100 leads per deal. The deal funnel has seven stages: lead generation, pre-screening, information gathering, offer, follow-up, contract, and close.</li>
+      <li>Quick screening tools: the 1% rule (monthly rent ÷ purchase price ≥ 1%) and GRM (purchase price ÷ annual gross rent) let you eliminate non-deals in seconds. Use these first before spending time on deeper analysis.</li>
+      <li>The 50% rule: estimate NOI by assuming operating expenses equal 50% of gross rent. This gives you a fast, conservative NOI estimate for initial analysis. Always verify actual expenses before committing to buy.</li>
+      <li>The four essential formulas: unleveraged yield/cap rate (NOI ÷ price), cash-on-cash return (annual cash flow ÷ cash invested), monthly cash flow (NOI − debt service ÷ 12), and price discount (market value − purchase price). Run these on every deal before making an offer.</li>
+      <li>Four sources of equity growth: price discount (buy below market), forced appreciation (improve NOI), passive appreciation (market rises over time), and principal paydown (tenant pays off your mortgage). The best deals deliver all four simultaneously.</li>
+      <li>Motivated sellers have urgency — their situation creates flexibility on price or terms. The top categories: burned-out landlords, inherited properties, pre/post-foreclosure, vacant houses, and expired listings. Approach with empathy — understand their problem first, then offer a solution.</li>
+      <li>Write your buy box before you start looking. Share it with your team. Pick one or two deal-finding channels — wholesaler lists, referrals, direct mail, or online marketing — and work them consistently for at least 90 days. Volume and consistency at the top of the funnel is the only reliable path to finding good deals.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A property is listed at $180,000 and rents for $1,600 per month. Does it pass the 1% rule?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Yes — $1,600 is close enough to $1,800 and the 1% rule is just a guideline</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> Yes — the 1% rule applies to annual rent not monthly rent</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> No — the 1% rule requires $1,800/month ($180,000 × 1%). At $1,600/month the property falls short and deserves more scrutiny before proceeding</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> No — the 1% rule only applies to multifamily properties, not single-family houses</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. Using the 50% rule, what is the estimated monthly NOI for a property that rents for $2,000 per month?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> $2,000 — the 50% rule means you keep 50% of rent as profit after the mortgage</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> $400 — the 50% rule means operating expenses are 80% and NOI is 20%</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> $1,000 — the 50% rule assumes operating expenses equal half of gross rent, leaving the other half as estimated NOI before any mortgage payment</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> $600 — the 50% rule applies to net income after the mortgage payment is deducted</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. An investor buys a property at $190,000 that has a market value of $220,000. They put 20% down ($38,000). What is their instant equity at purchase?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> $30,000 — the difference between purchase price and market value</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> $68,000 — market value of $220,000 minus the loan of $152,000 (purchase price $190,000 minus down payment $38,000)</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> $38,000 — only the down payment counts as equity at purchase</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> $22,000 — only the discount from market value counts as equity</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A landlord has owned a 6-unit apartment building for 12 years. The roof needs replacement, two units are vacant, and he hasn't raised rents in five years. He is ready to sell quickly without going through a full listing process. Which category of motivated seller does he represent?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Pre-foreclosure — he is behind on mortgage payments and needs to sell fast</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Burned-out landlord — years of deferred maintenance, below-market rents, and vacancy have exhausted him and he values a fast, certain sale over maximum price</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Accidental landlord — he never intended to own rental property</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Inherited property — he received the building from a deceased relative</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. An investor starts a direct mail campaign and sends 300 letters in month one with zero responses. They conclude direct mail does not work and stop the campaign. What is the most likely problem?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Direct mail genuinely does not work — online marketing is the only effective channel today</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> The letters were sent to the wrong property types — motivated sellers only respond to postcards not letters</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> The volume was too low and the campaign was stopped too early — direct mail typically requires 500–1,000 pieces per month and several months of consistency before generating reliable leads. Sellers respond when they are ready, not immediately.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The investor's buy box criteria were too strict — widening the criteria would have produced more responses</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 4: Financing Your Investments</h3>
+    <p>You know how to find deals and evaluate them. Now you need to know how to pay for them. Module 4 covers the full financing landscape for real estate investors — from conventional bank loans and FHA programs through portfolio loans, seller financing, private money, and creative strategies for investors who do not have enough cash. Financing is the toolbox that unlocks opportunities regardless of market conditions.</p>
+    <a href="investing-module-4.html" class="next-module-cta">Module 4: Financing Your Investments →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="investing-module-2.html" class="btn btn-outline">← Module 2: Asset Classes</a>
+  <div class="module-nav-info">
+    <p>Real Estate Investing Track</p>
+    <strong>Module 3 of 6</strong>
+  </div>
+  <a href="investing-module-4.html" class="btn btn-gold">Module 4: Financing →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{
+    correct:"Correct! The 1% rule: monthly rent ÷ purchase price must equal or exceed 1%. $180,000 × 1% = $1,800/month required. At $1,600/month the property generates only 0.89% — it falls short. This does not automatically mean it is a bad deal, but it means the cash flow will be thin and the property deserves more careful analysis before proceeding.",
+    incorrect:"Not quite. The 1% rule is calculated as: monthly rent ÷ purchase price ≥ 1%. For a $180,000 property the threshold is $180,000 × 1% = $1,800/month. At $1,600/month the property generates 0.89% — it does not pass the screen. This means cash flow will be harder to achieve and the deal deserves extra scrutiny before you invest more time analyzing it."
+  },
+  q2:{
+    correct:"Correct! The 50% rule: assume operating expenses (taxes, insurance, maintenance, vacancy, management) equal approximately 50% of gross rent. $2,000/month × 50% = $1,000 estimated operating expenses. The remaining $1,000/month is the estimated NOI — what the property generates before any mortgage payment. This is your starting point for cash flow and return analysis.",
+    incorrect:"Not quite. The 50% rule is straightforward: assume operating expenses are 50% of gross rent. $2,000 × 50% = $1,000 in estimated operating expenses. The remaining 50% = $1,000/month is the estimated NOI (Net Operating Income) — the income the property generates after expenses but before debt service. This is the number you then use to calculate cash flow and returns."
+  },
+  q3:{
+    correct:"Correct! Equity = Market Value − Loan Balance. Market value = $220,000. Loan = purchase price minus down payment = $190,000 − $38,000 = $152,000. Equity = $220,000 − $152,000 = $68,000. Your $38,000 cash investment created $68,000 of equity because you bought at a $30,000 discount from market value. That $30,000 discount is instant equity growth — wealth created at the moment of purchase.",
+    incorrect:"Not quite. Equity at purchase = Market Value − Loan Balance. Market value = $220,000. Loan = purchase price ($190,000) − down payment ($38,000) = $152,000. Equity = $220,000 − $152,000 = $68,000. The $30,000 discount you negotiated became $30,000 of instant equity on top of your $38,000 down payment. Total equity = $68,000 from a $38,000 cash investment."
+  },
+  q4:{
+    correct:"Correct! This landlord is the classic burned-out landlord — deferred maintenance (roof replacement needed), below-market rents (not raised in five years), vacancy (two units empty), and general exhaustion after 12 years. He values speed and certainty over maximum price. This is the most common type of motivated seller that produces value-add investment opportunities. The combination of below-market rents and deferred physical condition means there is forced appreciation potential for the buyer.",
+    incorrect:"Not quite. This landlord fits the burned-out landlord profile — not pre-foreclosure or inherited property. He has owned the building for 12 years, has let rents fall behind market, has deferred major maintenance, and is now ready to sell without the hassle of a full listing process. He is motivated by exhaustion and the desire for a quick, certain exit — not by a financial emergency like foreclosure. This is the most common motivated seller profile that produces value-add deals."
+  },
+  q5:{
+    correct:"Correct! Direct mail requires both volume and consistency over time. 300 letters is not enough — experienced investors send 500–1,000+ per month. And sellers respond when their situation reaches a decision point — which may be months after receiving your letter. A seller who receives your letter in January and files it away may call you in April when their tenant finally moves out or a repair bill pushes them over the edge. Stopping after one month with zero responses is one of the most common and costly mistakes beginning investors make with direct mail.",
+    incorrect:"Not quite. The problem is volume and time — not the channel itself. Direct mail works, but it requires 500–1,000+ pieces per month and several months of consistency to generate reliable leads. 300 letters in one month is not enough volume to evaluate any direct mail campaign. And sellers respond when they reach their own decision point — which may be months after your letter arrives. Stopping after one month is the most common reason direct mail fails for beginning investors."
+  }
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent — you understand how to find and evaluate deals. You are ready for Module 4: Financing Your Investments.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above before moving on — the analysis formulas in this module will be used in every module that follows.';
+  }
+}
+</script>
+
+</body>
+</html>
