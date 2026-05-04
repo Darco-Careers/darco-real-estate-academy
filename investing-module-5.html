@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Investing Module 5: Negotiation, Offers & Closing — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --burg:#5C1A2E;--burg-mid:#7D2A42;--burg-light:#9E4060;--burg-pale:#F9EEF1;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(92,26,46,0.1);
+  --shadow-card:0 2px 16px rgba(92,26,46,0.07);
+  --green:#1B6B3A;--green-pale:#EAF5EE;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--burg);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--burg);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--burg-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--burg-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--burg);font-weight:600;}
+.progress-bar{background:var(--burg-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--burg-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(92,26,46,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--burg-mid);border-radius:3px;width:83%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--burg);color:var(--gold-light);}
+.prog-dot.complete{background:var(--burg-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(92,26,46,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(92,26,46,0.25);}
+.module-hero{background:linear-gradient(135deg,#3A0A1C 0%,var(--burg) 55%,var(--burg-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--burg-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--burg);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:#FDF5E8;border-left:4px solid #D4881A;border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-mentor{background:var(--burg-pale);border-left:4px solid var(--burg-mid);border-radius:0 14px 14px 0;}
+.callout-mentor .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--burg-mid);margin-bottom:0.5rem;}
+.callout-mentor p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--burg);font-style:italic;line-height:1.75;}
+
+/* Negotiation tips */
+.tips-grid{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.tip-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--burg-mid);border-radius:0 12px 12px 0;padding:1rem 1.25rem;transition:all 0.2s;}
+.tip-card:hover{box-shadow:var(--shadow-card);}
+.tip-card .tip-num{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--burg-mid);margin-bottom:0.2rem;}
+.tip-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.tip-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* Net sales price calculator */
+.net-box{background:var(--burg-pale);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.net-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--burg);margin-bottom:1rem;}
+.net-row{display:flex;align-items:center;gap:1rem;padding:0.45rem 0;border-bottom:1px solid rgba(92,26,46,0.08);}
+.net-row:last-child{border-bottom:none;border-top:2px solid rgba(92,26,46,0.2);margin-top:0.5rem;padding-top:0.75rem;}
+.net-label{font-size:13px;color:var(--text-mid);flex:1;}
+.net-label.deduct{color:var(--text-light);}
+.net-amount{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--burg);width:100px;text-align:right;}
+.net-amount.positive{color:var(--text-dark);}
+.net-amount.deduction{color:#C0392B;}
+.net-amount.result{color:var(--green);font-size:1.1rem;}
+.net-amount.offer{color:var(--gold);font-size:1.1rem;}
+
+/* Due diligence checklist */
+.dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.dd-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.dd-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.6rem;display:flex;align-items:center;gap:8px;}
+.dd-card ul{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
+.dd-card ul li{font-size:12.5px;color:var(--text-mid);display:flex;gap:7px;line-height:1.55;}
+.dd-card ul li::before{content:'☐';color:var(--burg-mid);font-weight:700;flex-shrink:0;}
+
+/* Closing steps */
+.closing-track{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
+.closing-track::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--burg-pale);}
+.closing-step{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:1.5rem;position:relative;}
+.closing-step:last-child{padding-bottom:0;}
+.cs-num{width:40px;height:40px;border-radius:50%;background:var(--burg);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:0.9rem;flex-shrink:0;z-index:1;}
+.cs-body{padding-top:6px;}
+.cs-body h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;}
+.cs-body .cs-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;background:var(--burg-pale);color:var(--burg-mid);margin-bottom:0.4rem;}
+.cs-body p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+
+/* MAO box */
+.mao-box{background:var(--white);border:2px solid var(--burg-pale);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.mao-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--burg);margin-bottom:0.75rem;}
+.mao-formula{background:var(--burg);color:var(--gold-light);font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;padding:0.75rem 1rem;border-radius:8px;text-align:center;margin-bottom:1rem;}
+.mao-steps{display:flex;flex-direction:column;gap:0.5rem;}
+.mao-step{display:flex;gap:1rem;align-items:center;font-size:13.5px;color:var(--text-mid);}
+.mao-step strong{color:var(--text-dark);width:220px;flex-shrink:0;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;}
+.video-badge.bp{background:var(--burg-pale);color:var(--burg-mid);}
+.video-badge.peter{background:#EBF5EE;color:#1B4D3E;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Deep dive */
+.deep-dive-banner{background:linear-gradient(135deg,#3A0A1C,var(--burg));border-radius:16px;padding:1.75rem 2rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.deep-dive-banner::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.deep-dive-banner .banner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;position:relative;}
+.deep-dive-banner p{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;position:relative;max-width:580px;}
+.deeper-link{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.deeper-link p{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.deeper-link a{display:inline-flex;align-items:center;gap:6px;background:var(--burg);color:var(--white);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--burg);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--burg-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--burg);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--burg-mid);background:var(--burg-pale);}
+.option.selected{border-color:var(--burg-mid);background:var(--burg-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--burg-mid);background:var(--burg-pale);color:var(--burg);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--burg);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--burg-pale);color:var(--burg);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--burg);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--burg-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--burg-pale);color:var(--burg);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--burg);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--burg-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--burg-mid);color:var(--burg);}
+.btn-gold{background:var(--gold);color:var(--burg);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--burg);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .dd-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="real-estate-investing.html">Investing Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="real-estate-investing.html">Real Estate Investing</a><span class="sep">›</span>
+  <span class="current">Module 5: Negotiation, Offers & Closing</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Investing Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="investing-module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="investing-module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="investing-module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <a href="investing-module-4.html" class="prog-dot complete" title="Module 4">✓</a>
+    <div class="prog-dot active">5</div>
+    <div class="prog-dot locked">6</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏘️ Real Estate Investing Track · Module 5 of 6</div>
+    <h1>Negotiation, Offers <em>& Closing</em></h1>
+    <p>You found the deal. You analyzed the numbers. You know how you will finance it. Now comes the moment that separates investors who talk about deals from investors who close them. This module covers the complete offer-to-close process — the negotiation puzzle, how to structure offers that get accepted, what to verify during due diligence, and how to navigate the closing table without costly surprises.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>55–65 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The negotiation puzzle — <em>solving the seller's problem, not winning a battle</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most people think of negotiation as a battle — two parties on opposite sides of a table, each trying to outlast the other until someone surrenders. But the investors who consistently close the most deals think about negotiation completely differently. They think of it as a <strong>puzzle</strong>.</p>
+
+    <p class="lesson-text">Every seller has a set of puzzle pieces — their true motivations, their timeline, their financial situation, their emotional connection to the property, and the specific problem they are trying to solve by selling. Most of those puzzle pieces are hidden. Your job as a negotiator is not to overpower the seller. It is to ask the right questions, listen carefully, and turn over enough puzzle pieces to understand what they actually need — so you can offer a solution that works for both of you.</p>
+
+    <p class="lesson-text">The goal of every negotiation: <strong>buy a good deal while maintaining or improving your relationship with the other party.</strong> You may live in the same community as the sellers you negotiate with. You may see them at the grocery store. You are not willing to sacrifice people in the process of doing business. A win-win negotiation produces better long-term results — and referrals — than one where the seller feels they were taken advantage of.</p>
+
+    <h3 class="sub-title">How to approach the negotiation conversation</h3>
+
+    <p class="lesson-text">Before you make any offer, your goal is to gather information. The best negotiators ask questions and listen — they do not talk. Here are the critical questions to answer before you structure your offer:</p>
+
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin:1rem 0 1.5rem;">
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">→</span><strong>Why are they selling?</strong> What problem does this sale solve for them? Is it urgency, exhaustion, debt, divorce, relocation, inheritance?</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">→</span><strong>What is their timeline?</strong> Do they need to close in two weeks or two months? Is there flexibility or is there a hard deadline?</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">→</span><strong>What matters most to them?</strong> Is it price, certainty of closing, speed, or something emotional — like leaving the house to someone who will care for it?</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">→</span><strong>What is their mortgage situation?</strong> Do they own free and clear? Do they have a large payoff that constrains what price they can accept?</li>
+      <li style="font-size:13.5px;color:var(--text-mid);display:flex;gap:10px;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;">→</span><strong>What else is going on in their life?</strong> The real estate transaction is often the symptom of a larger life event. Find out what it is.</li>
+    </ul>
+
+    <p class="lesson-text">When a seller rejects your offer, do not take it personally and do not walk away immediately. Rejections are information. Ask them: "What would you do instead?" Listen for what they actually need. Often the true obstacle — the puzzle piece you were missing — reveals itself right after the first rejection.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Net Sales Price — Your Most Powerful Tool</div>
+      <p>When sellers compare your offer to their asking price, they are comparing apples to oranges. Help them compare their actual net proceeds from your offer versus their realistic net proceeds from a traditional sale. A property with a $250,000 market value might net only $175,000 after agent commissions (6%), closing costs (2%), holding costs (2%), and repairs ($50,000). If your cash offer is $150,000, the real gap is $25,000 — not $100,000. This reframing changes the entire negotiation dynamic.</p>
+    </div>
+
+    <div class="net-box">
+      <h4>📊 The Net Sales Price Comparison</h4>
+      <div class="net-row">
+        <div class="net-label">Market Value (Zillow estimate)</div>
+        <div class="net-amount positive">$250,000</div>
+      </div>
+      <div class="net-row">
+        <div class="net-label deduct">Less: Agent commission (6%)</div>
+        <div class="net-amount deduction">− $15,000</div>
+      </div>
+      <div class="net-row">
+        <div class="net-label deduct">Less: Seller closing costs (2%)</div>
+        <div class="net-amount deduction">− $5,000</div>
+      </div>
+      <div class="net-row">
+        <div class="net-label deduct">Less: Holding costs (taxes, insurance, utilities)</div>
+        <div class="net-amount deduction">− $5,000</div>
+      </div>
+      <div class="net-row">
+        <div class="net-label deduct">Less: Repairs to make market-ready</div>
+        <div class="net-amount deduction">− $50,000</div>
+      </div>
+      <div class="net-row">
+        <div class="net-label" style="font-weight:700;color:var(--text-dark);">Net Sales Price After Traditional Sale</div>
+        <div class="net-amount result">$175,000</div>
+      </div>
+      <div class="net-row">
+        <div class="net-label" style="font-weight:700;color:var(--burg);">Your Cash Offer (as-is, fast, certain)</div>
+        <div class="net-amount offer">$150,000</div>
+      </div>
+    </div>
+
+    <p class="lesson-text">The real gap between your offer and their alternative is $25,000 — the cost of your profit and services — not $100,000. Sellers who understand this comparison become much more willing to negotiate seriously.</p>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Making offers that get accepted — <em>the MAO formula and ten proven tactics</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Making offers is a numbers game. Most offers will be rejected — and that is expected. The investors who close the most deals are not the ones who make the best individual offer. They are the ones who make the most offers, follow up on rejections, and execute a system for turning leads into contracts over time. Warren Buffett compares it to baseball: as an investor, there are no called strikes if you do not swing. You can watch hundreds of pitches and only swing at the ones in your sweet spot.</p>
+
+    <h3 class="sub-title">The MAO — Maximum Allowable Offer</h3>
+    <p class="lesson-text">Before you make any offer, calculate your Maximum Allowable Offer — the highest price you can pay and still make the deal profitable. Make your initial offer below your MAO. That leaves room to negotiate upward if needed while staying within your financial parameters.</p>
+
+    <div class="mao-box">
+      <h4>🧮 The MAO Formula</h4>
+      <div class="mao-formula">MAO = After Repair Value × Target Margin % − Repair Costs − Other Costs</div>
+      <div class="mao-steps">
+        <div class="mao-step"><strong>After Repair Value (ARV):</strong> $200,000 — what the property will be worth after all repairs</div>
+        <div class="mao-step"><strong>Your target margin (70%):</strong> $140,000 — the maximum you want to pay including all costs</div>
+        <div class="mao-step"><strong>Less repair costs:</strong> − $25,000 — your estimated renovation budget</div>
+        <div class="mao-step"><strong>Less other costs:</strong> − $10,000 — closing, holding, and carrying costs</div>
+        <div class="mao-step" style="border-top:2px solid var(--border);padding-top:0.5rem;margin-top:0.5rem;"><strong>Maximum Allowable Offer:</strong> $105,000 — do not pay more than this</div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Ten tactics to get more offers accepted</h3>
+
+    <div class="tips-grid">
+      <div class="tip-card fade-in">
+        <div class="tip-num">Tactic 1</div>
+        <h4>Be the only offer — go off-market</h4>
+        <p>When you are the only buyer at the table, the seller has no alternative to compare your offer to. They must negotiate with you or get nothing. Off-market lead generation through direct mail, referrals, and wholesaler lists creates this dynamic. It is one of the most valuable advantages of developing your own deal-finding system.</p>
+      </div>
+      <div class="tip-card fade-in">
+        <div class="tip-num">Tactic 2</div>
+        <h4>Be the first offer on MLS listings</h4>
+        <p>Many sellers accept the first offer that meets their needs. If you see a promising MLS deal, act in hours — not days. View it immediately, estimate repairs on the spot, and submit your offer the same morning. Waiting even hours on a competitive MLS deal can cost you the property.</p>
+      </div>
+      <div class="tip-card fade-in">
+        <div class="tip-num">Tactic 3</div>
+        <h4>Remove the financing contingency</h4>
+        <p>A financing contingency gives you an escape route if your loan falls through — but it also signals uncertainty to the seller. If you have cash, a HELOC, or a reliable private lender, removing this contingency makes your offer significantly stronger. Never remove it if you are uncertain about your financing — but when you are certain, it is a powerful tool.</p>
+      </div>
+      <div class="tip-card fade-in">
+        <div class="tip-num">Tactic 4</div>
+        <h4>Offer to buy as-is</h4>
+        <p>An as-is offer eliminates the seller's anxiety about repair requests, re-negotiations after inspection, and the risk that you will walk away over minor issues. It does not mean you cannot do an inspection — you can still use an inspection contingency to protect yourself. It simply means you will not ask them to make any repairs before closing.</p>
+      </div>
+      <div class="tip-card fade-in">
+        <div class="tip-num">Tactic 5</div>
+        <h4>Be flexible on timing</h4>
+        <p>Sometimes the most valuable thing you can offer is not money — it is time. A seller moving across the country might need 90 days to close. A seller who needs cash urgently might need seven days. Ask what timeline works for them and accommodate it when you can. Timing flexibility can often close a deal that money alone cannot.</p>
+      </div>
+      <div class="tip-card fade-in">
+        <div class="tip-num">Tactic 6</div>
+        <h4>Solve the seller's emotional problem</h4>
+        <p>Not all seller problems are financial. An inherited property may carry grief. A family home of 20 years may hold emotional weight that the seller is not ready to simply walk away from. Offering to let them leave personal belongings, allowing a leaseback period, or simply acknowledging the significance of what they are doing builds trust that money cannot buy.</p>
+      </div>
+      <div class="tip-card fade-in">
+        <div class="tip-num">Tactic 7</div>
+        <h4>Make multiple offers simultaneously</h4>
+        <p>Instead of one offer, present three options: a low all-cash quick-close price, a medium price with a larger down payment and seller financing, and a higher price with full seller financing. This gives the seller choices rather than a yes-or-no decision — and their response to the three options reveals their true priorities.</p>
+      </div>
+      <div class="tip-card fade-in">
+        <div class="tip-num">Tactic 8</div>
+        <h4>Increase your earnest money</h4>
+        <p>A larger earnest money deposit signals financial strength and serious intent. In a competitive multiple-offer situation, increasing your deposit from $1,000 to $5,000 communicates to the seller that you have resources and you are not going to walk away over minor issues. Only increase it to an amount you are comfortable risking.</p>
+      </div>
+      <div class="tip-card fade-in">
+        <div class="tip-num">Tactic 9</div>
+        <h4>Tell your story — write a cover letter</h4>
+        <p>People become emotionally attached to their properties. Knowing who will take care of it makes a difference. A brief personal letter — one page — that explains who you are, your investing philosophy, and how you plan to improve and maintain the property can push you over the edge in a tie. Stories build trust that spreadsheets cannot.</p>
+      </div>
+      <div class="tip-card fade-in">
+        <div class="tip-num">Tactic 10</div>
+        <h4>Fortune is in the follow-up</h4>
+        <p>Most offers are initially rejected. The best deals often come from sellers who said no six months ago. Life changes. Urgency increases. The investor who maintained contact — politely and without pressure — gets the call when the seller is finally ready. Track every rejected offer in a system and follow up at 30, 60, and 90 days. Some of the most profitable deals in any investor's career came from offers that were rejected the first time.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-mentor">
+      <div class="callout-label">💬 Coach Carson</div>
+      <p>"Always be willing to walk away. As much as you want to do a deal, the cold, unemotional, numbers-driven part of your brain must have the final word. Opportunities are like buses — there's always another one coming. The trick in investing is to sit there and watch pitch after pitch go by and wait for the one right in your sweet spot. There are no called strikes if you don't swing."</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">BiggerPockets Rookie: How to get sellers to say <em>yes</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">J Scott — author of the BiggerPockets book on negotiating real estate — delivers a masterclass on real estate negotiation for investors. He covers why negotiation skills are the single highest-leverage skill in an investor's toolkit, the best tactics that actually work in the real world, how to make low offers without alienating sellers, what questions to ask to understand seller motivation, and how to stand out in a competitive 2025 market. Published February 2025 — directly reinforces Lessons 1 and 2 of this module.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/qMsLZ47PJV8" title="How to Get Sellers to Say YES — BiggerPockets Rookie" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge bp">BiggerPockets Rookie · YouTube</span>
+        <h4>How to Get Sellers to Say YES (Real Estate Negotiation 101)</h4>
+        <p>Negotiations 101, why negotiation matters more than any other skill, the best tactics, how to make lowball offers without creating animosity, questions to ask sellers to reveal true motivation, how to build rapport and create win-win outcomes, and when to walk away. J Scott with Ashley and Tony on the BiggerPockets Rookie podcast.</p>
+        <p class="credit">BiggerPockets Rookie · YouTube February 2025 · ~41 min</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Due diligence — <em>verifying everything before you commit</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The due diligence period is the window of time between signing a purchase contract and closing the deal. During this period — typically 10 to 14 days for residential properties — you have the right to investigate the property thoroughly and walk away from the deal if you discover something that changes your analysis. It is your final protection before you are legally and financially committed.</p>
+
+    <p class="lesson-text">Due diligence has two goals: <strong>verify your assumptions</strong> and <strong>discover expensive problems</strong>. When you made your offer, you had assumptions — about the rent, the repairs, the expenses, the value. Some of those assumptions will turn out to be wrong. Due diligence is how you find out before it costs you money.</p>
+
+    <div class="dd-grid">
+
+      <div class="dd-card fade-in">
+        <h4>🏠 Physical Inspection</h4>
+        <ul>
+          <li>Walk the neighborhood at different times of day — evening and weekend</li>
+          <li>Check for noise, nuisances, busy streets, and neighbor issues</li>
+          <li>Look for flood plain position — check federal flood maps</li>
+          <li>Verify large trees near the building — fall risk</li>
+          <li>Check for buried oil tanks, environmental issues</li>
+          <li>Hire a professional property inspector — get a written report</li>
+          <li>Hire a termite and moisture inspector (critical in warm/wet climates)</li>
+          <li>Get specialty inspections for sewer, foundation, radon, mold, asbestos, or lead paint as needed — especially on older buildings</li>
+        </ul>
+      </div>
+
+      <div class="dd-card fade-in">
+        <h4>🔨 Repair Cost Verification</h4>
+        <ul>
+          <li>Ask seller for list of capital expense repairs and dates (roof, HVAC, foundation, appliances)</li>
+          <li>Ask property manager for cosmetic recommendations that affect rentability</li>
+          <li>Create a detailed scope of work — all repairs organized by trade</li>
+          <li>Get written quotes from contractors for major work items</li>
+          <li>Build a complete repair budget with line-item costs</li>
+          <li>Compare budget to your pre-offer estimate — if higher, decide: renegotiate, proceed, or walk</li>
+          <li>Almost every property needs: interior paint, flooring, exterior curb appeal work</li>
+        </ul>
+      </div>
+
+      <div class="dd-card fade-in">
+        <h4>💰 Financial Verification</h4>
+        <ul>
+          <li>Ask property manager for written rent estimate — do not rely on online algorithms alone</li>
+          <li>Drive by comparable rentals, visit open houses where possible</li>
+          <li>Ask seller for prior year tax returns and P&L statement on the property</li>
+          <li>Review recent utility bills — understand tenant costs</li>
+          <li>Get updated property tax bill — check if homeowner exemption inflates seller's lower rate</li>
+          <li>Get landlord insurance quote — check for flood zone surcharges</li>
+          <li>Rerun your full financial analysis with verified numbers</li>
+        </ul>
+      </div>
+
+      <div class="dd-card fade-in">
+        <h4>📋 Tenant and Legal Due Diligence</h4>
+        <ul>
+          <li>Get full rent roll — tenant names, current rent, lease dates, delinquency history</li>
+          <li>Review all current leases and addendums — understand your obligations</li>
+          <li>Confirm security deposit amounts and transfer plan to closing</li>
+          <li>Review tenant applications and background info if available</li>
+          <li>Talk directly to tenants if possible — understand their perspective</li>
+          <li>Check for extremely long leases at below-market rents</li>
+          <li>Verify title is clean — use title company or attorney</li>
+          <li>Check for code violations, liens, or outstanding permits</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ When Due Diligence Changes the Deal</div>
+      <p>It is not uncommon to discover during due diligence that your repair estimate was too low — sometimes significantly. When this happens you have three options: <strong>renegotiate</strong> the price downward to reflect the true repair costs, <strong>proceed as-is</strong> if the deal still meets your criteria at the higher repair cost, or <strong>walk away</strong> if the numbers no longer work. Walking away is not failure — it is discipline. The purpose of due diligence is to make informed decisions, not to find reasons to stay in deals that no longer make sense.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Peter Harris: Six tips on due diligence for <em>commercial real estate</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Peter Harris covers the six due diligence tips most investors overlook — organized into three categories: physical due diligence (what you can see and inspect), financial due diligence (verifying income, expenses, and value), and legal due diligence (title, leases, liens, and compliance). He also covers what to do when due diligence reveals problems — when to renegotiate and when to walk away. Published July 2023 — the framework is fully evergreen.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/B6VVoWnw6J0" title="6 Tips on Due Diligence for Commercial Real Estate — Peter Harris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge peter">Peter Harris · Commercial Property Advisors</span>
+        <h4>6 Tips on Due Diligence for Commercial Real Estate</h4>
+        <p>Physical due diligence tips (what to look for on site), financial due diligence tips (verifying rent, expenses, and NOI), legal due diligence tips (title, leases, liens, and compliance issues most investors overlook), when to renegotiate after discoveries, and when to walk away from a deal. Directly reinforces Lesson 3 of this module.</p>
+        <p class="credit">Commercial Property Advisors · YouTube July 2023 · 10 min · Evergreen framework</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The closing process — <em>what happens from contract to keys</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Once your offer is accepted and you have signed the purchase contract, you are under contract. Due diligence begins immediately. At the end of due diligence — assuming you are proceeding — the path to closing runs through a series of defined steps. Knowing what those steps are, what they cost, and what can go wrong at each stage is what separates investors who close smoothly from those who get surprised at the table.</p>
+
+    <div class="closing-track">
+      <div class="closing-step fade-in">
+        <div class="cs-num">1</div>
+        <div class="cs-body">
+          <div class="cs-tag">Day 1</div>
+          <h4>Execute the purchase contract</h4>
+          <p>Both parties sign. The earnest money deposit is delivered — typically within 3 business days — to an escrow account held by the title company or closing attorney. The clock on the due diligence period starts now. Do not delay getting the contract signed and executed.</p>
+        </div>
+      </div>
+      <div class="closing-step fade-in">
+        <div class="cs-num">2</div>
+        <div class="cs-body">
+          <div class="cs-tag">Days 1–14</div>
+          <h4>Due diligence period</h4>
+          <p>Complete all inspections, verify repair costs, confirm financial assumptions, review leases and title, and get your financing confirmed. If you discover material problems, you can renegotiate the price, request repairs (less common with as-is offers), or exercise your due diligence contingency to walk away and recover your earnest money.</p>
+        </div>
+      </div>
+      <div class="closing-step fade-in">
+        <div class="cs-num">3</div>
+        <div class="cs-body">
+          <div class="cs-tag">Ongoing</div>
+          <h4>Financing and appraisal</h4>
+          <p>Submit your full loan application to your lender immediately after going under contract. Your lender will order an appraisal — the lender's independent verification that the property value supports the loan amount. If the appraisal comes in below your purchase price, you will need to either renegotiate the price, pay the difference in cash, or walk away if you have a financing contingency.</p>
+        </div>
+      </div>
+      <div class="closing-step fade-in">
+        <div class="cs-num">4</div>
+        <div class="cs-body">
+          <div class="cs-tag">Before Closing</div>
+          <h4>Title search and insurance</h4>
+          <p>The title company or closing attorney conducts a title search — reviewing public records to verify the seller has legal ownership and that no liens, judgments, or ownership disputes exist. Title insurance protects you (and your lender) if a future problem with the title emerges. Always get an owner's title insurance policy in addition to the lender's policy.</p>
+        </div>
+      </div>
+      <div class="closing-step fade-in">
+        <div class="cs-num">5</div>
+        <div class="cs-body">
+          <div class="cs-tag">Day Before Closing</div>
+          <h4>Final walkthrough</h4>
+          <p>Walk the property one final time to confirm its condition matches what you agreed to buy. Verify that agreed repairs (if any) were completed, no new damage has occurred, and the seller has removed their belongings (or left what was agreed). This is your last opportunity to flag problems before you take ownership.</p>
+        </div>
+      </div>
+      <div class="closing-step fade-in">
+        <div class="cs-num">6</div>
+        <div class="cs-body">
+          <div class="cs-tag">Closing Day</div>
+          <h4>Sign, fund, and receive the deed</h4>
+          <p>At the closing table you sign the loan documents and deed. Your lender wires the loan funds. You wire or bring your down payment and closing costs. The title company or closing attorney distributes funds, records the deed with the county, and hands you the keys. You are now a property owner. Security deposits transfer to you along with any lease agreements from existing tenants.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Build Your Closing Team Before You Need It</div>
+      <p>The closing process involves multiple professionals — a title company or closing attorney, a real estate attorney (required in some states), your lender's team, property inspectors, and potentially a surveyor or specialty inspector. The investors who close smoothly are the ones who have these relationships established before they go under contract. When you are in due diligence with a 14-day deadline, there is no time to interview attorneys. Build the team first, use them when the deal comes.</p>
+    </div>
+  </div>
+
+  <!-- GO DEEPER -->
+  <div class="lesson-section fade-in">
+    <div class="deep-dive-banner">
+      <div class="banner-label">🎓 Optional — Go Deeper</div>
+      <h3>Extra resources for students who want to go further</h3>
+      <p>These resources are not required to move to Module 6. They are here for students who want to go deeper on negotiation and the offer process.</p>
+    </div>
+    <div class="deeper-link">
+      <p><strong>Coach Carson — How to Confidently Make Offers on Investment Properties</strong><br>Coach Carson's full breakdown of the offer-making process — including how to calculate your MAO, how to make direct offers to sellers, and the complete system for following up on rejected offers to close deals that initially fell through. One of his most practical tactical videos.</p>
+      <a href="https://www.youtube.com/watch?v=dt6XhXUiyVk" target="_blank">Watch →</a>
+    </div>
+    <div class="deeper-link">
+      <p><strong>BiggerPockets — The Book on Negotiating Real Estate by J Scott</strong><br>The most comprehensive book on real estate negotiation written specifically for investors. J Scott covers negotiation psychology, tactics, scripts, common mistakes, and how to negotiate with sellers, agents, contractors, and lenders. Directly complements this module and the video above.</p>
+      <a href="https://store.biggerpockets.com/products/the-book-on-negotiating-real-estate" target="_blank">View Book →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 5 Key Takeaways</h3>
+    <ul>
+      <li>Negotiation is a puzzle, not a battle. Your goal is to understand the seller's true situation, priorities, and problem — then offer a solution that works for both parties. Ask questions, listen carefully, and turn over hidden puzzle pieces before structuring your offer.</li>
+      <li>The net sales price comparison is your most powerful negotiation tool. Show the seller what they will actually net from a traditional sale (after commissions, closing costs, holding costs, and repairs) versus your offer. The real gap is almost always smaller than they think.</li>
+      <li>Calculate your MAO — Maximum Allowable Offer — before every negotiation. Make your initial offer below your MAO. Never pay more than your MAO regardless of emotional pressure during the negotiation.</li>
+      <li>Ten tactics to get more offers accepted: be the only offer, be the first offer, remove the financing contingency, buy as-is, be flexible on timing, solve the seller's emotional problem, make multiple offers simultaneously, increase earnest money, tell your story, and follow up on every rejection. Fortune is in the follow-up.</li>
+      <li>Due diligence has two goals: verify your assumptions and discover expensive problems. The four categories: physical inspection (professional inspector, termite and moisture, specialty inspectors), repair cost verification (scope of work, contractor quotes), financial verification (rent estimate, tax bills, insurance quote), and tenant and legal due diligence (leases, rent roll, title search).</li>
+      <li>When due diligence changes the numbers, you have three options: renegotiate the price, proceed if the deal still works at the higher cost, or walk away. Walking away is not failure — it is discipline.</li>
+      <li>The closing process: execute contract → due diligence period → financing and appraisal → title search → final walkthrough → close and receive deed. Build your closing team before you go under contract. Speed matters at every stage — never delay getting your lender, inspector, and attorney engaged.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A seller is asking $280,000 for a property. You offer $210,000. They reject it immediately, saying your offer is "way too low." What is the most effective next step?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Walk away — if they rejected immediately the seller is not motivated enough to negotiate</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Ask questions — "What would you do instead?" then help them calculate their real net proceeds from a traditional sale to show the true gap between your offer and their alternative</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Immediately raise your offer to $250,000 to show good faith and meet them in the middle</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Tell them Zillow shows the property is worth less than their asking price</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. An investor calculated an MAO of $145,000 on a property. During negotiations the seller comes down to $155,000. The investor really wants this deal and is tempted to stretch. What should they do?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Stretch to $155,000 — the MAO is just a guideline and this is a good location</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Decline at $155,000 and walk away or creatively restructure — the MAO is a hard ceiling based on the numbers, not a starting point for emotional negotiation. Paying $10,000 over MAO means losing $10,000 of profit or safety margin from day one.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Accept $155,000 — the difference is only $10,000 which will be recovered in the first year of cash flow</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Recalculate the MAO using more optimistic repair estimates to justify the higher price</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. During the due diligence inspection of a property you are under contract for, you discover the HVAC system needs full replacement for $8,000 — a cost you did not include in your pre-offer analysis. The deal still works at the current price but your return is thinner than expected. What are your options?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Close at the original price — due diligence discoveries are just part of investing and you cannot renegotiate once you are under contract</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> You have three options: renegotiate the price downward by $8,000 to restore your original return, proceed as-is if the thinner return still meets your criteria, or walk away using your due diligence contingency if the deal no longer works for you</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Walk away immediately — any unexpected cost discovered in due diligence means the deal is bad</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Ask the seller to repair the HVAC before closing — this is standard in as-is purchases</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A property has been on the MLS for two days at $195,000. You analyze it quickly and determine it meets your buy box. What is the most effective action?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Wait a week — if it is still available at a lower price that confirms less competition and negotiating leverage</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Schedule a showing for next week then submit an offer after a full inspection</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> View it immediately — today if possible — estimate repairs on site, and submit your offer the same day with strong terms (no financing contingency if possible, fast close date, as-is). Many sellers accept the first qualifying offer.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Submit a verbal offer first to gauge seller interest before spending time on paperwork</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. What is the correct sequence of the closing process after a purchase contract is signed?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Appraisal → due diligence → title search → final walkthrough → close</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Title search → due diligence → appraisal → close → final walkthrough</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Execute contract → due diligence period (inspections, repair verification, financial verification) → financing and appraisal (simultaneous) → title search → final walkthrough → sign, fund, and receive deed</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Execute contract → final walkthrough → due diligence → close → title search</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 6: Operating, Growing & The Endgame</h3>
+    <p>You have the complete deal-making toolkit. Now comes the part most beginners underestimate — operating your portfolio well, building systems that make it passive, and knowing when and how to scale up, sell, pay down debt, and eventually achieve the financial freedom you started this journey for. Module 6 closes the loop on the small and mighty investor's complete journey.</p>
+    <a href="investing-module-6.html" class="next-module-cta">Module 6: Operating & Growing →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="investing-module-4.html" class="btn btn-outline">← Module 4: Financing</a>
+  <div class="module-nav-info">
+    <p>Real Estate Investing Track</p>
+    <strong>Module 5 of 6</strong>
+  </div>
+  <a href="investing-module-6.html" class="btn btn-gold">Module 6: Operating & Growing →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{
+    correct:"Correct! An immediate rejection is not the end of the negotiation — it is the beginning of the real one. Do not walk away and do not immediately raise your offer. Instead ask: 'What would you do instead?' Then help them calculate their actual net proceeds from a traditional sale. The $280,000 asking price might net only $200,000 after commissions, closing costs, holding costs, and repairs. Your $210,000 offer is suddenly much closer to their realistic alternative than they realized. Rejections reveal information — use them.",
+    incorrect:"Not quite. An immediate rejection is not the end — it is the start of the real negotiation. Do not walk away and do not immediately counter upward. Instead ask: 'What would you do instead?' and listen carefully. Then help them compare their net proceeds from a traditional sale versus your offer. After commissions, closing costs, holding costs, and repairs on a $280,000 property, their real net might be $200,000–$210,000. Your offer is much closer to their reality than their initial emotional reaction suggests."
+  },
+  q2:{
+    correct:"Correct! The MAO is a hard ceiling based on the financial reality of the deal — not a negotiating position to be softened by emotion or pressure. Paying $10,000 over your MAO means you lose $10,000 of profit or safety margin the day you close. If creative restructuring (multiple offers, seller financing on better terms) cannot bridge the gap, the disciplined answer is to walk away and find the next deal. There is always another bus coming.",
+    incorrect:"Not quite. The MAO is a hard financial ceiling — not a suggestion. Paying $10,000 over your MAO means you accepted $10,000 less profit or safety margin on day one. Rationalizing the overpayment because it is 'only $10,000' or 'a good location' is exactly the emotional reasoning the MAO is designed to prevent. The disciplined answer is to hold your number, try creative restructuring (seller financing, multiple offers), or walk away. Opportunities are like buses — another one will come."
+  },
+  q3:{
+    correct:"Correct! Due diligence discoveries give you three options — and all three are legitimate depending on the situation. Renegotiate downward by the discovered cost to restore your original return. Proceed as-is if the thinner return still clears your investment criteria. Walk away using your due diligence contingency if the deal no longer makes financial sense. The one option that is not available is ignoring the discovery and hoping for the best. That is not investing — that is guessing.",
+    incorrect:"Not quite. Due diligence discoveries give you three options, all legitimate. You can renegotiate the price downward to account for the new cost — asking for an $8,000 price reduction is entirely reasonable and sellers often accept it rather than losing the deal. You can proceed at the original price if the deal still meets your return criteria (though thinner). Or you can walk away using your due diligence contingency if the deal no longer works for you. The point of due diligence is to make an informed decision — not to be locked in regardless of what you find."
+  },
+  q4:{
+    correct:"Correct! On MLS properties, speed is often the decisive factor. Many sellers accept the first offer that meets their needs. View the property the same day it comes on your radar, estimate repairs on site, and submit your offer the same day with the strongest terms you can offer — no financing contingency if you have alternative funding, fast close date, as-is purchase. Waiting even 24 hours on an MLS deal in a competitive market often means someone else gets it.",
+    incorrect:"Not quite. On MLS properties speed is critical. Many sellers simply accept the first offer that meets their criteria. If you wait a week, or even a day, in a competitive market you will likely lose the deal to a faster buyer. The right approach is to view it immediately — the same day if possible — estimate repairs on site, and submit your offer the same day with the strongest terms available. Verbal offers have no legal weight and delay the process — always submit in writing."
+  },
+  q5:{
+    correct:"Correct! The closing sequence after contract execution: due diligence period (10–14 days typically — inspections, repair verification, financial verification, tenant review), financing and appraisal (submit loan application immediately, run simultaneously with due diligence), title search (verify clean ownership and no liens), final walkthrough (day before closing — confirm property condition), then close (sign, fund, record deed, receive keys). Building your closing team before you need it keeps this process smooth.",
+    incorrect:"Not quite. The correct closing sequence is: execute contract → due diligence period (inspections, repair verification, financial verification, tenant review, usually 10–14 days) → financing and appraisal running simultaneously → title search → final walkthrough → sign, fund, and receive the deed at closing. The final walkthrough happens just before closing — not after. Title search happens before closing to verify clean ownership and ensure there are no surprise liens or disputes."
+  }
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent — you are ready to negotiate and close deals. You are ready for Module 6: Operating, Growing & The Endgame.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above before moving on — negotiation and due diligence are the skills that protect every deal you close.';
+  }
+}
+</script>
+
+</body>
+</html>
