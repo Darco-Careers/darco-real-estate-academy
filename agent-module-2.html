@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Agent Module 2: Think Like a Top Agent — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0D5C63;--teal-mid:#1A7A83;--teal-light:#2A9EA8;--teal-pale:#EBF7F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(13,92,99,0.1);
+  --shadow-card:0 2px 16px rgba(13,92,99,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:33%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+
+/* Callouts */
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Four attributes */
+.attr-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.attr-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--teal-mid);border-radius:0 0 12px 12px;padding:1.25rem;}
+.attr-card .ac-icon{font-size:1.3rem;margin-bottom:0.5rem;}
+.attr-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.attr-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* Nine ways */
+.nine-ways{display:flex;flex-direction:column;gap:0.85rem;margin:2rem 0;}
+.way-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal-mid);border-radius:0 12px 12px 0;padding:1rem 1.25rem;transition:all 0.2s;}
+.way-card:hover{box-shadow:var(--shadow-card);}
+.way-card.foundational{border-left-color:var(--gold);}
+.way-card .wc-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.2rem;}
+.way-card.foundational .wc-label{color:#8A6A20;}
+.way-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.way-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* Three Ls */
+.three-ls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:2rem 0;}
+.l-card{background:linear-gradient(135deg,#062F33,var(--teal));border-radius:14px;padding:1.5rem 1.25rem;position:relative;overflow:hidden;}
+.l-card::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.l-card .lc-letter{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:0.25rem;position:relative;}
+.l-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;position:relative;}
+.l-card p{font-size:12.5px;color:rgba(255,255,255,0.72);line-height:1.6;position:relative;}
+
+/* Myths grid */
+.myths-grid{display:flex;flex-direction:column;gap:0.85rem;margin:2rem 0;}
+.myth-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.myth-card .mc-x{width:28px;height:28px;background:#FBF0EE;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:#C0392B;flex-shrink:0;margin-top:2px;}
+.myth-card .mc-content h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;}
+.myth-card .mc-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* Power hour visual */
+.power-hour{background:var(--teal-pale);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.power-hour h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--teal);margin-bottom:1rem;}
+.ph-row{display:flex;align-items:center;gap:1rem;padding:0.5rem 0;border-bottom:1px solid rgba(13,92,99,0.08);}
+.ph-row:last-child{border-bottom:none;}
+.ph-time{font-size:11px;font-weight:700;color:var(--teal-mid);width:120px;flex-shrink:0;text-transform:uppercase;letter-spacing:0.5px;}
+.ph-activity{font-size:13px;color:var(--text-mid);flex:1;line-height:1.5;}
+.ph-activity strong{color:var(--text-dark);}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .attr-grid{grid-template-columns:1fr;}
+  .three-ls{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="residential-agent.html">Agent Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="residential-agent.html">Residential Agent Track</a><span class="sep">›</span>
+  <span class="current">Module 2: Think Like a Top Agent</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Agent Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="agent-module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <div class="prog-dot active">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏠 Residential Agent Track · Module 2 of 6</div>
+    <h1>Think Like <em>a Top Agent</em></h1>
+    <p>Getting licensed is the easy part. What separates agents who build real careers from the 87% who quit within two years is not market conditions, not luck, and not even talent. It is how they think. This module covers the nine ways millionaire agents think differently, the three forces that drive every successful real estate business, and the six myths that keep most agents stuck before they even get started.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>55–65 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Why most agents fail — <em>and what the survivors do differently</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Here is a number that should get your full attention: roughly 87% of new real estate agents leave the business within their first two years. That is not a statistic about the market being hard or the economy being difficult. Markets have been good and bad throughout real estate history, and agents fail in both. The number points to something else entirely — a pattern of thinking and behavior that is almost universal among agents who do not make it.</p>
+
+    <p class="lesson-text">As Dirk Zeller writes in <em>Success as a Real Estate Agent For Dummies</em>, agents who build successful long-term businesses share four common attributes regardless of market conditions, geography, or experience level:</p>
+
+    <div class="attr-grid">
+      <div class="attr-card fade-in">
+        <div class="ac-icon">🔄</div>
+        <h4>They are consistent</h4>
+        <p>They perform success-producing activities day in and day out — not in bursts followed by weeks of inactivity. They prospect methodically and steadily, day after day, regardless of how they feel that morning.</p>
+      </div>
+      <div class="attr-card fade-in">
+        <div class="ac-icon">📈</div>
+        <h4>They believe in the law of accumulation</h4>
+        <p>They understand that constant effort compounds over time. No agent becomes an overnight success — but every call made, every relationship built, every follow-up sent adds to a growing foundation that eventually produces reliable income.</p>
+      </div>
+      <div class="attr-card fade-in">
+        <div class="ac-icon">📚</div>
+        <h4>They are lifelong learners</h4>
+        <p>The most successful agents never stop improving. Their passion for growth is acute. They commit time, resources, and energy to constantly enhance their skills, strategies, and market knowledge — long after they are already successful.</p>
+      </div>
+      <div class="attr-card fade-in">
+        <div class="ac-icon">💪</div>
+        <h4>They are self-disciplined</h4>
+        <p>They motivate themselves to do the activities that must be done — especially the ones they do not feel like doing. Nobody requires a real estate agent to show up to work. The agents who make it require it of themselves.</p>
+      </div>
+    </div>
+
+    <p class="lesson-text">Notice what is not on that list: market knowledge, negotiation skills, social media presence, technology tools. Those things matter — but they are downstream of mindset. The agent who has the right mindset will eventually build the right skills. The agent with the wrong mindset will not stay long enough to build anything.</p>
+
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Dirk Zeller — Success as a Real Estate Agent For Dummies</div>
+      <p>"The function that makes or breaks a real estate agent's success is creating customers. Not customer service — customer creation. You can't serve customers if you don't create customers in the first place."</p>
+      <div class="quote-attr">On why lead generation must come before everything else</div>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Chastin J. Miles: Why 90% of real estate agents <em>are quitting</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Chastin J. Miles — Forbes-featured real estate coach and educator with millions of YouTube views — breaks down the pattern behind why most agents fail. He covers the get-rich-quick mentality that attracts the wrong people, the critical gaps in real estate licensing programs, what it actually takes to build a sustainable business in today's market, and the specific habits and systems that separate survivors from quitters. Published February 2024. Watch this before Lesson 2.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/54GcRMFPlIQ" title="Why 90% of Real Estate Agents Are QUITTING — Chastin J. Miles" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Chastin J. Miles · YouTube</span>
+        <h4>Why 90% of Real Estate Agents Are QUITTING</h4>
+        <p>The mass exit happening in real estate, why agents with the wrong mentality get exposed when markets shift, the flaws in licensing programs that leave new agents unprepared, and what it takes to build a predictable and sustainable business — lead generation systems, conversion processes, win-win relationships, and extreme value. Directly reinforces Lesson 1 of this module.</p>
+        <p class="credit">Chastin J. Miles · YouTube February 2024 · Solo presenter</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The nine ways top agents think — <em>the mindset framework behind every successful career</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">In <em>The Millionaire Real Estate Agent</em>, Gary Keller, Dave Jenks, and Jay Papasan identify nine specific ways that top-producing agents think that consistently separate them from everyone else. These are not generic positive-thinking principles. They are precise categories of thought that, when examined carefully, reveal exactly where most agents are leaving results on the table.</p>
+
+    <p class="lesson-text">Two of the nine are foundational — they must come first because all the others depend on them. The remaining seven are supportive, reinforcing, and amplifying. Here they are:</p>
+
+    <div class="nine-ways">
+      <div class="way-card foundational fade-in">
+        <div class="wc-label">🏆 Foundational — Way 1</div>
+        <h4>Think Powered by a Big Why</h4>
+        <p>High achievers always have a Big Why powering their actions — a purpose, a mission, or a need that gives them focus even when the work is hard. As Keller writes: <em>"A Big Why brings big focus and big energy. A Little Why brings little focus and little energy."</em> Ask yourself right now: why are you really doing this? Your answer to that question will determine whether you are still in the business in two years.</p>
+      </div>
+      <div class="way-card foundational fade-in">
+        <div class="wc-label">🏆 Foundational — Way 2</div>
+        <h4>Think Big Goals and Big Models</h4>
+        <p>Top agents do not just set a vague income goal — they build a model for how they will achieve it. They know their numbers: how many leads, how many appointments, how many listings, what conversion rates. They think in systems and formulas, not hopes. Big goals without big models are just wishes.</p>
+      </div>
+      <div class="way-card fade-in">
+        <div class="wc-label">Supportive — Way 3</div>
+        <h4>Think Possibilities</h4>
+        <p>Where the average agent sees obstacles — a slow market, a difficult client, a rejected offer — the top agent sees what might be possible anyway. This is not blind optimism. It is a trained habit of looking for solutions and opportunities before concluding that a situation is hopeless.</p>
+      </div>
+      <div class="way-card fade-in">
+        <div class="wc-label">Supportive — Way 4</div>
+        <h4>Think Action</h4>
+        <p>Top agents are biased toward doing. They make calls before they feel ready. They submit offers before conditions are perfect. They ask for the business before they are certain the client will say yes. Analysis paralysis — the tendency to keep researching, planning, and preparing instead of acting — is one of the most common killers of early agent careers.</p>
+      </div>
+      <div class="way-card fade-in">
+        <div class="wc-label">Supportive — Way 5</div>
+        <h4>Think Without Fear</h4>
+        <p>Fear of rejection, fear of looking foolish, fear of the client saying no — these fears are universal in this business. Top agents feel them too. The difference is they do not let fear dictate their behavior. They make the call anyway. They knock on the door anyway. They ask for the listing anyway.</p>
+      </div>
+      <div class="way-card fade-in">
+        <div class="wc-label">Supportive — Way 6</div>
+        <h4>Think Progress</h4>
+        <p>Top agents measure themselves against their own previous performance — not against other agents, not against some abstract standard of perfection. They celebrate incremental improvements. They understand that small consistent gains compound into large results over time, and they stay motivated by tracking their own growth rather than comparing themselves to others.</p>
+      </div>
+      <div class="way-card fade-in">
+        <div class="wc-label">Supportive — Way 7</div>
+        <h4>Think Competitively and Strategically</h4>
+        <p>The real estate market is competitive. Top agents embrace that reality rather than pretending it does not exist. They study their competition. They know what other agents offer, and they build a value proposition that is genuinely better — then they communicate it clearly.</p>
+      </div>
+      <div class="way-card fade-in">
+        <div class="wc-label">Supportive — Way 8</div>
+        <h4>Think Standards</h4>
+        <p>Top agents have clear standards for how they work, how they treat clients, how they present themselves, and what results they will and will not accept. Standards are the guardrails that keep quality consistent even when motivation fluctuates. You cannot always control your energy. You can always control your standards.</p>
+      </div>
+      <div class="way-card fade-in">
+        <div class="wc-label">Supportive — Way 9</div>
+        <h4>Think Service</h4>
+        <p>The most successful agents understand that their job is not to sell houses — it is to serve people. When you are genuinely focused on what is best for your client rather than what is best for your commission check, something shifts. Clients trust you faster. They refer you more. They come back. Service is not soft — it is the most commercially intelligent approach to this business.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The Three L's — <em>Leads, Listings, and Leverage</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">If the Nine Ways describe how top agents think, the Three L's describe what they focus on. Gary Keller's research on top-producing agents revealed that 20% of an agent's focus drives 80% of their results — and that 20% can be organized into three categories: Leads, Listings, and Leverage. Understanding these three principles is arguably more important than any specific skill or technique in real estate.</p>
+
+    <div class="three-ls">
+      <div class="l-card fade-in">
+        <div class="lc-letter">L</div>
+        <h4>Leads</h4>
+        <p>Lead generation is never passive. Your job as a real estate agent — before everything else — is to go out and find people who want to buy or sell real estate. Not wait for them to find you. Not hope that your license alone will attract clients. Actively, systematically, and consistently generate leads every single working day. This is the activity that determines your income more than any other.</p>
+      </div>
+      <div class="l-card fade-in">
+        <div class="lc-letter">L</div>
+        <h4>Listings</h4>
+        <p>Listings are the high-leverage, maximum-earning opportunity in residential real estate. When you list a property, every agent in town goes to work selling it for you. You gain market presence, brand exposure, and buyer leads — all from one listing. Keller writes: <em>"Focus on listings. Become the listing agent."</em> Buyer representation is important — but listings scale your business in a way that buyer work alone cannot.</p>
+      </div>
+      <div class="l-card fade-in">
+        <div class="lc-letter">L</div>
+        <h4>Leverage</h4>
+        <p>Leverage is the who, how, and what of a powerful real estate business. Who can you bring in to handle tasks so you can focus on revenue-producing activities? How can systems and tools automate repetitive work? What tools, technology, and processes can multiply your output without multiplying your hours? Leverage is how agents scale from solo operators to real businesses.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Lead Generation Is Your Primary Job</div>
+      <p>One of the most important mindset shifts a new agent can make is understanding that their primary job is not selling houses — it is creating opportunities to sell houses. As Chastin J. Miles puts it: <em>"Your number one job as a real estate agent is not selling houses. It's lead generating. It's going out and getting the business."</em> Every successful agent who has been in the business longer than two years learned this lesson. The agents who did not learn it are no longer in the business.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Stefanie Lugo: Schedules and routines of <em>successful real estate agents</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Stefanie Lugo — real estate agent and founder of Market Authority Academy — shares the exact daily and weekly structure that top-producing agents use to build predictable, scalable businesses. She covers the time management mistakes most agents make, how to structure your daily power hour for lead generation, weekly themed days for focused activity, protecting mornings for revenue-producing tasks, and monthly CEO planning. Published April 2025. Directly reinforces the Think Action, Think Progress, and Think Standards content from Lesson 2.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/5Q9JBpGf6Ds" title="Schedules and Routines of Successful Real Estate Agents — Stefanie Lugo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Stefanie Lugo · YouTube</span>
+        <h4>Schedules and Routines of Successful Real Estate Agents (2025 Update)</h4>
+        <p>The top time management mistakes agents make, why structure equals freedom, morning ritual before business starts, daily power hours focused on 10 lead generation conversations per day, weekly themed days (marketing, transactions, referral relationships, hot leads, CEO admin), protecting afternoons for appointments, and monthly CEO planning day for business reset. The operational translation of thinking into action.</p>
+        <p class="credit">Stefanie Lugo · Market Authority Academy · YouTube April 2025 · Solo presenter</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The six MythUnderstandings — <em>what is really holding you back</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Before agents can adopt the Nine Ways of thinking, they often need to dismantle a set of beliefs that are holding them back without them even realizing it. Gary Keller, Dave Jenks, and Jay Papasan call these "MythUnderstandings" in <em>The Millionaire Real Estate Agent</em> — false beliefs so deeply embedded in how most people think about real estate careers that they feel like obvious truths. They are not. Here are the six most common:</p>
+
+    <div class="myths-grid">
+      <div class="myth-card fade-in">
+        <div class="mc-x">✗</div>
+        <div class="mc-content">
+          <h4>"I can't do it."</h4>
+          <p>The belief that top-level success in real estate requires some innate talent, special connection, or background that you do not have. It does not. It requires consistent application of proven models — which anyone can learn and execute.</p>
+        </div>
+      </div>
+      <div class="myth-card fade-in">
+        <div class="mc-x">✗</div>
+        <div class="mc-content">
+          <h4>"It can't be done in my market."</h4>
+          <p>Every market has agents who are thriving right now. A slow market, a competitive market, a rural market, a luxury market — top producers exist in all of them. The market is not what determines your success. Your activity and systems are.</p>
+        </div>
+      </div>
+      <div class="myth-card fade-in">
+        <div class="mc-x">✗</div>
+        <div class="mc-content">
+          <h4>"It would take too much time and effort — I would lose my freedom."</h4>
+          <p>The agents who work the hardest at building their business — especially in the early years — are the ones who eventually earn the most freedom. The agent who avoids the hard work to "preserve their freedom" ends up working constantly with no real business and no real freedom.</p>
+        </div>
+      </div>
+      <div class="myth-card fade-in">
+        <div class="mc-x">✗</div>
+        <div class="mc-content">
+          <h4>"It's too risky. I'll lose money."</h4>
+          <p>Risk in real estate is real — but it is manageable and predictable when you follow proven models. The agents who lose money are usually the ones who do not have a model at all, not the ones who follow a systematic approach to building their business.</p>
+        </div>
+      </div>
+      <div class="myth-card fade-in">
+        <div class="mc-x">✗</div>
+        <div class="mc-content">
+          <h4>"My clients will only work with me — only I can deliver quality service."</h4>
+          <p>This belief keeps agents stuck as solo operators forever, unable to scale because they are convinced everything depends on them personally. Great agents build systems and teams that deliver consistently excellent service — without every task requiring their direct involvement.</p>
+        </div>
+      </div>
+      <div class="myth-card fade-in">
+        <div class="mc-x">✗</div>
+        <div class="mc-content">
+          <h4>"Having a goal and not fully realizing it is a negative thing."</h4>
+          <p>This myth causes agents to set small, safe goals they are certain to hit — and as a result, they never push themselves toward what is actually possible. Not hitting a big goal is not failure. It is data. Big goals, even partially achieved, produce far better results than small goals fully achieved.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Your daily power hour — turning mindset into action</h3>
+    <p class="lesson-text">The Nine Ways and the Three L's only matter if they change what you actually do every day. Here is the daily structure that directly translates the Think Action mindset into concrete business results, based on Stefanie Lugo's framework:</p>
+
+    <div class="power-hour">
+      <h4>📅 The Daily Power Hour Structure</h4>
+      <div class="ph-row">
+        <div class="ph-time">Before work</div>
+        <div class="ph-activity"><strong>Morning ritual</strong> — 15 minutes of movement, journaling, or quiet before the business day starts. Fills your cup before you pour into others.</div>
+      </div>
+      <div class="ph-row">
+        <div class="ph-time">Start of work</div>
+        <div class="ph-activity"><strong>Daily power hours (1–2 hrs)</strong> — Revenue-producing activities ONLY. Target at least 10 real estate conversations per day. Pipeline check-ins. Marketing and social media tasks. No appointments during this block.</div>
+      </div>
+      <div class="ph-row">
+        <div class="ph-time">Afternoons</div>
+        <div class="ph-activity"><strong>Appointments, showings, and client meetings</strong> — Protect your mornings for lead generation. Afternoons are for serving clients already in your pipeline.</div>
+      </div>
+      <div class="ph-row">
+        <div class="ph-time">Last Friday of month</div>
+        <div class="ph-activity"><strong>Monthly CEO planning day (2 hrs)</strong> — Update metrics, plan next month's marketing and lead generation, review what worked and what did not. Your business's monthly reset.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Shelley Zavitz — Your First 365 Days in Real Estate</div>
+      <p>"If you act like you are an agent who just wants to help people, you are not going to achieve your goals. You need to realize what buyers and sellers are really searching for — a true professional to represent them during the biggest financial commitment of their lives. Think and act like a business does, and your clients will treat you like one."</p>
+      <div class="quote-attr">On the mindset shift that separates professionals from hobbyists</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 2 Key Takeaways</h3>
+    <ul>
+      <li>87% of new agents quit within two years. The reason is almost never the market — it is mindset, habits, and the absence of consistent systems. The agents who make it share four attributes: consistency, belief in the law of accumulation, lifelong learning, and self-discipline.</li>
+      <li>The Nine Ways top agents think — foundational: Think Powered by a Big Why, Think Big Goals and Big Models. Supportive: Think Possibilities, Think Action, Think Without Fear, Think Progress, Think Competitively and Strategically, Think Standards, Think Service. All nine are essential.</li>
+      <li>Your Big Why is the most important thing you can define before starting your career. A Big Why brings big focus and big energy. A Little Why brings little focus and little energy. Know yours before you make your first prospecting call.</li>
+      <li>The Three L's — Leads (never passive, daily activity), Listings (high-leverage, maximum-earning opportunity), Leverage (who, how, and what multiplies your output). These three categories represent the 20% of focus that drives 80% of results.</li>
+      <li>Lead generation is your primary job — not selling houses. You cannot serve clients you have not created. Every day that passes without prospecting activity is a day without income in your future pipeline.</li>
+      <li>Six MythUnderstandings to dismantle: "I can't do it," "It can't be done in my market," "It takes too much time," "It's too risky," "Only I can deliver quality service," and "Not fully reaching a goal is failure." Each of these beliefs is demonstrably false — and each one keeps agents from building what is possible.</li>
+      <li>Structure equals freedom. Protect your mornings for revenue-producing activities. Daily power hour: 10 lead generation conversations, pipeline check-ins, marketing tasks — before any appointments. Monthly CEO planning day: metrics review, calendar planning, lead generation prep.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. According to Gary Keller's framework in The Millionaire Real Estate Agent, which two of the Nine Ways are considered "foundational" — meaning all the others depend on them?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Think Action and Think Without Fear</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Think Powered by a Big Why and Think Big Goals and Big Models — these two are foundational because all the other seven ways depend on having a compelling purpose and a systematic model to follow</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Think Service and Think Standards</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Think Competitively and Think Progress</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A new agent says: "My primary job is to be an excellent real estate advisor. If I focus on serving clients well, the leads and listings will come naturally." What is the critical mindset error here?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Nothing — this is exactly the right approach for building a referral-based business</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Lead generation must come before everything else — you cannot serve clients you have not created. Focusing on service quality without active lead generation is the most common reason new agents fail. Their pipeline runs dry before their skills can earn referrals.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> The agent should focus on listings only — not buyer work</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> This approach works fine — most agents succeed through referrals alone within their first year</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. Which of the Three L's does Gary Keller describe as "the high-leverage, maximum-earning opportunity" in residential real estate — and why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Leads — because without leads nothing else is possible</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Leverage — because systems and team members multiply your output</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Listings — because when you list a property, every agent in town goes to work selling it for you. You gain market presence, brand exposure, and buyer leads all from one listing. Listings scale in a way that buyer work alone cannot.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> All three equally — the Three L's must be balanced at all times</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. An agent in a slow market says: "I would build my business but this market is just too difficult right now — I'll wait until conditions improve." Which MythUnderstanding does this reflect?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> "It's too risky. I'll lose money."</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> "It can't be done in my market." — Every market has agents who are currently thriving. The market does not determine success. Activity, systems, and consistent lead generation do — and all three can be executed in any market condition.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> "I can't do it."</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> "Having a goal and not fully reaching it is negative."</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. According to Stefanie Lugo's daily power hour framework, what is the single most important rule for protecting your morning time blocks?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Start every morning by checking email and responding to client messages first so nothing falls through the cracks</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Schedule all your showing appointments in the morning so clients feel prioritized</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Do not schedule any appointments during your morning power hours — protect that time exclusively for revenue-producing activities like lead generation conversations, pipeline check-ins, and marketing. Appointments happen in the afternoons.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Use the mornings to plan your week and catch up on administrative tasks so the rest of the week runs smoothly</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Millionaire Real Estate Agent</div>
+          <div class="bi-author">Gary Keller, Dave Jenks & Jay Papasan</div>
+          <div class="bi-desc">The source of the Nine Ways, the Three L's, the Six MythUnderstandings, and the Four Models that underpin this entire track. The most widely read agent career book ever written.</div>
+        </div>
+        <a href="https://www.amazon.com/Millionaire-Real-Estate-Agent-About/dp/0071444041" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Your First 365 Days in Real Estate</div>
+          <div class="bi-author">Shelley Zavitz</div>
+          <div class="bi-desc">The most honest first-year agent book written. Zavitz's quote in this module captures exactly the professional mindset shift new agents must make to survive year one.</div>
+        </div>
+        <a href="https://www.amazon.com/Your-First-365-Days-Real/dp/1789661587" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Success as a Real Estate Agent For Dummies</div>
+          <div class="bi-author">Dirk Zeller</div>
+          <div class="bi-desc">The source of the four attributes of successful agents and the foundational truth that customer creation — not customer service — is the function that makes or breaks a real estate career.</div>
+        </div>
+        <a href="https://www.amazon.com/Success-Real-Estate-Agent-Dummies/dp/1119918707" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 3: Working with Buyers</h3>
+    <p>You have the mindset. You understand the framework. Now it is time to build the skills. Module 3 covers the complete buyer experience — from the initial consultation and pre-approval conversation through showings, offers, negotiations, and getting your buyer to the closing table. This is where the day-to-day work of being an agent begins.</p>
+    <a href="agent-module-3.html" class="next-module-cta">Module 3: Working with Buyers →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="agent-module-1.html" class="btn btn-outline">← Module 1: Getting Licensed</a>
+  <div class="module-nav-info">
+    <p>Residential Agent Track</p>
+    <strong>Module 2 of 6</strong>
+  </div>
+  <a href="agent-module-3.html" class="btn btn-gold">Module 3: Working with Buyers →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{
+    correct:"Correct! Think Powered by a Big Why and Think Big Goals and Big Models are the two foundational ways in Keller's framework. They come first because everything else depends on them. Without a compelling Big Why, there is no fuel when the work gets hard. Without Big Goals and Big Models, there is no clear direction or system to follow. The other seven ways — possibilities, action, fearlessness, progress, competition, standards, service — are all more effective when built on this foundation.",
+    incorrect:"Not quite. The two foundational ways are Think Powered by a Big Why and Think Big Goals and Big Models. Keller identifies these as foundational because all seven of the other ways depend on them. You cannot Think Action effectively without a Big Why to motivate it. You cannot Think Progress without Big Goals to measure progress against. The foundation must come first."
+  },
+  q2:{
+    correct:"Correct! This is the most common and most costly mindset error new agents make. Lead generation must come before everything else — you cannot serve clients you have not created. Dirk Zeller makes this exact point: the function that makes or breaks an agent's success is customer creation, not customer service. Service quality matters enormously — but it is downstream of having clients to serve. Agents who wait for referrals to arrive organically, without systematic lead generation, almost always run out of clients before their reputation has time to build.",
+    incorrect:"Not quite. The critical error is that lead generation must come before everything else. You cannot serve clients you have not first created. Many new agents make this exact mistake — they focus on being great at service while neglecting systematic lead generation, assuming their quality of work will naturally attract clients. But reputation and referrals take time to build. Without active daily lead generation, the pipeline runs dry before quality of service has a chance to produce organic growth."
+  },
+  q3:{
+    correct:"Correct! Listings are the high-leverage, maximum-earning opportunity in residential real estate. When you list a property, every other agent in town effectively works for you — showing your listing to their buyers, running open houses, making offers. You gain brand exposure across the community, generate buyer leads from interested parties who did not end up buying that property, and create a scalable income stream. One well-managed listing can produce multiple leads. Buyer work is important but listings scale.",
+    incorrect:"Not quite. Listings are the high-leverage, maximum-earning opportunity according to Keller. When you have a listing, every agent in town goes to work selling it for you — creating leverage even before you have built a team. Listings generate buyer leads, brand exposure, and market presence in a way that working exclusively with buyers cannot. Keller is explicit: focus on listings. Become the listing agent."
+  },
+  q4:{
+    correct:"Correct! This is the 'It can't be done in my market' MythUnderstanding. Every market — fast, slow, rural, urban, competitive, quiet — has agents who are currently thriving. The market does not determine success. The agent's activity level, lead generation consistency, and systems do. Waiting for better conditions is a guaranteed way to fall further behind. The agents gaining market share in a slow market are the ones who are most active while others wait.",
+    incorrect:"Not quite. This reflects the 'It can't be done in my market' MythUnderstanding. Every market has thriving agents right now — the market conditions do not determine whether success is possible, only what strategies work best. The 'too risky' myth is about financial fear of failure, and the 'I can't do it' myth is about personal capability doubts. This agent's specific belief is that the external market environment is the obstacle — which is one of the most common limiting beliefs Keller identifies."
+  },
+  q5:{
+    correct:"Correct! The most important rule of Stefanie Lugo's power hour framework is protecting morning time blocks from appointments entirely. Email, appointments, client meetings, showings — all of these happen in the afternoon. The mornings belong to revenue-producing activities: lead generation conversations, pipeline check-ins, and marketing tasks. The moment you allow appointments into your morning, you lose the protected time that builds your future pipeline. Structure equals freedom.",
+    incorrect:"Not quite. Lugo is explicit: do not schedule any appointments during your morning power hours. Email is also specifically a morning trap — 'email begets email' and responding to other people's problems means ignoring your own revenue-producing activities. The power hour rule is: mornings are for lead generation, pipeline check-ins, and marketing. Afternoons are for appointments and client service. This structure protects the activity that builds future income from the activity that serves existing clients."
+  }
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent — you understand the mindset and framework behind a successful agent career. Ready for Module 3: Working with Buyers.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above before moving on — the mindset content in this module underpins everything in the modules ahead.';
+  }
+}
+</script>
+
+</body>
+</html>
