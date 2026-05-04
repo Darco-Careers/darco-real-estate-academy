@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Agent Module 1: Getting Licensed — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0D5C63;--teal-mid:#1A7A83;--teal-light:#2A9EA8;--teal-pale:#EBF7F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(13,92,99,0.1);
+  --shadow-card:0 2px 16px rgba(13,92,99,0.07);
+  --green:#1B6B3A;--green-pale:#EAF5EE;
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:17%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+
+/* Callouts */
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+
+/* Requirements table */
+.req-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.req-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.req-card.universal{border-top:3px solid var(--teal-mid);}
+.req-card.varies{border-top:3px solid var(--gold);}
+.req-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.6rem;display:flex;align-items:center;gap:7px;}
+.req-card ul{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
+.req-card ul li{font-size:12.5px;color:var(--text-mid);display:flex;gap:7px;line-height:1.55;}
+.req-card ul li::before{flex-shrink:0;}
+.req-card.universal ul li::before{content:'✓';color:var(--teal-mid);font-weight:700;}
+.req-card.varies ul li::before{content:'↕';color:var(--gold);font-weight:700;}
+
+/* Hours table */
+.hours-table-wrap{overflow-x:auto;margin:1.75rem 0;}
+.hours-table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:500px;}
+.hours-table th{background:var(--teal);color:var(--white);padding:8px 10px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;}
+.hours-table td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;}
+.hours-table td:first-child{font-weight:600;color:var(--text-dark);}
+.hours-table tr:hover td{background:var(--teal-pale);}
+.hours-table tr.highlight td{background:var(--gold-pale);}
+
+/* 6 step licensing path */
+.license-track{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
+.license-track::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--teal-pale);}
+.license-step{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:1.5rem;position:relative;}
+.license-step:last-child{padding-bottom:0;}
+.ls-num{width:40px;height:40px;border-radius:50%;background:var(--teal);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:0.9rem;flex-shrink:0;z-index:1;}
+.ls-body{padding-top:6px;}
+.ls-body h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.ls-body .ls-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;background:var(--teal-pale);color:var(--teal-mid);margin-bottom:0.35rem;}
+.ls-body p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+
+/* Exam prep tips */
+.tips-list{display:flex;flex-direction:column;gap:0.8rem;margin:2rem 0;}
+.tip-item{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal-mid);border-radius:0 12px 12px 0;padding:0.9rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.tip-item .ti-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.tip-item .ti-content h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.tip-item .ti-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* Brokerage comparison */
+.broker-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.broker-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:all 0.2s;}
+.broker-card:hover{box-shadow:var(--shadow-card);}
+.broker-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.broker-card .bc-type{font-size:11px;font-weight:700;color:var(--teal-mid);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.6rem;}
+.broker-card .bc-best{font-size:11.5px;font-weight:600;color:var(--teal);background:var(--teal-pale);padding:3px 8px;border-radius:6px;display:inline-block;margin-bottom:0.6rem;}
+.broker-card ul{list-style:none;display:flex;flex-direction:column;gap:0.3rem;}
+.broker-card ul li{font-size:12.5px;color:var(--text-mid);display:flex;gap:6px;line-height:1.5;}
+.broker-card ul li::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;}
+
+/* Interview questions */
+.interview-q{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.iq-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
+.iq-item .iq-q{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--teal);margin-bottom:0.3rem;}
+.iq-item p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* State resource box */
+.state-box{background:linear-gradient(135deg,#062F33,var(--teal));border-radius:16px;padding:1.75rem 2rem;margin:2rem 0;position:relative;overflow:hidden;}
+.state-box::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.state-box .sb-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.5rem;position:relative;}
+.state-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;position:relative;}
+.state-box p{font-size:13.5px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:1rem;position:relative;max-width:560px;}
+.state-box .state-links{display:flex;gap:0.75rem;flex-wrap:wrap;position:relative;}
+.state-link{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.state-link.primary{background:var(--gold);color:var(--teal);}
+.state-link.secondary{background:rgba(255,255,255,0.12);color:var(--white);border:1px solid rgba(255,255,255,0.2);}
+
+/* Books resources */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-info{}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Knowledge check */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+
+/* Next module */
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+
+/* Module nav */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .req-grid{grid-template-columns:1fr;}
+  .broker-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="residential-agent.html">Agent Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="residential-agent.html">Residential Agent Track</a><span class="sep">›</span>
+  <span class="current">Module 1: Getting Licensed</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Agent Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <div class="prog-dot active">1</div>
+    <div class="prog-dot locked">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏠 Residential Agent Track · Module 1 of 6</div>
+    <h1>Getting Licensed — <em>The Right Way</em></h1>
+    <p>Before you can represent a single buyer or seller, you need a license. This module covers everything you need to know before you spend a dollar on courses — what every state requires, what varies, how to study smart, how to pass the exam on your first attempt, and how to choose the brokerage that will make or break your first year.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>55–65 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What every state requires — <em>and what varies more than you think</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Before you enroll in a single course or pay a single fee, you need to understand what your specific state actually requires. This is where most new agents make their first mistake — they assume the process is the same everywhere, or they follow advice from an agent in a different state. The universal steps are consistent. The specifics vary significantly.</p>
+
+    <p class="lesson-text">Here is the honest picture of what is truly universal and what is not. As Dirk Zeller writes in <em>Success as a Real Estate Agent For Dummies</em>: <strong>"You have to be excellent at customer development and customer service — but in terms of priority, you have to first be exemplary at lead generation."</strong> That truth applies everywhere. But the path to your license? That depends entirely on where you live.</p>
+
+    <div class="req-grid">
+      <div class="req-card universal fade-in">
+        <h4>✅ Universal in All 50 States</h4>
+        <ul>
+          <li>Minimum age of 18 (19 in Alabama)</li>
+          <li>Valid Social Security number</li>
+          <li>Complete state-approved pre-license education</li>
+          <li>Pass a state licensing exam</li>
+          <li>Submit application to state real estate commission</li>
+          <li>Pass a background check</li>
+          <li>Activate license under a supervising licensed broker</li>
+          <li>No college degree required — anywhere</li>
+        </ul>
+      </div>
+      <div class="req-card varies fade-in">
+        <h4>↕ Varies by State</h4>
+        <ul>
+          <li>Pre-license hours: 40 hrs (some states) up to 180 hrs (Texas)</li>
+          <li>High school diploma or GED — required in most states but NOT all (CA, TX, AZ, CO do not require it)</li>
+          <li>Exam format and question count (100–150 questions typically)</li>
+          <li>Passing score (usually 70–75%)</li>
+          <li>Application fees ($50–$350)</li>
+          <li>Exam fees ($15–$100)</li>
+          <li>Background check scope and standards</li>
+          <li>Continuing education requirements after licensing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Check Your State First — Before Spending a Dollar</div>
+      <p>The single most expensive mistake new agents make is enrolling in a course that does not meet their state's requirements, or completing more hours than their state requires. Before you pay for anything — visit your state's real estate commission website. Every state has one. It lists exact requirements, approved schools, exam format, fees, and timeline. Spend 30 minutes there before spending $300 on a course.</p>
+    </div>
+
+    <h3 class="sub-title">The hour requirements — a sample of the variation</h3>
+
+    <div class="hours-table-wrap">
+      <table class="hours-table">
+        <thead>
+          <tr><th>State</th><th>Pre-License Hours</th><th>GED/Diploma Required?</th><th>Typical Timeline</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Virginia</td><td>60 hours</td><td>Yes</td><td>4–6 weeks</td></tr>
+          <tr class="highlight"><td>Florida</td><td>63 hours</td><td>Yes</td><td>4–6 weeks</td></tr>
+          <tr><td>New York</td><td>75 hours</td><td>Yes</td><td>5–7 weeks</td></tr>
+          <tr class="highlight"><td>California</td><td>135 hours (3 courses)</td><td>No</td><td>8–12 weeks</td></tr>
+          <tr><td>Texas</td><td>180 hours (6 courses)</td><td>No</td><td>12–16 weeks</td></tr>
+          <tr class="highlight"><td>Colorado</td><td>168 hours</td><td>No</td><td>10–14 weeks</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="lesson-text">These numbers change. States update their requirements periodically. The table above gives you a general sense of the range — but always verify your specific state's current requirements directly with your state real estate commission before enrolling anywhere.</p>
+
+    <div class="state-box">
+      <div class="sb-label">🔍 Find Your State's Requirements</div>
+      <h3>Go here before you do anything else</h3>
+      <p>ARELLO — the Association of Real Estate License Law Officials — maintains links to every state real estate commission in the country. One click gets you to your state's official requirements page. Colibri Real Estate is the leading national licensing school operating in all 50 states — their site also breaks down requirements by state clearly.</p>
+      <div class="state-links">
+        <a href="https://www.arello.org/regulatory-agency-directory/" target="_blank" class="state-link primary">ARELLO — All 50 State Commissions →</a>
+        <a href="https://www.colibrigroup.com/real-estate/" target="_blank" class="state-link secondary">Colibri Real Estate →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Chastin J. Miles: How to become <em>a real estate agent in 2025</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Chastin J. Miles — real estate entrepreneur, Forbes-featured coach, and one of the most-watched real estate educators on YouTube — walks through the complete path from zero to licensed agent. He covers the licensing process, how to get started, the habits that separate agents who make it from agents who quit, and what nobody tells you before you get your license. Published August 2024. Universal — not state-specific. Watch this before Lesson 2.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/sSsfZOCU7Dg" title="How To Become A Real Estate Agent 2025 — Chastin J. Miles" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Chastin J. Miles · YouTube</span>
+        <h4>How To Become A Real Estate Agent [2025]</h4>
+        <p>The complete beginner's path to becoming a licensed agent — licensing process, exam tips, how to get your first clients, the habits of successful agents, and what nobody tells you before you start. Forbes-featured real estate coach with millions of YouTube views. Directly reinforces Lessons 1 and 2 of this module.</p>
+        <p class="credit">Chastin J. Miles · YouTube August 2024 · Universal — not state-specific</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The six-step licensing path — <em>and how to move through it efficiently</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The licensing path follows the same general sequence in every state. Understanding each step before you start helps you move through the process efficiently — without backtracking, paying fees twice, or losing weeks waiting on paperwork you did not know you needed. The entire process typically takes 2–4 months and costs $300–$800 depending on your state.</p>
+
+    <div class="license-track">
+      <div class="license-step fade-in">
+        <div class="ls-num">1</div>
+        <div class="ls-body">
+          <div class="ls-tag">Before anything else</div>
+          <h4>Verify your state's exact requirements</h4>
+          <p>Visit your state real estate commission website. Confirm: minimum age, diploma/GED requirement, required pre-license hours, approved schools, exam format, fees, and background check process. If you have a criminal history of any kind — check before enrolling. Most states handle convictions case by case, not as automatic disqualifiers, but you need to know where your state stands before investing time and money.</p>
+        </div>
+      </div>
+      <div class="license-step fade-in">
+        <div class="ls-num">2</div>
+        <div class="ls-body">
+          <div class="ls-tag">Weeks 1–12 depending on state</div>
+          <h4>Complete your pre-license education</h4>
+          <p>Enroll in a state-approved school. Online courses are available in most states — Colibri Real Estate, Kaplan, Real Estate Express, and The CE Shop are the major national providers. Online is typically faster and cheaper than in-person. Budget 4–12 weeks depending on your state's required hours and your available study time. The course covers contracts, fair housing, financing, agency relationships, and your state's real estate law.</p>
+        </div>
+      </div>
+      <div class="license-step fade-in">
+        <div class="ls-num">3</div>
+        <div class="ls-body">
+          <div class="ls-tag">After completing pre-license education</div>
+          <h4>Pass your state licensing exam</h4>
+          <p>Most state exams have two parts: a National portion covering universal real estate concepts and a State-specific portion covering your state's laws and regulations. Passing score is typically 70–75%. You can retake the exam if you do not pass — but most states charge a fee for each attempt. The most common reason agents fail is not enough practice. See Lesson 3 for how to prepare properly.</p>
+        </div>
+      </div>
+      <div class="license-step fade-in">
+        <div class="ls-num">4</div>
+        <div class="ls-body">
+          <div class="ls-tag">After passing your exam</div>
+          <h4>Submit your license application</h4>
+          <p>Apply to your state real estate commission — include your exam results, background check authorization, and application fee. Processing times vary by state from a few days to a few weeks. Some states allow online applications. Others require paper forms. Follow your state commission's instructions exactly — incomplete applications cause delays.</p>
+        </div>
+      </div>
+      <div class="license-step fade-in">
+        <div class="ls-num">5</div>
+        <div class="ls-body">
+          <div class="ls-tag">Part of the application process</div>
+          <h4>Complete your background check</h4>
+          <p>All states require a background check. Typically done through a fingerprinting appointment at an approved location. A criminal history does not automatically disqualify you in most states — but it must be disclosed. Failure to disclose is almost always treated more seriously than the underlying offense itself. If you have concerns, contact your state commission directly before applying.</p>
+        </div>
+      </div>
+      <div class="license-step fade-in">
+        <div class="ls-num">6</div>
+        <div class="ls-body">
+          <div class="ls-tag">To activate your license</div>
+          <h4>Join a licensed brokerage</h4>
+          <p>A real estate salesperson license cannot be used independently. You must place your license with a supervising broker to activate it. This is not just a technicality — it is where your real education begins. Your broker will be your support system, your source of training, and often your source of early deals. Choosing your first brokerage is one of the most important decisions of your early career. See Lesson 4 for exactly how to evaluate them.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Shelley Zavitz — Your First 365 Days in Real Estate</div>
+      <p>"I passed the National and State Real Estate Exams in one shot and was walking on stars. The grind to finish was real. It took every ounce of self-discipline I had to complete it in eight weeks. But I texted every single person I knew when the proctor told me I had made it through."</p>
+      <div class="quote-attr">On the moment of passing her exam — and the discipline it took to get there</div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">How to pass the exam — <em>the first time</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The real estate licensing exam is not as difficult as it sounds — but it is not something you should walk into unprepared. Most people who fail do so not because the material is too hard, but because they did not practice enough before sitting down at the testing center. Here is how to prepare the right way.</p>
+
+    <p class="lesson-text">The exam covers two bodies of knowledge. The <strong>National portion</strong> tests universal real estate concepts — property ownership, agency relationships, contracts, financing, fair housing law, valuation, and transaction closing. The <strong>State-specific portion</strong> tests the laws, regulations, and practices unique to your state. Your pre-license course covers both — but passing requires more than just completing the course.</p>
+
+    <div class="tips-list">
+      <div class="tip-item fade-in">
+        <div class="ti-icon">📝</div>
+        <div class="ti-content">
+          <h4>Take practice tests — hundreds of them</h4>
+          <p>The number one predictor of passing the real estate exam is the number of practice questions you complete before sitting for the real thing. Most approved pre-license courses include practice exams — use all of them. Then use your school's additional exam prep tools. The format, phrasing, and style of practice questions are very similar to the real exam. Familiarity reduces anxiety and increases speed.</p>
+        </div>
+      </div>
+      <div class="tip-item fade-in">
+        <div class="ti-icon">🎯</div>
+        <div class="ti-content">
+          <h4>Focus on your weak areas — not your strong ones</h4>
+          <p>Most students naturally spend their study time on topics they already understand. That feels productive but it is inefficient. Track which topic categories you consistently miss in practice tests — fair housing, financing calculations, contract law, agency — and spend the majority of your remaining study time there. Improving from 50% to 80% on your weakest topic does more for your total score than improving from 85% to 90% on your strongest.</p>
+        </div>
+      </div>
+      <div class="tip-item fade-in">
+        <div class="ti-icon">🗓️</div>
+        <div class="ti-content">
+          <h4>Schedule your exam as soon as you feel ready — do not wait</h4>
+          <p>Many students delay scheduling because they do not feel fully ready. But exam readiness does not come from more studying in isolation — it comes from taking the real exam under real conditions. If you are consistently scoring 75%+ on full practice exams, you are ready. Schedule it. Sitting in limbo between "almost ready" and "ready" often just builds anxiety without adding knowledge.</p>
+        </div>
+      </div>
+      <div class="tip-item fade-in">
+        <div class="ti-icon">⚖️</div>
+        <div class="ti-content">
+          <h4>Understand the law — do not just memorize it</h4>
+          <p>The exam tests application of concepts, not just recall of definitions. When you study fair housing law, understand why the protected classes exist and what behavior violates them — not just a list of categories. When you study agency, understand the duty of loyalty and what actions breach it — not just the vocabulary. Students who understand the reasoning behind rules answer situational questions correctly. Students who only memorize definitions often miss them.</p>
+        </div>
+      </div>
+      <div class="tip-item fade-in">
+        <div class="ti-icon">🧘</div>
+        <div class="ti-content">
+          <h4>The night before — rest, not cramming</h4>
+          <p>The night before your exam is not the time to learn new material. Review your notes briefly if it helps you feel grounded, then stop. Sleep. Eat a real meal before the exam. Arrive early. Bring whatever identification your testing center requires — missing this causes automatic rescheduling. The exam is passable. You have prepared. Trust the work you have already done.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Best Exam Prep Resources — State-Specific</div>
+      <p>Your state's approved pre-license school provides your primary study materials. For supplemental practice, <strong>Colibri Real Estate</strong> and <strong>Kaplan</strong> both offer state-specific exam prep tools — practice exams, flashcard systems, and topic-by-topic breakdowns — that closely mirror the actual exam format. Use your pre-license school's materials first. Then add a dedicated exam prep tool if you want additional practice volume. Never rely on generic non-state-specific materials for the state portion of your exam.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Choosing your first brokerage — <em>the decision that shapes your first year</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most new agents spend more time choosing their first car than they spend choosing their first brokerage. That is a mistake. Your brokerage will determine the training you receive, the support available when a transaction goes wrong, the culture you work in every day, and in many cases your access to early leads and mentorship. As Dirk Zeller explains in <em>Success as a Real Estate Agent For Dummies</em>: the brokerage you choose is not just a place to hang your license — it is the foundation your entire early career is built on.</p>
+
+    <h3 class="sub-title">The main types of brokerages</h3>
+
+    <div class="broker-grid">
+      <div class="broker-card fade-in">
+        <h4>Large National Franchise</h4>
+        <div class="bc-type">Keller Williams · RE/MAX · Coldwell Banker · Century 21 · Compass</div>
+        <div class="bc-best">Best for: training-focused beginners</div>
+        <ul>
+          <li>Structured training programs — often very strong at KW and Coldwell Banker</li>
+          <li>Brand recognition helps with client trust</li>
+          <li>Large agent network — referrals and collaboration possible</li>
+          <li>Commission splits vary — often 70/30 to 80/20 in agent's favor</li>
+          <li>Monthly fees and desk fees common</li>
+          <li>Corporate culture — more structured, less flexible</li>
+        </ul>
+      </div>
+      <div class="broker-card fade-in">
+        <h4>Local or Boutique Brokerage</h4>
+        <div class="bc-type">Independently Owned · Market-Specific · Community-Focused</div>
+        <div class="bc-best">Best for: relationship-driven agents in strong local markets</div>
+        <ul>
+          <li>Deep local market expertise — invaluable for new agents</li>
+          <li>More personal mentorship — direct access to broker</li>
+          <li>Flexible culture — often less corporate</li>
+          <li>Smaller agent count can mean more attention and support</li>
+          <li>Training varies widely — ask specifically what it includes</li>
+          <li>Less brand recognition than nationals</li>
+        </ul>
+      </div>
+      <div class="broker-card fade-in">
+        <h4>Virtual / Cloud-Based Brokerage</h4>
+        <div class="bc-type">eXp Realty · Real Broker · Fathom Realty</div>
+        <div class="bc-best">Best for: self-starters with strong self-discipline</div>
+        <ul>
+          <li>High commission splits — 80/20 to 100% common</li>
+          <li>Low or no desk fees — operate from home</li>
+          <li>Revenue share and equity incentives available</li>
+          <li>Training is virtual — requires self-motivation</li>
+          <li>Less in-person mentorship — harder for true beginners</li>
+          <li>Growing fast — technology and community investment is strong</li>
+        </ul>
+      </div>
+      <div class="broker-card fade-in">
+        <h4>100% Commission Brokerage</h4>
+        <div class="bc-type">Various — "Desk Fee" Model</div>
+        <div class="bc-best">Best for: experienced agents — rarely right for beginners</div>
+        <ul>
+          <li>Agent keeps 100% of commission — pays a flat monthly fee instead</li>
+          <li>No training provided — you are on your own completely</li>
+          <li>No mentorship — no support systems</li>
+          <li>Makes financial sense only when you are already closing consistently</li>
+          <li>New agents almost always lose money at 100% commission brokerages</li>
+          <li>The split you give up at a training brokerage pays for itself many times over in your first year</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The 100% Commission Trap — Do Not Fall For It</div>
+      <p>The single most common mistake new agents make is choosing a 100% commission brokerage because the math looks good on paper. If you close 0 deals — which most new agents do in their first 60–90 days — 100% of $0 is still $0. Meanwhile you are paying a monthly desk fee and receiving zero training, zero mentorship, and zero support. Choose a brokerage for the training and mentorship it provides first. The commission split is a secondary consideration until you are consistently closing deals.</p>
+    </div>
+
+    <h3 class="sub-title">Five questions to ask when interviewing a brokerage</h3>
+
+    <div class="interview-q">
+      <div class="iq-item fade-in">
+        <div class="iq-q">"What does your training program for new agents look like — specifically?"</div>
+        <p>Get specifics. How often? Who delivers it? Is it classroom-style, one-on-one coaching, or shadowing? A brokerage that says "we have great training" without specifics is telling you they do not actually have a structured program. Ask to see the training schedule.</p>
+      </div>
+      <div class="iq-item fade-in">
+        <div class="iq-q">"Is there a mentor or floor support system when I am stuck on a deal?"</div>
+        <p>Your first transaction will involve situations you have never encountered. You need a broker or senior agent you can call when you do not know the answer and a client is waiting. Ask exactly how that works — and how quickly a senior person is typically available.</p>
+      </div>
+      <div class="iq-item fade-in">
+        <div class="iq-q">"What is the full cost of being here — all fees, not just the commission split?"</div>
+        <p>Commission split is just one number. Add desk fees, technology fees, E&O insurance contributions, marketing fees, and franchise fees. At some brokerages a 90/10 split with high fees costs more than an 80/20 split with low fees. Get the full picture before comparing.</p>
+      </div>
+      <div class="iq-item fade-in">
+        <div class="iq-q">"What does a successful first-year agent look like here?"</div>
+        <p>This question reveals the culture and unspoken expectations. Are they focused on volume? Relationships? Is there room for part-time agents or do they expect full commitment from day one? Make sure their definition of success aligns with yours before you sign anything.</p>
+      </div>
+      <div class="iq-item fade-in">
+        <div class="iq-q">"Can I speak with two or three agents who joined in the last 12 months?"</div>
+        <p>This is the most revealing question of all. A brokerage confident in their training and culture will connect you immediately. A brokerage that hedges, deflects, or says they need to check availability first is telling you something important. New agents who have had a good experience are always happy to talk.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Darren Tsai: How to pass the real estate exam <em>on the first try</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Darren Tsai — a licensed real estate agent and loan officer in California who passed both licensing exams on his first attempt — shares the exact study strategy that worked for him. He covers what not to do (reading every word is a trap), how to focus on chapter summaries and vocabulary, how to build a practice question bank of 800–1,000 questions, how to simulate exam conditions in the week before your test, and why cramming the night before is the one thing most people do wrong. Short, direct, practical. Directly reinforces Lesson 3 of this module.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/zK3JTmIjIyc" title="How to Pass The Real Estate Exam in 2025 — Darren Tsai" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Darren Tsai · YouTube</span>
+        <h4>How to Pass The Real Estate Exam in 2025 (Guaranteed)</h4>
+        <p>What not to do when studying, how to use chapter summaries instead of reading every word, mastering real estate vocabulary, building a practice question bank of 800–1,000 questions, simulating real exam conditions in the week before your test, targeting 85–90% on practice exams before sitting for the real thing, and why sleep beats cramming. Universal advice — not state-specific despite California framing.</p>
+        <p class="credit">Darren Tsai · YouTube December 2024 · ~8 min · Solo presenter · Universal exam strategy</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 1 Key Takeaways</h3>
+    <ul>
+      <li>Check your state's requirements first — before spending a dollar. Visit your state real estate commission website or ARELLO.org. Requirements vary dramatically: from 40 hours (Virginia) to 180 hours (Texas), with some states not requiring a high school diploma or GED at all.</li>
+      <li>The universal path has six steps: verify requirements → complete pre-license education → pass the exam → submit application → background check → join a brokerage. Every state follows this sequence. The specifics of each step are what vary.</li>
+      <li>Passing the exam on your first attempt requires practice — not just course completion. Take hundreds of practice questions. Focus on your weak topic areas. Schedule the exam when you are consistently scoring 75%+ on full practice exams. Rest the night before — do not cram.</li>
+      <li>Your first brokerage matters more than most new agents realize. Choose for training and mentorship — not commission split. The commission you give up at a good training brokerage pays for itself many times over in the knowledge, support, and deals it produces in your first year.</li>
+      <li>Never choose a 100% commission brokerage as your first brokerage. 100% of $0 is still $0. You need training, mentorship, and a floor support system before you need to maximize your split.</li>
+      <li>Interview multiple brokerages before committing. Ask specifically about training programs, mentorship availability, all fees (not just the split), and ask to speak with agents who joined in the last 12 months. A brokerage confident in their culture will connect you immediately.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A student in California wants to get their real estate license. They have no high school diploma or GED. Can they still apply?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">A</div> Yes — California does not require a high school diploma or GED for a real estate license. They need to be 18+, complete 135 hours of pre-license education, and pass the exam.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> No — all states require a high school diploma or GED without exception</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Yes — but only if they have a college degree instead</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> No — California requires a GED minimum for all professional licenses</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A new agent is comparing two brokerages. Brokerage A offers an 80/20 split with robust training, daily mentorship access, and weekly coaching calls. Brokerage B offers 100% commission with a $150/month desk fee and no training. The new agent has no prior real estate experience. Which should they choose?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Brokerage B — 100% commission always wins financially</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Brokerage A — training and mentorship are worth far more than commission split to a new agent with no experience. 100% of $0 is still $0, and without support, closing those first deals is significantly harder.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Brokerage B — the $150/month is a small price for keeping all commissions</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Neither — new agents should always start at a franchise brokerage only</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. Which of the following is a universal requirement to get a real estate license in all 50 states?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> A high school diploma or GED</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> At least 180 hours of pre-license education</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Placing your license with a supervising licensed broker to activate it — no state allows new salesperson licensees to practice independently</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> A college degree in business or a related field</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A student is consistently scoring 60% on their practice exams. They are getting most questions wrong in the finance and contract law sections. What is the most effective study strategy?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Re-read the entire pre-license course from the beginning</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Focus study time on fair housing law — the most commonly tested topic</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> Concentrate specifically on finance and contract law — the sections they are failing — rather than reviewing material they already understand. Improving weak areas has the highest impact on total score.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Schedule the exam immediately — 60% is close enough to pass</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. When interviewing a brokerage, a new agent asks: "Can I speak with two or three agents who joined in the last 12 months?" The brokerage says they need to check availability and will get back to you. What does this signal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Nothing unusual — brokerages always need to coordinate with their agents before sharing contact information</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> A potential red flag — brokerages confident in their training and culture connect new candidates with recent agents immediately. Hesitation may mean recent agents are not having a good experience.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> A positive sign — they are protecting their agents' privacy appropriately</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Irrelevant — this question should not be asked during a brokerage interview</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <p class="lesson-text">This module draws on three books — each worth reading in full as you build your agent career. Links go to Amazon.</p>
+    <div class="books-section">
+      <div class="book-item">
+        <div class="bi-info">
+          <div class="bi-title">The Millionaire Real Estate Agent</div>
+          <div class="bi-author">Gary Keller, Dave Jenks & Jay Papasan</div>
+          <div class="bi-desc">The most widely read agent career book ever written. The complete business architecture for building a serious real estate practice — lead generation, the four models, the three L's, and the path from solo agent to million-dollar business.</div>
+        </div>
+        <a href="https://www.amazon.com/Millionaire-Real-Estate-Agent-About/dp/0071444041" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div class="bi-info">
+          <div class="bi-title">Your First 365 Days in Real Estate</div>
+          <div class="bi-author">Shelley Zavitz</div>
+          <div class="bi-desc">The most honest and readable book written specifically for brand new agents. What nobody tells you before you start, how to build your database, the morning habits that determine year one success, and how to survive the emotional reality of starting from nothing.</div>
+        </div>
+        <a href="https://www.amazon.com/Your-First-365-Days-Real/dp/1789661587" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div class="bi-info">
+          <div class="bi-title">Success as a Real Estate Agent For Dummies</div>
+          <div class="bi-author">Dirk Zeller</div>
+          <div class="bi-desc">The most comprehensive practical guide to the agent profession — selecting a brokerage, prospecting, listing presentations, open houses, negotiations, time management, and building a referral business. Structured, beginner-friendly, and highly actionable.</div>
+        </div>
+        <a href="https://www.amazon.com/Success-Real-Estate-Agent-Dummies/dp/1119918707" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 2: Think Like a Top Agent</h3>
+    <p>You have your license. You have joined a brokerage. Now the real work begins — and it starts in your head. Module 2 covers the nine ways top-producing agents think differently from average agents, the three L's that govern every successful real estate business, and the daily habits and mindset shifts that determine whether you make it through year one.</p>
+    <a href="agent-module-2.html" class="next-module-cta">Module 2: Think Like a Top Agent →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="residential-agent.html" class="btn btn-outline">← Agent Track Overview</a>
+  <div class="module-nav-info">
+    <p>Residential Agent Track</p>
+    <strong>Module 1 of 6</strong>
+  </div>
+  <a href="agent-module-2.html" class="btn btn-gold">Module 2: Think Like a Top Agent →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{
+    correct:"Correct! California is one of several states — along with Texas, Arizona, Colorado, Missouri, and others — that do not require a high school diploma or GED for a real estate license. The only universal requirements across all states are minimum age (18, or 19 in Alabama), a Social Security number, completing approved pre-license education, passing the exam, a background check, and joining a licensed brokerage. No college degree is required anywhere.",
+    incorrect:"Not quite. California is one of several states that do not require a high school diploma or GED to obtain a real estate license. Requirements vary significantly by state — this is exactly why checking your specific state's real estate commission website before spending any money is so important. Texas, Arizona, Colorado, and Missouri also do not require a diploma or GED."
+  },
+  q2:{
+    correct:"Correct! Brokerage A is the right choice for a new agent with no experience. Training, mentorship, and daily support are worth far more than commission split when you are just starting out. 100% of $0 in commissions is still $0 — and without guidance, closing those first deals is significantly harder. The commission difference only matters after you are consistently closing. The split you give up at a good training brokerage pays for itself many times over in the knowledge and deals it produces.",
+    incorrect:"Not quite. For a new agent with no experience, training and mentorship are worth far more than commission split. Brokerage B's 100% commission sounds appealing, but 100% of $0 is still $0. Without training and support, closing your first deals is dramatically harder — and the monthly desk fee keeps running whether you close or not. The commission you give up at a good training brokerage pays for itself many times over. Choose for support first, split second."
+  },
+  q3:{
+    correct:"Correct! Joining a licensed supervising broker to activate your license is a universal requirement in all 50 states. A salesperson license cannot be used independently anywhere in the US — you must place your license with a broker. This is not just a technicality; it is where your real training and professional development begins. No college degree is required anywhere. GED/diploma requirements vary by state. And pre-license hours range from 40 to 180 hours depending on the state.",
+    incorrect:"Not quite. The only universal requirement among the listed options is that you must activate your license under a supervising licensed broker — this applies in all 50 states without exception. A high school diploma or GED is NOT required in all states (California, Texas, Arizona, Colorado, and others do not require it). Pre-license hours range from 40 to 180 hours depending on the state. And no state requires a college degree."
+  },
+  q4:{
+    correct:"Correct! The most effective exam preparation strategy is identifying your weakest topic areas and concentrating study time there. Moving from 60% to 80% on finance and contract law — where you are currently failing — has a much larger impact on your total score than improving from 85% to 90% on topics you already understand well. Re-reading the entire course from the beginning is inefficient. And at 60%, you are not ready to schedule the exam — most passing scores require 70–75%.",
+    incorrect:"Not quite. When you are consistently missing questions in specific topic areas, the most efficient strategy is to concentrate your remaining study time specifically on those weak areas. Re-reading the entire course is inefficient when you have identified exactly where the gaps are. At 60% you are not ready to schedule the exam — passing typically requires 70–75%. Focus on finance and contract law until your practice scores in those sections — and your overall score — consistently clear the passing threshold."
+  },
+  q5:{
+    correct:"Correct! A brokerage confident in their training, culture, and agent satisfaction connects you with recent agents immediately — without hesitation. When a brokerage hedges, says they need to check availability, or deflects this question, it often signals that recent agents are not having a good enough experience to serve as confident references. This is one of the most revealing questions you can ask during a brokerage interview, and the response tells you more than any marketing brochure.",
+    incorrect:"Not quite. A brokerage that is confident in their training program and agent satisfaction connects new candidates with recent agents immediately — no coordination needed. When a brokerage says they need to check availability before connecting you, it is often a signal that recent agents are not enthusiastic enough about their experience to serve as informal references. Agents who are thriving at their brokerage are always happy to talk. This question is one of the most revealing you can ask — and the response tells you a great deal."
+  }
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent — you understand the licensing path and what it takes to start your agent career on the right foot. Ready for Module 2.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above before moving on — getting licensed and choosing your brokerage are the foundation everything else is built on.';
+  }
+}
+</script>
+
+</body>
+</html>
