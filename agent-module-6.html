@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Agent Module 6: Building a Sustainable Business — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0D5C63;--teal-mid:#1A7A83;--teal-light:#2A9EA8;--teal-pale:#EBF7F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(13,92,99,0.1);
+  --shadow-card:0 2px 16px rgba(13,92,99,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--gold);border-radius:3px;width:100%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--gold);color:var(--teal);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#3A2200 0%,#7A5000 55%,#C9A84C 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(255,255,255,0.06) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:var(--white);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:rgba(255,255,255,0.85);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.8);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.7);}
+.meta-item span{color:var(--white);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Four Models grid */
+.four-models{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.model-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--teal);border-radius:0 0 14px 14px;padding:1.5rem 1.25rem;}
+.model-card .mc-num{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.3rem;}
+.model-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.75rem;}
+.model-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.model-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.model-card ul li::before{content:'→';color:var(--teal-mid);flex-shrink:0;}
+
+/* Four Stages */
+.stages{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
+.stage-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;gap:1.25rem;align-items:flex-start;}
+.stage-card .sc-badge{min-width:90px;background:var(--teal);color:var(--white);border-radius:8px;padding:0.5rem 0.75rem;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;line-height:1.4;flex-shrink:0;}
+.stage-card .sc-content h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.stage-card .sc-content p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* 80/20 visual */
+.pareto-visual{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.75rem;margin:2rem 0;box-shadow:var(--shadow-card);}
+.pareto-visual h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:1.25rem;}
+.pareto-bars{display:flex;flex-direction:column;gap:1rem;}
+.pareto-row{display:flex;align-items:center;gap:1rem;}
+.pareto-row .pr-label{font-size:12px;font-weight:600;color:var(--text-mid);width:130px;flex-shrink:0;}
+.pareto-row .pr-bar-wrap{flex:1;height:32px;background:var(--cream-dark);border-radius:6px;overflow:hidden;position:relative;}
+.pareto-row .pr-bar{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:12px;font-size:12px;font-weight:700;color:var(--white);}
+.pareto-row .pr-bar.high{background:var(--teal);width:80%;}
+.pareto-row .pr-bar.low{background:var(--text-light);width:20%;}
+.pareto-row .pr-value{font-size:13px;font-weight:700;color:var(--text-dark);width:40px;text-align:right;flex-shrink:0;}
+
+/* DIPA list */
+.dipa-list{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.75rem 0;}
+.dipa-item{background:var(--teal);border-radius:10px;padding:0.85rem 1rem;display:flex;align-items:center;gap:10px;}
+.dipa-item .di-num{width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.dipa-item span{font-size:13px;color:var(--white);font-weight:500;}
+
+/* Daily schedule */
+.daily-schedule{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:2rem 0;box-shadow:var(--shadow-card);}
+.ds-header{background:var(--teal);padding:1rem 1.5rem;}
+.ds-header h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);}
+.ds-row{display:flex;gap:1rem;padding:0.9rem 1.5rem;border-bottom:1px solid var(--border);}
+.ds-row:last-child{border-bottom:none;}
+.ds-row.evening{background:rgba(13,92,99,0.03);}
+.ds-time{font-size:11px;font-weight:700;color:var(--teal-mid);width:110px;flex-shrink:0;text-transform:uppercase;letter-spacing:0.5px;padding-top:2px;}
+.ds-content{flex:1;}
+.ds-content strong{font-size:14px;color:var(--text-dark);display:block;margin-bottom:0.2rem;}
+.ds-content p{font-size:13px;color:var(--text-mid);line-height:1.55;}
+
+/* Client math */
+.client-math{background:linear-gradient(135deg,#062F33,var(--teal));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.client-math::before{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.12) 0%,transparent 70%);}
+.client-math h4{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;position:relative;}
+.client-math .cm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;position:relative;}
+.client-math .cm-item{background:rgba(255,255,255,0.08);border-radius:10px;padding:1rem;}
+.client-math .cm-item .cmi-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);}
+.client-math .cm-item .cmi-label{font-size:12px;color:rgba(255,255,255,0.65);margin-top:0.2rem;line-height:1.4;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Bonus link */
+.bonus-link-card{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
+.bonus-link-card .blc-content h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.bonus-link-card .blc-content p{font-size:13px;color:var(--text-mid);line-height:1.6;max-width:500px;}
+.bonus-link-card a{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--teal);padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+.bonus-link-card a:hover{background:var(--gold-light);}
+
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:linear-gradient(135deg,#3A2200,#7A5000);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(255,255,255,0.05) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Completion block */
+.completion{background:linear-gradient(135deg,var(--teal),var(--teal-mid));border-radius:20px;padding:2.5rem;margin:2rem 0;text-align:center;position:relative;overflow:hidden;}
+.completion::before{content:'🎓';position:absolute;top:-20px;right:20px;font-size:100px;opacity:0.08;}
+.completion h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold-light);margin-bottom:0.75rem;}
+.completion p{font-size:1rem;color:rgba(255,255,255,0.8);max-width:560px;margin:0 auto 1.5rem;line-height:1.8;}
+.completion .comp-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.completion .comp-links a{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.completion .comp-links .btn-gold{background:var(--gold);color:var(--teal);}
+.completion .comp-links .btn-outline-white{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.35);}
+.completion .comp-links .btn-outline-white:hover{background:rgba(255,255,255,0.1);}
+
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .four-models{grid-template-columns:1fr;}
+  .dipa-list{grid-template-columns:1fr;}
+  .client-math .cm-grid{grid-template-columns:1fr;}
+  .completion .comp-links{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="residential-agent.html">Agent Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="residential-agent.html">Residential Agent Track</a><span class="sep">›</span>
+  <span class="current">Module 6: Building a Sustainable Business</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Agent Track — Complete!</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="agent-module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="agent-module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="agent-module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <a href="agent-module-4.html" class="prog-dot complete" title="Module 4">✓</a>
+    <a href="agent-module-5.html" class="prog-dot complete" title="Module 5">✓</a>
+    <div class="prog-dot active">6</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏆 Residential Agent Track · Final Module · 6 of 6</div>
+    <h1>Building a <em>Sustainable Business</em></h1>
+    <p>You have the mindset, the skills, the lead generation system, and the client experience. This module brings it all together into a business — one designed to grow, sustain itself through any market, and ultimately give you the life you got into real estate to build. The Four Models, the 80/20 rule, the lifetime value of a client, time blocking, and the habits that separate agents who thrive for decades from those who burn out in years.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>60–75 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2 + bonus</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The Four Models — <em>the business architecture of a millionaire agent</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Gary Keller, Dave Jenks, and Jay Papasan identify four fundamental models that every top-producing agent must build — in order. These are not suggestions or best practices. They are the architecture of a real estate business. Every agent has these four models operating in their business whether they have designed them intentionally or not. The difference between agents who scale and agents who plateau is whether these models are explicit and optimized — or implicit and accidental.</p>
+
+    <div class="four-models">
+      <div class="model-card fade-in">
+        <div class="mc-num">Model One</div>
+        <h4>The Economic Model</h4>
+        <ul>
+          <li>Know the numbers you must hit — how many leads, appointments, listings, and closed sales to reach your income goal</li>
+          <li>Focus on appointments — the appointment is the single most important conversion point in your business. Track how many you set and close</li>
+          <li>Track conversion rates — leads to appointments, appointments to listings, listings to closed sales. Once you know your ratios, you can predict your income from any lead generation activity</li>
+          <li>Track leads and listings above all else — if you only track two numbers, these are the ones</li>
+        </ul>
+      </div>
+      <div class="model-card fade-in">
+        <div class="mc-num">Model Two</div>
+        <h4>The Lead Generation Model</h4>
+        <ul>
+          <li>Marketing-based, prospecting-enhanced — systematic marketing creates the foundation, active prospecting protects against market shifts</li>
+          <li>Build and feed your database constantly — it is the most valuable asset in your business</li>
+          <li>Systematically market to your database — 8x8 for new contacts, 33 Touch for ongoing relationships, 12 Direct for high-value connections</li>
+          <li>Focus on listings — seller listings are the high-leverage, maximum-earning opportunity and should be the center of your lead generation strategy</li>
+        </ul>
+      </div>
+      <div class="model-card fade-in">
+        <div class="mc-num">Model Three</div>
+        <h4>The Budget Model</h4>
+        <ul>
+          <li>Lead with revenue — never spend money you have not yet earned. Base your budget on your actual closed income, not projected income</li>
+          <li>Play red light, green light — some expenses are always on (lead generation), some are conditional (marketing spend tied to volume), some are off until you can afford them</li>
+          <li>Stick to the budget — the agents who build wealth in real estate are not the ones who earn the most gross commission. They are the ones who keep the highest percentage of what they earn</li>
+        </ul>
+      </div>
+      <div class="model-card fade-in">
+        <div class="mc-num">Model Four</div>
+        <h4>The Organizational Model</h4>
+        <ul>
+          <li>When you are doing all you can do — hire administrative help first. The first hire should take tasks off your plate so you can focus on revenue-producing activities</li>
+          <li>Hire talent — do not hire out of desperation or convenience. Hire people who are better than you at the tasks you are assigning them</li>
+          <li>Train and consult — your team's output reflects the quality of your systems, training, and standards. Inconsistent output is a systems problem, not a people problem</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Build Them in Order</div>
+      <p>Keller is explicit: you must build these models in order. The Economic Model comes first because you cannot build a Lead Generation Model without knowing what numbers you need to hit. The Lead Generation Model comes before the Budget Model because you cannot budget what you have not yet generated. The Organizational Model comes last because you cannot leverage people until you have the systems and revenue to support them. Agents who try to skip steps — hiring before their lead generation is solid, or building a team before their economics are clear — almost always regret it.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Jimmy Burgess: 7 no B.S. steps to grow <em>your real estate business</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Jimmy Burgess — 31 years in real estate, $500M+ in career sales, Top 200 Most Influential People in Real Estate — delivers seven practical, relationship-centered strategies for sustainable business growth. No fluff, no hacks. Just the systems and habits that build durable careers. Published December 2024. Watch before Lesson 2.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/GHhVxreCWJU" title="7 NO B.S. STEPS to Grow Your Real Estate Business in 2025 — Jimmy Burgess" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Jimmy Burgess · YouTube</span>
+        <h4>7 NO B.S. STEPS to Grow Your Real Estate Business in 2025</h4>
+        <p>Be seen (your way — open houses, direct mail, social, or leads), tell relatable client stories not self-promotional content, learn from top agents in other markets and adapt their best ideas, grow your database (your email list is your most valuable asset — you own it, social platforms can disappear), systematic follow-up (Deal of the Week email, monthly newsletter), identify and reward your MVPs — the 4–10 people who send you the most referrals (private dinners, exclusive events twice a year), and be the best version of yourself (personal growth attracts professional opportunities).</p>
+        <p class="credit">Jimmy Burgess · 31 years experience · $500M+ in career sales · Top 200 Most Influential People in Real Estate · December 2024</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Keeping clients for life — <em>the closing as a starting point, not a finish line</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The single most important insight in Dirk Zeller's chapter on keeping clients for life is this: the closing is not the end of a transaction — it is the beginning of a relationship. Great agents know that their job is not over when the deal closes. The commission check is cashed and the next income-producing activity begins — but the relationship with the client who just trusted you with the largest financial decision of their life requires active cultivation, not passive assumption.</p>
+
+    <h3 class="sub-title">The math on a client for life</h3>
+    <p class="lesson-text">Zeller presents a piece of mathematics that should change how every agent thinks about every transaction. Read it carefully:</p>
+
+    <div class="client-math fade-in">
+      <h4>📊 The Lifetime Client Value Formula</h4>
+      <div class="cm-grid">
+        <div class="cm-item">
+          <div class="cmi-num">36</div>
+          <div class="cmi-label">Average clients served per year over 10 years = 360 total past clients</div>
+        </div>
+        <div class="cm-item">
+          <div class="cmi-num">÷ 8</div>
+          <div class="cmi-label">Average consumer moves once every 8 years (NAR research)</div>
+        </div>
+        <div class="cm-item">
+          <div class="cmi-num">45</div>
+          <div class="cmi-label">Past clients likely to move in any given year — from your existing base alone</div>
+        </div>
+        <div class="cm-item">
+          <div class="cmi-num">∞</div>
+          <div class="cmi-label">Referrals that 360 totally satisfied past clients could generate — impossible to count</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="lesson-text">The implication is profound. An agent who serves 36 clients per year for ten years and maintains strong relationships with every one of them has a built-in pipeline of 45 opportunities per year from their past client base alone — without generating a single new lead. The agents who relentlessly prospect for new business every year because they have no repeat or referral base are the ones who either never cultivated those relationships or let them decay through neglect.</p>
+
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Dirk Zeller — Success as a Real Estate Agent For Dummies</div>
+      <p>"The number one complaint consumers have about real estate agents isn't that they charge or make too much money. The number one complaint is that they're bad or infrequent communicators."</p>
+      <div class="quote-attr">On why consistent communication is the foundation of every long-term client relationship</div>
+    </div>
+
+    <h3 class="sub-title">The MVP principle — identify and reward your referral sources</h3>
+    <p class="lesson-text">Jimmy Burgess's Step 6 — identifying and rewarding your MVPs — is the practical application of Zeller's relationship excellence principle. In every agent's business, there is a small group of four to ten people who generate a disproportionate share of referrals, do repeat business, and advocate in the community. Keller would call this the 80/20 rule applied to relationships: 20% of your client base generates 80% of your referral business.</p>
+
+    <p class="lesson-text">Treat this group differently. Create experiences for them — not generic thank-you cards, but memorable, personal events: a private chef dinner at your home, tickets to a local concert or sporting event, a wine tasting, an exclusive experience they would not normally arrange for themselves. Do this at least twice a year. The relationship you build with this group is the most valuable investment you can make in your business — because each of these people is connected to a network that can generate more business than any lead source you could buy.</p>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Under-promise and Over-deliver — Always</div>
+      <p>Zeller identifies two reasons most agents fail to deliver on their service promises: they over-promise at the listing appointment, and they lack a concrete system to follow through. The solution is simple but counterintuitive — go through your service action plan and identify the highest-value activities you can perform with total consistency. Commit to flawlessly performing those tasks. Then let everything else be a pleasant surprise when you deliver it. Keeping commitments consistently is rarer than any particular service feature — and it is what earns referrals.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Time — your most precious resource and how to protect it</h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Dirk Zeller opens his time management chapter with a principle that should be posted on every agent's wall: <em>work fewer hours with higher intensity.</em> The agents who are most productive are not the ones who work the longest hours — they are the ones who concentrate their best time on their highest-value activities and ruthlessly eliminate everything else. Most agents have the same number of hours. What differs is the quality of how those hours are used.</p>
+
+    <h3 class="sub-title">The 80/20 Rule applied to your real estate business</h3>
+    <p class="lesson-text">The Italian economist Vilfredo Pareto observed in the late 1800s that in most countries, 80% of wealth was controlled by 20% of the people. Researchers throughout the 20th century discovered this ratio applies across nearly every field — including real estate sales. Here is what it means for you:</p>
+
+    <div class="pareto-visual fade-in">
+      <h4>The 80/20 Rule in Real Estate</h4>
+      <div class="pareto-bars">
+        <div class="pareto-row">
+          <div class="pr-label">Results generated</div>
+          <div class="pr-bar-wrap"><div class="pr-bar high">80% of your income</div></div>
+          <div class="pr-value">20%</div>
+        </div>
+        <div class="pr-label" style="font-size:11px;color:var(--text-light);margin-left:130px;margin-top:-0.5rem;margin-bottom:0.5rem;">...comes from this 20% of your activities</div>
+        <div class="pareto-row">
+          <div class="pr-label">Remaining results</div>
+          <div class="pr-bar-wrap"><div class="pr-bar low">20% of your income</div></div>
+          <div class="pr-value">80%</div>
+        </div>
+        <div class="pr-label" style="font-size:11px;color:var(--text-light);margin-left:130px;margin-top:-0.5rem;">...despite consuming this 80% of your time</div>
+      </div>
+    </div>
+
+    <p class="lesson-text">The implication is direct: shifting even a fraction of your time from the low-value 80% of activities to the high-value 20% produces dramatic income results. The agents who discover this early and act on it work fewer hours, earn more money, and experience less burnout than those who stay busy with the wrong things.</p>
+
+    <h3 class="sub-title">Your six Direct Income-Producing Activities (DIPA)</h3>
+    <p class="lesson-text">Zeller identifies six activities that generate the great majority of real estate income. These are the 20% — the activities that belong in your protected time blocks every single day:</p>
+
+    <div class="dipa-list fade-in">
+      <div class="dipa-item"><div class="di-num">1</div><span>Prospecting</span></div>
+      <div class="dipa-item"><div class="di-num">2</div><span>Lead follow-up</span></div>
+      <div class="dipa-item"><div class="di-num">3</div><span>Listing presentations</span></div>
+      <div class="dipa-item"><div class="di-num">4</div><span>Buyer interview presentations</span></div>
+      <div class="dipa-item"><div class="di-num">5</div><span>Showing property to qualified buyers</span></div>
+      <div class="dipa-item"><div class="di-num">6</div><span>Writing and negotiating contracts</span></div>
+    </div>
+
+    <p class="lesson-text">Notice what is not on the list: designing marketing materials, answering routine emails, organizing your desk, scrolling social media, attending office meetings, researching new tools and platforms. These activities may feel productive. They are not DIPA. Every hour you spend on non-DIPA activities is an hour not spent on the six activities that generate your income. Guard your DIPA time with the same intensity you guard your client appointments.</p>
+
+    <h3 class="sub-title">The Four Ds of time management change</h3>
+    <p class="lesson-text">Zeller's Four Ds give you a practical framework for actually changing how you use your time — not just intending to:</p>
+
+    <div class="stages fade-in">
+      <div class="stage-card">
+        <div class="sc-badge">D1<br>Decide</div>
+        <div class="sc-content">
+          <h4>Decide your time management habits are going to change</h4>
+          <p>The biggest waste of time occurs between the moment you know you need to do something and when you actually start. Make an immediate commitment. Do not analyze. Do not search for the perfect solution. Decide right now.</p>
+        </div>
+      </div>
+      <div class="stage-card">
+        <div class="sc-badge">D2<br>Define</div>
+        <div class="sc-content">
+          <h4>Define specifically what needs to change</h4>
+          <p>Identify the exact activities consuming time that should be spent on DIPA. Define how you will remedy each one. Getting into the office earlier? Turning off the phone during prospecting hours? Stopping the habit of checking email first thing? Be specific — vague intentions produce no results.</p>
+        </div>
+      </div>
+      <div class="stage-card">
+        <div class="sc-badge">D3<br>Design</div>
+        <div class="sc-content">
+          <h4>Design a time-blocking system</h4>
+          <p>Block specific time periods for your most valuable activities before anything else gets scheduled. Your calendar should reflect your priorities, not other people's urgencies. Protect DIPA blocks with the same firmness you protect client appointments. If you leave your days open to whoever calls or emails first, your DIPA will never get done.</p>
+        </div>
+      </div>
+      <div class="stage-card">
+        <div class="sc-badge">D4<br>Do It</div>
+        <div class="sc-content">
+          <h4>Do it — without waiting for perfect conditions</h4>
+          <p>Do not wait until you have analyzed every aspect of the problem and designed the perfect solution. Waiting only results in unrealized income and unfulfilled potential. Decide what to change, define the problem, design the plan — then execute immediately. Imperfect action taken now beats perfect inaction indefinitely.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">The exact daily schedule — <em>an hour-by-hour operating system for your business</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">This video translates everything in this module into a concrete daily operating system — hour by hour. Why most agents fail (lack of execution, not lack of knowledge), the power list written the night before, the morning market research habit, three hours of daily prospecting as a non-negotiable, afternoon follow-up and door knocking, evening content creation and skill practice, weekly non-negotiables (open houses, social posts, 100 prospects), and how to stay on track when distractions hit. Watch before Lesson 4.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/ojK1LjXE8qY" title="The Exact Daily Schedule to Make $100K as a Real Estate Agent" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Real Estate Agent Training · YouTube</span>
+        <h4>Why Most Realtors Fail — and the Exact Daily Schedule to Fix It</h4>
+        <p>Agents fail from lack of execution not lack of knowledge — knowledge is potential, application is power. Hour-by-hour daily schedule: 7–8:30am (mindset prep, 30 min MLS market research, social posting), 9am–noon (3 hours active prospecting — FSBOs, expireds, circle prospecting), 1–4pm (follow-up, door knocking), 4–6pm (content creation, newsletters, market updates, objection handle practice). Weekly: 1–2 open houses, 3–5 social posts, prospect minimum 100 people. Stay on track: cut the noise, protect the 3-hour lead generation block, commit to 30 days of relentless action, what gets measured gets managed.</p>
+        <p class="credit">Real Estate Agent Training · YouTube · Solo presenter · Hour-by-hour daily operating system for new agents</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The four stages of a real estate career — <em>where you are and where you are going</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Keller, Jenks, and Papasan describe four progressive stages of a real estate career in <em>The Millionaire Real Estate Agent.</em> Understanding which stage you are in — and what the path to the next stage requires — is one of the most clarifying frameworks available for a new agent. Most agents stay in Stage 1 for their entire career — not because they lack talent but because they never adopt the models and systems that allow them to move forward.</p>
+
+    <div class="stages">
+      <div class="stage-card fade-in">
+        <div class="sc-badge" style="background:var(--text-light);">Stage 1<br>Think</div>
+        <div class="sc-content">
+          <h4>Think a Million — Building the Mindset</h4>
+          <p>The first stage is about thinking correctly — adopting the Nine Ways, identifying your Big Why, setting Big Goals with Big Models, eliminating the Six MythUnderstandings. This is where this track began with Module 2. Without the right mindset, no amount of skill or system will sustain a career. Most agents get stuck here not because they do not know what to do but because they have not committed to thinking like a top producer.</p>
+        </div>
+      </div>
+      <div class="stage-card fade-in">
+        <div class="sc-badge" style="background:var(--teal-mid);">Stage 2<br>Earn</div>
+        <div class="sc-content">
+          <h4>Earn a Million — Building the Models</h4>
+          <p>Stage 2 is where the Four Models get built and optimized. You know your numbers (Economic Model), your lead generation is systematic and consistent (Lead Generation Model), you are tracking and controlling your finances (Budget Model), and you begin thinking about how to leverage your time through people and systems (Organizational Model). This stage is where the business becomes a business rather than a job.</p>
+        </div>
+      </div>
+      <div class="stage-card fade-in">
+        <div class="sc-badge" style="background:var(--teal);">Stage 3<br>Net</div>
+        <div class="sc-content">
+          <h4>Net a Million — Optimizing the Models</h4>
+          <p>Stage 3 is about sustaining and scaling what works — protecting lead generation focus time, tracking and converting leads through others, consistently marketing listings for more leads, and staying in the top 20% of your own activities. This is where the business runs on systems rather than on the owner's daily heroics. Agents who reach Stage 3 have built something that can survive a vacation, an illness, or a market shift.</p>
+        </div>
+      </div>
+      <div class="stage-card fade-in">
+        <div class="sc-badge" style="background:var(--gold);color:var(--teal);">Stage 4<br>Receive</div>
+        <div class="sc-content">
+          <h4>Receive a Million — Building Passive Income</h4>
+          <p>Stage 4 is the transition from active income to passive income — building a business that generates revenue whether you are working or not. This involves the seventh level of organizational development, strategic hiring, and creating systems that run without the owner's daily involvement. For most agents starting out, Stage 4 is the horizon — the goal that makes every stage before it worth building carefully.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Your daily operating system — putting it all together</h3>
+    <p class="lesson-text">Everything in this track — mindset, buyer skills, seller skills, prospecting, relationship management, time blocking — converges in a single daily operating system. Here is how it looks when it is working:</p>
+
+    <div class="daily-schedule fade-in">
+      <div class="ds-header"><h4>📅 The Sustainable Agent's Daily Operating System</h4></div>
+      <div class="ds-row">
+        <div class="ds-time">Night Before</div>
+        <div class="ds-content"><strong>Write your power list</strong><p>Five income-producing activities you need to complete tomorrow. Written while the day is fresh. This eliminates the decision-making paralysis that derails morning prospecting sessions.</p></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">7–8:30 AM</div>
+        <div class="ds-content"><strong>Mindset + Market + Social</strong><p>Review your Big Why and daily goals. Spend 30 minutes on the MLS — what sold, what is pending, what is new. You are the market expert. Post on social media. Your passive prospecting happens while you are actively prospecting.</p></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">9 AM – Noon</div>
+        <div class="ds-content"><strong>3 hours of active prospecting — non-negotiable</strong><p>FSBOs, expired listings, circle prospecting, sphere of influence calls, door knocking. This is your DIPA time. No email. No Canva. No browsing. If you do not have clients yet, you have no business doing anything else in this block.</p></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Noon – 1 PM</div>
+        <div class="ds-content"><strong>Lunch — take it</strong><p>Zeller is direct: work fewer hours with higher intensity. Taking real breaks makes the work blocks more productive. Skipping lunch and working through does not produce more output — it produces burnout.</p></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">1 – 4 PM</div>
+        <div class="ds-content"><strong>Follow-up, showings, appointments</strong><p>Follow up with all leads generated in the morning. Respond to client needs. Schedule showings and listing appointments in this window — protect your morning DIPA block from afternoon scheduling pressure.</p></div>
+      </div>
+      <div class="ds-row evening">
+        <div class="ds-time">4 – 6 PM</div>
+        <div class="ds-content"><strong>Business growth + skill practice</strong><p>Content creation for the next day's social posts. Newsletter or market update emails to your database. Practice scripts and objection handlers. Repetition is the mother of mastery — the agent who role-plays objections every evening is the one who handles them effortlessly in front of a client.</p></div>
+      </div>
+      <div class="ds-row evening">
+        <div class="ds-time">Weekly</div>
+        <div class="ds-content"><strong>Non-negotiables: open houses + 100 prospects + 3–5 social posts</strong><p>Host at least one open house every weekend (host for another agent if you do not have your own listing). Prospect a minimum of 100 people across the week. Post three to five times on social. These weekly commitments compound into visible market presence over months.</p></div>
+      </div>
+    </div>
+
+    <!-- BONUS LINK -->
+    <div class="bonus-link-card fade-in">
+      <div class="blc-content">
+        <h4>📋 Bonus Exercise — Your One-Page Business Plan</h4>
+        <p>Amanda Davidson walks through a simple, handwritten one-page business plan: monthly net income goal, context and feeling attached to the goal, transaction math (net not gross), sphere of influence as your primary lead source, two additional lead pillars, and four daily activities per pillar. Takes 20 minutes. Do it now while the frameworks from this module are fresh in your mind.</p>
+      </div>
+      <a href="https://www.youtube.com/watch?v=LU5cerwSWSU" target="_blank">Watch the Exercise →</a>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 6 Key Takeaways</h3>
+    <ul>
+      <li>The Four Models must be built in order: Economic Model (know your numbers), Lead Generation Model (systematic marketing-based prospecting-enhanced), Budget Model (lead with revenue, stick to it), Organizational Model (hire admin first, then talent, then train). Skipping steps creates structural weaknesses that compound over time.</li>
+      <li>Track two numbers above all else: leads and listings. Listings are the high-leverage, maximum-earning opportunity. If your listings are on track, the rest of your business follows. If they are not, everything else is a symptom.</li>
+      <li>The closing is a starting point — not a finish line. The relationship with every client begins at the closing table. Agents who cash the commission check and move on leave the most valuable part of every transaction — the lifetime relationship — on the table.</li>
+      <li>The lifetime client math: 36 clients per year over 10 years = 360 past clients. At one move per 8 years, that base generates 45 built-in opportunities per year — without generating a single new lead. The referrals from 360 satisfied clients are impossible to count. Every client you lose to neglect costs you years of compounding referral business.</li>
+      <li>Identify and invest in your MVPs — the 4–10 people who generate the most referrals and repeat business. Create memorable personal experiences for them at least twice a year. This group is worth more to your business than any lead generation campaign you could run.</li>
+      <li>The 80/20 rule: 20% of your activities generate 80% of your income. The six DIPA (Direct Income-Producing Activities) are prospecting, lead follow-up, listing presentations, buyer interview presentations, showing property, and writing and negotiating contracts. Everything else is the 80% that produces 20% of results. Guard your DIPA time ruthlessly.</li>
+      <li>The Four Ds of time management: Decide (commit immediately), Define (identify exactly what needs to change), Design (build a time-blocking system), Do It (execute without waiting for perfect conditions). Imperfect action taken now beats perfect inaction indefinitely.</li>
+      <li>The Four Stages: Think a Million (mindset), Earn a Million (build the models), Net a Million (optimize and scale), Receive a Million (passive income). Most agents stay in Stage 1 their entire career — not from lack of talent but from lack of systems. You now have the systems. The work is in the execution.</li>
+      <li>Your daily non-negotiables: power list the night before, 30 minutes of MLS market research, 3 hours of active prospecting, real follow-up in the afternoon, skill practice in the evening. Weekly: 1–2 open houses, 3–5 social posts, 100 prospects. These commitments, done consistently, compound into a career.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Final Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. Gary Keller says agents must build the Four Models in a specific order. What is that order — and why does it matter?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Organizational → Lead Generation → Economic → Budget, because you need a team before you can generate leads at scale</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Economic → Lead Generation → Budget → Organizational. The Economic Model comes first because you cannot build a lead generation system without knowing what numbers you need to hit. Budget follows because you cannot control spending until you have revenue. Organizational comes last because you cannot leverage people until you have systems and revenue to support them.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Budget → Economic → Lead Generation → Organizational, because financial discipline must come before income generation</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> The order does not matter — all four models should be built simultaneously for maximum efficiency</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. Zeller presents the lifetime client math: an agent who serves 36 clients per year for 10 years has 360 past clients. At the NAR's average of one move per 8 years, how many built-in opportunities does this base represent annually — and what does this reveal about the real value of after-sale relationships?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> About 18 opportunities — half the database will move every 8 years, creating moderate but not transformative recurring business</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> 45 built-in opportunities per year from past clients alone — 360 ÷ 8 = 45. This reveals that an agent who maintains strong relationships with their past client base has nearly a full year's business built in without generating a single new lead. The referrals from 360 satisfied clients compound this number further. Every client lost to neglect is years of future business lost.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> About 72 opportunities — past clients tend to refer at a higher rate than they personally move</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> The math varies too much by market to be useful — past client databases are unreliable as a primary business strategy</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. The 80/20 rule applied to real estate means 20% of your activities generate 80% of your income. What are Zeller's six Direct Income-Producing Activities (DIPA) — and what does this imply about how agents should protect their time?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Social media, email marketing, MLS research, website updates, client entertainment, and networking events</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Prospecting, lead follow-up, listing presentations, buyer interview presentations, showing property to qualified buyers, and writing and negotiating contracts. This implies agents must ruthlessly protect blocks of time dedicated to these six activities and treat everything else as secondary — or eliminate it entirely during work hours.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Prospecting, training, CRM management, social media, open houses, and client appreciation events</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> The six DIPAs vary by agent depending on their niche, market, and personal strengths — there is no universal list</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Jimmy Burgess says your email list is your most valuable business asset — more valuable than your social media following. Why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Because email has higher open rates than social media posts and therefore generates more engagement per message</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Because you own your email list — social media platforms can shut down your account, change their algorithm, or disappear entirely. Your followers on any platform belong to the platform, not to you. But your database of email addresses is yours permanently, and systematic email communication (Deal of the Week, monthly newsletters) keeps you top of mind with people who have opted in to hear from you.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Because email generates higher commission rates than social media leads</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Because email subscribers are always more ready to transact than social media followers</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. You are a new agent six months into your career. You feel confident about your skills but your income is inconsistent and your pipeline fluctuates. Based on everything in this track, what is the most likely root cause — and what is the most direct fix?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Market conditions — inconsistent income is normal in a shifting market and the best strategy is to wait for conditions to improve</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Skill gaps — the agent needs more training on negotiation, listing presentations, or buyer consultations before their income will stabilize</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Inconsistent lead generation — pipeline fluctuation is almost always the result of prospecting only when there are no active clients, then stopping when there are. The fix is non-negotiable daily prospecting regardless of how full the pipeline feels. Three hours per day of active lead generation, protected from all interruptions, maintained whether business is slow or busy. The pipeline reflects what you did 60–90 days ago — not what you are doing today.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Brokerage support — the agent needs a better brokerage with more leads, training resources, and mentorship</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Millionaire Real Estate Agent</div>
+          <div class="bi-author">Gary Keller, Dave Jenks & Jay Papasan</div>
+          <div class="bi-desc">The source of the Four Models, the Four Stages (Think, Earn, Net, Receive a Million), the Eight Goal Categories, and the complete framework for building a real estate business that scales. The most important real estate career book ever written.</div>
+        </div>
+        <a href="https://www.amazon.com/Millionaire-Real-Estate-Agent-About/dp/0071444041" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Success as a Real Estate Agent For Dummies</div>
+          <div class="bi-author">Dirk Zeller</div>
+          <div class="bi-desc">Chapters 15 (keeping clients for life, relationship excellence, the closing as a starting point, lifetime client math) and 16 (the 80/20 rule, DIPA, the Four Ds of time management, time blocking) form the operational backbone of this module.</div>
+        </div>
+        <a href="https://www.amazon.com/Success-Real-Estate-Agent-Dummies/dp/1119918707" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Your First 365 Days in Real Estate</div>
+          <div class="bi-author">Shelley Zavitz</div>
+          <div class="bi-desc">The honest first-year perspective that runs throughout this entire track — the burning why, building your database from day one, pop-bys and thank-you notes, and the truth that staying in real estate long enough to build something great requires more grit than talent.</div>
+        </div>
+        <a href="https://www.amazon.com/Your-First-365-Days-Real/dp/1789661587" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion fade-in">
+    <h3>🎓 You Have Completed the Residential Agent Track</h3>
+    <p>Six modules. Three books. Fourteen verified videos. The complete path from getting licensed to building a sustainable real estate career — mindset, buyer skills, seller skills, prospecting, lead generation, and the business architecture that holds it all together. What comes next is not more studying. It is execution. The best agents are not the most educated ones. They are the ones who do the work — daily, consistently, and without waiting until they feel ready.</p>
+    <div class="comp-links">
+      <a href="residential-agent.html" class="btn-outline-white">← Back to Agent Track Overview</a>
+      <a href="index.html" class="btn-gold">Explore More Career Tracks →</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="agent-module-5.html" class="btn btn-outline">← Module 5: Prospecting</a>
+  <div class="module-nav-info">
+    <p>Residential Agent Track</p>
+    <strong>Module 6 of 6 — Complete</strong>
+  </div>
+  <a href="residential-agent.html" class="btn btn-gold">Track Overview →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{
+    correct:"Correct! The order is Economic → Lead Generation → Budget → Organizational, and it matters because each model depends on the one before it. You cannot build a lead generation system without knowing what numbers you need to hit. You cannot control spending until you have revenue to base it on. You cannot leverage a team until you have the systems and income to support one. Agents who try to skip steps — hiring before lead generation is solid, or building a team before their economics are clear — almost always encounter serious problems.",
+    incorrect:"Not quite. The correct order is Economic → Lead Generation → Budget → Organizational. Keller is explicit about this sequencing because each model depends on the one before it. The Economic Model establishes what numbers you need to hit. The Lead Generation Model is built to hit those numbers. The Budget Model controls how you spend the resulting revenue. The Organizational Model leverages people and systems to scale what is working. Build them out of order and the foundation is unstable."
+  },
+  q2:{
+    correct:"Correct! 360 past clients ÷ 8 years = 45 built-in opportunities per year from your own past client base. This number reveals something profound: an agent who has maintained strong relationships with 360 past clients does not need to generate a single new lead to have a full year of business. The referrals those 360 satisfied clients generate compound this further in ways that are impossible to count. Every client relationship that decays through neglect is not just one lost transaction — it is years of repeat business and referral business that will never materialize.",
+    incorrect:"Not quite. The math is 360 past clients ÷ 8 years (the average time between moves per NAR research) = 45 built-in opportunities per year from your existing past client base alone. This is the most powerful argument for after-sale relationship management in all of real estate education — a cultivated database of 360 clients generates 45 annual opportunities without a single new lead being generated. Every client relationship you let decay through neglect is years of compounding business that will never be recovered."
+  },
+  q3:{
+    correct:"Correct! Zeller's six DIPA are prospecting, lead follow-up, listing presentations, buyer interview presentations, showing property to qualified buyers, and writing and negotiating contracts. The 80/20 implication is direct: these six activities generate 80% of your income despite comprising a small fraction of all the things an agent could do in a day. Everything else — email, Canva, social browsing, office meetings, administrative tasks — is in the 80% of time that generates only 20% of income. Agents who protect their DIPA time blocks earn dramatically more than those who do not, often working the same number of hours.",
+    incorrect:"Not quite. Zeller's six DIPA are: prospecting, lead follow-up, listing presentations, buyer interview presentations, showing property to qualified buyers, and writing and negotiating contracts. These six activities — and essentially nothing else — generate 80% of a real estate agent's income. The 80/20 implication is that protecting dedicated time blocks for these activities, and treating everything else as secondary, is one of the most high-leverage decisions an agent can make."
+  },
+  q4:{
+    correct:"Correct! The core issue is ownership. Social media platforms own your followers — they can shut down your account, change the algorithm so your content reaches nobody, or cease to exist entirely. Your email database belongs to you permanently. Jimmy Burgess's point is that building your social media following is valuable, but building your email database is essential — because it is the one digital asset you truly own and control regardless of what any platform decides to do.",
+    incorrect:"Not quite. Burgess's point is about ownership and control. Social media followers belong to the platform — your account can be suspended, the algorithm can bury your content, or the platform can shut down. Your email database belongs to you permanently and cannot be taken away by any external platform decision. Building your database and communicating with it systematically (Deal of the Week, monthly newsletter) is the most durable digital asset a real estate agent can build."
+  },
+  q5:{
+    correct:"Correct! Pipeline fluctuation is almost always caused by inconsistent lead generation — prospecting hard when business is slow, then stopping when it gets busy, then scrambling again when the pipeline empties. The fix is non-negotiable daily prospecting regardless of how full the pipeline currently feels. The pipeline reflects activity from 60–90 days ago. The agent who is busy today but skipping prospecting will be empty in two to three months. Three protected hours of daily lead generation, done consistently, is the single most direct cure for boom-and-bust income cycles.",
+    incorrect:"Not quite. Inconsistent pipeline is almost always the result of inconsistent lead generation — not market conditions, not skill gaps, not brokerage support. The most common pattern is prospecting hard when business is slow, stopping when clients arrive, then scrambling again when the pipeline empties. The fix is non-negotiable daily prospecting protected from all interruptions, maintained whether business is slow or busy. The pipeline reflects what you did 60–90 days ago. Build the habit of daily lead generation before you feel like you need it."
+  }
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Outstanding. You have completed the Residential Agent Track. You now have the mindset, the skills, the systems, and the business framework to build a real career. The rest is execution.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above. The frameworks in this final module — the Four Models, lifetime client value, DIPA, and the Four Stages — are the architecture of everything that comes next in your career. They are worth understanding deeply.';
+  }
+}
+</script>
+</body>
+</html>
