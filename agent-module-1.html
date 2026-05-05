@@ -199,7 +199,18 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .score-result.fail{background:var(--gold-pale);color:#8A6A20;}
 
 /* Next module */
-.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.state-table-section{margin:2rem 0;}
+.state-search-wrap{position:relative;margin-bottom:1rem;}
+.state-search{width:100%;padding:0.75rem 1rem 0.75rem 2.5rem;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text-dark);outline:none;box-sizing:border-box;}
+.state-search:focus{border-color:var(--teal-mid);}
+.state-search-icon{position:absolute;left:0.75rem;top:50%;transform:translateY(-50%);color:var(--text-light);font-size:14px;}
+.state-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;}
+.state-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.85rem;display:flex;align-items:center;justify-content:space-between;gap:0.5rem;}
+.state-item .si-name{font-size:13px;color:var(--text-dark);font-weight:500;}
+.state-item a{font-size:11px;font-weight:700;color:var(--teal-mid);text-decoration:none;white-space:nowrap;padding:3px 8px;background:var(--teal-pale);border-radius:6px;}
+.state-item a:hover{background:var(--teal);color:var(--white);}
+.state-item.hidden{display:none;}
+@media(max-width:640px){.state-grid{grid-template-columns:1fr 1fr;}}
 .next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
 .next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
 .next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
@@ -344,14 +355,9 @@ footer .footer-gold{color:var(--gold-light);}
 
     <p class="lesson-text">These numbers change. States update their requirements periodically. The table above gives you a general sense of the range — but always verify your specific state's current requirements directly with your state real estate commission before enrolling anywhere.</p>
 
-    <div class="state-box">
-      <div class="sb-label">🔍 Find Your State's Requirements</div>
-      <h3>Go here before you do anything else</h3>
-      <p>ARELLO — the Association of Real Estate License Law Officials — maintains links to every state real estate commission in the country. One click gets you to your state's official requirements page. Colibri Real Estate is the leading national licensing school operating in all 50 states — their site also breaks down requirements by state clearly.</p>
-      <div class="state-links">
-        <a href="https://www.arello.org/regulatory-agency-directory/" target="_blank" class="state-link primary">ARELLO — All 50 State Commissions →</a>
-        <a href="https://www.colibrigroup.com/real-estate/" target="_blank" class="state-link secondary">Colibri Real Estate →</a>
-      </div>
+    <div class="callout callout-insight">
+      <div class="callout-label">🔍 Find Your State's Official Commission</div>
+      <p>Scroll to the bottom of this module for a searchable directory of all 50 state real estate commission websites — your official starting point before enrolling in any school or paying any fees. Every link goes directly to your state's regulatory authority.</p>
     </div>
   </div>
 
@@ -362,14 +368,23 @@ footer .footer-gold{color:var(--gold-light);}
     <div class="gold-divider"></div>
     <p class="lesson-text">Chastin J. Miles — real estate entrepreneur, Forbes-featured coach, and one of the most-watched real estate educators on YouTube — walks through the complete path from zero to licensed agent. He covers the licensing process, how to get started, the habits that separate agents who make it from agents who quit, and what nobody tells you before you get your license. Published August 2024. Universal — not state-specific. Watch this before Lesson 2.</p>
     <div class="video-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/sSsfZOCU7Dg" title="How To Become A Real Estate Agent 2025 — Chastin J. Miles" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
+      <a href="https://www.youtube.com/watch?v=sSsfZOCU7Dg" target="_blank" style="display:block;text-decoration:none;">
+        <div style="background:linear-gradient(135deg,#062F33,#0D5C63);padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;cursor:pointer;border-radius:16px 16px 0 0;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.3);">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:white;margin-bottom:0.3rem;">How To Become A Real Estate Agent [2025]</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.6);">Chastin J. Miles · YouTube · Click to watch</div>
+          </div>
+          <div style="background:#C9A84C;color:#0D5C63;font-size:13px;font-weight:700;padding:8px 24px;border-radius:8px;">Watch on YouTube →</div>
+        </div>
+      </a>
       <div class="video-info">
         <span class="video-badge">Chastin J. Miles · YouTube</span>
         <h4>How To Become A Real Estate Agent [2025]</h4>
         <p>The complete beginner's path to becoming a licensed agent — licensing process, exam tips, how to get your first clients, the habits of successful agents, and what nobody tells you before you start. Forbes-featured real estate coach with millions of YouTube views. Directly reinforces Lessons 1 and 2 of this module.</p>
-        <p class="credit">Chastin J. Miles · YouTube August 2024 · Universal — not state-specific</p>
+        <p class="credit">Chastin J. Miles · YouTube August 2024 · Universal — not state-specific · <em>Opens on YouTube (embedding disabled by creator)</em></p>
       </div>
     </div>
   </div>
@@ -719,6 +734,79 @@ footer .footer-gold{color:var(--gold-light);}
   </div>
 
   <!-- NEXT MODULE -->
+  <!-- STATE COMMISSION REFERENCE -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> State-by-State Reference</div>
+    <h2 class="lesson-title">Find your state real estate commission — <em>your official starting point</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Every state has its own licensing requirements, fees, approved schools, and application process. The links below go directly to each state's official real estate commission or regulatory authority — the authoritative source for everything you need to get licensed in your state. Start here before you enroll in any school or pay any fees.</p>
+
+    <div class="state-table-section">
+      <div class="state-search-wrap">
+        <span class="state-search-icon">🔍</span>
+        <input type="text" class="state-search" id="stateSearch" placeholder="Search for your state..." oninput="filterStates()">
+      </div>
+      <div class="state-grid" id="stateGrid">
+        <div class="state-item"><span class="si-name">Alabama</span><a href="https://arec.alabama.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Alaska</span><a href="https://www.commerce.alaska.gov/web/cbpl/ProfessionalLicensing/RealEstate.aspx" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Arizona</span><a href="https://azre.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Arkansas</span><a href="https://arec.arkansas.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">California</span><a href="https://www.dre.ca.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Colorado</span><a href="https://dre.colorado.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Connecticut</span><a href="https://portal.ct.gov/DCP/Real-Estate-Commission" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Delaware</span><a href="https://dpr.delaware.gov/boards/realestate" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Florida</span><a href="https://www.myfloridalicense.com/DBPR/real-estate-commission" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Georgia</span><a href="https://grec.state.ga.us" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Hawaii</span><a href="https://cca.hawaii.gov/reb" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Idaho</span><a href="https://irec.idaho.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Illinois</span><a href="https://idfpr.illinois.gov/profs/reales.asp" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Indiana</span><a href="https://www.in.gov/pla/real-estate" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Iowa</span><a href="https://plb.iowa.gov/boards/real-estate-commission" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Kansas</span><a href="https://krec.ks.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Kentucky</span><a href="https://krec.ky.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Louisiana</span><a href="https://lrec.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Maine</span><a href="https://www.maine.gov/pfr/professionallicensing/professions/real-estate" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Maryland</span><a href="https://www.dllr.state.md.us/license/mrec" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Massachusetts</span><a href="https://www.mass.gov/orgs/board-of-registration-of-real-estate-brokers-and-salespersons" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Michigan</span><a href="https://www.michigan.gov/lara/bureau-list/bpl/occ/professions/real-estate-brokers-and-salespersons" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Minnesota</span><a href="https://mn.gov/commerce/industries/real-estate" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Mississippi</span><a href="https://www.mrec.ms.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Missouri</span><a href="https://pr.mo.gov/realestate.asp" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Montana</span><a href="https://boards.bsd.dli.mt.gov/rre" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Nebraska</span><a href="https://nrec.nebraska.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Nevada</span><a href="https://red.nv.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">New Hampshire</span><a href="https://www.nh.gov/nhrec" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">New Jersey</span><a href="https://www.njconsumeraffairs.gov/rec" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">New Mexico</span><a href="https://www.nmrec.state.nm.us" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">New York</span><a href="https://www.dos.ny.gov/licensing/re_broker" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">North Carolina</span><a href="https://www.ncrec.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">North Dakota</span><a href="https://www.realestate.nd.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Ohio</span><a href="https://www.com.ohio.gov/divisions/real-estate" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Oklahoma</span><a href="https://orec.ok.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Oregon</span><a href="https://www.oregon.gov/rea" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Pennsylvania</span><a href="https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/RealEstate" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Rhode Island</span><a href="https://dbr.ri.gov/real-estate" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">South Carolina</span><a href="https://llr.sc.gov/real" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">South Dakota</span><a href="https://dlr.sd.gov/realestate" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Tennessee</span><a href="https://www.tn.gov/commerce/regboards/trec.html" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Texas</span><a href="https://www.trec.texas.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Utah</span><a href="https://realestate.utah.gov" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Vermont</span><a href="https://sos.vermont.gov/real-estate-commission" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Virginia</span><a href="https://www.dpor.virginia.gov/boards/real-estate" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Washington</span><a href="https://www.dol.wa.gov/professional-licenses/real-estate-brokers" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Washington D.C.</span><a href="https://dcra.dc.gov/service/real-estate-licensure" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">West Virginia</span><a href="https://www.wvrec.org" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Wisconsin</span><a href="https://dsps.wi.gov/Pages/Professions/RealEstateSalesperson" target="_blank">Commission →</a></div>
+        <div class="state-item"><span class="si-name">Wyoming</span><a href="https://realestate.wyo.gov" target="_blank">Commission →</a></div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight" style="margin-top:1.5rem;">
+      <div class="callout-label">💡 What to Look For Once You Get There</div>
+      <p>On your state commission website, look for a section called "Become Licensed," "Salesperson License," or "New Applicant." You are looking for: required pre-licensing education hours, approved education providers, application fees, exam registration process, background check requirements, and continuing education requirements after you are licensed. If the site is unclear, call them directly — the commission staff are there to answer exactly these questions.</p>
+    </div>
+  </div>
+
   <div class="next-module fade-in">
     <h3>⏭️ What's Next — Module 2: Think Like a Top Agent</h3>
     <p>You have your license. You have joined a brokerage. Now the real work begins — and it starts in your head. Module 2 covers the nine ways top-producing agents think differently from average agents, the three L's that govern every successful real estate business, and the daily habits and mindset shifts that determine whether you make it through year one.</p>
@@ -744,6 +832,15 @@ footer .footer-gold{color:var(--gold-light);}
 <script>
 var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
 document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+function filterStates(){
+  var q=document.getElementById('stateSearch').value.toLowerCase();
+  var items=document.querySelectorAll('#stateGrid .state-item');
+  items.forEach(function(item){
+    var name=item.querySelector('.si-name').textContent.toLowerCase();
+    item.classList.toggle('hidden', q.length>0 && name.indexOf(q)===-1);
+  });
+}
 
 var quizAnswers={};
 var quizDone=false;
