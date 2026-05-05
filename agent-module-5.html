@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Agent Module 5: Prospecting & Lead Generation — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0D5C63;--teal-mid:#1A7A83;--teal-light:#2A9EA8;--teal-pale:#EBF7F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(13,92,99,0.1);
+  --shadow-card:0 2px 16px rgba(13,92,99,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:83%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Prospecting vs not table */
+.compare-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
+.compare-table th{padding:0.75rem 1.25rem;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.compare-table th:first-child{background:var(--teal);color:var(--white);}
+.compare-table th:last-child{background:#8A8A7A;color:var(--white);}
+.compare-table td{padding:0.65rem 1.25rem;font-size:13.5px;border-bottom:1px solid var(--border);}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table tr:nth-child(even) td{background:rgba(13,92,99,0.03);}
+.compare-table td:first-child{color:var(--teal);font-weight:500;}
+.compare-table td:last-child{color:var(--text-light);}
+
+/* Four pillars */
+.four-pillars{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.pillar-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--teal);border-radius:0 0 12px 12px;padding:1.25rem;}
+.pillar-card .pc-num{font-size:11px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.pillar-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;}
+.pillar-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+
+/* Goals table */
+.goals-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
+.goals-table th{padding:0.75rem 1.25rem;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--teal);color:var(--white);}
+.goals-table td{padding:0.65rem 1.25rem;font-size:13.5px;border-bottom:1px solid var(--border);}
+.goals-table tr:last-child td{border-bottom:none;}
+.goals-table tr:nth-child(even) td{background:rgba(13,92,99,0.03);}
+.goals-table td:first-child{font-weight:600;color:var(--text-dark);}
+
+/* Touch system */
+.touch-system{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:2rem 0;}
+.touch-card{background:linear-gradient(135deg,#062F33,var(--teal));border-radius:14px;padding:1.5rem 1.25rem;position:relative;overflow:hidden;}
+.touch-card::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.touch-card .tc-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.5rem;position:relative;}
+.touch-card h4{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;position:relative;}
+.touch-card p{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.65;position:relative;}
+
+/* Lead source cards */
+.lead-sources{display:flex;flex-direction:column;gap:0.85rem;margin:2rem 0;}
+.lead-source{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal-mid);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.lead-source .ls-tag{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.25rem;}
+.lead-source h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.lead-source p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.lead-source.hot{border-left-color:var(--gold);}
+.lead-source.hot .ls-tag{color:#8A6A20;}
+
+/* SOI steps */
+.soi-steps{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.soi-step{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.soi-step .ss-num{width:30px;height:30px;border-radius:50%;background:var(--teal);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.soi-step .ss-content h4{font-size:0.9rem;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.soi-step .ss-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .four-pillars{grid-template-columns:1fr;}
+  .touch-system{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="residential-agent.html">Agent Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="residential-agent.html">Residential Agent Track</a><span class="sep">›</span>
+  <span class="current">Module 5: Prospecting & Lead Generation</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Agent Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="agent-module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="agent-module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="agent-module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <a href="agent-module-4.html" class="prog-dot complete" title="Module 4">✓</a>
+    <div class="prog-dot active">5</div>
+    <div class="prog-dot locked">6</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏠 Residential Agent Track · Module 5 of 6</div>
+    <h1>Prospecting & <em>Lead Generation</em></h1>
+    <p>You know how to work with buyers. You know how to work with sellers. Now the question that determines everything: how do you find them? Lead generation is not a department in your business — it is your business. This module covers the four pillars of consistent prospecting, how to build and systematically work your database, expired listings and FSBOs, open houses as a lead generation tool, and the daily habits that keep your pipeline full regardless of market conditions.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>60–75 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What prospecting actually is — <em>and what it is not</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Before you can build a prospecting system, you need to be clear on what prospecting actually is. Most agents think they are prospecting when they are not. They are busy — posting on social media, updating their website, attending networking events, wearing their name badge, mailing calendars and magnets — and none of it is prospecting. Busyness and prospecting are not the same thing. Dirk Zeller draws this distinction sharply in <em>Success as a Real Estate Agent For Dummies</em>, and it is one of the most clarifying frameworks in the book.</p>
+
+    <table class="compare-table fade-in">
+      <tr><th>✅ What Prospecting IS</th><th>❌ What Prospecting IS NOT</th></tr>
+      <tr><td>Calling past clients</td><td>Mailing magnets, calendars, and tchotchkes</td></tr>
+      <tr><td>Calling people in your sphere of influence</td><td>Setting up a website</td></tr>
+      <tr><td>Calling expired listings</td><td>Joining service organizations</td></tr>
+      <tr><td>Calling FSBOs</td><td>Wearing your name badge</td></tr>
+      <tr><td>Cold calling for listings and sales</td><td>Placing magnetic signs on your car</td></tr>
+      <tr><td>Knocking on doors</td><td>Sponsoring a community sports team</td></tr>
+      <tr><td>Hosting open houses</td><td>Doing floor time</td></tr>
+      <tr><td>Calling absentee owners</td><td>Answering emails</td></tr>
+    </table>
+
+    <p class="lesson-text">Prospecting has a precise two-step definition: <strong>(1) identifying and creating leads</strong> by establishing contacts with people who have interest in what you offer and the ability to become clients, and <strong>(2) securing face-to-face appointments</strong> for predetermined times in the future. Everything else — no matter how important it feels — is marketing, administration, or branding. Those activities have value. But they are not what keeps your pipeline full.</p>
+
+    <p class="lesson-text">Gary Keller makes the same point in <em>The Millionaire Real Estate Agent</em> with a framework that has shaped how top agents think about lead generation for decades: your lead generation model must be <strong>marketing-based and prospecting-enhanced.</strong> Pure marketing — waiting for leads to come to you — is not enough. Pure prospecting — grinding through calls with no systematic marketing — is not scalable. The highest-performing agents combine both, with systematic marketing creating the foundation and active prospecting protecting against market shifts.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 You Have Two Professions</div>
+      <p>Keller is explicit: top real estate agents have two professions — lead generation and real estate sales. Not one. Not real estate sales with some lead generation on the side. Two equal, parallel professions. The agent who accepts this reality and protects their lead generation time with the same discipline they give to client work is the agent who builds a sustainable business. The agent who treats lead generation as optional fills their pipeline only when they feel like it — and experiences the boom-and-bust income cycle that drives most agents out of the business.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Jimmy Burgess: 7 lead generation strategies <em>that cost you nothing</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Jimmy Burgess — Chief Coaching Officer for HomeServices of America and recognized as one of the Top 200 Most Influential People in Real Estate by Swanepoel — shares seven specific, actionable lead generation strategies built around relationships rather than purchased leads. Published January 2026. Every strategy in this video costs zero dollars upfront and directly reinforces the marketing-based prospecting-enhanced framework from Keller's model. Watch before Lesson 2.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/Hy_CGm-yoZY" title="7 Real Estate Lead Generation Strategies You Need for 2026 — Jimmy Burgess" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Jimmy Burgess · YouTube</span>
+        <h4>7 Real Estate Lead Generation Strategies You Need for 2026!</h4>
+        <p>Buy lunch not leads (2–3 relationship meetings per week with existing sphere), social media posts that get people to raise their hand (off-market early bird list, price reduction lists), buyers as bait / the magic letter (targeted direct mail using a real buyer to uncover listing opportunities), little help social media posts (public post asking for seller introductions for a specific buyer), no-upfront-cost lead sources (Veterans United, Agent Pronto, Rocket Homes, Redfin Partner Program), deal of the week email to database, and Instagram story polls to identify who is thinking about buying or selling.</p>
+        <p class="credit">Jimmy Burgess · Chief Coaching Officer, HomeServices of America · Top 200 Most Influential People in Real Estate · January 2026 · Solo presenter</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The four pillars of prospecting — <em>the disciplines that separate consistent producers</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Zeller identifies four core disciplines shared by every agent who achieves consistent, long-term prospecting success. These are not tactics — they are habits of mind and structure that make prospecting sustainable regardless of how you feel on any given morning.</p>
+
+    <div class="four-pillars">
+      <div class="pillar-card fade-in">
+        <div class="pc-num">Pillar 1</div>
+        <h4>Set a daily time and place</h4>
+        <p>You cannot work your prospecting around your day. You have to work your day around your prospecting. Establish a fixed time, a fixed location, and a fixed setup — phone, headset, scripts on the wall, objection handles posted nearby. Zeller kept his prospecting station set up permanently and stood while making calls because body language affects communication even on the phone. Treat your prospecting hour like a meeting you cannot cancel — because you have an appointment to find a potential client.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <div class="pc-num">Pillar 2</div>
+        <h4>Fight off distractions</h4>
+        <p>Most agents welcome distractions that take them away from prospecting. An inbound call, a problem transaction, a colleague who wants to talk — anything will do. Zeller calls this creative avoidance, and agents excel at it. The fix is simple but requires discipline: turn off email, ask the receptionist to take messages, silence your phone, put a sign on the door. You already have an appointment — with your lead generation.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <div class="pc-num">Pillar 3</div>
+        <h4>Follow the plan — set it up a day in advance</h4>
+        <p>Know who you are going to call tomorrow before you leave the office today. If you wait to plan your prospecting at the beginning of your session, you will talk yourself out of more calls than you make. Your mental process will generate objections — "this person will think I'm calling too soon," "they won't buy right now" — and those objections will win. Preparation eliminates second-guessing. Action follows automatically when the plan is already in place.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <div class="pc-num">Pillar 4</div>
+        <h4>Be faithful — finish what you start</h4>
+        <p>Stay faithful to your daily objective and complete all of your contacts down to the very last one. If you set a goal of five contacts, make five — not four with a good excuse. No one remembers who was ahead at the 80-meter mark of the 100-meter sprint. The winner has to complete the full circuit. Do not drop out early. Finish what you start, every single day.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Your daily prospecting goals — starting numbers that actually work</h3>
+    <p class="lesson-text">Zeller recommends starting with goals that are achievable and building up over time. Too many new agents set unrealistic prospecting targets, fail to hit them, get discouraged, and stop prospecting entirely. Here is the math on what sustainable starting goals produce over a full year:</p>
+
+    <table class="goals-table fade-in">
+      <tr><th>Goal</th><th>Daily Target</th><th>Weekly Total</th><th>Annual Result</th></tr>
+      <tr><td>Contacts (real conversations with decision makers)</td><td>5 per day</td><td>25 per week</td><td>1,250 contacts</td></tr>
+      <tr><td>Leads (contacts showing motivation and desire to act)</td><td>1 per day</td><td>5 per week</td><td>250 leads</td></tr>
+      <tr><td>Appointments (face-to-face meetings with prospects)</td><td>—</td><td>1 per week</td><td>50 appointments</td></tr>
+      <tr><td>Deals closed (if 50% of appointments convert)</td><td>—</td><td>—</td><td>25 transactions</td></tr>
+    </table>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Math That Changes Everything</div>
+      <p>25 transactions in your first year at an average commission of $5,000 per deal equals $125,000 in gross commission income. In most brokerages, that makes you rookie of the year. And those numbers come from just five contacts per day — not a hundred cold calls, not a massive marketing budget, not a viral social media following. Five real conversations with real people, every single working day, for a year. Zeller's point is powerful: it is easy to overestimate what you can do in a day. It is just as easy to underestimate what you can accomplish in a year.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Jaime Resendiz: The perfect sphere of influence strategy — <em>six steps that actually work</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Jaime Resendiz — real estate coach dedicated to reducing the 80% failure rate for new agents — breaks down the complete six-step SOI system in a focused, practical video. He manages a personal sphere of over 1,500 people using the exact system he teaches here. Watch before Lesson 3 on building and working your database.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/lVIACzC2xco" title="The Perfect Sphere of Influence (SOI) Strategy for Real Estate — Jaime Resendiz" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Jaime Resendiz · YouTube</span>
+        <h4>The Perfect Sphere of Influence (SOI) Strategy for Real Estate</h4>
+        <p>Six-step SOI framework: identify your sphere broadly (friends, family, neighbors, past colleagues, acquaintances), write them all down in a CRM or spreadsheet, reach out actively via calls/texts/emails/drop-bys/direct mail, follow up consistently — 80% of agents stop after initial outreach and this is where you separate yourself, service the low-hanging fruit with a five-star experience, and ask for referrals — your sphere would often rather refer you than personally work with you. Directly reinforces the MREA 8x8 and 33 Touch database system.</p>
+        <p class="credit">Jaime Resendiz · YouTube February 2023 · Solo presenter · Manages a personal SOI of 1,500+ people</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Building and working your database — <em>the 8x8, 33 Touch, and 12 Direct system</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Your database is not a list of names. It is a living asset — the single most important business asset you will build in your real estate career. Gary Keller, Dave Jenks, and Jay Papasan identify database building and systematic marketing as the second and third key areas of the Lead Generation Model in <em>The Millionaire Real Estate Agent</em>. Their framework divides your database into two groups: people you have met (Met) and people you have not met yet (Haven't Met). The strategies for each are different — but both require a system.</p>
+
+    <p class="lesson-text">Keller's core insight: <em>think of your database as a living thing that needs constant feeding to stay alive. People need to be added regularly as you make new relationships and lose old ones. Feed it, fatten it — but whatever you do, do not put your database on a diet.</em></p>
+
+    <h3 class="sub-title">The three systematic marketing programs</h3>
+    <p class="lesson-text">Keller recommends three specific programs for systematically staying in contact with your database. Every touch — every contact — should include a reminder and instructions on how to send you referral business.</p>
+
+    <div class="touch-system">
+      <div class="touch-card fade-in">
+        <div class="tc-label">New Contacts</div>
+        <h4>8x8 Program</h4>
+        <p>Eight meaningful touches over eight weeks for every new person who enters your database. The goal: establish yourself as the number one real estate agent in their mind. Week 1: letter of introduction, brochure, market report, business card. Week 2–3: recipe card, community calendar, or market statistics. Week 4: phone call — did you receive my materials? Do you know anyone buying or selling? Week 5: free report. Week 6: real estate or maintenance tip. Week 7: useful branded giveaway. Week 8: second phone call — thank you for allowing me to be your agent for life.</p>
+      </div>
+      <div class="touch-card fade-in">
+        <div class="tc-label">Ongoing — Met Group</div>
+        <h4>33 Touch Program</h4>
+        <p>Thirty-three contacts per year with everyone in your Met database — the people who already know you. Eighteen of those touches are a combination of emails, mailings, letters, cards, or drop-offs. Eight are personal notes — birthday cards, event-specific cards, holiday greetings. Three are personal phone calls at meaningful touchpoints. The remaining four are a combination of calls during key life moments — anniversary of their home purchase, market update calls, check-in calls. The goal is year-round top-of-mind presence.</p>
+      </div>
+      <div class="touch-card fade-in">
+        <div class="tc-label">High-Value Relationships</div>
+        <h4>12 Direct Program</h4>
+        <p>Twelve direct personal contacts per year for your highest-value relationships — past clients, referral sources, and key sphere members who have demonstrated they will send business your way. These are personal calls, personal lunches, personal handwritten notes. Jimmy Burgess's "buy lunch not leads" strategy is a modern version of this: two to three relationship meetings per week with existing contacts, no agenda, simply deepening the relationship. The law of reciprocity does the rest.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The six steps for working your sphere of influence</h3>
+    <p class="lesson-text">Jaime Resendiz's SOI framework maps directly onto Keller's database system. The six steps give you the operational how-to for executing the 8x8 and 33 Touch programs with real people in your real life:</p>
+
+    <div class="soi-steps">
+      <div class="soi-step fade-in">
+        <div class="ss-num">1</div>
+        <div class="ss-content">
+          <h4>Identify your sphere broadly</h4>
+          <p>Friends, family, neighbors, past colleagues, acquaintances, and beyond. Think broader than you initially feel comfortable with. Everyone you know belongs on this list until you have a reason to remove them.</p>
+        </div>
+      </div>
+      <div class="soi-step fade-in">
+        <div class="ss-num">2</div>
+        <div class="ss-content">
+          <h4>Write them all down — in a CRM or spreadsheet</h4>
+          <p>The list only works if it exists somewhere you can consistently reference. Use any CRM — KV Core, Follow Up Boss, Notion — or even an Excel sheet. The tool matters less than the habit of maintaining it.</p>
+        </div>
+      </div>
+      <div class="soi-step fade-in">
+        <div class="ss-num">3</div>
+        <div class="ss-content">
+          <h4>Reach out actively — let them know you are in real estate</h4>
+          <p>Call, text, email, drop by, send direct mail. Your sphere cannot send you business if they do not know what you do. Think about how many people in your sphere of 50 you could not name the profession of — and realize the same is true in reverse. Be active, not aggressive.</p>
+        </div>
+      </div>
+      <div class="soi-step fade-in">
+        <div class="ss-num">4</div>
+        <div class="ss-content">
+          <h4>Follow up — this is where 80% of agents stop</h4>
+          <p>Most agents make one contact with their sphere and wait for the phone to ring. Only 20% actually follow up after the initial outreach. Being in that 20% puts you in rarified air — before you have done anything else to distinguish yourself. Build a follow-up system and execute it consistently.</p>
+        </div>
+      </div>
+      <div class="soi-step fade-in">
+        <div class="ss-num">5</div>
+        <div class="ss-content">
+          <h4>Service the low-hanging fruit with a five-star experience</h4>
+          <p>When someone in your sphere agrees to work with you, remember this is also a personal relationship. A disappointing experience does not just cost you one transaction — it costs you their entire network. Deliver at a level they will never forget and enthusiastically describe to others.</p>
+        </div>
+      </div>
+      <div class="soi-step fade-in">
+        <div class="ss-num">6</div>
+        <div class="ss-content">
+          <h4>Ask for referrals — this is the real goal</h4>
+          <p>Your sphere of 50 or 100 people is finite. Their networks are not. Getting your sphere to actively refer you to their sphere is the exponential growth engine of a referral-based business. Ask directly. You will be surprised — many people in your sphere would rather refer you than personally work with you, and both outcomes benefit your business.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Expired listings, FSBOs, and open houses — <em>three high-probability lead sources</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Beyond your sphere of influence and database, three lead sources deserve specific attention for new agents: expired listings, FSBOs, and open houses. Each requires a different approach and skill set — but together they represent some of the highest-probability lead opportunities available in any market condition.</p>
+
+    <h3 class="sub-title">Expired listings — high-probability, any market</h3>
+    <p class="lesson-text">An expired listing is a home that was on the market with another agent and did not sell. The owner has already demonstrated the desire or need to sell. They have a problem — their home did not sell — and you have a solution. Zeller identifies three reasons every new agent should consider working expired listings:</p>
+
+    <div class="lead-sources">
+      <div class="lead-source hot fade-in">
+        <div class="ls-tag">Reason 1</div>
+        <h4>They are easy to find</h4>
+        <p>You do not need to ask owners if they are considering selling. Simply check the MLS daily hot sheet for newly expired listings. Every MLS system lists them. The information is there for every agent — but most agents do not act on it.</p>
+      </div>
+      <div class="lead-source hot fade-in">
+        <div class="ls-tag">Reason 2</div>
+        <h4>They exist in any market condition</h4>
+        <p>In a slow market, many listings expire because buyers are cautious — providing a near-endless supply of conversion opportunities. In a hot market, fewer listings expire but FSBOs proliferate because sellers think selling is easy. Agents skilled at working expired listings and FSBOs can make their businesses bulletproof by simply shifting their emphasis to fit market conditions.</p>
+      </div>
+      <div class="lead-source hot fade-in">
+        <div class="ls-tag">Reason 3</div>
+        <h4>They provide the best training available</h4>
+        <p>Converting expired listings requires real prospecting skill, real objection handling, and real sales ability. The agents who convert four, five, or six expireds per month become great salespeople — not by accident, but by necessity. The training is built into the work.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Why Do Listings Expire?</div>
+      <p>In more than 90% of cases the real reason a listing expires is not that the agent failed to market it adequately — it is that the home was overpriced. More than half the time, expired homes go right back on the market with a different agent. The agent who calls first, positions themselves as a pricing expert, and demonstrates genuine market knowledge has a strong advantage. Personal contact — a phone call — beats direct mail every time. Owners with expired listings are flooded with mailers. A real phone call stands out.</p>
+    </div>
+
+    <h3 class="sub-title">FSBOs — motivated sellers who have already identified themselves</h3>
+    <p class="lesson-text">A For Sale By Owner has done something remarkable for you: they have publicly announced they want to sell their home. They have raised their hand. The question is not whether they want to sell — it is whether they will eventually conclude that professional representation is worth the commission. Zeller's point is precise: in a robust market, FSBOs proliferate because sellers think the market will do the work for them. In a slow market, that illusion evaporates quickly. Either way, the FSBO represents a motivated seller who has identified themselves — and that is the definition of a high-probability lead.</p>
+
+    <h3 class="sub-title">Open houses — the agent's neighborhood storefront</h3>
+    <p class="lesson-text">Zeller's framework for open houses reframes them entirely: the open house is not primarily about selling the listed property. It is a prospecting platform. Think of it the way a grocery store thinks about a loss leader — you invest time to attract traffic, meet prospects, and build relationships that lead to future sales. The data is clear: homes sell directly through open houses only about one in twenty times. But every open house generates face-to-face meetings with buyers and sellers you would never otherwise encounter.</p>
+
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Dirk Zeller — Success as a Real Estate Agent For Dummies</div>
+      <p>"An open house provides a real estate agent with a neighborhood storefront from which to do business for a day. Each time you host an open house, you set up shop in a client home and open the doors to the opportunity to meet prospects, establish relationships, and expand your real estate clientele."</p>
+      <div class="quote-attr">On why open houses are a prospecting tool — not a selling tool</div>
+    </div>
+
+    <p class="lesson-text">The value of the open house for a new agent extends beyond the visitors who walk through the door. Neighbors attend. Friends of the seller's owners attend. Each one is a potential future buyer or seller. Every conversation you have is a relationship started. Take time to find out the needs, wants, time frames, and motivations behind each person's home-shopping experience. Once they meet and visit with you, rejecting you as "just a salesperson" becomes much more difficult.</p>
+
+    <h3 class="sub-title">Targeting — the most efficient prospecting approach</h3>
+    <p class="lesson-text">Not all prospects are equal. Targeting — identifying the prospects with the highest probability of buying or selling in the shortest amount of time — is what separates efficient prospectors from those who make calls all day and generate nothing. Zeller's targeting framework focuses on four primary groups:</p>
+
+    <div class="lead-sources">
+      <div class="lead-source fade-in">
+        <div class="ls-tag">Target Group 1 — Highest Priority</div>
+        <h4>Past clients and sphere of influence</h4>
+        <p>People who already know you, like you, and trust you. They require the least persuasion and produce the highest referral volume. Never neglect this group in pursuit of cold leads.</p>
+      </div>
+      <div class="lead-source fade-in">
+        <div class="ls-tag">Target Group 2 — High Priority</div>
+        <h4>Expired listings and FSBOs</h4>
+        <p>Motivated sellers who have self-identified. Probable leads rather than possible leads — they convert far more often because the desire and need to sell have already been demonstrated.</p>
+      </div>
+      <div class="lead-source fade-in">
+        <div class="ls-tag">Target Group 3 — Market-Driven</div>
+        <h4>Absentee owners and market-specific targets</h4>
+        <p>Market conditions create targeting opportunities. In a declining market, absentee owners (second home owners and investors) may want to lock in gains before further price drops. In a low-inventory market, anyone who has owned their home for many years may be ready to downsize. Read your market and adjust your targets accordingly.</p>
+      </div>
+      <div class="lead-source fade-in">
+        <div class="ls-tag">Target Group 4 — Long-Term Building</div>
+        <h4>Geographic farm areas</h4>
+        <p>A defined geographic area where you systematically market and prospect over time to become the dominant agent. Requires patience — most farms take 12–24 months to produce consistent results — but create a protected, predictable lead source once established.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 5 Key Takeaways</h3>
+    <ul>
+      <li>Prospecting has a precise definition: (1) identifying and creating leads with people who have the interest and ability to become clients, and (2) securing face-to-face appointments. Mailing calendars, posting on social media, wearing a name badge — none of these are prospecting.</li>
+      <li>You have two professions: lead generation and real estate sales. Not one. Both require daily protected time. The agent who treats lead generation as optional experiences boom-and-bust income for their entire career.</li>
+      <li>The four pillars of prospecting: set a daily time and place, fight off distractions (creative avoidance), follow the plan set up a day in advance, and finish what you start — every single contact down to the last one.</li>
+      <li>Starting daily prospecting goals: 5 contacts per day, 1 lead per day, 1 appointment per week. At these numbers, with a 50% appointment-to-deal conversion, you produce 25 transactions and over $125,000 in gross commission in your first year. Small daily numbers compound into extraordinary annual results.</li>
+      <li>Your database is your most important business asset. It is a living thing that needs constant feeding. Keller's system: 8x8 for new contacts (eight meaningful touches over eight weeks), 33 Touch for ongoing Met database contacts (33 contacts per year), and 12 Direct for high-value relationships (personal calls, lunches, handwritten notes).</li>
+      <li>The SOI six-step system: identify broadly, write them down, reach out actively, follow up (this is where 80% of agents stop — being in the 20% who follow up puts you in rarified air), service with a five-star experience, and ask for referrals.</li>
+      <li>Expired listings are high-probability leads — the owner has demonstrated desire to sell and has a specific problem (their home did not sell) you can solve. In more than 90% of cases the real reason the listing expired is overpricing, not agent failure. Call first — personal contact beats mailers every time.</li>
+      <li>Open houses are a prospecting tool, not a selling tool. Homes sell directly through open houses only one in twenty times. The value is in the face-to-face meetings with buyers, sellers, neighbors, and referral sources that you could not reach any other way.</li>
+      <li>Target your prospecting by probability of conversion: past clients and sphere first, expired listings and FSBOs second, market-specific targets third, geographic farm areas as a long-term investment. Do not prospect randomly — prioritize the people most likely to convert in the shortest time.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A new agent spends two hours each morning updating their website, posting on social media, and organizing their business cards before making any calls. Are they prospecting — and what is the key distinction?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Yes — all of these activities build their brand and brand building is a form of prospecting</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> No — none of these activities are prospecting. Prospecting requires direct contact with people who have the interest and ability to become clients, and securing face-to-face appointments. Website updates, social media posts, and organizing business cards are marketing, administration, and branding — valuable activities but not prospecting.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Partially — social media posting counts as prospecting because it reaches potential clients</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Yes — as long as the activities are real estate related they qualify as prospecting</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. An agent sets a goal of making 20 prospecting contacts per day because they want results fast. After two weeks they are burned out and stop prospecting entirely. What is the core mistake — and what does Zeller recommend instead?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> They should have hired an assistant to make the calls so they could focus on other things</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Overestimating daily capacity leads to burnout and abandonment. Zeller recommends starting with five contacts per day — a goal achievable enough to build the habit over three to four weeks. Once you can hit five contacts per day for three consecutive weeks without missing, raise the goal. It is easy to underestimate what consistent small daily numbers produce over a year.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> They should have focused only on online lead generation which is less tiring than phone calls</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> 20 contacts per day is the right goal — they simply needed better scripts to push through the difficulty</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. According to Gary Keller's 8x8 program, what is the purpose of the eight touches over eight weeks — and what should every single touch include?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> To demonstrate your marketing skills and the range of content you can produce for clients</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> To systematically establish yourself as the number one real estate agent in that person's mind — winning the mind share battle. Every touch should include a reminder and instructions on how to send you referral business. The goal is not just to be remembered but to be remembered as the person to call or refer when someone they know is buying or selling.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> To flood the contact's inbox so frequently that they feel obligated to use you when they need an agent</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> To educate new contacts about the real estate market through a structured newsletter campaign</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Why does Zeller say that in more than 90% of cases the real reason a listing expires is not the agent's failure to market the property — and why does this create an opportunity for you?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Because most expired listings were priced correctly but the agent failed to negotiate properly with buyers</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Because in more than 90% of cases the home was overpriced — and the seller usually blames the agent rather than the price. This means the expired seller is frustrated, motivated, and ready to try a different approach. The agent who calls first, positions themselves as a pricing expert, and demonstrates genuine market knowledge enters a conversation with a highly motivated seller who has already proven their desire to sell.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Because expired listings always have legal problems that prevented them from closing</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Because the previous agent did not use professional photography — something you can immediately fix</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Zeller says open houses rarely lead directly to the sale of the listed property — with only about a one in twenty success rate. So why should new agents host them regularly?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Because sellers expect open houses and refusing to host them damages your listing reputation</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Because open houses generate social media content that builds long-term brand awareness</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Because the open house is a prospecting platform — a neighborhood storefront that provides face-to-face access to buyers, sellers, neighbors, and referral sources you could not reach any other way. Homes rarely sell through the open house itself, but every open house generates real conversations with real prospects. The relationship you build with a visitor who does not buy the listed property may lead to a transaction six months later.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Because the one-in-twenty chance of a direct sale is still worth the investment of time on a weekend</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Success as a Real Estate Agent For Dummies</div>
+          <div class="bi-author">Dirk Zeller</div>
+          <div class="bi-desc">Primary source for this module — Chapters 5 (Four Pillars of Prospecting, daily goals, targeting, what prospecting is and is not), 7 (expired listings, FSBOs, three reasons to work them, high-probability leads), and 8 (open houses as prospecting tools, the loss leader analogy, meeting face-to-face).</div>
+        </div>
+        <a href="https://www.amazon.com/Success-Real-Estate-Agent-Dummies/dp/1119918707" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Millionaire Real Estate Agent</div>
+          <div class="bi-author">Gary Keller, Dave Jenks & Jay Papasan</div>
+          <div class="bi-desc">Source of the Lead Generation Model (marketing-based, prospecting-enhanced), the Met and Haven't Met database framework, and the three systematic marketing programs — 8x8, 33 Touch, and 12 Direct — that form the operational core of a sustainable referral-based business.</div>
+        </div>
+        <a href="https://www.amazon.com/Millionaire-Real-Estate-Agent-About/dp/0071444041" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Your First 365 Days in Real Estate</div>
+          <div class="bi-author">Shelley Zavitz</div>
+          <div class="bi-desc">The database chapter — "There is no pipeline without the people" — reinforces the SOI approach with practical first-year advice on building relationships, same-day thank-you notes, pop-bys, and staying genuinely connected to the people in your sphere.</div>
+        </div>
+        <a href="https://www.amazon.com/Your-First-365-Days-Real/dp/1789661587" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 6: Building a Sustainable Business</h3>
+    <p>You have the skills. You have the lead generation system. Module 6 brings it all together — the Four Models that scale a real estate career (Economic, Lead Generation, Budget, and Organizational), the Four Stages of agent development, how to build a referral-based business that sustains itself, the lifetime value of a client, and the time management and personal productivity systems that let you do more without burning out. This is where you go from agent to business owner.</p>
+    <a href="agent-module-6.html" class="next-module-cta">Module 6: Building a Sustainable Business →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="agent-module-4.html" class="btn btn-outline">← Module 4: Working with Sellers</a>
+  <div class="module-nav-info">
+    <p>Residential Agent Track</p>
+    <strong>Module 5 of 6</strong>
+  </div>
+  <a href="agent-module-6.html" class="btn btn-gold">Module 6: Building a Sustainable Business →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{
+    correct:"Correct! Prospecting has a precise definition: direct contact with people who have the interest and ability to become clients, with the aim of securing face-to-face appointments. Website updates, social media posts, and organizing business cards are marketing, administration, and branding — all valuable activities, but none of them are prospecting. Zeller's table makes this distinction clear: what prospecting is and what it is not are two very different lists, and most agents spend the majority of their 'prospecting time' doing things on the wrong list.",
+    incorrect:"Not quite. Prospecting has a precise definition: direct personal contact with people who have the interest and ability to become clients, with the goal of securing face-to-face appointments. None of the activities described — website updates, social media posts, organizing business cards — meet that definition. They are marketing, administration, and branding. All have value, but none are prospecting. The most common trap in real estate is confusing busyness with prospecting."
+  },
+  q2:{
+    correct:"Correct! Setting unrealistically high daily contact goals is one of the most common reasons new agents burn out and stop prospecting entirely. Zeller recommends starting with five contacts per day — a number achievable enough to build the habit over three to four consecutive weeks. Once you can hit five every single working day for three weeks without missing, raise the goal to seven or ten. The math at five contacts per day over a full year produces extraordinary results. Start small, build the habit, let the compound effect do the work.",
+    incorrect:"Not quite. The core mistake is setting an unrealistically high daily goal that leads to burnout and abandonment — which is far worse than starting with a more modest number. Zeller specifically recommends starting at five contacts per day for exactly this reason: it is achievable enough to build the habit before adding pressure. Once you can hit five every single working day for three consecutive weeks without missing, then raise the goal. The math at five contacts per day sustained over a full year is extraordinary."
+  },
+  q3:{
+    correct:"Correct! The 8x8 program's goal is to win the mind share battle — to establish yourself as the number one real estate agent in that person's mind within eight weeks. And every single touch — whether a letter, a market report, a card, or a phone call — should include a reminder and instructions on how to send you referral business. The 8x8 is not just about being remembered. It is about being remembered as the person to call or recommend when someone in that contact's life is thinking about buying or selling.",
+    incorrect:"Not quite. The 8x8 program exists to win the mind share battle — to establish yourself as the number one real estate agent in that person's mind within eight weeks. Keller is explicit about what every touch should include: a reminder and instructions on how to send you referral business. The goal is not just to be remembered generally, but to be remembered specifically as the person to call or recommend when someone in that contact's life is thinking about real estate."
+  },
+  q4:{
+    correct:"Correct! Zeller's research shows that in more than 90% of cases, the real reason a listing expires is overpricing — not poor marketing by the previous agent. The seller usually blames the agent rather than the price, which means they are frustrated, motivated, ready to try something different, and open to a new agent who can demonstrate genuine pricing expertise. More than half of expired homes go back on the market with a different agent. The agent who calls first — personal contact, not a mailer — and positions themselves as a pricing expert with real market knowledge has a significant advantage.",
+    incorrect:"Not quite. In more than 90% of cases the real reason a listing expires is overpricing, not marketing failure. Sellers typically blame the previous agent rather than the price, which means they are frustrated, highly motivated, and open to a new approach. This creates an opportunity: the agent who calls first (not mails — calls), positions themselves as a pricing expert, and demonstrates genuine market knowledge enters a conversation with one of the most motivated sellers available in the market."
+  },
+  q5:{
+    correct:"Correct! Zeller reframes the open house entirely: it is a prospecting platform, not a selling event. The statistics are clear — homes sell directly through open houses only one in twenty times. But the value is in every conversation you have with every person who walks through the door — buyers, neighbors, friends of the sellers, people who are not ready to buy the listed property but may be ready to buy or sell something else entirely. The open house is a neighborhood storefront. Use it to meet people, build relationships, and expand your client base.",
+    incorrect:"Not quite. The seller's expectations are actually a side point — Zeller's core argument is that the open house is a prospecting platform, not a selling event. Homes sell directly through open houses only one in twenty times. The real value is in the face-to-face meetings with buyers, neighbors, and potential future clients that you would never otherwise have the opportunity to meet. Every conversation at an open house is a relationship started. Some of those relationships will produce transactions months or years later."
+  }
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent — you understand how to build and execute a consistent lead generation system. One module left. Ready for Module 6: Building a Sustainable Business.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above — the prospecting habits and database systems in this module are the engine that powers every other skill you have built in this track.';
+  }
+}
+</script>
+</body>
+</html>
