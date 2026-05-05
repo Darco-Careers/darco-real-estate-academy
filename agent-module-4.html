@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Agent Module 4: Working with Sellers — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0D5C63;--teal-mid:#1A7A83;--teal-light:#2A9EA8;--teal-pale:#EBF7F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(13,92,99,0.1);
+  --shadow-card:0 2px 16px rgba(13,92,99,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:66%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Seller service areas */
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.service-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:0.9rem 1.1rem;}
+.service-card .sc-num{font-size:11px;font-weight:700;color:#8A6A20;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.service-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.service-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+
+/* Seller personality types */
+.seller-types{display:flex;flex-direction:column;gap:0.85rem;margin:2rem 0;}
+.seller-type{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.seller-type .st-icon{width:32px;height:32px;border-radius:50%;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:2px;}
+.seller-type .st-content h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;}
+.seller-type .st-content p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.seller-type .st-content .st-solution{font-size:13px;color:var(--teal);font-weight:500;margin-top:0.3rem;line-height:1.6;}
+
+/* CMA weight table */
+.cma-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
+.cma-table th{padding:0.75rem 1.25rem;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--teal);color:var(--white);}
+.cma-table td{padding:0.65rem 1.25rem;font-size:13.5px;border-bottom:1px solid var(--border);}
+.cma-table tr:last-child td{border-bottom:none;}
+.cma-table tr:nth-child(even) td{background:rgba(13,92,99,0.03);}
+.cma-table td:first-child{font-weight:600;color:var(--text-dark);}
+.cma-table td:nth-child(2){color:var(--text-mid);}
+.weight-high{color:var(--teal)!important;font-weight:700!important;}
+.weight-mid{color:var(--warn)!important;font-weight:600!important;}
+.weight-low{color:var(--text-light)!important;}
+
+/* Four parts of listing presentation */
+.four-parts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.part-card{background:linear-gradient(135deg,#062F33,var(--teal));border-radius:14px;padding:1.5rem 1.25rem;position:relative;overflow:hidden;}
+.part-card::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at right,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.part-card .pc-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:0.25rem;position:relative;}
+.part-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;position:relative;}
+.part-card p{font-size:12.5px;color:rgba(255,255,255,0.72);line-height:1.6;position:relative;}
+
+/* Marketing priorities */
+.mkt-list{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;}
+.mkt-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.mkt-item .mi-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+.mkt-item .mi-content h4{font-size:0.9rem;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.mkt-item .mi-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--gold-pale);color:#8A6A20;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .service-grid{grid-template-columns:1fr;}
+  .four-parts{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="residential-agent.html">Agent Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="residential-agent.html">Residential Agent Track</a><span class="sep">›</span>
+  <span class="current">Module 4: Working with Sellers</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Agent Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="agent-module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="agent-module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <a href="agent-module-3.html" class="prog-dot complete" title="Module 3">✓</a>
+    <div class="prog-dot active">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏠 Residential Agent Track · Module 4 of 6</div>
+    <h1>Working with <em>Sellers</em></h1>
+    <p>Listings are the high-leverage, maximum-earning opportunity in residential real estate. When you list a property, every agent in town goes to work selling it for you. This module covers the complete seller experience — from qualifying the listing prospect and building your CMA through the listing presentation, pricing strategy, preparing the home for market, and marketing it effectively. This is where agents build real careers.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>65–80 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2 + 1 bonus</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Qualifying the listing prospect — <em>diagnosing before you prescribe</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The success of a listing presentation is largely determined by what you do before you walk through the door. Most agents enter listing appointments flying blind — ill-prepared and oblivious to the needs, wants, desires, and expectations of the prospect. Dirk Zeller is direct about this in <em>Success as a Real Estate Agent For Dummies</em>: without qualifying your prospect in advance, your listing presentation becomes just another explanation of your services. You miss the opportunity to tailor it to the specific person sitting in front of you.</p>
+
+    <p class="lesson-text">The analogy Zeller uses is exactly right. Imagine visiting a doctor who, without asking a single question about your symptoms, immediately begins prescribing treatment. That is what agents do when they arrive at listing appointments without first diagnosing the situation. The doctor asks questions. So should you — before you arrive, by phone, when you schedule the appointment.</p>
+
+    <h3 class="sub-title">The four qualifying categories</h3>
+    <p class="lesson-text">Focus your pre-appointment qualifying questions around these four areas:</p>
+
+    <div class="seller-types">
+      <div class="seller-type fade-in">
+        <div class="st-icon">🎯</div>
+        <div class="st-content">
+          <h4>Motivation and time frame</h4>
+          <p>Where are they hoping to move? How soon do they need to be there? Is there anything that would cause them not to make this move? Zeller's rule: the higher the desired list price, the lower the motivation. The lower the desired list price, the higher the motivation. Knowing their urgency tells you how much room you have to work with.</p>
+        </div>
+      </div>
+      <div class="seller-type fade-in">
+        <div class="st-icon">📋</div>
+        <div class="st-content">
+          <h4>Experience</h4>
+          <p>How many properties have they sold before? When was their last sales experience? What did they like and dislike about working with that agent? A seller's past experience — positive or negative — filters how they see every agent who walks through their door. Know their history before you arrive.</p>
+        </div>
+      </div>
+      <div class="seller-type fade-in">
+        <div class="st-icon">💰</div>
+        <div class="st-content">
+          <h4>Pricing expectations</h4>
+          <p>What are they hoping to list for? What would they consider an acceptable offer? These questions reveal whether the seller is realistic about market values — or whether you are walking into a pricing battle before you even begin. Never be blindsided by an unrealistic price expectation you could have uncovered in a two-minute phone call.</p>
+        </div>
+      </div>
+      <div class="seller-type fade-in">
+        <div class="st-icon">⭐</div>
+        <div class="st-content">
+          <h4>Service expectations</h4>
+          <p>What do they expect from the agent they work with? What are the top three things they are looking for? What would it take for them to feel confident your service will meet their requirements? Most sellers have never been asked these questions. The agent who asks them stands apart immediately.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The DNA analysis — desire, need, and ability</h3>
+    <p class="lesson-text">After your qualifying conversation, assess the prospect's likelihood of converting to a productive client by measuring three factors Zeller calls DNA:</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The DNA Framework</div>
+      <p><strong>D — Desire:</strong> Motivation is the strongest indicator of a successful outcome. A prospect who says "I have an interest in selling" is very different from one who has a burning need to move by a specific date. Probe until you understand which one you are dealing with. Interest does not indicate intent. Desire does.<br><br><strong>N — Need:</strong> What specific problem does selling this home solve for them? Retirement, relocation, downsizing, divorce, job transfer? A clear identifiable need accelerates decisions and reduces the likelihood of the seller going cold after you have invested significant time.<br><br><strong>A — Ability and authority:</strong> Can they actually move forward? Do they have the financial capacity? Are both decision-makers present — or are you presenting to half the decision-making team? Never make a full listing presentation to someone who cannot say yes.</p>
+    </div>
+
+    <p class="lesson-text">Jackie Kravitz — who personally listed 150 FSBOs and expired listings per year for five consecutive years — puts it simply: <em>motivated sellers are looking for a confident and aggressive agent. Give them what they are looking for.</em> But to know what they are looking for, you have to ask first.</p>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Jackie Kravitz: The listing presentation <em>that wins every time</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Jackie Kravitz personally listed 150 FSBOs and expired listings per year for five consecutive years and sold 125 homes annually for a decade straight — making her one of the highest-authority listing agents in real estate education. In this video she breaks down the complete four-part listing presentation framework, how to pre-qualify every appointment, what it means to be an active and aggressive agent, how to discuss price confidently, and how to close for the signature. Watch before Lesson 2.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/lOmzwE7_WX4" title="Listing Presentation for New Realtors — Jackie Kravitz" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Jackie Kravitz · YouTube</span>
+        <h4>You'll Beat EVERY Realtor If You Do This Listing Presentation</h4>
+        <p>Pre-qualify 100% of listing appointments before you arrive, the four parts of the listing presentation — confirm motivation, your marketing plan, price discussion, close for the signature — what it means to be an active and aggressive agent who prospects for buyers not just waits for them, why price is a moment in time, setting up the price reduction conversation before you leave, and why motivated sellers say yes when you give them what they are looking for: a confident and committed agent.</p>
+        <p class="credit">Jackie Kravitz · YouTube January 2024 · Solo presenter · 150 FSBOs and expireds listed per year for 5 consecutive years</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The listing presentation — <em>four parts, one signature</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The listing presentation is not a pitch. It is a structured conversation designed to help a seller understand why you are the right agent, what you will do to sell their home, what it is worth, and what working with you will look like. Jackie Kravitz's four-part framework — drawn from her experience listing hundreds of properties per year — is the clearest, most practical structure available for new agents entering a listing appointment.</p>
+
+    <div class="four-parts">
+      <div class="part-card fade-in">
+        <div class="pc-num">1</div>
+        <h4>Confirm motivation</h4>
+        <p>Walk through the home with them. As they show you around, revisit the motivation questions you asked in your pre-qualifying call. In person, sellers often reveal more than they did on the phone. Their motivation — where they are going, when, and why — is your leverage throughout the entire presentation. Never skip this step even if you think you already know the answers.</p>
+      </div>
+      <div class="part-card fade-in">
+        <div class="pc-num">2</div>
+        <h4>Your marketing plan</h4>
+        <p>Every seller wants the same three things: most money, least time, least hassle. Your marketing plan must show them specifically how you achieve each. Do not just list what every agent does — MLS, photos, online presence. Show them what you do differently. Kravitz's differentiator: she is an active and aggressive agent who prospects for buyers directly, not one who lists and waits.</p>
+      </div>
+      <div class="part-card fade-in">
+        <div class="pc-num">3</div>
+        <h4>Price discussion</h4>
+        <p>Present your CMA clearly and confidently. Your job is not to tell them what the price should be — it is to help them understand how you arrived at your recommendation and why the evidence supports it. Kravitz's rule: price is a moment in time. A well-priced listing today can become overpriced tomorrow if market conditions shift. Never own the price. Own the methodology.</p>
+      </div>
+      <div class="part-card fade-in">
+        <div class="pc-num">4</div>
+        <h4>Ask for the signature</h4>
+        <p>Most agents do a complete presentation and then say "so, what do you think?" — and wonder why they do not get the listing. The seller said yes to the appointment because they were open to listing. If you did your job well, asking for the signature is the natural next step, not a sales maneuver. Before you leave, also set up the price reduction conversation — because price is a moment in time and the market may shift after you list.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The ten service areas of the seller value proposition</h3>
+    <p class="lesson-text">Gary Keller, Dave Jenks, and Jay Papasan identify ten specific service areas that define what a seller's agent delivers. Know these before your first listing appointment — they are your value proposition in concrete, specific terms:</p>
+
+    <div class="service-grid">
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 1</div>
+        <h4>Pricing Strategy</h4>
+        <p>Conduct a thorough CMA. Recommend a list price that positions the home competitively — not emotionally. Help the seller understand market conditions and pricing philosophy before setting the price.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 2</div>
+        <h4>Staging Consultation</h4>
+        <p>Advise on what to fix, what to skip, and how to present the home for maximum buyer appeal. Help sellers understand the difference between repairs that increase value and renovations that exceed ROI.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 3</div>
+        <h4>Property Marketing</h4>
+        <p>Professional photography, compelling listing descriptions, MLS entry, online syndication, social media promotion, email campaigns, and open houses. Every marketing touchpoint you own is a service delivered.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 4</div>
+        <h4>Buyer Prospecting</h4>
+        <p>Active outreach to find buyers for the property — not just passive MLS listing. Calling your database, contacting buyer's agents, networking with other agents who have active buyers. This differentiates top agents.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 5</div>
+        <h4>Offer Presentation</h4>
+        <p>Present offers professionally and help the seller evaluate each one — price, terms, contingencies, financing strength, closing timeline. Counsel the seller on risks and trade-offs, not just the headline number.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 6</div>
+        <h4>Negotiating to Sell</h4>
+        <p>Negotiate on the seller's behalf with skill, patience, and a win-win mindset. Protect the seller's position at every step — from initial offer through inspection negotiations, appraisal issues, and closing terms.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 7</div>
+        <h4>Transaction Management</h4>
+        <p>Coordinate the contract-to-close process — inspections, appraisal, title work, loan approval, final walkthrough, closing logistics. Every deadline in the contract is your responsibility to track and meet.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 8</div>
+        <h4>Vendor Coordination</h4>
+        <p>Recommend and coordinate trusted vendors — inspectors, contractors, stagers, photographers, title companies, attorneys. Your network of reliable vendors is a genuine competitive advantage for your sellers.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 9</div>
+        <h4>Closing Preparation</h4>
+        <p>Prepare the seller for closing day — what to bring, what to expect, when to expect proceeds, what happens if issues arise at the final walkthrough. A seller who understands what is coming stays calm.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 10</div>
+        <h4>Post-Closing Follow-Up</h4>
+        <p>Stay in touch after closing. This seller is now your most valuable referral source. A thoughtful post-closing follow-up program turns a one-time transaction into a lifelong client relationship.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">The Close: How to do a CMA — <em>step by step</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Kris Linsell — senior real estate writer and coach at TheClose.com, one of the most trusted real estate education publications — walks through the complete seven-step CMA process from scratch. Platform agnostic, beginner perfect, and one of the clearest explanations of how to build a competitive market analysis available for free. Watch this before Lesson 3 on pricing strategy.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/30uZoiNRY54" title="How to Do a Comparative Market Analysis — The Close" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">The Close · YouTube</span>
+        <h4>How to Do a Comparative Market Analysis (CMA)</h4>
+        <p>Seven-step CMA process: gather subject property information, gather tax information, collect past sale and listing data, examine recent comparable solds from the last 12 months, look at current active comparables, evaluate micro trends specific to the subject property, and put it all together into a price range. Why you present a range not a single number, how to use the range as a strategic pricing tool — aggressive, balanced, or aspirational — and why solds hold more weight than actives. Platform agnostic. Beginner perfect.</p>
+        <p class="credit">Kris Linsell · TheClose.com · YouTube · Solo presenter · Platform agnostic</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Pricing strategy and the CMA — <em>conviction, not guesswork</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most agents approach the CMA with the mindset that its primary purpose is to educate the seller about what their home is worth. Dirk Zeller takes the opposite view — and it is the right one. The primary purpose of the CMA is to educate <strong>you</strong>, the agent, about the prices at which comparable homes are being listed and sold. Only by completing a thorough market review can you proceed with genuine confidence as you present your pricing recommendation. If you do not believe the number, the seller will not either.</p>
+
+    <h3 class="sub-title">The four categories of CMA data — and how to weight them</h3>
+
+    <table class="cma-table fade-in">
+      <tr><th>Category</th><th>What it tells you</th><th>Weight</th></tr>
+      <tr><td>Recently sold comparables</td><td>What buyers have actually paid for similar homes in the last 90 days. This is the market's clearest signal of current value.</td><td class="weight-high">Highest</td></tr>
+      <tr><td>Pending sales</td><td>Homes under contract but not yet closed. A strong leading indicator of where the market is heading right now.</td><td class="weight-high">High</td></tr>
+      <tr><td>Active listings</td><td>Your seller's competition. Shows what buyers are currently choosing between — but these prices are aspirational, not validated by the market yet.</td><td class="weight-mid">Medium</td></tr>
+      <tr><td>Expired listings</td><td>Homes that failed to sell at their list price. Critically important — they show the ceiling above which buyers rejected the property.</td><td class="weight-low">Context only</td></tr>
+    </table>
+
+    <h3 class="sub-title">Michael Montgomery's three price ranges</h3>
+    <p class="lesson-text">Never present a single number as the list price. Present a range — and then let the seller choose their strategy. Michael Montgomery of Rev Real Estate School identifies three ranges that map directly to the seller's priorities:</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Three Pricing Ranges — Let the Seller Choose Their Strategy</div>
+      <p><strong>Aspirational:</strong> The higher end of the defensible range. The seller maximizes potential upside but accepts a longer marketing period and higher risk of sitting on market. Appropriate when timing is flexible and the seller prioritizes maximizing proceeds.<br><br><strong>Market:</strong> The middle range — where the data most strongly suggests the home will sell. Balanced approach. Best for most sellers who want reasonable speed and fair value.<br><br><strong>Aggressive:</strong> The lower end of the range. Designed to create immediate buyer interest, competitive offers, and a fast sale. Appropriate when the seller prioritizes certainty and timing over maximum price. Zeller's insight: in most markets, homes listed slightly below market attract multiple offers and can sell for more than homes listed at or above market.</p>
+    </div>
+
+    <p class="lesson-text">Zeller's pricing philosophy: <em>never own the price.</em> You are the expert who presents the evidence. The seller is the boss who makes the decision. When you own the price — when you say "this home is worth X" rather than "the market is suggesting X" — you take on responsibility for an outcome you cannot fully control. Use language that preserves the distinction: <em>"The data is suggesting," "My professional assessment is," "The market is indicating."</em></p>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Price Is a Moment in Time</div>
+      <p>A well-priced listing today can become overpriced tomorrow. If a comparable property lists at a significantly lower price after you take the listing, your seller's home is now relatively overpriced through no fault of anyone. If the market softens or inventory increases, your CMA may need to be updated. Always set this expectation with sellers before you list: the CMA is current as of today, and market conditions can shift. This conversation — had upfront — is also what opens the door to price reduction discussions later if needed.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Preparing the home and marketing it — <em>condition, competition, and maximum exposure</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Michael Montgomery identifies two levers that determine what a buyer will ultimately pay for a property: <strong>condition</strong> and <strong>competition.</strong> You cannot control competition — you cannot control what other sellers list for or what recent sales have set as market benchmarks. But you can help your seller control condition. And condition, presented well, is the difference between a home that sells in days and one that sits for months.</p>
+
+    <h3 class="sub-title">The five seller personality types — and how to counsel each one</h3>
+    <p class="lesson-text">Dirk Zeller identifies five categories of sellers when it comes to preparing a home for market. Recognizing which type you are working with early in the relationship allows you to give the right counsel before time and money are wasted:</p>
+
+    <div class="seller-types">
+      <div class="seller-type fade-in">
+        <div class="st-icon">🔧</div>
+        <div class="st-content">
+          <h4>Mr. Fix-It</h4>
+          <p>Enthusiastic, well-intentioned, but the work may not meet industry standards. Poorly executed repairs are visible to buyers and can stop offers or reduce price.</p>
+          <p class="st-solution">→ Discuss every change in detail before work begins. Ask whether the finished product will meet licensed contractor standards. Involve the spouse — they usually know where enthusiasm exceeds ability.</p>
+        </div>
+      </div>
+      <div class="seller-type fade-in">
+        <div class="st-icon">🏗️</div>
+        <div class="st-content">
+          <h4>The Gung-Ho Renovator</h4>
+          <p>Goes way overboard — crosses the line from repairs into full renovation, spending far more than can be recovered at sale. Sometimes decides not to sell after the makeover.</p>
+          <p class="st-solution">→ Be clear: the goal is to economically increase warmth and desirability, not achieve perfection. Every renovation has a point of diminishing return. Help them find it before they cross it.</p>
+        </div>
+      </div>
+      <div class="seller-type fade-in">
+        <div class="st-icon">🕰️</div>
+        <div class="st-content">
+          <h4>Stuck in the Past</h4>
+          <p>The décor is decades out of style and the sellers love it the way it is. Buyers struggle to get past the aesthetics and imagine living there.</p>
+          <p class="st-solution">→ Frame updates as helping buyers see the home's potential — not criticizing the seller's taste. Sometimes the best you can get is removal of the most dated element. That is progress.</p>
+        </div>
+      </div>
+      <div class="seller-type fade-in">
+        <div class="st-icon">🛋️</div>
+        <div class="st-content">
+          <h4>The Couch Potato</h4>
+          <p>Wants top dollar but will not lift a finger to earn it. Claims someone out there will pay full price regardless of condition.</p>
+          <p class="st-solution">→ Seek a compromise — get them to act on at least some items. Then adjust price expectations to reflect actual condition. They cannot have both top price and zero effort.</p>
+        </div>
+      </div>
+      <div class="seller-type fade-in">
+        <div class="st-icon">🧮</div>
+        <div class="st-content">
+          <h4>The Human Calculator</h4>
+          <p>Has receipts for every improvement and expects to recover every dollar. Will push back on any pricing recommendation that does not reflect their full investment.</p>
+          <p class="st-solution">→ Reframe the purpose of improvements: they make the home competitive, not necessarily more valuable dollar for dollar. Buyers pay for what the market values, not what it cost to install.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Marketing — targeted, not blasted</h3>
+    <p class="lesson-text">Zeller is blunt about one of the most common and costly mistakes agents make with marketing: <em>blitzing the market with ad messages instead of targeting the right audience with the right message.</em> You do not have the budget of a national brand. Do not try to market like one. Focus instead on who, what, and why — who is your target buyer, what specifically are you offering them, and why is this property a fit for their needs.</p>
+
+    <div class="mkt-list">
+      <div class="mkt-item fade-in">
+        <div class="mi-icon">📸</div>
+        <div class="mi-content">
+          <h4>Professional photography — non-negotiable</h4>
+          <p>Over 95% of buyers begin their home search online. The photos are the first showing. Poor photos mean buyers scroll past without scheduling a visit. This is not optional — it is the single highest-ROI investment a listing agent can make on behalf of their seller.</p>
+        </div>
+      </div>
+      <div class="mkt-item fade-in">
+        <div class="mi-icon">📝</div>
+        <div class="mi-content">
+          <h4>Compelling listing description</h4>
+          <p>Do not describe the house — sell the lifestyle. Lead with the most compelling feature. Use specific, vivid language. Avoid generic phrases like "must see" and "cozy" that tell buyers nothing. Write the description to speak directly to the most likely buyer for this specific property.</p>
+        </div>
+      </div>
+      <div class="mkt-item fade-in">
+        <div class="mi-icon">🌐</div>
+        <div class="mi-content">
+          <h4>MLS and online syndication</h4>
+          <p>Accurate, complete MLS data syndicates to Zillow, Realtor.com, Redfin, and hundreds of other sites. Every field matters — square footage, bedroom count, lot size, and features. Errors in the MLS data propagate everywhere instantly. Get it right at entry.</p>
+        </div>
+      </div>
+      <div class="mkt-item fade-in">
+        <div class="mi-icon">📱</div>
+        <div class="mi-content">
+          <h4>Targeted social media and database outreach</h4>
+          <p>Zeller's marketing principle: target the specific person who is most likely to buy this property, not the general public. Who is the most likely buyer — first-time buyers, move-up buyers, investors, empty nesters? Find them where they are and speak to their specific needs and motivations.</p>
+        </div>
+      </div>
+      <div class="mkt-item fade-in">
+        <div class="mi-icon">🤝</div>
+        <div class="mi-content">
+          <h4>Active buyer prospecting — the differentiator</h4>
+          <p>Jackie Kravitz's competitive advantage: every call she makes ends with "by the way, can you think of anyone who might be looking to buy or sell in this area?" She is actively finding buyers for her listings — not just listing and waiting. This is the behavior that makes sellers say "I've talked to a bunch of agents — nobody said that."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BONUS RESOURCE -->
+    <h3 class="sub-title">🎬 Bonus Resource — Presenting the CMA and handling pricing objections</h3>
+    <p class="lesson-text">Once you know how to build a CMA, the next challenge is presenting it to a seller who may disagree with your number — or who paid $10,000 for flooring and expects every dollar back. Michael Montgomery of Rev Real Estate School covers the communication side of the CMA: how to frame the conversation, the scripts that work, how to handle "but I paid for that upgrade," the stock and used car analogies for overpricing, the four things sellers actually want, competition and condition as the two value levers, and how to present a price range rather than a single number. This is the complement to The Close video above — one teaches you how to build the CMA, this one teaches you how to present it.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/Id_KDAABqdY" title="How to Nail Your Next CMA — Michael Montgomery Rev Real Estate School" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Bonus Resource · Rev Real Estate School · YouTube</span>
+        <h4>How To Nail Your Next CMA — Win The Listing!</h4>
+        <p>Focus on buyers not seller's emotional price, the "sellers always want more, buyers always want less" opening script, list price as marketing strategy vs sale price as market-determined value, the stock analogy for overpricing, the four things sellers want (money/timing/convenience/certainty), competition and condition as the only two real value levers, new agent CMA mistake — adjustments widening the range, closest comparables beat most comparables, actives for positioning vs solds for range, depreciation explained with the used car analogy, risk vs reward framework for pricing objections, Zillow data on days-on-market vs final price, and three price ranges: aspirational, market, and aggressive.</p>
+        <p class="credit">Michael Montgomery · Rev Real Estate School · YouTube July 2022 · Solo presenter · No sales pitch</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 4 Key Takeaways</h3>
+    <ul>
+      <li>Qualify before you arrive — always. Ask about motivation/time frame, past experience, pricing expectations, and service expectations by phone before the appointment. Never walk in blind. Diagnose before you prescribe.</li>
+      <li>The DNA framework: Desire (burning motivation), Need (specific problem selling solves), Ability and Authority (can they actually move forward and make the decision). If all three are not present, assess carefully before investing significant time.</li>
+      <li>Jackie Kravitz's four-part listing presentation: confirm motivation, present your marketing plan, discuss price, close for the signature. Every part matters — agents who skip closing for the signature leave listings on the table constantly.</li>
+      <li>The primary purpose of the CMA is to educate you — not the seller. Only when you are certain and convicted about the price can you present it with the confidence that persuades a seller to accept your recommendation.</li>
+      <li>Present a price range — aspirational, market, and aggressive — and let the seller choose their strategy based on what they prioritize most: money, timing, convenience, or certainty. Never own a single number.</li>
+      <li>Price is a moment in time. Set this expectation before you list. A well-priced listing today can become overpriced tomorrow. This framing also opens the door to price reduction conversations if needed later.</li>
+      <li>The two levers of value: condition (which you can help control) and competition (which you cannot). Help sellers maximize condition within a sensible budget. Recognize the five seller personality types and adjust your counsel accordingly.</li>
+      <li>Marketing is targeted, not blasted. Know who the most likely buyer is for this specific property and speak directly to their needs. Professional photography is non-negotiable. Active buyer prospecting is the differentiator that sets top listing agents apart.</li>
+      <li>Never own the price — own the methodology. Use language that preserves your expert role while respecting the seller's decision-making authority: "The data is suggesting," "My professional assessment is," "The market is indicating."</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. According to Dirk Zeller's framework, what is the primary purpose of the CMA — and why does most agents' approach get this backwards?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> To educate the seller about what their home is worth, so they will accept your recommended list price</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> To educate the agent about what comparable homes are listing and selling for — so the agent can proceed with genuine conviction. Only when the agent is truly certain about the value can they present it with the confidence that persuades sellers.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> To provide the seller with a document they can share with other agents to get competing bids</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> To demonstrate the agent's market knowledge and justify the commission they will charge</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A seller says: "I put $15,000 into new hardwood floors two years ago. That has to be worth at least $15,000 more in the price." How should you respond — and what concept does this require you to explain?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Agree with them — upgrades always add value dollar for dollar and your CMA should reflect their investment</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Tell them directly that flooring does not add value and they should not expect to recover that investment</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Be enthusiastic about the upgrade — it will help the home sell and differentiate it from competition. Then explain depreciation: upgrades make homes more competitive but buyers pay market value, not cost of installation. The used car analogy helps — the moment you drive off the lot, the car is worth less than you paid, even though it is the same car.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Add $15,000 to the comparable sale prices in your CMA to account for the seller's investment</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. You have qualified a listing prospect and found that what they care about most is certainty — they need to sell because of a job transfer and cannot afford the home to sit on the market. Which pricing strategy should you recommend and why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Aspirational pricing — they should try to maximize their proceeds since they are moving for a new job</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Market pricing — the middle range is always the safest choice regardless of the seller's situation</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Aggressive pricing — when certainty is the seller's top priority, pricing toward the lower end of the defensible range creates immediate buyer interest, reduces days on market, and maximizes the probability of a fast, clean sale. The seller's situation — needing to sell quickly — aligns perfectly with this strategy.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Let the seller choose the price — it is their home and their decision entirely</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Jackie Kravitz says that when she takes a listing appointment, the seller was already a "yes" when they gave her the appointment. What does she mean — and what error do most agents make at the end of their presentation?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">A</div> When a seller gives you a listing appointment they are open to listing with you — they said yes to hearing what you have to say. Most agents then do a full presentation and ask "what do you think?" without ever explicitly asking for the signature. They turn the yes into a no by not closing. If you do your job well, asking for the signature is the natural next step.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Sellers who call agents are always ready to list immediately — agents should skip the presentation and go straight to the listing agreement</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Sellers are always motivated — qualifying calls before the appointment are unnecessary because anyone who invites you over wants to sell</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Agents should close for the signature at the beginning of the appointment before the seller has a chance to compare other agents</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. A seller insists on listing at $450,000 even though your CMA supports a range of $390,000–$410,000. You disagree but they are firm. What is the right approach — and what should you set up before you leave?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Refuse to take the listing — overpriced listings damage your reputation and stats</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Agree with the seller's price — they are the boss and it is their home</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Present the risk vs reward clearly — overpricing risks a longer time on market, stale listing syndrome, and ultimately selling for less than if priced correctly. You are the expert, they are the boss. If they choose $450,000, that is their right. But before you leave, set up the price reduction conversation — explain that price is a moment in time and if the market does not respond you will need to revisit the price together.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> List at $450,000 with no further conversation — the market will correct the price through lack of offers</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Success as a Real Estate Agent For Dummies</div>
+          <div class="bi-author">Dirk Zeller</div>
+          <div class="bi-desc">The primary source for this module — Chapters 9 (qualifying prospects, listing presentation, objections, closing for the signature), 10 (CMA process, pricing philosophy, never own the price), 11 (five seller personality types, staging, repairs), and 12 (targeted marketing, who/what/why framework).</div>
+        </div>
+        <a href="https://www.amazon.com/Success-Real-Estate-Agent-Dummies/dp/1119918707" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Millionaire Real Estate Agent</div>
+          <div class="bi-author">Gary Keller, Dave Jenks & Jay Papasan</div>
+          <div class="bi-desc">Source of the ten seller service areas, the Three L's framework (Listings as the high-leverage maximum-earning opportunity), and the core principle that listings scale a real estate career in a way that buyer work alone cannot.</div>
+        </div>
+        <a href="https://www.amazon.com/Millionaire-Real-Estate-Agent-About/dp/0071444041" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 5: Prospecting & Lead Generation</h3>
+    <p>You know how to work with buyers. You know how to work with sellers. Now the question is: how do you find them? Module 5 covers the complete prospecting system — the four pillars of consistent lead generation, how to build and work your sphere of influence, expired listings and FSBOs, open houses as a prospecting tool, and the daily and weekly habits that keep your pipeline full.</p>
+    <a href="agent-module-5.html" class="next-module-cta">Module 5: Prospecting & Lead Generation →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="agent-module-3.html" class="btn btn-outline">← Module 3: Working with Buyers</a>
+  <div class="module-nav-info">
+    <p>Residential Agent Track</p>
+    <strong>Module 4 of 6</strong>
+  </div>
+  <a href="agent-module-5.html" class="btn btn-gold">Module 5: Prospecting →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{
+    correct:"Correct! Zeller's perspective is the opposite of what most agents do. The CMA educates the agent first — only when the agent is genuinely certain and convicted about the value can they present it with the confidence that persuades a seller. If you approach the CMA as a tool to educate the seller, you may present numbers you are not fully confident in. If you approach it as a tool to educate yourself first, you arrive at the presentation with real conviction.",
+    incorrect:"Not quite. Zeller's position is that the primary purpose of the CMA is to educate the agent — not the seller. Only by completing a thorough market review yourself can you obtain the certainty and conviction to present a pricing recommendation with real confidence. If you cannot convince yourself the number is right, you cannot convince the seller."
+  },
+  q2:{
+    correct:"Correct! This is exactly the right approach — and it uses the concept of depreciation. Be enthusiastic about the upgrade because it genuinely will help the home show better and differentiate it from competition. But explain that buyers pay what the market values, not what it cost to install. The used car analogy works perfectly here: the moment you drive off the lot the car is worth less than you paid, even if it is essentially new. Upgrades make homes more competitive — they do not guarantee dollar-for-dollar recovery.",
+    incorrect:"Not quite. The right approach is to be enthusiastic about the upgrade — it genuinely helps the home sell and stand out — while explaining the concept of depreciation. Buyers pay what the market determines, not what something cost to install. The used car analogy is effective: you pay $30,000 for a car, drive it off the lot, and it is immediately worth less — not because anything is wrong with it but because it is now a used car. Homes work the same way with improvements."
+  },
+  q3:{
+    correct:"Correct! When a seller's top priority is certainty — they need to sell, they cannot afford the home to sit — aggressive pricing is the right recommendation. Pricing toward the lower end of the defensible range creates immediate buyer interest, maximizes the probability of offers in the first critical weeks, and reduces the risk of the listing going stale. The seller's urgency and the aggressive pricing strategy align perfectly. Michael Montgomery's framework: match the pricing strategy to what the seller values most.",
+    incorrect:"Not quite. When certainty is the seller's priority — especially when they have a hard deadline like a job transfer — aggressive pricing is the correct recommendation. Pricing toward the lower end of the defensible range creates the immediate buyer interest and fast sale the seller needs. Aspirational pricing risks sitting on the market, which is the worst outcome for this particular seller's situation."
+  },
+  q4:{
+    correct:"Correct! When a seller gives you a listing appointment, they are already open to working with you — that is why they invited you. They were a yes before you walked in. The error most agents make is delivering a complete presentation and then asking 'so what do you think?' without ever explicitly closing for the signature. This vague ending lets momentum fade. If you did your job well — qualified them, presented a strong marketing plan, communicated pricing clearly — asking for the signature is the natural conclusion, not a pushy sales move.",
+    incorrect:"Not quite. Kravitz's insight is that when a seller gives you the appointment, they were already open to listing with you — a yes before you arrived. The error most agents make is doing a full presentation and then not explicitly asking for the signature. They say 'so what do you think?' and wonder why they leave without the listing. If the presentation was done well, closing for the signature is the natural next step — not a sales tactic."
+  },
+  q5:{
+    correct:"Correct! This is exactly the right approach. You are the expert — your job is to present the evidence and the risk clearly. You are not the boss — the seller has the right to make their own decision. If they choose $450,000 after hearing your analysis, that is their prerogative. But two things must happen before you leave: first, present the risk vs reward clearly — longer time on market, stale listing risk, potentially selling for less than if priced right. Second, set up the price reduction conversation — explain that price is a moment in time and if the market does not respond you will revisit it together. Never own the price. Own the methodology.",
+    incorrect:"Not quite. The right approach is to present the risk vs reward clearly — overpricing risks a longer market time, stale listing, and ultimately a lower sale price — while respecting that the seller is the boss and can make their own decision. Critically, before you leave you must set up the price reduction conversation: explain that price is a moment in time and if the home does not attract offers you will need to revisit the price together. This framing, established at listing, makes future price reduction conversations much less contentious."
+  }
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent — you understand how to qualify prospects, present listings, price with conviction, and market properties effectively. Ready for Module 5: Prospecting & Lead Generation.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above — the listing and pricing content in this module carries forward into every interaction you will have with sellers throughout your career.';
+  }
+}
+</script>
+</body>
+</html>

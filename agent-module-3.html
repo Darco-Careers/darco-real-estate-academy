@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Agent Module 3: Working with Buyers — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0D5C63;--teal-mid:#1A7A83;--teal-light:#2A9EA8;--teal-pale:#EBF7F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(13,92,99,0.1);
+  --shadow-card:0 2px 16px rgba(13,92,99,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:50%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{text-decoration:none;cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+
+/* Functionary vs Fiduciary table */
+.compare-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
+.compare-table th{padding:0.75rem 1.25rem;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.compare-table th:first-child{background:#C0392B;color:var(--white);}
+.compare-table th:last-child{background:var(--teal);color:var(--white);}
+.compare-table td{padding:0.65rem 1.25rem;font-size:13.5px;border-bottom:1px solid var(--border);}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table tr:nth-child(even) td{background:rgba(13,92,99,0.03);}
+.compare-table td:first-child{color:#8B2F20;font-weight:500;}
+.compare-table td:last-child{color:var(--teal);font-weight:500;}
+
+/* Ten service areas */
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.service-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal-mid);border-radius:0 12px 12px 0;padding:0.9rem 1.1rem;}
+.service-card .sc-num{font-size:11px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.service-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.service-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+
+/* Consultation checklist */
+.checklist{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;}
+.check-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.check-item .ci-icon{width:28px;height:28px;background:var(--teal-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;margin-top:2px;}
+.check-item .ci-content h4{font-size:0.9rem;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.check-item .ci-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* Offer components */
+.offer-grid{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;}
+.offer-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;}
+.offer-item .oi-label{min-width:160px;font-size:12px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:0.5px;flex-shrink:0;padding-top:2px;}
+.offer-item .oi-desc{font-size:13.5px;color:var(--text-mid);line-height:1.65;}
+.offer-item .oi-desc strong{color:var(--text-dark);}
+
+/* Story block */
+.story-block{background:linear-gradient(135deg,#062F33,var(--teal));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.story-block::before{content:'"';position:absolute;top:-10px;left:20px;font-family:'Playfair Display',serif;font-size:120px;color:rgba(201,168,76,0.15);line-height:1;}
+.story-block .sb-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.75rem;position:relative;}
+.story-block p{font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.85;position:relative;}
+.story-block .sb-attr{font-size:12px;color:rgba(255,255,255,0.5);margin-top:0.75rem;position:relative;font-style:italic;}
+
+/* Video placeholder */
+.video-placeholder{background:var(--white);border:2px dashed rgba(13,92,99,0.2);border-radius:16px;padding:2.5rem 2rem;margin:1.75rem 0;text-align:center;}
+.video-placeholder .vp-icon{font-size:2rem;margin-bottom:0.75rem;}
+.video-placeholder h4{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;}
+.video-placeholder p{font-size:13px;color:var(--text-light);max-width:480px;margin:0 auto;}
+.video-placeholder .vp-id{font-size:12px;font-weight:600;color:var(--teal-mid);margin-top:0.5rem;font-family:monospace;}
+
+/* Video card */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .service-grid{grid-template-columns:1fr;}
+  .offer-item{flex-direction:column;gap:0.3rem;}
+  .offer-item .oi-label{min-width:unset;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="residential-agent.html">Agent Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="residential-agent.html">Residential Agent Track</a><span class="sep">›</span>
+  <span class="current">Module 3: Working with Buyers</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Agent Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="agent-module-1.html" class="prog-dot complete" title="Module 1">✓</a>
+    <a href="agent-module-2.html" class="prog-dot complete" title="Module 2">✓</a>
+    <div class="prog-dot active">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏠 Residential Agent Track · Module 3 of 6</div>
+    <h1>Working with <em>Buyers</em></h1>
+    <p>Your first buyer client is out there. Before they arrive, you need to know exactly what your role is, what you owe them as a fiduciary, how to run a consultation that earns their trust and their signature, how to show properties professionally, and how to write and negotiate an offer that gets accepted. This module covers the complete buyer experience — from the first call to the closing table.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>60–75 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Your role with buyers — <em>fiduciary, not door opener</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Before you ever sit down with a buyer, you need to be clear on something that most new agents are not: what you actually are to your client. You are not a tour guide. You are not a key holder. You are not a scheduler of showings and submitter of paperwork. You are a fiduciary representative and financial advisor — and the distinction matters enormously, both for your clients and for your career.</p>
+
+    <p class="lesson-text">Dirk Zeller makes this point forcefully in <em>Success as a Real Estate Agent For Dummies</em>: the home equity in a client's property is typically the single largest asset they will ever own, and it provides roughly 20% of their retirement income. When a buyer works with you, the advice you give — which neighborhoods to consider, what a home is actually worth, when a price is too high, which contingencies to insist on — will affect their financial health for decades. That is not a door-opener's job. That is a trusted advisor's job.</p>
+
+    <p class="lesson-text">Gary Keller, Dave Jenks, and Jay Papasan put it plainly in <em>The Millionaire Real Estate Agent</em>: for buyers, a top agent's goal is to find them just the right home, at the best price, in the right time, with the least amount of problems. Every decision you make in the buyer process should be measured against that standard.</p>
+
+    <p class="lesson-text">The clearest way to understand the difference between an agent who operates as a fiduciary and one who merely functions as a transaction processor is Keller's Functionary vs. Fiduciary comparison:</p>
+
+    <table class="compare-table fade-in">
+      <tr><th>❌ Functionary</th><th>✅ Fiduciary</th></tr>
+      <tr><td>Low relationship with client</td><td>High relationship with client</td></tr>
+      <tr><td>Assumes little responsibility</td><td>Accepts high responsibility</td></tr>
+      <tr><td>Responds to needs</td><td>Anticipates needs</td></tr>
+      <tr><td>Delivers information</td><td>Advises and consults</td></tr>
+      <tr><td>Stays out of decision-making</td><td>Involved in decision-making</td></tr>
+      <tr><td>Tells and sells</td><td>Educates and guides</td></tr>
+      <tr><td>Does the task</td><td>Owns the result</td></tr>
+      <tr><td>Follows rules and procedures</td><td>Uses judgment and intuition</td></tr>
+      <tr><td>Minimally paid</td><td>Highly paid</td></tr>
+    </table>
+
+    <p class="lesson-text">The agents who build lasting careers are the ones who operate as fiduciaries — not because it sounds noble, but because it is the only approach that generates the referrals and repeat business that make a real estate career financially sustainable. As Keller observes: place your client's interests ahead of the interests of all others, including your own. That commitment is what makes you irreplaceable.</p>
+
+    <h3 class="sub-title">The ten service areas of the buyer value proposition</h3>
+    <p class="lesson-text">Keller's research identified ten specific service areas that define what a buyer's agent actually delivers. These are what you are providing — and what you should be able to articulate clearly to any buyer who asks why they should work with you:</p>
+
+    <div class="service-grid">
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 1</div>
+        <h4>Needs Analysis</h4>
+        <p>Analyze the buyer's wants and needs. Help them get a clear picture of their ideal home — must-haves vs. nice-to-haves, timeline, motivation, and budget reality.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 2</div>
+        <h4>Pre-qualification or Pre-approval</h4>
+        <p>Guide the buyer to a loan officer. Obtain pre-qualification or pre-approval. Help them choose the best mortgage financing plan before they start shopping.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 3</div>
+        <h4>Neighborhood Information</h4>
+        <p>Create a broad neighborhood search profile. Provide information on target neighborhoods — school districts, walkability, commute times, comparable sales, trends.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 4</div>
+        <h4>Home Search</h4>
+        <p>Organize and schedule a home search process. Provide ongoing updates, drive-bys, and showings of available homes that match the buyer's criteria.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 5</div>
+        <h4>Make an Offer</h4>
+        <p>Help the buyer compare homes and make a decision. Advise on terms and issues of the offer. Fill out the purchase offer contract accurately and completely.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 6</div>
+        <h4>Negotiating to Buy</h4>
+        <p>Present the offer professionally to the listing agent. Negotiate on the buyer's behalf — price, terms, contingencies, repairs, closing timeline, and credits.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 7</div>
+        <h4>Vendor Coordination</h4>
+        <p>Advise and supervise vendor selections — home inspector, lender, title company, attorney. Coordinate vendor services throughout the transaction.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 8</div>
+        <h4>Preclose Preparation</h4>
+        <p>Coordinate and supervise document preparation. Provide preclosing consulting — walk-through checklist, closing disclosure review, what to expect at the table.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 9</div>
+        <h4>Closing</h4>
+        <p>Preview closing documents with the buyer before closing day. Resolve any last-minute issues. Complete the transaction and hand over the keys.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="sc-num">Service Area 10</div>
+        <h4>Post Closing</h4>
+        <p>Coordinate move-in logistics. Assist with any post-closing issues. Stay in touch — this buyer becomes part of your database and referral network for life.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Know This Before Your First Appointment</div>
+      <p>When a buyer asks "What do you do for me?" — you now have ten specific, concrete answers. Most new agents stumble over this question because they have never thought through their actual value proposition. Knowing these ten service areas cold — and being able to explain each one clearly — is one of the fastest ways to build credibility with a buyer who has never worked with an agent before.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 PLACEHOLDER -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Dan Elzer: What makes a buyer consultation <em>spectacular</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Dan Elzer — founder of The Training Academy with 37 years in real estate spanning agent, owner, and executive coaching consultant — delivers a concise, high-impact breakdown of what separates a great buyer consultation from a forgettable one. Published by Florida Realtors in March 2025. In five focused minutes he covers exactly what new agents get wrong and what top agents do differently. Watch this before Lesson 2.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/SsZjR2dEPrg" title="Master the Buyer Consultation — Dan Elzer / Florida Realtors" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Florida Realtors · YouTube</span>
+        <h4>Master the Buyer Consultation: Stand Out & Win More Clients</h4>
+        <p>Why the buyer consultation now demands the same rigor as the listing presentation, lead with discovery not pre-approval questions, understand buyer motivation and fears before presenting anything, tailor your value proposition to their specific situation, educate buyers on market dynamics to become the trusted advisor, discuss fees confidently after demonstrating value, and walk through the buyer rep agreement as the natural conclusion to value already shown — not as paperwork. Published March 2025 · ~5 min · Solo presenter · Universal.</p>
+        <p class="credit">Dan Elzer · Florida Realtors · YouTube March 2025 · ~5 min · Solo presenter · 37 years in real estate</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The buyer consultation — <em>earning trust before the first showing</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The buyer consultation is the most important meeting you will have with a buyer — and most new agents skip it entirely or treat it as a formality. That is a mistake. The consultation is where you establish authority, understand the buyer's real situation, set expectations for the process, and in today's market, obtain the buyer representation agreement that formalizes your working relationship. Everything that follows is easier when the consultation is done right.</p>
+
+    <p class="lesson-text">Shelley Zavitz learned this the hard way on her very first buyer client. She received a sign call, arranged a showing, and when the buyer called back ready to make an offer, she realized she did not know how to fill out the sales agreement, had never asked for the closing date, did not know who the buyer's lender was, and did not even have the buyer's last name. Her mentor's diagnosis: <em>"Preparation is the key to the rookie's toolbox."</em> The consultation is where that preparation happens — before you are standing in a driveway with an excited buyer asking what comes next.</p>
+
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Shelley Zavitz — Your First 365 Days in Real Estate</div>
+      <p>"If they know, like, and trust you, they will let you lead."</p>
+      <div class="quote-attr">On what every buyer is really deciding when they choose an agent</div>
+    </div>
+
+    <h3 class="sub-title">What to cover in the buyer consultation</h3>
+    <p class="lesson-text">A thorough buyer consultation covers five areas. Go through each one before you ever schedule a showing:</p>
+
+    <div class="checklist">
+      <div class="check-item fade-in">
+        <div class="ci-icon">🎯</div>
+        <div class="ci-content">
+          <h4>1. Understand their situation and motivation</h4>
+          <p>Why are they buying? What is driving the timeline? Are they relocating, upsizing, downsizing, investing? A buyer who needs to be in a new home in 60 days needs a different strategy than one who is casually exploring. Their motivation shapes everything — how aggressively to make offers, what neighborhoods to prioritize, how much flexibility they have on price.</p>
+        </div>
+      </div>
+      <div class="check-item fade-in">
+        <div class="ci-icon">🏦</div>
+        <div class="ci-content">
+          <h4>2. Confirm pre-approval — non-negotiable</h4>
+          <p>Never schedule a showing for a buyer who is not pre-approved. This is not a suggestion — it is a standard you set in the consultation. A pre-approval letter tells you what they can actually afford, signals to listing agents that your buyer is serious, and protects you from wasting weeks showing homes to someone who cannot get financing. If they are not pre-approved, your first job is to connect them with a trusted lender before anything else happens.</p>
+        </div>
+      </div>
+      <div class="check-item fade-in">
+        <div class="ci-icon">🏘️</div>
+        <div class="ci-content">
+          <h4>3. Define must-haves vs. nice-to-haves</h4>
+          <p>Walk through what they actually need: bedrooms, bathrooms, garage, yard, school district, commute radius. Then separately identify what they want but could live without. This distinction becomes critical when inventory is tight and they need to make fast decisions. If a buyer has not thought through this before their first showing, they will struggle to act when the right home appears.</p>
+        </div>
+      </div>
+      <div class="check-item fade-in">
+        <div class="ci-icon">📋</div>
+        <div class="ci-content">
+          <h4>4. Educate them on the process and current market</h4>
+          <p>Walk the buyer through what happens from offer to closing — offer submission, acceptance, inspection period, appraisal, loan approval, final walkthrough, closing day. Many buyers have no idea how long this takes or what can go wrong at each step. As Dirk Zeller notes, a good agent is like a good doctor — you diagnose and prescribe, not just deliver information. Educating your buyer on the current market conditions (days on market, offer-to-list-price ratios, competition levels) is part of your fiduciary duty before they see a single home.</p>
+        </div>
+      </div>
+      <div class="check-item fade-in">
+        <div class="ci-icon">✍️</div>
+        <div class="ci-content">
+          <h4>5. Sign the Buyer Representation Agreement</h4>
+          <p>Since the August 2024 NAR settlement, buyer representation agreements are required before showing homes in most states. This formalizes your relationship, establishes your compensation structure, and clarifies that you are working exclusively on the buyer's behalf. Do not apologize for this conversation — explain clearly what the agreement covers, why it protects them, and what it means for how you will represent their interests. A buyer who understands your value will sign without hesitation.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Post-NAR Settlement Landscape</div>
+      <p>Since August 2024, agents are required to have a signed buyer representation agreement before showing properties in most states. This means the buyer consultation is no longer optional — it is the prerequisite to doing any work with a buyer. If you skip the consultation, you skip the agreement, which means you are showing homes with no formal relationship and no clear path to compensation. Build the consultation into your process from your very first client.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Showings and property evaluation — <em>showing up prepared, guiding without pushing</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The showing is where your buyer forms their emotional connection to a home — and where your knowledge either earns their trust or reveals your gaps. Shelley Zavitz's account of her very first showing captures both the terror and the clarity that comes from going in prepared. She drove to the office before the showing, pulled up MLS data on every property, identified that one was a short sale with a likely extended closing, and texted the buyer about the timeline concern before they even arrived — putting the buyer's interest ahead of her colleague's listing. Her mentor's judgment: she had shown up on time and prepared, and had directed the client in a way that benefited them. That is the standard.</p>
+
+    <h3 class="sub-title">Before the showing</h3>
+    <p class="lesson-text">Preparation before a showing is what separates professional agents from amateurs. At minimum, before you arrive at any property with a buyer:</p>
+
+    <div class="checklist">
+      <div class="check-item fade-in">
+        <div class="ci-icon">📊</div>
+        <div class="ci-content">
+          <h4>Pull the MLS data on every property</h4>
+          <p>Days on market, list price history, original list price, square footage, year built, HOA fees, property taxes, school district. Know these numbers before your buyer asks. Nothing undermines credibility faster than saying "I'm not sure, let me look that up" in front of an active listing.</p>
+        </div>
+      </div>
+      <div class="check-item fade-in">
+        <div class="ci-icon">🏘️</div>
+        <div class="ci-content">
+          <h4>Know recent comparable sales</h4>
+          <p>For each property you are showing, know what comparable homes in that neighborhood have sold for in the past 90 days. This is how you advise a buyer on whether a listing is priced fairly, overpriced, or potentially a strong value — before emotions get involved at the showing.</p>
+        </div>
+      </div>
+      <div class="check-item fade-in">
+        <div class="ci-icon">🚩</div>
+        <div class="ci-content">
+          <h4>Flag anything unusual</h4>
+          <p>Short sales, estate sales, properties with price reductions, homes with unusual days on market — all of these deserve a proactive conversation with your buyer before the showing. Zavitz texted her buyer about the short sale closing timeline before they arrived. That small act of preparation built more trust than anything she could have said during the showing itself.</p>
+        </div>
+      </div>
+      <div class="check-item fade-in">
+        <div class="ci-icon">⏰</div>
+        <div class="ci-content">
+          <h4>Arrive early — always</h4>
+          <p>Arrive before your buyer. Walk through the home, unlock doors, turn on lights, check the backyard. When your buyer arrives, you are already inside, oriented, and ready. This signals competence and professionalism before you say a single word.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">During the showing — guide without pushing</h3>
+    <p class="lesson-text">Your job during a showing is to help your buyer see the home clearly — not to sell it to them. Let them walk through at their own pace. Ask questions rather than making declarations. Point out things they might miss — the water heater age, signs of past repairs, storage space, natural light at different times of day. And be honest about concerns, even if it means your buyer loses interest in a home. An agent who steers a buyer away from the wrong home at the right moment earns more trust than one who cheerfully ignores red flags to close the deal faster.</p>
+
+    <div class="story-block fade-in">
+      <div class="sb-label">📖 From the Field — Shelley Zavitz</div>
+      <p>On her first sign call, Zavitz was intimidated, nervous, and completely new. But because she smiled on the phone, was agreeable rather than pushy, and showed up genuinely focused on helping, the buyer responded. As she reflects: "Although I was intimidated, because I was smiling and agreeable, I was able to convey to her that I was kind. Which she would hopefully later equate with being trustworthy." The buyer called that same evening ready to write an offer. The showing had lasted one visit. The relationship had lasted a lifetime — because she showed up as a person first and an agent second.</p>
+      <div class="sb-attr">Shelley Zavitz — Your First 365 Days in Real Estate, Chapter 3: Showing Up</div>
+    </div>
+
+    <p class="lesson-text">Zavitz also had a harder lesson from an open house — that not every person who walks through the door is a serious buyer, and that personal safety during showings is something every new agent needs to think about before it becomes relevant. Always let someone know where you are. Have a check-in system. Trust your instincts when something feels wrong.</p>
+  </div>
+
+  <!-- VIDEO 2 PLACEHOLDER -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Tyler Roicki: How to submit an offer <em>as a new real estate agent</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Tyler Roicki — top 10 sponsor globally at eXp Realty, leading a team of 300+ agents across 30 states — breaks down the exact step-by-step process for submitting a strong offer as a new agent. He covers how to communicate with the listing agent, what makes an offer stand out, and how to increase your chances of acceptance. Published November 2023. Directly reinforces Lesson 4 of this module.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/7wcMp0evPCk" title="How to Submit an Offer as a New Real Estate Agent — Tyler Roicki" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Tyler Roicki · YouTube</span>
+        <h4>How to Submit an Offer as a New Real Estate Agent</h4>
+        <p>Step-by-step process for writing and submitting a buyer's offer, communicating professionally with the listing agent, strategies for making your offer stand out in a competitive situation, and what to do after the offer is submitted. Directly reinforces Lesson 4 of this module.</p>
+        <p class="credit">Tyler Roicki · YouTube November 2023 · Solo presenter · Specifically for new agents</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Writing and negotiating the offer — <em>from decision to accepted contract</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">When your buyer says they want to make an offer, the clock starts. This is the moment Zavitz describes in Chapter 5 of <em>Your First 365 Days in Real Estate</em> — a midnight deadline, a competing offer already submitted, a buyer who had not yet been pre-approved, and a lender she had to track down by text at 8:30 pm. She got it done. The offer went in. But the lesson she drew from that night was simple: know the process before you need it, and have your systems in place before the pressure arrives. This lesson is that preparation.</p>
+
+    <h3 class="sub-title">Components of a purchase offer</h3>
+    <p class="lesson-text">Every residential purchase offer contains the same core elements. Know each one before you sit down to write your first offer:</p>
+
+    <div class="offer-grid">
+      <div class="offer-item fade-in">
+        <div class="oi-label">Purchase Price</div>
+        <div class="oi-desc">The amount the buyer is offering to pay. This is informed by comparable sales in the area, the current market conditions (buyer's vs. seller's market), days on market for the listing, and any price reductions. Your job is to advise — not just write down whatever the buyer says.</div>
+      </div>
+      <div class="offer-item fade-in">
+        <div class="oi-label">Earnest Money</div>
+        <div class="oi-desc"><strong>Good faith deposit</strong> — typically 1–3% of the purchase price, delivered within a set number of days after acceptance. This money goes into escrow and is credited toward the purchase at closing. It can be at risk if the buyer backs out outside of a contingency period.</div>
+      </div>
+      <div class="offer-item fade-in">
+        <div class="oi-label">Financing Terms</div>
+        <div class="oi-desc">The type of loan (conventional, FHA, VA, cash), down payment amount, and loan amount. Always attach the pre-approval letter from a reputable lender. A strong pre-approval from a recognized local lender can make the difference in a competitive offer situation.</div>
+      </div>
+      <div class="offer-item fade-in">
+        <div class="oi-label">Closing Date</div>
+        <div class="oi-desc">The date of the transaction closing. Conventional loans typically close in 30–45 days. Cash offers can close faster. Always ask the listing agent if the seller has a preferred closing date — accommodating a seller's timeline is one of the easiest ways to strengthen an offer at no cost.</div>
+      </div>
+      <div class="offer-item fade-in">
+        <div class="oi-label">Inspection Contingency</div>
+        <div class="oi-desc">Gives the buyer the right to have the property inspected and to negotiate repairs, credits, or cancellation based on findings — typically within 10–17 days. <strong>This protects your buyer.</strong> In very competitive markets, buyers sometimes waive inspection — advise them carefully on the risks before agreeing to this.</div>
+      </div>
+      <div class="offer-item fade-in">
+        <div class="oi-label">Financing Contingency</div>
+        <div class="oi-desc">Protects the buyer if their loan does not fund. If financing falls through within the contingency window, the buyer can exit and recover their earnest money. Waiving this contingency significantly increases risk — only advise it for buyers with exceptional financial profiles.</div>
+      </div>
+      <div class="offer-item fade-in">
+        <div class="oi-label">Appraisal Contingency</div>
+        <div class="oi-desc">Protects the buyer if the property appraises below the purchase price. Without it, if the appraisal comes in low, the buyer must either make up the difference in cash or negotiate a price reduction with the seller — which the seller is not required to agree to.</div>
+      </div>
+      <div class="offer-item fade-in">
+        <div class="oi-label">Personal Property</div>
+        <div class="oi-desc">Items the buyer wants included — appliances, fixtures, window treatments, outdoor equipment. If it is not written in the contract, it does not convey. Ask your buyer specifically what they want included and make sure it is documented.</div>
+      </div>
+      <div class="offer-item fade-in">
+        <div class="oi-label">Expiration</div>
+        <div class="oi-desc">The offer has a deadline by which the seller must respond. Typically 24–72 hours. In very competitive markets, shorter deadlines can create urgency. Always check whether there are other offers before setting the expiration.</div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Communicating with the listing agent</h3>
+    <p class="lesson-text">Before you submit the offer, call the listing agent. This is one of the most important habits you can build as a new agent, and one that most new agents skip. A one-minute phone call accomplishes several things: it confirms the best way to submit the offer, lets you ask if there are other offers, gives you a chance to express your buyer's genuine interest, and begins building a professional relationship with an agent you may work with again. Never just email an offer cold without making contact first.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Questions to Ask the Listing Agent Before Submitting</div>
+      <p>Is the seller reviewing offers as they come in or on a specific date? Are there other offers already submitted? Does the seller have a preferred closing date? Are there any terms that are particularly important to the seller — leaseback, specific contingency periods, included items? Are there any issues with the property I should know about before my buyer makes a decision? These questions take 90 seconds and can completely change how you structure an offer.</p>
+    </div>
+
+    <h3 class="sub-title">Presenting the offer to win</h3>
+    <p class="lesson-text">How you present the offer matters as much as what is in it. Dirk Zeller makes this point directly in <em>Success as a Real Estate Agent For Dummies</em>: present the offer and your buyer to the seller as the best in the marketplace. A buyer's financial capacity, commitment, motivation, and even human connection can be the tipping point when a seller is choosing between offers. An offer from a family the seller imagines will love the home may trump a slightly higher offer missing that personal dimension. Your job is to position your buyer favorably — not just submit paperwork.</p>
+
+    <p class="lesson-text">Before presenting, do at least a quick CMA on the property so you can counsel your buyer toward a competitive offer backed by market data. A buyer who makes a well-reasoned offer grounded in comparable sales is in a much stronger negotiating position than one who simply guesses at a number. Know the value before you write the price.</p>
+
+    <h3 class="sub-title">Negotiating after the offer — counteroffers and the win-win mindset</h3>
+    <p class="lesson-text">Most offers do not result in immediate acceptance. Expect a counteroffer and prepare your buyer for that reality before the offer goes in. Zeller advises agents to always set this expectation with clients upfront — when buyers are told to expect a counter, they negotiate calmly. When they are blindsided by one, they react emotionally and make poor decisions.</p>
+
+    <p class="lesson-text">The best agents approach every negotiation with a genuine win-win mindset — not to extract maximum concession from the other side, but to find terms both parties can accept. As Zeller writes: <em>"Set an optimistic tone and create an expectation that all parties will work together to achieve a negotiated win/win outcome for both the seller and the buyer."</em> Agents who approach negotiations as a zero-sum competition create unnecessary friction, blow up deals, and damage relationships with other agents they will work with again.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Be the Calming Influence</div>
+      <p>When a counteroffer comes in lower than your buyer hoped, or when the inspection reveals problems, or when the appraisal comes in short — emotions run high. Your most important job in those moments is to remain calm and focused on the outcome. Zeller compares the best agents to the best emergency room doctors: they display confidence and skill while reassuring everyone around them that the situation is under control. If you panic, your buyer panics. If you stay steady, they stay steady. This is a skill you build consciously — not something that happens automatically.</p>
+    </div>
+
+    <h3 class="sub-title">After the offer is accepted — from contract to close</h3>
+    <p class="lesson-text">Once the offer is accepted, your job is to manage your buyer's expectations and keep them informed at every step. Tell them upfront what happens next: inspection period begins immediately, lender gets the green light to move forward, title search begins, appraisal is ordered. Every milestone has a deadline in the contract — your job is to track every one of them and make sure nothing falls through the cracks.</p>
+
+    <p class="lesson-text">Zeller identifies the closing team as critical — your buyer's lender, the title company, the inspector, and any attorneys involved all need to be coordinated by you. The agents who protect their buyers most effectively are the ones who stay on top of vendor timelines, confirm receipt of every document, and proactively flag any issue before it becomes a crisis. As Keller's framework makes clear, the service does not end at acceptance — it continues through closing and beyond, and a smooth closing experience is what turns a first-time buyer into a lifelong client and referral source.</p>
+
+    <div class="story-block fade-in">
+      <div class="sb-label">📖 From the Field — Shelley Zavitz, Chapter 5: The Power of Yes</div>
+      <p>"It was now 8:30 pm. A lender I had texted finally texted me back and said she would work on it for us. 9 pm. They were still working on it. 10 pm." Zavitz was working a sign call in a competitive market with a midnight offer deadline and a buyer who had not yet been pre-approved. She tracked down a lender by text, built the offer while waiting for the pre-approval letter, got the buyer's electronic signature, and submitted before midnight. The lesson she carried forward: say yes to the opportunity, then figure out how to execute. Have your lender contacts ready before you need them. Know the form before the pressure arrives.</p>
+      <div class="sb-attr">Shelley Zavitz — Your First 365 Days in Real Estate, Chapter 5: The Power of Yes</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 3 Key Takeaways</h3>
+    <ul>
+      <li>You are a fiduciary and financial advisor — not a door opener. Your buyer's home equity is likely the largest asset they will ever own. The advice you give affects their financial health for decades. Own that responsibility from day one.</li>
+      <li>The Functionary vs. Fiduciary distinction (from Keller) is the most important framework for how you show up with buyers: anticipate needs, advise and consult, use judgment, own the result. This is what earns referrals and repeat business.</li>
+      <li>The ten service areas of the buyer value proposition — needs analysis, pre-approval, neighborhood information, home search, making an offer, negotiating, vendor coordination, preclose preparation, closing, and post-closing — are what you deliver. Know them cold before your first consultation.</li>
+      <li>The buyer consultation is non-negotiable. Cover five areas: motivation and situation, pre-approval confirmation, must-haves vs. nice-to-haves, process education, and the buyer representation agreement. Everything that follows is harder without this foundation.</li>
+      <li>Pre-approval before showings — always. This protects your buyer, your time, and your professional relationships with listing agents. If they are not pre-approved, connect them with a trusted lender before you schedule a single showing.</li>
+      <li>Preparation is the key to the rookie's toolbox (Zavitz). Before every showing: pull MLS data, know comparable sales, flag unusual listing conditions, and arrive before your buyer. Show up knowing more than they expect you to know.</li>
+      <li>Know the offer components before you need them: purchase price, earnest money, financing terms, closing date, inspection contingency, financing contingency, appraisal contingency, personal property, and expiration. Zavitz did not know how to fill out the sales agreement on her first offer. You will.</li>
+      <li>Call the listing agent before you submit the offer. Ask about competing offers, the seller's preferred timeline, and any special terms. This one habit separates professional agents from rookies.</li>
+      <li>Present the offer to win — not just to submit paperwork. Your buyer's financial strength, commitment, motivation, and human connection are all tools. A family the seller imagines will love the home can beat a higher offer that lacks a personal dimension.</li>
+      <li>Always set the counteroffer expectation before the offer goes in. Buyers who are prepared for a counter negotiate calmly. Buyers blindsided by one react emotionally and make poor decisions. Zeller's rule: expect a below-list offer and rarely see a transaction that does not require a counteroffer.</li>
+      <li>Be the calming influence throughout negotiations. When emotions run high — low counteroffer, inspection issues, low appraisal — stay steady and focused on the outcome. Zeller compares the best agents to the best ER doctors: calm, confident, focused on solving the problem. If you panic, your buyer panics.</li>
+      <li>Contract to close is where deals are won or lost. Track every deadline, coordinate every vendor, and proactively flag every issue before it becomes a crisis. A smooth closing is what turns a first-time buyer into a lifelong client and referral source.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. According to Gary Keller's framework in The Millionaire Real Estate Agent, what is a top buyer's agent's primary goal for every buyer client?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> To close the transaction as quickly as possible and collect the commission</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> To show as many homes as possible so the buyer can make an informed comparison</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> To find the buyer just the right home, at the best price, in the right time, with the least amount of problems — placing the buyer's interests ahead of all others, including the agent's own</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> To educate the buyer on the market and let them make all the final decisions independently</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A new agent has a buyer who is excited to start looking at homes. The buyer says they have not been pre-approved yet but wants to see houses "just to get a feel for what's out there." What should the agent do?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Agree to show homes — getting a feel for the market is a legitimate first step and pre-approval can come later</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Show homes but only in a price range the buyer verbally confirms they can afford</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Decline to schedule showings and connect the buyer with a trusted lender first — pre-approval is non-negotiable before showings because it protects the buyer's time, the agent's time, and their professional credibility with listing agents</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Show just one or two homes as a preview, then require pre-approval before continuing</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. What is the single most important preparation habit Shelley Zavitz identifies for every client meeting — and what almost went wrong on her very first buyer showing because she had not fully prepared?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Arriving on time — she was almost late to the showing and had to rush to get there</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Preparation is the key to the rookie's toolbox — when her buyer called ready to make an offer, she did not know how to fill out the sales agreement, had not asked for the closing date or lender information, and did not even have the buyer's last name</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Dressing professionally — she realized she had not dressed appropriately for meeting a client</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Knowing the neighborhood — she had not researched the area where the home was located</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Which of the following contingencies specifically protects a buyer if the property's appraised value comes in lower than the agreed purchase price?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> The inspection contingency — it covers all property-related findings including value</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> The financing contingency — it protects the buyer if any financial element of the deal fails</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> The appraisal contingency — without it, if the home appraises below the purchase price, the buyer must either make up the difference in cash or negotiate with a seller who is under no obligation to reduce the price</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> The earnest money contingency — it allows the buyer to recover their deposit if the value is insufficient</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Why should a buyer's agent always call the listing agent before submitting an offer — and what specific information can that call reveal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> It is a professional courtesy but rarely changes the offer — listing agents will not share useful information before receiving an official offer</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> It lets the listing agent know you are serious, but the actual offer terms matter more than the call</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> The call confirms submission logistics, reveals whether other offers exist, surfaces the seller's preferred closing date and any special terms, and begins a professional relationship — all of which can significantly change how the offer is structured before it is submitted</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> It is required by law in most states before submitting a residential purchase offer</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <!-- BONUS RESOURCE -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Go Deeper — Bonus Resource</div>
+    <h2 class="lesson-title">Brittany Hannon: The complete buyer consultation <em>deep dive</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">If you want to go significantly deeper on the buyer consultation — including a full live walkthrough of the BRBC form field by field — this 52-minute workshop from Brittany Hannon is the most thorough buyer consultation training available for free on YouTube. Brittany is a licensed California Keller Williams agent and coach who walks through the entire process from pre-qualification through getting the agreement signed. This is not required viewing for the module — but if your first buyer consultation is coming up soon, invest the time. It will be worth it.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/pKLZcg22YEU" title="How to Ace a Buyer Consultation Like a Real Estate Agent Pro — Brittany Hannon" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Bonus Resource · Brittany Hannon · YouTube</span>
+        <h4>How to Ace a Buyer Consultation Like a Real Estate Agent Pro</h4>
+        <p>Pre-qualification vs. consultation — the doctor analogy, purpose of the buyer consultation, getting the appointment, the buyer questionnaire, establishing rapport, explaining the market and setting expectations, walking through a full buyer presentation in KW Command, how to fill out the BRBC field by field post-NAR settlement, exclusive vs. non-exclusive representation, compensation conversation, and why the consultation ends with the agreement — not before it. Recommends The Millionaire Real Estate Agent by Gary Keller.</p>
+        <p class="credit">Brittany Hannon · Keller Williams West Ventura County · YouTube July 2024 · ~52 min · Bonus deep dive</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Millionaire Real Estate Agent</div>
+          <div class="bi-author">Gary Keller, Dave Jenks & Jay Papasan</div>
+          <div class="bi-desc">Source of the Functionary vs. Fiduciary framework, the ten buyer service areas, and the core principle that a buyer's agent's goal is the right home, best price, right time, least problems.</div>
+        </div>
+        <a href="https://www.amazon.com/Millionaire-Real-Estate-Agent-About/dp/0071444041" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Your First 365 Days in Real Estate</div>
+          <div class="bi-author">Shelley Zavitz</div>
+          <div class="bi-desc">The most honest account of what working with your first buyers actually looks and feels like — the sign call, the first showing, the midnight offer deadline, the know/like/trust principle, and why preparation is everything.</div>
+        </div>
+        <a href="https://www.amazon.com/Your-First-365-Days-Real/dp/1789661587" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Success as a Real Estate Agent For Dummies</div>
+          <div class="bi-author">Dirk Zeller</div>
+          <div class="bi-author">See especially: Chapter 1 (fiduciary role, guiding financial decisions), Chapter 3 (marketplace expertise), Chapter 13 (negotiating contracts and closing)</div>
+        </div>
+        <a href="https://www.amazon.com/Success-Real-Estate-Agent-Dummies/dp/1119918707" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 4: Working with Sellers</h3>
+    <p>You know how to represent buyers. Now learn the other side — the listing presentation, pricing strategy, preparing a home for market, marketing properties, and negotiating offers on behalf of sellers. Listings are the high-leverage, maximum-earning opportunity in residential real estate. Module 4 is where that path begins.</p>
+    <a href="agent-module-4.html" class="next-module-cta">Module 4: Working with Sellers →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="agent-module-2.html" class="btn btn-outline">← Module 2: Think Like a Top Agent</a>
+  <div class="module-nav-info">
+    <p>Residential Agent Track</p>
+    <strong>Module 3 of 6</strong>
+  </div>
+  <a href="agent-module-4.html" class="btn btn-gold">Module 4: Working with Sellers →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{
+    correct:"Correct! Keller is explicit: for buyers, a top agent's goal is to find them just the right home, at the best price, in the right time, with the least amount of problems. And the fiduciary commitment that goes with this goal means placing the buyer's interests ahead of all others — including the agent's own commission timeline or preference to close quickly.",
+    incorrect:"Not quite. Keller's framework is clear: the top buyer's agent's goal is to find the buyer just the right home, at the best price, in the right time, with the least amount of problems — with a fiduciary commitment to place the buyer's interests ahead of all others, including their own. Speed of closing and volume of showings are not the standard. The buyer's outcome is the standard."
+  },
+  q2:{
+    correct:"Correct! Pre-approval before showings is non-negotiable. It protects the buyer from falling in love with homes outside their budget, protects the agent's time, and protects professional credibility with listing agents who expect buyer's agents to vet their clients before requesting showings. The right move is to pause, connect the buyer with a trusted lender, and schedule showings once pre-approval is confirmed.",
+    incorrect:"Not quite. Pre-approval before showings is non-negotiable. 'Just getting a feel' sounds harmless but creates real problems — buyers get emotionally attached to homes they cannot afford, agents waste time and lose credibility with listing agents, and the buyer's expectations get set by the wrong price point. Connect the buyer with a lender first, always."
+  },
+  q3:{
+    correct:"Correct! Zavitz's lesson from her first buyer is one of the most important in the book: preparation is the key to the rookie's toolbox. When Susan called ready to make an offer, Zavitz realized she did not know how to fill out the sales agreement, had not asked for the closing date, did not know who the lender was, and did not even have Susan's last name. That gap — not incompetence, just unpreparedness — is what the buyer consultation and pre-showing preparation are designed to prevent.",
+    incorrect:"Not quite. The lesson Zavitz draws is that preparation is the key to the rookie's toolbox. When her buyer called ready to make an offer, she discovered she did not know how to fill out the sales agreement, had not asked for critical information like the closing date and lender details, and did not even have the buyer's last name. The gap was not skill — it was preparation. That is why the buyer consultation and pre-showing research matter so much."
+  },
+  q4:{
+    correct:"Correct! The appraisal contingency specifically protects the buyer when the property appraises below the purchase price. Without it, the buyer is obligated to either pay the difference between the appraised value and the purchase price out of pocket, or negotiate a price reduction with a seller who is under no contractual obligation to agree. In competitive markets where buyers sometimes waive contingencies, the appraisal contingency is one of the highest-risk to waive.",
+    incorrect:"Not quite. The appraisal contingency is the specific protection for a low appraisal situation. The inspection contingency covers physical condition findings. The financing contingency protects the buyer if the loan does not fund. The appraisal contingency addresses the specific scenario where the appraised value comes in below the agreed purchase price — leaving the buyer exposed if they have waived it."
+  },
+  q5:{
+    correct:"Correct! The pre-submission call to the listing agent is one of the highest-value habits a buyer's agent can build. In 90 seconds you can learn whether there are competing offers, what the seller's preferred closing date is, whether there are any special terms the seller cares about, and how to submit the offer most effectively. All of this information can change how you structure the offer — before it is submitted, when you still have time to act on it.",
+    incorrect:"Not quite. The call to the listing agent before submitting is genuinely valuable — not just a formality. Listing agents often share useful information including whether other offers have been submitted, what the seller's preferred closing date is, and any terms that are particularly important to the seller. This information can significantly change how you structure the offer. Never submit cold without making contact first."
+  }
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent — you understand what it takes to represent buyers professionally. Ready for Module 4: Working with Sellers.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above before moving on — the buyer representation content in this module carries forward into every other module in this track.';
+  }
+}
+</script>
+
+</body>
+</html>
