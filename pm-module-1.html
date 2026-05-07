@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>PM Module 1: The Property Management Mindset — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#2C3E6B;--teal-mid:#3D5490;--teal-light:#5470B0;--teal-pale:#EDF0F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --slate:#4A5568;--slate-light:#718096;--slate-pale:#EDF2F7;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(44,62,107,0.1);
+  --shadow-card:0 2px 16px rgba(44,62,107,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:14%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Eight attributes */
+.eight-attrs{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.attr-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.attr-card .ac-num{font-size:10px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.attr-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.attr-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Self vs hire */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;}
+.compare-card.self{background:var(--teal-pale);border:1px solid rgba(13,92,99,0.2);}
+.compare-card.hire{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.compare-card.self h4{color:var(--teal);}
+.compare-card.hire h4{color:#8A6A20;}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.compare-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.compare-card.self ul li::before{content:'✓';color:var(--teal-mid);font-weight:700;flex-shrink:0;}
+.compare-card.hire ul li::before{content:'✓';color:#8A6A20;font-weight:700;flex-shrink:0;}
+/* Task list */
+.task-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin:2rem 0;}
+.task-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.85rem;font-size:12.5px;color:var(--text-mid);line-height:1.4;}
+/* Career paths */
+.career-paths{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.career-path{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.career-path .cp-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+.career-path .cp-content h4{font-size:0.9rem;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.career-path .cp-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .eight-attrs{grid-template-columns:1fr;}
+  .compare-grid{grid-template-columns:1fr;}
+  .task-grid{grid-template-columns:1fr 1fr;}
+}
+
+.dual-path-intro{margin-bottom:3.5rem;}
+.path-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.path-card{border-radius:16px;padding:1.75rem;display:flex;flex-direction:column;gap:0.75rem;}
+.path-card.path-employee{background:var(--teal-pale);border:1px solid rgba(44,62,107,0.2);}
+.path-card.path-owner{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.path-icon{font-size:1.75rem;}
+.path-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.path-employee .path-label{color:var(--teal-mid);}
+.path-owner .path-label{color:#8A6A20;}
+.path-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);}
+.path-card p{font-size:13.5px;color:var(--text-mid);line-height:1.75;}
+.path-applies{margin-top:0.5rem;padding:0.85rem 1rem;border-radius:8px;font-size:13px;color:var(--text-mid);line-height:1.7;}
+.path-employee .path-applies{background:rgba(44,62,107,0.07);}
+.path-owner .path-applies{background:rgba(201,168,76,0.1);}
+.path-applies strong{color:var(--text-dark);}
+.path-note{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-top:0.5rem;}
+.path-note-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.path-note p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.ep-tag{color:var(--teal);font-weight:700;}
+.op-tag{color:#8A6A20;font-weight:700;}
+.path-callout{border-radius:10px;padding:0.85rem 1.1rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;}
+.path-callout.ep{background:var(--teal-pale);border-left:3px solid var(--teal-mid);}
+.path-callout.op{background:var(--gold-pale);border-left:3px solid var(--gold);}
+.path-callout .pc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+.path-callout.ep .pc-tag{color:var(--teal-mid);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.path-callout p{color:var(--text-mid);margin:0;}
+@media(max-width:640px){.path-cards{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="property-management.html">Property Management Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="property-management.html">Property Management Track</a><span class="sep">›</span>
+  <span class="current">Module 1: The Property Management Mindset</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">PM Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <div class="prog-dot active">1</div>
+    <div class="prog-dot locked">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Property Management Track · Module 1 of 7</div>
+    <h1>The Property Management <em>Mindset</em></h1>
+    <p>Before you learn how to screen a tenant, price a rental, or handle an eviction — you need to understand what property management actually is, what the job really demands, and whether you are built for it. Most people who fail in property management do not fail because of a skill gap. They fail because they never truly understood what they were signing up for. This module fixes that.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>55–70 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- DUAL PATH INTRO -->
+  <div class="dual-path-intro fade-in">
+    <div class="dp-header">
+      <div class="dp-title-block">
+        <div class="section-label"><div class="dot"></div> Who This Track Is For</div>
+        <h2 class="lesson-title">Two paths into property management — <em>this track serves both</em></h2>
+        <div class="gold-divider"></div>
+        <p class="lesson-text">People enter property management from two different starting points. This track is designed to serve both — and it is worth knowing which one you are on before you begin, because it will shape how you apply what you learn here.</p>
+      </div>
+    </div>
+    <div class="path-cards">
+      <div class="path-card path-employee">
+        <div class="path-icon">🧑‍💼</div>
+        <div class="path-label">The Employee Path</div>
+        <h4>Working at a property management company</h4>
+        <p>You want to build a career working as a leasing agent, assistant property manager, property manager, or portfolio manager at an existing firm. This is the most common entry point into the industry — and for most people, it is the right one. You get paid to learn, build your skills in a structured environment, and develop a track record before taking on more responsibility.</p>
+        <div class="path-applies">
+          <strong>How this track applies to you:</strong> Every operational skill in this track — tenant screening, rent pricing, lease enforcement, maintenance coordination, financial reporting — is exactly what you will do on the job every day. The business-building lessons (client acquisition, fee structures, management agreements) give you a deep understanding of how the company you work for operates, which makes you a far more valuable employee and prepares you for leadership roles over time.
+        </div>
+      </div>
+      <div class="path-card path-owner">
+        <div class="path-icon">🏢</div>
+        <div class="path-label">The Entrepreneur Path</div>
+        <h4>Starting your own property management company</h4>
+        <p>You want to build and run your own PM business — winning owner-clients, managing a growing portfolio, and building a company that you own. This path carries more risk and requires more capital and business acumen, but it also offers greater income potential, autonomy, and long-term equity. Many successful PM company owners started on the employee path first — and that experience was invaluable.</p>
+        <div class="path-applies">
+          <strong>How this track applies to you:</strong> Everything in this track is directly relevant — from the operational skills of Modules 3–6 to the business-building content of Modules 2 and 7. Pay particular attention to the lessons on pricing, management agreements, client acquisition, and financial management — these are the business decisions that determine whether your company is profitable or not.
+        </div>
+      </div>
+    </div>
+    <div class="path-note">
+      <span class="path-note-icon">💡</span>
+      <p>Throughout this track, lessons that contain content particularly relevant to one path will be labeled <strong class="ep-tag">Employee Path</strong> or <strong class="op-tag">Entrepreneur Path</strong> where appropriate. Content with no label is universal — it applies equally to both.</p>
+    </div>
+  </div>
+
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What property management actually is — <em>and what it is not</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Brandon and Heather Turner open <em>The Book on Managing Rental Properties</em> with a definition that deserves to be read slowly: <strong>landlording, also known as property management, is the business of protecting and growing one's real estate investment through the careful placement and oversight of tenants.</strong> Four words in that definition carry all the weight — it is a <em>business.</em></p>
+
+    <p class="lesson-text">Not a side project. Not a passive income stream you check on occasionally. A business. Whether you are managing one property you own or managing a portfolio of hundreds of properties for multiple owners, you are running a business the moment you take on that first unit. The investors who treat property management like a hobby — doing the fun parts when they feel like it and ignoring the hard parts when they do not — learn this lesson the expensive way.</p>
+
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Brandon & Heather Turner — The Book on Managing Rental Properties</div>
+      <p>"Success in rental property investing is dependent upon the effective management of that asset. You could purchase an incredible real estate deal that would turn you from a mill worker to a millionaire, but without good management, you'll be back at the mill in no time."</p>
+      <div class="quote-attr">On why management — not the deal — determines long-term success</div>
+    </div>
+
+    <p class="lesson-text">Ken McElroy — who owns and manages thousands of apartments across the United States as a Rich Dad Advisor — makes the same point from the owner's perspective: <em>a great property manager was the key to success in real estate investing.</em> The reason is simple. Your real estate is only as valuable as your renters think it is — what they are willing to pay in rent. That number is determined by how well the property is managed. Rental income is the aspect of real estate you have the most control over. And property managers are the professionals who control it.</p>
+
+    <h3 class="sub-title">The full scope of what a property manager does</h3>
+    <p class="lesson-text">Most people who think they want to get into property management have a vague picture of what the job involves — collecting rent, dealing with maintenance calls, finding tenants. The actual list is considerably longer. Here is a realistic picture of what a property manager handles:</p>
+
+    <div class="task-grid fade-in">
+      <div class="task-item">Preparing properties for rent</div>
+      <div class="task-item">Determining fair market rent</div>
+      <div class="task-item">Setting security deposits</div>
+      <div class="task-item">Advertising vacancies</div>
+      <div class="task-item">Taking calls from prospects</div>
+      <div class="task-item">Pre-screening applicants</div>
+      <div class="task-item">Scheduling property showings</div>
+      <div class="task-item">Processing rental applications</div>
+      <div class="task-item">Running background checks</div>
+      <div class="task-item">Verifying income and employment</div>
+      <div class="task-item">Calling former landlords</div>
+      <div class="task-item">Approving and denying tenants</div>
+      <div class="task-item">Fair Housing compliance</div>
+      <div class="task-item">Signing leases and addendums</div>
+      <div class="task-item">Move-in inspections</div>
+      <div class="task-item">Collecting and depositing rent</div>
+      <div class="task-item">Handling maintenance requests</div>
+      <div class="task-item">Finding and managing contractors</div>
+      <div class="task-item">Settling tenant disputes</div>
+      <div class="task-item">Raising rent appropriately</div>
+      <div class="task-item">Lease enforcement</div>
+      <div class="task-item">Regular property inspections</div>
+      <div class="task-item">Serving legal notices</div>
+      <div class="task-item">Evicting problem tenants</div>
+      <div class="task-item">Move-out inspections</div>
+      <div class="task-item">Security deposit accounting</div>
+      <div class="task-item">Monthly financial reporting</div>
+      <div class="task-item">Bookkeeping and record-keeping</div>
+      <div class="task-item">Responding to legal threats</div>
+      <div class="task-item">Monitoring code compliance</div>
+      <div class="task-item">Paying property bills</div>
+      <div class="task-item">Managing owner relationships</div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ What Most People Miss About This Career</div>
+      <p>Property management is not primarily a real estate business. It is a people business that happens to involve real estate. The moment you manage a property, you are managing relationships — with tenants, with owners, with contractors, with attorneys. Ken McElroy puts it plainly: "The number one job of a property manager is dealing with residents, and the number one rule of dealing with residents is that there are no rules." If you are not energized by working with people through conflict, complexity, and occasional crisis — this career path deserves a hard, honest look before you invest further.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Bob Preston: Starting a property management company <em>from scratch</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Bob Preston built North County Property Group from zero to 700+ doors over 15 years, served as president of the California NARPM chapter and VP of the NARPM national board, then sold his company for a multi-seven-figure exit to Pure Property Management in 2023. In this interview with Upkeep Media he covers everything he would do differently starting over — from the first website to winning your first 15 clients, pricing models, software choices, Google reviews, and the biggest mistake most new PM companies make. Watch this before Lesson 2.</p>
+    <div class="video-card">
+      <a href="https://www.youtube.com/watch?v=WbjRHLUy1PE" target="_blank" style="display:block;text-decoration:none;">
+        <div style="background:linear-gradient(135deg,#1A2540,#2C3E6B);padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;cursor:pointer;border-radius:16px 16px 0 0;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.3);">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:white;margin-bottom:0.3rem;">Tips for Starting a Property Management Company from Scratch in 2025</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.6);">Bob Preston · YouTube · Click to watch</div>
+          </div>
+          <div style="background:#C9A84C;color:#1A2540;font-size:13px;font-weight:700;padding:8px 24px;border-radius:8px;">Watch on YouTube →</div>
+        </div>
+      </a>
+      <div class="video-info">
+        <span class="video-badge">Bob Preston · YouTube</span>
+        <h4>Tips for Starting a Property Management Company from Scratch in 2025</h4>
+        <p>Slow down before jumping in — get a bird's eye view first, join NARPM immediately, why niching down geographically beats competing in saturated markets, build a website and email your entire network day one, network with Realtors at broker caravans, get 15 proof-of-concept clients before scaling, property management software is non-negotiable from day one (AppFolio, Buildium, Rent Vine), CRM for tracking leads and tenants, Google Business Profile and reviews from day one, why Google Ads destroys cash flow for new PM companies, organic SEO beats paid ads, the PM fee alone will not pay the bills — ancillary income must be 50% of revenue, virtual office vs. physical office, and when to hire your first employee.</p>
+        <p class="credit">Bob Preston · North County Property Group (sold 2023) · NARPM CA Chapter President · NARPM National VP · Interview with Upkeep Media · March 2025 · <em>Opens on YouTube (embedding disabled by creator)</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The eight business attributes of a successful property manager</h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Turner and Turner identify eight specific attributes shared by the most successful property managers and landlords. These are not personality traits you either have or do not have — they are disciplines you can develop deliberately. But knowing which ones you currently lack is just as valuable as knowing which ones you already possess. Honest self-assessment here protects you from expensive lessons later.</p>
+
+    <div class="eight-attrs">
+      <div class="attr-card fade-in">
+        <div class="ac-num">Attribute 1</div>
+        <h4>Organization</h4>
+        <p>Property management generates an enormous amount of paperwork, communication, and data — applications, leases, notices, maintenance records, financial reports, contractor invoices. The disorganized manager loses money, misses deadlines, and eventually loses clients. Systems are not optional in this business. They are the business.</p>
+      </div>
+      <div class="attr-card fade-in">
+        <div class="ac-num">Attribute 2</div>
+        <h4>Diligence</h4>
+        <p>Property management rewards the consistent and punishes the sporadic. Diligence means following through on every inspection, every maintenance call, every late rent notice — not just the ones that feel convenient. The manager who enforces standards consistently builds a reputation. The one who enforces them selectively creates problems.</p>
+      </div>
+      <div class="attr-card fade-in">
+        <div class="ac-num">Attribute 3</div>
+        <h4>Communication</h4>
+        <p>The number one complaint tenants and owners have about property managers is not fees or mistakes — it is poor communication. Tenants need to feel heard. Owners need to feel informed. The manager who communicates proactively, returns calls and emails promptly, and documents conversations in writing will outperform technically superior managers who communicate poorly.</p>
+      </div>
+      <div class="attr-card fade-in">
+        <div class="ac-num">Attribute 4</div>
+        <h4>Patience</h4>
+        <p>Tenants will test your patience. Contractors will miss deadlines. Owners will make unreasonable requests. The manager who reacts emotionally to every friction point burns out quickly and makes poor decisions. Patience is not passivity — it is the ability to stay calm, think clearly, and respond deliberately when everything around you is demanding an immediate reaction.</p>
+      </div>
+      <div class="attr-card fade-in">
+        <div class="ac-num">Attribute 5</div>
+        <h4>Firmness</h4>
+        <p>Patience and firmness work together. You can be kind, professional, and empathetic — and still enforce the lease. Late fees must be charged if you say they will be. Eviction must be filed if you say it will be. The manager who makes threats they do not follow through on teaches tenants that the rules are negotiable. Once that lesson is learned, it is very hard to unlearn.</p>
+      </div>
+      <div class="attr-card fade-in">
+        <div class="ac-num">Attribute 6</div>
+        <h4>Financial Literacy</h4>
+        <p>Property management is a financial business. You will be handling other people's money — rent payments, security deposits, maintenance reserves, owner disbursements. You must understand basic accounting, be able to read a profit and loss statement, track income and expenses accurately, and produce monthly reports that owners can trust. Errors in financial management are the fastest path to lost clients and legal liability.</p>
+      </div>
+      <div class="attr-card fade-in">
+        <div class="ac-num">Attribute 7</div>
+        <h4>Ethical Standards</h4>
+        <p>Property managers hold a position of trust — between owners who have entrusted their investment to you and tenants who are living in homes you manage. Fair Housing compliance, transparent accounting, honest communication about property condition — ethical failures in any of these areas carry legal consequences, reputation damage, and the kind of stress that makes this career unsustainable.</p>
+      </div>
+      <div class="attr-card fade-in">
+        <div class="ac-num">Attribute 8</div>
+        <h4>Business Orientation</h4>
+        <p>This is the overarching attribute that gives all the others direction. Property management is a business. It must be structured, systematized, and run with a business owner's mindset — not a hobbyist's. This means tracking metrics, setting goals, building processes, and making decisions based on data rather than feelings. The managers who thrive long-term are those who treat every property like a client account and every tenant interaction like a business transaction.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">DoorLoop: What is it really like to have <em>a job in property management</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">DoorLoop — one of the most respected property management software companies in the industry — breaks down the practical realities of working in property management: what the day-to-day job actually looks like, what you can expect to earn, career paths within the field, and the licensing and certification requirements most states impose. Watch this before Lesson 3.</p>
+    <div class="video-card">
+      <a href="https://www.youtube.com/watch?v=S2VDO-PF5l4" target="_blank" style="display:block;text-decoration:none;">
+        <div style="background:linear-gradient(135deg,#1A2540,#2C3E6B);padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;cursor:pointer;border-radius:16px 16px 0 0;">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.3);">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:white;margin-bottom:0.3rem;">What is it Really Like to Have a Job in Property Management?</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.6);">DoorLoop · YouTube · Click to watch</div>
+          </div>
+          <div style="background:#C9A84C;color:#1A2540;font-size:13px;font-weight:700;padding:8px 24px;border-radius:8px;">Watch on YouTube →</div>
+        </div>
+      </a>
+      <div class="video-info">
+        <span class="video-badge">DoorLoop · YouTube</span>
+        <h4>What is it Really Like to Have a Job in Property Management?</h4>
+        <p>Day-to-day duties of a property manager, industry growth (7% projected through 2028), median salary $60K with top 10% earning $124K+, starting your own PM company as a career path, stress and flexibility in the role, three career path options — bookkeeper, leasing assistant, administrative assistant, licensing requirements (real estate license required in most states), certifications — CPM (Certified Property Manager) and ARM (Accredited Residential Manager), and key resources — NAR, IREM, NPMA, NARPM.</p>
+        <p class="credit">DoorLoop · YouTube May 2023 · Solo presenter · Property management software company · <em>Opens on YouTube (embedding disabled by creator)</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Self-management vs. professional management — <em>understanding both sides of the relationship</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Property management sits at the intersection of two relationships: the property manager and the owner, and the property manager and the tenant. Understanding both sides — what owners are looking for when they hire a professional manager, and what tenants need from a good manager — is the foundation of everything that follows in this track.</p>
+
+    <p class="lesson-text">Robert Griswold frames this decision clearly in <em>Property Management Kit for Dummies</em>: the question is not whether your property should be managed well — it absolutely should be. The question is who is best positioned to manage it well. When owners choose to hire a professional property manager rather than managing themselves, they are making a calculated business decision about time, expertise, and risk.</p>
+
+    <div class="compare-grid fade-in">
+      <div class="compare-card self">
+        <h4>Why owners self-manage</h4>
+        <ul>
+          <li>Save the management fee (typically 8–12% of monthly rent)</li>
+          <li>Maintain direct control over tenant selection and decisions</li>
+          <li>Prefer to know their tenants personally</li>
+          <li>Have the time and interest to manage directly</li>
+          <li>Own a single property where professional management may not be cost-effective</li>
+        </ul>
+      </div>
+      <div class="compare-card hire">
+        <h4>Why owners hire professionals</h4>
+        <ul>
+          <li>Reclaim their time — PM is a full-time job, not passive income</li>
+          <li>Access professional expertise in Fair Housing, lease law, and tenant screening</li>
+          <li>Remove the emotional burden of direct landlord-tenant conflict</li>
+          <li>Scale a portfolio without being the bottleneck</li>
+          <li>Protect themselves from costly legal mistakes</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="lesson-text">Ken McElroy's framework from <em>The ABCs of Property Management</em> is useful here: size does not matter when it comes to whether you need good management. A single-family home managed poorly will underperform a 50-unit building managed excellently. The quality of management determines the quality of the investment — regardless of scale.</p>
+
+    <h3 class="sub-title">What great property management creates for owners</h3>
+    <p class="lesson-text">McElroy identifies the core value proposition of professional property management with precision: great property managers create value. They maximize rental income by pricing correctly, minimize vacancy by screening efficiently, reduce maintenance costs by preventing problems, and protect the owner's investment by enforcing lease standards consistently. Every one of those outcomes requires skill, systems, and time — which is exactly what a professional property manager provides in exchange for their fee.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Career Opportunity in This</div>
+      <p>More rental property owners are open to hiring professional management than ever before — and the industry is projected to grow 7% through 2028. House prices at historic highs mean more people are renting longer. The investor class is growing as more people build rental portfolios. And the complexity of Fair Housing law, digital advertising, and tenant rights legislation is making self-management increasingly risky for owners without expertise. The demand for skilled, trustworthy property managers is growing faster than the supply of qualified professionals. This is the market you are entering.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Licensing, certifications, and career paths — <em>how to get started the right way</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="path-callout ep"><span class="pc-tag">🧑‍💼 Employee Path</span><p>If you are pursuing the employee path, your employer's license typically covers your work — you operate under their broker's license while you build experience. However, obtaining your own license as early as possible gives you more career flexibility, higher earning potential, and the ability to eventually transition to the entrepreneur path if you choose. Do not wait for your employer to require it.</p></div>
+    <div class="path-callout op"><span class="pc-tag">🏢 Entrepreneur Path</span><p>You cannot legally manage properties for others and collect management fees without the required license in your state. This is non-negotiable. Get licensed before you sign your first management agreement — not after.</p></div>
+    <p class="lesson-text">Property management is a licensed profession in most US states. The specific requirements vary significantly by state — but the principle is consistent: in most states you cannot legally operate as a property manager and collect rent on behalf of an owner without a real estate license. Before you invest another hour in this track, go to your state's real estate commission website and confirm exactly what is required where you live.</p>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Licensing Varies by State — Do Not Skip This Step</div>
+      <p>Some states require a full real estate broker's license to manage properties for others. Some require a salesperson's license held under a broker. A few states have specific property management licenses separate from real estate licensure. And a small number of states have minimal licensing requirements. The only authoritative source for your state's requirements is your state real estate commission website. The searchable state directory at the bottom of this module links directly to all 50 state commissions.</p>
+    </div>
+
+    <h3 class="sub-title">Professional certifications worth knowing</h3>
+    <p class="lesson-text">Beyond state licensing, several professional designations signal competency and open doors in the property management industry:</p>
+
+    <div class="career-paths">
+      <div class="career-path fade-in">
+        <div class="cp-icon">🏆</div>
+        <div class="cp-content">
+          <h4>CPM — Certified Property Manager (IREM)</h4>
+          <p>The gold standard in property management. Issued by the Institute of Real Estate Management (IREM). Requires significant experience, coursework, and an ethics commitment. Recognized across the US as a mark of serious professional practice. Best suited for those managing commercial or larger residential portfolios.</p>
+        </div>
+      </div>
+      <div class="career-path fade-in">
+        <div class="cp-icon">🎖️</div>
+        <div class="cp-content">
+          <h4>ARM — Accredited Residential Manager (IREM)</h4>
+          <p>IREM's residential-focused credential. More accessible than the CPM as a starting point. Covers tenant relations, property maintenance, financial management, and risk management specifically for residential property managers. A strong credential for someone building a residential PM career.</p>
+        </div>
+      </div>
+      <div class="career-path fade-in">
+        <div class="cp-icon">⭐</div>
+        <div class="cp-content">
+          <h4>NARPM Membership and Designations</h4>
+          <p>The National Association of Residential Property Managers is the professional community for residential PM professionals. Membership provides networking, education, forms, legal updates, and ethical standards. Bob Preston — who built and sold a 700-door company — says joining NARPM immediately was the advice he wishes he had followed from day one. Local chapters exist in most major cities.</p>
+        </div>
+      </div>
+      <div class="career-path fade-in">
+        <div class="cp-icon">📋</div>
+        <div class="cp-content">
+          <h4>Career entry paths — you do not have to start by owning the company</h4>
+          <p>Property management companies hire bookkeepers, leasing assistants, and administrative assistants at the entry level. These roles build real-world operational knowledge before you take on the full responsibility of managing properties independently. Many successful PM company owners started as leasing agents at existing firms — learning the systems, the software, and the tenant dynamics before launching their own operation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 1 Key Takeaways</h3>
+    <ul>
+      <li>Property management is a business — not a passive income stream, not a side project. The moment you manage a property for an owner, you are running a business. Every successful PM professional operates with a business owner's mindset from day one.</li>
+      <li>Success in rental property investing is determined by the quality of management — not the quality of the deal. A great deal managed poorly will underperform a mediocre deal managed excellently. The manager creates the value.</li>
+      <li>The full scope of a property manager's responsibilities is considerably wider than most people expect — encompassing tenant screening, leasing, rent collection, maintenance coordination, legal compliance, financial reporting, and owner relationship management.</li>
+      <li>The eight business attributes of a successful property manager: organization, diligence, communication, patience, firmness, financial literacy, ethical standards, and business orientation. These are disciplines — not personality traits — and they can all be developed deliberately.</li>
+      <li>Property management is a people business that happens to involve real estate. The number one job is dealing with residents — and there are no rules for how unpredictable that will be. If you are not energized by working with people through conflict and complexity, this requires honest self-assessment.</li>
+      <li>Professional management creates value for owners by maximizing rental income, minimizing vacancy, reducing maintenance costs, and protecting the investment through consistent lease enforcement. This value proposition — clearly understood and clearly communicated — is the foundation of winning and keeping owner clients.</li>
+      <li>Most states require a real estate license to legally manage properties for others. Check your state real estate commission website before proceeding — licensing requirements vary significantly by state and are not optional.</li>
+      <li>NARPM membership is the single most valuable professional community investment for a new residential property manager. Bob Preston — who built and sold a 700-door company — says not joining NARPM immediately was one of his biggest early mistakes.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. Turner and Turner define landlording as "the business of protecting and growing one's real estate investment through the careful placement and oversight of tenants." What is the most important word in that definition — and why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Investment — because the financial return is the primary goal of property management</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> Tenants — because finding the right tenants is the most important skill a property manager has</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> Business — because property management is a business regardless of scale, and every manager who fails to treat it as one makes the same category of mistake. The hobbyist mindset — doing the fun parts and ignoring the hard parts — is the root cause of most PM failures.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Careful — because the screening process requires careful judgment at every step</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A property owner hires you to manage their rental property. Two months in, a tenant is chronically late on rent. You told the tenant there would be a late fee — but you have not charged it. You told the tenant you would file an eviction if they missed another payment — but you have not filed. Which of the eight business attributes are you failing to apply?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Organization and financial literacy — the late fees need to be tracked in your accounting system</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Patience — you need to give the tenant more time before taking action</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Firmness — you made commitments (late fee, eviction filing) and did not follow through. This teaches the tenant that your rules are negotiable and your warnings are empty. Once that lesson is learned it is very hard to unlearn. Firmness and patience work together — you can be empathetic and still enforce every commitment you make.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Communication — you should have communicated the consequences more clearly before the issue arose</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. According to Bob Preston, what was the single biggest mistake he made in the first two years of running North County Property Group — and what was the lesson it taught him?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> He hired too many employees too quickly before the revenue was there to support them</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> He believed the management fee alone would pay the bills and keep the company profitable. It does not. The management fee should represent approximately 50% of revenue — the other 50% must come from ancillary income: leasing fees, maintenance markups, inspection fees, lease renewal fees, and other services. This is the profitability lesson most new PM companies learn the hard and expensive way.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> He spent too much on Google Ads before understanding that organic SEO was more effective for property management</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> He started with too large a geographic territory and spread himself too thin before niching down</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Ken McElroy says "size doesn't matter" in property management. What does he mean — and what does it imply for someone starting a PM career?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> The size of your management fee does not matter as long as you are providing excellent service</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> The size of the portfolio does not determine the quality of management — quality management is required whether you manage one property or one thousand. A single rental managed poorly will underperform a large portfolio managed excellently. For someone starting a PM career, this means the habits, systems, and standards you establish from day one matter enormously — you cannot develop them later just because your portfolio grows.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> The physical size of the properties does not affect how they should be managed</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> The size of your staff team does not matter as long as the right systems are in place</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. You want to start a property management company. Before enrolling in any education, building a website, or contacting potential clients — what is the single most important first step?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Identify your target geographic market and niche — because where you focus determines how quickly you win clients</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Choose your property management software — because the right technology is the backbone of a PM business</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Check your state's real estate commission website to confirm the licensing requirements in your state. In most states you cannot legally manage properties for others and collect rent without a real estate license — and the consequences of operating without one are significant. This step takes 10 minutes and protects you from building a business on a legally non-compliant foundation.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Join NARPM to begin networking with other property managers and learning the industry</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Book on Managing Rental Properties</div>
+          <div class="bi-author">Brandon Turner & Heather Turner</div>
+          <div class="bi-desc">Primary source for this module — Chapters 1 and 2 (what landlording is, the eight business attributes of a successful landlord, the full scope of what a PM does, self-management vs. professional management). The most practical and comprehensive landlord operations guide available.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=book+on+managing+rental+properties+brandon+turner&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Property Management Kit for Dummies</div>
+          <div class="bi-author">Robert Griswold</div>
+          <div class="bi-desc">Secondary source — Chapters 1–3 (property management 101, do you have what it takes, self-manage vs. hire a pro). Griswold's comprehensive framework for professional property management is the backbone of the operational content across this entire track.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=property+management+kit+for+dummies+griswold&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The ABCs of Property Management</div>
+          <div class="bi-author">Ken McElroy</div>
+          <div class="bi-desc">Rich Dad Advisor series — covers why great property management creates value, the case for professional management at any portfolio size, and what property owners look for when selecting a PM company. Written from the owner's perspective — essential for understanding your client's mindset.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=abcs+of+property+management+ken+mcelroy&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 2: Building Your Client Base</h3>
+    <p>You understand what property management is and what it takes to do it well. Now the question is: how do you find property owners who will pay you to manage their properties? Module 2 covers the complete client acquisition system — from building your online presence and winning your first clients, to structuring your fees, writing a property management agreement, and building the referral network that grows your portfolio over time.</p>
+    <a href="pm-module-2.html" class="next-module-cta">Module 2: Building Your Client Base →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="property-management.html" class="btn btn-outline">← Track Overview</a>
+  <div class="module-nav-info">
+    <p>Property Management Track</p>
+    <strong>Module 1 of 7</strong>
+  </div>
+  <a href="pm-module-2.html" class="btn btn-gold">Module 2: Building Your Client Base →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{correct:"Correct! The word 'business' is the most important word in that definition — and it is the concept that most property managers who fail never truly internalized. Whether you manage one property or one thousand, you are running a business. The hobbyist mindset — doing the parts that feel good and avoiding the parts that feel hard — produces inconsistent results, missed deadlines, ignored problems, and eventually failed relationships with both owners and tenants.",incorrect:"Not quite. Turner and Turner are explicit that the most important concept in their definition is that landlording is a business. Not a side project, not a passive income stream — a business. Every failure mode they identify in their book traces back to someone who failed to treat their management operation as a real business with real systems, real accountability, and real consequences."},
+  q2:{correct:"Correct! This is a textbook failure of firmness. You made two explicit commitments — a late fee and an eviction filing — and did not follow through on either. The tenant has now learned that your words do not match your actions. From this point forward, they will test every boundary you set because they have evidence that the consequences are negotiable. Firmness means following through on every commitment, every time. Kindness and empathy are compatible with firmness — but empty threats are not.",incorrect:"Not quite. This situation describes a failure of firmness specifically. You made explicit commitments — a late fee and an eviction filing — and did not follow through on either. The moment a tenant learns that your warnings do not have consequences, every future boundary you set is weakened. Firmness means following through on every commitment you make, every single time — regardless of how uncomfortable the follow-through feels."},
+  q3:{correct:"Correct! Bob Preston is explicit about this: the management fee alone will not sustain a property management business. In his experience, the management fee should represent approximately 50% of total revenue — with the other 50% coming from ancillary income: leasing fees, maintenance coordination markups, lease renewal fees, inspection fees, and other billable services. Most new PM companies start thinking the management percentage is the business model. It is not. It is one component of the business model.",incorrect:"Not quite. Bob Preston's biggest profitability lesson — which he says cost him two years of struggling — was that the property management fee alone does not pay the bills. The fee should represent about 50% of revenue. The other 50% must come from ancillary income: leasing fees, maintenance markups, renewal fees, inspection fees, and other services. New PM companies that rely entirely on the management percentage typically struggle with profitability in their early years."},
+  q4:{correct:"Correct! McElroy's 'size doesn't matter' principle means the quality of management — not the size of the portfolio — determines the quality of the investment outcome. One property managed poorly will underperform a large portfolio managed excellently. For someone starting a PM career, this is both an encouragement (you can do excellent work from day one with a single property) and a warning (the habits and systems you establish now will define your reputation and business as you scale).",incorrect:"Not quite. McElroy means that the size of the portfolio does not determine whether good management is required — it always is. One property managed poorly will underperform a large portfolio managed excellently. The implications for someone starting a PM career are significant: the systems, standards, and habits you establish from your very first property will define your business as it grows. You cannot establish good habits later — you establish them now."},
+  q5:{correct:"Correct! Licensing is the foundation everything else is built on. In most US states you cannot legally manage properties for others and collect rent without holding a real estate license. Operating without the required license exposes you to serious legal liability and could shut down your business before it starts. This is a 10-minute check on your state's real estate commission website — and it is the non-negotiable first step before any other business decision is made.",incorrect:"Not quite. The non-negotiable first step is confirming your state's licensing requirements. In most US states you cannot legally operate as a property manager and collect rent on behalf of an owner without a real estate license. Building a business, winning clients, or investing in software before confirming your legal ability to operate is building on an unstable foundation. Your state real estate commission website answers this question in 10 minutes."}
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent foundation. You understand what property management really is, what it demands, and what it takes to succeed. Ready for Module 2: Building Your Client Base.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above — the mindset and business framework in this module is the foundation everything else is built on. Spend more time with the eight business attributes and the Turner definition of landlording.';
+  }
+}
+</script>
+</body>
+</html>

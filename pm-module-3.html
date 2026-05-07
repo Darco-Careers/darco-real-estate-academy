@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Module 3: Setting Up the Property and Pricing Rent — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#2C3E6B;--teal-mid:#3D5490;--teal-light:#5470B0;--teal-pale:#EDF0F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --slate:#4A5568;--slate-light:#718096;--slate-pale:#EDF2F7;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(44,62,107,0.1);
+  --shadow-card:0 2px 16px rgba(44,62,107,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:42%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Eight attributes */
+.eight-attrs{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.attr-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.attr-card .ac-num{font-size:10px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.attr-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.attr-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Self vs hire */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;}
+.compare-card.self{background:var(--teal-pale);border:1px solid rgba(13,92,99,0.2);}
+.compare-card.hire{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.compare-card.self h4{color:var(--teal);}
+.compare-card.hire h4{color:#8A6A20;}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.compare-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.compare-card.self ul li::before{content:'✓';color:var(--teal-mid);font-weight:700;flex-shrink:0;}
+.compare-card.hire ul li::before{content:'✓';color:#8A6A20;font-weight:700;flex-shrink:0;}
+/* Task list */
+.task-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin:2rem 0;}
+.task-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.85rem;font-size:12.5px;color:var(--text-mid);line-height:1.4;}
+/* Career paths */
+.career-paths{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.career-path{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.career-path .cp-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+.career-path .cp-content h4{font-size:0.9rem;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.career-path .cp-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .eight-attrs{grid-template-columns:1fr;}
+  .compare-grid{grid-template-columns:1fr;}
+  .task-grid{grid-template-columns:1fr 1fr;}
+}
+
+.condition-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.condition-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.condition-card.must{border-left:4px solid var(--teal);}
+.condition-card.nice{border-left:4px solid var(--gold);}
+.condition-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.condition-card .cc-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem;}
+.condition-card.must .cc-tag{color:var(--teal-mid);}
+.condition-card.nice .cc-tag{color:#8A6A20;}
+.condition-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.method-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.method-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;}
+.method-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;}
+.method-card p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.method-card .mc-tag{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:10px;display:inline-block;margin-bottom:0.6rem;}
+.mc-tag.primary{background:var(--teal-pale);color:var(--teal-mid);}
+.mc-tag.secondary{background:var(--gold-pale);color:#8A6A20;}
+.research-tools{display:flex;flex-direction:column;gap:0.6rem;margin:1.5rem 0;}
+.tool-item{display:flex;gap:10px;align-items:flex-start;padding:0.7rem 1rem;background:var(--white);border:1px solid var(--border);border-radius:10px;font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.tool-item .ti-icon{flex-shrink:0;margin-top:1px;}
+.deposit-box{background:var(--teal-pale);border:1px solid rgba(44,62,107,0.2);border-radius:14px;padding:1.5rem 1.75rem;margin:2rem 0;}
+.deposit-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--teal);margin-bottom:0.75rem;}
+.deposit-box ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.deposit-box ul li{font-size:13.5px;color:var(--text-mid);display:flex;gap:8px;line-height:1.6;}
+.deposit-box ul li::before{content:'›';color:var(--teal-mid);font-weight:700;flex-shrink:0;}
+.seven-things{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.thing-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
+.thing-num{width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.thing-content h4{font-size:0.88rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.thing-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+@media(max-width:640px){.condition-grid{grid-template-columns:1fr;}.method-cards{grid-template-columns:1fr;}}
+
+.path-callout{border-radius:10px;padding:0.85rem 1.1rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;}
+.path-callout.ep{background:var(--teal-pale);border-left:3px solid var(--teal-mid);}
+.path-callout.op{background:var(--gold-pale);border-left:3px solid var(--gold);}
+.path-callout .pc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+.path-callout.ep .pc-tag{color:var(--teal-mid);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.path-callout p{color:var(--text-mid);margin:0;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="property-management.html">Property Management Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="property-management.html">Property Management Track</a><span class="sep">›</span>
+  <span class="current">Module 3: Setting Up the Property and Pricing Rent</span>
+</div>
+<div class="progress-bar">
+  <span class="progress-label">PM Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="pm-module-1.html" class="prog-dot complete">1</a>
+    <a href="pm-module-2.html" class="prog-dot complete">2</a>
+    <div class="prog-dot active">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Property Management Track · Module 3 of 7</div>
+    <h1>Setting Up the Property and <em>Pricing Rent</em></h1>
+    <p>You have signed a new management agreement. Now what? Before a single applicant walks through the door, you need to ensure the property is ready, priced correctly, and legally set up. Price rent too high and the unit sits vacant. Price it too low and the owner loses money every month — and eventually loses confidence in you. This module gives you the systems to get both right.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>50–65 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+<div class="module-body">
+
+  <div class="path-callout ep" style="margin-bottom:2rem;border-radius:12px;padding:1.1rem 1.5rem;">
+    <span class="pc-tag">📍 Both Paths</span>
+    <p>This module covers the operational fundamentals of getting a property rent-ready and priced correctly. Whether you are an employee preparing properties for your employer's clients or an entrepreneur onboarding your own, every lesson here applies directly to your day-to-day work.</p>
+  </div>
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">7 things to do before you place <em>your first tenant</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Turner and Turner identify seven critical steps every property manager must complete before signing their first lease on a new property. These are not optional — they are the difference between a professional operation and an amateur one. Skipping any of them creates legal exposure, financial surprises, or operational chaos that is very hard to recover from once a tenant is in place.</p>
+    <div class="seven-things">
+      <div class="thing-item fade-in">
+        <div class="thing-num">1</div>
+        <div class="thing-content">
+          <h4>Set up a separate bank account for the property</h4>
+          <p>Every property — or at minimum every owner — needs its own bank account. Commingling funds from multiple properties or personal accounts is a bookkeeping nightmare, a tax headache, and in the case of security deposits, potentially illegal. For fewer than five properties, maintain separate accounts per property. As the portfolio grows, a single management account with meticulous bookkeeping per property is acceptable — but the separation from personal funds is always non-negotiable.</p>
+        </div>
+      </div>
+      <div class="thing-item fade-in">
+        <div class="thing-num">2</div>
+        <div class="thing-content">
+          <h4>Verify insurance is in place</h4>
+          <p>The property owner must carry adequate landlord insurance — not a standard homeowner's policy, which typically does not cover rental activity. Before you accept any tenant applications, confirm the owner has a current landlord or rental property policy in force. Also confirm the policy covers the property manager as an additionally insured party. This protects you if a tenant is injured and names you in a lawsuit.</p>
+        </div>
+      </div>
+      <div class="thing-item fade-in">
+        <div class="thing-num">3</div>
+        <div class="thing-content">
+          <h4>Establish a policy binder</h4>
+          <p>A policy binder documents how you run your operation: late fee policy, pet policy, smoking policy, maintenance request procedure, and your process for handling tenant move-outs. Having these decisions made in advance — in writing — does three things: it keeps you consistent (no on-the-fly decisions that contradict each other), it gives you a third party to reference when tenants push back ("our policy does not allow that"), and it makes your operation scalable when you add staff.</p>
+        </div>
+      </div>
+      <div class="thing-item fade-in">
+        <div class="thing-num">4</div>
+        <div class="thing-content">
+          <h4>Set up your bookkeeping system</h4>
+          <p>Before the first rent payment arrives, you need a system to receive it, record it, and account for it. Property management software (AppFolio, Buildium, Propertyware) handles this for most PM companies. At minimum, you need a way to track incoming rent, outgoing expenses, maintenance costs, and owner disbursements for each property separately. The time to build this system is before you need it — not during a late rent dispute or an owner's monthly reporting call.</p>
+        </div>
+      </div>
+      <div class="thing-item fade-in">
+        <div class="thing-num">5</div>
+        <div class="thing-content">
+          <h4>Confirm the property's legal compliance</h4>
+          <p>Is the property legally permitted for rental use? Does it have all required operating permits, certificates of occupancy, and local rental registrations? Many cities now require rental property registration or periodic inspections. A property manager who places tenants in a non-compliant unit can face personal liability. This is especially important if you are taking over a property from a previous owner or manager — do not assume compliance was maintained.</p>
+        </div>
+      </div>
+      <div class="thing-item fade-in">
+        <div class="thing-num">6</div>
+        <div class="thing-content">
+          <h4>Get to know the neighbors</h4>
+          <p>Turner and Turner recommend stopping by neighboring properties, introducing yourself, and giving the neighbors your contact information. Ask them to call you if they notice anything unusual about the property. Neighbors are one of the most valuable early-warning systems a property manager has — they see what is happening at the property when you are not there, and they have strong personal incentive to report problems (nobody wants a troubled rental next door).</p>
+        </div>
+      </div>
+      <div class="thing-item fade-in">
+        <div class="thing-num">7</div>
+        <div class="thing-content">
+          <h4>Document the property's current condition thoroughly</h4>
+          <p>Before a tenant moves in, conduct a detailed move-in inspection and document everything with photos and a written condition report. This is your baseline — the record against which you measure the property's condition at move-out. Without a thorough move-in inspection on file, you cannot legally make deductions from the security deposit for tenant damage. This documentation also protects you and the owner if a tenant disputes the condition at move-in. Take photos of every room, every appliance, every wall.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">What condition does the property need to be in — <em>and what is legally required?</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Every state in the US imposes a <strong>habitability standard</strong> on rental properties — a legal floor below which a landlord cannot rent. This is not a suggestion; it is a legal requirement. A tenant who moves into a property that does not meet the habitability standard has legal remedies including rent withholding, repair-and-deduct, and lease termination depending on the state. Your job as a property manager is to ensure every property you manage meets this standard before a tenant moves in.</p>
+    <h3 class="sub-title">Must-fix vs. market-competitive improvements</h3>
+    <div class="condition-grid fade-in">
+      <div class="condition-card must">
+        <div class="cc-tag">Must Fix — Habitability Required</div>
+        <h4>Structural integrity</h4>
+        <p>Roof, walls, floors, and foundation must be sound. No active leaks, structural damage, or collapse risk.</p>
+      </div>
+      <div class="condition-card must">
+        <div class="cc-tag">Must Fix — Habitability Required</div>
+        <h4>Working plumbing</h4>
+        <p>Hot and cold running water, functional toilets, no sewage backups, no significant leaks under sinks or behind walls.</p>
+      </div>
+      <div class="condition-card must">
+        <div class="cc-tag">Must Fix — Habitability Required</div>
+        <h4>Heating and cooling</h4>
+        <p>Functional heating system appropriate to the climate. Some states require air conditioning in specific climates. All systems must be operational at move-in.</p>
+      </div>
+      <div class="condition-card must">
+        <div class="cc-tag">Must Fix — Habitability Required</div>
+        <h4>Working electrical</h4>
+        <p>Functional outlets, no exposed wiring, proper grounding, working switches. No electrical hazards that create fire or shock risk.</p>
+      </div>
+      <div class="condition-card must">
+        <div class="cc-tag">Must Fix — Habitability Required</div>
+        <h4>Smoke and CO detectors</h4>
+        <p>Most states require working smoke detectors in each bedroom and hallway. Carbon monoxide detectors required in units with gas appliances or attached garages in most states.</p>
+      </div>
+      <div class="condition-card must">
+        <div class="cc-tag">Must Fix — Habitability Required</div>
+        <h4>Pest-free condition</h4>
+        <p>The unit must be delivered free of rodents, cockroaches, bedbugs, and other vermin. Pest infestations that existed before the tenant's occupancy are the landlord's legal responsibility.</p>
+      </div>
+      <div class="condition-card nice">
+        <div class="cc-tag">Market Competitive — Affects Rent & Vacancy</div>
+        <h4>Fresh paint and clean carpets</h4>
+        <p>Not legally required but dramatically affects how quickly a unit rents and at what price. A freshly painted unit with clean flooring rents faster and attracts better applicants.</p>
+      </div>
+      <div class="condition-card nice">
+        <div class="cc-tag">Market Competitive — Affects Rent & Vacancy</div>
+        <h4>Updated appliances and fixtures</h4>
+        <p>Modern appliances, updated light fixtures, and contemporary hardware allow you to command higher rents. The cost of upgrading often pays back in reduced vacancy time and higher monthly rent.</p>
+      </div>
+    </div>
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Vacancy Math on Property Condition</div>
+      <p>Griswold makes a counterintuitive point about property preparation: doing the work yourself to save money often costs more than hiring professionals. If your rental market is $50/day in rental income and painting yourself takes six days of evenings and weekends, you have "saved" $300 on painter fees while costing yourself $300 in vacancy income — and the professional would have finished in one day. Always calculate the cost of delay against the cost of the shortcut.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Sue Richie: How to <em>prepare a rental property</em> for new tenants</h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Sue Richie — an experienced property manager — walks through exactly how to prepare a rental property for a new tenant: the inspection checklist, what to repair vs. what to replace, how to think about the cost of preparation vs. the cost of vacancy, and how a well-prepared property sets the tone for the entire tenancy. Watch before Lesson 3.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/WFSbWyCz9rg" title="How to Prepare a Rental Property for New Tenants — Sue Richie" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Sue Richie · YouTube</span>
+        <h4>How to Prepare Your Rental Property for New Tenants</h4>
+        <p>Complete property preparation walkthrough — exterior curb appeal, deep cleaning standards, paint and flooring decisions, appliance checks, safety device verification (smoke detectors, CO detectors, locks), habitability checklist, move-in inspection documentation process, and how the quality of property preparation directly correlates with the quality of tenants who apply.</p>
+        <p class="credit">Sue Richie · Property management professional · YouTube</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">How to price rent accurately — <em>the two methods and how to use them together</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pricing rent is one of the most consequential decisions a property manager makes — and most beginners get it wrong in one direction or the other. Griswold names the core tension with precision: <strong>if your rent is too high, you'll have difficulty renting your vacant unit. If it's too low, you'll have plenty of tenants but not enough money to cover costs and generate a return.</strong> Finding the right number requires combining two methods: a market analysis and a return-on-investment calculation.</p>
+    <div class="method-cards fade-in">
+      <div class="method-card">
+        <div class="mc-tag primary">Method 1 — Primary</div>
+        <h4>Market Analysis (Comparable Rents)</h4>
+        <p>The most reliable way to price rent is to research what comparable properties in the same area are actually renting for. Comparable means similar: same bedroom count, similar square footage, similar amenities, similar location. The market does not care what the owner paid for the property or what they need to cover their mortgage — it prices based on supply and demand. Your job is to find where the market clears for this specific unit.</p>
+      </div>
+      <div class="method-card">
+        <div class="mc-tag secondary">Method 2 — Supporting</div>
+        <h4>Return on Investment Calculation</h4>
+        <p>Calculate what rent the owner needs to cover their costs: mortgage, taxes, insurance, maintenance, management fee, and a target profit. This gives you a floor — the minimum rent that makes the investment viable. If the market analysis shows comparable rents below this floor, the owner has a fundamental investment problem that rent pricing cannot solve. If the market supports rates above this floor, there is room to optimize.</p>
+      </div>
+    </div>
+    <h3 class="sub-title">How to conduct a market rent survey</h3>
+    <p class="lesson-text">Griswold recommends a systematic approach to comparable rent research — not just checking one website, but building a real picture of the local rental market from multiple sources:</p>
+    <div class="research-tools fade-in">
+      <div class="tool-item"><div class="ti-icon">🌐</div><div><strong>Online listing platforms</strong> — Zillow Rentals, Apartments.com, Rent.com, Facebook Marketplace, and Craigslist all show active listings with current asking rents. Search for units that match yours in bedroom count, bathrooms, and square footage within a 1–2 mile radius. Note both the asking rent and how long listings have been sitting — a unit listed for 30+ days is overpriced for the market.</div></div>
+      <div class="tool-item"><div class="ti-icon">📊</div><div><strong>Rentometer and ApartmentList</strong> — These tools aggregate market data and give you a range (low / median / high) for a specific address and unit type. Use them as a cross-check against your listing research, not as your sole source.</div></div>
+      <div class="tool-item"><div class="ti-icon">📞</div><div><strong>Call competing landlords directly</strong> — Griswold recommends calling as a prospective tenant to ask about available units. You learn the asking rent, what is included (utilities, parking, laundry), and how long the unit has been available. This intelligence is not available on any website. Alternatively, introduce yourself honestly as a property manager doing a market survey — most owners and managers will cooperate.</div></div>
+      <div class="tool-item"><div class="ti-icon">🚗</div><div><strong>Drive the neighborhood</strong> — Note For Rent signs, check vacancy levels at nearby apartment communities, and observe property conditions. A neighborhood with multiple vacant units is a soft market; one with no For Rent signs suggests strong demand. Griswold even suggests talking to mail carriers and shared vendors (like carpet cleaners) who service multiple properties — they know occupancy rates that no website will tell you.</div></div>
+      <div class="tool-item"><div class="ti-icon">📅</div><div><strong>Track recently rented units — not just active listings</strong> — An asking rent is not the same as a closing rent. Where possible, research what similar units actually rented for recently (not just what they were asking). Some PM software and data services provide this. A unit listed at $1,800 that sat for 45 days and rented at $1,700 tells you a lot more than the original asking price.</div></div>
+    </div>
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Overestimation Trap — Griswold's Most Common Beginner Mistake</div>
+      <p>Griswold identifies overestimating rental income as the most common and damaging mistake new property managers and investors make. It often comes from sellers or their agents using above-market rents, near-zero vacancy assumptions, and historical expenses (rather than projected ones) in their pro forma calculations. Always verify rental income projections against actual comparable rents — and build in a conservative vacancy allowance of at least one month per year. An optimistic rent estimate that never materializes destroys the owner's cash flow and eventually destroys their trust in you.</p>
+    </div>
+    <div class="path-callout op"><span class="pc-tag">🏢 Entrepreneur Path</span><p>When presenting a rental price recommendation to an owner-client, bring your market research in writing — screenshots from Zillow, Rentometer, and comparable listings. Owners who understand how you arrived at the number trust it. Owners who receive a number without supporting data often push back. Your market analysis is part of the professional value you are delivering.</p></div>
+<h3 class="sub-title">When to adjust rent — and how often</h3>
+    <p class="lesson-text">Rent pricing is not a set-it-and-forget-it decision. Markets move — sometimes quickly. A well-run property management operation reviews rents at every lease renewal against current market comparables, and raises rent when the market supports it. Griswold's conservative guidance: calculate your rental income at $50–$100 below full market rate to build in a buffer, and anticipate one month of vacancy per year in your financial projections. This is not pessimism — it is the discipline that keeps owners financially stable when markets soften.</p>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">4 free tools to <em>price your rental property</em> accurately</h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">This video walks through the four best free tools available for conducting a market rent analysis — how to use each one, what data each provides, and how to combine them into a defensible pricing recommendation you can present to a property owner with confidence. Watch before Lesson 4.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/pBtwJq_knIQ" title="4 Free Tools to Price Your Rental Property — YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">YouTube</span>
+        <h4>4 Free Tools to Price Your Rental Property Accurately</h4>
+        <p>Walkthrough of the four best free rent research tools: how to use Zillow Rental Manager's Rent Zestimate, Rentometer's market comparison tool, Apartments.com's rental pricing tool, and how to cross-reference active listings to build a data-supported rent recommendation. Includes how to present this research to a property owner in a way that builds confidence in your pricing judgment.</p>
+        <p class="credit">YouTube · Rental property pricing tools walkthrough</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The security deposit — <em>how to set it, hold it, and stay legal</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">The security deposit is one of the most legally regulated aspects of property management. Every state has specific rules about how much you can collect, where the funds must be held, how they must be accounted for, and under what circumstances you can make deductions. Violating security deposit law — even unintentionally — can result in the landlord owing the tenant double or triple the deposit amount in some states. This is not an area for guesswork.</p>
+    <div class="deposit-box fade-in">
+      <h4>What every property manager must know about security deposits</h4>
+      <ul>
+        <li><strong>State law sets the maximum deposit amount</strong> — most states cap security deposits at one to two months' rent. Some states have no cap. Know your state's limit before collecting anything.</li>
+        <li><strong>Deposits must be held in a separate trust account</strong> — commingling security deposit funds with operating funds or your personal account is illegal in most states, regardless of intent. The deposit is the tenant's money until it is legally forfeited or deducted.</li>
+        <li><strong>Some states require interest on deposits</strong> — certain states require landlords to hold deposits in interest-bearing accounts and pay that interest to the tenant at move-out. Check your state's specific requirement.</li>
+        <li><strong>Move-in inspection documentation is your legal protection</strong> — you can only deduct from a deposit for damage that exceeds normal wear and tear, and only for damage that occurred during the tenancy. Without a thoroughly documented move-in condition report with photos, you cannot prove what was pre-existing and what the tenant caused.</li>
+        <li><strong>Itemized deductions must be delivered on time</strong> — most states require the landlord to return the deposit (minus any itemized deductions) within 14–30 days of move-out. Missing the deadline — even by one day in some states — can forfeit your right to make any deductions, even if the tenant caused significant damage.</li>
+        <li><strong>Normal wear and tear cannot be deducted</strong> — carpet that has aged normally, paint that has faded over time, and minor scuffs from regular use are the landlord's responsibility. Only damage beyond normal wear and tear is deductible — and you must be able to document both the damage and the cost to repair it.</li>
+      </ul>
+    </div>
+    <h3 class="sub-title">How to set the right deposit amount</h3>
+    <p class="lesson-text">Turner and Turner recommend setting the security deposit at one month's rent in most circumstances — the standard in the majority of US markets. This amount provides meaningful financial protection while not pricing qualified tenants out of the application process. In markets where pets are permitted, a separate pet deposit (typically $200–$500 per pet) is appropriate and legally permitted in most states. Some managers charge a higher deposit for applicants with weaker credit — if your state permits this, confirm the maximum allowed amount and document the decision consistently to protect against Fair Housing concerns.</p>
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Security Deposit Law Varies Significantly by State — Verify Before You Collect</div>
+      <p>Security deposit regulations — maximum amounts, holding requirements, interest obligations, return deadlines, and allowable deductions — vary significantly by state and sometimes by city. Before collecting a single dollar of security deposit funds, look up your state's specific landlord-tenant statutes. Your state's attorney general website or NOLO's state-by-state landlord-tenant law guides are reliable starting points. NARPM membership also provides access to state-specific compliance resources.</p>
+    </div>
+  </div>
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 3 Key Takeaways</h3>
+    <ul>
+      <li>Seven things before placing any tenant: separate bank account, insurance confirmation (landlord policy, PM additionally insured), policy binder, bookkeeping system, legal compliance verification, neighbor introductions, and thorough move-in condition documentation with photos.</li>
+      <li>Every rental unit must meet the habitability standard — this is a legal requirement, not a suggestion. Structural integrity, working plumbing, functioning heat, safe electrical, smoke and CO detectors, and pest-free condition are the non-negotiable minimums before any tenant moves in.</li>
+      <li>The cost of delaying property preparation often exceeds the cost of the preparation itself. If your rental income is $50/day and painting yourself takes six days vs. one day for a professional, you have not saved money — you have spent it differently.</li>
+      <li>Price rent using a market analysis as the primary method: research comparable rents from active listings (Zillow, Apartments.com, Rentometer), call competing landlords, drive the neighborhood, and track recently rented units — not just asking rents. The market does not care what the owner paid for the property.</li>
+      <li>Overestimating rental income is the most common and damaging beginner mistake. Build in a conservative vacancy allowance of at least one month per year and calculate rental income at $50–$100 below full market rate. This discipline protects the owner when markets soften.</li>
+      <li>Security deposits are heavily regulated by state law — maximum amounts, holding requirements, interest obligations, return deadlines, and allowable deductions all vary by state. Verify your state's specific rules before collecting a single dollar. Violations can result in penalties of double or triple the deposit amount.</li>
+      <li>A thorough move-in condition report with photos is your legal protection at move-out. Without it, you cannot prove what damage the tenant caused versus what was pre-existing — and you cannot legally make deductions from the deposit.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A property owner tells you they can get $2,000/month in rent based on what they need to cover their mortgage, taxes, and insurance. Your market research shows comparable units are renting for $1,700–$1,750. What do you recommend — and why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Price at $2,000 — the owner needs this amount and good marketing can overcome the premium</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Price at $1,700–$1,750 based on the market analysis, and have an honest conversation with the owner. The market does not care what the owner needs to cover costs — it prices based on supply and demand. Pricing above market will result in extended vacancy, which costs far more than the difference between $1,750 and $2,000. If the market cannot support the owner's financial requirements, that is an investment problem — not a pricing problem you can solve by asking more than the market supports.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Price at $1,850 as a compromise — slightly above market but not as high as the owner wants</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> List at $2,000 and reduce in 2-week increments until you receive applications</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. You take over management of a property. The previous manager never did a move-in inspection and there is no documentation of the unit's condition when the current tenant moved in 18 months ago. The tenant is now moving out and there is significant carpet damage. What is your problem?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> You need to hire a professional carpet inspector to assess the damage before making any deduction</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Without a documented move-in condition report, you cannot prove the carpet damage occurred during the tenancy rather than before it. The tenant can claim the carpet was already damaged when they moved in — and you have no evidence to the contrary. In most states this means you cannot legally deduct for the damage, regardless of what you believe happened. This is exactly why thorough move-in documentation is non-negotiable before every tenancy.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> You can deduct the full carpet replacement cost since visible damage is self-evident proof</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Get statements from neighbors about the carpet's condition before the tenant moved in</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A tenant moves out and leaves the unit with minor scuffs on walls, carpet that is 4 years old and shows normal aging, and one broken window blind. Which of these can you legally deduct from the security deposit?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> All three — any damage beyond move-in condition is the tenant's financial responsibility</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> The carpet and the broken blind — the scuffs are cosmetic and not deductible</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Only the broken window blind — it represents actual damage beyond normal wear and tear. Minor wall scuffs from regular use are normal wear and tear and are the landlord's responsibility. Four-year-old carpet showing normal aging is also normal wear and tear — carpet has a typical lifespan of 5–7 years and normal aging is not a deductible damage. Only damage that goes beyond normal use can be deducted from the security deposit.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> None — all three qualify as normal wear and tear for a 4-year tenancy</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Which of the following is a habitability requirement that must be met before placing any tenant — not just a market-competitive improvement that affects rent and vacancy rates?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Fresh paint throughout the unit</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Updated appliances and modern light fixtures</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> Working smoke and carbon monoxide detectors — these are legally required in most US states and are a habitability requirement, not a market-competitive upgrade. Placing a tenant in a unit without functioning smoke detectors exposes the landlord and property manager to significant legal liability. Fresh paint and updated appliances improve a unit's marketability and rent potential, but they are not legal requirements for habitation.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Clean carpets and professionally cleaned unit</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Griswold recommends building in a vacancy allowance of at least one month per year when projecting rental income for an owner. A colleague says this is overly conservative — if you do your job well, vacancy should be near zero. Who is right?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Your colleague — a skilled property manager should target 95%+ occupancy and plan accordingly</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> Griswold — the vacancy allowance is not pessimism, it is financial discipline. Even in strong markets, tenant turnover creates vacancy between leases, units need preparation time between tenants, and markets do soften unexpectedly. An owner who budgets for zero vacancy and then experiences two months of turnover vacancy is in financial trouble. Griswold also suggests calculating rental income at $50–$100 below full market rate. These conservative assumptions are what keep owners financially stable and keep them from blaming you when reality falls short of their projections.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> Neither — vacancy planning should be market-specific, not a fixed one-month standard</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Your colleague for newer properties, Griswold for older ones — vacancy risk increases with property age</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Book on Managing Rental Properties</div>
+          <div class="bi-author">Brandon Turner & Heather Turner</div>
+          <div class="bi-desc">Chapter 3 (7 things to do before signing your first lease, property condition, how much to rent for, and security deposit fundamentals). The most actionable chapter-level treatment of property setup for new managers.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=book+on+managing+rental+properties+brandon+turner&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Property Management Kit for Dummies</div>
+          <div class="bi-author">Robert Griswold</div>
+          <div class="bi-desc">Chapter 5 (getting your rental property ready for prospective tenants) and Chapter 6 (The Big Three — rent, security deposits, and rental contracts). Griswold's two-method rent pricing framework and security deposit guidance are the foundation of Lessons 3 and 4.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=property+management+kit+for+dummies+griswold&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 4: Finding Great Tenants</h3>
+    <p>The property is ready. The rent is set. Now it is time to find the right tenant — and this is where property managers earn their fee. Module 4 covers the complete tenant acquisition process: how to write a compelling listing, where to advertise, how to pre-screen applicants before they waste your time, how to run background and credit checks, and how to select the best qualified applicant in full compliance with Fair Housing law.</p>
+    <a href="pm-module-4.html" class="next-module-cta">Module 4: Finding Great Tenants →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="pm-module-2.html" class="btn btn-outline">← Module 2: Building Your Client Base</a>
+  <div class="module-nav-info">
+    <p>Property Management Track</p>
+    <strong>Module 3 of 7</strong>
+  </div>
+  <a href="pm-module-4.html" class="btn btn-gold">Module 4: Finding Great Tenants →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! The market does not care what the owner needs to cover their costs. Market analysis is the primary pricing method — and if comparables are at $1,700–$1,750, pricing at $2,000 will result in extended vacancy that costs the owner far more than the $250–$300 monthly difference. An honest conversation with the owner about market reality is part of your job as a professional property manager. If the market cannot support their financial requirements, that is an investment problem — not something rent pricing can solve.",incorrect:"Not quite. Market analysis is the primary method for pricing rent — not the owner's cost requirements. If comparable units are renting at $1,700–$1,750, pricing at $2,000 will cause extended vacancy. Extended vacancy is almost always more expensive than the monthly difference between market rate and the owner's desired rent. Your job is to present the market data clearly and have an honest conversation about realistic income expectations."},
+  q2:{correct:"Correct! Without a move-in condition report documenting the unit's state when the tenant moved in, you cannot prove the carpet damage occurred during the tenancy. The tenant can legitimately claim the carpet was already damaged — and you have no evidence to contradict them. In most states, the burden of proof is on the landlord to show the damage occurred during the tenancy. This is precisely why thorough move-in documentation with photos is the non-negotiable first step before every tenancy.",incorrect:"Not quite. The core problem here is the absence of move-in documentation. Without a documented baseline condition at move-in, you cannot legally prove any damage was caused by the tenant. The tenant can claim the carpet was already damaged when they moved in — and you have no evidence to the contrary. Most states put the burden of proof on the landlord when making security deposit deductions. No documentation = no defensible deduction."},
+  q3:{correct:"Correct! Only the broken window blind qualifies as damage beyond normal wear and tear and is deductible. Minor wall scuffs from regular daily living are normal wear and tear — the landlord's responsibility. Four-year-old carpet showing normal aging is also normal wear and tear. Carpet has a typical lifespan of 5–7 years and normal deterioration from regular use is expected and not deductible. Security deposit deductions are only legally permitted for damage that goes beyond normal wear and tear.",incorrect:"Not quite. Only the broken window blind is deductible. Minor wall scuffs from regular use and normally aged carpet are both classified as normal wear and tear — the landlord's responsibility, not the tenant's. Security deposit law in every US state distinguishes between normal wear and tear (landlord's responsibility) and damage (tenant's responsibility and deductible). Carpet that has aged normally over 4 years of regular use falls firmly into the wear and tear category."},
+  q4:{correct:"Correct! Working smoke and carbon monoxide detectors are legally required in most US states before any tenant occupies a unit — this is a habitability requirement, not a market-competitive upgrade. Fresh paint, updated appliances, and clean carpets improve marketability and can support higher rents, but they are not legal requirements for habitation. A property manager who places a tenant in a unit without functioning smoke detectors creates serious legal liability for themselves and the owner.",incorrect:"Not quite. Fresh paint, updated appliances, and clean carpets are market-competitive improvements that affect rent price and vacancy time — but they are not legal habitability requirements. Working smoke and carbon monoxide detectors are legally required in most US states before a unit can be occupied. This is a non-negotiable habitability standard. Placing a tenant in a unit without functioning detectors creates significant legal liability."},
+  q5:{correct:"Correct! Griswold's conservative vacancy allowance is financial discipline, not pessimism. Even the best property managers experience vacancy during tenant turnover — units need time for inspection, cleaning, and preparation between tenants. Markets do soften. Tenants break leases unexpectedly. An owner who budgets for zero vacancy and then experiences two months of turnover vacancy faces a financial shortfall they were not prepared for. Building in a vacancy allowance and calculating income slightly below full market rate protects the owner's financial planning and protects your professional relationship with them when real-world results fall short of optimistic projections.",incorrect:"Not quite. Griswold's conservative vacancy assumption is sound financial management, not excessive pessimism. Even in strong markets with excellent management, tenant turnover creates vacancy between leases — units need preparation time, inspections, cleaning, and advertising. Markets soften unexpectedly. Building in a one-month vacancy allowance and calculating income $50–$100 below full market rate protects the owner's financial stability and ensures their actual results meet or exceed their expectations."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;}
+    else{ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}}
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){scoreEl.className='score-result show pass';scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong grasp of property setup and rent pricing fundamentals. Ready for Module 4: Finding Great Tenants.';}
+  else{scoreEl.className='score-result show fail';scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the rent pricing methodology and security deposit rules — these protect both you and your owner-clients from costly mistakes.';}
+}
+</script>
+</body>
+</html>

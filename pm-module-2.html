@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Module 2: Building Your Client Base — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#2C3E6B;--teal-mid:#3D5490;--teal-light:#5470B0;--teal-pale:#EDF0F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --slate:#4A5568;--slate-light:#718096;--slate-pale:#EDF2F7;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(44,62,107,0.1);
+  --shadow-card:0 2px 16px rgba(44,62,107,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:28%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Eight attributes */
+.eight-attrs{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.attr-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.attr-card .ac-num{font-size:10px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.attr-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.attr-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Self vs hire */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;}
+.compare-card.self{background:var(--teal-pale);border:1px solid rgba(13,92,99,0.2);}
+.compare-card.hire{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.compare-card.self h4{color:var(--teal);}
+.compare-card.hire h4{color:#8A6A20;}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.compare-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.compare-card.self ul li::before{content:'✓';color:var(--teal-mid);font-weight:700;flex-shrink:0;}
+.compare-card.hire ul li::before{content:'✓';color:#8A6A20;font-weight:700;flex-shrink:0;}
+/* Task list */
+.task-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin:2rem 0;}
+.task-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.85rem;font-size:12.5px;color:var(--text-mid);line-height:1.4;}
+/* Career paths */
+.career-paths{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.career-path{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.career-path .cp-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+.career-path .cp-content h4{font-size:0.9rem;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.career-path .cp-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .eight-attrs{grid-template-columns:1fr;}
+  .compare-grid{grid-template-columns:1fr;}
+  .task-grid{grid-template-columns:1fr 1fr;}
+}
+
+.steps{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
+.step{display:flex;gap:1.25rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;}
+.step-num{width:36px;height:36px;border-radius:50%;background:var(--teal);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.step-content h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.step-content p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.fee-table{width:100%;border-collapse:collapse;margin:2rem 0;background:var(--white);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-card);}
+.fee-table th{background:var(--teal);color:var(--white);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;padding:0.85rem 1.25rem;text-align:left;}
+.fee-table td{padding:0.85rem 1.25rem;font-size:13.5px;color:var(--text-mid);border-bottom:1px solid var(--border);}
+.fee-table tr:last-child td{border-bottom:none;}
+.fee-table tr:nth-child(even) td{background:var(--teal-pale);}
+.fee-table td strong{color:var(--text-dark);}
+.checklist{display:flex;flex-direction:column;gap:0.6rem;margin:1.5rem 0;}
+.check-item{display:flex;gap:10px;align-items:flex-start;padding:0.7rem 1rem;background:var(--white);border:1px solid var(--border);border-radius:10px;font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.check-item .ci-icon{color:var(--teal-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
+.referral-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin:2rem 0;}
+.referral-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:1rem 1.1rem;}
+.referral-card .ref-icon{font-size:1.5rem;margin-bottom:0.4rem;}
+.referral-card h4{font-size:0.85rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.referral-card p{font-size:12px;color:var(--text-mid);line-height:1.5;}
+@media(max-width:640px){.referral-grid{grid-template-columns:1fr 1fr;}.fee-table{font-size:12px;}}
+
+.path-callout{border-radius:10px;padding:0.85rem 1.1rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;}
+.path-callout.ep{background:var(--teal-pale);border-left:3px solid var(--teal-mid);}
+.path-callout.op{background:var(--gold-pale);border-left:3px solid var(--gold);}
+.path-callout .pc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+.path-callout.ep .pc-tag{color:var(--teal-mid);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.path-callout p{color:var(--text-mid);margin:0;}
+.ep-tag{color:var(--teal);font-weight:700;}
+.op-tag{color:#8A6A20;font-weight:700;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="property-management.html">Property Management Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="property-management.html">Property Management Track</a><span class="sep">›</span>
+  <span class="current">Module 2: Building Your Client Base</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">PM Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="pm-module-1.html" class="prog-dot complete">1</a>
+    <div class="prog-dot active">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Property Management Track · Module 2 of 7</div>
+    <h1>Building Your <em>Client Base</em></h1>
+    <p>A property management business without clients is not a business — it is a business plan. This module covers everything between having zero properties under management and having a sustainable, growing client base: how to get your first owners, how to price your services, what belongs in a management agreement, and how to build the referral network that does your marketing for you over time.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>55–70 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- DUAL PATH NOTE -->
+  <div class="path-callout ep" style="margin-bottom:2rem;border-radius:12px;padding:1.1rem 1.5rem;">
+    <span class="pc-tag">📍 Both Paths</span>
+    <p><strong>Employee path:</strong> This module shows you how the company you work for wins and keeps clients, structures its fees, and uses management agreements — understanding this makes you a more valuable team member and prepares you for leadership. <strong>Entrepreneur path:</strong> This is your core business development playbook. Every lesson here directly drives your company's revenue and growth.</p>
+  </div>
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Getting your first clients — <em>the proven day-one playbook</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Ken McElroy learned one of his first business lessons managing a 50-unit Seattle portfolio in the 1980s: <strong>if you cannot pay for yourself, you are expendable.</strong> He was collecting 6–10% management fees on $400/month rents — roughly $1,600/month total — while his car phone and gasoline alone cost $1,000/month. The math was brutal. The lesson was permanent: growing your door count fast is not optional. It is survival.</p>
+    <p class="lesson-text">Bob Preston built North County Property Group to 700+ doors over 15 years. Looking back, he identifies the fastest path to a first client base: <strong>slow down long enough to get a bird's eye view before jumping in</strong>, then execute a tight launch sequence. Here is what works:</p>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Get your online presence live before you contact anyone</h4>
+          <p>A website is the bare minimum proof that you are a real business. It does not need to be elaborate — it needs to exist and look professional. Bob Preston built his from a spare bedroom before his first outreach call. Set up your Google Business Profile the same day and begin collecting reviews immediately. Reviews build credibility before you have a track record.</p>
+        </div>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Email your entire personal network on day one</h4>
+          <p>Bob Preston's actual day-one move was emailing everyone he knew to say he had just started a property management company. Not a polished campaign — a personal email to friends, former colleagues, neighbors, and family. Anyone who owns a rental property, knows someone who does, or works with real estate investors is a potential referral source. Do this before any paid advertising.</p>
+        </div>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Network directly with Realtors — they are your best referral source</h4>
+          <p>Real estate agents regularly work with investors who purchase rental properties and immediately need a property manager. Attend broker caravans — the weekly events where agents tour properties on the market. Show up, introduce yourself and your company, leave your card, and build relationships one agent at a time. Bob Preston built a network of 500 Realtors this way. Consider offering a referral fee for every signed management agreement — it makes the relationship financially concrete.</p>
+        </div>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Get 15 clients and prove the concept before scaling</h4>
+          <p>Bob Preston's year-one target was not 100 doors — it was 15 clients. Enough to prove the concept, generate real revenue, and validate the business model in his market. Chasing scale before your systems are solid creates operational chaos. Serve 15 clients exceptionally well, ask for referrals, and build from there. A 15-door reputation that is airtight is worth more than 50 doors held together by duct tape.</p>
+        </div>
+      </div>
+      <div class="path-callout op"><span class="pc-tag">🏢 Entrepreneur Path</span><p>Steps 1–4 above are your startup launch sequence. If you are on the employee path and working for an existing firm, your employer has already done most of this — your job is to understand how it works and contribute to it. Ask your manager about the firm's client acquisition strategy and how referrals come in. This knowledge will serve you when you are ready to move up or branch out.</p></div>
+<div class="step fade-in">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Join NARPM from day one</h4>
+          <p>The National Association of Residential Property Managers is the professional community for residential property managers. Bob Preston says not joining immediately was one of his biggest early mistakes. NARPM provides networking with other PM professionals (including those who refer overflow business), education on best practices, access to vetted lease forms, legal updates, and credentialing. Local chapters meet regularly in most cities.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Why Google Ads Will Hurt You at This Stage</div>
+      <p>Google Ads seems like the obvious first marketing move. But in property management the bidding system is brutal — the low barrier to entry means many PM companies compete on the same keywords, driving cost-per-click very high. Worse, far more tenants than owners search Google for PM-related terms, meaning a large portion of your budget goes to clicks from people who will never hire you. Bob Preston spent thousands per month on Google Ads and got almost nothing from it. The better early investment: build your organic Google presence through reviews, local SEO, and referral relationships. Organic leads are higher quality and have often already decided to hire you by the time they call.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Upkeep Media: How to market your property management company <em>and win clients</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Upkeep Media — a marketing agency that specializes exclusively in property management companies — breaks down exactly how PM businesses should be building their client pipeline. This is the operational marketing playbook: what channels work, what does not, and how to build a lead generation system that grows without constantly feeding it. Watch before Lesson 2.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/IpQUhmGGzic" title="How to Market Your Property Management Company — Upkeep Media" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Upkeep Media · YouTube</span>
+        <h4>How to Market Your Property Management Company and Win More Clients</h4>
+        <p>Building an online presence that converts, Google Business Profile optimization and review strategy, why reviews are your most powerful early credibility tool, how to build Realtor referral networks systematically, content marketing for PM companies, website conversion optimization, and the key difference between tactics that generate leads at scale versus tactics that work best in the first 12 months of a new PM company.</p>
+        <p class="credit">Upkeep Media · Property management marketing specialists · YouTube</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">How to price your services — <em>fees, structures, and the ancillary income model</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pricing is where most new property management companies make their most expensive mistake. They set a management fee percentage, assume it will cover their costs, and discover two years in — as Bob Preston did — that the math does not work. The management fee is not the business model. It is one component of the business model.</p>
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Bob Preston — North County Property Group</div>
+      <p>"I wasted a couple years of active time I could have corrected had I listened to my NARPM friends earlier. The management fee alone isn't going to cut it. We eventually developed a model where the management fee represented about 50% of revenue — the rest had to come from ancillary income."</p>
+      <div class="quote-attr">On the profitability lesson that costs most new PM companies two years to learn</div>
+    </div>
+    <div class="path-callout ep"><span class="pc-tag">🧑‍💼 Employee Path</span><p>Even if you are not setting fees yourself, understanding fee structures makes you a more credible employee. When owners ask why certain fees exist, you can explain the rationale confidently. When you are promoted to a client-facing role, you will be expected to discuss pricing fluently. Learn this now.</p></div>
+<h3 class="sub-title">The two basic fee structures</h3>
+    <table class="fee-table fade-in">
+      <tr><th>Fee Structure</th><th>How It Works</th><th>Typical Range</th><th>Best For</th></tr>
+      <tr><td><strong>Percentage of Rent</strong></td><td>PM earns a percentage of monthly rent collected. Fee only applies when rent is collected — incentivizes keeping units occupied and collecting on time.</td><td>8–12% of monthly rent collected</td><td>Most markets; aligns PM and owner incentives well</td></tr>
+      <tr><td><strong>Flat Fee</strong></td><td>Fixed monthly dollar amount regardless of rent level. Predictable for the owner; can misalign incentives if PM earns the same whether unit is occupied or not.</td><td>$100–$200/month depending on market</td><td>Some California markets; higher-end properties</td></tr>
+      <tr><td><strong>Tiered / Good-Better-Best</strong></td><td>Multiple service tiers at different price points. Basic tier is lean; premium tier includes more services bundled in. Increasingly common.</td><td>Varies by tier — typically 6–15%</td><td>PM companies wanting to serve a range of owner types</td></tr>
+    </table>
+    <h3 class="sub-title">The ancillary income model — the other 50%</h3>
+    <p class="lesson-text">Beyond the management fee, professional PM companies generate revenue through a range of additional services. These are not add-ons — they are legitimate charges for real work that the management fee alone does not cover:</p>
+    <div class="checklist fade-in">
+      <div class="check-item"><div class="ci-icon">📋</div><div><strong>Leasing fee</strong> — Charged when a new tenant is placed. Typically one month's rent or 50–75% of first month's rent. Covers advertising, showings, screening, and lease execution.</div></div>
+      <div class="check-item"><div class="ci-icon">🔄</div><div><strong>Lease renewal fee</strong> — Charged when an existing tenant renews. Typically $150–$300. Covers lease preparation, updated terms negotiation, and renewal administration.</div></div>
+      <div class="check-item"><div class="ci-icon">🔍</div><div><strong>Property inspection fee</strong> — Charged for move-in, move-out, and mid-tenancy inspections. Typically $75–$150 per inspection. Inspections protect the owner's investment and take real time.</div></div>
+      <div class="check-item"><div class="ci-icon">🔧</div><div><strong>Maintenance coordination fee</strong> — A markup on contractor invoices (typically 10–15%) for coordinating, supervising, and quality-checking repair work. The PM's time managing contractors has real value.</div></div>
+      <div class="check-item"><div class="ci-icon">⚠️</div><div><strong>Late fee income (PM's share)</strong> — Your management agreement should specify what portion of late fees the PM retains as compensation for the additional work of late rent follow-up. If all late fees go to the owner, the PM has no financial incentive to aggressively pursue late payments.</div></div>
+      <div class="check-item"><div class="ci-icon">📄</div><div><strong>Eviction coordination fee</strong> — A flat fee (typically $200–$500) for coordinating the legal process, managing communication with the eviction attorney, and handling the operational side of eviction.</div></div>
+    </div>
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Know Your Market Before Setting Prices</div>
+      <p>Fee structures vary significantly by city and region. Before finalizing your pricing, research at least 5–10 competitors in your specific market — visit their websites, call as a prospective client, and understand exactly what they charge for each service. Some markets are dominated by flat-fee models. Some have strong percentage-based norms. You cannot price competitively without knowing what competitive means in your market.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">DoorLoop: Property management fees — <em>what to charge and how to structure them</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">DoorLoop breaks down the full spectrum of property management fees — what they are, how they are structured, and how to build a fee model that is competitive while ensuring your business is actually profitable. Watch before Lesson 3.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/BMhT-kLD9p0" title="Property Management Fees Explained — DoorLoop" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">DoorLoop · YouTube</span>
+        <h4>Property Management Fees: What to Charge and How to Structure Them</h4>
+        <p>Complete breakdown of management fee structures (percentage vs. flat vs. tiered), leasing fees, renewal fees, vacancy fees, maintenance fees, inspection fees, late payment fees, eviction fees, how to research what competitors charge in your market, and how to build a fee schedule that is transparent to owners, competitive, and sustainable for your business.</p>
+        <p class="credit">DoorLoop · Property management software and education · YouTube</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The property management agreement — <em>what it must contain and what to watch out for</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">The property management agreement is the legal foundation of every client relationship. It spells out exactly what you are responsible for, what you are paid, and what happens when things go wrong. Robert Griswold is emphatic: <strong>the management agreement is a pivotal document.</strong> From the PM company's perspective, it must protect you. From the owner's perspective, it must be transparent and fair.</p>
+    <div class="path-callout ep"><span class="pc-tag">🧑‍💼 Employee Path</span><p>You will work under the management agreements your employer has signed. Knowing what those agreements contain — maintenance authorization limits, termination clauses, reporting requirements — helps you do your job correctly and protect your employer from liability. Ask to read a sample management agreement in your first week at any PM company.</p></div>
+<h3 class="sub-title">What every property management agreement must include</h3>
+    <div class="checklist fade-in">
+      <div class="check-item"><div class="ci-icon">✓</div><div><strong>Scope of services</strong> — An explicit list of what the PM is responsible for and what falls outside the agreement. Vague scope is the source of most owner-PM conflict. Be specific about what is and is not included.</div></div>
+      <div class="check-item"><div class="ci-icon">✓</div><div><strong>Management fee and all additional fees</strong> — Every fee must be named, defined, and quantified. No surprises. Griswold notes that many standard agreements give the PM all late fees and screening fees — decide whose money those are before signing.</div></div>
+      <div class="check-item"><div class="ci-icon">✓</div><div><strong>Maintenance authorization limit</strong> — The dollar threshold below which the PM can authorize repairs without owner approval. Typical range is $200–$500. Above this threshold, owner approval is required unless it is a genuine emergency.</div></div>
+      <div class="check-item"><div class="ci-icon">✓</div><div><strong>Termination clause</strong> — Either party should be able to cancel the agreement with 30 days written notice without cause. Griswold is explicit: never sign a contract that cannot be terminated with reasonable notice. A company that earns its position month-to-month stays motivated.</div></div>
+      <div class="check-item"><div class="ci-icon">✓</div><div><strong>Reporting requirements</strong> — How often financial reports are produced, what they contain, and how they are delivered. Monthly is the standard. Owners have a right to know what is happening with their investment at all times.</div></div>
+      <div class="check-item"><div class="ci-icon">✓</div><div><strong>Trust account handling</strong> — How tenant funds (security deposits and rent) are held, in what type of account, and how disbursements to the owner are made and timed. Trust accounting is legally required in most states.</div></div>
+      <div class="check-item"><div class="ci-icon">✓</div><div><strong>Owner obligations</strong> — What the owner is responsible for: maintaining adequate insurance, funding a maintenance reserve, disclosing known property issues, and responding to PM requests within a reasonable timeframe.</div></div>
+    </div>
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ The Confusing Language Red Flag</div>
+      <p>Griswold identifies a key warning sign when reviewing any management agreement: if the other party refuses to clarify ambiguous language or explain exactly what services are included for the fee, treat that as a signal. A property manager who will not be transparent about their agreement before you sign will not be transparent about your investment after you sign. Clear, plain-language agreements are a mark of a professional PM company.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Building a referral network that <em>grows your doors over time</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">The most sustainable property management businesses are built on referrals — not advertising. Once you have your first 15–20 clients and you are serving them at a high level, your reputation begins to do the work. But referrals do not happen automatically — they happen when you have systematically built relationships with the people most likely to send you business.</p>
+    <h3 class="sub-title">Your six highest-value referral channels</h3>
+    <div class="referral-grid fade-in">
+      <div class="referral-card">
+        <div class="ref-icon">🏡</div>
+        <h4>Real Estate Agents</h4>
+        <p>Every agent who works with investors is a referral pipeline. When an investor client buys a rental, the agent they trust is the first person they ask for a PM recommendation. Attend broker caravans, offer referral fees, and stay top of mind consistently.</p>
+      </div>
+      <div class="referral-card">
+        <div class="ref-icon">🏦</div>
+        <h4>Mortgage Brokers</h4>
+        <p>Lenders who work with investors see rental property purchases before the agent does. A broker who just closed a loan on a rental property has a client who needs a property manager right now. Build these relationships.</p>
+      </div>
+      <div class="referral-card">
+        <div class="ref-icon">⚖️</div>
+        <h4>Real Estate Attorneys</h4>
+        <p>Attorneys who work with real estate investors regularly refer clients to trusted PM companies. One strong relationship with a busy real estate attorney can generate consistent referrals for years.</p>
+      </div>
+      <div class="referral-card">
+        <div class="ref-icon">🧑‍💼</div>
+        <h4>CPAs and Financial Advisors</h4>
+        <p>Accountants who work with investors often advise clients who are considering rental properties or already own rentals being self-managed. A CPA who trusts you sends you clients at the exact moment they are ready to hire a professional manager.</p>
+      </div>
+      <div class="referral-card">
+        <div class="ref-icon">🏘️</div>
+        <h4>Current Clients</h4>
+        <p>Your existing owner-clients are your most credible referral source. Investors talk to other investors. Systematize asking for referrals — do not assume satisfied clients will think to mention you unprompted.</p>
+      </div>
+      <div class="referral-card">
+        <div class="ref-icon">🤝</div>
+        <h4>Investor Meetups</h4>
+        <p>Real Estate Investor Associations meet monthly in most cities and are filled with active investors who own or are planning to own rental properties. Attending consistently and contributing real knowledge builds referral relationships over time.</p>
+      </div>
+    </div>
+    <div class="path-callout ep"><span class="pc-tag">🧑‍💼 Employee Path</span><p>Referral networks are not just for business owners. Every relationship you build — with Realtors, contractors, attorneys, and current tenants — contributes to your professional reputation and your employer's pipeline. The most valuable employees in any PM company are the ones who bring in business and earn trust in the market. Start building your network from day one, regardless of which path you are on.</p></div>
+<h3 class="sub-title">The niching advantage</h3>
+    <p class="lesson-text">Bob Preston built his entire business on a geographic niche — North County San Diego — rather than competing across all of San Diego. The advantage was not just less competition. It was expertise: knowing local ordinances, rental rate trends, which contractors serve the area, which tenants move in specific seasons. That local expertise becomes a credible reason for investors to choose you over a larger company that manages everywhere.</p>
+    <p class="lesson-text">Ken McElroy makes the same point: he owns property in Oklahoma and deliberately does not use his own company to manage it, because his company specializes in Arizona. <strong>Local knowledge is not just helpful in property management — it is the product.</strong> The PM who specializes in a specific geography or property type will outperform the generalist, even at smaller scale.</p>
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Niche Selection Framework</div>
+      <p>Ask yourself three questions: Where do I have genuine local knowledge and existing relationships? Where is competition thin enough that I can become the recognized expert? What type of property or investor am I most energized to serve? The intersection of those three answers is your niche. Bob Preston chose coastal North County San Diego because he lived there, knew the micro-markets, and saw that no one was focused specifically on higher-end properties in that area. That niche produced a multi-seven-figure company exit 15 years later.</p>
+    </div>
+  </div>
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 2 Key Takeaways</h3>
+    <ul>
+      <li>The fastest path to first clients: website live, email your entire personal network, network with Realtors at broker caravans, target 15 proof-of-concept clients before scaling. These steps cost almost nothing and work faster than any paid advertising at the early stage.</li>
+      <li>The management fee alone will not sustain your business. Bob Preston learned this over two years. Target 50% management fee revenue / 50% ancillary income — leasing fees, renewal fees, inspection fees, maintenance markups, and eviction coordination fees are the other half of your business model.</li>
+      <li>Research your local market's fee norms before setting prices. Call competitors, visit their websites, and understand the pricing landscape in your specific market. What is standard in Phoenix is not standard in Miami.</li>
+      <li>Your management agreement must explicitly define: scope of services, all fees, maintenance authorization limits, termination rights (30-day notice, no cause required), reporting requirements, trust account handling, and owner obligations. Vague agreements create conflict. Clear agreements create trust.</li>
+      <li>Never sign — or offer — a management contract that cannot be canceled with reasonable written notice. A company that earns its position month-to-month is motivated to perform.</li>
+      <li>Your six highest-value referral channels: real estate agents, mortgage brokers, real estate attorneys, CPAs, current clients, and investor meetups. Build these relationships deliberately — they compound over time in a way paid advertising never does.</li>
+      <li>Geographic or property-type niching is a competitive advantage, not a limitation. Local expertise — knowing the micro-market, local ordinances, right contractors, seasonal patterns — is the product you are selling. Specialists command more trust and higher fees than generalists.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. Bob Preston says the management fee alone will not sustain a property management business. What target ratio did he eventually develop between management fee revenue and ancillary income?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> 80% management fees / 20% ancillary — the fee is the primary revenue driver</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> 50% management fees / 50% ancillary income — the management fee is one component of the model, not the whole model</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> 30% management fees / 70% ancillary — ancillary fees are the primary profit driver</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> 65% management fees / 35% ancillary — fees cover costs and ancillary income provides the margin</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. You are launching a property management company. A colleague suggests immediately running Google Ads. Based on what Bob Preston learned — and the structural reason behind it — what is the correct response?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Run Google Ads but target carefully with specific keywords to avoid the problems Bob experienced</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Google Ads are fine if you have the budget — Bob's issue was his budget was too small</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Avoid at the early stage — the low barrier to entry means many PM companies bid on the same keywords (high cost-per-click), and far more tenants than owners search Google for PM-related terms (most clicks will never hire you). Focus on organic SEO, reviews, and referral networks first.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Google Ads are useful for brand awareness — the exposure is worth the cost even if direct leads are limited</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A property owner asks you to sign a 2-year management agreement that can only be terminated for cause. What should you do?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Sign it — a long-term commitment gives the PM company stability to invest in the property relationship</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Decline or negotiate — either party should be able to cancel with 30 days written notice without cause. A company that can only be fired for cause has no incentive to perform month-to-month. If the owner wants minimum term protection, negotiate an early termination fee that is waived after a set period instead.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Sign it for new relationships only — once you have proven yourself you can negotiate better terms at renewal</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Sign it but add a clause requiring 6 months notice rather than for-cause termination as a compromise</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Which ancillary fee type best compensates the property manager for the additional administrative work created specifically by a tenant's failure to pay rent on time?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Leasing fee — covers the cost of finding a replacement tenant if the non-paying tenant must be evicted</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Maintenance coordination fee — covers the cost of preparing the unit if the tenant damages it before leaving</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> Late fee income (PM's share) — the management agreement should specify that the PM retains a portion of late fees collected, compensating them for the extra work of following up on late rent, serving notices, and managing the non-payment process. Giving all late fees to the owner removes the PM's financial incentive to pursue late payments aggressively.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Inspection fee — covers the cost of checking property condition during the non-payment period</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Bob Preston focused exclusively on North County San Diego. Ken McElroy deliberately does NOT use his own PM company to manage his Oklahoma property despite running one of the country's largest PM operations. What principle are both demonstrating?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Conflict of interest avoidance — managing your own properties alongside client properties creates ethical complications</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> Local market expertise is the product — not just a nice-to-have. A PM company's value to owners is its specialized knowledge of the specific market: local ordinances, rental rate trends, contractor relationships, seasonal patterns, and neighborhood dynamics. Both Preston and McElroy chose depth over breadth — and in both cases the depth was the competitive advantage.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> Geographic specialization reduces liability by limiting the regulatory frameworks a PM company must comply with</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Smaller geographic focus keeps overhead low by reducing travel time and contractor management complexity</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Book on Managing Rental Properties</div>
+          <div class="bi-author">Brandon Turner & Heather Turner</div>
+          <div class="bi-desc">Chapter 3 (7 things to do before your first lease, business setup) and Chapter 14 (bank accounts, bookkeeping foundations). The operational backbone for setting up your PM business correctly from day one.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=book+on+managing+rental+properties+brandon+turner&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Property Management Kit for Dummies</div>
+          <div class="bi-author">Robert Griswold</div>
+          <div class="bi-desc">Chapter 3 (self-management vs. hiring a pro), Chapter 5 (what owners look for in a PM company), and the management agreement analysis. Griswold's owner-side perspective is essential for understanding what you are selling and how to earn trust.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=property+management+kit+for+dummies+griswold&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The ABCs of Property Management</div>
+          <div class="bi-author">Ken McElroy</div>
+          <div class="bi-desc">Introduction (early career lessons on PM fee economics and portfolio scale) and Chapter 5 (what separates good PM companies from bad ones). McElroy's experience building from 6% fees on $400/month rents is a masterclass in PM business economics.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=abcs+of+property+management+ken+mcelroy&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 3: Setting Up the Property and Pricing Rent</h3>
+    <p>You know how to win clients. Now you need to know what to do with the properties they bring you. Module 3 covers everything that happens between signing the management agreement and placing the first tenant: how to assess a new property, what condition it needs to be in, how to price rent accurately using market data, and how to calculate the right security deposit.</p>
+    <a href="pm-module-3.html" class="next-module-cta">Module 3: Setting Up the Property and Pricing Rent →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="pm-module-1.html" class="btn btn-outline">← Module 1: The PM Mindset</a>
+  <div class="module-nav-info">
+    <p>Property Management Track</p>
+    <strong>Module 2 of 7</strong>
+  </div>
+  <a href="pm-module-3.html" class="btn btn-gold">Module 3: Setting Up the Property →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! Bob Preston is explicit: he wasted two years discovering that the management fee alone does not sustain a property management business. His eventual model targeted 50/50 — management fee revenue and ancillary income in roughly equal proportion. Leasing fees, renewal fees, inspection fees, maintenance markups, and eviction coordination fees are not extras — they are the other half of your business model.",incorrect:"Not quite. Bob Preston's hard-learned lesson is that the management fee should represent approximately 50% of revenue — with the other 50% coming from ancillary income. The management fee alone, even at a healthy percentage, typically does not cover the full operational cost of running a professional PM company."},
+  q2:{correct:"Correct! Google Ads fails at the early PM stage for two structural reasons: the low barrier to entry means many companies bid on the same keywords (driving cost-per-click very high), and far more tenants than owners search Google for PM-related terms (meaning most ad clicks will never hire you). Bob Preston spent thousands per month and got almost nothing. The better early investment: organic SEO, reviews, and referral networks.",incorrect:"Not quite. The problem with Google Ads in property management is structural — not just a budget issue. Many PM companies bid on the same keywords (high cost-per-click), and far more tenants than owners search Google for PM terms (most clicks will never hire you). Bob Preston tried it multiple times with the same result. The better early investment is organic presence and referral networks."},
+  q3:{correct:"Correct! Griswold is unambiguous: never sign a management agreement that cannot be canceled with reasonable notice, and never offer one. Either party should be able to exit with 30 days written notice without cause. If an owner wants minimum term protection for legitimate reasons, negotiate an early termination fee that is waived after a set period. A PM company that can only be fired for cause has no incentive to perform month after month.",incorrect:"Not quite. Griswold is explicit: never sign — or offer — a management contract that cannot be canceled with reasonable written notice. The gold standard is 30-day termination by either party without cause. A PM company that can only be fired for cause has no month-to-month incentive to stay sharp."},
+  q4:{correct:"Correct! Late fee income — or a portion of it — is the appropriate compensation for the additional work created when a tenant fails to pay on time: reminders, notices, tracking, attorney coordination. This is real work that takes real time. If all late fees go to the owner, the PM has no financial incentive to pursue late payments aggressively. Your management agreement should specify what portion of late fees the PM retains.",incorrect:"Not quite. The fee that specifically compensates for the work created by late rent is late fee income. Your management agreement should specify that the PM retains a portion of late fees as compensation for the additional work of following up, serving notices, and managing the non-payment process."},
+  q5:{correct:"Correct! Both Preston and McElroy are demonstrating that local market expertise is the product — not just a nice-to-have. Owners hire PM companies they trust to know their specific market deeply: local ordinances, rental rates, the right contractors, seasonal patterns. McElroy — who manages thousands of units — still uses a local company for his Oklahoma property, because depth of local knowledge matters that much. Geographic specialization is a real competitive advantage.",incorrect:"Not quite. Both Preston and McElroy are demonstrating that local market expertise is the product. Owners hire PM companies they trust to know their specific market: the local ordinances, going rental rates, right contractors, seasonal patterns. A generalist who manages everywhere knows each market superficially. A specialist develops knowledge that cannot be replicated by someone who shows up occasionally."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;}
+    else{ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}}
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){scoreEl.className='score-result show pass';scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Solid understanding of client acquisition and fee structure fundamentals. Ready for Module 3: Setting Up the Property and Pricing Rent.';}
+  else{scoreEl.className='score-result show fail';scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the fee structure and management agreement lessons — these are the business foundations that define your profitability from day one.';}
+}
+</script>
+</body>
+</html>

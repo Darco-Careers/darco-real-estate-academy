@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Module 4: Finding Great Tenants — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#2C3E6B;--teal-mid:#3D5490;--teal-light:#5470B0;--teal-pale:#EDF0F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --slate:#4A5568;--slate-light:#718096;--slate-pale:#EDF2F7;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(44,62,107,0.1);
+  --shadow-card:0 2px 16px rgba(44,62,107,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:57%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Eight attributes */
+.eight-attrs{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.attr-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.attr-card .ac-num{font-size:10px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.attr-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.attr-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Self vs hire */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;}
+.compare-card.self{background:var(--teal-pale);border:1px solid rgba(13,92,99,0.2);}
+.compare-card.hire{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.compare-card.self h4{color:var(--teal);}
+.compare-card.hire h4{color:#8A6A20;}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.compare-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.compare-card.self ul li::before{content:'✓';color:var(--teal-mid);font-weight:700;flex-shrink:0;}
+.compare-card.hire ul li::before{content:'✓';color:#8A6A20;font-weight:700;flex-shrink:0;}
+/* Task list */
+.task-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin:2rem 0;}
+.task-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.85rem;font-size:12.5px;color:var(--text-mid);line-height:1.4;}
+/* Career paths */
+.career-paths{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.career-path{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.career-path .cp-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+.career-path .cp-content h4{font-size:0.9rem;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.career-path .cp-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .eight-attrs{grid-template-columns:1fr;}
+  .compare-grid{grid-template-columns:1fr;}
+  .task-grid{grid-template-columns:1fr 1fr;}
+}
+
+.funnel{display:flex;flex-direction:column;gap:0;margin:2rem 0;align-items:center;}
+.funnel-step{width:100%;border-radius:10px;padding:1rem 1.5rem;margin-bottom:0.5rem;position:relative;}
+.funnel-step:nth-child(1){background:var(--teal);color:var(--white);}
+.funnel-step:nth-child(2){background:var(--teal-mid);color:var(--white);width:93%;}
+.funnel-step:nth-child(3){background:var(--teal-light);color:var(--white);width:85%;}
+.funnel-step:nth-child(4){background:var(--gold);color:var(--teal);width:75%;}
+.funnel-step:nth-child(5){background:var(--gold-light);color:var(--teal);width:64%;}
+.funnel-step h4{font-size:0.88rem;font-weight:700;margin-bottom:0.2rem;}
+.funnel-step p{font-size:12.5px;opacity:0.9;line-height:1.5;}
+.qual-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.qual-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.qual-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.qual-card .qc-standard{font-size:12px;font-weight:700;color:var(--teal-mid);margin-bottom:0.3rem;font-style:italic;}
+.qual-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.fh-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin:1.5rem 0;}
+.fh-class{background:var(--teal-pale);border:1px solid rgba(44,62,107,0.15);border-radius:8px;padding:0.6rem 0.85rem;font-size:13px;color:var(--teal);font-weight:600;text-align:center;}
+.fh-class.state{background:var(--gold-pale);border-color:rgba(201,168,76,0.25);color:#7A5C10;}
+.screening-steps{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.ss-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
+.ss-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px;}
+.ss-content h4{font-size:0.88rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.ss-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.never-rent{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin:1.5rem 0;}
+.nr-item{background:#FBF0EE;border:1px solid rgba(192,57,43,0.15);border-radius:8px;padding:0.6rem 1rem;font-size:13px;color:#8B2F20;display:flex;gap:8px;align-items:flex-start;}
+.nr-item::before{content:'✗';font-weight:700;flex-shrink:0;}
+@media(max-width:640px){.qual-grid{grid-template-columns:1fr;}.fh-grid{grid-template-columns:1fr 1fr;}.never-rent{grid-template-columns:1fr;}}
+
+.path-callout{border-radius:10px;padding:0.85rem 1.1rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;}
+.path-callout.ep{background:var(--teal-pale);border-left:3px solid var(--teal-mid);}
+.path-callout.op{background:var(--gold-pale);border-left:3px solid var(--gold);}
+.path-callout .pc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+.path-callout.ep .pc-tag{color:var(--teal-mid);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.path-callout p{color:var(--text-mid);margin:0;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="property-management.html">Property Management Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="property-management.html">Property Management Track</a><span class="sep">›</span>
+  <span class="current">Module 4: Finding Great Tenants</span>
+</div>
+<div class="progress-bar">
+  <span class="progress-label">PM Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="pm-module-1.html" class="prog-dot complete">1</a>
+    <a href="pm-module-2.html" class="prog-dot complete">2</a>
+    <a href="pm-module-3.html" class="prog-dot complete">3</a>
+    <div class="prog-dot active">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Property Management Track · Module 4 of 7</div>
+    <h1>Finding <em>Great Tenants</em></h1>
+    <p>The single most consequential decision a property manager makes is not how they price rent or negotiate a management agreement — it is who they put in the property. A great tenant makes the job easy, protects the owner's investment, and stays for years. A bad tenant creates months of stress, legal fees, and financial damage that no amount of skill can fully undo. This module is your complete system for finding great tenants and keeping the bad ones out.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>60–75 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+<div class="module-body">
+
+  <div class="path-callout ep" style="margin-bottom:2rem;border-radius:12px;padding:1.1rem 1.5rem;">
+    <span class="pc-tag">📍 Both Paths</span>
+    <p>Tenant screening is among the most universal skills in property management — whether you are screening for your employer's portfolio or your own clients, the process, the standards, and the legal requirements are identical. This is core operating knowledge for every property management professional regardless of career path.</p>
+  </div>
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What makes a great tenant — <em>the six qualities that predict success</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Turner and Turner open their tenant screening chapter with a statement worth committing to memory: <strong>the most important decision you make that will determine the success or failure of your rental is the person you put in the property.</strong> A bad tenant can cause years of stress, headache, and financial loss. A great tenant can provide years of security, peace, and prosperity. The screening process exists to tell these two apart before you hand over the keys.</p>
+    <p class="lesson-text">There are six qualities that consistently predict whether an applicant will be a great tenant — or a costly mistake:</p>
+    <div class="qual-grid fade-in">
+      <div class="qual-card">
+        <h4>Ability to Afford the Rent</h4>
+        <div class="qc-standard">Standard: Gross income ≥ 3× monthly rent</div>
+        <p>The most fundamental qualification. If a tenant cannot comfortably afford the rent, everything else becomes irrelevant. The 3× income standard is widely used because it leaves enough room for other living expenses while making rent payments sustainable. Verify income with pay stubs, bank statements, or tax returns — never rely on self-reported numbers alone.</p>
+      </div>
+      <div class="qual-card">
+        <h4>History of Paying On Time</h4>
+        <div class="qc-standard">Standard: No late payments, clean landlord references</div>
+        <p>Past behavior is the best predictor of future behavior. A tenant with a history of late rent is far more likely to pay late — or stop paying altogether. Credit reports show payment history across all accounts. Landlord references reveal the specific rental payment pattern. Both matter.</p>
+      </div>
+      <div class="qual-card">
+        <h4>Job Stability and Long-Term Income</h4>
+        <div class="qc-standard">Standard: 2+ years at current employer or field</div>
+        <p>A tenant who can afford rent today is not necessarily a tenant who can afford it in six months. Job stability — tenure with the current employer, consistency in the same field, and reliable employment history — predicts whether their income will hold. Frequent job changes and extended gaps in employment are red flags.</p>
+      </div>
+      <div class="qual-card">
+        <h4>Cleanliness and Housekeeping</h4>
+        <div class="qc-standard">Standard: Observed during showing; landlord reference confirms</div>
+        <p>When a tenant moves out, you want the property back in good condition. Cleanliness during the showing visit is one indicator — pay attention to how a prospective tenant presents themselves and how they interact with the property during the tour. Landlord references are the most reliable source: ask former landlords directly how the tenant left the unit.</p>
+      </div>
+      <div class="qual-card">
+        <h4>No Criminal History (Relevant Convictions)</h4>
+        <div class="qc-standard">Standard: Consistent, written policy applied to all applicants</div>
+        <p>A tenant who disregards the law is likely to disregard your lease. Criminal background checks reveal conviction history — note that HUD guidance requires evaluating criminal history based on the nature, severity, and recency of convictions rather than blanket exclusions. Your written criminal screening policy must be applied consistently to every applicant to avoid Fair Housing liability.</p>
+      </div>
+      <div class="qual-card">
+        <h4>Low "Stress Quotient"</h4>
+        <div class="qc-standard">Standard: Assessed through references and showing interaction</div>
+        <p>Some tenants are reasonable, self-sufficient, and low-maintenance. Others demand constant attention, create conflict with neighbors, call about every minor issue, and make property management exhausting. Turner and Turner call this the "stress quotient" — the amount of ongoing attention a tenant will require. Landlord references and the initial showing interaction are your best signals.</p>
+      </div>
+    </div>
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Brandon & Heather Turner — The Book on Managing Rental Properties</div>
+      <p>"Don't underestimate the importance of renting to only the best tenants. While it's not possible to know with 100 percent certainty what type of tenant your applicant will be, there are telltale signs and traits that will give you a pretty darn good indication that they are great tenant material."</p>
+      <div class="quote-attr">On why tenant selection is the most important PM decision</div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Fair Housing — <em>what you must know before advertising a single vacancy</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Fair Housing law is not optional, and it is not something you learn about after a complaint is filed. It governs every step of the tenant acquisition process — from how you write your listing ad to how you conduct showings to how you communicate your reasons for denying an application. Violations carry serious consequences: federal Fair Housing complaints can result in civil penalties up to $21,410 for a first violation, attorney's fees, and damages to the complainant. Ignorance is not a defense.</p>
+    <h3 class="sub-title">The federally protected classes</h3>
+    <p class="lesson-text">Under the federal Fair Housing Act, it is illegal to discriminate in the sale, rental, or financing of housing based on any of these seven protected classes:</p>
+    <div class="fh-grid fade-in">
+      <div class="fh-class">Race</div>
+      <div class="fh-class">Color</div>
+      <div class="fh-class">National Origin</div>
+      <div class="fh-class">Religion</div>
+      <div class="fh-class">Sex</div>
+      <div class="fh-class">Familial Status</div>
+      <div class="fh-class" style="grid-column:span 1">Disability / Handicap</div>
+    </div>
+    <p class="lesson-text">Many states and cities add additional protected classes beyond the federal seven. The most common additions include:</p>
+    <div class="fh-grid fade-in">
+      <div class="fh-class state">Source of Income</div>
+      <div class="fh-class state">Sexual Orientation</div>
+      <div class="fh-class state">Gender Identity</div>
+      <div class="fh-class state">Marital Status</div>
+      <div class="fh-class state">Age</div>
+      <div class="fh-class state">Military Status</div>
+    </div>
+    <p class="lesson-text" style="font-size:12px;color:var(--text-light);">State/local additions vary — always verify your jurisdiction's protected classes before advertising.</p>
+    <div class="path-callout ep"><span class="pc-tag">🧑‍💼 Employee Path</span><p>Fair Housing violations create personal liability — not just company liability. If you personally make a discriminatory statement during a showing or write a discriminatory ad, you can be named individually in a Fair Housing complaint. This is not your employer's problem alone. Know these rules cold before your first day showing a unit.</p></div>
+<h3 class="sub-title">What Fair Housing means in practice</h3>
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Fair Housing applies to your advertising language</div>
+      <p>You cannot use language in your listing that indicates a preference for or against any protected class — even subtly. "Perfect for families" implies a preference for families with children (familial status). "Quiet neighborhood" can be interpreted as a coded message against families with children. "Walking distance to churches" implies a preference for religious tenants. Describe the property — not the ideal tenant. If you want to mention the nearby school, mention it as a neighborhood feature — not as a reason a certain type of tenant would enjoy the property.</p>
+    </div>
+    <p class="lesson-text">Turner and Turner offer a critical Fair Housing technique for handling pre-screening conversations: <strong>always respond based on your written qualification standards, never with a yes/no.</strong> When a caller asks "do you accept Section 8?" the answer is not "no" — it is "one of our minimum screening standards requires a verifiable gross income of at least three times the monthly rent." When they ask "I was evicted three years ago, is that a problem?" — "one of our minimum screening standards requires good landlord references for the past five years." This approach keeps every decision grounded in written, consistently applied standards — not personal judgment about the applicant.</p>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Rentec Direct: How to find and screen <em>quality tenants</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Rentec Direct — one of the leading property management software companies — walks through the complete tenant acquisition process from advertising to application to approval, with specific focus on how to build a screening system that finds great tenants consistently and protects you from Fair Housing violations. Watch before Lesson 3.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/zE1r5UJ-gj8" title="How to Find and Screen Quality Tenants — Rentec Direct" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Rentec Direct · YouTube</span>
+        <h4>How to Find and Screen Quality Tenants</h4>
+        <p>Where to advertise vacancies (Zillow, Apartments.com, Craigslist, Facebook Marketplace), how to write a listing that attracts qualified applicants, the pre-screening phone call, building written qualification standards, the application process, what to look for in a credit report, background check essentials, income verification methods, landlord reference calls, and how to document your approval or denial decision to protect against Fair Housing complaints.</p>
+        <p class="credit">Rentec Direct · Property management software company · YouTube</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The screening funnel — <em>from first call to approved applicant</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Turner and Turner describe tenant screening as a funnel — wide at the top, narrow at the bottom. Every step narrows the pool until only the most qualified applicants remain. The key insight is that <strong>screening does not begin with a background check — it begins with the very first contact.</strong> Pre-screening every inquiry before scheduling a showing saves enormous time and keeps unqualified applicants from consuming your schedule.</p>
+    <div class="funnel fade-in">
+      <div class="funnel-step">
+        <h4>Stage 1 — Advertising Pre-Screens Passively</h4>
+        <p>Your listing itself does the first round of filtering. Stating "no pets," "minimum income 3× rent," or "credit check required" eliminates applicants who already know they will not qualify — before they ever contact you.</p>
+      </div>
+      <div class="funnel-step">
+        <h4>Stage 2 — Pre-Screening Call (Before Any Showing)</h4>
+        <p>A 5-minute phone call before scheduling a showing. Confirm: Can they meet your income requirement? Do they have prior evictions? Do they have pets? Do they need to be in by a specific date? Anyone who clearly does not meet your standards is politely told so — and you offer them the opportunity to apply anyway (Fair Housing requires this — the invitation matters).</p>
+      </div>
+      <div class="funnel-step">
+        <h4>Stage 3 — Showing the Property</h4>
+        <p>During the showing, you are still screening. How do they treat the property during the tour? Are they respectful and engaged — or do they seem distracted, dismissive, or demanding? How they behave during a showing is a preview of how they will behave as a tenant.</p>
+      </div>
+      <div class="funnel-step">
+        <h4>Stage 4 — Application and Verification</h4>
+        <p>Collect the completed application, application fee, and government-issued ID. Verify every piece of information independently — do not take anything at face value. Income is verified with pay stubs and bank statements. Employment is verified with a direct call to the employer. Rental history is verified with direct calls to previous landlords.</p>
+      </div>
+      <div class="funnel-step">
+        <h4>Stage 5 — Background and Credit Check</h4>
+        <p>The final and most objective stage. Credit report, eviction history, criminal background check — run through a reputable tenant screening service. Compare results against your written qualification standards. Accept or deny based on the standards, document the decision, and notify the applicant in writing.</p>
+      </div>
+    </div>
+    <h3 class="sub-title">Your written qualification standards — the foundation of legal screening</h3>
+    <p class="lesson-text">Your qualification standards must be written down, given to every applicant who inquires, and applied identically to every single applicant. This is not just good practice — it is your legal protection. If a denied applicant files a Fair Housing complaint, your defense is a consistent written policy applied without exception. Here is what a standard qualification policy covers:</p>
+    <div class="screening-steps fade-in">
+      <div class="ss-item">
+        <div class="ss-icon">💰</div>
+        <div class="ss-content">
+          <h4>Income Requirement</h4>
+          <p>Gross monthly income must be at least 3× the monthly rent, documented with two most recent pay stubs, most recent tax return (for self-employed), or two months of bank statements. All income sources must be verifiable — self-reported income does not count.</p>
+        </div>
+      </div>
+      <div class="ss-item">
+        <div class="ss-icon">📊</div>
+        <div class="ss-content">
+          <h4>Credit Score Minimum</h4>
+          <p>A minimum credit score (commonly 600–650, though this varies by market and owner preference). Beyond the score, look at payment history, outstanding collections, and debt-to-income indicators. A tenant with a 620 score and a clean payment history is often a better risk than one with a 680 score and multiple recent collections.</p>
+        </div>
+      </div>
+      <div class="ss-item">
+        <div class="ss-icon">🏠</div>
+        <div class="ss-content">
+          <h4>Rental History</h4>
+          <p>Good landlord references for all previous landlords within the past 2–5 years. Call every previous landlord personally — do not rely solely on the reference sheet the applicant provides. Ask specifically: Did they pay on time? Did they give proper notice? Would you rent to them again? If they hesitate on that last question, you have your answer.</p>
+        </div>
+      </div>
+      <div class="ss-item">
+        <div class="ss-icon">⚖️</div>
+        <div class="ss-content">
+          <h4>Eviction History</h4>
+          <p>Most PM companies deny applicants with any eviction on record within the past 3–7 years. An eviction judgment is the most reliable indicator of future non-payment — it means a previous landlord pursued and won a legal case to remove this tenant. This is not a minor flag.</p>
+        </div>
+      </div>
+      <div class="ss-item">
+        <div class="ss-icon">🔍</div>
+        <div class="ss-content">
+          <h4>Criminal Background</h4>
+          <p>Your written policy must define what types of convictions result in denial. HUD guidance requires considering the nature, severity, and recency of convictions — blanket "no criminal history" policies may create Fair Housing liability. Review convictions individually. A DUI from 15 years ago is different from a recent violent felony. Always review convictions — not arrests. An arrest without conviction is legally meaningless for screening purposes.</p>
+        </div>
+      </div>
+      <div class="ss-item">
+        <div class="ss-icon">💼</div>
+        <div class="ss-content">
+          <h4>Employment Verification</h4>
+          <p>Call the employer listed on the application directly — use a number you find independently, not the one the applicant provides. Confirm employment, position, and length of tenure. For self-employed applicants, require two years of tax returns. For recently unemployed applicants with pending job offers, evaluate carefully — a pending offer is not the same as documented income.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Griswold's Warning on Screening Database Accuracy</div>
+      <p>Griswold recounts serving as an expert witness in a case where a Bay Area tenant screening service incorrectly matched qualified applicants to criminal and eviction records belonging to people with similar names — resulting in wrongful denials. Always verify an applicant's identity — name, Social Security number, and former addresses — before accepting screening results as accurate. A mismatch on any of these details means the report may not belong to your applicant. This is especially important for applicants with common names.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Good Life Property Management: The complete <em>tenant screening process</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Good Life Property Management — one of the most respected PM education channels on YouTube — walks through their complete tenant screening system step by step: what they look for, how they verify it, how they score applicants, and how they document decisions to protect against Fair Housing complaints. Watch before Lesson 4.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/YkxreetRSDk" title="The Complete Tenant Screening Process — Good Life Property Management" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Good Life Property Management · YouTube</span>
+        <h4>Our Complete Tenant Screening Process — Step by Step</h4>
+        <p>The full Good Life tenant screening system: pre-screening calls, showing best practices, application requirements, income verification methods, credit report interpretation, eviction record evaluation, criminal history policy, landlord reference call scripts, how to document approval and denial decisions, adverse action notices, and how to handle multiple qualified applicants fairly and legally.</p>
+        <p class="credit">Good Life Property Management · San Diego, CA · Property management education · YouTube</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">7 applicant types that experience tells us <em>to avoid</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Turner and Turner document seven patterns they have consistently observed in applicants who became problem tenants. These are not based on protected class characteristics — they are behavioral and financial red flags that appear during the application process itself. Every experienced property manager develops their own version of this list. Here is theirs:</p>
+    <div class="never-rent fade-in">
+      <div class="nr-item">The applicant who needs to move in immediately — urgency in finding housing often means they were just evicted or are being asked to leave their current situation. Find out why first.</div>
+      <div class="nr-item">The applicant who offers to pay several months upfront — this can be a signal that they know they will not pass a standard credit check and are trying to bypass it with cash. Always screen regardless.</div>
+      <div class="nr-item">The applicant who has moved frequently — four addresses in three years is a red flag. Find out why at each move. Frequent moves suggest landlord conflict, evictions, or an inability to maintain stable housing.</div>
+      <div class="nr-item">The applicant who badmouths every previous landlord — if every previous landlord was terrible, difficult, or unfair, the common denominator is the applicant. Call the landlords. The story will be different.</div>
+      <div class="nr-item">The applicant who negotiates on your standards — "Can you make an exception on the credit score?" "I know my income is below 3× but I'm good for it." Your standards exist for a reason. An applicant who pressures you to waive them before moving in will pressure you throughout the tenancy.</div>
+      <div class="nr-item">The applicant whose story changes — inconsistencies between the application, the phone call, and the in-person conversation signal either dishonesty or disorganization. Neither is a good sign in a tenant.</div>
+      <div class="nr-item">The applicant with a co-signer to compensate for poor financials — a co-signer does not change the tenant's financial behavior. It changes who you can sue after they stop paying. Only accept co-signers with clear policies about when and how they will be engaged.</div>
+    </div>
+    <h3 class="sub-title">The adverse action notice — what to send when you deny an application</h3>
+    <p class="lesson-text">When you deny an applicant based on information from a consumer report (credit report, background check, eviction history), federal law — the Fair Credit Reporting Act (FCRA) — requires you to send an <strong>adverse action notice.</strong> This notice must include: the reason for the denial, the name and contact information of the consumer reporting agency that provided the report, a statement that the agency did not make the denial decision, and the applicant's right to obtain a free copy of the report and dispute inaccurate information. Failure to send an adverse action notice is a federal violation — regardless of whether the denial itself was legitimate.</p>
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 First Come, First Qualified — Not First Come, First Served</div>
+      <p>When multiple applicants are interested in the same unit, the fair and legally defensible approach is to process applications in the order received and approve the first applicant who meets all your written qualification standards — not necessarily the first person who saw the unit or who you liked most. Document the order applications were received, apply your standards consistently, and approve or deny based on the written criteria. This approach is both the ethically correct method and the strongest protection against Fair Housing complaints.</p>
+    </div>
+  </div>
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 4 Key Takeaways</h3>
+    <ul>
+      <li>The most important decision in property management is who you put in the property. A great tenant provides years of security and prosperity. A bad tenant creates months of legal stress and financial damage that no amount of skill can fully undo.</li>
+      <li>The six qualities of a great tenant: ability to afford the rent (3× income standard), history of paying on time, job stability, cleanliness and housekeeping, no relevant criminal history, and a low stress quotient. All six are verifiable through documentation, credit reports, and landlord reference calls.</li>
+      <li>Fair Housing law applies to every step of the tenant acquisition process — advertising language, showing conduct, application questions, and denial reasons. The seven federally protected classes are race, color, national origin, religion, sex, familial status, and disability. Most states add additional classes.</li>
+      <li>Always respond to screening inquiries based on your written qualification standards — never with a simple yes or no about a specific applicant. "Our minimum standard requires 3× income" is legally safe. "No, we don't accept Section 8" may not be, depending on your jurisdiction.</li>
+      <li>Screening is a funnel: passive filtering through your listing ad, pre-screening call before any showing, observation during the showing, application and verification, then background and credit check. Each step narrows the pool before the most expensive steps.</li>
+      <li>Your written qualification standards must be documented, given to every applicant who inquires, and applied identically to every applicant. This consistency is both good practice and your primary Fair Housing defense.</li>
+      <li>When denying an applicant based on a consumer report, the FCRA requires you to send an adverse action notice — including the reason for denial, the screening agency's contact information, and the applicant's rights. This is a federal legal requirement, not optional.</li>
+      <li>When multiple applicants qualify, approve the first applicant who meets all written standards — not your personal favorite. Document the order applications were received and apply standards consistently.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. An applicant calls about your vacancy and says "I was evicted two years ago but I've been great since then." Based on Turner and Turner's screening framework and Fair Housing best practices, what is the correct response?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> "Sorry, we don't rent to people with evictions" — eviction history is an automatic disqualifier</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> "One of our minimum screening standards requires positive landlord references for all prior landlords within the last five years — a previous eviction within that window would not meet that standard. You are welcome to apply if you would like to be considered." This response grounds the answer in your written standards, offers the invitation to apply (Fair Housing requires this), and avoids a direct personal judgment about the applicant.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Ask them to explain the circumstances of the eviction and make a judgment call based on their explanation</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Tell them you will review it case by case and schedule a showing to meet them in person first</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. You deny an applicant because their credit report showed a recent eviction judgment. What federal law obligation is triggered by this denial — and what must you send the applicant?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Nothing additional is required beyond notifying the applicant their application was denied</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> The Fair Credit Reporting Act (FCRA) requires you to send an adverse action notice. It must include: the reason for denial, the name and contact information of the consumer reporting agency that provided the report, a statement that the agency did not make the denial decision, and the applicant's right to obtain a free copy of the report and dispute inaccurate information. This is a federal legal requirement — failing to send it is a violation regardless of whether the denial itself was legitimate.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Fair Housing Act requires you to provide the applicant with a written statement of the denial reasons</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> You must offer the applicant the opportunity to dispute the eviction record before the denial is finalized</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. You have two applicants for the same unit. Applicant A applied first and meets 5 of your 6 written qualification standards — their income is slightly below 3× rent. Applicant B applied second and meets all 6 standards. Who should you approve?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Applicant A — they applied first and first-come-first-served is the fairest approach</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Make an exception for Applicant A — they meet most of the standards and applied first</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Applicant B — your written qualification standards exist to be applied consistently. The principle is "first qualified" not "first applied." Applicant A does not meet your income standard. Approving them anyway because they applied first creates financial risk for the owner and inconsistency in your screening process that could be cited in a Fair Housing complaint. Document that Applicant A was reviewed first and did not meet the income standard, and that Applicant B was the first fully qualified applicant.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Contact Applicant A and give them 48 hours to provide additional documentation proving they can afford the rent</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. An applicant's criminal background check shows an arrest from 8 years ago with no conviction. Should this be factored into your denial decision?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Yes — an arrest indicates the applicant was suspected of criminal behavior even if not convicted</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> No — an arrest without conviction is legally meaningless for screening purposes. The US legal system is based on innocence until proven guilty. Denying an applicant based on an arrest that did not result in a conviction creates Fair Housing liability and is considered discriminatory practice under HUD guidance. Criminal screening policy should reference convictions only — not arrests.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Only if the arrest involved a violent offense — non-violent arrests without conviction can be disregarded</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Use discretion — the type of crime the arrest involved should be weighed even without a conviction</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. An applicant offers to pay six months of rent upfront in cash if you will skip the credit check. Turner and Turner identify this pattern in their list of red-flag applicant behaviors. What does this offer most likely signal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> A wealthy tenant who simply prefers not to deal with the application process</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> The applicant likely knows they will not pass a standard credit or background check and is trying to bypass the screening process with cash. An upfront payment does not change their underlying financial behavior or history — it only delays the problem by six months. Always screen regardless of upfront payment offers. And in many states, accepting an unusually large upfront payment can create legal complications around security deposit limits.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> A positive signal — a tenant who can pay six months upfront clearly has sufficient funds</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> It depends — accept the offer but run the credit check anyway as a compromise</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Book on Managing Rental Properties</div>
+          <div class="bi-author">Brandon Turner & Heather Turner</div>
+          <div class="bi-desc">Chapters 4–7 (Fair Housing, advertising, pre-screening, qualification standards, Section 8, showing the property, the application process, background and credit checks, 7 tenants to avoid). The most comprehensive practical treatment of tenant screening available for residential PM professionals.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=book+on+managing+rental+properties+brandon+turner&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Property Management Kit for Dummies</div>
+          <div class="bi-author">Robert Griswold</div>
+          <div class="bi-desc">Chapters 7–9 (advertising your vacancy, screening applicants, processing the application). Griswold's warning about tenant screening database accuracy errors and his detailed credit check interpretation guidance are essential reading for anyone running background checks.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=property+management+kit+for+dummies+griswold&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 5: Handling Problems</h3>
+    <p>You have placed a great tenant. Now the real work begins — because even great tenants have problems. Module 5 covers everything that happens when things go wrong: what to do when rent does not come in, how to handle lease violations, the step-by-step non-payment response process, cash for keys as an alternative to eviction, and the US eviction process from notice to possession.</p>
+    <a href="pm-module-5.html" class="next-module-cta">Module 5: Handling Problems →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="pm-module-3.html" class="btn btn-outline">← Module 3: Setting Up the Property</a>
+  <div class="module-nav-info">
+    <p>Property Management Track</p>
+    <strong>Module 4 of 7</strong>
+  </div>
+  <a href="pm-module-5.html" class="btn btn-gold">Module 5: Handling Problems →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! This is exactly the Fair Housing-compliant way to handle this call. By grounding your answer in your written qualification standards rather than a personal judgment about the applicant, you keep the conversation objective and legally defensible. Offering the invitation to apply — even when you have stated the standard they do not meet — is required by Fair Housing law. The applicant who knows they do not qualify will typically not apply; the invitation is what matters legally.",incorrect:"Not quite. The correct approach is to reference your written qualification standards — not make a personal judgment about the applicant. Say something like 'one of our minimum standards requires positive landlord references for all prior landlords in the past five years.' This keeps the response grounded in your written policy, not a personal decision. Also — Fair Housing requires you to offer the invitation to apply to every inquirer, even those who tell you they do not qualify."},
+  q2:{correct:"Correct! The Fair Credit Reporting Act (FCRA) — not just Fair Housing — is triggered any time you deny an applicant based on information from a consumer reporting agency (credit report, background check, eviction database). The adverse action notice must include the denial reason, the screening agency's name and contact information, confirmation that the agency did not make the decision, and the applicant's rights to a free copy of the report and to dispute inaccurate information. This is a federal legal requirement with no exceptions.",incorrect:"Not quite. The Fair Credit Reporting Act (FCRA) requires an adverse action notice any time you deny an applicant based on information from a consumer reporting agency — credit report, background check, or eviction database. The notice must include the denial reason, the screening agency's contact information, and the applicant's rights regarding the report. This is a federal legal requirement regardless of whether the denial was justified."},
+  q3:{correct:"Correct! The correct principle is 'first qualified' not 'first applied.' Your written qualification standards exist to be applied consistently to every applicant. Applicant A does not meet your income standard — making an exception creates financial risk for the owner and inconsistency in your screening process. Applicant B meets all standards and is the first fully qualified applicant. Document the process clearly: Applicant A was reviewed first, did not meet the income standard, and was denied on that basis; Applicant B was the first fully qualified applicant.",incorrect:"Not quite. The correct principle is 'first qualified' — not 'first applied.' Applicant A does not meet your income qualification standard. Approving them because they applied first undermines the purpose of having written standards and creates financial risk for the owner. Applicant B is the first applicant who meets all written standards. Document the process clearly so your decision is transparent and defensible."},
+  q4:{correct:"Correct! An arrest without conviction is legally meaningless for tenant screening purposes. The US legal system presumes innocence until guilt is proven — an arrest simply means someone was suspected of something. Denying an applicant based on an arrest record that did not result in a conviction is considered discriminatory practice under HUD guidance and creates Fair Housing liability. Your criminal screening policy should reference convictions only, never arrests.",incorrect:"Not quite. An arrest without conviction has no legal weight for tenant screening purposes. The presumption of innocence is a foundational principle of the US legal system — being arrested does not mean a crime was committed or proven. HUD guidance specifically addresses this: criminal screening policies should be based on convictions, not arrests. Factoring in arrests without convictions creates Fair Housing liability."},
+  q5:{correct:"Correct! Turner and Turner identify this as one of the most reliable red flags in tenant screening: an applicant who offers a large upfront payment in exchange for waiving the screening process almost certainly knows something about their history that they do not want you to discover. The upfront cash does not change their underlying financial behavior — it just delays the problem. Always screen regardless of upfront payment offers. Also note that many states have security deposit limits that may be violated by accepting unusually large prepayments.",incorrect:"Not quite. An offer to pay several months of rent upfront in exchange for skipping the credit check is a red flag, not a green one. Turner and Turner identify this pattern explicitly: applicants who make this offer typically know they have something in their history that will not pass a standard screen. The upfront cash does not change their financial behavior — it delays the problem by however many months they have prepaid. Always run the full screening regardless of upfront payment offers."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;}
+    else{ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}}
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){scoreEl.className='score-result show pass';scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong understanding of tenant screening and Fair Housing fundamentals. Ready for Module 5: Handling Problems.';}
+  else{scoreEl.className='score-result show fail';scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the Fair Housing and screening standards lessons — getting these wrong creates legal liability that is very hard to undo.';}
+}
+</script>
+</body>
+</html>
