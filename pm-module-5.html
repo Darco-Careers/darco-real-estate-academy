@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Module 5: Handling Problems — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#2C3E6B;--teal-mid:#3D5490;--teal-light:#5470B0;--teal-pale:#EDF0F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --slate:#4A5568;--slate-light:#718096;--slate-pale:#EDF2F7;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(44,62,107,0.1);
+  --shadow-card:0 2px 16px rgba(44,62,107,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:71%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Eight attributes */
+.eight-attrs{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.attr-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.attr-card .ac-num{font-size:10px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.attr-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.attr-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Self vs hire */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;}
+.compare-card.self{background:var(--teal-pale);border:1px solid rgba(13,92,99,0.2);}
+.compare-card.hire{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.compare-card.self h4{color:var(--teal);}
+.compare-card.hire h4{color:#8A6A20;}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.compare-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.compare-card.self ul li::before{content:'✓';color:var(--teal-mid);font-weight:700;flex-shrink:0;}
+.compare-card.hire ul li::before{content:'✓';color:#8A6A20;font-weight:700;flex-shrink:0;}
+/* Task list */
+.task-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin:2rem 0;}
+.task-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.85rem;font-size:12.5px;color:var(--text-mid);line-height:1.4;}
+/* Career paths */
+.career-paths{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.career-path{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.career-path .cp-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+.career-path .cp-content h4{font-size:0.9rem;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.career-path .cp-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .eight-attrs{grid-template-columns:1fr;}
+  .compare-grid{grid-template-columns:1fr;}
+  .task-grid{grid-template-columns:1fr 1fr;}
+}
+
+.dual-path-intro{margin-bottom:3.5rem;}
+.path-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.path-card{border-radius:16px;padding:1.75rem;display:flex;flex-direction:column;gap:0.75rem;}
+.path-card.path-employee{background:var(--teal-pale);border:1px solid rgba(44,62,107,0.2);}
+.path-card.path-owner{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.path-icon{font-size:1.75rem;}
+.path-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.path-employee .path-label{color:var(--teal-mid);}
+.path-owner .path-label{color:#8A6A20;}
+.path-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);}
+.path-card p{font-size:13.5px;color:var(--text-mid);line-height:1.75;}
+.path-applies{margin-top:0.5rem;padding:0.85rem 1rem;border-radius:8px;font-size:13px;color:var(--text-mid);line-height:1.7;}
+.path-employee .path-applies{background:rgba(44,62,107,0.07);}
+.path-owner .path-applies{background:rgba(201,168,76,0.1);}
+.path-applies strong{color:var(--text-dark);}
+.path-note{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-top:0.5rem;}
+.path-note-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.path-note p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.ep-tag{color:var(--teal);font-weight:700;}
+.op-tag{color:#8A6A20;font-weight:700;}
+.path-callout{border-radius:10px;padding:0.85rem 1.1rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;}
+.path-callout.ep{background:var(--teal-pale);border-left:3px solid var(--teal-mid);}
+.path-callout.op{background:var(--gold-pale);border-left:3px solid var(--gold);}
+.path-callout .pc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+.path-callout.ep .pc-tag{color:var(--teal-mid);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.path-callout p{color:var(--text-mid);margin:0;}
+@media(max-width:640px){.path-cards{grid-template-columns:1fr;}}
+
+.path-callout{border-radius:10px;padding:0.85rem 1.1rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;}
+.path-callout.ep{background:var(--teal-pale);border-left:3px solid var(--teal-mid);}
+.path-callout.op{background:var(--gold-pale);border-left:3px solid var(--gold);}
+.path-callout .pc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+.path-callout.ep .pc-tag{color:var(--teal-mid);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.path-callout p{color:var(--text-mid);margin:0;}
+.ep-tag{color:var(--teal);font-weight:700;}
+.op-tag{color:#8A6A20;font-weight:700;}
+.process-steps{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.ps-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
+.ps-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.ps-content h4{font-size:0.88rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;}
+.ps-content p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.eviction-steps{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
+.ev-step{display:flex;gap:1.25rem;padding:1.1rem 1.25rem;border:1px solid var(--border);background:var(--white);position:relative;}
+.ev-step:first-child{border-radius:12px 12px 0 0;}
+.ev-step:last-child{border-radius:0 0 12px 12px;}
+.ev-step:not(:last-child){border-bottom:none;}
+.ev-step .ev-num{width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.ev-step h4{font-size:0.88rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.ev-step p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.violation-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin:1.5rem 0;}
+.viol-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.6rem 1rem;font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5;}
+.viol-item::before{content:'⚠';flex-shrink:0;}
+@media(max-width:640px){.violation-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="property-management.html">Property Management Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="property-management.html">Property Management Track</a><span class="sep">›</span>
+  <span class="current">Module 5: Handling Problems</span>
+</div>
+<div class="progress-bar">
+  <span class="progress-label">PM Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="pm-module-1.html" class="prog-dot complete">1</a>
+    <a href="pm-module-2.html" class="prog-dot complete">2</a>
+    <a href="pm-module-3.html" class="prog-dot complete">3</a>
+    <a href="pm-module-4.html" class="prog-dot complete">4</a>
+    <div class="prog-dot active">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Property Management Track · Module 5 of 7</div>
+    <h1>Handling <em>Problems</em></h1>
+    <p>Even with great screening, problems happen. Rent does not come in. Lease terms get violated. Neighbors complain. And occasionally, despite every reasonable effort, a tenant has to go. This module gives you a clear, step-by-step system for handling every category of problem — calmly, professionally, and legally — before it escalates into something expensive.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>60–75 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2 + 1 bonus</span></div>
+    </div>
+  </div>
+</div>
+<div class="module-body">
+
+  <div class="path-callout ep" style="margin-bottom:2rem;border-radius:12px;padding:1.1rem 1.5rem;">
+    <span class="pc-tag">📍 Both Paths</span>
+    <p>Handling non-payment, lease violations, and evictions is core operating knowledge for every property management professional. Whether you are an employee executing your employer's protocols or an entrepreneur protecting your own clients' investments, the process is the same — and getting it right matters enormously.</p>
+  </div>
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">When rent doesn't come in — <em>the step-by-step response</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Non-payment of rent is the most common problem a property manager faces — and the most financially damaging if not handled swiftly and systematically. Bryce at Good Life Property Management distills the entire non-payment response into a principle that experienced managers learn quickly: <strong>act fast, be firm, and follow through on every commitment you make.</strong> The moment a tenant learns your warnings are negotiable, every future boundary becomes a negotiation.</p>
+
+    <div class="process-steps">
+      <div class="ps-item fade-in">
+        <div class="ps-num">1</div>
+        <div class="ps-content">
+          <h4>Check your lease — know the exact due date and grace period</h4>
+          <p>The first step is always the lease. Confirm the rent due date (typically the 1st), whether your lease includes a grace period, and the exact late fee amount and when it triggers. If your state requires a grace period — or prohibits certain late fee structures — your lease must reflect that. In California, for example, landlords are not required by law to provide a grace period, but many leases offer until the 4th. Know your lease. Know your state. They must align.</p>
+        </div>
+      </div>
+      <div class="ps-item fade-in">
+        <div class="ps-num">2</div>
+        <div class="ps-content">
+          <h4>Send a friendly reminder — on the first missed day</h4>
+          <p>Once the due date passes without payment, send a courteous written reminder. Some tenants genuinely forget, especially first-timers or those who recently changed banks. A brief, professional message — text, email, or resident portal notification — keeps the relationship intact while establishing that you noticed immediately. Document that you sent it and when.</p>
+        </div>
+      </div>
+      <div class="ps-item fade-in">
+        <div class="ps-num">3</div>
+        <div class="ps-content">
+          <h4>Charge the late fee — every time, no exceptions</h4>
+          <p>If your lease says there is a late fee, charge it. Every time. Without exception. The moment you waive it once — even for a "good" tenant with a compelling story — you have signaled that the fee is negotiable. That tenant will test you again. And so will others when they find out. Apply your policies identically to every tenant, every time. The policy is the answer, not your personal judgment.</p>
+        </div>
+      </div>
+      <div class="ps-item fade-in">
+        <div class="ps-num">4</div>
+        <div class="ps-content">
+          <h4>Serve a Pay or Quit Notice</h4>
+          <p>If rent has not been received after the reminder and late fee period, serve a formal Pay or Quit Notice — also called a Notice to Pay Rent or Quit. This is the first legal step required before you can pursue eviction. The notice must include: the tenant's full name, the property address, the exact amount owed (rent plus applicable late fees), how and where payment can be made, the deadline to pay, and who to pay. Post it on the front door AND mail a copy the same day. Keep a copy with your date-stamped documentation. The number of days the tenant has to respond varies by state — typically 3 days, but check your state law.</p>
+        </div>
+      </div>
+      <div class="ps-item fade-in">
+        <div class="ps-num">5</div>
+        <div class="ps-content">
+          <h4>Consider cash for keys before filing eviction</h4>
+          <p>If the tenant has not paid by the deadline, you have the legal right to proceed with eviction. But before filing, consider one final option: cash for keys. Offer the tenant a specific dollar amount in exchange for vacating the unit by a specific date and returning the keys in good condition. This is not weakness — it is economics. A cash for keys settlement that costs you $500 is often cheaper and faster than a formal eviction that can cost $1,500–$3,500 in legal fees, lost rent, and court time. Give them a firm deadline. If they miss it, file.</p>
+        </div>
+      </div>
+      <div class="ps-item fade-in">
+        <div class="ps-num">6</div>
+        <div class="ps-content">
+          <h4>Turn off the online payment portal once eviction is filed</h4>
+          <p>Tony Stephan — managing 377 units — shares a critical operational lesson: once you have filed for eviction, disable the tenant's ability to make online payments. Tenants can make a payment through the portal, triggering a 2–3 day processing delay, then reverse the payment or claim it as fraudulent. This manipulation can restart the eviction clock and cost you weeks. Once the eviction is in motion, all payments must be made in a documented, non-reversible form.</p>
+        </div>
+      </div>
+      <div class="ps-item fade-in">
+        <div class="ps-num">7</div>
+        <div class="ps-content">
+          <h4>Connect tenants to rental assistance programs</h4>
+          <p>Before assuming a non-paying tenant is simply unwilling to pay, explore whether they qualify for rental assistance programs. Many local, state, and federal programs exist specifically to help tenants who have fallen behind due to hardship. Tony Stephan's team had a tenant receive full back-pay coverage through a rental assistance program after months of non-payment. Ask the tenant if they have a case worker, get the agency's contact information, and call directly to verify the application and timeline. You want them to pay — not to evict them.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ State Laws Vary — Know Your Jurisdiction</div>
+      <p>Every step of the non-payment response process — grace periods, notice periods, notice content requirements, eviction procedures — is governed by state and sometimes local law. California's 3-day notice requirements differ from Michigan's 7-day requirements, which differ from Florida's 3-day requirements. Always verify the specific rules in your jurisdiction before serving any notice. When in doubt, consult a local eviction attorney — their fee is far less than a dismissed case that forces you to start over.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Good Life Property Management: What to do <em>when your tenant doesn't pay rent</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Bryce at Good Life Property Management walks through the complete non-payment response process — from checking the lease on day one to the final decision to file eviction or pursue cash for keys. Real-world experience from an active San Diego property management company. Watch before Lesson 2.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/OUT3n5Xeo3A" title="What to Do When Your Tenant Doesn't Pay Rent — Good Life Property Management" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Good Life Property Management · YouTube</span>
+        <h4>What to Do When Your Tenant Doesn't Pay Rent</h4>
+        <p>Check your lease first (due date, grace period), charge the late fee, send a reminder, serve a 3-day Notice to Pay Rent or Quit (required content: tenant name, address, amount owed, payment method, dates), post on door and mail same day, cash for keys as an alternative to eviction, act quickly and be firm, follow through on every warning, document everything in writing, include co-signers in all notices, check with an attorney on current local and state laws.</p>
+        <p class="credit">Good Life Property Management · Bryce · San Diego, CA · January 2023 · 289 likes / 12,169 views</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Lease violations and tenant disputes — <em>a framework for common problems</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Non-payment is not the only category of problem a property manager faces. Tenants violate lease terms in many ways — some minor, some serious. Turner and Turner and Griswold both emphasize the same principle: <strong>the lease is your rule book.</strong> When a problem arises, your first question is always what does the lease say — followed by what does state law require.</p>
+
+    <h3 class="sub-title">Common lease violations and how to handle them</h3>
+    <div class="violation-grid fade-in">
+      <div class="viol-item">Unauthorized pets — send written notice, specify cure deadline, document with photos</div>
+      <div class="viol-item">Unauthorized occupants — verify who is living in the unit, issue a cure or quit notice</div>
+      <div class="viol-item">Noise complaints — document each complaint, issue written warning with lease reference</div>
+      <div class="viol-item">Property damage beyond normal wear — document with photos, issue repair or remedy notice</div>
+      <div class="viol-item">Illegal activity — consult an attorney immediately; eviction for cause may be warranted</div>
+      <div class="viol-item">Hoarding or unsanitary conditions — habitability and fire hazard issue; formal notice required</div>
+      <div class="viol-item">Subletting without permission — issue cure or quit notice if lease prohibits subletting</div>
+      <div class="viol-item">Failure to maintain utilities in their name — document and issue written notice to remedy</div>
+    </div>
+
+    <h3 class="sub-title">The Cure or Quit Notice</h3>
+    <p class="lesson-text">For lease violations other than non-payment, the legal vehicle is a <strong>Notice to Cure or Quit</strong> — also called a Cure or Quit Notice or a Notice to Perform or Quit. This notice gives the tenant a specific number of days (varies by state, commonly 3–10) to correct the violation or vacate the unit. Like a Pay or Quit notice, it must be served correctly — posted at the property and mailed — and must contain specific information required by your state's landlord-tenant law.</p>
+
+    <p class="lesson-text">For serious violations — particularly anything involving illegal activity, significant property damage, or threats to other residents — an <strong>Unconditional Quit Notice</strong> may be appropriate. This notice gives the tenant no opportunity to cure; they must vacate by the deadline or face eviction. Most states restrict these to specific serious violation types. Always consult an attorney before serving an unconditional quit notice.</p>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 Document Everything — Every Time</div>
+      <p>Every violation, every notice, every conversation, every maintenance request, every complaint — documented in writing with a timestamp. Good Life's Bryce puts it directly: if you and a tenant reach any kind of agreement, get it signed and give them a copy. If a complaint comes in by phone, follow up with a written summary sent to the tenant. Verbal agreements are unenforceable. Written documentation is your protection in every dispute — from a security deposit deduction to a Fair Housing complaint to an eviction proceeding.</p>
+    </div>
+
+    <div class="path-callout ep"><span class="pc-tag">🧑‍💼 Employee Path</span><p>As an employee, your employer will have documented protocols for handling each violation type — follow them exactly. Do not improvise responses or make promises to tenants outside the established process. If a situation is escalating and you are unsure of the right step, escalate to your supervisor before taking action. One procedural error in a notice can invalidate an entire eviction case.</p></div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Coach Carson: The eviction process — <em>a US overview</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Coach Carson walks through the complete US eviction process — from the first notice to taking possession — with clear acknowledgment that state laws vary and that consulting a local eviction attorney is always the right call. This is the clearest beginner-level eviction overview available on YouTube. Watch before Lesson 3.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/UkqL8YPueik" title="The Eviction Process Explained — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Coach Carson · YouTube</span>
+        <h4>The Eviction Process Explained — A US Overview</h4>
+        <p>Eviction as a last resort — not a goal, communication and payment plans first, cash for keys as a non-confrontational alternative, the 7-step US eviction process (establish cause, written pay-or-quit or cure-or-quit notice, file in court, tenant served, court date, writ of possession, take back the property), self-help eviction is illegal in every US state, always consult a local eviction attorney, state laws vary significantly.</p>
+        <p class="credit">Coach Carson · YouTube · 549 likes / 17,739 views · US-focused · explicitly notes state variation throughout</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Cash for keys — <em>the professional alternative to eviction</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Cash for keys is one of the most underutilized tools in property management — and one of the most effective. The concept is simple: you offer the tenant a sum of money in exchange for vacating the unit by a specific date and returning the keys in acceptable condition. No court filing, no sheriff, no writ of possession — just a negotiated exit that gets the unit back faster and cheaper than formal eviction.</p>
+
+    <h3 class="sub-title">Why cash for keys often makes economic sense</h3>
+    <p class="lesson-text">The math almost always favors cash for keys over a formal eviction when you run the numbers honestly. Consider a typical eviction scenario:</p>
+
+    <div class="takeaways" style="background:var(--teal);">
+      <h3>The True Cost of a Formal Eviction</h3>
+      <ul>
+        <li><strong>Attorney fees:</strong> $500–$1,500+ depending on complexity and state</li>
+        <li><strong>Court filing fees:</strong> $100–$400</li>
+        <li><strong>Lost rent during proceedings:</strong> Evictions take 30–90+ days in most states — that is 1–3 months of lost rent</li>
+        <li><strong>Property damage risk:</strong> A tenant going through eviction has every incentive and opportunity to damage the unit</li>
+        <li><strong>Turnover costs after eviction:</strong> Cleaning, repairs, re-leasing — typically $500–$2,000+</li>
+        <li><strong>Total realistic cost:</strong> $3,000–$6,000+ for a single eviction in many markets</li>
+      </ul>
+    </div>
+
+    <p class="lesson-text">Against that backdrop, offering a tenant $500–$1,000 to leave voluntarily within 7–14 days looks like exactly what it is: a rational business decision. Not generosity. Not weakness. Economics.</p>
+
+    <h3 class="sub-title">How to execute a cash for keys agreement</h3>
+    <div class="process-steps fade-in">
+      <div class="ps-item">
+        <div class="ps-num">1</div>
+        <div class="ps-content">
+          <h4>Make the offer after the Pay or Quit deadline has passed</h4>
+          <p>Do not offer cash for keys before serving your legal notices — it signals you are not serious about enforcement. Make the offer after the notice deadline has expired and you have the legal right to file eviction. This gives the offer appropriate weight.</p>
+        </div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">2</div>
+        <div class="ps-content">
+          <h4>Set a specific dollar amount and a hard vacate deadline</h4>
+          <p>Be specific. "We will pay you $700 if you vacate and return keys by [specific date]." No vague timelines, no "we'll figure it out." The tenant needs a concrete number and a concrete deadline to make a decision.</p>
+        </div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">3</div>
+        <div class="ps-content">
+          <h4>Put the agreement in writing — signed by both parties</h4>
+          <p>A cash for keys agreement must be in writing. It should state the vacate date, the condition the unit must be returned in, the payment amount, and that the tenant waives any right to return to the unit. Both parties sign. Keep a copy.</p>
+        </div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">4</div>
+        <div class="ps-content">
+          <h4>Pay only upon receiving the keys and confirming the unit condition</h4>
+          <p>Do not pay until you have the keys in hand and have done a walkthrough confirming the unit is in acceptable condition. Hand over payment at the moment of key exchange — not before. This is the only leverage you have to ensure they actually leave and leave the unit intact.</p>
+        </div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">5</div>
+        <div class="ps-content">
+          <h4>If the deadline passes without action — file immediately</h4>
+          <p>Good Life's Bryce is unambiguous on this: give them a hard deadline and once it passes, file the eviction. The cash for keys offer is a one-time opportunity. A tenant who misses the deadline has made their choice. File the same day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The eviction process — <em>a US overview (state laws vary)</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Eviction is the legal process by which a landlord removes a tenant from a property. Coach Carson frames it correctly from the outset: <strong>eviction is a last resort, not a goal.</strong> Every step before eviction — communication, payment plans, cash for keys — exists because a voluntary resolution is almost always cheaper, faster, and less damaging than a forced one. But when those options are exhausted, the eviction process must be executed correctly. One procedural error can dismiss the entire case and force you to start over.</p>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Self-Help Eviction is Illegal in Every US State</div>
+      <p>Changing the locks, removing the tenant's belongings, shutting off utilities, or physically removing a tenant without a court order is self-help eviction — and it is illegal in every US state regardless of how behind the tenant is on rent or how badly they have violated the lease. Self-help eviction exposes the landlord to significant civil liability, including damages and attorney's fees. There is no shortcut to the legal process. Follow it exactly.</p>
+    </div>
+
+    <h3 class="sub-title">The 7-step eviction process (US general framework)</h3>
+    <div class="eviction-steps fade-in">
+      <div class="ev-step">
+        <div class="ev-num">1</div>
+        <div>
+          <h4>Establish legal cause for eviction</h4>
+          <p>You must have a legally recognized reason to evict. The most common causes are non-payment of rent, lease violation (after proper cure notice), lease expiration, and illegal activity. Most states do not allow eviction without cause during an active lease term — and many cities add additional just-cause eviction protections beyond state law.</p>
+        </div>
+      </div>
+      <div class="ev-step">
+        <div class="ev-num">2</div>
+        <div>
+          <h4>Serve the required written notice</h4>
+          <p>Depending on the cause, serve the appropriate notice — Pay or Quit, Cure or Quit, or Unconditional Quit. The notice period (3 days, 7 days, 30 days) and the specific required content vary by state. The notice must be served correctly — typically posted at the property and mailed. Any error in the notice invalidates it and resets the clock.</p>
+        </div>
+      </div>
+      <div class="ev-step">
+        <div class="ev-num">3</div>
+        <div>
+          <h4>File the eviction lawsuit in court</h4>
+          <p>If the tenant has not complied with the notice by the deadline, file an eviction complaint (called an Unlawful Detainer in many states) with your local court. This is where a local eviction attorney is invaluable — they know the specific forms, filing procedures, and common local issues that can derail a case.</p>
+        </div>
+      </div>
+      <div class="ev-step">
+        <div class="ev-num">4</div>
+        <div>
+          <h4>Tenant is served with the court summons</h4>
+          <p>The court issues a summons to the tenant notifying them of the lawsuit and the court date. In most states this is served by a process server or the sheriff's office — not by the landlord directly. The tenant has a set number of days to respond.</p>
+        </div>
+      </div>
+      <div class="ev-step">
+        <div class="ev-num">5</div>
+        <div>
+          <h4>Court hearing</h4>
+          <p>Both parties appear before a judge. If the tenant does not appear, you typically receive a default judgment in your favor. If they do appear, present your documentation — the lease, all notices, payment records, and any written communications. This is why documentation from day one matters so much.</p>
+        </div>
+      </div>
+      <div class="ev-step">
+        <div class="ev-num">6</div>
+        <div>
+          <h4>Writ of possession issued</h4>
+          <p>If you win the judgment, the court issues a Writ of Possession — the legal order authorizing law enforcement to remove the tenant if they have not vacated by a specified date. In most states this is executed by the sheriff or marshal's office.</p>
+        </div>
+      </div>
+      <div class="ev-step">
+        <div class="ev-num">7</div>
+        <div>
+          <h4>Take possession and change the locks</h4>
+          <p>Once the sheriff executes the writ and the tenant has vacated — or been removed — you take possession of the unit immediately. Change the locks the same day. Document the unit condition thoroughly with photos. Begin the turnover process. The eviction is complete.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="path-callout op"><span class="pc-tag">🏢 Entrepreneur Path</span><p>Build a relationship with a local eviction attorney before you need one. Have their number in your contacts from day one. When a non-payment situation starts, loop them in early — they can advise on timing and notice requirements before you file anything. Tony Stephan's rule: use an eviction attorney every time, never try to DIY the process. One dismissed case from a technical error will cost more than every attorney fee you have ever paid.</p></div>
+  </div>
+
+  <!-- BONUS VIDEO -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Bonus Resource</div>
+    <h2 class="lesson-title">Tony Stephan: Non-payment from a <em>377-unit portfolio</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Tony Stephan manages 377 units across multiple properties. This video covers the non-payment process from a high-volume operator's perspective — including the promise-to-pay system, the critical online payment portal tip, and how to work with rental assistance programs. Real-world experience at scale.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/40z8vAXMQPc" title="What to Do When Tenants Stop Paying Rent — Tony Stephan" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Tony Stephan · Bonus Resource · YouTube</span>
+        <h4>Tenants Stopped Paying Rent — Here's What To Do (377-Unit Portfolio)</h4>
+        <p>Follow your lease as your rule book, use an eviction attorney not DIY, the promise-to-pay system (log it in your PM software, set a deadline, follow up daily), turn off the online payment portal once eviction is filed (prevents fraudulent payment reversals), communicate with tenants throughout the process, rental assistance programs — how to verify and track them, stay consistent or tenants will take advantage. Michigan-specific notice periods mentioned — state laws vary.</p>
+        <p class="credit">Tony Stephan · 377-unit multifamily portfolio · Michigan-based · 144 likes / 3,053 views</p>
+      </div>
+    </div>
+  </div>
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 5 Key Takeaways</h3>
+    <ul>
+      <li>Act fast, be firm, and follow through on every commitment. The moment a tenant learns your warnings are negotiable, every future boundary becomes a negotiation. Enforce late fees every time. File eviction when you say you will.</li>
+      <li>The 7-step non-payment response: check the lease, send a reminder, charge the late fee, serve a Pay or Quit Notice (with all required content), consider cash for keys, disable the online payment portal once eviction is filed, and connect the tenant to rental assistance programs where applicable.</li>
+      <li>The Pay or Quit Notice must contain specific information required by state law — tenant name, property address, exact amount owed, payment method, deadline, and who to pay. An error in any of these invalidates the notice and resets the clock. When in doubt, use an eviction attorney.</li>
+      <li>Cash for keys is not weakness — it is economics. A $500–$1,000 cash for keys settlement is almost always cheaper than a formal eviction that can cost $3,000–$6,000+ in attorney fees, lost rent, court costs, and property damage risk.</li>
+      <li>For lease violations other than non-payment, serve a Cure or Quit Notice giving the tenant a specified number of days to correct the violation. Document every violation with photos and written communication.</li>
+      <li>Self-help eviction — changing locks, removing belongings, shutting off utilities without a court order — is illegal in every US state and exposes the landlord to significant civil liability. There is no shortcut.</li>
+      <li>The 7-step eviction process: establish cause, serve written notice, file in court, tenant is served, court hearing, writ of possession, take possession and change locks immediately.</li>
+      <li>Document everything: every notice served, every conversation, every agreement. Verbal agreements are unenforceable. Written documentation is your protection in every dispute.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A tenant is two weeks late on rent. You have already sent a reminder and charged the late fee. They have not paid. What is the correct next legal step before you can pursue eviction?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> File the eviction complaint in court immediately — two weeks is more than enough notice</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Serve a Pay or Quit Notice — this is the first legally required step before you can file for eviction. It must include the tenant's name, property address, exact amount owed, how and where to pay, and the payment deadline. Post it on the front door and mail a copy the same day. Keep a date-stamped copy. Only after this notice period expires without payment can you file eviction.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Change the locks and remove the tenant's belongings — two weeks of non-payment is grounds for immediate removal</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Call the tenant and negotiate a payment plan before taking any legal action</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. You have filed for eviction. The tenant then makes a payment through the online portal. Why does Tony Stephan say you should have disabled the portal before filing — and what is the risk?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Accepting a partial payment during eviction proceedings automatically cancels the eviction in most states</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Online payments take 2–3 days to process and can be reversed after the fact — the tenant can make the payment, which may halt or complicate the eviction, then reverse it or claim it as fraudulent. You end up without the money AND with a delayed eviction. Once eviction is filed, all payments must be made in a documented, non-reversible form. Disable the portal before filing.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Accepting online payment during eviction creates a new lease agreement that legally restarts the tenancy</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> The portal fee is higher than cash payment and reduces your net recovery</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A tenant has an unauthorized dog in your no-pets-allowed unit. What is the correct legal notice to serve — and what does it require?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> A Pay or Quit Notice — the tenant must pay a pet deposit within the notice period or vacate</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> A Cure or Quit Notice — this gives the tenant a specified number of days (varies by state, typically 3–10) to correct the lease violation (remove the pet) or vacate. It is the appropriate notice for lease violations other than non-payment. Document the violation with photos before serving, and keep a date-stamped copy of the notice.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> An Unconditional Quit Notice — unauthorized pets are a serious enough violation to require immediate vacating</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> No notice is required — simply add a pet fee to their next month's rent statement</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A tenant owes two months of rent. You have served your Pay or Quit Notice and the deadline has passed. A colleague suggests offering cash for keys is a sign of weakness that will encourage future non-payment. How do you respond?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Agree — always file eviction rather than negotiating, to establish that non-payment has serious consequences</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Disagree — cash for keys is not weakness, it is economics. A formal eviction can cost $3,000–$6,000+ in attorney fees, lost rent, court costs, and property damage risk. Offering $500–$1,000 to vacate voluntarily in 7–14 days is frequently the better financial decision for the owner. The offer is made after legal notices are served — which establishes you are serious. If they decline or miss the deadline, you file immediately.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> It depends on the tenant — long-term tenants deserve the cash for keys option while new tenants should face eviction</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Agree only if the tenant owes less than one month's rent — larger debts should always go through formal eviction</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. You win your eviction case in court and receive a judgment. The tenant still has not left the unit two weeks later. What is your next step — and what is prohibited?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Change the locks yourself immediately — you have a court judgment so self-help is now permitted</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> Request a Writ of Possession from the court and have the sheriff execute it. The court judgment gives you the legal right to possession — but you cannot physically remove the tenant yourself. The writ authorizes law enforcement to carry out the removal. Self-help eviction — changing locks, removing belongings, or physically removing the tenant without law enforcement — is illegal in every US state even after winning the judgment.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> File a second eviction case — the first one only covered the non-payment, you need a new case for the holdover</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Shut off the utilities — a court judgment gives you the right to make the unit uninhabitable to force departure</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Book on Managing Rental Properties</div>
+          <div class="bi-author">Brandon Turner & Heather Turner</div>
+          <div class="bi-desc">Chapters 10–11 (handling problems, collecting rent, lease violations, non-payment response, eviction process). The most practical step-by-step treatment of problem handling for residential property managers.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=book+on+managing+rental+properties+brandon+turner&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Property Management Kit for Dummies</div>
+          <div class="bi-author">Robert Griswold</div>
+          <div class="bi-desc">Chapters 12–14 (collecting and increasing rent, keeping good tenants, handling problem tenants). Griswold's framework for distinguishing between tenant problems you can solve and those that require legal action is particularly valuable.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=property+management+kit+for+dummies+griswold&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 6: Maintenance, Contractors, and Turnover</h3>
+    <p>Problems handled. Now let's talk about keeping properties in excellent condition — and managing the contractors, vendors, and turnover processes that define the physical quality of your portfolio. Module 6 covers maintenance systems, the contractor vetting process, emergency vs. non-emergency response, and the complete move-out and unit turnover process.</p>
+    <a href="pm-module-6.html" class="next-module-cta">Module 6: Maintenance, Contractors & Turnover →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="pm-module-4.html" class="btn btn-outline">← Module 4: Finding Great Tenants</a>
+  <div class="module-nav-info">
+    <p>Property Management Track</p>
+    <strong>Module 5 of 7</strong>
+  </div>
+  <a href="pm-module-6.html" class="btn btn-gold">Module 6: Maintenance & Turnover →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! The Pay or Quit Notice is the mandatory first legal step before any eviction can be filed. It must contain the tenant's name, property address, exact amount owed, payment method, deadline, and who to pay. Post it on the front door AND mail a copy the same day. Keep a date-stamped copy. Any error in the required content invalidates the notice. Only after the notice period expires without payment can you file the eviction complaint in court.",incorrect:"Not quite. Before filing any eviction, you must serve a Pay or Quit Notice — this is the legally required first step. The notice must contain specific information (tenant name, address, amount owed, payment method, deadline, and who to pay), must be served correctly (posted and mailed), and the notice period must expire before you can file in court. Skipping this step or serving it incorrectly will get your case dismissed."},
+  q2:{correct:"Correct! Online payments process over 2–3 days and can be reversed after the fact. A tenant can make the payment (which may complicate or delay the eviction), then reverse the payment or dispute it as fraudulent with their bank. You end up without the money AND with a delayed eviction. Tony Stephan's rule: disable the portal before filing. Once eviction is filed, all payments must be in a documented, non-reversible form — certified check, money order, or cashier's check.",incorrect:"Not quite. The risk Tony Stephan identifies is payment reversal — online payments process over 2–3 days and can be reversed after the fact. A tenant can make the payment to complicate or delay the eviction, then reverse it or claim fraud. You end up without the money and with a disrupted eviction. His rule: disable the online payment portal before filing eviction, and require non-reversible payment methods from that point forward."},
+  q3:{correct:"Correct! A Cure or Quit Notice is the appropriate legal notice for lease violations other than non-payment. It gives the tenant a specified number of days (varies by state) to correct the violation — in this case remove the pet — or vacate. Document the violation with photos before serving the notice. A Pay or Quit is for non-payment only. An Unconditional Quit is reserved for the most serious violations where the tenant has no opportunity to cure — unauthorized pets in a no-pets lease generally does not meet that threshold.",incorrect:"Not quite. The correct notice for a lease violation (other than non-payment) is a Cure or Quit Notice. This gives the tenant a specific number of days to correct the violation — remove the pet — or vacate. A Pay or Quit is for non-payment only. An Unconditional Quit notice is reserved for the most serious violations (illegal activity, significant violence, repeat violations) where the state law allows no opportunity to cure."},
+  q4:{correct:"Correct! Cash for keys is a rational economic decision — not a sign of weakness. The full cost of a formal eviction (attorney fees, court costs, lost rent during proceedings, property damage risk, turnover costs) typically runs $3,000–$6,000+. Offering $500–$1,000 to vacate voluntarily in 7–14 days is frequently the better financial outcome for the owner. The offer comes after legal notices are served — which establishes you are serious. If the tenant declines or misses the deadline, you file the eviction immediately.",incorrect:"Not quite. Cash for keys is not weakness — it is economics. A formal eviction can easily cost $3,000–$6,000+ when you add attorney fees, court costs, lost rent during the months-long proceedings, and the risk of property damage by a tenant with nothing to lose. Offering $500–$1,000 to vacate voluntarily is frequently the financially smarter choice for the owner. The key is: make the offer after serving legal notices (establishing you are serious), set a hard deadline, and file immediately if they miss it."},
+  q5:{correct:"Correct! After winning the judgment you request a Writ of Possession from the court, which authorizes law enforcement — typically the sheriff or marshal — to physically remove the tenant if they have not vacated. You cannot take matters into your own hands even with a court judgment in hand. Self-help eviction — changing locks, removing belongings, or physically removing the tenant without law enforcement — is illegal in every US state even after winning an eviction judgment. The writ is the legal mechanism for enforcement.",incorrect:"Not quite. Winning the eviction judgment gives you the legal right to possession — but you cannot physically remove the tenant yourself. You must request a Writ of Possession from the court, which authorizes the sheriff or marshal to execute the removal. Self-help eviction (changing locks, shutting off utilities, removing belongings) is illegal in every US state even after a court judgment. Violating this can expose you to civil liability that exceeds the cost of the eviction itself."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;}
+    else{ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}}
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){scoreEl.className='score-result show pass';scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Solid grasp of problem handling fundamentals. Ready for Module 6: Maintenance, Contractors & Turnover.';}
+  else{scoreEl.className='score-result show fail';scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the notice requirements and eviction process — procedural errors here are expensive and can set you back weeks.';}
+}
+</script>
+</body>
+</html>

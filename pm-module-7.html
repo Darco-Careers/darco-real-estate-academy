@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Module 7: Running a Profitable Business — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#2C3E6B;--teal-mid:#3D5490;--teal-light:#5470B0;--teal-pale:#EDF0F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --slate:#4A5568;--slate-light:#718096;--slate-pale:#EDF2F7;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(44,62,107,0.1);
+  --shadow-card:0 2px 16px rgba(44,62,107,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:100%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Eight attributes */
+.eight-attrs{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.attr-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.attr-card .ac-num{font-size:10px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.attr-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.attr-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Self vs hire */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;}
+.compare-card.self{background:var(--teal-pale);border:1px solid rgba(13,92,99,0.2);}
+.compare-card.hire{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.compare-card.self h4{color:var(--teal);}
+.compare-card.hire h4{color:#8A6A20;}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.compare-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.compare-card.self ul li::before{content:'✓';color:var(--teal-mid);font-weight:700;flex-shrink:0;}
+.compare-card.hire ul li::before{content:'✓';color:#8A6A20;font-weight:700;flex-shrink:0;}
+/* Task list */
+.task-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin:2rem 0;}
+.task-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.85rem;font-size:12.5px;color:var(--text-mid);line-height:1.4;}
+/* Career paths */
+.career-paths{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.career-path{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.career-path .cp-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+.career-path .cp-content h4{font-size:0.9rem;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.career-path .cp-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .eight-attrs{grid-template-columns:1fr;}
+  .compare-grid{grid-template-columns:1fr;}
+  .task-grid{grid-template-columns:1fr 1fr;}
+}
+
+.dual-path-intro{margin-bottom:3.5rem;}
+.path-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.path-card{border-radius:16px;padding:1.75rem;display:flex;flex-direction:column;gap:0.75rem;}
+.path-card.path-employee{background:var(--teal-pale);border:1px solid rgba(44,62,107,0.2);}
+.path-card.path-owner{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.path-icon{font-size:1.75rem;}
+.path-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.path-employee .path-label{color:var(--teal-mid);}
+.path-owner .path-label{color:#8A6A20;}
+.path-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);}
+.path-card p{font-size:13.5px;color:var(--text-mid);line-height:1.75;}
+.path-applies{margin-top:0.5rem;padding:0.85rem 1rem;border-radius:8px;font-size:13px;color:var(--text-mid);line-height:1.7;}
+.path-employee .path-applies{background:rgba(44,62,107,0.07);}
+.path-owner .path-applies{background:rgba(201,168,76,0.1);}
+.path-applies strong{color:var(--text-dark);}
+.path-note{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-top:0.5rem;}
+.path-note-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.path-note p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.ep-tag{color:var(--teal);font-weight:700;}
+.op-tag{color:#8A6A20;font-weight:700;}
+.path-callout{border-radius:10px;padding:0.85rem 1.1rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;}
+.path-callout.ep{background:var(--teal-pale);border-left:3px solid var(--teal-mid);}
+.path-callout.op{background:var(--gold-pale);border-left:3px solid var(--gold);}
+.path-callout .pc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+.path-callout.ep .pc-tag{color:var(--teal-mid);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.path-callout p{color:var(--text-mid);margin:0;}
+@media(max-width:640px){.path-cards{grid-template-columns:1fr;}}
+
+.path-callout{border-radius:10px;padding:0.85rem 1.1rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;}
+.path-callout.ep{background:var(--teal-pale);border-left:3px solid var(--teal-mid);}
+.path-callout.op{background:var(--gold-pale);border-left:3px solid var(--gold);}
+.path-callout .pc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+.path-callout.ep .pc-tag{color:var(--teal-mid);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.path-callout p{color:var(--text-mid);margin:0;}
+.accounts-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.account-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--teal);border-radius:0 0 12px 12px;padding:1.1rem 1.25rem;}
+.account-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.account-card .ac-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.3rem;}
+.account-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.reports-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.1rem 1.25rem;}
+.report-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.report-card .rc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.3rem;}
+.report-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.principles-list{display:flex;flex-direction:column;gap:0.65rem;margin:2rem 0;}
+.principle-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1.1rem;}
+.pr-num{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold);flex-shrink:0;min-width:24px;}
+.pr-content h4{font-size:0.87rem;font-weight:700;color:var(--text-dark);margin-bottom:0.15rem;}
+.pr-content p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+@media(max-width:640px){.accounts-grid{grid-template-columns:1fr;}.reports-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="property-management.html">Property Management Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="property-management.html">Property Management Track</a><span class="sep">›</span>
+  <span class="current">Module 7: Running a Profitable Business</span>
+</div>
+<div class="progress-bar">
+  <span class="progress-label">PM Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="pm-module-1.html" class="prog-dot complete">1</a>
+    <a href="pm-module-2.html" class="prog-dot complete">2</a>
+    <a href="pm-module-3.html" class="prog-dot complete">3</a>
+    <a href="pm-module-4.html" class="prog-dot complete">4</a>
+    <a href="pm-module-5.html" class="prog-dot complete">5</a>
+    <a href="pm-module-6.html" class="prog-dot complete">6</a>
+    <div class="prog-dot active">7</div>
+  </div>
+</div>
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Property Management Track · Module 7 of 7</div>
+    <h1>Running a <em>Profitable Business</em></h1>
+    <p>The final module is about the business behind the business. You can screen great tenants, handle problems professionally, and manage contractors efficiently — but if your financial systems are broken, your reporting is vague, and your bookkeeping is a mess, none of that operational excellence will show up where it counts: in your owner relationships and your bottom line. This is where everything comes together.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>60–75 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2</span></div>
+    </div>
+  </div>
+</div>
+<div class="module-body">
+
+  <div class="path-callout ep" style="margin-bottom:2rem;border-radius:12px;padding:1.1rem 1.5rem;">
+    <span class="pc-tag">📍 Both Paths</span>
+    <p><strong>Employee path:</strong> Understanding financial management, trust accounting, and reporting makes you a more capable and promotable professional — and helps you understand why certain processes in your company are non-negotiable. <strong>Entrepreneur path:</strong> This module is the difference between a PM company that makes money and one that does not know if it is making money. Master it.</p>
+  </div>
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Financial management basics — <em>what every property manager must know</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Coach Carson and Kat Longan — a former CPA who specializes in real estate bookkeeping — open their bookkeeping conversation with a reframe worth absorbing: <strong>bookkeeping is not a chore. It is a superpower.</strong> The property manager who understands their numbers sees things other managers miss — which units are underperforming, which expenses are trending in the wrong direction, which owners are close to breaking even on their investment. Numbers tell a story. Your job is to read it.</p>
+
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Coach Carson + Kat Longan (Former CPA) — Bookkeeping for Real Estate</div>
+      <p>"Most landlords and property managers treat bookkeeping like something they have to do at tax time. The ones who treat it like a management tool — reviewing monthly, looking for patterns, using it to make decisions — those are the ones who actually know what is happening in their portfolio."</p>
+      <div class="quote-attr">On bookkeeping as a management tool, not just a tax compliance exercise</div>
+    </div>
+
+    <h3 class="sub-title">The non-negotiable financial foundations</h3>
+    <div class="checklist fade-in">
+      <div class="check-item"><div class="ci-icon">🏦</div><div><strong>Separate bank accounts for real estate — always.</strong> Never commingle rental income, security deposits, or maintenance expenses with personal funds. A dedicated business checking account for your PM operation, a separate trust account for security deposits (legally required in most states), and a reserve account for maintenance are the minimum structure. Commingling is both a bookkeeping disaster and potentially illegal.</div></div>
+      <div class="check-item"><div class="ci-icon">💻</div><div><strong>Choose software early and stick with it.</strong> Coach Carson recommends Stessa (free and built specifically for rental property owners) for smaller portfolios, and QuickBooks for PM companies managing properties for multiple owners. Your property management software (AppFolio, Buildium) also handles most financial functions. The worst approach is spreadsheets-plus-receipts-in-a-shoebox. Pick a system before your first rent payment arrives.</div></div>
+      <div class="check-item"><div class="ci-icon">📅</div><div><strong>Monthly bookkeeping cadence — not quarterly, not at tax time.</strong> Review your income and expenses every month. Reconcile your bank accounts. Produce owner reports. Monthly review catches problems while they are still small — an expense trending up, a unit with unusual maintenance costs, a tenant whose payment patterns are changing. Quarterly or annual review finds problems after they have already cost money.</div></div>
+      <div class="check-item"><div class="ci-icon">👩‍💼</div><div><strong>Know when to hire a bookkeeper and when to hire a CPA.</strong> A bookkeeper handles day-to-day transaction recording and reconciliation. A CPA handles tax strategy, entity structure, depreciation optimization, and tax filing. Coach Carson's guidance: hire a bookkeeper when your volume makes DIY unmanageable; hire a CPA who specializes in real estate from day one, because the tax decisions made in year one (depreciation elections, entity structure) have permanent consequences.</div></div>
+    </div>
+
+    <div class="path-callout op"><span class="pc-tag">🏢 Entrepreneur Path</span><p>The financial structure of your PM company matters as much as the financial tracking for the properties you manage. Your company needs its own P&L, its own expense tracking, and its own cash flow management separate from the client trust accounts you maintain. Many new PM company owners blur these lines — tracking client money carefully while ignoring their own company's financial health. Both require the same discipline.</p></div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Trust accounting — <em>handling other people's money correctly</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Trust accounting is one of the most legally sensitive aspects of property management — and one of the most commonly mishandled. When you collect rent and security deposits on behalf of property owners and tenants, you are holding money that does not belong to you. The law is explicit about how this must be handled, and violations — even unintentional ones — can result in license suspension, civil liability, and criminal charges in the most serious cases.</p>
+
+    <h3 class="sub-title">The four bank accounts every PM company needs</h3>
+    <p class="lesson-text">Buildium's accounting overview identifies four distinct accounts that a professional PM company should maintain:</p>
+
+    <div class="accounts-grid fade-in">
+      <div class="account-card">
+        <div class="ac-tag">Client Funds — Legally Separate</div>
+        <h4>Trust / Operating Account</h4>
+        <p>Holds rent collected on behalf of owners. Rent comes in, PM fees and approved expenses are deducted, and the balance is disbursed to the owner on the agreed schedule (typically monthly). This account holds client money — never PM company operating funds.</p>
+      </div>
+      <div class="account-card">
+        <div class="ac-tag">Client Funds — Legally Separate</div>
+        <h4>Security Deposit Account</h4>
+        <p>Holds tenant security deposits in a separate trust account — legally required in most states. These funds belong to the tenant until legally forfeited or deducted at move-out. They must never be used for operating expenses or commingled with rent collections.</p>
+      </div>
+      <div class="account-card">
+        <div class="ac-tag">PM Company Funds</div>
+        <h4>Operating Account</h4>
+        <p>Holds the PM company's own revenue — management fees, leasing fees, and other earned income after disbursement to owners. Used to pay the company's own expenses: staff, software, office costs, marketing. This is the PM company's money, kept completely separate from client funds.</p>
+      </div>
+      <div class="account-card">
+        <div class="ac-tag">PM Company Funds</div>
+        <h4>Reserve / Maintenance Account</h4>
+        <p>Holds owner-funded maintenance reserves for properties where owners have agreed to keep a maintenance float. When a repair is needed, funds are drawn from this account rather than requiring the owner to wire money for every repair. Typically $200–$500 per property depending on market and property type.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ Commingling is a Serious Violation</div>
+      <p>Commingling means mixing client funds with your own company's funds — or mixing security deposit funds with rent collections. It is illegal in virtually every US state, regardless of intent. A property manager who deposits rent into their personal account "just until the weekend," or uses security deposit funds to pay a contractor and plans to "put it back," is committing a trust accounting violation. The consequences range from license suspension to civil liability to criminal charges depending on the amount and state. The rules exist because tenants and owners are trusting you with their money. Take that trust seriously.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Coach Carson: Bookkeeping for rental properties — <em>a superpower, not a chore</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Coach Carson and Kat Longan (former CPA, now real estate bookkeeping specialist) walk through exactly how to structure your bookkeeping for rental properties — the accounts, the software, the monthly cadence, and when to bring in professional help. One of the best free bookkeeping education resources available for property managers. Watch before Lesson 3.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/V79ATubqPDo" title="Bookkeeping for Rental Properties — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Coach Carson · YouTube</span>
+        <h4>Rental Property Bookkeeping — The Superpower Most Landlords Ignore</h4>
+        <p>Bookkeeping as a management tool (not just tax compliance), separate bank accounts for real estate, Stessa (free) vs. QuickBooks for different scales, monthly bookkeeping cadence, profit and loss vs. balance sheet — what each tells you, exception reporting for spotting anomalies, when to DIY vs. hire a bookkeeper, and why your CPA must specialize in real estate from day one.</p>
+        <p class="credit">Coach Carson + Kat Longan (Former CPA) · YouTube · 351 likes / 12,438 views</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The four reports that run your business — <em>what to produce and how to read them</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Buildium's accounting framework identifies four core financial reports that every professional property management operation produces monthly. These are not nice-to-haves — they are the foundation of your relationship with every property owner you serve. An owner who receives a clear, accurate monthly report from their property manager trusts them. An owner who never receives a report — or receives one that is confusing, late, or inconsistent — is an owner who is looking for a new manager.</p>
+
+    <div class="reports-grid fade-in">
+      <div class="report-card">
+        <div class="rc-tag">Report 1 — Monthly, per owner</div>
+        <h4>Owner / Rental Statement</h4>
+        <p>The primary monthly report delivered to each property owner. Shows: all income collected (rent, late fees, pet fees), all expenses paid on their behalf (maintenance, management fee, leasing fees, repairs), and the net disbursement amount sent to them. This is the report owners look forward to — or dread. Clear, accurate, on time, every month without exception.</p>
+      </div>
+      <div class="report-card">
+        <div class="rc-tag">Report 2 — Monthly, company-wide</div>
+        <h4>Profit & Loss Statement</h4>
+        <p>Shows total income vs. total expenses across all properties for a given period. The P&L tells you whether your portfolio — and your company — is actually profitable. It reveals expense trends, income patterns, and whether specific properties or owners are performing differently from the norm. This is your primary management tool for your own business.</p>
+      </div>
+      <div class="report-card">
+        <div class="rc-tag">Report 3 — Monthly snapshot</div>
+        <h4>Rent Roll</h4>
+        <p>A list of all units under management showing: tenant name, unit, lease start and end date, monthly rent amount, and current payment status (paid, late, partial). The rent roll gives you and your owners an instant occupancy and collection snapshot. It is also the document buyers and lenders look at first when evaluating a rental portfolio.</p>
+      </div>
+      <div class="report-card">
+        <div class="rc-tag">Report 4 — Annual planning tool</div>
+        <h4>Budget vs. Actual</h4>
+        <p>Compares projected income and expenses (the budget) to what actually happened. Variances — both positive and negative — are the most valuable information in this report. An expense that is consistently over budget signals a systemic problem. Income that is consistently below budget signals a pricing or vacancy issue. This report is how disciplined operators catch problems early.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Cash vs. accrual accounting — which to use</h3>
+    <p class="lesson-text">Buildium explains the two accounting methods clearly: <strong>cash accounting</strong> records income when received and expenses when paid — simpler, and appropriate for smaller portfolios. <strong>Accrual accounting</strong> records income when earned (even if not yet received) and expenses when incurred (even if not yet paid) — more complex but more accurate for larger operations. Most residential PM companies use cash accounting, especially early on. Your real estate CPA will advise on when accrual makes sense for your specific situation.</p>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Buildium: Property management accounting — <em>trust accounting, reports, and software</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Buildium — one of the leading property management software platforms — walks through the full accounting framework for a professional PM company: trust accounting structure, chart of accounts, the four key reports, and how PM software handles the financial complexity of managing multiple properties for multiple owners. Watch before Lesson 4.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/8Ndgaer7Oss" title="Property Management Accounting — Buildium" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Buildium · YouTube</span>
+        <h4>Property Management Accounting — Trust Accounting, Reports & Software</h4>
+        <p>The four bank accounts every PM company needs (trust, security deposit, operating, reserve), chart of accounts for property management, cash vs. accrual accounting, trust accounting — what it means to hold client funds correctly, the four key reports (owner statement, P&L, rent roll, budget vs. actual), how PM software automates financial management, and the compliance requirements that make proper accounting non-negotiable.</p>
+        <p class="credit">Buildium · Property management software · YouTube · 247 likes / 14,419 views</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The 13 principles of a great property manager — <em>Turner's framework for the long game</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Turner and Turner close their book with 13 principles they believe separate great property managers from merely competent ones. These are not operational tactics — they are the professional standards and personal disciplines that determine whether this career becomes a long-term success or a revolving door of frustration. Read them as a checklist for where you are today, and a roadmap for where you are going.</p>
+
+    <div class="principles-list fade-in">
+      <div class="principle-item">
+        <div class="pr-num">1</div>
+        <div class="pr-content">
+          <h4>Treat it like a business</h4>
+          <p>This was Principle 1 of Module 1 and it is still Principle 1 here. Whether you have one unit or one thousand, your management operation is a business. Systems, processes, documentation, financial tracking, and professional standards — not a side project you manage when convenient.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">2</div>
+        <div class="pr-content">
+          <h4>Be consistent and fair</h4>
+          <p>Apply every rule, fee, and policy identically to every tenant. Favoritism creates liability. Inconsistency creates resentment. The tenant who got the late fee waived will tell their neighbor — who will expect the same treatment. Your policies protect you because they apply to everyone equally, every time.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">3</div>
+        <div class="pr-content">
+          <h4>Communicate proactively</h4>
+          <p>Do not wait for tenants or owners to chase you. Send the update before they ask for it. Confirm the repair was completed before they follow up. Deliver the monthly report on the same day every month. Proactive communication builds trust faster than any other single behavior.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">4</div>
+        <div class="pr-content">
+          <h4>Screen tenants relentlessly</h4>
+          <p>The quality of your tenants determines the quality of your professional life. One bad tenant can cost you months of stress, thousands in legal fees, and damage your relationship with the property owner. Never compromise on screening standards because a unit has been vacant too long or because an applicant seems nice.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">5</div>
+        <div class="pr-content">
+          <h4>Document everything</h4>
+          <p>Every notice served. Every maintenance request. Every conversation that matters. Every agreement reached. The property manager who documents consistently never loses a dispute for lack of evidence. The one who relies on memory and verbal agreements loses regularly.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">6</div>
+        <div class="pr-content">
+          <h4>Know the law — and stay current</h4>
+          <p>Landlord-tenant law changes. Fair Housing guidance evolves. Local ordinances get added. The property manager who stopped learning the law after they passed their license exam is operating with an outdated map. Read NARPM updates, follow your state's landlord-tenant statute changes, and consult attorneys before making decisions in legally ambiguous situations.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">7</div>
+        <div class="pr-content">
+          <h4>Respond quickly</h4>
+          <p>Response time is one of the most visible signals of professional competence. Tenants form opinions about their property manager based largely on how fast their calls and maintenance requests are acknowledged. Owners do the same. You do not have to solve every problem immediately — but you must acknowledge it immediately.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">8</div>
+        <div class="pr-content">
+          <h4>Build systems for everything</h4>
+          <p>A system is a documented process that produces a consistent result regardless of who executes it. Build systems for tenant screening, move-in inspections, maintenance requests, rent collection, lease renewals, and move-outs. Systems protect quality as you scale and make your business transferable — to employees, to a buyer, to a successor.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">9</div>
+        <div class="pr-content">
+          <h4>Invest in the right tools</h4>
+          <p>Property management software, tenant screening services, electronic signature platforms, and maintenance tracking tools are not luxuries — they are infrastructure. The manager who tries to run a professional operation with spreadsheets and paper files hits a ceiling quickly and makes preventable mistakes. Invest in the tools that let you operate at scale.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">10</div>
+        <div class="pr-content">
+          <h4>Keep properties in excellent condition</h4>
+          <p>A well-maintained property attracts better tenants, retains them longer, commands higher rents, and preserves the owner's investment. Deferred maintenance is not cost-saving — it is cost-deferral with interest. The small repair that gets ignored becomes the large repair that creates tenant conflict and owner frustration.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">11</div>
+        <div class="pr-content">
+          <h4>Treat your tenants with respect</h4>
+          <p>Tenants are your operational partners — the people who generate the income that makes the entire system work. Treating them with dignity, communicating transparently, and responding to their needs professionally produces tenants who take care of the property, pay on time, and renew their leases. The adversarial landlord mindset is both unpleasant and unprofitable.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">12</div>
+        <div class="pr-content">
+          <h4>Know your numbers</h4>
+          <p>Vacancy rate, average days to lease, maintenance cost per unit, owner retention rate, revenue per door — these are the metrics of a professional property management operation. The manager who knows their numbers makes data-driven decisions. The one who does not knows only whether things feel good or bad — which is not a reliable guide.</p>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="pr-num">13</div>
+        <div class="pr-content">
+          <h4>Never stop learning</h4>
+          <p>The property managers who thrive long-term are students of the craft. NARPM conferences, local chapter meetings, industry publications, books, podcasts, and conversations with experienced operators — these are not optional enrichment. They are how you stay current, stay sharp, and stay ahead of the problems that catch unprepared managers by surprise.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 7 Key Takeaways</h3>
+    <ul>
+      <li>Bookkeeping is a management tool, not just a tax compliance exercise. The property manager who reviews numbers monthly — tracking income trends, expense patterns, and performance anomalies — sees things other managers miss until the problems are expensive.</li>
+      <li>Separate bank accounts are non-negotiable: trust account for rent collections, security deposit trust account (legally required in most states), PM company operating account, and a maintenance reserve account. Commingling client funds with your own is a legal violation regardless of intent.</li>
+      <li>Trust accounting means holding other people's money with the care and legal compliance it deserves. Violations — using security deposit funds for expenses, mixing client and company funds — can result in license suspension, civil liability, and criminal charges in serious cases.</li>
+      <li>The four reports that run a PM business: owner/rental statement (monthly, per owner), profit and loss statement (monthly, company-wide), rent roll (occupancy and payment snapshot), and budget vs. actual (variance analysis for catching problems early).</li>
+      <li>Choose your accounting software before your first rent payment arrives — not during tax season. Stessa (free) works well for smaller portfolios. QuickBooks and your PM software (AppFolio, Buildium) handle larger operations. The worst system is spreadsheets and paper receipts.</li>
+      <li>Hire a CPA who specializes in real estate from day one — the tax decisions made in year one (depreciation elections, entity structure) have permanent consequences. A general CPA who dabbles in real estate is not the same thing.</li>
+      <li>Turner's 13 principles of a great property manager: treat it like a business, be consistent and fair, communicate proactively, screen tenants relentlessly, document everything, know the law, respond quickly, build systems for everything, invest in the right tools, keep properties in excellent condition, treat tenants with respect, know your numbers, and never stop learning.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. You collect $12,000 in rent from eight properties on the 1st. Your PM company's phone bill is due the 3rd and you are temporarily short in your operating account. Is it acceptable to use the trust account funds briefly and replace them before owner disbursements go out on the 10th?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Yes — as long as the funds are replaced before disbursements, no harm is done</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> Yes — brief inter-account borrowing is a standard cash flow management practice</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> No — this is commingling, which is illegal regardless of intent or how briefly the funds are "borrowed." Trust account funds belong to the property owners, not to your company. Using them for company expenses — even temporarily — is a trust accounting violation that can result in license suspension and civil liability. The solution is to manage your company's own cash flow independently of client funds.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Only if you document the transfer and intent to repay within 24 hours</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A property owner asks you why their rent roll shows Unit 3 as "late" when the tenant told them they paid. What does the rent roll tell you — and what does this situation require?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> The rent roll is probably wrong — tenant self-reports are more reliable than software records</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> The rent roll shows current payment status for all units — if it shows late, either the payment has not been received or recorded yet. This requires you to check your trust account records for the actual payment receipt, check whether the tenant paid through a method that has not yet cleared (check in the mail, pending ACH), and follow up with the tenant for proof of payment. The rent roll is a reliable tool — discrepancies need investigation, not dismissal.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Inform the owner the tenant is lying and proceed with the late fee process immediately</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> The rent roll is a month-end report only — mid-month status is never accurate</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. Your budget vs. actual report shows maintenance costs running 40% over budget for the third consecutive month on one property. What does this signal — and what should you do?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Random variance — maintenance costs fluctuate naturally and three months is not a meaningful pattern</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Three consecutive months of 40% over-budget maintenance is a systemic signal — not random variance. It likely indicates a recurring issue (aging HVAC, plumbing problem, deferred capital item coming due) or a contractor overbilling on that property. Investigate the specific maintenance items driving the variance, assess whether a capital repair is needed, and review contractor invoices for that property. Report the pattern to the owner with your analysis and a recommended course of action.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Adjust the budget upward to match actual spending — the budget was probably set too low</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> This is the owner's problem to solve — flag it in the monthly report and let them decide</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A new property manager asks whether they should hire a general CPA for their taxes or a CPA who specializes in real estate. Coach Carson's guidance is clear — what is it, and why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> A general CPA is fine for the first few years — specialize once your portfolio grows large enough to justify the higher fees</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Hire a real estate CPA from day one — because the tax decisions made in year one (cost segregation, depreciation elections, entity structure, material participation elections) have permanent consequences that a general CPA will miss or handle incorrectly. Correcting year-one tax decisions in year three is expensive and sometimes impossible. The fee difference between a general CPA and a real estate specialist is small compared to the value of getting the foundational decisions right from the start.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> A bookkeeper is sufficient for most property managers — CPAs are only needed for large portfolios</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Use tax software for the first few years to save money, then hire a CPA when your tax situation becomes complex</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Of Turner's 13 principles, which one underpins all the others — and has been the foundational theme of this entire track since Module 1?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Principle 4 — Screen tenants relentlessly, because tenant quality determines everything else</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Principle 5 — Document everything, because without documentation nothing else can be enforced</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Principle 1 — Treat it like a business. This is the foundational mindset that makes every other principle actionable. Systems only get built by people who think like business owners. Consistency only happens in organizations that operate like businesses. Documentation, legal compliance, financial management, and professional standards — all of these flow from the decision to treat property management as a business rather than a side project or a favor. It was the first thing Turner said in Chapter 1, and it is still true on the last page.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Principle 13 — Never stop learning, because continuous improvement compounds over a career</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Book on Managing Rental Properties</div>
+          <div class="bi-author">Brandon Turner & Heather Turner</div>
+          <div class="bi-desc">Chapter 14 (bookkeeping basics, organizing your finances, accounting software, working with a CPA) and Chapter 15 (the 13 principles of great landlording). The 13 principles chapter alone is worth the entire book.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=book+on+managing+rental+properties+brandon+turner&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The ABCs of Property Management</div>
+          <div class="bi-author">Ken McElroy</div>
+          <div class="bi-desc">Chapters 2–3 (property management systems, cash flow management, ancillary income strategies). McElroy's systems-thinking approach to running a PM operation at scale is the most valuable content in this book for the entrepreneur path.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=abcs+of+property+management+ken+mcelroy&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRACK COMPLETE -->
+  <div style="background:linear-gradient(135deg,#1A2540,var(--teal));border-radius:20px;padding:2.5rem 2.25rem;margin:2rem 0;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,168,76,0.1) 0%,transparent 60%);"></div>
+    <div style="position:relative;">
+      <div style="font-size:2.5rem;margin-bottom:0.75rem;">🎓</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:0.75rem;">Property Management Track — <em style="color:var(--gold-light);">Complete</em></h3>
+      <p style="font-size:14px;color:rgba(255,255,255,0.7);max-width:520px;margin:0 auto 1.5rem;line-height:1.8;">You have covered the complete property management professional curriculum — from the mindset and business fundamentals of Module 1 to the financial management and guiding principles of Module 7. This is the foundation of a professional property management career.</p>
+      <a href="property-management.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--teal);padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;">← Back to Property Management Track</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="pm-module-6.html" class="btn btn-outline">← Module 6: Maintenance & Turnover</a>
+  <div class="module-nav-info">
+    <p>Property Management Track</p>
+    <strong>Module 7 of 7 — Final Module</strong>
+  </div>
+  <a href="property-management.html" class="btn btn-gold">Track Complete — Back to Overview →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! This is commingling — using client trust account funds for your own company's expenses — and it is illegal regardless of intent, duration, or how quickly the funds are replaced. The $12,000 in the trust account belongs to property owners, not to your PM company. Using it to pay your phone bill, even briefly, is a trust accounting violation that can result in license suspension and civil liability. The solution is to manage your company's cash flow independently through your own operating account.",incorrect:"Not quite. Using trust account funds — even briefly — to cover company expenses is commingling, which is illegal in virtually every US state. The rent in your trust account belongs to the property owners. It does not belong to your company until you formally disburse your management fees to your operating account. 'Borrowing' from it for any purpose is a trust accounting violation regardless of how short the duration or how certain you are that the funds will be replaced."},
+  q2:{correct:"Correct! The rent roll shows current payment status — if it shows late, either the payment has not been received, or has not been recorded. Before assuming anything, check your trust account records for actual receipt, verify whether the payment is pending clearance (check in transit, ACH processing), and request proof of payment from the tenant. The rent roll is a reliable tool — discrepancies between what it shows and what a tenant claims require investigation, not dismissal of either source.",incorrect:"Not quite. The rent roll is a reliable snapshot of payment status — if it shows late, the payment has either not arrived or not been recorded. This requires investigation: check your trust account records, verify pending payments, and ask the tenant for proof. Neither the rent roll nor the tenant's self-report should be dismissed without investigation. The discrepancy is what needs to be resolved."},
+  q3:{correct:"Correct! Three consecutive months of the same 40% over-budget variance is a systemic signal — not random noise. This likely indicates a recurring issue that needs investigation: aging mechanical systems, a plumbing problem, deferred capital work coming due, or possibly a contractor overbilling pattern on that property. Your job is to analyze the specific maintenance items, assess the root cause, and present the owner with your findings and a recommended course of action — not to simply adjust the budget upward to match the higher spending.",incorrect:"Not quite. Three consecutive months of 40% over-budget maintenance is a systemic pattern that demands investigation. Random maintenance variance does not persist consistently at the same level for three months. This signals a recurring issue — aging systems, a chronic problem, deferred capital work, or possibly contractor overbilling. Investigate the specific items driving the variance, identify the root cause, and report to the owner with analysis and recommendations."},
+  q4:{correct:"Correct! Coach Carson's guidance is clear: hire a real estate CPA from day one — not a general CPA who occasionally handles real estate. The reason is that foundational tax decisions made in year one have permanent consequences: depreciation elections, entity structure, cost segregation opportunities, material participation elections. A general CPA will miss or handle these incorrectly. Correcting them retroactively in year three is expensive and sometimes impossible. The fee difference between a general and specialist CPA is small compared to the long-term tax value of getting these decisions right from the start.",incorrect:"Not quite. Coach Carson is explicit: hire a real estate CPA from day one. The foundational tax decisions made in year one — depreciation elections, entity structure, cost segregation, material participation — have permanent consequences. A general CPA who dabbles in real estate will miss or mishandle these decisions. Correcting them later is expensive and sometimes impossible. The cost difference between a general and specialist CPA is modest compared to the long-term value of getting these decisions right from the beginning."},
+  q5:{correct:"Correct! Principle 1 — Treat it like a business — is the foundational mindset that makes every other principle actionable. It was the first thing Turner said in Chapter 1 of their book, and it is still the first principle on the final page. Systems only get built by people who think like business owners. Consistency, documentation, legal compliance, financial management, and professional standards all flow from the decision to operate as a serious business rather than a casual side project. Every module in this track has been, at its core, about building the habits and systems of a professional business operation.",incorrect:"Not quite. While all 13 principles matter, Principle 1 — Treat it like a business — underpins all the others. It is the foundational mindset decision that makes everything else possible. Systems only get built by business operators. Consistency is only achievable in a business framework. Documentation, legal compliance, and financial management are all natural outputs of a business mindset. Turner put it first because it is first — and it has been the central theme of this entire track since Module 1."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;}
+    else{ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}}
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){scoreEl.className='score-result show pass';scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent. You have completed all 7 modules of the Property Management Track. You have the knowledge foundation of a professional property manager.';}
+  else{scoreEl.className='score-result show fail';scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the trust accounting and financial reporting lessons — these are the systems that protect your clients and your professional license.';}
+}
+</script>
+</body>
+</html>

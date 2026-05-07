@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Module 6: Maintenance, Contractors & Turnover — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#2C3E6B;--teal-mid:#3D5490;--teal-light:#5470B0;--teal-pale:#EDF0F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --slate:#4A5568;--slate-light:#718096;--slate-pale:#EDF2F7;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(44,62,107,0.1);
+  --shadow-card:0 2px 16px rgba(44,62,107,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--teal);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--teal);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:85%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--teal);color:var(--gold-light);}
+.prog-dot.complete{background:var(--teal-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(13,92,99,0.25);}
+.module-hero{background:linear-gradient(135deg,#062F33 0%,var(--teal) 55%,var(--teal-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--teal-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Eight attributes */
+.eight-attrs{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.attr-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.attr-card .ac-num{font-size:10px;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.attr-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.attr-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Self vs hire */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;}
+.compare-card.self{background:var(--teal-pale);border:1px solid rgba(13,92,99,0.2);}
+.compare-card.hire{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.compare-card.self h4{color:var(--teal);}
+.compare-card.hire h4{color:#8A6A20;}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.compare-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.compare-card.self ul li::before{content:'✓';color:var(--teal-mid);font-weight:700;flex-shrink:0;}
+.compare-card.hire ul li::before{content:'✓';color:#8A6A20;font-weight:700;flex-shrink:0;}
+/* Task list */
+.task-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin:2rem 0;}
+.task-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.85rem;font-size:12.5px;color:var(--text-mid);line-height:1.4;}
+/* Career paths */
+.career-paths{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.career-path{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.career-path .cp-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+.career-path .cp-content h4{font-size:0.9rem;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.career-path .cp-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--teal-pale);color:var(--teal-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--teal);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);display:flex;gap:10px;line-height:1.65;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+/* Quiz */
+.knowledge-check{background:var(--white);border:2px solid var(--teal-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question{margin-bottom:1.75rem;}
+.question p{font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;align-items:flex-start;gap:10px;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.2s;font-size:13.5px;color:var(--text-mid);}
+.option:hover{border-color:var(--teal-mid);background:var(--teal-pale);}
+.option.selected{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--text-dark);font-weight:500;}
+.option.correct{border-color:var(--teal-mid);background:var(--teal-pale);color:var(--teal);font-weight:500;}
+.option.incorrect{border-color:#C0392B;background:#FBF0EE;color:#8B2F20;}
+.option-letter{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--text-mid);}
+.option.correct .option-letter{background:var(--teal);color:var(--white);}
+.option.incorrect .option-letter{background:#C0392B;color:var(--white);}
+.explanation{margin-top:0.6rem;padding:0.75rem 1rem;border-radius:8px;font-size:13px;line-height:1.6;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:var(--teal-pale);color:var(--teal);}
+.explanation.incorrect-exp{background:#FBF0EE;color:#8B2F20;}
+.check-btn{background:var(--teal);color:var(--white);border:none;padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--teal-mid);}
+.check-btn:disabled{background:var(--text-light);cursor:default;}
+.score-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;font-weight:600;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:var(--teal-pale);color:var(--teal);}
+.score-result.fail{background:var(--gold-pale);color:#8A6A20;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--teal-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:12px;color:var(--text-light);}
+.module-nav-info strong{font-size:14px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--teal-mid);color:var(--teal);}
+.btn-gold{background:var(--gold);color:var(--teal);}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--teal);border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;}
+footer .footer-brand{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.3rem;}
+footer p{font-size:11.5px;color:rgba(255,255,255,0.35);}
+footer .footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .module-body{padding:2rem 1.25rem;}
+  .progress-bar,.breadcrumb{padding:0.75rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;flex-direction:column;gap:1rem;}
+  .prog-dot{width:24px;height:24px;font-size:10px;}
+  .eight-attrs{grid-template-columns:1fr;}
+  .compare-grid{grid-template-columns:1fr;}
+  .task-grid{grid-template-columns:1fr 1fr;}
+}
+
+.dual-path-intro{margin-bottom:3.5rem;}
+.path-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.path-card{border-radius:16px;padding:1.75rem;display:flex;flex-direction:column;gap:0.75rem;}
+.path-card.path-employee{background:var(--teal-pale);border:1px solid rgba(44,62,107,0.2);}
+.path-card.path-owner{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.path-icon{font-size:1.75rem;}
+.path-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.path-employee .path-label{color:var(--teal-mid);}
+.path-owner .path-label{color:#8A6A20;}
+.path-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);}
+.path-card p{font-size:13.5px;color:var(--text-mid);line-height:1.75;}
+.path-applies{margin-top:0.5rem;padding:0.85rem 1rem;border-radius:8px;font-size:13px;color:var(--text-mid);line-height:1.7;}
+.path-employee .path-applies{background:rgba(44,62,107,0.07);}
+.path-owner .path-applies{background:rgba(201,168,76,0.1);}
+.path-applies strong{color:var(--text-dark);}
+.path-note{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-top:0.5rem;}
+.path-note-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.path-note p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.ep-tag{color:var(--teal);font-weight:700;}
+.op-tag{color:#8A6A20;font-weight:700;}
+.path-callout{border-radius:10px;padding:0.85rem 1.1rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;}
+.path-callout.ep{background:var(--teal-pale);border-left:3px solid var(--teal-mid);}
+.path-callout.op{background:var(--gold-pale);border-left:3px solid var(--gold);}
+.path-callout .pc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+.path-callout.ep .pc-tag{color:var(--teal-mid);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.path-callout p{color:var(--text-mid);margin:0;}
+@media(max-width:640px){.path-cards{grid-template-columns:1fr;}}
+
+.path-callout{border-radius:10px;padding:0.85rem 1.1rem;margin:1.25rem 0;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;}
+.path-callout.ep{background:var(--teal-pale);border-left:3px solid var(--teal-mid);}
+.path-callout.op{background:var(--gold-pale);border-left:3px solid var(--gold);}
+.path-callout .pc-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px;flex-shrink:0;}
+.path-callout.ep .pc-tag{color:var(--teal-mid);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.path-callout p{color:var(--text-mid);margin:0;}
+.contractor-filter{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.cf-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--teal);border-radius:0 0 12px 12px;padding:1.1rem 1.25rem;text-align:center;}
+.cf-card .cf-num{font-size:2rem;font-weight:700;color:var(--teal);font-family:'Playfair Display',serif;margin-bottom:0.3rem;}
+.cf-card h4{font-size:0.88rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.cf-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+.maint-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.maint-card{border-radius:14px;padding:1.4rem;}
+.maint-card.emergency{background:#FBF0EE;border:1px solid rgba(192,57,43,0.2);}
+.maint-card.non-emergency{background:var(--teal-pale);border:1px solid rgba(44,62,107,0.15);}
+.maint-card .mc-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.4rem;}
+.maint-card.emergency .mc-label{color:#C0392B;}
+.maint-card.non-emergency .mc-label{color:var(--teal-mid);}
+.maint-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;}
+.maint-card ul{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
+.maint-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5;}
+.maint-card.emergency ul li::before{content:'🔴';font-size:10px;margin-top:3px;}
+.maint-card.non-emergency ul li::before{content:'🔵';font-size:10px;margin-top:3px;}
+.lm-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.lm-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.lm-card h4{font-size:0.88rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.lm-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.turnover-steps{display:flex;flex-direction:column;gap:0.65rem;margin:2rem 0;}
+.to-item{display:flex;gap:10px;align-items:flex-start;padding:0.75rem 1rem;background:var(--white);border:1px solid var(--border);border-radius:10px;font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.to-item .to-num{width:24px;height:24px;border-radius:50%;background:var(--teal);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+@media(max-width:640px){.contractor-filter{grid-template-columns:1fr;}.maint-grid{grid-template-columns:1fr;}.lm-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div><div class="nav-title">Darco Real Estate Academy</div><div class="nav-tagline">Your Complete Real Estate Career Journey</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="property-management.html">Property Management Track</a></li>
+    <li><a href="index.html" class="nav-back">← Back to Academy</a></li>
+  </ul>
+</nav>
+<div class="breadcrumb">
+  <a href="index.html">Darco Real Estate Academy</a><span class="sep">›</span>
+  <a href="property-management.html">Property Management Track</a><span class="sep">›</span>
+  <span class="current">Module 6: Maintenance, Contractors & Turnover</span>
+</div>
+<div class="progress-bar">
+  <span class="progress-label">PM Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="pm-module-1.html" class="prog-dot complete">1</a>
+    <a href="pm-module-2.html" class="prog-dot complete">2</a>
+    <a href="pm-module-3.html" class="prog-dot complete">3</a>
+    <a href="pm-module-4.html" class="prog-dot complete">4</a>
+    <a href="pm-module-5.html" class="prog-dot complete">5</a>
+    <div class="prog-dot active">6</div>
+    <div class="prog-dot locked">7</div>
+  </div>
+</div>
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🏢 Property Management Track · Module 6 of 7</div>
+    <h1>Maintenance, Contractors, <em>and Turnover</em></h1>
+    <p>Maintenance is where property management reputations are made or broken. Tenants remember how fast you responded when the heat stopped working. Owners remember the contractor who charged $900 for a job worth $200. This module gives you the systems to handle maintenance requests efficiently, vet and manage contractors professionally, and execute a smooth unit turnover every time a tenant moves out.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ Estimated time: <span>55–70 min</span></div>
+      <div class="meta-item">📖 Lessons: <span>4</span></div>
+      <div class="meta-item">🎬 Videos: <span>2 + 1 bonus</span></div>
+    </div>
+  </div>
+</div>
+<div class="module-body">
+
+  <div class="path-callout ep" style="margin-bottom:2rem;border-radius:12px;padding:1.1rem 1.5rem;">
+    <span class="pc-tag">📍 Both Paths</span>
+    <p>Maintenance coordination and contractor management are daily realities for every property management professional regardless of career path. Whether you are triaging requests for your employer's portfolio or protecting your own clients' investments, the systems and standards in this module apply directly to your day-to-day work.</p>
+  </div>
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Handling maintenance requests — <em>emergency vs. non-emergency, and the response system</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Maintenance requests are the most frequent operational interaction between a property manager and their tenants. How fast you respond — and how well you communicate throughout — determines whether a tenant renews their lease or starts looking for somewhere else to live. Dave Hathaway distills the professional standard into two response targets that set clear expectations for tenants and hold you accountable as a manager.</p>
+
+    <div class="maint-grid fade-in">
+      <div class="maint-card emergency">
+        <div class="mc-label">🚨 Emergency — 24-Hour Response Goal</div>
+        <h4>Requires same-day or next-day resolution</h4>
+        <ul>
+          <li>No heat in cold weather or no AC in extreme heat</li>
+          <li>Major water leak or flooding</li>
+          <li>Sewage backup</li>
+          <li>No hot water</li>
+          <li>Gas leak (call 911 and utility company first)</li>
+          <li>Electrical hazard — exposed wiring, sparking outlets</li>
+          <li>Broken locks or security compromise</li>
+          <li>Structural damage — roof collapse, broken window</li>
+        </ul>
+      </div>
+      <div class="maint-card non-emergency">
+        <div class="mc-label">🔧 Non-Emergency — 48-Hour Response Goal</div>
+        <h4>Acknowledged same day, scheduled within 48 hours</h4>
+        <ul>
+          <li>Appliance malfunctions (non-heat/cool related)</li>
+          <li>Dripping faucets or running toilets</li>
+          <li>Minor plumbing leaks (not flooding)</li>
+          <li>Broken light fixtures</li>
+          <li>Pest reports (non-emergency)</li>
+          <li>Cabinet doors, handles, door knobs</li>
+          <li>Cosmetic damage — holes in walls, peeling paint</li>
+          <li>HVAC filter replacement</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The maintenance request system — what to do at every step</h3>
+    <p class="lesson-text">Dave Hathaway outlines a clean maintenance response protocol that keeps tenants informed, protects you legally, and ensures the work gets done correctly:</p>
+
+    <div class="checklist fade-in">
+      <div class="check-item"><div class="ci-icon">📸</div><div><strong>Ask the tenant for photos before dispatching anyone.</strong> A photo of the issue tells you whether it is truly an emergency, helps you diagnose the problem before the contractor arrives, and creates documentation of the pre-repair condition. Many issues that tenants describe as urgent turn out to be minor when you can see them. Photos also protect you if the tenant later claims the damage was worse than it was.</div></div>
+      <div class="check-item"><div class="ci-icon">🔍</div><div><strong>Triage the request before calling a contractor.</strong> Is it truly an emergency? Could it be a simple tenant fix (reset the GFCI outlet, check the breaker)? Is it a warranty item on a newer appliance? Running through these questions before dispatching a contractor saves unnecessary callout fees and trains tenants to attempt basic troubleshooting first.</div></div>
+      <div class="check-item"><div class="ci-icon">📞</div><div><strong>Communicate with the tenant throughout.</strong> Confirm you received the request. Tell them when the contractor is scheduled. Follow up after the repair is complete to confirm the issue is resolved to their satisfaction. Turner and Turner emphasize this is one of the biggest differentiators between good and poor property management — tenants who feel ignored become tenants who leave.</div></div>
+      <div class="check-item"><div class="ci-icon">📋</div><div><strong>Ask the contractor for photos too.</strong> Before and after photos from the contractor document what was found and what was done. This protects against inflated billing, creates a maintenance history for the property, and gives you evidence if a tenant later claims a repair was not done properly.</div></div>
+      <div class="check-item"><div class="ci-icon">✅</div><div><strong>Confirm tenant satisfaction after every repair.</strong> A simple follow-up message — "Hi, just checking in that the repair was completed to your satisfaction?" — takes 30 seconds and creates goodwill. It also catches situations where the contractor marked something complete but did not actually fix the problem.</div></div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Finding and managing contractors — <em>the 3-filter test and building your vendor network</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Your contractor network is one of the most valuable assets you build as a property manager. The right vendors — responsive, fairly priced, licensed, and reliable — make your job manageable. The wrong ones destroy your reputation, expose you to liability, and cost your owners money. Dave Hathaway developed a simple three-filter test that screens out the vast majority of problematic contractors before they ever set foot in one of your properties.</p>
+
+    <div class="contractor-filter fade-in">
+      <div class="cf-card">
+        <div class="cf-num">1</div>
+        <h4>W-9 on File</h4>
+        <p>Any contractor paid more than $600 in a calendar year requires a W-9 for IRS Form 1099 reporting. A contractor who refuses to provide a W-9 is either not operating legitimately or is trying to avoid tax reporting. Either is a red flag. Require it before any first job — no exceptions.</p>
+      </div>
+      <div class="cf-card">
+        <div class="cf-num">2</div>
+        <h4>Accepts Electronic Payment</h4>
+        <p>A professional contractor accepts ACH transfer, Venmo Business, or another electronic payment method. Cash-only contractors leave no paper trail for your records, create accounting problems, and are often operating informally. Electronic payment also means faster, documented transactions for your financial reporting.</p>
+      </div>
+      <div class="cf-card">
+        <div class="cf-num">3</div>
+        <h4>Provides Itemized Invoices</h4>
+        <p>A legitimate contractor provides a written invoice describing the work performed, parts used, hours billed, and the total cost. Contractors who cannot or will not produce itemized invoices make it impossible to verify the work, challenge the billing, or justify the expense to an owner. No invoice, no payment.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Know basic pricing — your protection against overcharging</h3>
+    <p class="lesson-text">Dave Hathaway recommends that every property manager build a basic price reference list for common repairs in their market. Not to do the work yourself — but to know whether a quote is reasonable. When a plumber quotes $850 to replace a toilet fill valve (a $15 part and 20 minutes of labor), you need to recognize that is not a fair price. When an HVAC technician quotes $1,800 for a capacitor replacement (a $25 part), the same applies. Knowing fair pricing ranges in your market protects your owners and signals to contractors that you are not someone to be overcharged.</p>
+
+    <h3 class="sub-title">Building the right vendor relationships</h3>
+    <p class="lesson-text">Turner and Turner provide a detailed contractor screening framework for new vendors before they are added to your approved list:</p>
+
+    <div class="checklist fade-in">
+      <div class="check-item"><div class="ci-icon">📄</div><div><strong>Verify license and insurance</strong> — confirm the contractor is currently licensed in your state for the work they perform, and that they carry both general liability and workers' compensation insurance. An unlicensed or uninsured contractor working in your property creates liability that falls directly on you and the owner.</div></div>
+      <div class="check-item"><div class="ci-icon">📞</div><div><strong>Check references from other property managers</strong> — the best source of contractor references is other property managers in your market. NARPM chapter meetings are an excellent resource for this. A contractor who consistently delivers for multiple PM companies in your area is a contractor worth having on your approved list.</div></div>
+      <div class="check-item"><div class="ci-icon">💰</div><div><strong>Get competitive quotes before the first job</strong> — for larger repairs ($500+), always get at least two quotes. This establishes your market baseline, keeps contractors honest about pricing, and gives you defensible documentation when reporting costs to owners.</div></div>
+      <div class="check-item"><div class="ci-icon">🔧</div><div><strong>Start with a small job before a big one</strong> — before trusting a new contractor with a major repair, give them a minor job first. This lets you evaluate their quality, communication, punctuality, and invoicing before you are dependent on them for something urgent.</div></div>
+    </div>
+
+    <div class="path-callout op"><span class="pc-tag">🏢 Entrepreneur Path</span><p>Your contractor relationships are a competitive advantage. A reliable plumber who answers at 10pm, an HVAC tech who can be there in four hours, and a painter who does clean work at a fair price — these relationships take time to build and are genuinely hard to replicate. Start building your vendor network before you need it urgently, not during a Friday evening emergency.</p></div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">Dave Hathaway: Handling maintenance requests <em>and managing contractors</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Dave Hathaway walks through his complete maintenance and contractor management system — from the first tenant request to confirming the repair is done. Real operational detail from an active property manager. Watch before Lesson 3.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/fZ74wmvMmko" title="Handling Maintenance Requests and Managing Contractors — Dave Hathaway" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Dave Hathaway · YouTube</span>
+        <h4>How to Handle Maintenance Requests and Manage Contractors as a Property Manager</h4>
+        <p>Emergency (24hr) vs. non-emergency (48hr) response goals, the 3-filter contractor test (W-9, electronic payment, itemized invoice), why you need a price list to know fair costs, ask tenants for photos before dispatching, ask contractors for photos before and after, follow up with tenant after repair completion, building your approved vendor list, handling after-hours emergency calls.</p>
+        <p class="credit">Dave Hathaway · Property management professional · YouTube · 16 likes / 611 views</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Building a low-maintenance portfolio — <em>design decisions that save thousands over time</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Coach Carson and Matt Lumberjack Landlord — who together manage 137 units — share one of the most valuable long-term perspectives in property management: <strong>the best time to reduce maintenance costs is before a tenant moves in.</strong> The materials, fixtures, and systems you choose during a renovation or turnover determine how much maintenance that unit will require for the next decade. Cheap choices made once become expensive problems made repeatedly.</p>
+
+    <div class="callout callout-quote">
+      <div class="callout-label">💬 Coach Carson + Matt (Lumberjack Landlord) — 137 Units</div>
+      <p>"We have a 93% renewal rate. Tenants stay because we take care of them — and we can take care of them because we designed the properties to not constantly break down. Quality over cheap is not an expense. It is an investment that pays every month in lower maintenance costs and tenants who actually want to stay."</p>
+      <div class="quote-attr">On why low-maintenance design philosophy drives both profitability and tenant retention</div>
+    </div>
+
+    <h3 class="sub-title">Low-maintenance design principles — what experienced operators choose</h3>
+    <div class="lm-grid fade-in">
+      <div class="lm-card">
+        <h4>Commercial-grade LVP flooring</h4>
+        <p>Luxury vinyl plank that is waterproof, scratch-resistant, and rated for commercial use. More expensive upfront than budget vinyl — dramatically cheaper over time. Does not need refinishing, handles pets and high traffic, and looks good for years without replacement.</p>
+      </div>
+      <div class="lm-card">
+        <h4>Standardized fixtures throughout</h4>
+        <p>Choosing one fixture brand (e.g., Delta for plumbing) across all your units means your maintenance team learns one system, spare parts are interchangeable, and repair calls become faster and cheaper. Variety across units multiplies the parts and knowledge needed.</p>
+      </div>
+      <div class="lm-card">
+        <h4>30-year architectural shingles</h4>
+        <p>When replacing a roof, install 30-year architectural shingles rather than the cheapest option available. The cost difference is modest. The difference in how long it will be before you have to do it again — and deal with all the associated disruption and tenant issues — is significant.</p>
+      </div>
+      <div class="lm-card">
+        <h4>Shut-off valves at every unit</h4>
+        <p>Ball valves that can isolate water supply to each individual unit. If unit 3B has a leak, you shut off 3B's valve — not the entire building's water. This simple plumbing choice prevents a single unit's emergency from affecting every other tenant in the building.</p>
+      </div>
+      <div class="lm-card">
+        <h4>QuietRock or soundproofing in multifamily</h4>
+        <p>Noise complaints between units are one of the most common sources of tenant conflict in multifamily properties. Installing soundproofing drywall during a renovation dramatically reduces noise transmission — and the resulting complaints, disputes, and tenant turnover.</p>
+      </div>
+      <div class="lm-card">
+        <h4>Downspout extensions</h4>
+        <p>One of the cheapest maintenance-prevention investments available. Extending downspouts away from the foundation keeps water away from the building's base — preventing moisture infiltration, foundation issues, and basement flooding that can cost tens of thousands to remediate.</p>
+      </div>
+    </div>
+
+    <p class="lesson-text">The underlying principle, as Matt articulates it: <strong>quality is not an expense — it is a long-term investment.</strong> Every cheap material choice you make during a turnover is a future maintenance call you are scheduling in advance. You do not pay less. You pay later, with interest, in the form of emergency callouts, tenant complaints, and accelerated replacement cycles.</p>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This Second</div>
+    <h2 class="lesson-title">Coach Carson: How to build a <em>low-maintenance rental portfolio</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Coach Carson and Matt — who together manage 137 units — walk through the exact materials, systems, and design decisions they use to keep maintenance costs low and tenant satisfaction high. One of the most practically valuable videos in this entire track. Watch before Lesson 4.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/3n6D8_M-sxQ" title="How to Build a Low-Maintenance Rental Portfolio — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Coach Carson · YouTube</span>
+        <h4>How to Build a Low-Maintenance Rental Portfolio — 137 Units of Hard-Won Lessons</h4>
+        <p>Low-maintenance design philosophy, commercial LVP flooring, combi boiler vs. traditional water heater, ball valves per unit, PEX plumbing, QuietRock soundproofing, 30-year architectural shingles, standardized Delta fixtures, Loctite thread locker for bolts, downspout extensions, quality over cheap long-term thinking, 93% renewal rate as a result of excellent tenant experience, and why the best maintenance strategy is prevention.</p>
+        <p class="credit">Coach Carson + Matt (Lumberjack Landlord) · 137-unit multifamily portfolio · YouTube · 2,200 likes / 82,043 views · Strongest video in this entire track</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The move-out process and security deposit return — <em>doing it right every time</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">The move-out process is one of the highest-risk moments in the landlord-tenant relationship. Security deposit disputes are among the most common reasons tenants sue landlords — and most of those disputes happen because the process was not documented properly. A professional move-out process protects both the tenant and the owner, and it starts long before the tenant actually hands over the keys.</p>
+
+    <div class="turnover-steps fade-in">
+      <div class="to-item"><div class="to-num">1</div><div><strong>Send a move-out instructions letter 30–60 days before the lease end</strong> — inform the tenant exactly what is expected: cleaning standards, how to submit their forwarding address for the deposit return, the move-out inspection process, and the timeline for receiving the deposit. Turner and Turner recommend including a specific cleaning checklist so there are no surprises on either side.</div></div>
+      <div class="to-item"><div class="to-num">2</div><div><strong>Conduct a pre-move-out inspection (optional but recommended)</strong> — offer the tenant a walkthrough 1–2 weeks before their move-out date to show them anything that will be deducted from the deposit. This gives them the opportunity to repair items themselves rather than being charged for them — and reduces disputes after move-out.</div></div>
+      <div class="to-item"><div class="to-num">3</div><div><strong>Conduct the official move-out inspection on the last day</strong> — walk through the entire unit with the tenant present if possible. Use the same inspection form used at move-in. Document every item with photos. Note the condition of every room, appliance, and fixture. Have the tenant sign the inspection form acknowledging the documented condition.</div></div>
+      <div class="to-item"><div class="to-num">4</div><div><strong>Compare to move-in condition documentation</strong> — this is why the move-in inspection exists. Compare the move-out condition to the move-in photos and report item by item. Damage beyond normal wear and tear is deductible. Normal aging is not. Document your analysis in writing.</div></div>
+      <div class="to-item"><div class="to-num">5</div><div><strong>Get contractor quotes for any deductible damage</strong> — before making deductions, get actual quotes or invoices for the cost to repair or replace each item. You cannot charge the tenant an arbitrary amount — deductions must reflect actual cost. Obtain written invoices and keep them on file.</div></div>
+      <div class="to-item"><div class="to-num">6</div><div><strong>Return the deposit (minus itemized deductions) within the state deadline</strong> — most states require the deposit to be returned within 14–30 days of move-out. Late returns — even by one day in some states — can forfeit your right to make any deductions. Know your state's deadline and meet it without fail.</div></div>
+      <div class="to-item"><div class="to-num">7</div><div><strong>Provide an itemized written statement of all deductions</strong> — if you are making deductions, the tenant must receive a written, itemized list of each deduction with the dollar amount and the reason. In many states this must accompany the returned deposit. Vague deductions like "cleaning" without specifics are legally problematic.</div></div>
+      <div class="to-item"><div class="to-num">8</div><div><strong>Begin the turnover process immediately</strong> — once the unit is back in your possession, start the turnover. Every day the unit sits unoccupied is lost rental income. Assess what work is needed, schedule contractors immediately, and begin marketing the unit for re-leasing before the work is even complete if the timeline allows.</div></div>
+    </div>
+
+    <div class="callout callout-insight">
+      <div class="callout-label">💡 The Turnover Opportunity</div>
+      <p>Every unit turnover is an opportunity to implement low-maintenance upgrades. When a tenant moves out and the unit needs work anyway, the incremental cost of upgrading flooring from carpet to commercial LVP, replacing dated fixtures with standardized ones, or adding a shutoff valve is much lower than doing it as a standalone project. Keep a "turnover upgrade list" for each property and implement items systematically each time a unit turns over.</p>
+    </div>
+
+    <!-- BONUS VIDEO -->
+    <h3 class="sub-title" style="margin-top:2.5rem;">🎬 Bonus Resource — Coach Carson: Maintenance systems with Scott Dixon</h3>
+    <p class="lesson-text">A longer-form conversation between Coach Carson and Scott Dixon (Everyday Home Repairs) on building comprehensive maintenance systems for rental portfolios. Use this as a deep-dive resource once the core module content is solid.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/TVBrJD8Pju4" title="Building Maintenance Systems for Rental Properties — Coach Carson" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Coach Carson · Bonus Resource · YouTube</span>
+        <h4>Building Maintenance Systems for Rental Properties — Coach Carson + Scott Dixon</h4>
+        <p>Comprehensive maintenance system design, preventive maintenance schedules, working with handymen vs. licensed contractors, how to build a maintenance budget, common owner mistakes on deferred maintenance, and the long-term cost of ignoring small problems until they become large ones.</p>
+        <p class="credit">Coach Carson + Scott Dixon (Everyday Home Repairs) · YouTube · 330 likes / 11,196 views · Long-form podcast format</p>
+      </div>
+    </div>
+  </div>
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 6 Key Takeaways</h3>
+    <ul>
+      <li>Emergency maintenance (no heat, flooding, gas leak, broken locks) requires a 24-hour response goal. Non-emergency items should be acknowledged same day and scheduled within 48 hours. These response targets set clear expectations and define your professional standard.</li>
+      <li>The maintenance request protocol: ask the tenant for photos, triage before dispatching, communicate throughout, ask the contractor for before/after photos, and follow up with the tenant after repair completion. Tenants who feel ignored leave.</li>
+      <li>The 3-filter contractor test: W-9 on file, accepts electronic payment, provides itemized invoices. Any contractor who fails one of these filters is not ready for your approved vendor list.</li>
+      <li>Build a basic price reference list for common repairs in your market. Knowing fair pricing ranges protects owners from overcharging and signals to contractors that you are a professional who cannot be taken advantage of.</li>
+      <li>Low-maintenance design decisions during turnovers — commercial LVP flooring, standardized fixtures, shutoff valves per unit, quality roofing, soundproofing — reduce maintenance costs for years and improve tenant retention. Quality is not an expense; it is an investment.</li>
+      <li>The move-out process: send instructions 30–60 days early, offer a pre-move-out walkthrough, conduct the official inspection with the tenant present, compare to move-in documentation, get quotes for any deductible damage, return the deposit with itemized deductions within your state's deadline.</li>
+      <li>Security deposit return deadlines vary by state (typically 14–30 days). Missing the deadline — even by one day in some states — can forfeit your right to make any deductions regardless of actual damage. Know your deadline and meet it.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A tenant reports their heat stopped working on a Thursday evening. It is currently 38°F outside. How do you classify this request and what is your response target?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Non-emergency — schedule for the next available weekday appointment within 48 hours</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Emergency — 24-hour response goal. No heat in cold weather is a habitability issue and a legal emergency in most states. This requires same-day or first-thing-next-morning resolution. Contact your HVAC contractor immediately regardless of the time. If they cannot respond, arrange temporary heating for the tenant while a permanent repair is scheduled. Failing to respond to a heat emergency exposes you to significant legal liability.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Emergency — but only if temperatures drop below freezing overnight</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Non-emergency if the tenant has space heaters available as temporary alternatives</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A new contractor approaches you to do work on your properties. They say they prefer cash payment, do not provide written invoices ("I keep track myself"), and hesitate when you ask for a W-9. How many of Dave Hathaway's 3 filters have they failed?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> One — the W-9 hesitation is the only significant red flag; cash payment and informal invoicing are common in the trades</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Two — the W-9 and invoice issues are red flags; cash payment alone is acceptable</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> All three — they have failed every filter. No W-9 means you cannot meet your IRS 1099 reporting obligations. Cash-only means no paper trail for your financial records or owner reporting. No itemized invoices means you cannot verify the work, challenge billing, or justify the expense to an owner. A contractor who fails all three filters is not on your approved vendor list under any circumstances.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> None — these are common contractor preferences that can be negotiated over time as the relationship develops</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A tenant moves out and you find the carpet needs full replacement. The tenant lived there for 6 years and the carpet was new when they moved in. The carpet shows heavy staining in multiple rooms. Can you deduct the full replacement cost from the security deposit?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Yes — the carpet was new at move-in and now needs full replacement; the tenant is responsible for the full cost</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Partially — carpet has a typical lifespan of 5–7 years. After 6 years, the carpet's remaining useful life is minimal. You can only deduct for damage beyond normal wear and tear, prorated for the remaining lifespan. Heavy staining beyond normal use is deductible, but you cannot charge for the full replacement cost of 6-year-old carpet that was already near the end of its useful life. Calculate the prorated deduction based on the carpet's age and remaining depreciated value.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> No — after 6 years any carpet condition is considered normal wear and tear regardless of staining</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Yes — heavy staining is always 100% deductible regardless of the carpet's age or depreciation</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Coach Carson and Matt achieve a 93% renewal rate across their 137-unit portfolio. They attribute this largely to low-maintenance design decisions. What is the underlying principle connecting low-maintenance design to high tenant retention?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Tenants prefer newer-looking units and are willing to pay more rent for recently renovated spaces</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Properties that are built to last break down less often — which means fewer maintenance disruptions, faster repairs when they do occur, and a living experience that tenants want to continue. Tenant retention is fundamentally about the quality of the experience. Quality materials and thoughtful design decisions create that experience consistently. Lower maintenance also means the manager can respond faster and more completely, which builds trust. The 93% renewal rate is the financial result of that trust.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Low-maintenance properties allow managers to charge lower rents, making tenants less likely to leave for cheaper alternatives</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Tenants in well-maintained buildings form social communities that make them reluctant to leave their neighbors</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. A tenant moves out in your state, which requires the security deposit to be returned within 21 days. You are waiting on one contractor quote for a deductible repair before you can finalize the deposit accounting. Day 22 arrives and you still have not returned the deposit. What is the likely consequence?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> A minor administrative violation — you can return the deposit late with a brief explanation and avoid any penalty</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> In many states, missing the deposit return deadline — even by one day — forfeits your right to make any deductions, regardless of the actual damage. The tenant may also be entitled to additional damages (double or triple the deposit amount in some states) plus attorney's fees. Waiting on a contractor quote is not a legal defense. Always return the deposit within the deadline — with whatever deductions you can document at that point — and handle any remaining disputed items separately.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> The tenant must formally notify you of the late return before any penalty applies</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> A grace period of 7–10 days beyond the stated deadline is standard in most states</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Book on Managing Rental Properties</div>
+          <div class="bi-author">Brandon Turner & Heather Turner</div>
+          <div class="bi-desc">Chapter 12 (finding and managing contractors — 5-step screening process, 8 tips for handymen) and Chapter 13 (the move-out process, security deposit accounting, turnover systems). The most operationally detailed treatment of maintenance and turnover for residential PM.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=book+on+managing+rental+properties+brandon+turner&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Property Management Kit for Dummies</div>
+          <div class="bi-author">Robert Griswold</div>
+          <div class="bi-desc">Chapter 15 (moving out tenants, security deposit return process and legal requirements) and Chapter 16 (working with employees, contractors, and vendors). Griswold's deposit return framework and contractor management guidance are essential reading for anyone handling turnovers.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=property+management+kit+for+dummies+griswold&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 7: Running a Profitable Business</h3>
+    <p>You now know how to manage properties at a high operational level. The final module is about the business behind the business — financial management, trust accounting, the four reports that tell you how your portfolio is performing, and the 13 principles that separate great property managers from good ones. This is where everything comes together.</p>
+    <a href="pm-module-7.html" class="next-module-cta">Module 7: Running a Profitable Business →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="pm-module-5.html" class="btn btn-outline">← Module 5: Handling Problems</a>
+  <div class="module-nav-info">
+    <p>Property Management Track</p>
+    <strong>Module 6 of 7</strong>
+  </div>
+  <a href="pm-module-7.html" class="btn btn-gold">Module 7: Running a Profitable Business →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! No heat in cold weather is a habitability emergency that requires a 24-hour response regardless of the time or day of week. This is both a professional standard and a legal requirement in most states. Contact your HVAC contractor immediately. If they cannot respond same day, arrange temporary heating for the tenant while permanent repair is scheduled. Failure to respond to heating emergencies exposes you and the owner to significant legal liability.",incorrect:"Not quite. No heat in cold weather is a 24-hour emergency — not a non-emergency. It is a habitability issue and a legal emergency in most states. You must contact your HVAC contractor immediately regardless of the hour. If same-day repair is not possible, you must arrange temporary heating. Failing to respond rapidly to heating failures exposes you and the owner to significant legal liability."},
+  q2:{correct:"Correct! They have failed all three filters. No W-9 means you cannot meet IRS 1099 reporting obligations for vendors paid over $600/year. Cash-only payment creates no paper trail for your financial records, owner reporting, or tax documentation. No itemized invoices mean you cannot verify the work performed, challenge inflated billing, or present defensible expense documentation to owners. A contractor who fails all three filters does not go on your approved vendor list.",incorrect:"Not quite. This contractor has failed all three of Dave Hathaway's filters. W-9 refusal prevents legal contractor reporting. Cash-only payment eliminates the paper trail your financial records and owner reporting require. No itemized invoices make it impossible to verify work, challenge billing, or justify expenses to owners. All three failures together describe a contractor operating outside professional standards — regardless of how skilled they might be at the actual work."},
+  q3:{correct:"Correct! Security deposit deductions for carpet must be prorated based on the carpet's remaining useful life. Carpet has a typical lifespan of 5–7 years. After 6 years of occupancy, the carpet had minimal remaining useful life regardless of condition — most of its value had already been consumed through normal depreciation. You can deduct for the damage (heavy staining beyond normal use) but only proportional to what useful life remained. You cannot charge the tenant for the full cost of replacing carpet that was already near the end of its expected lifespan.",incorrect:"Not quite. Carpet depreciation is a key concept in security deposit law. After 6 years of use, carpet with a 5–7 year lifespan has minimal remaining useful value — most of it has been consumed through normal depreciation. You cannot charge the tenant the full replacement cost. You can deduct for damage beyond normal wear and tear (heavy staining qualifies), but only prorated for the carpet's remaining depreciated value. The full replacement cost is not recoverable from a 6-year-old carpet."},
+  q4:{correct:"Correct! The connection between low-maintenance design and tenant retention is the quality of the living experience. Properties built with quality materials and thoughtful systems break down less often, and when they do need repair, they are easier to fix quickly. Fewer maintenance disruptions, faster resolution when issues arise, and overall better living conditions create an experience tenants want to continue. The 93% renewal rate is the financial result of tenants who are genuinely satisfied with their homes — not just tolerating them.",incorrect:"Not quite. The connection between low-maintenance design and high retention is the quality of the living experience. When properties are built with quality materials and systems that do not constantly break down, tenants have fewer disruptions, faster repairs when issues do occur, and a consistently better living environment. That experience is what drives renewal decisions. The 93% renewal rate reflects tenants who are genuinely satisfied — not just comfortable enough to stay despite problems."},
+  q5:{correct:"Correct! Missing the security deposit return deadline is one of the most common and costly landlord mistakes. In many states, even one day late can forfeit your right to make any deductions at all — and some states add penalties of double or triple the deposit amount plus attorney's fees. Waiting on a contractor quote is not a legal defense. The correct approach: return the deposit with whatever deductions you can document before the deadline, and handle any remaining disputed items separately through the legal system if necessary.",incorrect:"Not quite. Security deposit return deadlines are strictly enforced in most US states. Missing the deadline — even by one day — can forfeit your entire right to make deductions, regardless of legitimate damage. Some states also impose penalties of double or triple the deposit plus attorney's fees. Waiting on a contractor quote is not a legal defense. Always return the deposit within the legal deadline with whatever deductions you can document at that point."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;}
+    else{ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}}
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){scoreEl.className='score-result show pass';scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong command of maintenance and turnover fundamentals. One module left — Module 7: Running a Profitable Business.';}
+  else{scoreEl.className='score-result show fail';scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the deposit return deadlines and contractor vetting standards — these protect both you and your owners from costly mistakes.';}
+}
+</script>
+</body>
+</html>
