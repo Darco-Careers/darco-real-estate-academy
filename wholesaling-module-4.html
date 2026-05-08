@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Wholesaling Module 4: Analyzing Deals & Making Offers — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#B84A10;--orange-mid:#D4581A;--orange-light:#E87040;--orange-pale:#FDF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(184,74,16,0.12);
+  --shadow-card:0 2px 16px rgba(184,74,16,0.08);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--orange);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--orange);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--orange);font-weight:600;}
+.progress-bar{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--orange-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(184,74,16,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--orange-mid);border-radius:3px;width:67%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--orange);color:var(--gold-light);}
+.prog-dot.complete{background:var(--orange-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(184,74,16,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(184,74,16,0.25);}
+.module-hero{background:linear-gradient(135deg,#5A1E04 0%,var(--orange) 55%,var(--orange-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--orange);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--orange-pale);border-left:4px solid var(--orange-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--orange);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--orange-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.path-callout{border-radius:10px;padding:1rem 1.25rem;margin:0.85rem 0;font-size:14px;line-height:1.7;color:var(--text-mid);}
+.path-callout.ep{background:rgba(184,74,16,0.06);border:1px solid rgba(184,74,16,0.18);}
+.path-callout.op{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);}
+.pc-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-bottom:0.4rem;color:var(--orange);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.formula-box{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;color:var(--white);}
+.formula-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--gold-light);margin-bottom:1.25rem;}
+.formula-line{font-size:1.05rem;font-weight:600;margin-bottom:0.6rem;color:var(--white);display:flex;align-items:baseline;gap:0.5rem;flex-wrap:wrap;}
+.formula-line span.op{color:var(--gold-light);}
+.formula-line span.val{color:rgba(255,255,255,0.75);font-weight:400;font-size:0.9rem;}
+.formula-divider{border:none;border-top:1px solid rgba(255,255,255,0.2);margin:1rem 0;}
+.formula-result{font-size:1.1rem;font-weight:700;color:var(--gold-light);}
+.formula-note{font-size:12px;color:rgba(255,255,255,0.6);margin-top:0.5rem;font-style:italic;}
+.comp-rules{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.comp-rule{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.comp-rule .cr-num{font-size:10px;font-weight:700;color:var(--orange-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.comp-rule h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.comp-rule p{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+.repair-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.repair-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--orange);border-radius:0 0 12px 12px;padding:1rem;}
+.repair-card .rc-level{font-size:10px;font-weight:700;color:var(--orange-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.repair-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.repair-card .rc-cost{font-size:1.1rem;font-weight:700;color:var(--orange);margin-bottom:0.3rem;}
+.repair-card p{font-size:12px;color:var(--text-mid);line-height:1.5;}
+.worked-example{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.we-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.we-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.we-row{display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid var(--border);font-size:14px;}
+.we-row:last-child{border-bottom:none;padding-top:0.85rem;}
+.we-row .wr-label{color:var(--text-mid);}
+.we-row .wr-val{font-weight:600;color:var(--text-dark);}
+.we-row .wr-val.orange{color:var(--orange);}
+.we-row .wr-val.gold{color:#8A6A20;}
+.we-row.result{background:var(--orange-pale);margin:0 -0.5rem;padding:0.85rem 0.5rem;border-radius:8px;}
+.we-row.result .wr-label{font-weight:700;color:var(--text-dark);}
+.we-row.result .wr-val{font-size:1.1rem;color:var(--orange);}
+.pct-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:14px;}
+.pct-table th{background:var(--orange-pale);color:var(--orange-mid);font-weight:700;padding:0.6rem 1rem;text-align:left;font-size:12px;letter-spacing:0.5px;}
+.pct-table td{padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.pct-table tr:last-child td{border-bottom:none;}
+.pct-table tr.highlight td{background:var(--gold-pale);font-weight:600;color:var(--text-dark);}
+.video-section{margin:2.5rem 0;}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 4px 24px rgba(184,74,16,0.15);margin-bottom:0.75rem;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(184,74,16,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.takeaways{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;color:var(--white);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.7;display:flex;gap:10px;}
+.takeaways ul li::before{content:'→';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+.knowledge-check{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.75rem;}
+.question{margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.question p{font-size:15px;color:var(--text-dark);line-height:1.7;margin-bottom:0.85rem;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;}
+.option:hover{border-color:var(--orange-mid);background:var(--orange-pale);}
+.option.selected{border-color:var(--orange);background:var(--orange-pale);color:var(--text-dark);}
+.option.correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.incorrect{border-color:#C62828;background:#FFF5F5;color:#8B0000;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-light);flex-shrink:0;margin-top:1px;}
+.option.selected .option-letter{background:var(--orange);color:var(--white);}
+.option.correct .option-letter{background:#2E7D32;color:var(--white);}
+.option.incorrect .option-letter{background:#C62828;color:var(--white);}
+.explanation{font-size:13px;line-height:1.65;padding:0.75rem 1rem;border-radius:8px;margin-top:0.5rem;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:#F1F8F1;color:#1B5E20;}
+.explanation.incorrect-exp{background:#FFF5F5;color:#8B0000;}
+.check-btn{display:inline-block;background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.check-btn:hover{background:var(--orange-mid);}
+.check-btn:disabled{background:#ccc;cursor:not-allowed;}
+.score-result{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.7;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:#F1F8F1;color:#1B5E20;border:1px solid #A5D6A7;}
+.score-result.fail{background:#FFF5F5;color:#8B0000;border:1px solid #FFCDD2;}
+.books-section{display:flex;flex-direction:column;gap:1rem;margin:1.25rem 0;}
+.book-item{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;}
+.bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.bi-author{font-size:12px;color:var(--orange-mid);font-weight:600;margin-bottom:0.4rem;}
+.bi-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.book-item a{display:inline-flex;align-items:center;white-space:nowrap;background:var(--orange-pale);color:var(--orange);border:1px solid rgba(184,74,16,0.25);padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.book-item a:hover{background:var(--orange);color:var(--white);}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--orange-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(184,74,16,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);}
+.btn-outline:hover{border-color:var(--orange-mid);color:var(--orange);}
+.btn-gold{background:var(--gold);color:#5A3800;}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--orange);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="darco-real-estate-academy.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="darco-real-estate-academy.html">All Tracks</a></li>
+    <li><a href="wholesaling.html" class="nav-back">← Wholesaling Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="darco-real-estate-academy.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="wholesaling.html">Wholesaling</a>
+  <span class="sep">›</span>
+  <span class="current">Module 4: Analyzing Deals &amp; Making Offers</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="wholesaling-module-1.html" class="prog-dot complete">1</a>
+    <a href="wholesaling-module-2.html" class="prog-dot complete">2</a>
+    <a href="wholesaling-module-3.html" class="prog-dot complete">3</a>
+    <span class="prog-dot active">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Wholesaling Track · Module 4 of 6</div>
+    <h1>Analyzing Deals &amp; <em>Making Offers</em></h1>
+    <p>The complete deal analysis framework — how to find ARV, estimate repairs, calculate your Maximum Allowable Offer, and make offers that are profitable every time.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Primary Sources: Merrill + Martinez</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">After Repair Value — <em>finding what the property is worth once it is fixed</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The After Repair Value (ARV) is the single most important number in wholesaling. Everything else — your repair estimate, your wholesale fee, your offer price — is calculated relative to the ARV. Get the ARV right and the rest of the math is straightforward. Get it wrong and you will either overpay for the contract or bring your cash buyer a deal they cannot profit from.</p>
+
+    <p class="lesson-text">ARV is what the property will be worth once it has been fully renovated and is ready to sell to a retail buyer. You are not valuing the property as it sits today — you are projecting what a renovated version of it will sell for in the current market. Ryan Zodi of RealEstateSkills.com puts it precisely: ARV is the most probable price a fully renovated version of this property would bring if freely offered on the open market with both a willing buyer and a willing seller.</p>
+
+    <p class="lesson-text">You find ARV by running comparable sales — properties similar to yours that have recently sold in renovated condition in the same area. These are called comps. The art of running comps is finding properties that are as similar as possible to your subject property, so that the sold price of the comp gives you a reliable estimate of what your property will sell for once fixed up.</p>
+
+    <h3 class="sub-title">The 8 appraisal rules for finding good comps</h3>
+    <p class="lesson-text">Real estate appraisers use a rigorous set of criteria to identify truly comparable properties. Ryan Zodi — who has studied dozens of appraisals across properties he has purchased — distills these into eight rules that every wholesaler should apply.</p>
+
+    <div class="comp-rules fade-in">
+      <div class="comp-rule">
+        <div class="cr-num">Rule 1</div>
+        <h4>Location</h4>
+        <p>Stay within a half-mile radius of the subject property. Never cross major roads, highways, or train tracks — these are neighborhood dividing lines. A property on a busy main road values differently from one on a quiet side street.</p>
+      </div>
+      <div class="comp-rule">
+        <div class="cr-num">Rule 2</div>
+        <h4>Date of Sale</h4>
+        <p>Start with comps from the last 90 days. Extend to 6 months if needed. Go to 12 months only as a last resort. A 6-month-old comp today may be a year old by the time your cash buyer finishes renovating and resells.</p>
+      </div>
+      <div class="comp-rule">
+        <div class="cr-num">Rule 3</div>
+        <h4>Square Footage</h4>
+        <p>Stay within plus or minus 20% of your subject property's square footage. If your property is 1,200 sqft, look for comps between 960 and 1,440 sqft. Square footage is the most important size variable — it drives price more than bed/bath count.</p>
+      </div>
+      <div class="comp-rule">
+        <div class="cr-num">Rule 4</div>
+        <h4>Bed &amp; Bath Count</h4>
+        <p>Try to match exactly. If you cannot find exact matches, get as close as possible and adjust your value estimate accordingly — an extra bedroom typically adds $5,000–$15,000 of value depending on the market.</p>
+      </div>
+      <div class="comp-rule">
+        <div class="cr-num">Rule 5</div>
+        <h4>Property Type</h4>
+        <p>Single family to single family only. Never use a condo as a comp for a detached home. Never use a mobile home as a comp for a stick-built house. Apples to apples always.</p>
+      </div>
+      <div class="comp-rule">
+        <div class="cr-num">Rule 6</div>
+        <h4>Construction Type</h4>
+        <p>Brick, wood frame, concrete block — these value differently. In Florida especially, concrete block homes value higher than wood frame in the same area due to hurricane resistance. Match construction type when possible.</p>
+      </div>
+      <div class="comp-rule">
+        <div class="cr-num">Rule 7</div>
+        <h4>Year Built</h4>
+        <p>Stay within 10 years of your subject property's build year. Do not use a 2005 construction as a comp for a 1965 fixer-upper — building codes, materials, and buyer expectations are completely different.</p>
+      </div>
+      <div class="comp-rule">
+        <div class="cr-num">Rule 8</div>
+        <h4>Condition</h4>
+        <p>For ARV comps, you want renovated properties that have been fixed up and resold — these are called as-improved comps. A comp that sold as a distressed cash sale is an as-is comp, not an ARV comp. Know the difference and use the right one for your purpose.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Free tools for running comps</h3>
+    <p class="lesson-text">The MLS is the gold standard — it has the most data, the most detail, and the most accurate sold prices. If you have investor-friendly agent access, use the MLS first. For everyone else, <strong>Redfin.com is the best free alternative</strong> — Ryan Zodi considers it his go-to for quick comp pulls in any market across the country. Zillow and Realtor.com also work. PropStream and Property Radar are paid options that give you MLS-level data and additional distressed property filters.</p>
+
+    <div class="callout callout-warning fade-in">
+      <div class="callout-label">⚠️ Never Trust Automated Valuations</div>
+      <p>Zillow's Zestimate, Redfin's estimate, PropStream's AVM — these automated valuations can be wildly inaccurate, especially on distressed properties in neighborhoods with few recent sales. Use them as a rough starting point if nothing else is available, but never make a purchase decision based on an automated valuation. Run your own comps every time, on every deal, no exceptions.</p>
+    </div>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 Have a Conservative Mindset on Comps</div>
+      <p>Zach Ginn's most important warning about running comps: avoid the "positive mindset" trap. New wholesalers lock up a property and then unconsciously cherry-pick high comps to justify the price they already paid. Cash buyers deal in facts — they will reject deals where the ARV is stretched. Always ask yourself: am I choosing this comp because it is the most accurate comparable, or because it makes my deal look better? If it is the latter, start over with the facts only.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Estimating repair costs — <em>getting close enough to make good offers without a contractor on site</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The second input in your offer calculation is the repair estimate. You do not need to be a contractor — and you do not need a perfect number. Alex Martinez's standard is getting within $3,000–$5,000 of the true repair cost. That level of accuracy is achievable without a formal quote, and it is close enough to make confident offers on most deals.</p>
+
+    <p class="lesson-text">The only person who knows the exact repair cost on a property is the general contractor who will actually do the work — and even they build in a contingency. Your job as a wholesaler is to get a reasonable estimate quickly so you can calculate an offer price and move. You will refine your repair estimation skills over time by getting feedback from cash buyers on the deals you bring them.</p>
+
+    <h3 class="sub-title">The cost-per-square-foot framework</h3>
+    <p class="lesson-text">The fastest and most practical repair estimation method for beginners is the cost-per-square-foot approach. Alex Martinez uses this on every deal:</p>
+
+    <div class="repair-grid fade-in">
+      <div class="repair-card">
+        <div class="rc-level">Light Rehab</div>
+        <h4>Cosmetic Only</h4>
+        <div class="rc-cost">$15–$20 / sqft</div>
+        <p>Paint, carpet/flooring, minor landscaping. Property is structurally sound, systems functional. Needs freshening up — not renovation.</p>
+      </div>
+      <div class="repair-card">
+        <div class="rc-level">Standard Rehab</div>
+        <h4>Full Cosmetic</h4>
+        <div class="rc-cost">$25–$35 / sqft</div>
+        <p>New flooring throughout, paint interior/exterior, kitchen remodel, bathroom remodel, landscaping. The most common wholesale deal type.</p>
+      </div>
+      <div class="repair-card">
+        <div class="rc-level">Heavy Rehab</div>
+        <h4>Systems + Cosmetic</h4>
+        <div class="rc-cost">$40–$60+ / sqft</div>
+        <p>New roof, HVAC, plumbing, electrical, plus full cosmetic. Properties with major structural or systems issues. Requires experienced cash buyers.</p>
+      </div>
+    </div>
+
+    <p class="lesson-text">For a 1,200 sqft house needing a standard cosmetic rehab: 1,200 × $30 = <strong>$36,000 repair estimate.</strong> That is your starting number. Adjust up if you saw foundation cracks, a failing roof, or outdated electrical on your walkthrough. Adjust down if the kitchen was recently updated or the roof is newer.</p>
+
+    <h3 class="sub-title">The items that change everything</h3>
+    <p class="lesson-text">Alex Martinez identifies two repair categories that dramatically change your estimate and must always be explicitly noted when they apply:</p>
+
+    <p class="lesson-text"><strong>New roof:</strong> adds $8,000–$15,000 depending on size and material. If the property needs a new roof, add this on top of your per-square-foot estimate — it is not included in the cosmetic calculation.</p>
+
+    <p class="lesson-text"><strong>Foundation / crack slab:</strong> can range from $5,000 for minor crack repair to $30,000+ for serious structural work. If you see foundation issues on a walkthrough, flag them immediately with your cash buyer before committing to an offer. This is the one repair category where the cost can blow up a deal entirely.</p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 Let Your Cash Buyers Calibrate Your Estimates</div>
+      <p>Alex Martinez's advice for new wholesalers: when you get your first deals under contract and send them to cash buyers, ask them how they estimate repairs. Ask what dollar-per-square-foot number they use in your specific market. Every market is different — Tampa's labor costs are not the same as Cleveland's. Once you know your buyers' repair criteria, you can calculate repair costs exactly the way they do, which means your MAO will be calibrated to what they will actually pay. This is how you stop bringing deals that fall apart at the last minute over repair disagreements.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 — FORMULA + VIDEOS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The MAO formula — <em>calculating your Maximum Allowable Offer on any deal</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The Maximum Allowable Offer (MAO) is the highest price you can pay for a property and still leave room for your wholesale fee and your cash buyer's profit. Every offer you make as a wholesaler should be at or below your MAO. Offering above your MAO means either you make no fee, your buyer makes no profit, or both. Offering well below your MAO means more room for negotiation and a more attractive deal for your buyer.</p>
+
+    <div class="formula-box fade-in">
+      <h4>The MAO Formula</h4>
+      <div class="formula-line">ARV <span class="op">×</span> Buyer's Percentage <span class="val">(70–80% depending on market)</span></div>
+      <div class="formula-line"><span class="op">−</span> Estimated Repair Costs</div>
+      <div class="formula-line"><span class="op">−</span> Your Wholesale Fee <span class="val">(target $10,000+)</span></div>
+      <hr class="formula-divider">
+      <div class="formula-result">= Maximum Allowable Offer (MAO)</div>
+      <div class="formula-note">The MAO is the ceiling on your offer price — not the target. Negotiate as far below it as possible.</div>
+    </div>
+
+    <h3 class="sub-title">Understanding the buyer's percentage</h3>
+    <p class="lesson-text">The buyer's percentage — typically between 70% and 80% of ARV — represents the maximum all-in cost a fix-and-flipper wants to have in the property. "All-in" means purchase price plus renovation plus closing costs plus holding costs. They want to be at or below this percentage so they have enough margin to make a profit when they sell.</p>
+
+    <p class="lesson-text">Why 75%? Because 75% of ARV is the standard refinance threshold — if a flipper wants to do a cash-out refinance after renovating and hold the property as a rental, they need to be 75% all-in to pull all their money back out. In highly competitive markets like Tampa or Atlanta, cash buyers may push to 80% or even 82% because competition for deals drives prices up. In slower or rural markets, buyers may demand 65–70%. <strong>Know your market's standard — your cash buyers will tell you.</strong></p>
+
+    <table class="pct-table fade-in">
+      <tr><th>Market Type</th><th>Typical Buyer %</th><th>Implication for Your MAO</th></tr>
+      <tr><td>Rural / slow market</td><td>65–70% of ARV</td><td>Tighter spread — need deeper discount from seller</td></tr>
+      <tr class="highlight"><td>Standard suburban market</td><td>70–75% of ARV</td><td>Standard range — most deals underwritten here</td></tr>
+      <tr><td>Hot / competitive market</td><td>75–80%+ of ARV</td><td>More room to pay — easier to get offers accepted</td></tr>
+    </table>
+
+    <h3 class="sub-title">Worked example — step by step</h3>
+
+    <div class="worked-example fade-in">
+      <div class="we-title">Subject Property: 3 bed / 2 bath, 1,200 sqft — Tampa, FL</div>
+      <div class="we-sub">Cosmetic fixer — needs new flooring, paint, kitchen, bathrooms, landscaping</div>
+      <div class="we-row">
+        <span class="wr-label">Step 1: Find ARV from comps</span>
+        <span class="wr-val">Three comps: $310K, $290K, $300K → ARV = $300,000</span>
+      </div>
+      <div class="we-row">
+        <span class="wr-label">Step 2: ARV × 80% (Tampa is competitive)</span>
+        <span class="wr-val orange">$300,000 × 80% = $240,000</span>
+      </div>
+      <div class="we-row">
+        <span class="wr-label">Step 3: Subtract repair estimate ($30/sqft × 1,200 sqft)</span>
+        <span class="wr-val">− $36,000</span>
+      </div>
+      <div class="we-row">
+        <span class="wr-label">Step 4: Subtract target wholesale fee</span>
+        <span class="wr-val">− $10,000</span>
+      </div>
+      <div class="we-row result">
+        <span class="wr-label">Maximum Allowable Offer (MAO)</span>
+        <span class="wr-val">$194,000</span>
+      </div>
+      <div class="we-row">
+        <span class="wr-label" style="font-size:12px;color:var(--text-light);">At 70% instead of 80%: $300K × 70% = $210K − $36K − $10K =</span>
+        <span class="wr-val" style="font-size:13px;color:var(--text-light);">$164,000 MAO</span>
+      </div>
+    </div>
+
+    <p class="lesson-text">Notice the $30,000 swing between the 70% and 80% calculations. This is why knowing your cash buyers' actual buying criteria matters so much. If you underwrite to 70% but your buyers actually pay 80%, you are leaving $30,000 of potential deal opportunity on the table — or walking away from deals you could have closed.</p>
+
+    <div class="video-section fade-in">
+      <h3>🎬 Watch: Deal Analysis in Practice</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/OQ4AIJ3qXRc" title="How To Find Real Estate Comps — RealEstateSkills" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);margin-bottom:1.5rem;">Ryan Zodi · RealEstateSkills.com · September 2024 · Live comp walkthrough on Redfin and MLS — the 8 appraisal rules applied to a real San Diego property</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/kzMNV0mWfHQ" title="ARV and MAO Calculator — Wholesaling Real Estate" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);">PropStream + Zillow live demo · January 2025 · Complete ARV comp pull and MAO calculator walkthrough on a real Tampa property — including repair line items</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Making the offer — <em>speed, terms, and presenting your number confidently</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="path-callout ep">
+      <span class="pc-tag">🧑‍💼 Employee Path</span>
+      <p>Acquisition professionals at real estate investment companies underwrite deals using this exact framework every day. Your ability to quickly and accurately calculate ARV, repair costs, and MAO is a core technical skill in the acquisitions role. Companies compensate acquisition managers well precisely because this analysis — done consistently and accurately at volume — is what drives deal flow and profitability. Master this math and you become a high-value team member.</p>
+    </div>
+    <div class="path-callout op">
+      <span class="pc-tag">🏢 Entrepreneur Path</span>
+      <p>Speed is a competitive advantage in wholesaling. The wholesaler who analyzes a deal in 20 minutes and calls the agent back with a firm offer same-day wins over the wholesaler who spends three days "doing due diligence." Your goal is to get accurate enough, fast — not perfect, slow. Alex Martinez's target is 30 minutes from discovery call to offer submission. Build the habit of moving quickly, and your close rate on competitive deals will be significantly higher than wholesalers who overthink.</p>
+    </div>
+
+    <h3 class="sub-title">The offer terms that matter</h3>
+    <p class="lesson-text">When you submit an offer, the price is only one element. Alex Martinez identifies the standard terms that make a wholesale offer competitive:</p>
+
+    <p class="lesson-text"><strong>Closing date: 14 days.</strong> Motivated sellers want to close fast. A 14-day close — compared to the 30–45 days a financed buyer needs — is a significant advantage. It gives you urgency, reduces the seller's carrying costs, and signals that you are a serious buyer who can actually perform.</p>
+
+    <p class="lesson-text"><strong>Inspection contingency: 7 days minimum.</strong> This is your backout clause. It gives you the right to terminate the contract during the inspection period for any reason and get your earnest money back. As a wholesaler, the inspection period is your window to find and assign the contract to your cash buyer. Never submit an offer without an inspection contingency — it is your primary protection if you cannot find a buyer in time.</p>
+
+    <p class="lesson-text"><strong>Earnest money deposit: $500–$2,500 for off-market deals.</strong> On MLS deals, 1% of the purchase price is the standard. If you have a cash buyer lined up already, they can fund the EMD on your behalf — meaning you put zero dollars into the deal out of pocket.</p>
+
+    <p class="lesson-text"><strong>Cash offer — no financing contingency.</strong> This is the biggest seller benefit of working with a wholesaler. Traditional buyers need 30–45 days for financing approval with risk of falling through. Your offer has no financing contingency — it is cash, it is certain, and it closes in two weeks. Lead with this in every offer conversation.</p>
+
+    <div class="callout callout-quote fade-in">
+      <div class="callout-label">📖 Alex Martinez — RealEstateSkills.com</div>
+      <p>"Speed is part of the name of the game. We're not trying to be perfect and take days to analyze a property because good deals go quickly. Get the ARV. Get the repairs number. Submit your offer. You can always refine — but you can't get back a deal that went to someone else while you were still analyzing."</p>
+      <div class="quote-attr">— Alex Martinez, How To Wholesale Real Estate In 21 Days or Less</div>
+    </div>
+
+    <h3 class="sub-title">What to do if you overpaid</h3>
+    <p class="lesson-text">It happens — especially early on. You get excited about a deal, submit an offer, and the seller accepts at a price where your numbers are tighter than you would like. You have two tools available before you panic. First, use your inspection period to get your cash buyers into the property. Their feedback on repairs and their willingness to pay will tell you immediately whether the deal works. Second, if a cash buyer identifies legitimate defects you were not aware of when you made the offer, use those findings to renegotiate the purchase price with the seller. Your inspection contingency protects you — and a legitimate renegotiation based on discovered defects is standard industry practice.</p>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>The wholesalers who make the most money are not the ones who spend the most time analyzing deals. They are the ones who built the habit of analyzing deals quickly and consistently — good enough to make real offers, fast enough to be first. Run comps on every property you find, even ones you do not pursue. Calculate the MAO. Submit your offer. The first ten times feel slow. By the fiftieth time, you will do it in twenty minutes without thinking. That fluency is worth more than any spreadsheet tool anyone will ever sell you.</p>
+      <div class="mentor-name">Your Darco Mentor · Module 4 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 4 Key Takeaways</h3>
+    <ul>
+      <li>ARV (After Repair Value) is the most important number in wholesaling — it is what the property will be worth fully renovated. Everything else in your offer calculation flows from this number. Get it right by running comps that match your subject property on all 8 criteria: location, date, square footage, bed/bath, property type, construction, year built, and condition.</li>
+      <li>Use Redfin as your go-to free comp tool. Start with 90-day sold comps within a half-mile radius. Never trust automated valuations (Zestimate, Redfin estimate) for purchase decisions — always run your own comps.</li>
+      <li>Repair estimates start with the cost-per-square-foot framework: $15–20/sqft light cosmetic, $25–35/sqft standard rehab, $40–60+/sqft heavy rehab with systems replacement. Always add roof ($8–15K) and foundation costs on top if those issues are present.</li>
+      <li>The MAO formula: ARV × buyer's percentage (70–80%) − repairs − wholesale fee = MAO. The buyer's percentage varies by market. Know your cash buyers' actual criteria — it can swing your MAO by $30,000 or more on a single deal.</li>
+      <li>Standard offer terms: 14-day closing, 7-day minimum inspection contingency (your backout clause), $500–2,500 EMD for off-market deals (1% for MLS), cash with no financing contingency. The inspection contingency is your most important protection — never waive it as a wholesaler.</li>
+      <li>Speed is a competitive advantage. Alex Martinez's target: 30 minutes from discovery call to offer submission. Good enough and fast beats perfect and slow — especially on Day Zero deals where speed determines who gets the contract.</li>
+      <li>If you overpaid, your inspection period is your safety valve. Use it to get buyer feedback on repairs, and use legitimate defect discoveries to renegotiate with the seller if needed. The contingency protects you — use it.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. You are running comps on a 3/2, 1,100 sqft property built in 1968 in a suburban Tampa neighborhood. You find a comp that sold 4 months ago for $320,000 — but it is a 3/2 at 1,650 sqft, built in 2004, located across a major highway. Should you use this comp? Why or why not?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Yes — it is within 6 months and the same bed/bath count, which are the two most important criteria for a valid comp.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> Yes — it sold for $320,000, which gives you a useful upper bound for your ARV even if the properties are not identical.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> No — this comp violates three of the eight appraisal rules simultaneously: the square footage is 50% larger (1,650 vs 1,100, well outside the 20% range), the build year is 36 years newer (2004 vs 1968, outside the 10-year range), and it is located across a major highway which is a neighborhood dividing line. Using this comp would significantly inflate your ARV and lead to an offer that overpays for the contract.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Yes, but apply a 15% discount to account for the size and age differences — this gives you a conservative ARV estimate that is still grounded in actual market data.</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A property is 1,400 sqft and needs full cosmetic renovation — new flooring, paint, kitchen, bathrooms, exterior, and landscaping. Using the cost-per-square-foot framework, what is the estimated repair cost — and what would you add if the property also has a failing roof?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> $14,000 for cosmetic rehab ($10/sqft) plus $8,000 for a roof = $22,000 total.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> $42,000 for cosmetic rehab ($30/sqft × 1,400 sqft) plus $8,000–$15,000 for a new roof = $50,000–$57,000 total. The roof is a major system replacement that is added on top of the cosmetic per-square-foot estimate, not included within it.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> $42,000 for cosmetic rehab at $30/sqft — the roof is already factored into the standard cosmetic rehab rate so no additional amount is needed.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> $84,000 at $60/sqft because a failing roof automatically classifies the property as a heavy rehab requiring the highest cost-per-square-foot rate.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. Using the MAO formula: ARV = $280,000, repairs = $40,000, wholesale fee = $10,000, buyer's percentage = 75%. What is your MAO — and what would happen to your MAO if your cash buyer operates at 80% instead of 75%?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">A</div> At 75%: $280,000 × 75% = $210,000 − $40,000 − $10,000 = MAO of $160,000. At 80%: $280,000 × 80% = $224,000 − $40,000 − $10,000 = MAO of $174,000. The difference in buyer's percentage alone creates a $14,000 swing in your maximum offer price — which is why knowing your buyers' actual criteria is so important.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> At 75%: MAO = $180,000. At 80%: MAO = $194,000. The wholesale fee is subtracted after the percentage is applied but before the repair costs.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> At 75%: MAO = $140,000. The buyer's percentage is applied to the ARV minus repairs, not to the full ARV.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> At 75%: MAO = $160,000. The buyer's percentage makes no difference to MAO because cash buyers in competitive markets always pay above the formula threshold to win deals.</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. You submit an offer and the seller accepts. During the inspection period, your cash buyers walk the property and tell you the repair cost is actually $55,000 — not the $35,000 you estimated when you made the offer. The higher repair cost means your buyer cannot make a profit at the contracted price. What are your two options — and which is preferable?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> You must close at the contracted price — the inspection contingency only allows you to back out if physical defects are discovered, not if your repair estimate was inaccurate.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> You have two options: (1) Use your inspection contingency to terminate the agreement and walk away with your EMD refunded, or (2) use the newly discovered repair information as the basis for a price renegotiation with the seller — present the buyer's repair findings, explain the impact on deal viability, and ask for a price reduction. Option 2 is preferable — it saves the deal and is standard practice when genuine defects change the economics.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> You must find a different cash buyer who has a lower profit requirement and will accept the deal at the original contracted price with the higher repair cost.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Reduce your wholesale fee to $0 to compensate for the repair discrepancy — this keeps the deal alive and demonstrates professionalism to the seller and your buyer.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Why does Alex Martinez target a 14-day closing date rather than 30 days on wholesale offers — and how does the inspection contingency work as a safety valve within that 14-day timeline?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> A 14-day close is required by most title companies for cash transactions because the title search and escrow process takes exactly two weeks to complete.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> A 14-day close is used to pressure sellers into accepting below-market offers — the urgency prevents them from seeking competing bids from other buyers.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> 14 days is a competitive advantage over financed buyers who need 30–45 days — motivated sellers prioritize speed and certainty, and a fast close is a genuine benefit to them. The inspection contingency (typically 7 days within that 14-day window) gives the wholesaler a protected period to find and assign the contract to a cash buyer. If the wholesaler cannot find a buyer within the inspection window, they can terminate the contract with no penalty and EMD refunded. The two terms work together: the short closing wins the deal, the inspection contingency protects the wholesaler.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> A 14-day close is only possible when the wholesaler already has a committed cash buyer lined up before making the offer — without a buyer in place, a 30-day close should always be requested instead.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Real Estate Wholesaling Bible</div>
+          <div class="bi-author">Than Merrill — FortuneBuilders</div>
+          <div class="bi-desc">Chapters 10–14 cover Merrill's complete 3-stage deal evaluation system — initial screening, detailed analysis, and final offer calculation. Chapter 14 provides a detailed repair estimation framework with cost breakdowns by repair category. The most thorough deal analysis system available for wholesalers.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=real+estate+wholesaling+bible+than+merrill&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Getting Started with Wholesaling</div>
+          <div class="bi-author">Colin Andrews Egbert &amp; Matthew Leitz — RealEstateInvestor.com</div>
+          <div class="bi-desc">Covers the ARV calculation process, the MAO framework, how to use comps to determine value, and the complete offer submission process from a practical, beginner-accessible perspective. Good companion to Merrill's more detailed treatment.</div>
+        </div>
+        <a href="https://www.realestateInvestor.com" target="_blank">RealEstateInvestor.com →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Wholesaling Guide to Finding Your First Deal</div>
+          <div class="bi-author">Giovanni Morado</div>
+          <div class="bi-desc">Section 4 covers the ARV and MAO calculation with the formula: ARV × 0.75 − repair costs − wholesale fee = offer price. Uses real dollar examples ($150,000 ARV property) making the math immediately practical for a beginner building their first offer.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=wholesaling+real+estate+beginners+guide&i=stripbooks" target="_blank">Find It →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 5: Contracts and the Assignment Process</h3>
+    <p>You can find deals, talk to sellers, and calculate offers. Now you need to lock the deal up on paper. Module 5 covers the two contracts every wholesaler needs — the purchase and sale agreement and the assignment contract — line by line. You will learn exactly what to fill in, what protects you, how the inspection contingency works as your backout clause, and how to assign your contract to a cash buyer for your wholesale fee.</p>
+    <a href="wholesaling-module-5.html" class="next-module-cta">Module 5: Contracts and the Assignment Process →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="wholesaling-module-3.html" class="btn btn-outline">← Module 3</a>
+  <div class="module-nav-info">
+    <p>Wholesaling Track</p>
+    <strong>Module 4 of 6</strong>
+  </div>
+  <a href="wholesaling-module-5.html" class="btn btn-gold">Module 5: Contracts →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! This comp fails three of the eight appraisal rules at once. The square footage (1,650 vs 1,100) is 50% larger — well outside the 20% tolerance. The build year (2004 vs 1968) is 36 years newer — well outside the 10-year range. And it is located across a major highway, which is a clear neighborhood dividing line. Using this comp would produce a significantly inflated ARV that your cash buyer will immediately reject. Keep looking.",incorrect:"Not quite. This comp actually violates three of the eight appraisal rules: the square footage is 50% larger than the subject property (outside the 20% range), the build year is 36 years newer (outside the 10-year range), and it is located across a major highway — a clear neighborhood boundary. Using comps that fail these criteria inflates your ARV estimate and leads to offers your cash buyers cannot accept profitably."},
+  q2:{correct:"Correct! $30/sqft × 1,400 sqft = $42,000 for the cosmetic rehab. The roof is a major systems replacement that is added on top of the per-square-foot estimate — it is not included in the cosmetic rate. A new roof typically adds $8,000–$15,000. Total estimate: $50,000–$57,000. This is the distinction Martinez is clear about: cosmetics cover flooring, paint, kitchen, bathrooms, landscaping. Roofs and foundations are separate line items.",incorrect:"Not quite. The correct calculation is $30/sqft × 1,400 sqft = $42,000 for standard cosmetic rehab. The roof is a separate major item — it is not bundled into the per-square-foot rate for cosmetic work. Add $8,000–$15,000 for the roof on top, giving a total estimate of $50,000–$57,000. Never assume the per-square-foot rate covers roofs, foundations, HVAC, or other major systems — always add these separately."},
+  q3:{correct:"Correct! At 75%: $280,000 × 0.75 = $210,000 − $40,000 − $10,000 = $160,000 MAO. At 80%: $280,000 × 0.80 = $224,000 − $40,000 − $10,000 = $174,000 MAO. A 5-percentage-point difference in the buyer's percentage creates a $14,000 swing in what you can offer the seller. This is why the first conversation with every new cash buyer should include: what percentage of ARV do you buy at in this market?",incorrect:"Not quite. Let's do the math together. At 75%: $280,000 × 0.75 = $210,000. Then subtract repairs ($40,000) and wholesale fee ($10,000): $210,000 − $50,000 = $160,000 MAO. At 80%: $280,000 × 0.80 = $224,000 − $50,000 = $174,000 MAO. The $14,000 difference between those two MAOs illustrates exactly why knowing your buyers' actual buying criteria before you analyze deals is so important."},
+  q4:{correct:"Correct! Your inspection contingency gives you two powerful options when repair costs come in higher than expected. You can terminate and walk away with your EMD refunded — clean exit, no penalty. Or, better yet, use the buyer's repair findings as legitimate grounds to renegotiate the purchase price with the seller. This is not bad faith — it is standard industry practice when genuine defects discovered during inspection change the economics of the deal. Most sellers would rather renegotiate than watch the deal fall apart entirely.",incorrect:"Not quite. Your inspection contingency gives you exactly the protection you need here. Option 1: terminate the contract and get your EMD refunded — the inspection contingency allows you to back out for any reason during the inspection period, not just for structural issues. Option 2 (preferable): use the repair findings as grounds to renegotiate the price with the seller. Present the buyer's assessment, explain the impact, and propose a price reduction that makes the deal work. Most motivated sellers will engage rather than risk losing the deal entirely."},
+  q5:{correct:"Correct! The 14-day close is a genuine competitive advantage for motivated sellers — it means less time owning a problem property, less carrying cost, and certainty that the deal will actually close. The inspection contingency (7 days) within that window is the wholesaler's protection: it is a dedicated period to find and assign the contract to a cash buyer. If no buyer is found, the wholesaler terminates during the inspection window and walks away with no penalty. Together, the short close wins the deal and the inspection contingency protects the wholesaler during the assignment process.",incorrect:"Not quite. The 14-day close is a competitive advantage with motivated sellers — they want speed and certainty, and a cash close in two weeks is significantly more attractive than a financed offer that takes 45 days and might fall through. The 7-day inspection contingency within that window is the wholesaler's safety valve — it is the dedicated period to find and assign to a cash buyer. If no buyer materializes, the wholesaler terminates under the inspection contingency with no penalty. The two terms work together to win deals and protect the wholesaler simultaneously."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;
+    } else {
+      ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}
+    }
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong command of the deal analysis framework. You can run comps, estimate repairs, and calculate MAO accurately. Ready for Module 5: Contracts and the Assignment Process.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the 8 appraisal rules for comps, the repair cost framework, and the MAO formula. These are the numbers that determine whether every deal you do is profitable.';
+  }
+}
+</script>
+</body>
+</html>
