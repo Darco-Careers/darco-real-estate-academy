@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Wholesaling Module 3: Talking to Sellers — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#B84A10;--orange-mid:#D4581A;--orange-light:#E87040;--orange-pale:#FDF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(184,74,16,0.12);
+  --shadow-card:0 2px 16px rgba(184,74,16,0.08);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--orange);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--orange);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--orange);font-weight:600;}
+.progress-bar{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--orange-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(184,74,16,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--orange-mid);border-radius:3px;width:50%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--orange);color:var(--gold-light);}
+.prog-dot.complete{background:var(--orange-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(184,74,16,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(184,74,16,0.25);}
+.module-hero{background:linear-gradient(135deg,#5A1E04 0%,var(--orange) 55%,var(--orange-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--orange);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--orange-pale);border-left:4px solid var(--orange-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--orange);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--orange-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.path-callout{border-radius:10px;padding:1rem 1.25rem;margin:0.85rem 0;font-size:14px;line-height:1.7;color:var(--text-mid);}
+.path-callout.ep{background:rgba(184,74,16,0.06);border:1px solid rgba(184,74,16,0.18);}
+.path-callout.op{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);}
+.pc-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-bottom:0.4rem;color:var(--orange);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.script-box{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:18px;padding:2rem 2.25rem;margin:2rem 0;color:var(--white);}
+.script-box h4{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1.25rem;}
+.script-line{display:flex;gap:12px;margin-bottom:1rem;align-items:flex-start;}
+.script-who{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold-light);min-width:80px;padding-top:3px;flex-shrink:0;}
+.script-says{font-size:14px;color:rgba(255,255,255,0.9);line-height:1.7;font-style:italic;}
+.script-note{font-size:12px;color:rgba(255,255,255,0.55);margin-top:0.3rem;font-style:normal;}
+.objection-cards{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
+.objection-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.oc-header{background:var(--orange-pale);padding:0.85rem 1.25rem;font-size:13px;font-weight:700;color:var(--orange);border-bottom:1px solid var(--border);}
+.oc-body{padding:1.1rem 1.25rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.oc-col-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.4rem;}
+.oc-wrong .oc-col-label{color:#C62828;}
+.oc-right .oc-col-label{color:#2E7D32;}
+.oc-wrong p{font-size:13px;color:#8B0000;line-height:1.65;background:#FFF5F5;padding:0.75rem;border-radius:8px;}
+.oc-right p{font-size:13px;color:#1B5E20;line-height:1.65;background:#F1F8F1;padding:0.75rem;border-radius:8px;}
+.rapport-steps{display:flex;flex-direction:column;gap:0.85rem;margin:2rem 0;}
+.rapport-step{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
+.rs-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px;}
+.rs-content h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.25rem;}
+.rs-content p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.discovery-flow{background:var(--cream-dark);border-radius:16px;padding:1.75rem 2rem;margin:2rem 0;}
+.discovery-flow h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:1.25rem;}
+.df-step{display:flex;gap:1rem;margin-bottom:1rem;align-items:flex-start;}
+.df-num{width:28px;height:28px;border-radius:50%;background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.df-content{flex:1;}
+.df-content strong{font-size:13px;color:var(--text-dark);display:block;margin-bottom:0.2rem;}
+.df-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-section{margin:2.5rem 0;}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 4px 24px rgba(184,74,16,0.15);margin-bottom:0.75rem;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.video-link-card{display:flex;gap:1rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-decoration:none;transition:box-shadow 0.2s,border-color 0.2s;align-items:flex-start;margin-bottom:0.75rem;}
+.video-link-card:hover{box-shadow:var(--shadow-card);border-color:var(--orange-mid);}
+.video-thumb{width:120px;height:68px;border-radius:8px;flex-shrink:0;background:var(--orange-pale);display:flex;align-items:center;justify-content:center;}
+.video-thumb svg{width:32px;height:32px;fill:var(--orange-mid);}
+.video-info{flex:1;}
+.video-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--orange-pale);color:var(--orange-mid);padding:3px 10px;border-radius:20px;margin-bottom:0.4rem;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;line-height:1.35;}
+.video-info p{font-size:12px;color:var(--text-light);line-height:1.55;}
+.video-info .credit{font-size:11px;color:var(--text-light);margin-top:0.4rem;font-style:italic;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(184,74,16,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.takeaways{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;color:var(--white);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.7;display:flex;gap:10px;}
+.takeaways ul li::before{content:'→';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+.knowledge-check{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.75rem;}
+.question{margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.question p{font-size:15px;color:var(--text-dark);line-height:1.7;margin-bottom:0.85rem;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;}
+.option:hover{border-color:var(--orange-mid);background:var(--orange-pale);}
+.option.selected{border-color:var(--orange);background:var(--orange-pale);color:var(--text-dark);}
+.option.correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.incorrect{border-color:#C62828;background:#FFF5F5;color:#8B0000;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-light);flex-shrink:0;margin-top:1px;}
+.option.selected .option-letter{background:var(--orange);color:var(--white);}
+.option.correct .option-letter{background:#2E7D32;color:var(--white);}
+.option.incorrect .option-letter{background:#C62828;color:var(--white);}
+.explanation{font-size:13px;line-height:1.65;padding:0.75rem 1rem;border-radius:8px;margin-top:0.5rem;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:#F1F8F1;color:#1B5E20;}
+.explanation.incorrect-exp{background:#FFF5F5;color:#8B0000;}
+.check-btn{display:inline-block;background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.check-btn:hover{background:var(--orange-mid);}
+.check-btn:disabled{background:#ccc;cursor:not-allowed;}
+.score-result{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.7;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:#F1F8F1;color:#1B5E20;border:1px solid #A5D6A7;}
+.score-result.fail{background:#FFF5F5;color:#8B0000;border:1px solid #FFCDD2;}
+.books-section{display:flex;flex-direction:column;gap:1rem;margin:1.25rem 0;}
+.book-item{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;}
+.bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.bi-author{font-size:12px;color:var(--orange-mid);font-weight:600;margin-bottom:0.4rem;}
+.bi-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.book-item a{display:inline-flex;align-items:center;white-space:nowrap;background:var(--orange-pale);color:var(--orange);border:1px solid rgba(184,74,16,0.25);padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.book-item a:hover{background:var(--orange);color:var(--white);}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--orange-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(184,74,16,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);}
+.btn-outline:hover{border-color:var(--orange-mid);color:var(--orange);}
+.btn-gold{background:var(--gold);color:#5A3800;}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--orange);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="darco-real-estate-academy.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="darco-real-estate-academy.html">All Tracks</a></li>
+    <li><a href="wholesaling.html" class="nav-back">← Wholesaling Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="darco-real-estate-academy.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="wholesaling.html">Wholesaling</a>
+  <span class="sep">›</span>
+  <span class="current">Module 3: Talking to Sellers</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="wholesaling-module-1.html" class="prog-dot complete">1</a>
+    <a href="wholesaling-module-2.html" class="prog-dot complete">2</a>
+    <span class="prog-dot active">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Wholesaling Track · Module 3 of 6</div>
+    <h1>Talking to <em>Sellers</em></h1>
+    <p>The cold calling script, the discovery call framework, the negotiation principles, and the objection handlers that turn phone conversations into signed contracts.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Primary Sources: Zach Ginn + J Scott</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The cold calling script — <em>two sentences that have generated millions</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Zach Ginn has cold-called his way to millions of dollars in wholesale fees — starting from a dorm room in college where he was hitting $10,000 per month purely from cold calls. Over seven years of testing scripts — guru scripts, Jordan Belfort-style scripts, casual scripts, aggressive scripts — he landed on the same conclusion every time: the simpler the script, the better the results. What he uses today is two sentences. That is it.</p>
+
+    <p class="lesson-text">Most people assume a cold calling script needs to be complex — a multi-step introduction, a value proposition, a soft close. The opposite is true. The longer and more salesy your opening, the faster the seller mentally checks out. Your only goal on a cold call is to find out if the person is interested in a cash offer on their property. Everything else is noise.</p>
+
+    <div class="script-box fade-in">
+      <h4>📞 The Two-Sentence Cold Calling Script</h4>
+      <div class="script-line">
+        <div class="script-who">You say:</div>
+        <div>
+          <div class="script-says">"Hey — is this the owner of 123 Main Street?"</div>
+          <div class="script-note">Why this works: it throws the seller off. They were expecting a standard sales call. This is specific to their property — it creates instant curiosity and confusion. They are not sure what is happening, so they stay on the line.</div>
+        </div>
+      </div>
+      <div class="script-line">
+        <div class="script-who">They say:</div>
+        <div class="script-says">"Yeah... why?"</div>
+      </div>
+      <div class="script-line">
+        <div class="script-who">You say:</div>
+        <div>
+          <div class="script-says">"Are you interested in selling that property?"</div>
+          <div class="script-note">That is the entire script. They either say yes, no, or give you an objection. All three are handled. There is no pitch. No value proposition. No closing technique. Just a direct question.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="lesson-text">The reason this script works, Ginn explains, is twofold. First, it gets to the point immediately — no wasted time, higher call volume, faster filtering of unmotivated sellers. Second, it is not salesy. You are not telling them anything. You are asking. You are an interviewer, not a salesperson. The motivated seller who has been thinking about selling will say yes. The one who has no interest will say no. Your job is just to find the ones who say yes.</p>
+
+    <h3 class="sub-title">The three things you must know before every call</h3>
+    <p class="lesson-text">Before you dial, you need three answers ready — because motivated sellers will ask them, and stumbling on any of them destroys your credibility instantly. Ginn calls these the confidence foundations: <strong>who you are, what you want, and why you want it.</strong></p>
+
+    <div class="rapport-steps fade-in">
+      <div class="rapport-step">
+        <div class="rs-icon">👤</div>
+        <div class="rs-content">
+          <h4>Who you are</h4>
+          <p>"My name is [name] and me and my partner are looking to buy a couple more properties in the area for cash." Simple. Professional. True.</p>
+        </div>
+      </div>
+      <div class="rapport-step">
+        <div class="rs-icon">🏠</div>
+        <div class="rs-content">
+          <h4>What you want</h4>
+          <p>"I'm looking to buy some houses in the area. If you're not looking to sell your house, I'm not going to buy it — but I am actively looking for properties in the area." No pressure. Just honest.</p>
+        </div>
+      </div>
+      <div class="rapport-step">
+        <div class="rs-icon">💡</div>
+        <div class="rs-content">
+          <h4>Why you want it</h4>
+          <p>"Me and my partner buy houses — sometimes we rent them out, sometimes we fix them up and flip them. It really depends on the property." Transparent, credible, not suspicious.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Handling the four most common objections</h3>
+
+    <div class="objection-cards fade-in">
+      <div class="objection-card">
+        <div class="oc-header">Objection 1: "How did you get my number?"</div>
+        <div class="oc-body">
+          <div class="oc-wrong">
+            <div class="oc-col-label">❌ Wrong Answer</div>
+            <p>"I got it online from a public database." — This sounds defensive and makes the seller feel tracked or surveilled. It kills the conversation.</p>
+          </div>
+          <div class="oc-right">
+            <div class="oc-col-label">✅ Right Answer</div>
+            <p>"My partner compiled a list of areas we're looking to buy in that fit our criteria — he gave me the list and I'm just calling to see if anyone's interested in selling. Honestly I'm not even sure exactly where he got it. If that's really important to you I can find out, but most people don't worry about it once they hear what I'm calling about."</p>
+          </div>
+        </div>
+      </div>
+      <div class="objection-card">
+        <div class="oc-header">Objection 2: "What's your offer?"</div>
+        <div class="oc-body">
+          <div class="oc-wrong">
+            <div class="oc-col-label">❌ Wrong Answer</div>
+            <p>Throwing out a number on the spot — you haven't seen the property, run comps, or estimated repairs. Any number you give is meaningless and you'll have to backtrack later.</p>
+          </div>
+          <div class="oc-right">
+            <div class="oc-col-label">✅ Right Answer</div>
+            <p>Use the car analogy: "Before I give you an offer — have you ever bought a car? Did you test drive it first? Same thing here. I have to actually see the property before I give you an offer. I'm a man of my word — when I give you a number, it's firm. To do that I need to see it. When's a good time for me to come by?"</p>
+          </div>
+        </div>
+      </div>
+      <div class="objection-card">
+        <div class="oc-header">Objection 3: "If I sold, where would I move?"</div>
+        <div class="oc-body">
+          <div class="oc-wrong">
+            <div class="oc-col-label">❌ Wrong Answer</div>
+            <p>Getting frustrated or dismissive — this is actually a signal that the seller is thinking about it. Dismissing it shuts the door.</p>
+          </div>
+          <div class="oc-right">
+            <div class="oc-col-label">✅ Right Answer</div>
+            <p>"That's a fair question. Usually when people sell they use the money from the sale to either buy another place or rent something temporarily. I can't really advise you on where to move — that's your call — but a lot of people in similar situations have figured it out after the sale. The cash gives you options."</p>
+          </div>
+        </div>
+      </div>
+      <div class="objection-card">
+        <div class="oc-header">Objection 4: "I don't know if I want to sell"</div>
+        <div class="oc-body">
+          <div class="oc-wrong">
+            <div class="oc-col-label">❌ Wrong Answer</div>
+            <p>Pushing hard to convince them — if they were not thinking about selling before your call, they are not a motivated seller. Pushing wastes both of your time.</p>
+          </div>
+          <div class="oc-right">
+            <div class="oc-col-label">✅ Right Answer</div>
+            <p>"Before I called you — were you even thinking about selling, or did this come out of nowhere?" If they say no: politely end the call and move on. If they say yes or maybe: that is motivation — continue the conversation. This one question tells you everything.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The discovery call with listing agents — <em>building rapport before making offers</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">When you are working with on-market properties through the MLS — the Day Zero and Old Listings strategies from Module 2 — your seller conversations happen through listing agents, not homeowners directly. The discovery call with a listing agent is a different skill set from cold calling motivated sellers, but the underlying principle is the same: <strong>you are an interviewer, not a salesperson.</strong> Your job on the first call is to gather information and build rapport — not to throw out a price.</p>
+
+    <div class="discovery-flow fade-in">
+      <h4>The Discovery Call Framework — Alex Martinez</h4>
+      <div class="df-step">
+        <div class="df-num">1</div>
+        <div class="df-content">
+          <strong>Introduce yourself as an investor and buyer — never a wholesaler</strong>
+          <p>"Hi [agent name], my name is [your name] with [your company]. I'm a real estate investor and cash buyer — I came across your listing at [address] and wanted to learn more about it."</p>
+        </div>
+      </div>
+      <div class="df-step">
+        <div class="df-num">2</div>
+        <div class="df-content">
+          <strong>Verify the condition — do the photos match reality?</strong>
+          <p>Ask if there is anything out of the ordinary not shown in the photos. Any major repairs needed — roof, foundation, HVAC? Are the photos current or older? This directly affects your repair estimate.</p>
+        </div>
+      </div>
+      <div class="df-step">
+        <div class="df-num">3</div>
+        <div class="df-content">
+          <strong>Get a pulse on competition and motivation</strong>
+          <p>Ask how activity has been on the property. Are there other offers? What is the seller's ideal timeline? You are not asking for confidential info — you are asking questions any serious buyer would ask.</p>
+        </div>
+      </div>
+      <div class="df-step">
+        <div class="df-num">4</div>
+        <div class="df-content">
+          <strong>Do NOT give a price on this call</strong>
+          <p>End the call by saying: "I really enjoyed talking with you. I'm going to review this property with my team and get back to you within a few hours with a no-nonsense offer we can stick to. Does that sound good?" You have never once had someone say no to that.</p>
+        </div>
+      </div>
+      <div class="df-step">
+        <div class="df-num">5</div>
+        <div class="df-content">
+          <strong>Analyze the deal, then call back with your offer</strong>
+          <p>Run comps, estimate repairs, calculate MAO, determine your offer. Then call back — "Hey [agent], I met with my team and we're excited about this property. We can come in today at $[X]. Can I have you represent us on this?" If they represent both sides, they earn double commission — a strong incentive to advocate for your offer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 The Listing Agent Double Commission Incentive</div>
+      <p>When a listing agent also represents the buyer, they earn both the listing commission and the buyer's agent commission — effectively doubling their fee on the transaction. This is called dual agency and is legal in most states with proper disclosure. When you ask the listing agent to represent you, you are offering them a significant financial incentive to advocate for your offer over competing bids. This is one of the most underused advantages in on-market wholesaling.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 — VIDEOS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Negotiation principles — <em>rapport, information, and finding what sellers really want</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">J Scott flipped over 500 houses and negotiated on every single one — both buying and selling. His framework for negotiation is not what most people expect. It is not aggressive tactics, anchoring tricks, or high-pressure closes. It comes down to two things: <strong>rapport and information.</strong></p>
+
+    <p class="lesson-text">Rapport is about trust. When someone trusts you, they are far more likely to say yes — even to a price they were not originally planning to accept. You build rapport before you talk numbers — sometimes a half hour before, sometimes an hour. Jay's wife never showed up at a seller's house without coffee or donuts. It sounds trivial. It is not. By the time the conversation gets to money, you want the seller thinking "I like this person" — not "I need to protect myself from this investor."</p>
+
+    <p class="lesson-text">Information is about understanding what the seller actually wants beyond the asking price. Most negotiations fail because both sides assume the other side only cares about money. Often — especially with distressed or motivated sellers — there is something else driving the decision. A seller who has lived in a house for 70 years and is terrified of moving does not have a money problem. They have a logistics problem. Solve the logistics problem, and you can often buy the house for significantly less than you would have paid otherwise.</p>
+
+    <div class="callout callout-quote fade-in">
+      <div class="callout-label">📖 J Scott — The Book on Negotiating Real Estate (BiggerPockets)</div>
+      <p>"The best negotiations are two people that trust each other and like each other and want the other person to get a good deal at the same time that they get a good deal. We don't need to be employing complex strategies or hard-nosed tactics that try to trick the other side. What we want is for the two sides to come together and mutually find solutions to the problems."</p>
+      <div class="quote-attr">— J Scott, BiggerPockets Real Estate Rookie Podcast</div>
+    </div>
+
+    <h3 class="sub-title">The single best question in seller negotiation</h3>
+    <p class="lesson-text">After you have built rapport and the conversation feels comfortable, J Scott's most powerful question is: <strong>"What do you plan to do with the money from the sale?"</strong> This is not small talk. It is the most direct path to understanding what the seller actually needs. The answers reveal everything:</p>
+
+    <div class="rapport-steps fade-in">
+      <div class="rapport-step">
+        <div class="rs-icon">💍</div>
+        <div class="rs-content">
+          <h4>"My daughter's getting married next month"</h4>
+          <p>They need liquidity fast. Speed of closing matters more than maximum price. A fast all-cash close at below asking price may be exactly what they need.</p>
+        </div>
+      </div>
+      <div class="rapport-step">
+        <div class="rs-icon">🏦</div>
+        <div class="rs-content">
+          <h4>"I'm going to put it in savings for a while"</h4>
+          <p>They have no immediate use for the money. This opens the door to seller financing — "What if I could get you 7–8% on that money instead of 1% in a savings account?" Suddenly you have a creative deal structure that works for everyone.</p>
+        </div>
+      </div>
+      <div class="rapport-step">
+        <div class="rs-icon">📦</div>
+        <div class="rs-content">
+          <h4>"I don't know how I'm going to move all this stuff"</h4>
+          <p>Their real problem is not money — it is logistics. Offer to handle the move. Hire movers, let them leave everything behind, handle the cleanout. Now you have solved their actual problem and you can often buy at a significantly lower price.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning fade-in">
+      <div class="callout-label">⚠️ Making Low Offers — The Psychology of Asking</div>
+      <p>J Scott's advice on making low offers is direct: most people do not make low offers because they are afraid of insulting the seller. This fear costs them enormously over a career. His rule is to start as low as possible without the seller walking away entirely. Find out what they owe on the mortgage — that is usually the floor where they will negotiate instead of walk. Make the offer. The worst they can say is no. And sometimes the person who held firm at $400,000 calls back six months later and accepts your $300,000 offer — because their circumstances changed.</p>
+    </div>
+
+    <div class="video-section fade-in">
+      <h3>🎬 Watch: Talking to Sellers</h3>
+
+      <a href="https://www.youtube.com/watch?v=hQER3PhPpOs" target="_blank" class="video-link-card">
+        <div class="video-thumb">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.5 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Zach Ginn · YouTube</span>
+          <h4>The Ultimate Cold Calling Script for Wholesaling Real Estate</h4>
+          <p>Zach Ginn's complete cold calling breakdown — the two-sentence script, the confidence foundations, all four major objections handled, and why simpler always outperforms complex in seller conversations.</p>
+          <p class="credit">Zach Ginn · February 2024 · 7 years wholesaling, $10K/month from dorm room · <em>Opens on YouTube (embedding disabled by creator)</em></p>
+        </div>
+      </a>
+
+      <div class="video-embed" style="margin-top:0.75rem;">
+        <iframe src="https://www.youtube.com/embed/qMsLZ47PJV8" title="Negotiations 101 — J Scott — BiggerPockets Real Estate Rookie Podcast" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);">J Scott · BiggerPockets Real Estate Rookie Podcast · February 2025 · 500+ flips, author of The Book on Negotiating Real Estate</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Putting it together — <em>from first call to signed contract</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="path-callout ep">
+      <span class="pc-tag">🧑‍💼 Employee Path</span>
+      <p>If you are working as an acquisitions manager or coordinator for a real estate investment company, seller communication is your entire job. These skills — cold calling, discovery calls, objection handling, negotiation — are what you are hired for and what you are evaluated on. The two-sentence script, the confidence foundations, and J Scott's rapport-first negotiation framework are directly applicable to your daily work regardless of whether you ever wholesale a deal yourself.</p>
+    </div>
+    <div class="path-callout op">
+      <span class="pc-tag">🏢 Entrepreneur Path</span>
+      <p>As a wholesaling entrepreneur, your ability to get motivated sellers on the phone and convert those conversations into signed contracts is the core skill of the entire business. Everything else — finding leads, analyzing deals, building a buyers list — supports this moment. Practice the script out loud before you dial. Record your calls and review them. The first twenty calls will feel uncomfortable. The next hundred will feel natural. The wholesalers who succeed are the ones who make the calls anyway.</p>
+    </div>
+
+    <h3 class="sub-title">When to walk away</h3>
+    <p class="lesson-text">Not every motivated lead is a deal. J Scott identifies the clear signal that a negotiation is over: when the only thing the seller cares about is money, and their floor price is above your ceiling price, there is no deal. Do not spend energy trying to convince them. The motivated sellers you are looking for have both financial and non-financial problems. When money is the only issue and the math does not work, end the conversation gracefully — and leave the door open. Tell them you understand, that you are not the right buyer at this price, and that if anything changes you would love to hear from them. The circumstances that made this a no today may make it a yes in six months.</p>
+
+    <p class="lesson-text">Than Merrill's Chapter 15 of the Wholesaling Bible outlines a nine-step negotiating process that mirrors everything J Scott and Zach Ginn teach: build rapport first, gather information before making any offer, understand the seller's true motivation, present your offer as a solution to their problem — not as a lowball attack on their property's value. The language matters. You are not telling a seller their house is worth less than they think. You are explaining what you can do for them and asking if that works for their situation.</p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 The Follow-Up Call — Martinez's "Close Call" Framework</div>
+      <p>Alex Martinez distinguishes between two types of calls: the discovery call and the close call. The discovery call is purely about rapport and information — you leave without giving a price. The close call is when you come back with a firm offer. When you make the close call, reference the previous conversation: "Hey [agent name] — this is [your name] with [company], we spoke a couple hours ago. I met with my team and we're very excited about this property. We can come in today at $[X], have you represent us, and close on your timeline. Does that work?" This structure — separate calls for discovery and offer — reduces the pressure on both conversations and dramatically improves acceptance rates.</p>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>Every wholesaler who has ever built a real business will tell you the same thing: the calls get easier. Your first twenty cold calls will feel awkward and scary. Your hundredth will feel routine. Your thousandth will feel like a conversation with an old friend. The script is not magic — it is a framework that removes the decision-making from an uncomfortable moment. You know what to say. You know how to handle objections. Now you just need reps. Pick up the phone and dial. The deals are on the other end.</p>
+      <div class="mentor-name">Your Darco Mentor · Module 3 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 3 Key Takeaways</h3>
+    <ul>
+      <li>The cold calling script is two sentences: "Is this the owner of [address]?" then "Are you interested in selling?" That is it. Simplicity beats complexity every time — higher call volume, faster filtering, less anxiety.</li>
+      <li>Know your three confidence foundations before every call: who you are, what you want, and why you want it. If a seller asks any of these and you stumble, you lose credibility immediately.</li>
+      <li>The four major objections and how to handle them: "How did you get my number?" (blame your partner, deflect), "What's your offer?" (car analogy — need to see it first), "Where would I move?" (money gives options), "I don't know if I want to sell" (ask if they were thinking about it before you called — that one question tells you everything).</li>
+      <li>On discovery calls with listing agents: never say "wholesaler." You are a real estate investor and cash buyer. End the call without giving a price — always say you will review with your team and call back with a firm offer. Then follow through.</li>
+      <li>Negotiation is rapport plus information. Build trust before you talk numbers. Ask "what do you plan to do with the money?" — the answer tells you the seller's real motivation, which is almost always something beyond the asking price.</li>
+      <li>Make low offers without fear. The worst a seller can say is no. Most wholesalers leave enormous money on the table because they are too afraid to start low. Start as low as possible without making them walk away entirely.</li>
+      <li>Separate your discovery call from your close call. Use the first call to gather information and build rapport. Use the second call to deliver a firm, confident offer. This two-call structure reduces pressure on both conversations and improves acceptance rates.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A seller immediately asks "What's your offer?" on your cold call before you have had a chance to learn anything about the property. According to Zach Ginn's framework, what is the correct response — and why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Give a range — "somewhere between $80,000 and $120,000 depending on condition" — to keep them engaged without committing to a specific number.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> Tell them you need 48 hours to research the market before giving any number — this shows you are thorough and serious.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div> Use the car analogy: explain that before you give an offer you have to see the property first — just like you would test drive a car before buying it. Tell them your offers are firm when you make them, and to make a firm offer you need to see the house. Then ask when is a good time to come by. This turns their aggressive question into an appointment.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> End the call politely — sellers who demand an immediate offer are not motivated enough to be worth pursuing.</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. J Scott says the most powerful question in seller negotiation is "What do you plan to do with the money from the sale?" A seller answers: "Honestly, I was just going to put it in savings for a few months while I figure out where to move." What opportunity does this answer reveal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> The seller is not motivated — if they have no plan for the money they clearly do not need to sell, so this is not a good wholesale opportunity.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> The seller is going to park the money in savings earning minimal interest — which opens the door to a seller financing offer. You could say: "What if I could get you 7 or 8% on that money instead of 1% in a savings account?" Now you have a creative deal structure that may allow you to pay a lower purchase price while giving the seller a better financial outcome than a traditional cash sale.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> The seller needs time to relocate, so you should offer a leaseback arrangement where they stay in the property rent-free for 90 days after closing.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> The seller has no urgency, so you should make your highest possible offer to compete with other buyers who will recognize this as a premium opportunity.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. You are on a discovery call with a listing agent. The agent is warm and engaging. At the end of the call they say "So what are you thinking price-wise?" According to Alex Martinez's framework, what should you say?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Give your best estimate — agents respect buyers who come prepared with a number, and hesitating makes you look unsure of yourself.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Do not give a price. Say: "I really enjoyed talking with you today — thank you for sharing so much about this property. What I'm going to do is review everything with my team, and I'll get back to you within a few hours with a no-nonsense offer we can stick to. Does that work?" This ends the call without committing to a price, gives you time to run proper numbers, and sets up the close call for maximum impact.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Tell the agent you will only discuss price in writing — verbal price discussions are not binding and can create misunderstandings.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Ask the agent what price they think the seller would accept — this gets you the information you need before committing to any number.</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. J Scott describes a negotiation where a seller wanted full market value but kept rejecting all offers for months. After asking about her situation, he discovered her real problem was not money at all. What was it — and how did he close the deal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> The seller had unresolved title issues she was embarrassed about — once he offered to pay for the title clearance, she accepted his offer.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> The seller owed back taxes and needed them paid at closing — once he agreed to cover the taxes in the purchase price, she accepted.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> The seller had lived in the house for 70 years and was terrified of the logistics of moving — she did not know how to get her belongings from there to her family's home in another state. Once J Scott offered to hire professional movers to handle the entire move for her, she accepted a price well below what she had been asking. Her real problem was fear of the moving process, not the sale price.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> The seller wanted a long closing period to find a new home — once he offered a 120-day closing window, she accepted his below-market offer.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Zach Ginn's two-sentence cold calling script asks "Is this the owner of 123 Main Street?" as the first question — rather than starting with an introduction. What is the specific psychological reason this opening line works better than a standard sales introduction?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> It confirms you have the right phone number before wasting time on a pitch — purely practical efficiency.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> It is legally required in most states to confirm property ownership before making a real estate offer over the phone.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Sellers screen calls expecting a standard sales pitch — "Hi, I'm [name] from [company] and we'd like to make you a cash offer..." They are mentally prepared to hang up. Asking "Is this the owner of 123 Main Street?" is specific and unexpected — it throws them off, creates curiosity, and makes them stay on the line to find out what is happening. It is impossible to tune out because it is about their specific address, not a generic pitch.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> It establishes authority immediately — knowing the seller's address signals that you are a serious, well-researched investor rather than a random cold caller.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Real Estate Wholesaling Bible</div>
+          <div class="bi-author">Than Merrill — FortuneBuilders</div>
+          <div class="bi-desc">Chapter 15 covers the complete nine-step negotiating process — building rapport, gathering information, understanding motivation, presenting offers as solutions, and handling seller objections. The most structured seller negotiation framework in wholesaling literature.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=real+estate+wholesaling+bible+than+merrill&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Book on Negotiating Real Estate</div>
+          <div class="bi-author">J Scott & Carol Scott — BiggerPockets</div>
+          <div class="bi-desc">The definitive guide to real estate negotiation — rapport building, information gathering, finding non-monetary motivations, making low offers without fear, handling multiple counteroffers, and knowing when to walk away. Based on 500+ flips and thousands of negotiations.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=book+on+negotiating+real+estate+j+scott&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Wholesaling Guide to Finding Your First Deal</div>
+          <div class="bi-author">Giovanni Morado</div>
+          <div class="bi-desc">Covers the cold calling mechanics, buyer qualification conversations, and the seller conversation framework for getting properties under contract. Practical and direct — written for someone making their first calls with zero experience.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=wholesaling+real+estate+beginners+guide&i=stripbooks" target="_blank">Find It →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 4: Analyzing Deals and Making Offers</h3>
+    <p>You know how to find motivated sellers and talk to them effectively. Now the question is: how do you know what to offer? Module 4 covers the complete deal analysis system — how to run comps and find ARV, how to estimate repair costs, how to calculate your Maximum Allowable Offer using the 70–80% formula, and how to move fast enough that good deals do not get away while you are running numbers.</p>
+    <a href="wholesaling-module-4.html" class="next-module-cta">Module 4: Analyzing Deals and Making Offers →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="wholesaling-module-2.html" class="btn btn-outline">← Module 2</a>
+  <div class="module-nav-info">
+    <p>Wholesaling Track</p>
+    <strong>Module 3 of 6</strong>
+  </div>
+  <a href="wholesaling-module-4.html" class="btn btn-gold">Module 4: Analyzing Deals →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};
+var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! The car analogy is the perfect response to an aggressive demand for an immediate offer. It reframes the situation: you are not being evasive — you are being professional. Your offers are firm when you make them, and to make a firm offer you need to see the property. This is completely reasonable, it holds up under scrutiny, and it turns a potentially deal-killing question into an appointment. Ginn has never had a genuinely motivated seller refuse this response.",incorrect:"Not quite. Giving a number before seeing the property is a mistake — any number you throw out is meaningless without knowing the condition, and you will likely have to backtrack later, damaging your credibility. The right move is the car analogy: you need to test drive before you buy. Your offers are firm, and to make a firm offer you need to see the house. That response is professional, reasonable, and almost always leads to an appointment."},
+  q2:{correct:"Correct! This is exactly the opportunity J Scott identifies. A seller who is going to park money in a savings account earning minimal interest is a candidate for seller financing. You can structure a deal where they receive monthly payments at a better interest rate than any savings account would offer — and you may be able to pay a lower all-in price while giving them a better financial outcome. This is why the 'what do you plan to do with the money' question is so powerful — it reveals deal structures that a simple price negotiation would never uncover.",incorrect:"Not quite. The answer 'I'll put it in savings' reveals a seller financing opportunity. If the seller is going to earn 1% in a savings account, you can offer them 7–8% through seller financing — structured as monthly payments from you to them. This gives the seller a better return on their money while potentially allowing you to pay a lower purchase price. This is the kind of creative solution that only becomes available when you ask the right questions and listen carefully to the answers."},
+  q3:{correct:"Correct! Martinez is emphatic on this point: never give a price on the discovery call. You do not have enough information yet — you have not run comps or estimated repairs. Any number you give is wrong. The correct move is to end the call warmly, commit to calling back with a firm offer, and then do the analysis. When you call back with a clean, confident number, you look like a professional who does their homework — not someone who throws out random prices on the phone.",incorrect:"Not quite. The discovery call is for gathering information and building rapport — not for giving a price. You do not have enough information yet to give a meaningful offer. The right move is to end the call positively, tell the agent you will review with your team and call back within a few hours with a firm offer, and then actually do it. This two-call structure — discovery then close — is more professional and produces far better results than guessing at a price on the first call."},
+  q4:{correct:"Correct! This is one of J Scott's most powerful stories. The seller had rejected multiple offers at or near asking price — because her real problem was not money. She had lived in that house for 70 years and was terrified of the logistics of moving. Once J Scott offered to hire professional movers to handle the entire relocation, she happily accepted a price well below what she had been asking. Her real problem was fear — not finances. This is the entire point of asking 'what do you plan to do with the money?' and listening carefully.",incorrect:"Not quite. J Scott's story is about a seller who had lived in her house for 70 years and was terrified of the logistics of moving — she did not know how to get her belongings to her family's home in another state. That was her real problem. Once he offered to hire professional movers, she accepted a well-below-asking price immediately. Money was never the real issue. This is why rapport and information-gathering are more important than any specific negotiating tactic — they reveal the real deal."},
+  q5:{correct:"Correct! The psychology is simple: sellers expect generic sales calls and are mentally ready to hang up within the first three seconds. 'Hi, I'm calling from XYZ Company with a cash offer' triggers an immediate defensive response. But 'Is this the owner of 123 Main Street?' is specific, unexpected, and personal to their property. It creates confusion and curiosity — what does this person know about my house? Why are they calling about that specific address? The seller stays on the line to find out. That extra few seconds is all you need to get to the second question.",incorrect:"Not quite. The reason the opening line works is purely psychological. Sellers are conditioned to hang up on generic sales calls within seconds — they know exactly what is coming. But asking specifically about their property address throws them off. It is unexpected, specific, and creates genuine curiosity. They stay on the line because they want to know what is happening. That is the only goal of the first sentence — keep them on the phone long enough to ask the second question."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong command of seller conversations. You understand the script, the objection framework, and the negotiation principles. Ready for Module 4: Analyzing Deals and Making Offers.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the cold calling script, the car analogy objection handler, and J Scott's rapport-first negotiation framework. These are the skills that turn leads into signed contracts.';
+  }
+}
+</script>
+</body>
+</html>
