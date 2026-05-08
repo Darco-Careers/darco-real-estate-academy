@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Wholesaling Module 1: The Wholesaling Business Model — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#B84A10;--orange-mid:#D4581A;--orange-light:#E87040;--orange-pale:#FDF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(184,74,16,0.12);
+  --shadow-card:0 2px 16px rgba(184,74,16,0.08);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--orange);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--orange);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--orange);font-weight:600;}
+.progress-bar{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--orange-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(184,74,16,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--orange-mid);border-radius:3px;width:17%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--orange);color:var(--gold-light);}
+.prog-dot.complete{background:var(--orange-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(184,74,16,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(184,74,16,0.25);}
+.module-hero{background:linear-gradient(135deg,#5A1E04 0%,var(--orange) 55%,var(--orange-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--orange);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--orange-pale);border-left:4px solid var(--orange-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--orange);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--orange-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.path-callout{border-radius:10px;padding:1rem 1.25rem;margin:0.85rem 0;font-size:14px;line-height:1.7;color:var(--text-mid);}
+.path-callout.ep{background:rgba(184,74,16,0.06);border:1px solid rgba(184,74,16,0.18);}
+.path-callout.op{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);}
+.pc-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-bottom:0.4rem;color:var(--orange);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.how-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.how-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--orange);border-radius:0 0 12px 12px;padding:1.25rem;}
+.how-card .hc-num{font-size:10px;font-weight:700;color:var(--orange-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.how-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.how-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.formula-box{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;color:var(--white);}
+.formula-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;}
+.formula-line{font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;color:var(--white);}
+.formula-line span{color:var(--gold-light);}
+.formula-result{font-size:1rem;color:rgba(255,255,255,0.75);margin-top:0.75rem;font-style:italic;}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;}
+.compare-card.sellers{background:var(--orange-pale);border:1px solid rgba(184,74,16,0.2);}
+.compare-card.buyers{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.compare-card.sellers h4{color:var(--orange);}
+.compare-card.buyers h4{color:#8A6A20;}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.compare-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.compare-card.sellers ul li::before{content:'✓';color:var(--orange-mid);font-weight:700;flex-shrink:0;}
+.compare-card.buyers ul li::before{content:'✓';color:#8A6A20;font-weight:700;flex-shrink:0;}
+.terms-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:2rem 0;}
+.term-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.term-card .tc-term{font-size:11px;font-weight:700;color:var(--orange-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.2rem;}
+.term-card .tc-def{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-section{margin:2.5rem 0;}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 4px 24px rgba(184,74,16,0.15);margin-bottom:0.75rem;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.video-link-card{display:flex;gap:1rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-decoration:none;transition:box-shadow 0.2s,border-color 0.2s;align-items:flex-start;}
+.video-link-card:hover{box-shadow:var(--shadow-card);border-color:var(--orange-mid);}
+.video-thumb{width:120px;height:68px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--orange-pale);display:flex;align-items:center;justify-content:center;}
+.video-thumb svg{width:32px;height:32px;fill:var(--orange-mid);}
+.video-info{flex:1;}
+.video-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--orange-pale);color:var(--orange-mid);padding:3px 10px;border-radius:20px;margin-bottom:0.4rem;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;line-height:1.35;}
+.video-info p{font-size:12px;color:var(--text-light);line-height:1.55;}
+.video-info .credit{font-size:11px;color:var(--text-light);margin-top:0.4rem;font-style:italic;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(184,74,16,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.takeaways{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;color:var(--white);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.7;display:flex;gap:10px;}
+.takeaways ul li::before{content:'→';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+.knowledge-check{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.75rem;}
+.question{margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.question p{font-size:15px;color:var(--text-dark);line-height:1.7;margin-bottom:0.85rem;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;}
+.option:hover{border-color:var(--orange-mid);background:var(--orange-pale);}
+.option.selected{border-color:var(--orange);background:var(--orange-pale);color:var(--text-dark);}
+.option.correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.incorrect{border-color:#C62828;background:#FFF5F5;color:#8B0000;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-light);flex-shrink:0;margin-top:1px;}
+.option.selected .option-letter{background:var(--orange);color:var(--white);}
+.option.correct .option-letter{background:#2E7D32;color:var(--white);}
+.option.incorrect .option-letter{background:#C62828;color:var(--white);}
+.explanation{font-size:13px;line-height:1.65;padding:0.75rem 1rem;border-radius:8px;margin-top:0.5rem;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:#F1F8F1;color:#1B5E20;}
+.explanation.incorrect-exp{background:#FFF5F5;color:#8B0000;}
+.check-btn{display:inline-block;background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.check-btn:hover{background:var(--orange-mid);}
+.check-btn:disabled{background:#ccc;cursor:not-allowed;}
+.score-result{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.7;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:#F1F8F1;color:#1B5E20;border:1px solid #A5D6A7;}
+.score-result.fail{background:#FFF5F5;color:#8B0000;border:1px solid #FFCDD2;}
+.books-section{display:flex;flex-direction:column;gap:1rem;margin:1.25rem 0;}
+.book-item{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;}
+.bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.bi-author{font-size:12px;color:var(--orange-mid);font-weight:600;margin-bottom:0.4rem;}
+.bi-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.book-item a{display:inline-flex;align-items:center;white-space:nowrap;background:var(--orange-pale);color:var(--orange);border:1px solid rgba(184,74,16,0.25);padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.book-item a:hover{background:var(--orange);color:var(--white);}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--orange-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(184,74,16,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);}
+.btn-outline:hover{border-color:var(--orange-mid);color:var(--orange);}
+.btn-gold{background:var(--gold);color:#5A3800;}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--orange);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="darco-real-estate-academy.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="darco-real-estate-academy.html">All Tracks</a></li>
+    <li><a href="wholesaling.html" class="nav-back">← Wholesaling Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="darco-real-estate-academy.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="wholesaling.html">Wholesaling</a>
+  <span class="sep">›</span>
+  <span class="current">Module 1: The Wholesaling Business Model</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <span class="prog-dot active">1</span>
+    <span class="prog-dot locked">2</span>
+    <span class="prog-dot locked">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Wholesaling Track · Module 1 of 6</div>
+    <h1>The Wholesaling <em>Business Model</em></h1>
+    <p>What wholesaling is, how the money works, who the players are, and why this business model lets you profit from real estate without buying a single property.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Primary Source: Than Merrill</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What wholesaling is — and why it works — <em>understanding the business model from the ground up</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Real estate wholesaling is a short-term investment strategy where you find a distressed property, put it under contract with the seller at a below-market price, and then sell that contract to a cash buyer for a profit — without ever owning the property yourself. Your profit is the difference between the price you locked it up for and the price the cash buyer pays you to take over your position.</p>
+
+    <p class="lesson-text">Than Merrill, who built one of the largest real estate education companies in the country through FortuneBuilders, defines wholesaling clearly: you are finding properties that can be purchased at significantly below market value, controlling them through a purchase and sale agreement, and then locating a buyer who will purchase your contract — or the property itself — from you for a profit. The whole transaction can be completed in three to six weeks.</p>
+
+    <div class="callout callout-quote fade-in">
+      <div class="callout-label">📖 Than Merrill — The Real Estate Wholesaling Bible</div>
+      <p>"Wholesaling is a short-term real estate investment strategy that can be utilized to create quick profits. You're finding properties that can be purchased at significantly below market value that you will control through the use of a purchase and sale agreement."</p>
+      <div class="quote-attr">— Than Merrill, The Real Estate Wholesaling Bible</div>
+    </div>
+
+    <p class="lesson-text">Here is the clearest way to understand how the money works. Let's say a seller is motivated — maybe facing foreclosure, going through a divorce, or dealing with an inherited property they don't want. They are willing to accept $150,000 for a property that would be worth $220,000 fully renovated. You put it under contract at $150,000. You find a fix-and-flipper who looks at the deal and sees the opportunity — they agree to pay $165,000. You assign your contract rights to that buyer. At closing, the flipper pays $165,000. Your $15,000 difference is your wholesale fee — paid directly to you through the title company. You never owned the property. You never made a mortgage payment. You found the deal, controlled it on paper, and connected it to someone who wanted it.</p>
+
+    <div class="formula-box fade-in">
+      <h4>The Wholesaling Money Formula</h4>
+      <div class="formula-line">Cash Buyer's Price <span>−</span> Your Contract Price <span>=</span> Your Wholesale Fee</div>
+      <div class="formula-line">$165,000 <span>−</span> $150,000 <span>=</span> <span>$15,000 profit</span></div>
+      <div class="formula-result">Average wholesale fee nationwide: $10,000–$15,000 per deal. Some deals pay $5,000. Some pay $50,000. The deal determines the fee.</div>
+    </div>
+
+    <p class="lesson-text">Jerry Norton — who has wholesaled thousands of deals over 20 years and helped his students flip over $500 million in real estate — offers a useful frame: think of a wholesaler as an outsourced, independent acquisition sales rep for a cash buyer. The cash buyer does not want to spend money on marketing, talk to sellers, negotiate, or make hundreds of offers a month. They want ready-to-go deals they can renovate and flip for profit. So they outsource that entire acquisition process to a wholesaler who is willing to do the work. The wholesaler gets paid upfront at closing — just for finding the deal. The cash buyer provides the capital. The wholesaler provides the hustle.</p>
+
+    <h3 class="sub-title">Who the players are in every wholesale transaction</h3>
+
+    <div class="compare-grid fade-in">
+      <div class="compare-card sellers">
+        <h4>🏚️ The Motivated Seller</h4>
+        <ul>
+          <li>Owns a distressed property — outdated, damaged, or problem-laden</li>
+          <li>In a distressed situation — foreclosure, divorce, death in family, relocation, inherited property</li>
+          <li>Willing to accept below-market price in exchange for speed and certainty</li>
+          <li>Does not want to wait 3–6 months for a retail sale</li>
+          <li>Cannot or will not fix the property up to sell conventionally</li>
+          <li>Makes up roughly 5% of all sellers in any given market</li>
+        </ul>
+      </div>
+      <div class="compare-card buyers">
+        <h4>🔨 The Cash Buyer</h4>
+        <ul>
+          <li>Typically a fix-and-flipper or buy-and-hold investor</li>
+          <li>Has cash or access to funding — can close quickly without a bank</li>
+          <li>Buys multiple properties per month — always looking for deals</li>
+          <li>Needs a reliable pipeline of distressed properties at the right price</li>
+          <li>Pays the wholesaler an assignment fee for doing the legwork</li>
+          <li>Profits from renovating and reselling (or renting) the property</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="lesson-text">Merrill makes a point that matters deeply to understanding why wholesaling exists: cash buyers have capital and systems in place, but they do not have the time or the infrastructure to find deals consistently on their own. Motivated sellers exist in every market — but they are spread across bandit signs, direct mail lists, driving-for-dollars routes, and Craigslist ads. Finding them takes time, money, and persistent effort. Wholesalers provide the deal flow. Cash buyers provide the capital. Both sides win — and the wholesaler profits from connecting them.</p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 The "Double Whammy" Concept</div>
+      <p>Alex Martinez, CEO of RealEstateSkills.com, identifies what he calls the "double whammy" — the best wholesale opportunities combine a property in distressed condition AND a seller in a distressed situation. When a moldy, outdated property that cannot qualify for conventional financing is owned by someone facing foreclosure who needs out fast, both forces push the price below market. That double motivation is what creates the spread that makes wholesaling profitable for everyone involved.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The two ways to close a wholesale deal — <em>assignment of contract vs. double closing</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">There are two primary ways to close a wholesale transaction. Understanding both — and knowing which one applies to your deal — is fundamental before you make your first offer.</p>
+
+    <h3 class="sub-title">Method 1: Assignment of Contract (the standard approach)</h3>
+    <p class="lesson-text">Assignment is the most common closing method — used in roughly 99% of wholesale transactions according to practitioners in the field. Here is how it works: when you put a property under contract, you are the buyer on the purchase agreement. You then sell your rights and interest in that contract to a cash buyer for an assignment fee. The contract transfers. The cash buyer steps in as the new buyer. The title company handles the closing between the seller and the cash buyer. You collect your fee — which appears on the settlement statement — without ever taking title to the property.</p>
+
+    <p class="lesson-text">The key language that makes this possible is the phrase <strong>"and/or assigns"</strong> written next to your name as the buyer on the purchase agreement. This language explicitly reserves your right to assign the contract to another party. Merrill is clear on this point: without this language — or without explicit permission in your contract — assignment is theoretically possible but practically complicated. Get it in writing from the start.</p>
+
+    <h3 class="sub-title">Method 2: Double Close (when assignment is not possible)</h3>
+    <p class="lesson-text">A double close involves two separate transactions happening in sequence — sometimes on the same day. In the first transaction, you close on the property from the seller using transactional funds (short-term lenders who provide capital for 24–72 hours for a fee). In the second transaction, you immediately sell the property to your cash buyer at the higher price. The profit from the second transaction pays back the transactional lender and covers the fees, with your wholesale spread left over.</p>
+
+    <p class="lesson-text">Double closing is used when the seller objects to an assignment, when your buyer does not want the seller knowing the difference in prices, or when the contract explicitly prohibits assignment. It involves more steps, more cost (transactional lending fees, two sets of closing costs), and more complexity. Most experienced wholesalers use assignment for almost all of their deals and reserve double closing for specific situations.</p>
+
+    <div class="callout callout-warning fade-in">
+      <div class="callout-label">⚠️ State Laws on Assignment Vary</div>
+      <p>Assignment of contract is legal in all 50 states — but the regulations around how it must be disclosed to sellers, what language is required, and whether you need a real estate license to market the contract vary by state. Before you write your first contract, confirm the specific requirements in your state with a local real estate attorney. This is not optional — operating outside your state's legal framework can result in serious penalties.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 — VIDEOS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The wholesaling process at a high level — <em>from first contact to closing day</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Before diving into each step in detail across later modules, it helps to see the complete arc of a wholesale transaction. This is the ten-step blueprint that most successful wholesalers follow — from business setup through closing day.</p>
+
+    <div class="how-grid fade-in">
+      <div class="how-card">
+        <div class="hc-num">Step 1</div>
+        <h4>Set Up Your Business</h4>
+        <p>Register an LLC, get an EIN, open a business bank account. Liability protection and tax benefits from day one.</p>
+      </div>
+      <div class="how-card">
+        <div class="hc-num">Step 2</div>
+        <h4>Choose Your Market</h4>
+        <p>Local is best to start — ideally 500K–1M population. Learn your market by neighborhood, price range, and investor demand.</p>
+      </div>
+      <div class="how-card">
+        <div class="hc-num">Step 3</div>
+        <h4>Generate Leads</h4>
+        <p>Find motivated sellers — owners in pre-foreclosure, tired landlords, probate properties, vacant homes. This is the lifeblood of the business.</p>
+      </div>
+      <div class="how-card">
+        <div class="hc-num">Step 4</div>
+        <h4>Analyze the Deal</h4>
+        <p>Run comps to find ARV. Estimate repairs. Calculate your Maximum Allowable Offer (MAO). Know your numbers before every offer.</p>
+      </div>
+      <div class="how-card">
+        <div class="hc-num">Step 5</div>
+        <h4>Make Offers</h4>
+        <p>The more offers you make, the more deals you do. Most wholesalers must make 50–100 offers to get one accepted. Volume is the game.</p>
+      </div>
+      <div class="how-card">
+        <div class="hc-num">Step 6</div>
+        <h4>Execute the Contract</h4>
+        <p>Get the purchase agreement signed with "and/or assigns" language. The contract is your asset — it is what you will sell.</p>
+      </div>
+      <div class="how-card">
+        <div class="hc-num">Step 7</div>
+        <h4>Open Escrow</h4>
+        <p>Send the contract to a wholesaler-friendly title company immediately. They begin the title search and prepare for closing.</p>
+      </div>
+      <div class="how-card">
+        <div class="hc-num">Step 8</div>
+        <h4>Find a Cash Buyer</h4>
+        <p>Market the deal to your buyers list. Use Jerry Norton's Neighborhood Flipper Method — find recent flips near the property and contact those investors.</p>
+      </div>
+      <div class="how-card">
+        <div class="hc-num">Step 9</div>
+        <h4>Execute Assignment</h4>
+        <p>Get the assignment contract signed with your buyer. Collect a non-refundable deposit ($5,000 minimum) to confirm their commitment.</p>
+      </div>
+    </div>
+
+    <div class="how-card fade-in" style="margin-top:0.85rem;background:var(--white);border:1px solid var(--border);border-top:4px solid var(--gold);">
+      <div class="hc-num" style="color:#8A6A20;">Step 10</div>
+      <h4>Closing Day</h4>
+      <p>The title company closes with the seller and the cash buyer. You do not need to attend. Your wholesale fee is wired to you. Done.</p>
+    </div>
+
+    <div class="video-section fade-in">
+      <h3>🎬 Watch: The Complete Wholesaling Blueprint</h3>
+      <a href="https://www.youtube.com/watch?v=DznQEKlWDKQ" target="_blank" class="video-link-card">
+        <div class="video-thumb">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.5 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Zach Ginn · YouTube</span>
+          <h4>How I'd Start Wholesaling Real Estate from Scratch (2024)</h4>
+          <p>Zach Ginn's exact step-by-step guide to starting wholesaling from scratch — market selection, finding deals, making offers, and closing your first transaction.</p>
+          <p class="credit">Zach Ginn · December 2023 · <em>Opens on YouTube (embedding disabled by creator)</em></p>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=NpkUDd2yX5w" target="_blank" class="video-link-card" style="margin-top:0.75rem;">
+        <div class="video-thumb">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.5 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Jerry Norton · Flipping Mastery · YouTube</span>
+          <h4>10 Steps To Wholesale Your First House | The Beginner's Guide</h4>
+          <p>Jerry Norton's comprehensive 10-step blueprint for wholesaling your first house — business setup, market selection, lead generation, MAO calculation, contracts, finding cash buyers, and closing.</p>
+          <p class="credit">Jerry Norton · Flipping Mastery · January 2024 · 500K+ subscribers · 20 years, thousands of deals · <em>Opens on YouTube (embedding disabled by creator)</em></p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Why wholesaling — <em>the benefits, the honest challenges, and who it is right for</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="path-callout ep">
+      <span class="pc-tag">🧑‍💼 Employee Path</span>
+      <p>If you are pursuing a career in real estate brokerage, investing, or development, understanding wholesaling is professionally valuable even if you never wholesale yourself. Wholesalers are a major source of off-market deals for investors, agents, and developers. Knowing how the model works — and how to work with wholesalers — opens doors and income streams regardless of your primary career path.</p>
+    </div>
+    <div class="path-callout op">
+      <span class="pc-tag">🏢 Entrepreneur Path</span>
+      <p>Wholesaling is one of the most accessible ways to build an income in real estate without capital, credit, or a license. The barrier to entry is low. The learning curve is real. The upside is significant — seasoned wholesalers routinely earn $10,000–$50,000 per deal working in markets they know well. The business requires hustle, consistency, and thick skin for rejection. It rewards those who take action and make offers every day.</p>
+    </div>
+
+    <h3 class="sub-title">The genuine benefits</h3>
+    <p class="lesson-text">Merrill identifies the core advantages of wholesaling with precision. <strong>Profits can be quick</strong> — from contract to closing typically runs three to six weeks, faster than any other real estate strategy. <strong>Risk is minimized</strong> — because you never own the property, you are never on the hook for a mortgage, carrying costs, or renovation overruns. <strong>Capital requirements are low</strong> — you typically only need earnest money ($500–$2,500 on most off-market deals) to control a property. <strong>No license required</strong> — you can start wholesaling without a real estate license in most states (though the legal nuances vary — check your state).</p>
+
+    <h3 class="sub-title">The honest challenges</h3>
+    <p class="lesson-text">Wholesaling is not passive income. It requires active, consistent effort. The 5% rule is real — motivated sellers who will accept a below-market cash offer make up only about 5% of sellers in any market at any time. That means you will talk to and make offers on a lot of deals that go nowhere before you close your first one. <strong>Rejection is the job description.</strong> Chris Clothier of Memphis Invest puts this plainly: if you are not willing to make hundreds of offers to get ten accepted each month, you are not treating this like a business. The ones who build real wholesale businesses treat deal-finding and offer-making as a daily discipline — not something they do when they feel inspired.</p>
+
+    <div class="terms-grid fade-in">
+      <div class="term-card">
+        <div class="tc-term">ARV</div>
+        <div class="tc-def">After Repair Value — what the property will be worth once fully renovated. The foundation of every offer calculation.</div>
+      </div>
+      <div class="term-card">
+        <div class="tc-term">MAO</div>
+        <div class="tc-def">Maximum Allowable Offer — the highest price you can pay and still leave room for repairs, your fee, and the buyer's profit.</div>
+      </div>
+      <div class="term-card">
+        <div class="tc-term">EMD</div>
+        <div class="tc-def">Earnest Money Deposit — good-faith deposit held by the title company. For off-market deals, typically $500–$2,500.</div>
+      </div>
+      <div class="term-card">
+        <div class="tc-term">Assignment Fee</div>
+        <div class="tc-def">Your profit — the difference between the contract price you negotiated with the seller and the price your buyer pays you.</div>
+      </div>
+      <div class="term-card">
+        <div class="tc-term">Inspection Contingency</div>
+        <div class="tc-def">Your backout clause — gives you the right to terminate the contract during the inspection period with no penalty if you can't close.</div>
+      </div>
+      <div class="term-card">
+        <div class="tc-term">Clear Title</div>
+        <div class="tc-def">A property with no liens, back taxes, or ownership disputes. Always verify before proceeding — title problems kill deals.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 Average Wholesale Fee</div>
+      <p>The average wholesale fee across the nation is approximately $10,000 per deal, according to multiple experienced practitioners including Alex Martinez and Jerry Norton. Some deals will pay $5,000. Some will pay $50,000 or more on higher-value properties. The key is building a consistent pipeline and closing deals regularly — even at $10K per deal, closing two or three per month creates a six-figure income.</p>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>You just learned something most people spend months circling around — that wholesaling is not a secret trick or a loophole. It is a legitimate business built on finding motivated sellers, understanding deal math, and connecting buyers who have capital with deals they would never find on their own. The business model is simple. Executing it consistently is what separates the people who make real money from the people who talk about it. Start with the model clear in your head. Everything else is just learning the specific skills — which is exactly what the next five modules are for.</p>
+      <div class="mentor-name">Your Darco Mentor · Module 1 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 1 Key Takeaways</h3>
+    <ul>
+      <li>Wholesaling is a short-term real estate strategy where you control a property through a purchase agreement and sell your contract rights to a cash buyer for a profit — without ever owning the property. Your profit is the spread between your contract price and the buyer's price.</li>
+      <li>The average wholesale fee is approximately $10,000 per deal. Closing two to three deals per month consistently creates a six-figure income without owning, financing, or renovating a single property.</li>
+      <li>The two closing methods are assignment of contract (transfer your rights to the buyer — used 99% of the time) and double close (two separate transactions — used when assignment is not possible). Assignment is simpler, cheaper, and the standard approach.</li>
+      <li>The "and/or assigns" language in your purchase agreement is what legally enables assignment. Without it, or without explicit permission, you cannot assign the contract. Get it in writing on every deal.</li>
+      <li>Motivated sellers — willing to accept below-market cash offers — make up only about 5% of all sellers in any market at any given time. This means finding great deals requires consistent lead generation and making many, many offers. Volume is the game.</li>
+      <li>The "double whammy" is the sweet spot: a property in distressed condition AND a seller in a distressed situation. Both forces push the price below market, creating the spread that makes the deal profitable for you and your buyer.</li>
+      <li>Key terms to internalize now: ARV (after repair value), MAO (maximum allowable offer), EMD (earnest money deposit), assignment fee, inspection contingency, and clear title. You will use all of them in every deal you do.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A wholesaler puts a property under contract for $140,000. A cash buyer agrees to take over the contract for $155,000. What is the wholesaler's assignment fee, and what happens to the property's title during this transaction?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> The fee is $15,000, and the wholesaler takes title briefly before transferring it to the buyer.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> The fee is $15,000, and title transfers directly from the seller to the cash buyer — the wholesaler never appears on the deed. The wholesaler's name only appears as a fee on the HUD settlement statement at closing.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> The fee is $15,000, but the wholesaler must hold title for at least 90 days before reselling to comply with FHA seasoning rules.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> The fee is $295,000 — the full purchase price paid by the buyer minus zero, since the wholesaler controls the entire transaction.</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. What is the primary purpose of the "and/or assigns" language in a wholesale purchase agreement?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> It gives the seller the right to transfer the contract to a different buyer if they change their mind.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> It gives the title company the authority to release the earnest money deposit to the wholesaler at closing.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> It explicitly reserves the wholesaler's right to transfer (assign) their interest in the purchase contract to a third party — the cash buyer — without needing to renegotiate or rewrite the agreement with the seller.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> It limits the wholesaler's liability in case the property has undisclosed defects discovered after closing.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. Jerry Norton describes a wholesaler as "an outsourced, independent acquisition sales rep for a cash buyer." What specific problem does this framing solve for cash buyers — and why do they pay a wholesale fee instead of just finding the deals themselves?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Cash buyers don't have the legal ability to purchase distressed properties directly — they need a wholesaler as an intermediary to make it legal.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Cash buyers have capital and systems for renovating and flipping properties — but they don't have the time or infrastructure to consistently find, negotiate, and get distressed properties under contract. Wholesalers provide the deal flow. The assignment fee is essentially a finder's fee for doing the acquisition work the cash buyer doesn't want to do.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Cash buyers are required by law to purchase properties through licensed intermediaries, and wholesalers fulfill that licensing requirement.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Cash buyers prefer off-market deals, and wholesalers are the only people legally permitted to market off-market properties.</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Alex Martinez identifies a "double whammy" as the best type of wholesale opportunity. What are the two conditions that create a double whammy — and why does it matter for profitability?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> The property is both under contract and being listed on the MLS simultaneously, creating two channels of buyers competing for the deal.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Both the wholesaler and the cash buyer want the deal equally, creating negotiating leverage against the seller.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> The double whammy is a property in distressed physical condition (outdated, damaged, cannot qualify for conventional financing) owned by a seller in a distressed personal situation (foreclosure, divorce, death in family, inheritance they don't want). Both forces push the price below market simultaneously, which is what creates the spread that makes a profitable wholesale deal.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> The wholesaler completes two assignments on the same property — first to a flipper, then to a long-term investor — doubling the assignment fee.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. According to Chris Clothier of Memphis Invest, motivated sellers who will accept a below-market cash offer represent what percentage of all sellers in a market at any given time — and what is the operational implication of this for a wholesaler?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> About 25% of sellers are motivated — which means one in four calls will result in a deal if you are persistent.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> About 15% of sellers are motivated — enough to build a sustainable deal flow without overwhelming lead generation activity.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> About 10% of sellers are motivated — meaning you need to make ten contacts per deal, which is manageable even for a part-time wholesaler.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">D</div> Only about 5% of sellers are truly motivated. This means that to close deals consistently, you must build a lead generation system that reaches large numbers of property owners — and you must be willing to make many offers that get rejected before you find the motivated seller who says yes. Volume and consistency are non-negotiable in this business.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Real Estate Wholesaling Bible</div>
+          <div class="bi-author">Than Merrill — FortuneBuilders</div>
+          <div class="bi-desc">Primary source for this module — Chapter 1 (what wholesaling is, benefits, risk minimization, quick profits) and Chapter 26 (assignment of contract mechanics). The definitive guide to wholesaling from one of the most respected names in real estate education.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=real+estate+wholesaling+bible+than+merrill&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">How To Build A Wholesale Business</div>
+          <div class="bi-author">Chris Clothier — Memphis Invest</div>
+          <div class="bi-desc">10-step business framework covering market analysis, team building, lead generation, buyers list, and making consistent offers. The professional operator's perspective on wholesaling as a real business — not a get-rich-quick scheme.</div>
+        </div>
+        <a href="https://www.memphisinvest.com" target="_blank">Memphis Invest →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Wholesaling Guide to Finding Your First Deal</div>
+          <div class="bi-author">Giovanni Morado</div>
+          <div class="bi-desc">Beginner-focused guide covering the business model, buyer-first strategy, ARV formula, purchase contract basics, and assignment mechanics with real dollar examples. Practical and accessible for someone starting from zero.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=wholesaling+real+estate+beginners+guide&i=stripbooks" target="_blank">Find It →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 2: Finding Motivated Sellers</h3>
+    <p>You understand what wholesaling is and how it makes money. Now the question is: where do motivated sellers come from — and how do you find them consistently? Module 2 covers the complete lead generation system: the Day Zero strategy on the MLS, the Old Listings strategy, driving for dollars, direct mail, bandit signs, pre-foreclosure lists, and the specific marketing channels that produce the most consistent deal flow for new wholesalers.</p>
+    <a href="wholesaling-module-2.html" class="next-module-cta">Module 2: Finding Motivated Sellers →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="wholesaling.html" class="btn btn-outline">← Track Overview</a>
+  <div class="module-nav-info">
+    <p>Wholesaling Track</p>
+    <strong>Module 1 of 6</strong>
+  </div>
+  <a href="wholesaling-module-2.html" class="btn btn-gold">Module 2: Finding Motivated Sellers →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
+var quizAnswers={};
+var quizDone=false;
+
+var explanations={
+  q1:{correct:"Correct! The assignment fee is $15,000 ($155,000 minus $140,000). And critically — the wholesaler never appears on the deed. Title transfers directly from the seller to the cash buyer. The wholesaler's profit shows up as a line item on the HUD-1 settlement statement. This is the elegance of the assignment model: you profit from connecting buyer and seller without ever owning the asset.",incorrect:"Not quite. The assignment fee is $15,000 ($155,000 minus $140,000). But the key detail is that the wholesaler never takes title. In an assignment transaction, ownership transfers directly from the seller to the cash buyer. The wholesaler is compensated as a fee — appearing on the settlement statement — not as an owner transferring property."},
+  q2:{correct:"Correct! The 'and/or assigns' language is what makes assignment legally clean and unambiguous. It tells the seller upfront that you (or someone you assign your rights to) will be the buyer. Without this language, assigning the contract can be technically possible but practically messy. Always include it on every contract from day one.",incorrect:"Not quite. The 'and/or assigns' language specifically reserves the wholesaler's right to transfer their buyer's interest in the contract to a third party — the cash buyer — without renegotiating with the seller. This is the legal mechanism that makes assignment possible. It is one of the most important phrases in the entire wholesaling business."},
+  q3:{correct:"Correct! Jerry Norton's framing is exactly right. Cash buyers have capital and renovation systems — but they don't want to spend their time on marketing to sellers, making cold calls, or getting contracts signed. That's the wholesaler's job. The assignment fee is the price cash buyers happily pay to outsource their deal acquisition to someone who specializes in finding distressed properties and motivated sellers.",incorrect:"Not quite. Cash buyers are not legally prevented from buying directly — they simply don't want to do the work of finding, negotiating, and contracting distressed deals. That work — lead generation, seller outreach, offer-making, contract execution — is the wholesaler's value-add. The assignment fee compensates for that work. Wholesalers are the deal acquisition arm of the cash buyer's business."},
+  q4:{correct:"Correct! The double whammy is Than Merrill and Alex Martinez's framing for the ideal wholesale target: distressed property plus distressed seller. A damaged or outdated house that cannot qualify for conventional financing, owned by someone who needs to sell fast due to personal circumstances. Both conditions push the price below market, which is what creates the spread for a profitable deal.",incorrect:"Not quite. The double whammy is Alex Martinez's term for a property in distressed physical condition (outdated, damaged, can't qualify for conventional financing) owned by a seller in a distressed personal situation (foreclosure, divorce, inheritance). When both conditions are present, there is strong motivation to sell below market — which is what creates the spread that makes a wholesale deal profitable for everyone involved."},
+  q5:{correct:"Correct! Only about 5% of sellers are truly motivated. This is the foundational math of wholesaling — and it has a direct operational implication. You cannot cherry-pick the best-looking leads and expect to close deals. You have to build a system that generates consistent deal flow and you have to make offers constantly — knowing that most will be rejected. The wholesalers who succeed treat lead generation and offer-making as daily activities, not occasional events.",incorrect:"Not quite. Motivated sellers — those who will accept a below-market cash offer — represent only about 5% of all sellers at any given time. This means that for every 20 leads you contact, only about one will have the combination of motivation and pricing flexibility you need. This is why volume matters so much in wholesaling. Consistent, daily lead generation and aggressive offer-making is not optional — it is the entire business model."}
+};
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;
+  btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong start. You understand the wholesaling business model, the assignment mechanics, and the math behind how deals work. Ready for Module 2: Finding Motivated Sellers.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the lessons above — especially the assignment mechanics, the double whammy concept, and the 5% motivated seller statistic. These fundamentals underpin everything in the modules ahead.';
+  }
+}
+</script>
+</body>
+</html>
