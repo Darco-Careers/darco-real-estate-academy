@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Wholesaling Module 2: Finding Motivated Sellers — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#B84A10;--orange-mid:#D4581A;--orange-light:#E87040;--orange-pale:#FDF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(184,74,16,0.12);
+  --shadow-card:0 2px 16px rgba(184,74,16,0.08);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--orange);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--orange);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--orange);font-weight:600;}
+.progress-bar{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--orange-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(184,74,16,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--orange-mid);border-radius:3px;width:33%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--orange);color:var(--gold-light);}
+.prog-dot.complete{background:var(--orange-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(184,74,16,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(184,74,16,0.25);}
+.module-hero{background:linear-gradient(135deg,#5A1E04 0%,var(--orange) 55%,var(--orange-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--orange);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--orange-pale);border-left:4px solid var(--orange-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--orange);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--orange-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.path-callout{border-radius:10px;padding:1rem 1.25rem;margin:0.85rem 0;font-size:14px;line-height:1.7;color:var(--text-mid);}
+.path-callout.ep{background:rgba(184,74,16,0.06);border:1px solid rgba(184,74,16,0.18);}
+.path-callout.op{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);}
+.pc-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-bottom:0.4rem;color:var(--orange);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.channels-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.channel-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--orange);border-radius:0 0 14px 14px;padding:1.25rem 1.5rem;}
+.channel-card.free{border-top-color:var(--gold);}
+.channel-card .cc-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.4rem;}
+.channel-card.free .cc-label{color:#8A6A20;}
+.channel-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;}
+.channel-card ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.channel-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.5;}
+.channel-card ul li::before{content:'→';color:var(--orange-mid);font-weight:700;flex-shrink:0;}
+.channel-card.free ul li::before{color:#8A6A20;}
+.strategy-cards{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
+.strategy-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;gap:1.25rem;}
+.sc-icon{font-size:1.75rem;flex-shrink:0;margin-top:2px;}
+.sc-content h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.sc-content p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.sc-content .sc-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-bottom:0.5rem;}
+.sc-tag.paid{background:var(--orange-pale);color:var(--orange-mid);}
+.sc-tag.free{background:var(--gold-pale);color:#8A6A20;}
+.sc-tag.both{background:#EEF2FF;color:#3730A3;}
+.steps-list{display:flex;flex-direction:column;gap:0.85rem;margin:1.75rem 0;}
+.step-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.step-content h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.step-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-section{margin:2.5rem 0;}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 4px 24px rgba(184,74,16,0.15);margin-bottom:0.75rem;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.video-link-card{display:flex;gap:1rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-decoration:none;transition:box-shadow 0.2s,border-color 0.2s;align-items:flex-start;margin-bottom:0.75rem;}
+.video-link-card:hover{box-shadow:var(--shadow-card);border-color:var(--orange-mid);}
+.video-thumb{width:120px;height:68px;border-radius:8px;flex-shrink:0;background:var(--orange-pale);display:flex;align-items:center;justify-content:center;}
+.video-thumb svg{width:32px;height:32px;fill:var(--orange-mid);}
+.video-info{flex:1;}
+.video-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--orange-pale);color:var(--orange-mid);padding:3px 10px;border-radius:20px;margin-bottom:0.4rem;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;line-height:1.35;}
+.video-info p{font-size:12px;color:var(--text-light);line-height:1.55;}
+.video-info .credit{font-size:11px;color:var(--text-light);margin-top:0.4rem;font-style:italic;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(184,74,16,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.takeaways{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;color:var(--white);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.7;display:flex;gap:10px;}
+.takeaways ul li::before{content:'→';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+.knowledge-check{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.75rem;}
+.question{margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.question p{font-size:15px;color:var(--text-dark);line-height:1.7;margin-bottom:0.85rem;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;}
+.option:hover{border-color:var(--orange-mid);background:var(--orange-pale);}
+.option.selected{border-color:var(--orange);background:var(--orange-pale);color:var(--text-dark);}
+.option.correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.incorrect{border-color:#C62828;background:#FFF5F5;color:#8B0000;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-light);flex-shrink:0;margin-top:1px;}
+.option.selected .option-letter{background:var(--orange);color:var(--white);}
+.option.correct .option-letter{background:#2E7D32;color:var(--white);}
+.option.incorrect .option-letter{background:#C62828;color:var(--white);}
+.explanation{font-size:13px;line-height:1.65;padding:0.75rem 1rem;border-radius:8px;margin-top:0.5rem;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:#F1F8F1;color:#1B5E20;}
+.explanation.incorrect-exp{background:#FFF5F5;color:#8B0000;}
+.check-btn{display:inline-block;background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.check-btn:hover{background:var(--orange-mid);}
+.check-btn:disabled{background:#ccc;cursor:not-allowed;}
+.score-result{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.7;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:#F1F8F1;color:#1B5E20;border:1px solid #A5D6A7;}
+.score-result.fail{background:#FFF5F5;color:#8B0000;border:1px solid #FFCDD2;}
+.books-section{display:flex;flex-direction:column;gap:1rem;margin:1.25rem 0;}
+.book-item{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;}
+.bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.bi-author{font-size:12px;color:var(--orange-mid);font-weight:600;margin-bottom:0.4rem;}
+.bi-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.book-item a{display:inline-flex;align-items:center;white-space:nowrap;background:var(--orange-pale);color:var(--orange);border:1px solid rgba(184,74,16,0.25);padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.book-item a:hover{background:var(--orange);color:var(--white);}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--orange-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(184,74,16,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);}
+.btn-outline:hover{border-color:var(--orange-mid);color:var(--orange);}
+.btn-gold{background:var(--gold);color:#5A3800;}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--orange);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="darco-real-estate-academy.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="darco-real-estate-academy.html">All Tracks</a></li>
+    <li><a href="wholesaling.html" class="nav-back">← Wholesaling Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="darco-real-estate-academy.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="wholesaling.html">Wholesaling</a>
+  <span class="sep">›</span>
+  <span class="current">Module 2: Finding Motivated Sellers</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="wholesaling-module-1.html" class="prog-dot complete">1</a>
+    <span class="prog-dot active">2</span>
+    <span class="prog-dot locked">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Wholesaling Track · Module 2 of 6</div>
+    <h1>Finding <em>Motivated Sellers</em></h1>
+    <p>Where deals actually come from — the lead generation strategies, channels, and daily habits that build a consistent pipeline of motivated sellers in any market.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Primary Sources: Merrill + Martinez</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Who motivated sellers are — <em>and why they sell below market</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">A motivated seller is a property owner who will sell their property at a discount in exchange for the speed and convenience of a cash offer. They are not selling below market because they are naive — they are selling below market because their circumstances make speed and certainty more valuable to them than price. Understanding this distinction is everything. You are not taking advantage of motivated sellers. You are solving a problem that the traditional real estate market cannot solve for them.</p>
+
+    <p class="lesson-text">Than Merrill identifies the core profile: a motivated seller is a property owner looking for a fast and convenient cash offer and will gladly give up equity for peace of mind to be rid of an unwanted property. The equity they give up is the spread you profit from — but they are making a voluntary, informed choice. Without a wholesaler, many of these sellers would face foreclosure, prolonged stress, or a property they cannot afford to maintain sitting vacant for months.</p>
+
+    <h3 class="sub-title">The situations that create motivated sellers</h3>
+
+    <div class="strategy-cards fade-in">
+      <div class="strategy-card">
+        <div class="sc-icon">🏚️</div>
+        <div class="sc-content">
+          <h4>Pre-Foreclosure</h4>
+          <p>Homeowners who have missed mortgage payments and are at risk of foreclosure. They need to sell before the bank takes the property. A cash offer that closes quickly saves their credit and puts money in their pocket. Pre-foreclosure lists are publicly available through county court records.</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="sc-icon">⚖️</div>
+        <div class="sc-content">
+          <h4>Divorce</h4>
+          <p>Couples splitting assets often need to liquidate property quickly and cleanly. Emotional attachment to the home and the need for a fast, final resolution makes cash offers attractive — even at below-market prices. Many divorce attorneys refer motivated clients directly to investors.</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="sc-icon">🏛️</div>
+        <div class="sc-content">
+          <h4>Inherited Property / Probate</h4>
+          <p>Heirs who inherit a property they did not ask for — often out of state, often in disrepair — frequently want to convert it to cash as quickly as possible. They have no emotional connection to the property and no desire to manage or renovate it. Jerry Norton calls probate one of the most consistent sources of motivated sellers.</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="sc-icon">🏘️</div>
+        <div class="sc-content">
+          <h4>Tired Landlords</h4>
+          <p>Landlords who are burned out from managing difficult tenants, dealing with maintenance, or simply ready to exit their rental portfolio. They often have significant equity but are exhausted — and a clean cash offer with a fast close is exactly what they want. This is one of the most overlooked and consistently profitable seller categories.</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="sc-icon">📦</div>
+        <div class="sc-content">
+          <h4>Job Transfer / Relocation</h4>
+          <p>Owners who need to move quickly for a new job and cannot wait for a traditional sale. The longer they hold two households, the more it costs them. A fast close — even at a discount — is worth more than a higher price six months from now.</p>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="sc-icon">🏗️</div>
+        <div class="sc-content">
+          <h4>Deferred Maintenance / Distressed Property</h4>
+          <p>Owners whose property has fallen into disrepair — damaged roof, foundation issues, mold, outdated systems — who cannot afford the renovation cost and cannot list on the retail market. They need an investor who can buy as-is. This is the distressed property half of Alex Martinez's "double whammy."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 The 5% Rule in Practice</div>
+      <p>Motivated sellers represent only about 5% of all property owners at any given time. This means lead generation is not something you do once — it is a daily business activity. Chris Clothier of Memphis Invest is direct: your job as a wholesaler is to make your marketing reach enough property owners that the 5% who are motivated find their way to you. The wholesalers who fail are the ones who generate leads inconsistently. The ones who succeed treat lead generation like a utility — it runs every day whether or not they feel like it.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The MLS strategy — <em>finding deals on market without spending a dollar on marketing</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most new wholesalers assume they need to go off-market — cold calling, direct mail, bandit signs — to find deals. Alex Martinez of RealEstateSkills.com challenges that assumption directly. According to the National Association of Realtors, about 90% of all real estate transactions happen on the MLS. That means distressed properties are listed there every single day — and most wholesalers are ignoring them while chasing off-market leads that cost money and time to generate.</p>
+
+    <p class="lesson-text">Martinez's MLS-first approach is built around a simple insight: you do not target the homeowner directly. You contact the listing agent. The homeowner hired a real estate agent to sell their house — that agent is your point of contact, your relationship, and ultimately your advocate in getting the offer accepted. When you call the listing agent as a professional investor, you are speaking directly to the person with the most influence over whether your offer gets accepted.</p>
+
+    <h3 class="sub-title">The Day Zero Strategy</h3>
+    <p class="lesson-text">The Day Zero strategy is exactly what it sounds like — you find distressed properties the same day they hit the market, within 24 hours of listing. Here is the logic: if a distressed property is going to go to a cash buyer or investor, it is going to go to whoever calls the listing agent first and builds the best rapport. Speed is the competitive advantage. The moment a moldy, outdated, cash-only property goes live on the MLS, you want to be the first call the agent gets.</p>
+
+    <div class="steps-list fade-in">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Filter for distressed properties daily</h4>
+          <p>Using the MLS, Redfin, Zillow, or Realtor.com, filter for new listings in your target market. Look for properties that are visibly distressed — outdated condition, mold, water damage, overgrown yard — that cannot qualify for conventional financing. In a typical county, 5–10 of every 50 new daily listings will qualify.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Find the listing agent's phone number</h4>
+          <p>The MLS will show you the agent's name and contact info directly. On Redfin or Zillow, search the agent's name to find their direct phone number. Call — do not email or text. A phone call builds rapport in a way that a message never will.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Make the discovery call</h4>
+          <p>Do not introduce yourself as a wholesaler — introduce yourself as a real estate investor and buyer. Ask about the property's condition, any known repairs needed, how activity has been, and whether there are other offers. Do not give a price on this call. End by telling them you will review the property with your team and call back with a no-nonsense offer within a few hours.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Analyze the deal and call back with your offer</h4>
+          <p>Run comps, estimate repairs, calculate your MAO. Then call back and give a clean, firm offer. Ask the listing agent to represent you — if they do, they earn double commission, which gives them an incentive to advocate for your offer over competing bids.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The Old Listings Strategy</h3>
+    <p class="lesson-text">The Old Listings strategy targets properties that have been sitting on the market for 60 days or more. In a functioning market, a well-priced house sells quickly. A property that has been sitting for 60–90 days has a problem — and where there is a problem, there is an opportunity. Maybe it was overpriced. Maybe there are title issues. Maybe the seller has become more flexible. Call the listing agent, ask what has been going on, and position yourself as the solution to a problem they have been unable to solve.</p>
+
+    <div class="callout callout-quote fade-in">
+      <div class="callout-label">📖 Alex Martinez — RealEstateSkills.com</div>
+      <p>"The best part is you don't have to spend any money in marketing. You don't have to send any letters for direct mail. You don't have to put out any bandit signs. You don't have to make any cold calls to be able to find and get these deals on the MLS."</p>
+      <div class="quote-attr">— Alex Martinez, How To Wholesale Real Estate In 21 Days or Less</div>
+    </div>
+
+    <div class="callout callout-warning fade-in">
+      <div class="callout-label">⚠️ Never Call Yourself a Wholesaler to an Agent</div>
+      <p>Martinez is emphatic on this point: when you call a listing agent and say "I'm a wholesaler," most agents will immediately disengage. Agents have had bad experiences with wholesalers who tie up properties and never close. Call yourself a real estate investor and cash buyer. You are buying properties — that is accurate and it is what agents want to hear. The word "wholesaler" is a conversation stopper with listing agents.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 — VIDEOS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Off-market lead generation — <em>the channels that find sellers before they list</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The MLS strategy gets you deals on market — but the most profitable wholesale deals often come from off-market properties where there is no competition. Off-market lead generation requires more effort and often more money than the MLS approach, but it produces motivated sellers who have nowhere else to turn. These are the deals with the deepest discounts and the widest spreads.</p>
+
+    <div class="channels-grid fade-in">
+      <div class="channel-card">
+        <div class="cc-label">📬 Direct Mail</div>
+        <h4>Letters to Targeted Lists</h4>
+        <ul>
+          <li>Target: pre-foreclosure, absentee owners, tax-delinquent, vacant properties</li>
+          <li>Send consistent mailings — 3 to 5 touches per contact, monthly</li>
+          <li>Response rates are low (1–3%) but quality is high</li>
+          <li>Most leads come from the 3rd or 4th mailing, not the first</li>
+          <li>Chris Clothier recommends varying the piece: postcard, letter, yellow letter</li>
+        </ul>
+      </div>
+      <div class="channel-card free">
+        <div class="cc-label">🪧 Bandit Signs</div>
+        <h4>"We Buy Houses" Signs</h4>
+        <ul>
+          <li>Place at high-traffic intersections in target neighborhoods</li>
+          <li>Simple message: "We Buy Houses Cash — [phone number]"</li>
+          <li>Put out Friday — city workers remove them on weekdays</li>
+          <li>Rotate locations to avoid complaints</li>
+          <li>Low cost, high visibility — still one of the most effective offline methods</li>
+        </ul>
+      </div>
+      <div class="channel-card free">
+        <div class="cc-label">📞 Cold Calling</div>
+        <h4>Direct Outreach to Owners</h4>
+        <ul>
+          <li>Pull lists from PropWire, BatchLeads, or county records</li>
+          <li>Target: pre-foreclosure, vacant, tax-delinquent, absentee owners</li>
+          <li>Two-sentence script: confirm ownership, ask if interested in selling</li>
+          <li>Free tool: PropWire (unlimited leads, no monthly subscription)</li>
+          <li>Volume is the game — expect 50–100 calls per quality conversation</li>
+        </ul>
+      </div>
+      <div class="channel-card">
+        <div class="cc-label">🚗 Driving for Dollars</div>
+        <h4>Identifying Distressed Properties</h4>
+        <ul>
+          <li>Drive target neighborhoods and identify visually distressed properties</li>
+          <li>Look for: overgrown yard, boarded windows, peeling paint, code violations</li>
+          <li>Use apps like DealMachine to record and skip-trace addresses instantly</li>
+          <li>Best for hyper-local market knowledge and off-market gems</li>
+          <li>Free except for your time — builds deep neighborhood expertise</li>
+        </ul>
+      </div>
+      <div class="channel-card free">
+        <div class="cc-label">🌐 Online Classified Ads</div>
+        <h4>Craigslist and Facebook Marketplace</h4>
+        <ul>
+          <li>Post ads in housing section: "We buy houses as-is, cash, fast close"</li>
+          <li>Giovanni Morado's method: post realistic-sounding property descriptions to attract investors (your future buyers), then screen them as cash buyers</li>
+          <li>Free and reaches sellers who are actively looking to sell without a realtor</li>
+          <li>Post in multiple zip codes for broader coverage</li>
+        </ul>
+      </div>
+      <div class="channel-card">
+        <div class="cc-label">🤝 Networking</div>
+        <h4>Referral Sources</h4>
+        <ul>
+          <li>REIA meetings — real estate investor associations in every major city</li>
+          <li>Real estate attorneys — handle probate, divorce, foreclosure cases</li>
+          <li>Bankruptcy attorneys — clients often need to liquidate property fast</li>
+          <li>Realtors — especially REO agents with bank-owned property listings</li>
+          <li>Contractors — know which properties are in disrepair before they list</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="video-section fade-in">
+      <h3>🎬 Watch: Finding Deals as a Beginner</h3>
+
+      <a href="https://www.youtube.com/watch?v=3-mrL5DdU70" target="_blank" class="video-link-card">
+        <div class="video-thumb">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.5 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Ryan Pineda · YouTube</span>
+          <h4>Real Estate Wholesaling for Beginners with NO MONEY [Step By Step]</h4>
+          <p>Ryan Pineda's complete step-by-step guide to finding and closing wholesale deals without any upfront capital — finding distressed properties, making offers, and assigning contracts.</p>
+          <p class="credit">Ryan Pineda · March 2023 · 1M+ subscribers · <em>Opens on YouTube (embedding disabled by creator)</em></p>
+        </div>
+      </a>
+
+      <div class="video-embed" style="margin-top:0.75rem;">
+        <iframe src="https://www.youtube.com/embed/JFnUABPy-A8" title="How To Wholesale Real Estate In 21 Days or Less — Alex Martinez" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);">Alex Martinez · RealEstateSkills.com · May 2022 · The Day Zero strategy, Old Listings strategy, discovery calls, and the complete MLS-first approach to finding wholesale deals</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Building your lead generation system — <em>from first contact to consistent deal flow</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="path-callout ep">
+      <span class="pc-tag">🧑‍💼 Employee Path</span>
+      <p>If you are working as an acquisition agent or coordinator for a real estate investment company, understanding lead generation channels is essential to your daily role. Most investment companies actively source leads through direct mail, cold calling, and MLS monitoring. Your ability to identify distressed properties quickly and qualify motivated sellers on the phone is a core skill that directly affects your compensation and career trajectory in this space.</p>
+    </div>
+    <div class="path-callout op">
+      <span class="pc-tag">🏢 Entrepreneur Path</span>
+      <p>As a wholesaling entrepreneur, lead generation is the lifeblood of your business. No leads means no deals — no matter how good you are at analyzing properties or negotiating contracts. Start with free methods — the MLS Day Zero strategy, PropWire cold calling, driving for dollars — and reinvest your first few wholesale fees into paid channels like direct mail and Google Ads. Build the machine incrementally. Do not wait until your lead generation is perfect before making offers.</p>
+    </div>
+
+    <h3 class="sub-title">Picking your market first</h3>
+    <p class="lesson-text">Before you generate a single lead, you need to choose your market. Both Alex Martinez and Jerry Norton are emphatic on this point: <strong>start local.</strong> Your own city or county — anywhere within an hour's drive — is almost always the right starting point. You already know the neighborhoods, the price ranges, the up-and-coming areas, and the areas to avoid. That local knowledge makes every aspect of the business easier — faster deal analysis, better offer prices, more credible conversations with sellers and agents.</p>
+
+    <p class="lesson-text">Once you have chosen your market, invest time in learning it at the neighborhood level. Jerry Norton recommends picking one neighborhood per week, printing out a list of all recent sold homes, and driving every street — asking yourself why each house sold for what it sold for. This exercise, done consistently, builds the market expertise that lets you analyze deals in minutes rather than hours.</p>
+
+    <h3 class="sub-title">Your follow-up system</h3>
+    <p class="lesson-text">Most motivated sellers do not say yes the first time you contact them. They say maybe — or they say not yet. The wholesalers who win are the ones with a follow-up system. Chris Clothier recommends a minimum of one touch per month per prospect, varying the method — a letter, a call, a postcard. People's circumstances change. The landlord who told you "no" in January may be exhausted and ready to sell in July. The heir who was not ready to deal with the inherited property in March may be ready in September. <strong>Your follow-up system is your competitive moat.</strong></p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 PropWire — Free Lead Generation Tool</div>
+      <p>Jerry Norton highlights PropWire as a game-changing free tool: over 157 million distressed properties nationwide, searchable and downloadable with no monthly subscription and no data upsell charges. For new wholesalers with limited budgets, PropWire provides access to the same quality of leads that paid services charge hundreds of dollars per month for. Go to joinpropwire.com to get started. As you close deals, reinvest in paid tools like BatchLeads or PropStream for more advanced filtering and skip tracing.</p>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>Here is something most wholesale courses will not tell you: the best lead generation strategy is the one you will actually do every single day. The MLS is free and produces real deals — but it requires daily discipline. Cold calling is free and produces real deals — but it requires thick skin and consistency. Direct mail produces real deals — but it requires budget and patience. Pick one or two channels, commit to them completely, and build the habit before you add more. Scattered effort across five channels beats nothing, but focused effort on one beats scattered effort every time.</p>
+      <div class="mentor-name">Your Darco Mentor · Module 2 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 2 Key Takeaways</h3>
+    <ul>
+      <li>Motivated sellers are not naive — they are making a rational choice to trade equity for speed and certainty. You are solving a problem the traditional market cannot solve. The categories to focus on: pre-foreclosure, divorce, inherited/probate, tired landlords, relocation, and distressed property owners.</li>
+      <li>The MLS is a legitimate and powerful source of wholesale deals — and it costs nothing to use. Distressed, cash-only properties hit the MLS every day in every market. The Day Zero strategy (contact the listing agent the same day a distressed property lists) gives you first-mover advantage over every other buyer.</li>
+      <li>Never introduce yourself as a wholesaler to a listing agent. You are a real estate investor and cash buyer. That framing opens doors. The word "wholesaler" closes them.</li>
+      <li>The Old Listings strategy targets properties sitting on the market for 60+ days. Something is wrong with every property that doesn't sell quickly — and where there is a problem, there is a motivated seller willing to negotiate.</li>
+      <li>Off-market channels — direct mail, bandit signs, cold calling, driving for dollars, REIA networking — produce the deepest discounts and least competition, but require consistent investment of time and money to work. PropWire provides free access to 157M+ distressed property leads with no subscription required.</li>
+      <li>Pick your market first — local always wins for beginners. Then invest time in learning it at the neighborhood level. Market expertise is a competitive advantage that compounds over time.</li>
+      <li>Your follow-up system is your competitive moat. Most motivated sellers say "not yet" before they say "yes." One touch per month per prospect — varying the method — ensures you are there when their circumstances change.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. Alex Martinez's Day Zero strategy involves contacting a property's listing agent the same day it hits the MLS. Why does he recommend calling the agent rather than trying to contact the homeowner directly?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> It is illegal in most states to contact homeowners who have listed their property with an agent, so the agent is the only legal point of contact.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> The homeowner has hired the listing agent to sell their property — the agent controls access, presents offers, and advocates for offers they believe in. Building rapport with the agent is the most direct path to getting an offer accepted. If the listing agent represents you as the buyer, they earn double commission — a strong incentive to advocate for your offer over competing bids.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Homeowners who list with agents are never motivated sellers — only off-market homeowners will accept below-market offers, so the agent is irrelevant to wholesaling.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Listing agents are required by law to present all cash offers to their clients regardless of price, making them a guaranteed pathway to getting any offer in front of the seller.</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. You call a listing agent and introduce yourself as a wholesaler looking for properties to assign. The agent becomes cold and ends the call quickly. According to Martinez, what went wrong — and what should you have said instead?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Nothing went wrong — agents who don't want to work with wholesalers are not good partners anyway and should be screened out early.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> You should have offered a higher price upfront to get the agent's attention before explaining your strategy.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> The word "wholesaler" triggers negative associations for most agents — they have dealt with wholesalers who tie up properties and don't close. You should have introduced yourself as a real estate investor and cash buyer. That framing is accurate and it is what agents want to hear. You are a buyer — lead with that.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> You should have sent an email instead of calling — agents prefer written communication about properties they are representing.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. Chris Clothier of Memphis Invest says "your job as a wholesaler is to make offers at no more than fifty cents on the dollar." What is the practical implication of this for how you handle rejection from sellers?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> It means you should avoid making offers on retail-priced listings and only pursue properties already discounted below 50% of market value.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Most offers will be rejected — and that is by design. If you are making offers at 50 cents on the dollar, you are not trying to get every offer accepted. You are filtering through the 95% of sellers who are not motivated to find the 5% who are. Rejection is not failure — it is the process. The more offers you make, the faster you burn through rejections to get to the deals.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> It means you should negotiate aggressively until every seller accepts — since the spread is so wide, there is always room to negotiate up from 50 cents on the dollar.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> It means you should only wholesale in markets where property values are low enough that 50 cents on the dollar still represents a fair price for the seller.</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A property has been sitting on the MLS for 87 days with no accepted offer. According to the Old Listings strategy, what does this signal — and what is the right approach?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> The property is not a good wholesale deal — if other buyers have passed on it for nearly three months, there must be a fundamental problem that makes it unsellable.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> The seller is clearly not motivated — motivated sellers would have accepted an offer within 30 days, so this property should be skipped.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> In a functioning market, good properties sell quickly. 87 days on market signals something is wrong — the price may be too high, there may be title or legal issues, or the property has a significant defect. Each of those is potentially an opportunity. Call the listing agent, ask what has been going on, and position yourself as someone who can solve the problem the seller has been unable to resolve. The seller is likely more flexible now than they were on day one.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> The property needs to sit at least 120 days before it qualifies as a motivated seller situation — 87 days is too early to apply the Old Listings strategy.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. You send a direct mail letter to a pre-foreclosure owner. They do not respond. You send a second letter two weeks later. Still no response. Chris Clothier recommends continuing to reach out. Why — and how often?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Two non-responses means this seller is not motivated — move on and do not waste more time or money on them.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Send a letter every week until they respond — frequency is the key driver of response rates in direct mail.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> People's circumstances change — a seller who is not ready in January may be in crisis by April. Clothier recommends at least one touch per month with a varied approach (postcard, letter, yellow letter). Non-response is not rejection — it is "not yet." The wholesalers who build consistent deal flow maintain contact with their list for months. Many of the best deals come from the third, fourth, or fifth contact with the same owner.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> After two non-responses, switch to cold calling — direct mail has clearly failed with this seller and a different channel is needed.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Real Estate Wholesaling Bible</div>
+          <div class="bi-author">Than Merrill — FortuneBuilders</div>
+          <div class="bi-desc">Chapters 2–9 cover the full lead generation system: knowing your local market, establishing your marketing presence, understanding pre-foreclosure, finding pre-foreclosure properties, MLS deals, Craigslist deals, and other lead generation methods. The most comprehensive wholesaling lead gen framework available.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=real+estate+wholesaling+bible+than+merrill&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">How To Build A Wholesale Business</div>
+          <div class="bi-author">Chris Clothier — Memphis Invest</div>
+          <div class="bi-desc">Steps 1 and 4 cover market analysis and lead generation marketing plans in exceptional detail — including direct mail, bandit signs, online classifieds, and the follow-up system that keeps your pipeline full. Clothier closed 107 deals in his first year using these exact methods.</div>
+        </div>
+        <a href="https://www.memphisinvest.com" target="_blank">Memphis Invest →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Wholesaling Guide to Finding Your First Deal</div>
+          <div class="bi-author">Giovanni Morado</div>
+          <div class="bi-desc">Covers the buyer-first strategy (build your buyers list before finding deals), bandit signs, direct mail with specific targeting criteria, and cold calling mechanics. Practical guide written for someone starting with zero network and zero budget.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=wholesaling+real+estate+beginners+guide&i=stripbooks" target="_blank">Find It →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 3: Talking to Sellers</h3>
+    <p>You know how to find motivated sellers. Now the question is: what do you say when they pick up the phone? Module 3 covers the complete seller conversation — the cold calling script that has generated millions in wholesale fees, how to run a discovery call with a listing agent, the negotiation principles that get offers accepted, and how to handle the most common objections without losing your confidence or the deal.</p>
+    <a href="wholesaling-module-3.html" class="next-module-cta">Module 3: Talking to Sellers →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="wholesaling-module-1.html" class="btn btn-outline">← Module 1</a>
+  <div class="module-nav-info">
+    <p>Wholesaling Track</p>
+    <strong>Module 2 of 6</strong>
+  </div>
+  <a href="wholesaling-module-3.html" class="btn btn-gold">Module 3: Talking to Sellers →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};
+var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! The listing agent is the gatekeeper. They present your offer, advocate for your position, and have the most influence over whether the seller says yes. And if the listing agent represents you as the buyer, they earn double commission — a powerful financial incentive to get your offer accepted over competing bids. Martinez's entire MLS strategy is built on building strong relationships with listing agents.",incorrect:"Not quite. The reason to contact the listing agent rather than the homeowner is that the agent controls the process. They present offers, advocate for buyers they believe in, and have a direct financial incentive to close the deal. If the listing agent represents you as the buyer, they earn double commission. Building a strong relationship with the agent is the most direct path to getting a below-market cash offer accepted."},
+  q2:{correct:"Correct! The word 'wholesaler' is a conversation stopper with most real estate agents. Agents have had bad experiences — wholesalers who tie up their listings and never close, wasting everyone's time. When you introduce yourself as a real estate investor and cash buyer, you are accurately describing what you do in language that agents respond to positively. You buy houses. That is all they need to know.",incorrect:"Not quite. The problem was the word 'wholesaler.' Listing agents have often had bad experiences with wholesalers who tie up properties and fail to close. Introducing yourself as a real estate investor and cash buyer is both accurate and far more effective. You are a buyer who pays cash and closes quickly — lead with that framing every time."},
+  q3:{correct:"Correct! Clothier's framework reframes rejection completely. If you are making offers at 50 cents on the dollar, you expect most to be rejected. That is the model. The 95% who say no are not failures — they are the filter you have to work through to find the 5% who are motivated. Volume of offers is the single most important activity. The more offers you make, the more deals you close. Rejection is the job description.",incorrect:"Not quite. Clothier's point is that making offers at 50 cents on the dollar means accepting that most offers will be rejected. That is by design. You are looking for the motivated 5% — and you have to make enough offers to find them. Rejection is not a signal to stop — it is a signal that you are doing the job correctly. The wholesalers who close deals consistently are the ones who make offers relentlessly, regardless of how many get rejected."},
+  q4:{correct:"Correct! In a functioning market, a well-priced desirable property sells within days or weeks. 87 days means something is wrong — price, condition, legal issue, or motivated seller who started too high and is now ready to come down. That problem is your opportunity. Call the agent, understand the situation, and position yourself as the solution. The seller's flexibility almost certainly increased between day one and day 87.",incorrect:"Not quite. The Old Listings strategy is based on a simple insight: properties that sit on the market for 60+ days have a problem. That problem creates an opportunity. The seller's flexibility has almost certainly increased. They may have already turned down offers they now wish they had accepted. Call the listing agent, find out what has been happening, and present yourself as someone who can solve the problem — not another buyer who is going to waste their time."},
+  q5:{correct:"Correct! Clothier's follow-up philosophy is built on one truth: people's circumstances change. The pre-foreclosure owner who was holding on in January may be in a very different position in April. One touch per month — varying the method — keeps you in front of your prospect list at a low cost. Many of the best wholesale deals come from the third or fourth contact. The wholesalers who give up after two attempts leave most of their potential income on the table.",incorrect:"Not quite. Two non-responses is not a rejection — it is 'not yet.' Clothier recommends maintaining monthly contact with your prospect list, varying the format (postcard, letter, yellow letter, phone call). People's circumstances change. A seller who was holding on in January may be ready to sell in April. The consistent follow-up system is one of the most underrated competitive advantages in wholesaling — most competitors give up far too early."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');
+      expEl.className='explanation correct-exp show';
+      expEl.textContent=explanations[qId].correct;
+      score++;
+    } else {
+      ans.element.classList.add('incorrect');
+      expEl.className='explanation incorrect-exp show';
+      expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){
+        if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}
+      }
+    }
+  }
+  var btn=document.getElementById('checkBtn');
+  btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong grasp of lead generation fundamentals. You understand the MLS strategies, the follow-up system, and why volume matters. Ready for Module 3: Talking to Sellers.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the Day Zero strategy, the Old Listings approach, and the Clothier follow-up framework. These are the daily habits that build consistent deal flow.';
+  }
+}
+</script>
+</body>
+</html>
