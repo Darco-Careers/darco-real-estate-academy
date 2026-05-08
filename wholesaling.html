@@ -8,12 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green: #1A4D2E; --green-mid: #2A7A48; --green-light: #3AA060; --green-pale: #E8F5EE;
+    --green: #B84A10; --green-mid: #D4581A; --green-light: #E87040; --green-pale: #FDF0EA;
     --gold: #C9A84C; --gold-light: #E8C97A; --gold-pale: #FBF5E6;
     --cream: #FAF8F3; --cream-dark: #F0EBE0;
     --text-dark: #1A1A18; --text-mid: #4A4A42; --text-light: #8A8A7A;
-    --white: #FFFFFF; --border: rgba(26,77,46,0.1);
-    --shadow-card: 0 2px 16px rgba(26,77,46,0.07); --shadow-soft: 0 4px 24px rgba(26,77,46,0.1);
+    --white: #FFFFFF; --border: rgba(184,74,16,0.12);
+    --shadow-card: 0 2px 16px rgba(184,74,16,0.08); --shadow-soft: 0 4px 24px rgba(184,74,16,0.1);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
@@ -63,7 +63,7 @@
   .how-card p { font-size: 12.5px; color: var(--text-mid); line-height: 1.55; }
 
   .timeline { margin-top: 2rem; position: relative; }
-  .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--green-mid), rgba(26,77,46,0.1)); }
+  .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--green-mid), rgba(184,74,16,0.1)); }
   .timeline-item { display: flex; gap: 1.5rem; margin-bottom: 1.75rem; }
   .timeline-dot { width: 58px; height: 38px; background: var(--green); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--gold-light); flex-shrink: 0; position: relative; z-index: 1; }
   .timeline-content { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.4rem; flex: 1; transition: box-shadow 0.2s; }
@@ -91,14 +91,14 @@
 
   .steps { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
   .step { display: flex; gap: 1.25rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.6rem; transition: all 0.25s; }
-  .step:hover { box-shadow: var(--shadow-card); border-color: rgba(26,77,46,0.2); }
+  .step:hover { box-shadow: var(--shadow-card); border-color: rgba(184,74,16,0.2); }
   .step-number { width: 36px; height: 36px; background: var(--green); color: var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; flex-shrink: 0; }
   .step-content h4 { font-weight: 600; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.3rem; }
   .step-content p { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; }
 
   .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
   .fit-card { border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); }
-  .fit-card.yes { background: var(--green-pale); border-color: rgba(26,77,46,0.15); }
+  .fit-card.yes { background: var(--green-pale); border-color: rgba(184,74,16,0.15); }
   .fit-card.no { background: #FBF0EE; border-color: rgba(180,60,40,0.12); }
   .fit-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; }
   .fit-card.yes h4 { color: var(--green); }
@@ -130,7 +130,7 @@
 
   .podcast-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
   .podcast-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; gap: 1.25rem; align-items: flex-start; transition: all 0.25s; text-decoration: none; }
-  .podcast-card:hover { box-shadow: var(--shadow-card); transform: translateX(4px); border-color: rgba(26,77,46,0.2); }
+  .podcast-card:hover { box-shadow: var(--shadow-card); transform: translateX(4px); border-color: rgba(184,74,16,0.2); }
   .podcast-art { width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
   .podcast-art.green { background: linear-gradient(135deg, var(--green), var(--green-mid)); }
   .podcast-art.bp { background: linear-gradient(135deg, #0A6E3F, #12A05C); }
@@ -200,7 +200,7 @@
 <div class="hero">
   <div class="hero-inner">
     <div>
-      <div class="track-badge">🔄 Career Track</div>
+      <div class="track-badge">💼 Career Track</div>
       <h1>Real Estate<br><em>Wholesaling</em></h1>
       <p class="hero-sub">No license. No money. No property ownership required. Wholesaling is the fastest, lowest-barrier entry point into real estate — and for people willing to hustle hard, it can generate serious income from a single phone call and a signed contract.</p>
       <div class="hero-stats">
@@ -209,7 +209,7 @@
         <div class="hero-stat"><div class="number">Pure hustle</div><div class="label">is the barrier to entry</div></div>
       </div>
     </div>
-    <div class="hero-visual">🔄</div>
+    <div class="hero-visual">🏘️</div>
   </div>
 </div>
 
@@ -372,7 +372,7 @@
         <div class="podcast-arrow">›</div>
       </a>
       <a href="https://www.youtube.com/watch?v=DznQEKlWDKQ" target="_blank" class="podcast-card fade-in">
-        <div class="podcast-art gold">🔄</div>
+        <div class="podcast-art gold">🎙️</div>
         <div class="podcast-meta">
           <div class="podcast-show">YouTube · Wholesaling Specific</div>
           <h4>Zach Ginn & Brent Daniels — Wholesaling YouTube Channels</h4>
