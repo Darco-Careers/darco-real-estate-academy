@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Wholesaling Module 5: Contracts & the Assignment Process — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#B84A10;--orange-mid:#D4581A;--orange-light:#E87040;--orange-pale:#FDF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(184,74,16,0.12);
+  --shadow-card:0 2px 16px rgba(184,74,16,0.08);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--orange);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--orange);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--orange);font-weight:600;}
+.progress-bar{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--orange-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(184,74,16,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--orange-mid);border-radius:3px;width:83%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--orange);color:var(--gold-light);}
+.prog-dot.complete{background:var(--orange-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(184,74,16,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(184,74,16,0.25);}
+.module-hero{background:linear-gradient(135deg,#5A1E04 0%,var(--orange) 55%,var(--orange-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--orange);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--orange-pale);border-left:4px solid var(--orange-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--orange);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--orange-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.path-callout{border-radius:10px;padding:1rem 1.25rem;margin:0.85rem 0;font-size:14px;line-height:1.7;color:var(--text-mid);}
+.path-callout.ep{background:rgba(184,74,16,0.06);border:1px solid rgba(184,74,16,0.18);}
+.path-callout.op{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);}
+.pc-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-bottom:0.4rem;color:var(--orange);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.contract-sections{display:flex;flex-direction:column;gap:0.85rem;margin:2rem 0;}
+.contract-section{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.cs-header{background:var(--orange-pale);padding:0.75rem 1.25rem;display:flex;align-items:center;gap:0.75rem;}
+.cs-num{width:28px;height:28px;border-radius:50%;background:var(--orange);color:var(--white);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cs-title{font-size:14px;font-weight:700;color:var(--text-dark);}
+.cs-body{padding:0.85rem 1.25rem;font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.cs-body strong{color:var(--text-dark);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.info-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--orange);border-radius:0 0 14px 14px;padding:1.25rem;}
+.info-card.gold{border-top-color:var(--gold);}
+.info-card .ic-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.5rem;}
+.info-card.gold .ic-label{color:#8A6A20;}
+.info-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.6rem;}
+.info-card ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.info-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.info-card ul li::before{content:'→';color:var(--orange-mid);font-weight:700;flex-shrink:0;}
+.info-card.gold ul li::before{color:#8A6A20;}
+.process-steps{display:flex;flex-direction:column;gap:0.85rem;margin:2rem 0;}
+.ps-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
+.ps-num{width:32px;height:32px;border-radius:50%;background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.ps-content h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.ps-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.highlight-box{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;color:var(--white);}
+.highlight-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;}
+.highlight-box p{font-size:0.95rem;color:rgba(255,255,255,0.88);line-height:1.8;margin-bottom:0.75rem;}
+.highlight-box p:last-child{margin-bottom:0;}
+.highlight-box strong{color:var(--gold-light);}
+.video-section{margin:2.5rem 0;}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 4px 24px rgba(184,74,16,0.15);margin-bottom:0.75rem;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(184,74,16,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.takeaways{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;color:var(--white);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.7;display:flex;gap:10px;}
+.takeaways ul li::before{content:'→';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+.knowledge-check{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.75rem;}
+.question{margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.question p{font-size:15px;color:var(--text-dark);line-height:1.7;margin-bottom:0.85rem;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;}
+.option:hover{border-color:var(--orange-mid);background:var(--orange-pale);}
+.option.selected{border-color:var(--orange);background:var(--orange-pale);color:var(--text-dark);}
+.option.correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.incorrect{border-color:#C62828;background:#FFF5F5;color:#8B0000;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-light);flex-shrink:0;margin-top:1px;}
+.option.selected .option-letter{background:var(--orange);color:var(--white);}
+.option.correct .option-letter{background:#2E7D32;color:var(--white);}
+.option.incorrect .option-letter{background:#C62828;color:var(--white);}
+.explanation{font-size:13px;line-height:1.65;padding:0.75rem 1rem;border-radius:8px;margin-top:0.5rem;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:#F1F8F1;color:#1B5E20;}
+.explanation.incorrect-exp{background:#FFF5F5;color:#8B0000;}
+.check-btn{display:inline-block;background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.check-btn:hover{background:var(--orange-mid);}
+.check-btn:disabled{background:#ccc;cursor:not-allowed;}
+.score-result{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.7;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:#F1F8F1;color:#1B5E20;border:1px solid #A5D6A7;}
+.score-result.fail{background:#FFF5F5;color:#8B0000;border:1px solid #FFCDD2;}
+.books-section{display:flex;flex-direction:column;gap:1rem;margin:1.25rem 0;}
+.book-item{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;}
+.bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.bi-author{font-size:12px;color:var(--orange-mid);font-weight:600;margin-bottom:0.4rem;}
+.bi-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.book-item a{display:inline-flex;align-items:center;white-space:nowrap;background:var(--orange-pale);color:var(--orange);border:1px solid rgba(184,74,16,0.25);padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.book-item a:hover{background:var(--orange);color:var(--white);}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--orange-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(184,74,16,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);}
+.btn-outline:hover{border-color:var(--orange-mid);color:var(--orange);}
+.btn-gold{background:var(--gold);color:#5A3800;}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--orange);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+.fade-in{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="darco-real-estate-academy.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="darco-real-estate-academy.html">All Tracks</a></li>
+    <li><a href="wholesaling.html" class="nav-back">← Wholesaling Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="darco-real-estate-academy.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="wholesaling.html">Wholesaling</a>
+  <span class="sep">›</span>
+  <span class="current">Module 5: Contracts &amp; the Assignment Process</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="wholesaling-module-1.html" class="prog-dot complete">1</a>
+    <a href="wholesaling-module-2.html" class="prog-dot complete">2</a>
+    <a href="wholesaling-module-3.html" class="prog-dot complete">3</a>
+    <a href="wholesaling-module-4.html" class="prog-dot complete">4</a>
+    <span class="prog-dot active">5</span>
+    <span class="prog-dot locked">6</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Wholesaling Track · Module 5 of 6</div>
+    <h1>Contracts &amp; the <em>Assignment Process</em></h1>
+    <p>The two contracts every wholesaler needs — what every clause means, how to fill them out, how to protect yourself, and exactly how you get paid at closing.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Primary Sources: Merrill + RealEstateSkills</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The two contracts you need — <em>purchase agreement and assignment contract</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Every wholesale deal requires exactly two contracts. The first is the <strong>Purchase and Sale Agreement (PSA)</strong> — a legally binding agreement between you and the seller that obligates the seller to sell the property to you at a specific price on specific terms. Without this contract, the seller can sell to anyone else at any time. The PSA is what gives you control of the deal.</p>
+
+    <p class="lesson-text">The second is the <strong>Assignment Contract</strong> — a one-page document between you and your cash buyer that transfers your interest in the Purchase and Sale Agreement to them for your wholesale fee. This is how you get paid. You never own the property. You own a contract — and you sell that contract to your buyer.</p>
+
+    <div class="two-col fade-in">
+      <div class="info-card">
+        <div class="ic-label">Contract 1</div>
+        <h4>Purchase &amp; Sale Agreement</h4>
+        <ul>
+          <li>Between you (buyer) and the seller</li>
+          <li>Obligates seller to sell at agreed price</li>
+          <li>Prevents seller from selling to anyone else</li>
+          <li>Required for title company to open escrow</li>
+          <li>Contains inspection contingency (your backout clause)</li>
+          <li>Must include "and/or assigns" language</li>
+          <li>On-market deals: the agent writes it. Off-market: you write it.</li>
+        </ul>
+      </div>
+      <div class="info-card gold">
+        <div class="ic-label">Contract 2</div>
+        <h4>Assignment Contract</h4>
+        <ul>
+          <li>Between you (assignor) and your cash buyer (assignee)</li>
+          <li>Transfers your interest in the PSA to the buyer</li>
+          <li>States your assignment fee — this is your profit</li>
+          <li>Requires non-refundable deposit from buyer</li>
+          <li>Seller is NOT a party to this contract</li>
+          <li>Sent to title company along with the original PSA</li>
+          <li>Title company handles the closing — you do not attend</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="lesson-text">Ryan Zodi of RealEstateSkills.com — who has wholesaled in over a dozen states — makes a critical point about the PSA: <strong>getting your offer accepted by a seller is often the single most important element in closing a wholesale deal.</strong> Most wholesalers focus on price and terms, but your ability to understand and articulate the contract confidently to a seller is what separates professionals who close deals from amateurs who tie up properties and disappear. Know every clause. Explain it simply. The seller's trust in you depends on it.</p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 Where to Get Wholesale Contracts</div>
+      <p>RealEstateSkills.com offers free wholesale contract downloads at realestateskills.com/contracts — both the PSA and assignment contract are included, pre-written with wholesaler-friendly language including the inspection contingency, the "and/or assigns" clause, the liquidated damages clause, and the marketing rights clause. Always have a local real estate attorney review any contract before using it in your state — contract requirements vary by jurisdiction.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The Purchase and Sale Agreement — <em>every clause that matters for wholesalers</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The PSA has many sections — most of which are standard boilerplate that applies to any real estate transaction. What matters to wholesalers specifically are the clauses that protect your position, enable the assignment, and give you flexibility to exit if needed. Here are the sections you must understand cold before you ever present a contract to a seller.</p>
+
+    <div class="contract-sections fade-in">
+      <div class="contract-section">
+        <div class="cs-header">
+          <div class="cs-num">1</div>
+          <div class="cs-title">Parties — Seller and Buyer</div>
+        </div>
+        <div class="cs-body">
+          The seller section must list every person who has an ownership interest in the property. If a married couple owns the house, both names must appear — and both must sign. A contract missing a required signature is void. Before writing the contract, look up the property on the county assessor's website to confirm exactly who holds title. As the buyer, list your name or your LLC — and include <strong>"and/or assigns"</strong> immediately after your name. This is the language that enables assignment.
+        </div>
+      </div>
+
+      <div class="contract-section">
+        <div class="cs-header">
+          <div class="cs-num">2</div>
+          <div class="cs-title">Property Description</div>
+        </div>
+        <div class="cs-body">
+          Include the full street address, city, county, state, and zip code. Also include the <strong>Assessor's Parcel Number (APN)</strong> — the unique tax ID the county assigns to every property. This is easy to find on the county tax website or on Redfin. Including the APN eliminates any ambiguity about which property the contract covers.
+        </div>
+      </div>
+
+      <div class="contract-section">
+        <div class="cs-header">
+          <div class="cs-num">3</div>
+          <div class="cs-title">Purchase Price &amp; Earnest Money Deposit</div>
+        </div>
+        <div class="cs-body">
+          The purchase price is the contracted amount you agreed to with the seller. The EMD — earnest money deposit — is your good-faith deposit, held by the title company (never given directly to the seller). For off-market deals: $500–$2,500 is standard. For MLS deals: approximately 1% of purchase price. <strong>The EMD goes to an escrow account, not the seller's pocket</strong> — and it is refundable if you terminate within your inspection contingency period. Write "cash offer" on the financing line to signal no financing contingency.
+        </div>
+      </div>
+
+      <div class="contract-section">
+        <div class="cs-header">
+          <div class="cs-num">4</div>
+          <div class="cs-title">Inspection Contingency — Your Most Important Protection</div>
+        </div>
+        <div class="cs-body">
+          The inspection contingency gives you the right to terminate the contract during the inspection period for any reason and receive your EMD back in full. <strong>As a wholesaler, this is your backout clause and your assignment window.</strong> During the inspection period, you bring your cash buyers through the property, get their feedback, execute the assignment contract, and lock in your fee. If you cannot find a buyer before the inspection period expires, you terminate under this clause — no penalty, EMD refunded. Always get at least 7 days. On off-market deals, push for 10–14 days. Never waive this clause — without it, you are contractually obligated to close regardless of what happens.
+        </div>
+      </div>
+
+      <div class="contract-section">
+        <div class="cs-header">
+          <div class="cs-num">5</div>
+          <div class="cs-title">Closing Date</div>
+        </div>
+        <div class="cs-body">
+          Standard wholesale closing date: <strong>14 days from contract execution.</strong> This is your competitive advantage over financed buyers who need 30–45 days. Specify your preferred title company or write "buyer's choice" — which gives you flexibility to use whichever title company your cash buyer prefers to work with.
+        </div>
+      </div>
+
+      <div class="contract-section">
+        <div class="cs-header">
+          <div class="cs-num">6</div>
+          <div class="cs-title">Buyer Default — Liquidated Damages Clause</div>
+        </div>
+        <div class="cs-body">
+          This clause limits your financial liability if you default on the contract. With a <strong>liquidated damages clause</strong>, the seller's only remedy if you fail to close (outside your contingency windows) is to keep your earnest money deposit. Without this clause, the seller could potentially pursue legal action with no ceiling on damages. Always confirm this clause is present in your contract — it is what makes wholesaling financially manageable even when deals fall apart outside the contingency period.
+        </div>
+      </div>
+
+      <div class="contract-section">
+        <div class="cs-header">
+          <div class="cs-num">7</div>
+          <div class="cs-title">Title Contingency</div>
+        </div>
+        <div class="cs-body">
+          The seller must deliver clear and marketable title at closing — meaning no outstanding liens, unpaid taxes, or encumbrances. If the title search reveals problems the seller cannot resolve, you have the right to terminate and receive your EMD back. When working with distressed sellers, title issues are common — back taxes, mechanic's liens, and unresolved ownership disputes appear regularly. The title company's search protects you.
+        </div>
+      </div>
+
+      <div class="contract-section">
+        <div class="cs-header">
+          <div class="cs-num">8</div>
+          <div class="cs-title">Marketing Rights Clause</div>
+        </div>
+        <div class="cs-body">
+          This clause — often paragraph 25 in the RealEstateSkills contract — states that the seller acknowledges the buyer has the right to market the property and/or their contractual interest before closing. This is critical because it legally enables you to advertise the deal to your buyers list and find a cash buyer while the contract is active. Without this clause, marketing the deal while under contract could create a dispute with the seller.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning fade-in">
+      <div class="callout-label">⚠️ Contracts Vary by State — Always Get Legal Review</div>
+      <p>Real estate contract law varies significantly from state to state. What is standard language in Texas may not be enforceable in New York. Assignment restrictions, disclosure requirements, inspection contingency wording, and closing customs are all locally specific. Before using any contract template — even a well-designed wholesaler-friendly one — have a local real estate attorney review it for your specific state. This is not optional. A contract that is not enforceable in your jurisdiction protects nobody.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 — VIDEOS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The Assignment Contract — <em>how you transfer your position and collect your fee</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Once you have a committed cash buyer, the assignment contract is what formalizes the transfer of your interest in the purchase agreement and specifies your wholesale fee. It is a one-page document — straightforward by design. Here is what it covers and why each element matters.</p>
+
+    <div class="highlight-box fade-in">
+      <h4>The Assignment Contract — What It Must Include</h4>
+      <p><strong>The parties:</strong> You are the assignor. Your cash buyer is the assignee. The seller does NOT appear on this contract — this is strictly between you and your buyer.</p>
+      <p><strong>The original contract reference:</strong> Identify the purchase agreement by property address and effective date. Attach a copy of the PSA for the buyer to review — they are agreeing to take over all of its terms.</p>
+      <p><strong>The assignment fee:</strong> This is your wholesale profit. State the exact dollar amount — $10,000, $15,000, $25,000. This fee is paid at closing through the title company and appears on the HUD-1 settlement statement. Getting paid through escrow creates a paper trail that demonstrates you are doing deals — valuable when working with future lenders or partners.</p>
+      <p><strong>Non-refundable deposit from buyer:</strong> Require your cash buyer to put up a non-refundable deposit — typically $2,500–$5,000 — when they sign the assignment contract. This deposit is a credit toward the full assignment fee, and it is forfeit if they fail to close. It confirms their commitment and protects you if they walk away. If the seller fails to perform and cannot deliver clear title, the deposit is refunded.</p>
+      <p><strong>The closing date:</strong> Matches the closing date in the original PSA. The buyer commits to closing by this date — if they miss it, you retain the right to reassign the contract to another buyer or pursue damages.</p>
+    </div>
+
+    <h3 class="sub-title">The complete assignment process — from signed PSA to payday</h3>
+
+    <div class="process-steps fade-in">
+      <div class="ps-item">
+        <div class="ps-num">1</div>
+        <div class="ps-content">
+          <h4>Execute PSA with seller</h4>
+          <p>Get the purchase agreement signed by all parties. Confirm the "and/or assigns" language is present. Collect the seller's signatures on every page where initials are required.</p>
+        </div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">2</div>
+        <div class="ps-content">
+          <h4>Open escrow with title company</h4>
+          <p>Send the executed PSA to a wholesaler-friendly title company immediately. They begin the title search. Submit your EMD to the escrow account within the timeframe specified in the contract (typically 72 hours).</p>
+        </div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">3</div>
+        <div class="ps-content">
+          <h4>Market the deal and find your buyer</h4>
+          <p>During the inspection period, bring your cash buyers through the property. Send the deal details — address, price, ARV comps, repair estimate, photos — to your buyers list. Get your highest and best offer from a committed buyer.</p>
+        </div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">4</div>
+        <div class="ps-content">
+          <h4>Execute assignment contract with buyer</h4>
+          <p>Send the assignment contract to your buyer for signature. Collect the non-refundable deposit simultaneously — the assignment is not effective until both the signature and the deposit are received. Do not hand over the deal without the deposit.</p>
+        </div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">5</div>
+        <div class="ps-content">
+          <h4>Send both contracts to title</h4>
+          <p>Send the executed assignment contract to the title company along with your buyer's contact information. The title company now has both the original PSA (seller to you) and the assignment (you to buyer). They handle everything from here.</p>
+        </div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">6</div>
+        <div class="ps-content">
+          <h4>Closing day — collect your fee</h4>
+          <p>Title closes with the seller and your cash buyer. Ownership transfers directly from seller to buyer — you never appear on the deed. Your assignment fee is wired to you from the title company. You do not need to attend closing. Jerry Norton has not attended a closing in years.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-section fade-in">
+      <h3>🎬 Watch: Wholesale Contracts Explained</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/eBMntRZyvh8" title="Wholesale Real Estate Contracts — RealEstateSkills" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);margin-bottom:1.5rem;">Ryan Zodi · RealEstateSkills.com · August 2024 · Complete line-by-line walkthrough of both the purchase agreement and assignment contract — with free download links</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/XLFHpX_8Rdc" title="2024 Wholesale Real Estate Contracts Walkthrough" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);">2024 Wholesale Contracts Walkthrough · Simple one-page PSA and assignment contract filled out live with a real example deal</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Double closing — <em>when assignment is not possible and what to do instead</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="path-callout ep">
+      <span class="pc-tag">🧑‍💼 Employee Path</span>
+      <p>Acquisition professionals and transaction coordinators at investment companies deal with contracts every single day. Your fluency with the PSA, the assignment contract, and the closing process is a core job competency — not just background knowledge. Understanding every clause in both contracts makes you a more effective advocate for deals you bring in, a better communicator with title companies and attorneys, and a more valuable team member across the entire transaction lifecycle.</p>
+    </div>
+    <div class="path-callout op">
+      <span class="pc-tag">🏢 Entrepreneur Path</span>
+      <p>As a wholesaling entrepreneur, the contract is the asset. The moment the seller signs your purchase agreement, you control something valuable — and everything after that is execution. Knowing how to present a contract confidently, explain every clause simply, and answer a seller's questions without hesitation is a real competitive advantage. Sellers sign with people they trust. Your contract knowledge is part of what builds that trust.</p>
+    </div>
+
+    <h3 class="sub-title">When assignment is not possible</h3>
+    <p class="lesson-text">Assignment is the standard approach — used in approximately 99% of wholesale transactions. But occasionally, assignment is blocked. The seller objects to the assignment. The contract has a no-assignment clause. The buyer does not want the seller to know the price difference. In these situations, the double close is the alternative.</p>
+
+    <p class="lesson-text">In a double close, two separate transactions happen in sequence — sometimes on the same day, sometimes within the same escrow. <strong>Transaction A:</strong> you close on the property from the seller using transactional funds — short-term lending provided for 24–72 hours specifically for this purpose. <strong>Transaction B:</strong> you immediately sell the property to your cash buyer at the higher price. The proceeds from Transaction B repay the transactional lender and cover two sets of closing costs, with your wholesale spread left over.</p>
+
+    <p class="lesson-text">Alex Martinez recommends assignment for 99% of deals — the double close involves more steps, more cost (transactional lending fees, two closing cost sets), and more complexity. Use it when assignment is genuinely not possible, not as a default strategy.</p>
+
+    <h3 class="sub-title">Protecting your deal — the affidavit of memorandum</h3>
+    <p class="lesson-text">One protection many new wholesalers overlook: once your PSA is signed, you can record an <strong>Affidavit of Memorandum of Agreement</strong> with the county. This document clouds the title — it shows up in any title search and prevents the seller from selling the property to someone else while you are under contract. If you have reason to believe a seller might try to go around you, or if the deal is high-value enough to justify the extra step, recording this document is inexpensive insurance.</p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 The Non-Disclosure / Non-Compete Agreement</div>
+      <p>When you share deal details — including the property address — with a potential cash buyer, you are trusting them not to contact the seller directly and cut you out of the deal. Most buyers are honest. A small number are not. For high-value deals or new buyer relationships, have the buyer sign a Non-Disclosure / Non-Compete Agreement (NDNCA) before sharing the seller's contact information. This agreement prevents the buyer from approaching the seller directly and ensures your position in the deal is legally protected. Jerry Norton includes this in his free contract package specifically for this purpose.</p>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>Here is what separates wholesalers who close deals from wholesalers who just make offers: when a seller asks you to explain a clause in your contract, you can answer clearly and confidently. That moment — where you know your contract better than the seller does, and you explain it simply and honestly — is where deals are won. Sellers do not sign with the person who has the highest offer. They sign with the person they trust. Your contract knowledge is trust-building in the most practical sense possible. Read both contracts until you could explain any section from memory.</p>
+      <div class="mentor-name">Your Darco Mentor · Module 5 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 5 Key Takeaways</h3>
+    <ul>
+      <li>Every wholesale deal needs two contracts: the Purchase and Sale Agreement (PSA) between you and the seller, and the Assignment Contract between you and your cash buyer. The PSA gives you control of the deal. The assignment contract transfers that control to your buyer for your wholesale fee.</li>
+      <li>The "and/or assigns" language in the PSA is what legally enables assignment. It must appear next to your name as the buyer. Without it, assigning the contract can be challenged. Include it on every deal, every time.</li>
+      <li>The inspection contingency is your most important protection — it gives you the right to terminate for any reason during the inspection period and receive your EMD back in full. As a wholesaler, this period is your assignment window. Never waive it. Always get at least 7 days.</li>
+      <li>The liquidated damages clause limits your default liability to the earnest money deposit only. Without it, a seller could pursue uncapped legal damages if you fail to close outside your contingency windows. Confirm this clause is in every PSA you sign.</li>
+      <li>The assignment contract must include: your assignment fee (stated in dollars), a non-refundable deposit from the buyer (typically $2,500–$5,000), the closing date, and a clause holding you harmless for any issues the buyer inherits. The assignment is not effective until both the signature and the deposit are received.</li>
+      <li>The complete process: PSA signed → title company opens escrow → inspection period → cash buyers walk property → assignment contract signed + deposit collected → both contracts sent to title → closing day → fee wired to you. You do not attend closing.</li>
+      <li>Double closing is the alternative when assignment is blocked — two sequential transactions using transactional funds. It is more expensive and complex than assignment. Use it only when necessary, not as a default.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. You put a property under contract at $150,000 with an inspection contingency of 10 days. On day 8, your best cash buyer tells you they cannot close because they ran out of capital. You have not found another buyer. What are your options — and which protects you completely?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> You must close on the property yourself since the inspection contingency only protects you if a physical defect is found during an inspection — not for buyer-side financing issues.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> You can terminate the contract under your inspection contingency — you are still within the 10-day window, which gives you the right to exit for any reason. Notify the seller in writing before day 10 that you are terminating. Your EMD is refunded in full. You walk away with no penalty. The inspection contingency does not require you to cite a specific defect — "does not pass personal inspection" is sufficient.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> You can extend the inspection period by notifying the seller verbally — this gives you more time to find another buyer without risking your deposit.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> You forfeit your EMD but are otherwise released from the contract — the liquidated damages clause caps your loss at the deposit amount regardless of whether you are within the contingency period.</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. You are about to sign a purchase agreement as the buyer. Your name is written as "John Smith." What critical language must appear immediately after your name — and what happens if it is missing?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> "as trustee" — this language protects your personal assets by indicating you are acting as a trustee rather than an individual buyer.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> "and/or assigns" — this language explicitly reserves your right to assign the contract to a third party (your cash buyer). Without it, while contracts are technically assignable by default, the seller or their agent may challenge the assignment, and the transaction can become unnecessarily complicated. Including it makes the assignment clean, unambiguous, and professionally standard.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> "LLC" — all wholesale purchases must be made through a business entity to be legally assignable, so the buyer name must reflect a business rather than an individual.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> "contingent upon financing" — this language gives you the right to exit the contract if you cannot secure funding, which is essential protection for a wholesaler who may not have personal capital to close.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. Your assignment contract states a $12,000 assignment fee and requires a $3,000 non-refundable deposit from the buyer. The buyer signs and sends the $3,000 deposit. Three days before closing, the buyer backs out. What do you keep — and what are your remaining options?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> You must refund the $3,000 deposit because the buyer's failure to close terminates the assignment contract and all obligations under it, including the deposit requirement.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> You keep the $3,000 non-refundable deposit — the buyer forfeits it by failing to close. You then have the right to reassign the contract to another cash buyer, purchase the property yourself, or terminate under any remaining contingencies. The $3,000 is yours regardless of what happens next. This is exactly why the non-refundable deposit exists — to financially commit the buyer and compensate you if they walk away.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> You keep the $3,000 but you are now legally obligated to close on the property yourself since you can no longer assign the contract after the original buyer backed out.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> The $3,000 deposit goes to the seller as compensation for the deal falling through — your assignment contract created a liability to the seller that the deposit offsets.</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A seller asks you to explain what the "liquidated damages" clause in the purchase agreement means and why it is there. What is the accurate, honest explanation?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Liquidated damages means the seller is pre-agreeing to a specific penalty amount if they decide not to sell after signing — it protects the buyer if the seller backs out of the deal.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Liquidated damages means that if the buyer (you) fails to close on the contract outside of a contingency, the seller's financial remedy is limited to keeping the earnest money deposit. In exchange, both parties are released from further liability. For the seller, it provides certainty — they know exactly what compensation they receive if the deal falls through. For the buyer, it caps downside risk — you cannot be pursued for unlimited damages just because a deal did not close.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Liquidated damages means the property has been appraised and the damages from any physical defects discovered during inspection have been pre-calculated and agreed upon by both parties before closing.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Liquidated damages is a legal formality required by most states that has no practical effect on either party — it is standard boilerplate that can safely be ignored during contract negotiations.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Why does ownership transfer directly from the seller to the cash buyer in an assignment transaction — rather than passing through the wholesaler — and why does this matter financially?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Ownership passes through the wholesaler briefly but is immediately transferred to the buyer — the transfer happens so quickly it does not appear on the public record.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> In an assignment, the wholesaler never takes title — they transfer their right to purchase (their contractual position) to the cash buyer, so the deed transfers directly from seller to buyer. This matters enormously: the wholesaler never owns the property, so they never have closing costs as a buyer, never pay transfer taxes as a seller, never need to carry insurance, and never face the FHA seasoning restrictions that apply to properties resold within 90 days of purchase. The wholesale fee appears as a line item on the HUD settlement statement — not as a property sale.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> Direct title transfer is a legal requirement in all states — wholesalers are legally prohibited from taking title to properties they intend to resell within 90 days due to anti-flipping regulations.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The title passes directly to save time — requiring the wholesaler to take title would add an extra week to the closing process, which motivated sellers are not willing to accept.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Real Estate Wholesaling Bible</div>
+          <div class="bi-author">Than Merrill — FortuneBuilders</div>
+          <div class="bi-desc">Chapter 16 covers purchase and sale agreements in detail — what to include, how to structure contingencies, and what makes a contract wholesaler-friendly. Chapter 26 covers assignment of contract mechanics, and Chapter 27 covers double closing for situations where assignment is blocked.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=real+estate+wholesaling+bible+than+merrill&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Getting Started with Wholesaling</div>
+          <div class="bi-author">Colin Andrews Egbert &amp; Matthew Leitz — RealEstateInvestor.com</div>
+          <div class="bi-desc">Covers the three closing methods (assignment, simultaneous/double close, retail), assignment contract mechanics including the "and/or assigns" language, how to protect your leads from buyers who might try to cut you out, and the NDNCA agreement for buyer protection.</div>
+        </div>
+        <a href="https://www.realestateinvestor.com" target="_blank">RealEstateInvestor.com →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Wholesaling Guide to Finding Your First Deal</div>
+          <div class="bi-author">Giovanni Morado</div>
+          <div class="bi-desc">Section 4 and 5 cover the purchase contract and assignment process with real dollar examples and the exact sequence from signed PSA through closing day. Written specifically for beginners who need the process explained simply before adding complexity.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=wholesaling+real+estate+beginners+guide&i=stripbooks" target="_blank">Find It →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 6: Building Your Buyers List &amp; Closing Deals</h3>
+    <p>You know how to find deals, analyze them, talk to sellers, and lock them up on paper. The final piece is building the buyers list that turns every contract into a closed deal. Module 6 covers how to find serious cash buyers, what questions to ask them, how to present deals professionally, and how to build the long-term buyer relationships that make wholesaling a consistent, scalable income — not a one-time transaction.</p>
+    <a href="wholesaling-module-6.html" class="next-module-cta">Module 6: Building Your Buyers List &amp; Closing →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="wholesaling-module-4.html" class="btn btn-outline">← Module 4</a>
+  <div class="module-nav-info">
+    <p>Wholesaling Track</p>
+    <strong>Module 5 of 6</strong>
+  </div>
+  <a href="wholesaling-module-6.html" class="btn btn-gold">Module 6: Buyers List &amp; Closing →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! You are still within the 10-day inspection contingency window — day 8 of 10. The inspection contingency gives you the unconditional right to terminate for any reason before the deadline. Notify the seller in writing before day 10. Your EMD is refunded in full. No penalty, no explanation required beyond 'property does not pass personal inspection.' This is the entire point of the inspection contingency — it is your safety valve as a wholesaler.",incorrect:"Not quite. You are on day 8 of a 10-day inspection contingency. The inspection contingency gives you the right to terminate for any reason before it expires — you do not need to cite a specific physical defect. Notify the seller in writing before day 10 that you are terminating. Your EMD is refunded in full. Clean exit, no penalty. This is why the inspection contingency is the most important clause in your contract as a wholesaler."},
+  q2:{correct:"Correct! 'And/or assigns' is the language that enables the entire wholesale model. It tells the seller and everyone else that you — or someone you designate — will be the buyer. Including it makes the assignment clean and professionally unambiguous. Without it, while contracts are technically assignable by default in most states, you may face challenges from the seller or their agent when you try to assign. Always include it, always.",incorrect:"Not quite. The critical language is 'and/or assigns' — written immediately after your name as the buyer. This language explicitly reserves your right to transfer your contractual position to a cash buyer. Without it, the assignment may be challenged even though contracts are technically assignable by default in most states. It is one of the most important phrases in the entire wholesaling business. Include it on every single contract."},
+  q3:{correct:"Correct! The non-refundable deposit is yours to keep — that is its entire purpose. When the buyer signed the assignment contract and sent the $3,000, they agreed that this deposit is forfeit if they fail to close. You keep it regardless. You then have three options: find another cash buyer and reassign the contract, close on the property yourself if you have capital, or terminate under any remaining contingencies. The $3,000 is guaranteed income even if the deal ultimately falls apart.",incorrect:"Not quite. The non-refundable deposit is exactly what its name says — non-refundable. When the buyer signed the assignment contract, they agreed to forfeit it if they fail to close. You keep the $3,000 no matter what. You can then reassign to another buyer, close yourself, or exit under remaining contingencies. This is why requiring a non-refundable deposit is standard practice — it financially commits the buyer and compensates you if they walk away."},
+  q4:{correct:"Correct! Liquidated damages is a buyer-protection clause that also benefits the seller through certainty. If the buyer defaults outside of their contingency periods, the seller's only remedy is to keep the earnest money deposit — they cannot pursue uncapped legal damages. Both parties know exactly what the consequences are if the buyer fails to perform. For you as the wholesaler, this means your maximum downside on a failed deal outside contingency windows is losing your EMD — not facing unlimited legal liability.",incorrect:"Not quite. Liquidated damages means that if the buyer (the wholesaler) defaults outside of their contingency windows, the seller's remedy is limited to keeping the earnest money deposit. Both parties are then released from further liability. It protects the seller by guaranteeing compensation if the deal falls through. It protects the buyer by capping their downside at the EMD amount — no unlimited legal pursuit. Both sides benefit from the clarity and predictability this clause provides."},
+  q5:{correct:"Correct! In an assignment transaction, the wholesaler never takes title. They transfer their right to purchase — their contractual position — to the cash buyer. The deed goes directly from seller to buyer. This has major financial implications: no closing costs as a buyer, no transfer taxes as a seller, no insurance requirement, no FHA seasoning restrictions that would apply if the wholesaler had bought and resold the property within 90 days. The wholesale fee appears as a line item fee on the HUD settlement statement — not as a property sale — which is both simpler and more tax-efficient.",incorrect:"Not quite. In an assignment, the wholesaler never takes title. They transfer their contractual right to purchase to the cash buyer, so ownership goes directly from seller to buyer with the wholesaler's name appearing only as a fee on the settlement statement. This is hugely significant financially: no closing costs as a buyer, no transfer taxes as a seller, no insurance, and no FHA anti-flipping seasoning restrictions. The assignment model is not just simpler — it is financially more efficient than any model where the wholesaler takes title."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;
+    } else {
+      ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}
+    }
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong command of wholesale contracts. You understand the PSA, the assignment contract, the inspection contingency, liquidated damages, and why title transfers directly. Ready for Module 6: Building Your Buyers List.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the inspection contingency as your backout clause, the "and/or assigns" language, liquidated damages, and the non-refundable deposit mechanics. These are the contractual foundations of every deal you close.';
+  }
+}
+</script>
+</body>
+</html>
