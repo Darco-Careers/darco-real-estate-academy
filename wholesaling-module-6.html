@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Wholesaling Module 6: Building Your Buyers List & Closing Deals — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#B84A10;--orange-mid:#D4581A;--orange-light:#E87040;--orange-pale:#FDF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(184,74,16,0.12);
+  --shadow-card:0 2px 16px rgba(184,74,16,0.08);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--orange);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--orange);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--orange);font-weight:600;}
+.progress-bar{background:var(--orange-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--orange-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(184,74,16,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--orange-mid);border-radius:3px;width:100%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--orange);color:var(--gold-light);}
+.prog-dot.complete{background:var(--orange-mid);color:var(--white);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(184,74,16,0.25);}
+.module-hero{background:linear-gradient(135deg,#5A1E04 0%,var(--orange) 55%,var(--orange-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--orange);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--orange-pale);border-left:4px solid var(--orange-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--orange);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--orange-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.path-callout{border-radius:10px;padding:1rem 1.25rem;margin:0.85rem 0;font-size:14px;line-height:1.7;color:var(--text-mid);}
+.path-callout.ep{background:rgba(184,74,16,0.06);border:1px solid rgba(184,74,16,0.18);}
+.path-callout.op{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);}
+.pc-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-bottom:0.4rem;color:var(--orange);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.finder-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.finder-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--orange);border-radius:0 0 14px 14px;padding:1.25rem;}
+.finder-card.free{border-top-color:var(--gold);}
+.finder-card .fc-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange-mid);margin-bottom:0.4rem;}
+.finder-card.free .fc-label{color:#8A6A20;}
+.finder-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;}
+.finder-card p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.questions-list{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;}
+.q-item{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1rem 1.25rem;}
+.q-item .qi-q{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.q-item .qi-why{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+.deal-package{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;color:var(--white);}
+.deal-package h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--gold-light);margin-bottom:1.25rem;}
+.dp-item{display:flex;gap:10px;margin-bottom:0.6rem;font-size:14px;color:rgba(255,255,255,0.88);line-height:1.6;}
+.dp-item::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;}
+.completion-box{background:var(--gold-pale);border:2px solid var(--gold);border-radius:18px;padding:2.5rem 2.25rem;margin:2.5rem 0;text-align:center;}
+.completion-box h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.75rem;}
+.completion-box p{font-size:1rem;color:var(--text-mid);line-height:1.8;max-width:580px;margin:0 auto 1.5rem;}
+.completion-badge{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#5A3800;font-size:13px;font-weight:700;padding:10px 24px;border-radius:24px;margin-bottom:1rem;}
+.video-section{margin:2.5rem 0;}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 4px 24px rgba(184,74,16,0.15);margin-bottom:0.75rem;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.video-link-card{display:flex;gap:1rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-decoration:none;transition:box-shadow 0.2s,border-color 0.2s;align-items:flex-start;margin-bottom:0.75rem;}
+.video-link-card:hover{box-shadow:var(--shadow-card);border-color:var(--orange-mid);}
+.video-thumb{width:120px;height:68px;border-radius:8px;flex-shrink:0;background:var(--orange-pale);display:flex;align-items:center;justify-content:center;}
+.video-thumb svg{width:32px;height:32px;fill:var(--orange-mid);}
+.video-info{flex:1;}
+.video-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--orange-pale);color:var(--orange-mid);padding:3px 10px;border-radius:20px;margin-bottom:0.4rem;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;line-height:1.35;}
+.video-info p{font-size:12px;color:var(--text-light);line-height:1.55;}
+.video-info .credit{font-size:11px;color:var(--text-light);margin-top:0.4rem;font-style:italic;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(184,74,16,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.takeaways{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;color:var(--white);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.7;display:flex;gap:10px;}
+.takeaways ul li::before{content:'→';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+.knowledge-check{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.75rem;}
+.question{margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.question p{font-size:15px;color:var(--text-dark);line-height:1.7;margin-bottom:0.85rem;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;}
+.option:hover{border-color:var(--orange-mid);background:var(--orange-pale);}
+.option.selected{border-color:var(--orange);background:var(--orange-pale);color:var(--text-dark);}
+.option.correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.incorrect{border-color:#C62828;background:#FFF5F5;color:#8B0000;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-light);flex-shrink:0;margin-top:1px;}
+.option.selected .option-letter{background:var(--orange);color:var(--white);}
+.option.correct .option-letter{background:#2E7D32;color:var(--white);}
+.option.incorrect .option-letter{background:#C62828;color:var(--white);}
+.explanation{font-size:13px;line-height:1.65;padding:0.75rem 1rem;border-radius:8px;margin-top:0.5rem;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:#F1F8F1;color:#1B5E20;}
+.explanation.incorrect-exp{background:#FFF5F5;color:#8B0000;}
+.check-btn{display:inline-block;background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.check-btn:hover{background:var(--orange-mid);}
+.check-btn:disabled{background:#ccc;cursor:not-allowed;}
+.score-result{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.7;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:#F1F8F1;color:#1B5E20;border:1px solid #A5D6A7;}
+.score-result.fail{background:#FFF5F5;color:#8B0000;border:1px solid #FFCDD2;}
+.books-section{display:flex;flex-direction:column;gap:1rem;margin:1.25rem 0;}
+.book-item{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;}
+.bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.bi-author{font-size:12px;color:var(--orange-mid);font-weight:600;margin-bottom:0.4rem;}
+.bi-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.book-item a{display:inline-flex;align-items:center;white-space:nowrap;background:var(--orange-pale);color:var(--orange);border:1px solid rgba(184,74,16,0.25);padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.book-item a:hover{background:var(--orange);color:var(--white);}
+.track-complete{background:linear-gradient(135deg,#5A1E04,var(--orange));border-radius:18px;padding:2.5rem;margin:2rem 0;text-align:center;color:var(--white);}
+.track-complete h3{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold-light);margin-bottom:0.75rem;}
+.track-complete p{font-size:1rem;color:rgba(255,255,255,0.8);line-height:1.8;max-width:580px;margin:0 auto 1.5rem;}
+.track-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#5A3800;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.track-cta:hover{background:var(--gold-light);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(184,74,16,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);}
+.btn-outline:hover{border-color:var(--orange-mid);color:var(--orange);}
+.btn-gold{background:var(--gold);color:#5A3800;}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--orange);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+.fade-in{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="darco-real-estate-academy.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="darco-real-estate-academy.html">All Tracks</a></li>
+    <li><a href="wholesaling.html" class="nav-back">← Wholesaling Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="darco-real-estate-academy.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="wholesaling.html">Wholesaling</a>
+  <span class="sep">›</span>
+  <span class="current">Module 6: Building Your Buyers List &amp; Closing Deals</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="wholesaling-module-1.html" class="prog-dot complete">1</a>
+    <a href="wholesaling-module-2.html" class="prog-dot complete">2</a>
+    <a href="wholesaling-module-3.html" class="prog-dot complete">3</a>
+    <a href="wholesaling-module-4.html" class="prog-dot complete">4</a>
+    <a href="wholesaling-module-5.html" class="prog-dot complete">5</a>
+    <span class="prog-dot active">6</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Wholesaling Track · Module 6 of 6 · Final Module</div>
+    <h1>Building Your Buyers List <em>&amp; Closing Deals</em></h1>
+    <p>The cash buyers who make your business work — how to find them, vet them, present deals to them, and build the long-term relationships that turn wholesaling into a consistent, scalable income.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Primary Sources: Merrill + Martinez + Clothier</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Why your buyers list is the foundation — <em>quality over quantity, local over random</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most new wholesalers get this backwards. They spend months building a lead generation system and finding deals before they have a single committed cash buyer. Then they get a property under contract and scramble — sending the deal to everyone they can find, hoping someone bites. Alex Martinez calls this the fundamental mistake: if you do not have serious cash buyers lined up before you find your first deal, your inspection contingency clock is ticking and your chances of closing shrink every day.</p>
+
+    <p class="lesson-text">The fix is counterintuitive: <strong>find your buyers before you find your deals.</strong> Giovanni Morado makes the case directly — without buyers, you cannot profit. Without sellers, you just cannot help buyers yet. Build the buyer side first. When you have three to five committed cash buyers who trust you and are actively buying in your market, every deal you find has a known home. You are shopping for your buyers, not selling to strangers.</p>
+
+    <p class="lesson-text">Alex Martinez is equally direct about quantity: you do not need a list of a thousand random cash buyers. You need three to five quality, local buyers who are actively purchasing multiple properties per month. A Fiverr list of a thousand emails from investors across the country is nearly worthless — those buyers do not know your market, cannot drive to a property same-day, and have no relationship with you. Three serious local fix-and-flippers who trust your numbers will close more deals per year than any mass email list ever will.</p>
+
+    <div class="callout callout-quote fade-in">
+      <div class="callout-label">📖 Alex Martinez — RealEstateSkills.com</div>
+      <p>"I've had many individual cash buyers pay me over six figures in a year. I know them on a first-name basis. We've had coffee, we've had dinner, we exchange gifts during the holidays. Do you think they just pay six figures a year to random people they don't know and don't trust? No. You have to build quality relationships."</p>
+      <div class="quote-attr">— Alex Martinez, How To Build A Cash Buyers List</div>
+    </div>
+
+    <h3 class="sub-title">What makes a cash buyer worth building a relationship with</h3>
+    <p class="lesson-text">Not every investor who calls themselves a cash buyer is worth your time. Martinez identifies the profile of a buyer who will actually close deals for you consistently: they are a fix-and-flipper buying <strong>multiple properties per month</strong> — not one deal every six months. They pay cash or have reliable hard money access — no financing contingencies, no bank delays. They can drive to a property and give you a yes or no same day. And they have a clear buying criteria they can articulate: which zip codes, what price range, what condition level, what ARV threshold.</p>
+
+    <p class="lesson-text">The buyer who says "just send me everything" is usually not serious. The buyer who tells you "I need 3/2 houses in the 80050–80080 zip codes, ARV between $250–$350K, all cosmetic, and I buy at 75% of ARV minus repairs" — that buyer is telling you exactly what deals to bring them. That specificity is a sign of a professional who closes.</p>
+
+    <div class="callout callout-warning fade-in">
+      <div class="callout-label">⚠️ Avoid Toxic Buyers</div>
+      <p>Some cash buyers in wholesaling are sharks — they take your deal details, contact the seller directly, and cut you out of the transaction. This is why you use Non-Disclosure Agreements before sharing seller contact information with new buyers, and why you build relationships with buyers you have vetted in person. Martinez's rule: if a buyer is rude, unresponsive, or makes you feel like you are begging for their business — move on. As a wholesaler, you choose who you work with. That is one of the genuine privileges of the business.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">How to find serious cash buyers — <em>five proven channels that work in every market</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Finding cash buyers does not require a large marketing budget. The best methods are free or nearly free — and they produce higher-quality relationships than paid advertising because they involve real human interaction. Here are the five channels that consistently produce serious, local cash buyers.</p>
+
+    <div class="finder-grid fade-in">
+      <div class="finder-card free">
+        <div class="fc-label">Free · Method 1</div>
+        <h4>The Google Ninja Trick</h4>
+        <p>Search "we buy houses [your city]" on Google. The companies ranking organically for this phrase have invested significantly in their online presence — they are serious buyers, not hobbyists. Call them directly. Tell them you are a wholesaler who finds deals in the area and ask if they want to be on your buyers list. Martinez has found some of his most consistent buyers this way in under five minutes.</p>
+      </div>
+      <div class="finder-card free">
+        <div class="fc-label">Free · Method 2</div>
+        <h4>REIA Meetings</h4>
+        <p>Real Estate Investor Association meetings happen monthly in virtually every major market. Find yours by searching "real estate investor association [your city]" on Google. These events are where fix-and-flippers, buy-and-hold investors, private lenders, and title agents gather in person. Martinez met buyers at REIA meetings who he still does deals with today — years later. The in-person relationship-building accelerates trust in a way no cold call ever can.</p>
+      </div>
+      <div class="finder-card free">
+        <div class="fc-label">Free · Method 3</div>
+        <h4>Craigslist Reverse Engineering</h4>
+        <p>Go to Craigslist in your market. Under housing, search "we buy houses" or "buy houses for cash." These ads are placed by investors actively buying properties right now in your area. Call them — they are already looking for deals. This is one of the fastest ways to build an initial buyers list without spending a dollar.</p>
+      </div>
+      <div class="finder-card">
+        <div class="fc-label">Free — Method 4</div>
+        <h4>Jerry Norton's Neighborhood Flipper Method</h4>
+        <p>Go on Zillow. Search for recently sold homes in your target area that were newly renovated — vacant, staged, modern finishes. These are recent flips. Contact the listing agent who represented the flipper. Tell them you have wholesale deals in the same area and ask to connect with their investor client. Flippers love to repeat deals in neighborhoods where they have already worked. This method produces buyers who are actively deploying capital right now.</p>
+      </div>
+      <div class="finder-card free">
+        <div class="fc-label">Free — Method 5</div>
+        <h4>Fake Ad Method (Morado)</h4>
+        <p>Post a realistic-looking distressed property ad on Craigslist or Facebook Marketplace in your target area. When investors call about the "property," tell them it is no longer available but you frequently find similar deals. Ask for their criteria and add them to your buyers list. Giovanni Morado built his initial buyer network entirely this way — before he had a single property under contract.</p>
+      </div>
+      <div class="finder-card">
+        <div class="fc-label">Network — Method 6</div>
+        <h4>Real Estate Agents &amp; Title Companies</h4>
+        <p>Investor-friendly agents who work REO listings often have a stable of cash buyers they work with regularly. Title companies that handle investment transactions know every active investor in the market. Both are powerful referral sources if you position yourself as someone who brings clean, closeable deals. Chris Clothier closed 107 deals in his first year — his first two buyers came from a REIA meeting and a Craigslist ad respectively.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The questions to ask every new cash buyer</h3>
+    <p class="lesson-text">When you connect with a potential cash buyer, your goal is to build a profile so you know exactly what deals to bring them. Do not just get their phone number — get their buying criteria. These are the questions that turn a contact into a useful relationship:</p>
+
+    <div class="questions-list fade-in">
+      <div class="q-item">
+        <div class="qi-q">"Which zip codes or neighborhoods are you actively buying in right now?"</div>
+        <div class="qi-why">Geographic criteria let you filter deals immediately. A buyer who only buys in three specific zip codes tells you exactly where to look.</div>
+      </div>
+      <div class="q-item">
+        <div class="qi-q">"What ARV range and price point are you targeting?"</div>
+        <div class="qi-why">Knowing their target ARV range tells you what properties they want. A buyer targeting $200–$300K ARV homes is different from one targeting $400–$600K.</div>
+      </div>
+      <div class="q-item">
+        <div class="qi-q">"What percentage of ARV do you buy at — all in including repairs?"</div>
+        <div class="qi-why">This is the number you plug into your MAO formula. Different buyers use 70%, 75%, or 80%. Know their number so your offers are calibrated to what they will actually pay.</div>
+      </div>
+      <div class="q-item">
+        <div class="qi-q">"How do you estimate repairs — what's your cost per square foot?"</div>
+        <div class="qi-why">Their repair estimate methodology calibrates your own. If they use $25/sqft for cosmetic rehabs and you are using $35, your deals will consistently look worse than they are.</div>
+      </div>
+      <div class="q-item">
+        <div class="qi-q">"How many properties are you buying per month right now?"</div>
+        <div class="qi-why">This tells you how hungry they are. A buyer doing 5+ deals per month is a tier-one buyer. A buyer doing one deal every few months is not a reliable outlet for your pipeline.</div>
+      </div>
+      <div class="q-item">
+        <div class="qi-q">"What's the best way to reach you when I have a deal — text, call, or email?"</div>
+        <div class="qi-why">Speed matters on wholesale deals. Know how to reach each buyer instantly. A buyer who prefers text and responds in minutes is more valuable than one who checks email weekly.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 — VIDEOS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Presenting deals and closing — <em>how to package a deal, market it to your list, and get to closing</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Once you have a property under contract, your job shifts entirely. You are no longer a lead generator or negotiator — you are a marketer and closer. Your goal for the duration of the inspection period is to get your highest-quality buyer committed to the deal at the best possible price, sign the assignment contract, collect the non-refundable deposit, and hand everything to the title company.</p>
+
+    <p class="lesson-text">Chris Clothier of Memphis Invest — who wholesaled 107 deals in his first year — makes a counterintuitive point: by the time you have a deal under contract, you should already know which buyer you are going to call first. If you have built your buyers list correctly and know their criteria, you are not marketing to a list hoping someone bites — you are shopping for your investors. You already know who wants what. You call your tier-one buyer first. If they cannot take it, you go to buyer two. The pipeline moves quickly because the relationships were built before the deal existed.</p>
+
+    <h3 class="sub-title">How to package a deal for your buyers</h3>
+    <p class="lesson-text">When you reach out to a buyer, give them everything they need to make a quick decision. A buyer who has to ask six follow-up questions before they can evaluate the deal will slow down — and in wholesaling, slow means lost. Jerry Norton's framework for deal packaging:</p>
+
+    <div class="deal-package fade-in">
+      <h4>📋 The Complete Deal Package</h4>
+      <div class="dp-item">Property address, neighborhood, and a brief description of the area</div>
+      <div class="dp-item">Your asking price (your contracted price + your assignment fee)</div>
+      <div class="dp-item">ARV — with at least 3 comps cited so the buyer can verify your numbers</div>
+      <div class="dp-item">Estimated repair cost — broken down by category if possible</div>
+      <div class="dp-item">Projected buyer profit at your asking price (ARV − repairs − your price)</div>
+      <div class="dp-item">Photos — exterior, interior, every room. More is better. Buyers make decisions from photos.</div>
+      <div class="dp-item">Closing timeline — when the inspection contingency expires, when the contract closes</div>
+      <div class="dp-item">Your contact information and how quickly you need a decision</div>
+    </div>
+
+    <p class="lesson-text">The goal of the deal package is to make the decision to buy as easy as possible. A buyer who receives a complete package with comps, repair estimates, photos, and a projected profit calculation can evaluate the deal in minutes. A buyer who receives "hey, I have a house at 123 Main St, interested?" has to do all the work themselves — and probably will not bother.</p>
+
+    <h3 class="sub-title">Sending the deal and managing the process</h3>
+    <p class="lesson-text">Send the deal to your highest-priority buyers first — those who match the criteria most closely and are buying most actively. Give them a short window to respond — 24 to 48 hours. Clothier's approach: send via text first (fastest), then email, then call if no response. Create a sense of urgency without manufacturing pressure — the inspection contingency is a real clock, and serious buyers understand that.</p>
+
+    <p class="lesson-text">Once a buyer commits, execute the assignment contract immediately and collect the non-refundable deposit before you stop marketing. Do not take the property off your active list until you have both the signed contract and the deposit in hand. A verbal commitment means nothing — a deposit means everything.</p>
+
+    <div class="video-section fade-in">
+      <h3>🎬 Watch: Building Your Cash Buyers List</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/uESepZns7Mc" title="How To Build A Cash Buyers List — RealEstateSkills" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);margin-bottom:1.5rem;">Alex Martinez · RealEstateSkills.com · November 2023 · Quality over quantity, local over random, the Google Ninja trick, REIA meetings, Craigslist, and the questions to ask every new buyer</p>
+
+      <a href="https://www.youtube.com/watch?v=Io1No2ZQtQA" target="_blank" class="video-link-card">
+        <div class="video-thumb">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.5 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Than Merrill · FortuneBuilders · YouTube</span>
+          <h4>The Real Estate Wholesaling Bible — Full Audiobook</h4>
+          <p>Chapters 20–25 cover the complete buyer database system — building a trophy database of cash buyers, networking for buyers, direct response marketing to investors, pre-screening buyers, and negotiating with buyers on price and terms.</p>
+          <p class="credit">Than Merrill · FortuneBuilders · February 2024 · <em>Opens on YouTube (embedding disabled by creator)</em></p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Building a wholesaling business — <em>from first deal to consistent monthly income</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="path-callout ep">
+      <span class="pc-tag">🧑‍💼 Employee Path</span>
+      <p>Buyer relations and deal disposition are specialized roles inside larger real estate investment companies. "Dispo" — the process of marketing wholesale deals to cash buyers and closing assignments — is a full-time job at companies doing volume. Understanding how to package deals, how to maintain a quality buyers list, and how to close assignments quickly makes you a high-value team member in acquisitions, disposition, or transaction coordination. These skills are compensated well precisely because they directly produce revenue.</p>
+    </div>
+    <div class="path-callout op">
+      <span class="pc-tag">🏢 Entrepreneur Path</span>
+      <p>Wholesaling becomes a real business — not just a series of transactions — when your buyers list and your deal flow system run in parallel. You find deals because your marketing is consistent. You close deals because your buyers know you, trust your numbers, and respond quickly. The flywheel builds: close a deal, reinvest in marketing, find more deals, close more deals, add better buyers. Clothier closed 107 deals his first year. That did not happen by accident — it happened because he built both sides of the business simultaneously.</p>
+    </div>
+
+    <h3 class="sub-title">The CRM — organizing your buyers and deals</h3>
+    <p class="lesson-text">As your buyers list grows and your deal flow increases, trying to manage everything in your head or in a spreadsheet becomes impossible. A CRM — Customer Relationship Management system — keeps every buyer profile, their criteria, their contact history, and the deals you have presented to them in one place. Clothier is emphatic: the days of managing a buyers list on paper are over. Tools like Podio, HubSpot (free tier), or even a well-organized spreadsheet work for beginners. As you scale, invest in a purpose-built real estate investor CRM.</p>
+
+    <p class="lesson-text">Your CRM also manages your seller leads and follow-up sequences — the monthly touches to prospects who said "not yet." The wholesalers who build real businesses treat both sides of the business — buyers and sellers — with systematic follow-up rather than reactive one-off communication. Systems replace memory. When your follow-up is systematic, deals come from leads you generated months or years ago.</p>
+
+    <h3 class="sub-title">Reinvesting your first fees</h3>
+    <p class="lesson-text">Jerry Norton's advice for first-time wholesalers: when your first check clears, resist the temptation to spend it all. Reinvest a meaningful portion back into your lead generation — direct mail, Google ads, data subscriptions. The biggest reason wholesalers do one deal and stall is that they treat the fee as income rather than as startup capital for the next phase of their business. The wholesalers who build to ten or more deals per month are the ones who treat every closing as an investment in the next ten closings.</p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 The Long Game: Relationships Compound</div>
+      <p>Chris Clothier closed 107 deals in his first year using just two buyers — one he met at a REIA meeting, one from Craigslist. Those two buyers referred their networks, creating a flywheel of referral business that did not require constant new buyer acquisition. Alex Martinez still has buyers he met at REIA meetings years ago who pay him six figures annually. The long game in wholesaling is not finding more buyers — it is serving the buyers you have so well that they bring you more buyers, more deals, and more opportunities than your marketing ever could. Relationships compound in ways that ad spend never does.</p>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>You have now completed the full wholesaling curriculum. You understand the business model, the lead generation system, the seller conversation framework, the deal analysis math, the contracts, and the buyer relationship strategy. That is the complete picture. What comes next is entirely about execution — making the calls, running the comps, submitting the offers, building the relationships. The gap between knowing this and doing it is not information. It is action. Everything you need to close your first deal is already in these six modules. Go use it.</p>
+      <div class="mentor-name">Your Darco Mentor · Wholesaling Track Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 6 Key Takeaways</h3>
+    <ul>
+      <li>Build your buyers list before you need it — ideally before you have your first deal under contract. Three to five serious, local, active cash buyers who trust your numbers will close more deals than a list of a thousand random investor emails.</li>
+      <li>Quality beats quantity in every dimension: quality buyers (active, local, buying multiple deals/month) over many buyers. Local buyers (can drive to a property same-day) over national buyers who do not know your market. Vetted relationships over anonymous contacts.</li>
+      <li>The five best buyer-finding channels: Google Ninja trick ("we buy houses [city]"), REIA meetings, Craigslist reverse engineering, Jerry Norton's Neighborhood Flipper Method (find recent flips on Zillow, contact the listing agent), and the fake ad method for the initial list build.</li>
+      <li>When you connect with a new buyer, build their full profile: which zip codes, what ARV range, what percentage they buy at, how they estimate repairs, how many deals per month, and how to reach them fastest. This information turns a contact into a calibrated relationship.</li>
+      <li>Present every deal as a complete package: address, asking price, ARV with comps, repair estimate, projected buyer profit, photos, and closing timeline. Make the decision to buy as easy as possible. Buyers who have to do their own research are buyers who slow down or pass.</div>
+      <li>Execute assignment contract and collect non-refundable deposit before you stop marketing the deal. A verbal commitment means nothing. A signed contract plus a deposit in escrow means everything.</li>
+      <li>Reinvest your first wholesale fees into your lead generation system. The wholesalers who scale consistently treat their fees as investment capital for the next phase of growth — not as income to be spent. The business compounds when you feed the machine.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. You have a property under contract at $160,000 with a 10-day inspection contingency. On day 2 you send the deal to your buyers list of 800 email addresses purchased from a data broker. By day 9 you have had no serious responses. What went wrong — and what should you have done differently?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> The email list was too small — you need at least 5,000 buyers to statistically guarantee a response within a 10-day window.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> A purchased list of 800 random investors is nearly worthless — they do not know your market, have no relationship with you, and are not actively buying in your area. You should have built 3–5 quality local buyer relationships before getting the property under contract. With committed buyers in place, you call buyer one on day 1, they walk the property on day 2, you have the assignment signed by day 3. The whole process collapses without pre-built buyer relationships.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> You should have listed the property on the MLS through a licensed agent — cash buyers monitor the MLS more closely than any email list.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> The issue was pricing — at $160,000 the deal was too expensive for most cash buyers. A lower offer to the seller would have produced a better response from the market.</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. You meet a cash buyer at a REIA meeting. They say: "Just send me everything you find — I'll look at it all." Is this a strong buyer relationship to build on? What response from a buyer would indicate they are a more serious acquisition target?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Yes — a buyer willing to look at everything is ideal because they give you maximum flexibility to bring any deal without worrying about criteria mismatch.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> No — "send me everything" usually signals a buyer who is not serious or has not done enough deals to know their own criteria. A serious buyer says something like: "I buy 3/2 houses in the 80050–80080 zip codes, ARV between $250–$350K, cosmetic rehab only, and I need to be at 75% of ARV all-in." That specificity means they know exactly what they want, they are active, and when you send them the right deal, they will move fast.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Yes — buyers who review everything are valuable because they may surprise you by taking deals that do not fit your assumptions about their criteria.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> It depends entirely on how many deals per year they buy — volume is the only indicator of buyer quality, not the specificity of their criteria.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. You send a deal to a buyer via text: "Hey, I have a house at 123 Maple Ave, interested?" The buyer does not respond. What did you do wrong — and how should you have presented the deal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Nothing — a non-response just means the buyer is busy. Follow up every day for a week until you get an answer.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> You gave the buyer no information to make a decision — they would have to do all the analysis themselves, which serious buyers will not bother doing for an incomplete lead. A complete deal package should include the address, your asking price, ARV with comps, estimated repair cost, projected buyer profit, photos, and the closing timeline. Make the decision to say yes as easy as possible — buyers who receive complete packages make decisions in minutes instead of days or not at all.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> You should have called instead of texting — serious buyers expect phone calls for deal opportunities, not text messages.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> The problem is that you did not have an exclusive agreement with the buyer — without exclusivity, buyers have no obligation to respond to deals you send them.</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A buyer verbally commits to your deal and tells you they will send the non-refundable deposit tomorrow. You stop marketing the deal. The next day they go silent. What should you have done differently — and what do you do now?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">A</div> You should never have stopped marketing based on a verbal commitment — a deposit in hand is the only commitment that counts. Now, immediately resume marketing to your buyers list, contact your next-tier buyers, and check your inspection contingency timeline. If the contingency has not expired, you still have time to find another buyer. If you are close to the expiration, prepare to either renegotiate an extension with the seller or terminate cleanly and protect your EMD.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> You were right to stop marketing — stopping prevents you from creating legal liability by presenting the same deal to multiple buyers simultaneously, which can constitute fraud.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Give the buyer three to five business days to send the deposit before considering them withdrawn — real estate transactions always move slowly and this is normal.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Contact the seller and renegotiate the purchase price down to compensate for losing your buyer — a lower price will attract a new buyer more quickly.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Chris Clothier closed 107 wholesale deals in his first year with just two buyers. Alex Martinez has buyers who have paid him over six figures individually in a single year. What principle do both of these stories illustrate about the wholesaling business model?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Both stories show that wholesaling is only viable in very large markets — Clothier and Martinez operate in major metros where high transaction volume makes these numbers possible.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Both stories show that experienced wholesalers eventually transition away from finding deals themselves — they build teams so they can focus exclusively on buyer relationships at scale.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Both stories illustrate that depth of buyer relationships beats breadth of buyer lists. Clothier did not need a thousand buyers — he needed two excellent ones who trusted him and closed consistently. Martinez did not need constant new buyer acquisition — he needed buyers who valued his deals enough to pay six figures annually. The compounding value of a trusted, long-term buyer relationship far outperforms the constant churn of trying to sell every deal to a new audience. Quality relationships are the actual asset in wholesaling — not the deals themselves.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Both stories show that wholesale volume is primarily determined by how many motivated seller leads you can generate — buyer relationships are secondary to a strong lead generation system.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Real Estate Wholesaling Bible</div>
+          <div class="bi-author">Than Merrill — FortuneBuilders</div>
+          <div class="bi-desc">Chapters 20–25 are the definitive guide to the buyer side of wholesaling — building a trophy database, networking for buyers, direct response marketing to investors, pre-screening buyers, negotiating with buyers on price and terms, and marketing your deals. The most thorough buyer-building framework available for wholesalers.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=real+estate+wholesaling+bible+than+merrill&i=stripbooks" target="_blank">Get the Book →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">How To Build A Wholesale Business</div>
+          <div class="bi-author">Chris Clothier — Memphis Invest</div>
+          <div class="bi-desc">Steps 5, 6, 7, and 9 cover attracting buyers, building a CRM system, joining REIA groups, and marketing deals to your investor list. Clothier's first-year story — 107 deals, two buyers, one from REIA and one from Craigslist — is the clearest proof that relationship quality beats list size every time.</div>
+        </div>
+        <a href="https://www.memphisinvest.com" target="_blank">Memphis Invest →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">The Wholesaling Guide to Finding Your First Deal</div>
+          <div class="bi-author">Giovanni Morado</div>
+          <div class="bi-desc">Section 2 covers the buyer-first strategy in full — why to build your buyers list before finding deals, how to post effective fake ads to attract investors, how to profile each buyer for their specific criteria, and how to manage buyer relationships as your core business asset.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=wholesaling+real+estate+beginners+guide&i=stripbooks" target="_blank">Find It →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRACK COMPLETE -->
+  <div class="track-complete fade-in">
+    <h3>🏆 Wholesaling Track Complete</h3>
+    <p>You have completed all six modules of the Wholesaling Track. You now understand the complete arc of a wholesale deal — from the business model and lead generation through seller conversations, deal analysis, contracts, and buyer relationships. The knowledge is yours. What happens next is entirely determined by what you do with it.</p>
+    <a href="wholesaling.html" class="track-cta">Return to Wholesaling Track Overview →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="wholesaling-module-5.html" class="btn btn-outline">← Module 5</a>
+  <div class="module-nav-info">
+    <p>Wholesaling Track</p>
+    <strong>Module 6 of 6 · Complete</strong>
+  </div>
+  <a href="wholesaling.html" class="btn btn-gold">Track Overview →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! A purchased list of 800 random investors is nearly worthless for closing wholesale deals. These buyers do not know your market, cannot drive to the property, and have no relationship with you — so your message is just noise. The correct approach is to build 3–5 quality local buyer relationships before you get your first property under contract. With committed buyers in place, you call buyer one the day you sign the PSA. By day 3 you have an assignment signed and a deposit collected. The whole process is built on pre-existing trust, not mass email marketing.",incorrect:"Not quite. The fundamental problem was the quality of the buyer list, not the size. 800 random investors from a data broker do not know your market, are not actively buying in your area, and have no relationship with you. The solution is to build 3–5 quality local buyer relationships before you ever get a property under contract. With committed buyers in place, you call buyer one on day 1 — not send a mass email blast on day 2."},
+  q2:{correct:"Correct! 'Send me everything' is a classic sign of a buyer who is not serious enough to have developed clear criteria. Professional fix-and-flippers who are buying consistently know exactly what they want — specific zip codes, price ranges, ARV thresholds, and condition levels. That specificity is what lets them make fast decisions. When a buyer can tell you precisely what they want, every deal you send them is pre-qualified. When a buyer says 'send everything,' you are doing their qualification work for them — and they will still pass on most of it.",incorrect:"Not quite. 'Send me everything' is actually a warning sign, not a positive indicator. Serious buyers who are actively purchasing have developed precise criteria from experience — they know which zip codes produce good returns, what ARV range they can handle, what condition level their crews can work with efficiently. A buyer who says 'send me everything' has usually not done enough deals to know their own criteria. The buyer who gives you specific criteria is the one who will make fast, committed decisions when you send the right deal."},
+  q3:{correct:"Correct! 'Hey I have a house at 123 Maple Ave, interested?' gives the buyer zero information to make a decision. They would have to look up the address, find the listing, run their own comps, estimate their own repairs, and calculate their own profit — work that serious active buyers simply will not do for an incomplete lead. A complete deal package — address, asking price, ARV with comps, repair estimate, projected profit, photos, and closing timeline — makes the decision take minutes instead of days or never.",incorrect:"Not quite. The problem was that you gave the buyer nothing to work with. A serious cash buyer who receives 'I have a house at 123 Maple Ave, interested?' has to do all the analysis themselves — look up the address, find comps, estimate repairs, calculate profit. Active buyers managing multiple projects will not do this work for an incomplete lead. Send a complete package: address, asking price, ARV with comps, repair breakdown, projected buyer profit, photos, and the closing timeline. That package produces decisions in minutes."},
+  q4:{correct:"Correct! A verbal commitment is not a commitment. The deposit is the commitment. The moment you stop marketing based on a verbal 'yes,' you are taking a risk that the buyer disappears — and you lose the time in your inspection window to find another buyer. The rule is simple: keep marketing until the assignment contract is signed AND the non-refundable deposit is in hand. Now that the buyer has gone silent, immediately resume marketing, contact your next-tier buyers, and check your inspection contingency expiration date. Act fast.",incorrect:"Not quite. You should never stop marketing based on a verbal commitment. The non-refundable deposit is the only signal that a buyer is truly committed. The moment they said they would send it tomorrow, you should have replied with the assignment contract to sign and your payment details — and continued marketing until both were received. Now that they have gone silent, immediately resume marketing to your buyers list and contact your next-tier buyers. Check your inspection contingency timeline and act accordingly."},
+  q5:{correct:"Correct! Both stories powerfully illustrate that wholesaling is a relationship business, not a volume business. Clothier closed 107 deals his first year with just two buyers — not a thousand. Martinez earns six figures from individual buyers not because he has a massive list but because he has deep, trusted relationships with a small number of serious investors. The compounding value of a trusted buyer relationship — one that produces deal after deal year after year with no new acquisition cost — far outperforms the constant churn of marketing to new buyers for every deal. Quality relationships are the actual asset. Build them with the same care you would build any long-term business partnership.",incorrect:"Not quite. Both Clothier and Martinez's stories point to the same conclusion: depth of buyer relationships beats breadth of buyer lists by a wide margin. Clothier needed two buyers to close 107 deals. Martinez earns six figures from individual buyer relationships — not from having thousands of buyers on a list. The actual asset in wholesaling is not the deals — it is the trusted relationships with buyers who close consistently, refer other buyers, and stay in the business long-term. A small number of excellent buyer relationships outperforms a large list of strangers every time."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;
+    } else {
+      ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}
+    }
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Excellent finish. You understand the buyer relationship model, deal packaging, the commitment threshold, and why depth beats breadth. Wholesaling Track complete — go build your buyers list and find your first deal.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the quality-over-quantity buyer principle, the complete deal package requirements, and the non-refundable deposit as the true commitment signal. These are the foundations of consistent deal closing.';
+  }
+}
+</script>
+</body>
+</html>
