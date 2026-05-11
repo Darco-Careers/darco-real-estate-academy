@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Mortgage & Lending Module 1: What a Loan Officer Does — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#3D1A6E;--purple-mid:#5C2E9A;--purple-light:#7B4BBF;--purple-pale:#F3EEFB;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(61,26,110,0.12);
+  --shadow-card:0 2px 16px rgba(61,26,110,0.08);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--purple);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--purple);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--purple-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--purple-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--purple);font-weight:600;}
+.progress-bar{background:var(--purple-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--purple-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(61,26,110,0.12);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--purple-mid);border-radius:3px;width:17%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--purple);color:var(--gold-light);}
+.prog-dot.complete{background:var(--purple-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(61,26,110,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(61,26,110,0.25);}
+.module-hero{background:linear-gradient(135deg,#1A0838 0%,var(--purple) 55%,var(--purple-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--purple);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--purple-pale);border-left:4px solid var(--purple-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--purple-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--purple);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--purple-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.path-callout{border-radius:10px;padding:1rem 1.25rem;margin:0.85rem 0;font-size:14px;line-height:1.7;color:var(--text-mid);}
+.path-callout.ep{background:rgba(61,26,110,0.05);border:1px solid rgba(61,26,110,0.15);}
+.path-callout.op{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);}
+.pc-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-bottom:0.4rem;color:var(--purple);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.steps-list{display:flex;flex-direction:column;gap:0.85rem;margin:1.75rem 0;}
+.step-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--purple);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.step-content h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.step-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.qualities-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.quality-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:0 12px 12px 0;padding:1.25rem;}
+.quality-card .qc-num{font-size:10px;font-weight:700;color:var(--purple-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.quality-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.quality-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.compare-card{border-radius:14px;padding:1.5rem;}
+.compare-card.broker{background:var(--purple-pale);border:1px solid rgba(61,26,110,0.2);}
+.compare-card.retail{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.compare-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.compare-card.broker h4{color:var(--purple);}
+.compare-card.retail h4{color:#8A6A20;}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.compare-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.compare-card.broker ul li::before{content:'→';color:var(--purple-mid);font-weight:700;flex-shrink:0;}
+.compare-card.retail ul li::before{content:'→';color:#8A6A20;font-weight:700;flex-shrink:0;}
+.habits-cards{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
+.habit-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;gap:1.25rem;}
+.hc-icon{font-size:1.75rem;flex-shrink:0;margin-top:2px;}
+.hc-content h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.hc-content p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.cost-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:14px;}
+.cost-table th{background:var(--purple-pale);color:var(--purple-mid);font-weight:700;padding:0.6rem 1rem;text-align:left;font-size:12px;letter-spacing:0.5px;}
+.cost-table td{padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-mid);}
+.cost-table tr:last-child td{border-bottom:none;font-weight:700;color:var(--text-dark);}
+.cost-table tr.highlight td{background:var(--purple-pale);color:var(--text-dark);}
+.video-section{margin:2.5rem 0;}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 4px 24px rgba(61,26,110,0.15);margin-bottom:0.75rem;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(61,26,110,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.takeaways{background:linear-gradient(135deg,#1A0838,var(--purple));border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;color:var(--white);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.7;display:flex;gap:10px;}
+.takeaways ul li::before{content:'→';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+.knowledge-check{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.75rem;}
+.question{margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.question p{font-size:15px;color:var(--text-dark);line-height:1.7;margin-bottom:0.85rem;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;}
+.option:hover{border-color:var(--purple-mid);background:var(--purple-pale);}
+.option.selected{border-color:var(--purple);background:var(--purple-pale);color:var(--text-dark);}
+.option.correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.incorrect{border-color:#C62828;background:#FFF5F5;color:#8B0000;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-light);flex-shrink:0;margin-top:1px;}
+.option.selected .option-letter{background:var(--purple);color:var(--white);}
+.option.correct .option-letter{background:#2E7D32;color:var(--white);}
+.option.incorrect .option-letter{background:#C62828;color:var(--white);}
+.explanation{font-size:13px;line-height:1.65;padding:0.75rem 1rem;border-radius:8px;margin-top:0.5rem;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:#F1F8F1;color:#1B5E20;}
+.explanation.incorrect-exp{background:#FFF5F5;color:#8B0000;}
+.check-btn{display:inline-block;background:var(--purple);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.check-btn:hover{background:var(--purple-mid);}
+.check-btn:disabled{background:#ccc;cursor:not-allowed;}
+.score-result{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.7;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:#F1F8F1;color:#1B5E20;border:1px solid #A5D6A7;}
+.score-result.fail{background:#FFF5F5;color:#8B0000;border:1px solid #FFCDD2;}
+.books-section{display:flex;flex-direction:column;gap:1rem;margin:1.25rem 0;}
+.book-item{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;}
+.bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.bi-author{font-size:12px;color:var(--purple-mid);font-weight:600;margin-bottom:0.4rem;}
+.bi-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.book-item a{display:inline-flex;align-items:center;white-space:nowrap;background:var(--purple-pale);color:var(--purple);border:1px solid rgba(61,26,110,0.2);padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.book-item a:hover{background:var(--purple);color:var(--white);}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--purple-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(61,26,110,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);}
+.btn-outline:hover{border-color:var(--purple-mid);color:var(--purple);}
+.btn-gold{background:var(--gold);color:#5A3800;}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+.fade-in{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="mortgage-lending.html" class="nav-back">← Mortgage &amp; Lending</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="mortgage-lending.html">Mortgage &amp; Lending</a>
+  <span class="sep">›</span>
+  <span class="current">Module 1: What a Loan Officer Does</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <span class="prog-dot active">1</span>
+    <span class="prog-dot locked">2</span>
+    <span class="prog-dot locked">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Mortgage &amp; Lending Track · Module 1 of 6</div>
+    <h1>What a Loan Officer Does — <em>and Why This Career Matters</em></h1>
+    <p>The role, the responsibilities, the qualities that separate top producers from order-takers, and the complete step-by-step path to getting your MLO license.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Primary Sources: NMLS + Next Gen LO</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What a Mortgage Loan Originator does — <em>the role, the day-to-day, and why it matters</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">A Mortgage Loan Originator — commonly called an MLO or loan officer — is the professional who helps people borrow money to buy or refinance a home. When someone decides to purchase a house, they almost always need a mortgage. The MLO is the person who makes that mortgage happen — gathering the borrower's financial information, evaluating their creditworthiness, identifying the right loan product for their situation, submitting the application to a lender, and guiding the file all the way through underwriting to the closing table.</p>
+
+    <p class="lesson-text">The job has two primary client scenarios. <strong>Purchase transactions:</strong> a buyer needs financing to acquire a home. The MLO collects income documentation, reviews credit, calculates debt-to-income ratios, helps the borrower understand how much home they can afford, and recommends the right loan product. <strong>Refinance transactions:</strong> an existing homeowner wants to lower their interest rate, reduce their monthly payment, shorten their loan term, or access equity through a cash-out refinance or home equity line of credit. The MLO analyzes whether a refinance makes financial sense and structures the new loan accordingly.</p>
+
+    <p class="lesson-text">One common misconception that stops people before they even start: an MLO is not lending their own money. You are not a bank. You are acting on behalf of your clients — taking their loan application and either submitting it to a lender you work for directly, or shopping it across multiple lenders to find the best product and rate. That role — connecting borrowers with the right financing — is where your value to the client lies.</p>
+
+    <div class="callout callout-quote fade-in">
+      <div class="callout-label">📖 Rethink Everything You Know About Being a Next Gen Loan Officer</div>
+      <p>"A Next Gen Loan Officer is uniquely positioned to be the most trusted resource for financial education and preparation for the next generation of homebuyers. The next generation homebuyer is distinctly different from prior generations in many ways. Where they learn and how they consume information is one of the biggest differences. Loan Officers, of all ages and across all channels, need to better understand this future homebuyer cohort if they are to remain relevant."</p>
+      <div class="quote-attr">— Introduction, Rethink Everything You Know About Being a Next Gen Loan Officer (2024)</div>
+    </div>
+
+    <h3 class="sub-title">What the day-to-day actually looks like</h3>
+    <p class="lesson-text">On a daily basis, an MLO is doing some combination of the following: taking new loan applications (gathering documents, calculating income and debts), submitting applications to lenders' underwriting teams, working to clear conditions that come up during underwriting, communicating with clients and real estate agents about the status of active files, prospecting for new clients through referral relationships with agents and builders, and following up with past clients for refinance opportunities or referrals.</p>
+
+    <p class="lesson-text">A significant advantage of this career versus being a real estate agent: the job is largely remote. You can take client calls on Zoom, send loan estimates via email, and manage an entire pipeline from your home office. You are not driving to showings or hosting open houses. This makes it an attractive option for anyone who wants to stay close to real estate and help clients with the largest financial transaction of their lives — without the field-based demands of an agent career.</p>
+
+    <p class="lesson-text">Another major advantage: multi-state licensing. Unlike a real estate agent who is typically limited to transactions in their licensed state, an MLO can get licensed in multiple states — some professionals are licensed in 40 or more. This dramatically expands your potential client base beyond your local market.</p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 Earning Potential</div>
+      <p>Mortgage loan officers were ranked #2 on Indeed's list of best jobs in 2024, with an average annual salary of $182,310. MLOs working at mortgage brokerages typically earn 1% to 1.75% commission on the loan amount — meaning a $400,000 loan generates $4,000 to $7,000 in commission on a single transaction. MLOs who build strong referral pipelines and close consistently can generate six-figure incomes. The ceiling is entirely determined by your deal volume and client relationships.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The qualities of a next-generation loan officer — <em>what separates top producers from order-takers</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Dale Vermillion — one of the contributing authors in Rethink Everything You Know About Being a Next Gen Loan Officer — identifies a pattern he has seen across decades of training loan officers: most originators end up as order-takers rather than difference-makers. They are transactional. They focus on getting the loan done rather than genuinely understanding and serving the borrower. The result is a commodity experience — boring, confusing, and easily replaced by the next lender offering a slightly lower rate.</p>
+
+    <p class="lesson-text">The shift from order-taker to difference-maker is not about product knowledge alone. It is about mindset and habits. Vermillion outlines the difference-maker habits that consistently separate top producers from the field.</p>
+
+    <div class="habits-cards fade-in">
+      <div class="habit-card">
+        <div class="hc-icon">🤝</div>
+        <div class="hc-content">
+          <h4>Difference-Maker Habit #1 — Start with Appreciation</h4>
+          <p>Next-generation loan officers start every client interaction with sincere appreciation — letting borrowers know their business is not taken for granted. They then spend time digging into what the borrower is truly trying to accomplish, not just the surface-level loan request. They listen attentively, repeat back stated needs, and respond empathetically to the emotions involved in the home buying or refinancing process.</p>
+        </div>
+      </div>
+      <div class="habit-card">
+        <div class="hc-icon">📋</div>
+        <div class="hc-content">
+          <h4>Difference-Maker Habit #2 — The Rule of 5s</h4>
+          <p>The Rule of 5s states that a customer is significantly more likely to move forward when presented with five tangible reasons why working with you specifically is the right choice. Next-generation loan officers never quote a rate upfront before understanding the borrower's complete situation — because a rate quoted without full information is meaningless. Instead, they craft a value statement built on five specific benefits they can deliver for that particular borrower's situation.</p>
+        </div>
+      </div>
+      <div class="habit-card">
+        <div class="hc-icon">🎯</div>
+        <div class="hc-content">
+          <h4>Difference-Maker Habit #3 — Be a Money-Giver-Awayer</h4>
+          <p>Next-generation loan officers are committed to demonstrating financial value to borrowers — not just processing a transaction. They explain how to save money through a lower payment, how to build wealth through equity, how to align loan terms with long-term financial goals. They take time to slow down and develop deep understanding of the borrower's short and long-term objectives. This creates customers for life, not one-time transactions.</p>
+        </div>
+      </div>
+      <div class="habit-card">
+        <div class="hc-icon">📞</div>
+        <div class="hc-content">
+          <h4>Difference-Maker Habit #4 — Your Database is Your Biggest Asset</h4>
+          <p>Chris Vinson of Class Valuation is direct: most originators fail to give clients a great experience because they focus on the outcome — getting the loan closed — rather than the experience throughout the process. Your database of past clients is your most valuable business asset. A systematic follow-up plan that maintains real relationships with past borrowers generates consistent referral business that reduces your dependence on chasing new leads.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The four core qualities of successful loan officers</h3>
+    <div class="qualities-grid fade-in">
+      <div class="quality-card">
+        <div class="qc-num">Quality 1</div>
+        <h4>Problem Solver</h4>
+        <p>Every loan has challenges. Understanding all available loan products, underwriting guidelines, and the real estate process well enough to find creative solutions when issues arise is what separates closers from order-takers.</p>
+      </div>
+      <div class="quality-card">
+        <div class="qc-num">Quality 2</div>
+        <h4>Excellent Communicator</h4>
+        <p>The #1 reason clients leave a lender for a competitor is not rate — it is communication. You are the main point of contact between the loan team, the client, and the real estate agents involved. Managing expectations consistently is everything.</p>
+      </div>
+      <div class="quality-card">
+        <div class="qc-num">Quality 3</div>
+        <h4>Detail Oriented</h4>
+        <p>Income calculations, file organization, loan guidelines, compliance requirements — the details in a mortgage file are numerous and consequential. A single missed condition can delay a closing by days and damage your client relationship permanently.</p>
+      </div>
+      <div class="quality-card">
+        <div class="qc-num">Quality 4</div>
+        <h4>Genuinely Loves Helping People</h4>
+        <p>This is a customer service role at its core. You are helping someone with the largest purchase and potentially the largest asset of their life. Above all else, top loan officers genuinely care about the outcome for their clients — not just the commission.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 — LICENSING + VIDEOS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">How to get your MLO license — <em>the complete step-by-step path from zero to licensed</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">To originate mortgage loans in the United States, you must be licensed by your state and registered with the Nationwide Multistate Licensing System and Registry (NMLS). This is a federal requirement established by the SAFE Act — the Secure and Fair Enforcement for Mortgage Licensing Act — passed in 2008. The NMLS does not issue your license itself. It maintains a centralized database and facilitates communication between you and the state regulatory agency that actually approves or denies your application. Understanding this distinction is important — and it is tested on the NMLS exam.</p>
+
+    <div class="steps-list fade-in">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Create your NMLS account and get your NMLS ID number</h4>
+          <p>Go to mortgage.nationwidelicensingsystem.org and set up your account. You will receive a unique NMLS ID number — memorize it. You will use it for your entire career on every loan application, advertisement, and license renewal.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Complete the MU4 application</h4>
+          <p>Fill out the Individual Form MU4. This requires 10 years of employment and residential history with no gaps. You will also answer questions about your financial history and criminal background, authorize a credit report pull, and schedule an appointment for electronic fingerprinting for the FBI background check.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Complete 20 hours of SAFE Act pre-licensing education</h4>
+          <p>The SAFE Act requires 20 hours of NMLS-approved pre-licensing education: 3 hours of federal law, 3 hours of ethics, 2 hours of non-traditional mortgage lending, and 12 hours of electives (which may include state-specific requirements). Different states have additional education requirements — California, Florida, and others require additional state-specific hours on top of the 20-hour federal requirement. Check your state's requirements before enrolling.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Pass the SAFE MLO National Test</h4>
+          <p>The exam has 125 questions (115 scored + 10 unscored pretest questions) and you must score 75% or higher to pass. You have 190 minutes. The exam covers five domains: Federal Mortgage-Related Laws (24%), General Mortgage Knowledge (20%), Ethics (18%), Mortgage Loan Origination Activities (17%), and Uniform State Content (11%). If you fail, you must wait 30 days before retaking. Study hard — most practitioners recommend scoring 90%+ on practice tests before attempting the real exam.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Pass the background check and credit review</h4>
+          <p>A felony conviction in the past 7 years — or any felony involving fraud, money laundering, or similar financial crimes — is an automatic disqualifier. Other criminal history must be explained with documentation. On the credit side, states are not focused on your credit score — they are looking for a pattern of financial responsibility. Recent foreclosures, outstanding judgments, or serious delinquencies can be grounds for denial. Always be 100% honest on your application — attempts to hide information are far more damaging than the underlying issue.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>Get sponsored by a mortgage company</h4>
+          <p>Just like a real estate agent hangs their license with a broker, an MLO must be sponsored by a licensed mortgage employer before they can originate loans. Your employer activates your license in the NMLS system. Finding the right first employer matters — prioritize training, culture, and access to leads over compensation when you are starting out.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <h4>Complete 8 hours of continuing education annually</h4>
+          <p>To renew your license each year, you must complete 8 hours of NMLS-approved continuing education: 3 hours of federal law updates, 2 hours of ethics, 2 hours of non-traditional mortgage lending, and 1 hour of elective. Staying current on regulatory changes is a professional requirement — not optional.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">What it costs to get licensed</h3>
+    <table class="cost-table fade-in">
+      <tr><th>Requirement</th><th>Estimated Cost</th></tr>
+      <tr><td>Pre-licensing education (20 hours)</td><td>$230 – $719</td></tr>
+      <tr><td>Exam prep course</td><td>$0 (included) or ~$235</td></tr>
+      <tr><td>National exam fee (NMLS)</td><td>$110</td></tr>
+      <tr><td>NMLS processing fee</td><td>$30</td></tr>
+      <tr><td>FBI background check</td><td>$36.25</td></tr>
+      <tr><td>Credit report</td><td>$15</td></tr>
+      <tr class="highlight"><td>Total (before state-specific fees)</td><td>$421 – $910+</td></tr>
+    </table>
+
+    <div class="video-section fade-in">
+      <h3>🎬 Watch: The Complete Path to Becoming an MLO</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/lWmtlDi0N9o" title="How to Become a Mortgage Loan Officer in 2025 Step by Step" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);margin-bottom:1.5rem;">November 2024 · Complete career overview — the MLO role, licensing steps, exam breakdown, broker vs retail lender, earning potential</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/Y7Vcm7zuBUE" title="How to Become a Mortgage Loan Officer — Dave McGill, Mortgage Educators" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);">Dave McGill · Mortgage Educators and Compliance · July 2023 · Precise walkthrough of the NMLS ID, MU4 application, SAFE Act education requirements, exam structure, and background check criteria</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Where to hang your license — <em>broker vs retail lender, and how to build your business</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="path-callout ep">
+      <span class="pc-tag">🧑‍💼 Employee Path</span>
+      <p>If you are pursuing the MLO career through a company — whether a large retail bank, a regional mortgage company, or a smaller brokerage — your first priority is finding an employer who will invest in your training. The technical knowledge required to be a competent loan officer takes time to develop. A company that provides mentorship, training on their loan origination software (Encompass, Arrive, etc.), and access to leads while you are building your client base is worth far more than a slightly higher commission split at a company that throws you in the deep end alone.</p>
+    </div>
+    <div class="path-callout op">
+      <span class="pc-tag">🏢 Entrepreneur Path</span>
+      <p>As an MLO entrepreneur, you are building a book of business. Your income is directly tied to your relationships — with real estate agents who refer purchase clients, with past borrowers who return for refinances and send referrals, and increasingly with direct-to-consumer marketing channels. The most successful MLO entrepreneurs treat their practice like a business: they have a CRM system, a systematic follow-up process, a personal brand, and a referral strategy. The license is just the entry point — the business is what you build on top of it.</p>
+    </div>
+
+    <h3 class="sub-title">Broker vs retail lender — which is right for you?</h3>
+    <div class="compare-grid fade-in">
+      <div class="compare-card broker">
+        <h4>💼 Mortgage Broker</h4>
+        <ul>
+          <li>You shop multiple lenders to find the best rate and product for each client</li>
+          <li>Commission typically 1% to 1.75% of loan amount — higher earning potential</li>
+          <li>No salary — entirely commission-based income</li>
+          <li>You generate your own leads and clients</li>
+          <li>Maximum flexibility and independence</li>
+          <li>Best for self-motivated entrepreneurs with strong sales skills</li>
+        </ul>
+      </div>
+      <div class="compare-card retail">
+        <h4>🏦 Retail Lender</h4>
+        <ul>
+          <li>You originate loans for one specific lender's products only</li>
+          <li>Often provides a base salary plus reduced commission</li>
+          <li>Company may provide leads — lower pressure to self-generate</li>
+          <li>More structure, training, and support systems</li>
+          <li>Less earning upside but more stability and lower risk</li>
+          <li>Best for new originators building skills and confidence</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-title">How MLOs build their client pipeline</h3>
+    <p class="lesson-text">The traditional model for building a mortgage business is <strong>referral relationships with real estate agents.</strong> When an agent represents a buyer, that buyer needs a loan — and agents regularly refer their clients to trusted MLOs they have worked with successfully. Building five to ten strong agent relationships in your market can generate consistent purchase volume that sustains a healthy pipeline month after month.</p>
+
+    <p class="lesson-text">Increasingly, top producers are combining agent referrals with direct-to-consumer marketing — building personal brands on social media, creating educational content for first-time homebuyers, and generating refinance leads through targeted digital campaigns. The next generation of homebuyers — Millennials and Gen Z — researches mortgage options online before talking to a professional. The MLOs who are visible, educational, and trustworthy in digital channels are capturing business that was previously invisible to the traditional referral model.</p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 Your NMLS Exam Study Resources</div>
+      <p>Two free resources worth bookmarking now: <strong>GoTestPrep.com</strong> (nmls-practice-test-study-guide) offers 125 free practice questions organized by all five exam domains with detailed explanations. <strong>PracticeTestGeeks.com</strong> offers additional practice tests and domain-specific quizzes. The NMLS exam has a large question bank — the goal is to master the underlying concepts so you can answer any phrasing of a question correctly, not memorize specific answers. Most practitioners recommend scoring 90%+ consistently on practice exams before scheduling the real test.</p>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>You are entering one of the most meaningful careers in real estate — one where your work directly determines whether a family can afford a home, whether a veteran can access the benefits they earned, whether a first-time buyer can stop renting and start building equity. The technical knowledge matters enormously — and you will build it. But the loan officers who build lasting careers are the ones who never forget that behind every file is a human being making one of the biggest decisions of their life. Start with that truth and let everything else follow from it.</p>
+      <div class="mentor-name">Your Darco Mentor · Module 1 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 1 Key Takeaways</h3>
+    <ul>
+      <li>A Mortgage Loan Originator (MLO) helps borrowers secure financing for home purchases and refinances. You are not lending your own money — you are acting on behalf of your clients, submitting their applications to lenders and guiding files through underwriting to closing.</li>
+      <li>The career offers significant advantages: largely remote work, multi-state licensing capability, high earning potential (avg $182,310/year, ranked #2 on Indeed's best jobs list 2024), and the ability to build a scalable book of business through referral relationships.</li>
+      <li>The difference between an order-taker and a difference-maker is mindset and habits: starting with appreciation, truly understanding borrower goals, delivering the Rule of 5s, treating your past client database as your most valuable asset, and becoming a "money-giver-awayer" who demonstrates real financial value.</li>
+      <li>The SAFE Act (2008) requires all MLOs to be licensed by their state and registered with the NMLS. The NMLS maintains the centralized database — but your state regulatory agency is the body that actually approves or denies your license application.</li>
+      <li>The complete licensing path: NMLS account → MU4 application → 20 hours pre-licensing education (3 federal law + 3 ethics + 2 non-traditional + 12 electives) → pass the SAFE MLO National Test (125 questions, 75% passing score) → background check → employer sponsorship → 8 hours continuing education annually.</li>
+      <li>Broker path: shop multiple lenders, higher commission (1–1.75%), fully commission-based, self-generated leads. Retail lender path: one lender's products, salary + lower commission, company-provided leads and training. For beginners, retail lenders often provide the training and stability needed to develop skills before striking out independently.</li>
+      <li>Building your pipeline: traditional agent referral relationships remain the core of most successful MLO businesses. The next generation of top producers is combining agent referrals with direct-to-consumer digital marketing — building educational personal brands that attract Millennial and Gen Z homebuyers where they already spend their time.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A new MLO applicant believes the NMLS is the agency that will approve or deny their license application. According to Dave McGill of Mortgage Educators, is this correct — and what is the NMLS's actual role?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">A</div> This is incorrect. The NMLS does not approve or deny licenses — each state's regulatory agency does. The NMLS facilitates communication between the applicant and the state by maintaining a centralized database and enabling multi-state licensing through one system. Your NMLS ID is your unique identifier throughout your career.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> This is correct — the NMLS is the governing federal body that issues MLO licenses in all 50 states, serving as both the testing authority and the licensing authority for the mortgage industry.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> This is partially correct — the NMLS approves licenses for the national component while state agencies handle state-specific endorsements separately.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> This is correct — the NMLS was created by the SAFE Act specifically to serve as the single federal licensing authority for all mortgage originators nationwide.</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. The SAFE Act requires 20 hours of pre-licensing education. What is the specific breakdown of those 20 hours — and why does it matter to know the breakdown rather than just the total?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> 10 hours of federal law, 5 hours of ethics, and 5 hours of electives. The breakdown matters because states require different totals for each category.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> 20 hours of open elective content — providers can structure the 20 hours however they choose as long as the total is met.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> 3 hours of federal law + 3 hours of ethics + 2 hours of non-traditional mortgage lending + 12 hours of electives (which may include state-specific requirements). The breakdown matters because each category has minimum requirements that cannot be substituted — you cannot, for example, satisfy the ethics requirement with elective hours. States may also require additional hours on top of these 20.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> 5 hours of federal law + 5 hours of ethics + 5 hours of mortgage products + 5 hours of state-specific content. This is the uniform breakdown required in all 50 states with no variations allowed.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. An MLO applicant has a felony conviction from 5 years ago related to tax evasion. They are wondering whether to disclose this on their MU4 application. What is the correct advice — and what is the likely outcome?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Do not disclose it — 5 years is long enough ago that it likely will not appear on a background check, and disclosing it proactively would only draw attention to it.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> The applicant is automatically disqualified — any felony conviction at any point in a person's lifetime is an automatic bar to MLO licensure with no exceptions or appeals process.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Always disclose 100% honestly. A felony within the past 7 years involving fraud or financial crimes is an automatic disqualifier — but tax evasion may or may not fall into that category depending on state interpretation. More importantly, attempting to hide the information is far more damaging than the felony itself. States will often work with applicants who disclose derogatory history honestly and can demonstrate rehabilitation — but denial is nearly certain if concealment is discovered.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> The applicant should wait until the conviction is 7 years old before applying — at that point it is automatically expunged from NMLS background check results and does not need to be disclosed.</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Dale Vermillion describes the "Rule of 5s" as a key difference-maker habit. What does this rule state — and why does it replace the common originator practice of quoting a rate upfront?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> The Rule of 5s states that an originator should contact each prospect a minimum of five times before giving up — persistence is the key driver of conversion in mortgage sales.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> The Rule of 5s states that an originator should gather five specific documents from every borrower before quoting any rate — this ensures the rate quoted is accurate and defensible.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> The Rule of 5s states that a customer is significantly more likely to move forward when presented with five tangible benefits of working with you specifically. It replaces the rate-quoting habit because quoting a rate upfront — before fully understanding the borrower's situation, qualifications, and goals — produces a meaningless number that creates comparison shopping rather than relationship building. A quoted rate without a complete application is guessing with 100% inaccuracy.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> The Rule of 5s is a compliance requirement stating that originators must present borrowers with at least five different loan product options before they can select a mortgage, ensuring consumer choice and competition.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. A new MLO is choosing between a mortgage broker position (commission only, 1.5% per loan, self-generated leads) and a retail lender position (salary plus 0.5% commission, company-provided leads, structured training program). They have no prior mortgage experience. Which path is generally recommended for a beginner — and why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> The broker path — because the higher commission rate means faster income growth, and the pressure to self-generate leads builds the sales discipline needed for long-term success in the industry.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> The retail lender path — for a new originator with no prior experience, the most valuable asset is not the commission rate but the training, mentorship, and deal volume that comes from an established company. Having access to leads while learning the loan process, software systems, and underwriting guidelines reduces the risk of failure before you have developed the skills and confidence to self-generate. Once those fundamentals are solid, the broker path becomes a natural next step.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> Neither — new MLOs should always start by working independently as sole proprietors to avoid commission splits and build their entire compensation from day one.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The broker path — because working with multiple lenders exposes a new originator to the full range of available products faster, accelerating the product knowledge needed to become a competent loan officer.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">NMLS SAFE MLO Exam Test Prep — Mortgage Loan Originator Audio Study Guide</div>
+          <div class="bi-author">Samuel Davidson &amp; Rebecca Davidson (2025)</div>
+          <div class="bi-desc">Primary technical source for the Mortgage &amp; Lending track. Chapter 2 covers the complete regulatory framework — the SAFE Act, NMLS requirements, state licensing, and all federal laws governing mortgage loan origination. Chapters 1 and 3 cover loan types and the origination process in detail used across Modules 2–4.</div>
+        </div>
+        <a href="https://www.audible.com/pd/NMLS-SAFE-MLO-Mortgage-Loan-Originator-Study-Guide-Audiobook/B0FF7NLQHT" target="_blank">Audible →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Rethink Everything You Know About Being a Next Gen Loan Officer</div>
+          <div class="bi-author">Kyle Draper et al. — Multiple Industry Contributors (2024)</div>
+          <div class="bi-desc">Primary source for the career, mindset, and business-building content across Modules 1 and 6. Chapters 1–6 (Mindset Matters section) provide the difference-maker framework, the Rule of 5s, and the "money-giver-awayer" concept. Chapters 33–36 cover referral systems, digital marketing, and building a sustainable MLO business.</div>
+        </div>
+        <a href="https://www.amazon.com/s?k=rethink+everything+next+gen+loan+officer&i=stripbooks" target="_blank">Find It →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">NMLS SAFE MLO Exam — Free Practice Tests</div>
+          <div class="bi-author">GoTestPrep.com + PracticeTestGeeks.com</div>
+          <div class="bi-desc">125+ free practice questions organized by all five exam domains with detailed explanations. The NMLS exam has a large question bank — mastering underlying concepts rather than memorizing specific answers is essential. Score 90%+ on practice tests consistently before scheduling the real exam.</div>
+        </div>
+        <a href="https://gotestprep.com/nmls-practice-test-study-guide/" target="_blank">Practice Free →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 2: Mortgage Products and Loan Types</h3>
+    <p>You understand the role and the path to licensure. Now the real technical knowledge begins. Module 2 covers every major loan product an MLO needs to know — conventional loans (conforming and non-conforming), FHA, VA, USDA, jumbo, adjustable-rate mortgages, and Non-QM products. You will learn the eligibility criteria, down payment requirements, credit score thresholds, and key characteristics of each loan type — all tested on the NMLS exam.</p>
+    <a href="mlo-module-2.html" class="next-module-cta">Module 2: Mortgage Products and Loan Types →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mortgage-lending.html" class="btn btn-outline">← Track Overview</a>
+  <div class="module-nav-info">
+    <p>Mortgage &amp; Lending Track</p>
+    <strong>Module 1 of 6</strong>
+  </div>
+  <a href="mlo-module-2.html" class="btn btn-gold">Module 2: Loan Types →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals. Not a substitute for NMLS-approved pre-licensing education.</p>
+</footer>
+
+<script>
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! This is one of the most commonly misunderstood facts about MLO licensing — and it is tested on the exam. The NMLS is a database and communication facilitator, not a licensing authority. Each state's regulatory agency — the Department of Financial Institutions, Department of Banking, or similar — makes the actual approval or denial decision. The NMLS simply enables you to apply to multiple states through one centralized system and tracks your licensing history throughout your career.",incorrect:"Not quite. The NMLS does not approve or deny licenses — that is the function of each individual state's regulatory agency. The NMLS is a centralized database that facilitates communication between applicants and state agencies, and enables multi-state licensing through one system. Your state's regulatory authority — whatever that body is called in your state — is the entity that approves or denies your application. This distinction is specifically tested on the NMLS exam."},
+  q2:{correct:"Correct! The 20-hour breakdown is: 3 hours federal law + 3 hours ethics + 2 hours non-traditional mortgage lending + 12 hours electives. The breakdown matters because each category has a mandatory minimum — you cannot substitute extra elective hours for the required ethics or federal law hours. Additionally, many states require additional hours on top of the federal 20-hour requirement, particularly state-specific content. Always check your state's exact requirements before enrolling in a pre-licensing course.",incorrect:"Not quite. The 20-hour SAFE Act pre-licensing requirement has a specific mandatory breakdown: 3 hours of federal law, 3 hours of ethics, 2 hours of non-traditional mortgage lending, and 12 hours of electives (which may include state-specific requirements). Each category has minimum hours that cannot be substituted with hours from another category. Many states also require additional state-specific education hours on top of the 20-hour federal requirement."},
+  q3:{correct:"Correct! Always disclose 100% honestly — this is non-negotiable. A felony in the past 7 years involving fraud, money laundering, or similar financial crimes is an automatic disqualifier. Tax evasion may or may not fall into this category depending on state interpretation, so the outcome is not certain. But attempting to hide any criminal history is far more damaging than the underlying issue — states can and do work with applicants who are transparent and can demonstrate rehabilitation. Concealment, if discovered, results in near-certain denial and potential additional consequences.",incorrect:"Not quite. The correct approach is always 100% honest disclosure. A felony within the past 7 years involving fraud or financial crimes is an automatic disqualifier — but tax evasion's classification varies by state. More importantly, attempting to hide any derogatory history is the worst possible approach. The NMLS background check is thorough. States regularly work with applicants who disclose honestly and can show rehabilitation. The applicant who hides information and is caught has no path forward — the one who discloses honestly often does."},
+  q4:{correct:"Correct! The Rule of 5s — credited to Dale Vermillion — states that borrowers are significantly more likely to move forward when presented with five tangible benefits of working with you specifically. It replaces the rate-quoting habit because quoting a rate before fully understanding a borrower's situation is meaningless — it cannot be accurate without a complete application, and it immediately frames the conversation as a price comparison rather than a value conversation. Next-generation loan officers gather full information first and build a value statement around the borrower's specific needs.",incorrect:"Not quite. The Rule of 5s states that customers are significantly more likely to move forward when presented with five tangible benefits of working with you specifically. Vermillion's key insight is that quoting a rate upfront — before gathering complete information about the borrower's situation, qualifications, and goals — is impossible to do accurately. A rate quoted without a complete application is a guess, and it frames the relationship as a commodity price comparison rather than a trusted advisor engagement. Gathering information first and building value is the difference-maker approach."},
+  q5:{correct:"Correct! For a new originator with no mortgage experience, the most valuable resource is not the commission rate — it is training, mentorship, and deal volume. A retail lender that provides a base salary, structured training on loan origination software, access to leads, and experienced colleagues to learn from reduces the risk of failure during the critical learning period. Commission rate is a secondary consideration when you are still developing the product knowledge, underwriting understanding, and client communication skills that make a loan officer competent and confident.",incorrect:"Not quite. For a new originator with no prior mortgage experience, the retail lender path is generally recommended — not because of the commission rate, but because of training and support. Building competence requires deal volume and mentorship. A company that provides leads, structured training, and experienced colleagues dramatically reduces the risk of failure during the learning phase. Once you have developed strong product knowledge, client communication skills, and confidence in the loan process, transitioning to a broker model for higher commissions becomes a natural and lower-risk step."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;
+    } else {
+      ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}
+    }
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong start. You understand the MLO role, the NMLS vs state licensing distinction, the SAFE Act education requirements, and the difference-maker mindset. Ready for Module 2: Mortgage Products and Loan Types.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the NMLS vs state agency roles, the 20-hour education breakdown, the background check criteria, and the Rule of 5s. These fundamentals underpin everything in the modules ahead.';
+  }
+}
+</script>
+</body>
+</html>
