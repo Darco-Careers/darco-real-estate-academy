@@ -85,7 +85,12 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .loan-card.gov .lc-type{color:#8A6A20;}
 .loan-card h4{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--text-dark);margin-bottom:0.75rem;}
 .loan-card ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
-.loan-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.loan-card ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.loan-card ul li{font-size:13px;color:var(--text-mid);display:block;line-height:1.6;padding-left:1.25rem;position:relative;}
+.loan-card ul li::before{position:absolute;left:0;}
+.loan-card ul li::before{content:'→';font-weight:700;flex-shrink:0;}
+.compare-card ul li{font-size:13px;color:var(--text-mid);display:block;line-height:1.6;padding-left:1.25rem;position:relative;}
+.compare-card ul li::before{position:absolute;left:0;}
 .loan-card ul li::before{content:'→';color:var(--purple-mid);font-weight:700;flex-shrink:0;}
 .loan-card.gov ul li::before{color:#8A6A20;}
 .compare-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:13.5px;}
