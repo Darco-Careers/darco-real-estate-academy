@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Mortgage & Lending Module 2: Loan Types — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#3D1A6E;--purple-mid:#5C2E9A;--purple-light:#7B4BBF;--purple-pale:#F3EEFB;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(61,26,110,0.12);
+  --shadow-card:0 2px 16px rgba(61,26,110,0.08);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--purple);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--purple);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--purple-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--purple-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--purple);font-weight:600;}
+.progress-bar{background:var(--purple-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--purple-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(61,26,110,0.12);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--purple-mid);border-radius:3px;width:33%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--purple);color:var(--gold-light);}
+.prog-dot.complete{background:var(--purple-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(61,26,110,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(61,26,110,0.25);}
+.module-hero{background:linear-gradient(135deg,#1A0838 0%,var(--purple) 55%,var(--purple-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--purple);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-quote{background:var(--purple-pale);border-left:4px solid var(--purple-mid);border-radius:0 14px 14px 0;}
+.callout-quote .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--purple-mid);margin-bottom:0.5rem;}
+.callout-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--purple);font-style:italic;line-height:1.75;}
+.callout-quote .quote-attr{font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;color:var(--purple-mid);margin-top:0.5rem;font-weight:600;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.path-callout{border-radius:10px;padding:1rem 1.25rem;margin:0.85rem 0;font-size:14px;line-height:1.7;color:var(--text-mid);}
+.path-callout.ep{background:rgba(61,26,110,0.05);border:1px solid rgba(61,26,110,0.15);}
+.path-callout.op{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);}
+.pc-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-bottom:0.4rem;color:var(--purple);}
+.path-callout.op .pc-tag{color:#8A6A20;}
+.loan-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.loan-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--purple);border-radius:0 0 14px 14px;padding:1.5rem;}
+.loan-card.gov{border-top-color:var(--gold);}
+.loan-card .lc-type{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple-mid);margin-bottom:0.4rem;}
+.loan-card.gov .lc-type{color:#8A6A20;}
+.loan-card h4{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--text-dark);margin-bottom:0.75rem;}
+.loan-card ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.loan-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.loan-card ul li::before{content:'→';color:var(--purple-mid);font-weight:700;flex-shrink:0;}
+.loan-card.gov ul li::before{color:#8A6A20;}
+.compare-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:13.5px;}
+.compare-table th{background:var(--purple);color:var(--white);font-weight:700;padding:0.75rem 1rem;text-align:left;font-size:12px;letter-spacing:0.5px;}
+.compare-table th:first-child{border-radius:8px 0 0 0;}
+.compare-table th:last-child{border-radius:0 8px 0 0;}
+.compare-table td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table tr:nth-child(even) td{background:var(--purple-pale);}
+.compare-table .highlight{font-weight:700;color:var(--text-dark);}
+.video-section{margin:2.5rem 0;}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 4px 24px rgba(61,26,110,0.15);margin-bottom:0.75rem;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(61,26,110,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.takeaways{background:linear-gradient(135deg,#1A0838,var(--purple));border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;color:var(--white);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.7;display:flex;gap:10px;}
+.takeaways ul li::before{content:'→';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+.knowledge-check{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.75rem;}
+.question{margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.question p{font-size:15px;color:var(--text-dark);line-height:1.7;margin-bottom:0.85rem;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;}
+.option:hover{border-color:var(--purple-mid);background:var(--purple-pale);}
+.option.selected{border-color:var(--purple);background:var(--purple-pale);color:var(--text-dark);}
+.option.correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.incorrect{border-color:#C62828;background:#FFF5F5;color:#8B0000;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-light);flex-shrink:0;margin-top:1px;}
+.option.selected .option-letter{background:var(--purple);color:var(--white);}
+.option.correct .option-letter{background:#2E7D32;color:var(--white);}
+.option.incorrect .option-letter{background:#C62828;color:var(--white);}
+.explanation{font-size:13px;line-height:1.65;padding:0.75rem 1rem;border-radius:8px;margin-top:0.5rem;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:#F1F8F1;color:#1B5E20;}
+.explanation.incorrect-exp{background:#FFF5F5;color:#8B0000;}
+.check-btn{display:inline-block;background:var(--purple);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.check-btn:hover{background:var(--purple-mid);}
+.check-btn:disabled{background:#ccc;cursor:not-allowed;}
+.score-result{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.7;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:#F1F8F1;color:#1B5E20;border:1px solid #A5D6A7;}
+.score-result.fail{background:#FFF5F5;color:#8B0000;border:1px solid #FFCDD2;}
+.books-section{display:flex;flex-direction:column;gap:1rem;margin:1.25rem 0;}
+.book-item{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;}
+.bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.bi-author{font-size:12px;color:var(--purple-mid);font-weight:600;margin-bottom:0.4rem;}
+.bi-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.book-item a{display:inline-flex;align-items:center;white-space:nowrap;background:var(--purple-pale);color:var(--purple);border:1px solid rgba(61,26,110,0.2);padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.book-item a:hover{background:var(--purple);color:var(--white);}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--purple-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(61,26,110,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);}
+.btn-outline:hover{border-color:var(--purple-mid);color:var(--purple);}
+.btn-gold{background:var(--gold);color:#5A3800;}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+.fade-in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="mortgage-lending.html" class="nav-back">← Mortgage &amp; Lending</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="mortgage-lending.html">Mortgage &amp; Lending</a>
+  <span class="sep">›</span>
+  <span class="current">Module 2: Mortgage Products &amp; Loan Types</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mlo-module-1.html" class="prog-dot complete">1</a>
+    <span class="prog-dot active">2</span>
+    <span class="prog-dot locked">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Mortgage &amp; Lending Track · Module 2 of 6</div>
+    <h1>Mortgage Products &amp; <em>Loan Types</em></h1>
+    <p>Every major loan product an MLO needs to know — conventional, FHA, VA, USDA, jumbo, ARMs, and Non-QM — with the specific eligibility criteria, down payment requirements, and credit thresholds that are tested on the NMLS exam.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Primary Source: NMLS MLO Study Guide</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Conventional loans — <em>conforming, non-conforming, and what borrowers need to qualify</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Conventional loans are the most common type of mortgage financing in the United States. Unlike government-backed loans (FHA, VA, USDA), conventional loans are not insured or guaranteed by a federal agency. They are offered by private lenders and governed by guidelines set by government-sponsored enterprises (GSEs) — primarily Fannie Mae and Freddie Mac. Understanding the distinction between conforming and non-conforming conventional loans is fundamental MLO knowledge and tested directly on the NMLS exam.</p>
+
+    <h3 class="sub-title">Conforming vs. Non-Conforming</h3>
+    <p class="lesson-text"><strong>Conforming loans</strong> adhere to the guidelines established by Fannie Mae and Freddie Mac, including maximum loan limits set annually by the Federal Housing Finance Agency (FHFA). As of 2024, the standard conforming loan limit for a single-family home is <strong>$726,200</strong> in most areas, with higher limits in high-cost markets (parts of California, New York, and other expensive metros can exceed $1 million). Because conforming loans can be sold into the secondary market, lenders can offer lower interest rates and more favorable terms.</p>
+
+    <p class="lesson-text"><strong>Non-conforming loans</strong> do not meet GSE guidelines — typically because the loan amount exceeds conforming limits (jumbo loans) or because the borrower's circumstances fall outside standard underwriting criteria. Non-conforming loans carry higher interest rates because they represent greater risk to lenders who cannot sell them easily in the secondary market.</p>
+
+    <h3 class="sub-title">Conventional loan qualification requirements</h3>
+    <div class="loan-cards fade-in">
+      <div class="loan-card">
+        <div class="lc-type">Conventional</div>
+        <h4>Key Requirements</h4>
+        <ul>
+          <li>Minimum credit score: <strong>620</strong> (conforming). 740+ gets best rates and terms.</li>
+          <li>Down payment: as low as <strong>3%</strong>, though most buyers put 5–20% down</li>
+          <li>PMI required if down payment is less than 20% — can be removed at 80% LTV</li>
+          <li>DTI ratio: generally 43% or lower; up to ~50% with strong compensating factors</li>
+          <li>2 years consistent employment and income history preferred</li>
+          <li>Can be used for primary, secondary, and investment properties</li>
+          <li>No maximum income limit</li>
+        </ul>
+      </div>
+      <div class="loan-card">
+        <div class="lc-type">Private Mortgage Insurance (PMI)</div>
+        <h4>How PMI Works</h4>
+        <ul>
+          <li>Required when down payment is less than 20%</li>
+          <li>Protects the lender — not the borrower — in case of default</li>
+          <li>Monthly cost varies by credit score, down payment, and loan amount</li>
+          <li>Higher credit score = lower PMI premium</li>
+          <li>Can be removed when LTV reaches 80% (borrower request) or 78% (automatic)</li>
+          <li>No upfront PMI premium — monthly only</li>
+          <li>Key advantage over FHA MIP: PMI is removable</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 The Overlay Concept — Critical for MLOs</div>
+      <p>Government loan programs set minimum guidelines — but individual lenders may impose stricter requirements called <strong>overlays</strong>. For example, FHA's minimum credit score for 3.5% down is 580, but many lenders overlay a 620 or 640 minimum. This is why borrowers shopping for a mortgage may get different results from different lenders even when applying for the same loan type. As an MLO, knowing your lender's overlays — and knowing which lenders have fewer overlays — is a significant competitive advantage when helping borrowers who barely meet minimum guidelines.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Government-backed loans — <em>FHA, VA, and USDA in depth</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Government-backed loans are insured or guaranteed by a federal agency, which reduces lender risk and allows lenders to offer more favorable terms — lower down payments, more flexible credit requirements, and competitive interest rates. There are three major government loan programs every MLO must know cold: FHA, VA, and USDA. Each serves a distinct borrower profile and has specific eligibility criteria.</p>
+
+    <h3 class="sub-title">FHA Loans — Federal Housing Administration</h3>
+    <p class="lesson-text">Established in 1934, FHA loans are the most widely used government loan program. They are designed to make homeownership accessible to first-time buyers and borrowers with less-than-perfect credit. The FHA insures the loan — meaning if the borrower defaults, the FHA pays the lender — allowing lenders to accept lower credit scores and smaller down payments.</p>
+
+    <div class="loan-cards fade-in">
+      <div class="loan-card gov">
+        <div class="lc-type">FHA — Key Requirements</div>
+        <h4>Federal Housing Administration</h4>
+        <ul>
+          <li>Minimum credit score: <strong>580</strong> for 3.5% down; 500–579 with 10% down</li>
+          <li>Minimum down payment: <strong>3.5%</strong> (with 580+ credit score)</li>
+          <li>DTI ratio: front-end up to 47%, back-end up to 57% with compensating factors</li>
+          <li>Upfront MIP: <strong>1.75%</strong> of loan amount (added to loan balance)</li>
+          <li>Annual MIP: ~0.55% monthly, for life of loan if less than 10% down</li>
+          <li>2024 loan limit: $726,200 standard; higher in high-cost areas</li>
+          <li>Property types: single family, 2–4 unit, condos (must be FHA-approved), manufactured</li>
+          <li>Owner-occupied primary residence only</li>
+        </ul>
+      </div>
+      <div class="loan-card gov">
+        <div class="lc-type">FHA — Key Facts</div>
+        <h4>What MLOs Must Know</h4>
+        <ul>
+          <li>FHA rates are typically 0.5% lower than conventional — a meaningful borrower benefit</li>
+          <li>MIP stays for life of loan unless borrower puts 10%+ down (drops at year 11)</li>
+          <li>FHA loans are assumable — buyer can take over seller's mortgage and rate</li>
+          <li>FHA 203k allows purchase + renovation costs in one loan</li>
+          <li>Employment gap of 6+ months: must be back to work 6 months before qualifying</li>
+          <li>Best for: borrowers with credit scores under 680, limited down payment savings</li>
+          <li>Key drawback: MIP for life of loan adds significant long-term cost vs conventional</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-title">VA Loans — Department of Veterans Affairs</h3>
+    <p class="lesson-text">Established in 1944, VA loans are among the most powerful loan programs available. They are exclusively available to eligible veterans, active duty service members, and certain surviving spouses. The VA guarantees a portion of the loan, eliminating the need for a down payment and private mortgage insurance entirely.</p>
+
+    <div class="loan-cards fade-in">
+      <div class="loan-card gov">
+        <div class="lc-type">VA — Key Requirements</div>
+        <h4>Department of Veterans Affairs</h4>
+        <ul>
+          <li>Eligibility: veterans, active duty (90 days wartime / 181 days peacetime), National Guard/Reserves (6 years), surviving spouses</li>
+          <li>Certificate of Eligibility (COE) required — apply online through VA eBenefits</li>
+          <li>No official minimum credit score — most lenders prefer <strong>620+</strong></li>
+          <li>Down payment: <strong>0%</strong> — no down payment required</li>
+          <li>No private mortgage insurance — ever</li>
+          <li>DTI: 41% preferred; exceptions with strong residual income</li>
+          <li>VA funding fee required (unless exempt due to service-connected disability)</li>
+          <li>Loans are assumable by qualified buyers</li>
+        </ul>
+      </div>
+      <div class="loan-card gov">
+        <div class="lc-type">VA — Key Facts</div>
+        <h4>What MLOs Must Know</h4>
+        <ul>
+          <li>No down payment + no PMI = single most powerful homebuying benefit in the market</li>
+          <li>VA rates are typically lower than conventional due to government guarantee</li>
+          <li>Funding fee varies: 2.15% first use with 0% down; lower with down payment</li>
+          <li>Funding fee can be financed into loan amount</li>
+          <li>IRRRL (Interest Rate Reduction Refinance Loan) allows streamlined refinance</li>
+          <li>Residual income standard: VA evaluates remaining income after all obligations</li>
+          <li>Property types: single family, 2–4 unit (must occupy one), condos, manufactured</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-title">USDA Loans — United States Department of Agriculture</h3>
+    <p class="lesson-text">USDA loans are designed to promote homeownership in rural and suburban areas. They offer zero down payment financing for eligible borrowers — but come with strict geographic and income restrictions that make them highly specific to the right borrower situation.</p>
+
+    <div class="loan-cards fade-in">
+      <div class="loan-card gov">
+        <div class="lc-type">USDA — Key Requirements</div>
+        <h4>Rural Development Program</h4>
+        <ul>
+          <li>Geographic requirement: property must be in a USDA-eligible rural area (towns with populations ≤35,000 typically qualify)</li>
+          <li>Income limit: household income cannot exceed <strong>115% of area median income</strong></li>
+          <li>Minimum credit score: no official minimum — most lenders prefer <strong>640+</strong></li>
+          <li>Down payment: <strong>0%</strong> — 100% financing</li>
+          <li>DTI: 41% preferred; exceptions up to 44% with strong factors</li>
+          <li>Upfront guarantee fee: 1% of loan amount</li>
+          <li>Annual fee: 0.35% of remaining loan balance (lower than FHA MIP)</li>
+          <li>Primary residence only — no investment or vacation properties</li>
+        </ul>
+      </div>
+      <div class="loan-card gov">
+        <div class="lc-type">USDA — Key Facts</div>
+        <h4>What MLOs Must Know</h4>
+        <ul>
+          <li>Two programs: Guaranteed loans (issued by approved lenders) and Direct loans (issued by USDA for very low income borrowers)</li>
+          <li>Unlike VA, USDA has income maximums — you can make too much to qualify</li>
+          <li>USDA eligibility map available at usda.gov — verify every property address</li>
+          <li>Closing costs can be financed into the loan if appraised value supports it</li>
+          <li>Some suburban areas adjacent to major cities qualify — worth checking for clients</li>
+          <li>USDA direct loans can have rates as low as 1% for very low income applicants</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 — VIDEOS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Side-by-side comparison — <em>which loan is right for which borrower</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">As an MLO, your value to borrowers comes from knowing not just what each loan program is — but which one is right for a specific borrower's financial situation. The following comparison table is a quick-reference framework for making that determination. The real answer always requires a full conversation about credit, income, assets, property location, and long-term goals.</p>
+
+    <table class="compare-table fade-in">
+      <tr>
+        <th>Factor</th>
+        <th>Conventional</th>
+        <th>FHA</th>
+        <th>VA</th>
+        <th>USDA</th>
+      </tr>
+      <tr>
+        <td class="highlight">Min. Credit Score</td>
+        <td>620 (conforming)</td>
+        <td>580 (3.5% down)<br>500 (10% down)</td>
+        <td>No minimum<br>(620 preferred)</td>
+        <td>No minimum<br>(640 preferred)</td>
+      </tr>
+      <tr>
+        <td class="highlight">Min. Down Payment</td>
+        <td>3%</td>
+        <td>3.5%</td>
+        <td>0%</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td class="highlight">Mortgage Insurance</td>
+        <td>PMI if &lt;20% down<br>Removable at 80% LTV</td>
+        <td>MIP for life of loan<br>(1.75% upfront + monthly)</td>
+        <td>None — ever</td>
+        <td>1% upfront + 0.35% annual</td>
+      </tr>
+      <tr>
+        <td class="highlight">Max DTI</td>
+        <td>~50% with strong factors</td>
+        <td>Up to 57% back-end</td>
+        <td>41% preferred</td>
+        <td>41% (44% with factors)</td>
+      </tr>
+      <tr>
+        <td class="highlight">Eligibility</td>
+        <td>Any borrower meeting credit/income standards</td>
+        <td>Any borrower meeting FHA guidelines</td>
+        <td>Veterans, active duty, eligible spouses only</td>
+        <td>Income limits + rural/suburban location only</td>
+      </tr>
+      <tr>
+        <td class="highlight">Best For</td>
+        <td>Strong credit (680+), larger down payment</td>
+        <td>Lower credit, limited savings, first-time buyers</td>
+        <td>Eligible military — best terms available</td>
+        <td>Rural/suburban buyers within income limits</td>
+      </tr>
+    </table>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 The Credit Score Decision Rule</div>
+      <p>A useful rule of thumb from experienced loan officers: if a borrower has a credit score below 680, FHA is almost always the better option — lower rates, easier approval, and more forgiving DTI limits outweigh the lifetime MIP drawback for most borrowers in this range. At 680 and above, conventional typically wins on long-term cost because PMI is removable and rates improve significantly with higher credit scores. VA beats both for eligible veterans at any credit level. And USDA is the only zero-down option for non-veterans in eligible rural areas.</p>
+    </div>
+
+    <div class="video-section fade-in">
+      <h3>🎬 Watch: Loan Types Explained with Real Numbers</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/qeX0SPE7vPs" title="FHA Loan vs Conventional Loan 2025 — Real Payment Comparisons" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);margin-bottom:1.5rem;">April 2025 · 20+ years experience · Complete FHA vs conventional comparison with real payment calculations at 3.5%, 5%, and 10% down on a $500,000 purchase — including upfront MIP, monthly MIP, PMI, and DTI ratios</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/UNQOAuQwjPI" title="Conventional Loan Requirements 2024 — Complete Breakdown" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);">January 2024 · Deep dive on conventional loan mechanics — conforming vs non-conforming, DTI calculation with real examples, mortgage insurance structure, documentation requirements, and common qualification questions answered</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Jumbo loans, ARMs, and Non-QM — <em>the products beyond the standard four</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="path-callout ep">
+      <span class="pc-tag">🧑‍💼 Employee Path</span>
+      <p>As an MLO at a retail lender or brokerage, your product knowledge is your most valuable technical asset. Borrowers will come to you with situations that do not fit neatly into conventional or FHA — a self-employed borrower who cannot document income the standard way, a luxury home buyer who needs $1.5M in financing, a veteran who also happens to be in a rural area and qualifies for both VA and USDA. Knowing the full product menu — and knowing when to use each — is what makes you indispensable to your referral partners and your clients.</p>
+    </div>
+    <div class="path-callout op">
+      <span class="pc-tag">🏢 Entrepreneur Path</span>
+      <p>As an MLO building your own practice, product breadth is a competitive advantage. An MLO who can only do conventional and FHA loses deals to competitors who can also do VA, USDA, jumbo, Non-QM, and bridge loans. Building relationships with lenders who offer a wide product menu — and developing expertise across loan types — expands the universe of borrowers you can serve and the referral partners who will send you business.</p>
+    </div>
+
+    <h3 class="sub-title">Jumbo Loans</h3>
+    <p class="lesson-text">Jumbo loans are non-conforming loans that exceed the conforming loan limits set by the FHFA ($726,200 in most areas as of 2024). Because they cannot be sold to Fannie Mae or Freddie Mac in the secondary market, lenders hold more risk and generally charge higher interest rates and impose stricter qualification standards. Typical jumbo loan requirements include credit scores of 700 or higher, larger down payments (often 10–20%+), significant liquid reserves (often 12+ months of mortgage payments), and lower DTI ratios. Jumbo loans are essential knowledge for MLOs working in high-cost real estate markets.</p>
+
+    <h3 class="sub-title">Adjustable-Rate Mortgages (ARMs)</h3>
+    <p class="lesson-text">ARMs have an initial fixed-rate period — typically 5, 7, or 10 years — followed by periodic rate adjustments based on a market index. A 7/1 ARM has a fixed rate for 7 years, then adjusts annually. ARMs initially offer lower rates than fixed-rate mortgages, which can make a higher-priced home more accessible. The risk is that after the fixed period, rates — and monthly payments — can rise significantly. ARMs are appropriate for borrowers who plan to sell or refinance before the adjustment period begins, or who have strong reason to believe rates will fall. The NMLS exam tests specific ARM disclosure requirements under TILA.</p>
+
+    <h3 class="sub-title">Non-QM Loans (Non-Qualified Mortgages)</h3>
+    <p class="lesson-text">Non-QM loans do not conform to the Consumer Financial Protection Bureau's standards for Qualified Mortgages. They exist specifically to serve borrowers who cannot document income the traditional way — self-employed individuals who write off significant business expenses, real estate investors with complex income structures, foreign nationals, and borrowers with recent credit events. Non-QM lenders use alternative income verification methods such as bank statement loans (12–24 months of deposits instead of W-2s), asset depletion (using investment accounts to calculate income), and DSCR loans (debt-service coverage ratio — for investment properties, qualifying on rental income rather than personal income). Non-QM loans typically carry higher rates than conventional loans and require stronger compensating factors.</p>
+
+    <div class="callout callout-warning fade-in">
+      <div class="callout-label">⚠️ Non-QM ≠ Predatory — But Know the Difference</div>
+      <p>Non-QM loans serve a legitimate and growing market segment — self-employed borrowers, investors, and those with non-traditional income make up a significant share of the homebuying population. However, the NMLS exam tests your understanding of the distinction between responsible non-QM lending and predatory practices like HOEPA high-cost loans, balloon payment structures, and negative amortization. Know the definitions, the protections, and the prohibited practices in each category.</p>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>Every loan type in this module represents a borrower who could not get a home without it. FHA exists because some families cannot save 20% down. VA exists because veterans earned extraordinary benefits. USDA exists because rural communities deserve access to homeownership too. Non-QM exists because the self-employed entrepreneur who built a business from nothing should not be locked out of the market by W-2 requirements. When you know these products cold, you do not just pass the exam — you become the professional who finds a way when other loan officers say no. That is what your clients will remember you for.</p>
+      <div class="mentor-name">Your Darco Mentor · Module 2 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 2 Key Takeaways</h3>
+    <ul>
+      <li>Conventional loans are not government-backed. Conforming loans meet GSE (Fannie Mae/Freddie Mac) guidelines with a 2024 limit of $726,200. Non-conforming (jumbo) loans exceed that limit and carry higher rates. Minimum 620 credit score; PMI required under 20% down but removable at 80% LTV.</li>
+      <li>FHA loans are government-insured and allow 3.5% down with a 580 credit score (10% down for 500–579). MIP is required for the life of the loan (1.75% upfront + monthly). FHA rates are typically 0.5% lower than conventional. Best for borrowers with credit under 680 or limited savings.</li>
+      <li>VA loans are the most powerful loan program available — 0% down, no PMI, competitive rates, and flexible qualification. Available only to eligible veterans, active duty, and eligible surviving spouses. VA funding fee applies unless exempt. COE (Certificate of Eligibility) required.</li>
+      <li>USDA loans offer 0% down for eligible rural/suburban properties with household income at or below 115% of area median income. 640+ credit preferred. 1% upfront guarantee fee + 0.35% annual fee. Primary residence only. Geographic eligibility must be verified via USDA's online map.</li>
+      <li>Overlays are lender-specific requirements that are stricter than the program minimums. A lender may require 620 credit for FHA even though the FHA minimum is 580. Knowing which lenders have fewer overlays is a competitive MLO advantage for borderline borrowers.</li>
+      <li>Credit score decision rule: under 680 = FHA usually wins on rate and approval ease; 680+ = conventional usually wins on long-term cost (removable PMI); VA beats both for eligible borrowers; USDA is the zero-down option for non-veterans in eligible rural/suburban areas.</li>
+      <li>Jumbo loans exceed conforming limits, require stricter qualification (700+ credit, larger down, significant reserves). ARMs offer lower initial rates with rate risk after fixed period. Non-QM loans serve self-employed, investors, and non-traditional income borrowers using alternative documentation.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A borrower has a 610 credit score and $15,000 saved for a down payment on a $250,000 home. They are not a veteran and the property is in an urban area. Which loan program is most likely their best option — and why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Conventional loan — because 3% down ($7,500) is less than their savings and they will have equity remaining after closing.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> FHA loan — because with a 610 credit score, FHA's minimum of 580 for 3.5% down applies. A 610 score would likely face very high PMI costs on conventional and potentially not qualify at all with many lenders using overlays. FHA offers lower rates than conventional at this credit level, more flexible DTI, and a simpler approval path. The $15,000 covers the 3.5% down payment ($8,750) plus has buffer for closing costs.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> USDA loan — because it offers 0% down, allowing the borrower to keep all $15,000 as reserves.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> VA loan — because VA has no minimum credit score, making it the most accessible option for a 610 score borrower.</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. What is the key difference between FHA MIP and conventional PMI — and why does it matter to a borrower making a 5% down payment with a 700 credit score?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> FHA MIP and conventional PMI are essentially the same — both are monthly fees that disappear automatically once the borrower reaches 20% equity in the property.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> FHA MIP includes both an upfront premium (1.75% of loan amount added to the loan balance) and a monthly premium that stays for the life of the loan if less than 10% is put down. Conventional PMI has no upfront cost and is removable when the borrower reaches 80% LTV. For a 700 credit score borrower at 5% down, conventional PMI will be significantly lower than FHA MIP — and because it is removable, the long-term cost advantage of conventional is substantial. This borrower should strongly consider conventional.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> FHA MIP is paid upfront only at closing — there is no monthly component. Conventional PMI is monthly only, making FHA cheaper on a monthly cash flow basis.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> The difference only matters for borrowers with credit scores below 620 — above that threshold, FHA MIP and conventional PMI cost the same and the programs are otherwise interchangeable.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. An active duty service member wants to buy a $400,000 home with no down payment. They have a 640 credit score and have served 120 consecutive days during active deployment. Are they eligible for a VA loan — and what key document do they need?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> No — the VA requires a minimum credit score of 620, and while 640 meets that threshold, they must have served at least 181 days of continuous active duty peacetime service to be eligible.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Yes — active duty service members qualify with at least 90 consecutive days during wartime. 120 days exceeds that threshold. The VA has no official minimum credit score (640 easily meets most lender preferences of 620+). The key document required is a Certificate of Eligibility (COE), which confirms their entitlement and must be obtained through the VA's eBenefits portal, by mail, or through the lender. With 0% down and no PMI, the VA loan is by far the best option for this borrower.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> No — VA loans require at least a 680 credit score when purchasing with 0% down, since the absence of a down payment increases lender risk substantially.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Yes — they qualify, and no special document is needed since their active duty status can be verified directly through military service records at closing.</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A lender advertises that they offer FHA loans with a minimum credit score of 620. The FHA program's actual minimum for 3.5% down is 580. What is the term for this practice — and is it legal?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> This is called predatory lending — requiring higher standards than the program minimum is discriminatory and violates ECOA and Fair Housing laws.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> This is called a program limit — lenders are required by HUD to set credit score minimums above the FHA floor to protect borrowers from high-risk loans.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> This is called a lender overlay — and it is completely legal. Individual lenders can set stricter requirements than the minimum guidelines established by FHA, VA, USDA, or conventional program standards. Overlays exist because lenders bear risk on loans that default and choose to mitigate that risk with higher standards. The practical implication for borrowers: a 590 credit score borrower rejected by one lender may be approved by another lender with fewer overlays on the same FHA loan program.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> This is called a compensating factor requirement — the lender is legally obligated to raise the credit score minimum when a borrower puts down less than 10%.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. A self-employed borrower owns a successful restaurant and deposited $280,000 into their business bank account over the past 12 months. However, their tax returns show $45,000 in net income after deductions. They want to buy a $500,000 home. Which loan type is specifically designed for their situation — and why can they not use their tax returns for qualification?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> FHA loan — because FHA has the most flexible DTI ratios and allows alternative income documentation for self-employed borrowers who cannot qualify on W-2 income alone.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> USDA loan — because self-employed income is evaluated differently under USDA guidelines, allowing bank deposits to be used as a primary income source.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Non-QM bank statement loan — specifically designed for self-employed borrowers who show low net income on tax returns due to legitimate business deductions. The tax return ($45,000 net) would not support the mortgage on a $500,000 home. A bank statement loan uses 12–24 months of deposits (potentially $280,000) to calculate qualifying income, reflecting the borrower's actual cash flow rather than their taxable income. Conventional, FHA, VA, and USDA all require traditional income documentation where tax returns are the primary income source for self-employed borrowers.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Conventional loan — because Fannie Mae guidelines include an exception for small business owners that allows bank deposits to substitute for tax return income in qualifying scenarios.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <h3 class="sub-title">📚 The books behind this module</h3>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">NMLS SAFE MLO Exam Test Prep — Audio Study Guide</div>
+          <div class="bi-author">Samuel Davidson &amp; Rebecca Davidson (2025)</div>
+          <div class="bi-desc">Chapter 1 is the primary source for this module — covering conventional loans (conforming vs non-conforming, qualification criteria, PMI), FHA loans (MIP structure, eligibility, 203k), VA loans (service requirements, COE, no-PMI benefit, IRRRL), USDA loans (geographic and income eligibility, guarantee fees), and Non-QM loans in comprehensive detail aligned with the NMLS exam content outline.</div>
+        </div>
+        <a href="https://www.audible.com/pd/NMLS-SAFE-MLO-Mortgage-Loan-Originator-Study-Guide-Audiobook/B0FF7NLQHT" target="_blank">Audible →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">NMLS SAFE MLO Exam — Free Practice Tests</div>
+          <div class="bi-author">GoTestPrep.com — Domain 3: General Mortgage Knowledge</div>
+          <div class="bi-desc">Domain 3 (20% of the NMLS exam) covers exactly the content in this module — loan types, mortgage insurance, loan-to-value ratios, and qualifying standards. Practice Domain 3 questions specifically to reinforce the specific numbers and distinctions tested on the exam.</div>
+        </div>
+        <a href="https://gotestprep.com/nmls-practice-test-study-guide/" target="_blank">Practice Free →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 3: The Loan Process from Application to Closing</h3>
+    <p>You know the loan products. Now you need to know the process. Module 3 covers the complete mortgage origination process — from the initial borrower consultation and loan application through processing, underwriting, appraisal, and closing. You will learn what happens at each stage, what conditions arise and why, and how to keep a file moving toward a successful closing.</p>
+    <a href="mlo-module-3.html" class="next-module-cta">Module 3: The Loan Process →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mlo-module-1.html" class="btn btn-outline">← Module 1</a>
+  <div class="module-nav-info">
+    <p>Mortgage &amp; Lending Track</p>
+    <strong>Module 2 of 6</strong>
+  </div>
+  <a href="mlo-module-3.html" class="btn btn-gold">Module 3: The Loan Process →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals. Not a substitute for NMLS-approved pre-licensing education.</p>
+</footer>
+
+<script>
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! With a 610 credit score, FHA is the clear choice. Conventional loans require a minimum 620 — and even at 620, many lenders have overlays requiring 640+. FHA's minimum for 3.5% down is 580, and the 610 score is well above that threshold. FHA also offers lower interest rates than conventional at this credit level and has more forgiving DTI requirements. The $15,000 covers the 3.5% down payment on a $250,000 home ($8,750) plus leaves buffer for closing costs. USDA does not apply (urban area) and VA does not apply (not a veteran).",incorrect:"Not quite. With a 610 credit score, the borrower likely does not qualify for conventional (minimum 620) and even if they did, many lenders use overlays requiring 640+. The USDA option requires a rural/suburban property — the question specifies urban. VA requires military eligibility. FHA is the correct answer: minimum 580 for 3.5% down, lower rates than conventional at this credit level, and more forgiving approval standards. The $15,000 covers the 3.5% down ($8,750) with buffer remaining."},
+  q2:{correct:"Correct! This is one of the most important comparisons an MLO must be able to explain clearly. FHA MIP has two components: an upfront premium of 1.75% added to the loan balance at closing, plus a monthly premium that continues for the life of the loan (unless 10%+ was put down, in which case it falls off at year 11). Conventional PMI has no upfront component and is removable once the borrower reaches 80% LTV. For a 700 credit score borrower putting 5% down, conventional PMI will be lower and will eventually disappear — making conventional the better long-term choice at this credit level.",incorrect:"Not quite. The key difference is that FHA MIP includes both an upfront premium (1.75% added to the loan) AND a monthly premium that lasts for the life of the loan. Conventional PMI has no upfront cost and is removable when equity reaches 80%. For a borrower with a 700 credit score at 5% down, conventional PMI will be lower monthly than FHA MIP — and because it eventually goes away, the long-term cost advantage of conventional is significant. This borrower should strongly consider conventional over FHA."},
+  q3:{correct:"Correct! Active duty service members qualify for VA with at least 90 consecutive days during wartime — 120 days exceeds that threshold. The VA has no official minimum credit score, and 640 is well above most lenders' preferred 620. The key document required is the Certificate of Eligibility (COE), which confirms the borrower's VA entitlement and must be obtained before the loan can proceed. With 0% down and no PMI ever, the VA loan is unquestionably the best available option for this borrower.",incorrect:"Not quite. The VA requires active duty service members to have served at least 90 consecutive days during wartime (or 181 days peacetime) — 120 days qualifies. The VA has no official minimum credit score. The Certificate of Eligibility (COE) is the required document — it confirms their eligibility and entitlement amount and must be obtained before the VA loan process can proceed. With 0% down, no PMI, and competitive rates, the VA loan is the clear best option for this eligible active duty borrower."},
+  q4:{correct:"Correct! A lender overlay is a lender-specific requirement that is stricter than the program minimum established by FHA, VA, USDA, or the GSEs. Overlays are completely legal — lenders bear risk on loans that default and set their own standards to manage that risk. The practical implication is hugely important for MLOs: a borrower rejected by one lender may be approved by another on the exact same program if that lender has fewer overlays. Knowing which lenders in your market have fewer overlays is a significant value-add for clients who are on the edge of qualifying.",incorrect:"Not quite. The correct term is lender overlay — a lender-specific requirement that exceeds the program minimum. It is completely legal. Lenders set overlays to manage their own risk on loans that default. The FHA minimum for 3.5% down is 580, but a lender can require 620, 640, or higher if they choose. The important MLO insight: a borrower rejected by one lender may qualify with another lender on the same program if that lender has fewer overlays. Knowing which lenders have fewer overlays is a genuine competitive advantage."},
+  q5:{correct:"Correct! A Non-QM bank statement loan is specifically designed for this scenario. Self-employed borrowers who take legitimate business deductions reduce their taxable income — often dramatically — on their tax returns. That reduced net income may not support a conventional, FHA, VA, or USDA mortgage, all of which use tax returns as the primary income source for self-employed borrowers. Bank statement loans use 12–24 months of bank deposits to calculate qualifying income, reflecting actual cash flow. The borrower's $280,000 in deposits over 12 months would be used to calculate a much higher qualifying income than their $45,000 net income on taxes.",incorrect:"Not quite. All standard loan programs (conventional, FHA, VA, USDA) require self-employed borrowers to qualify using tax returns as the primary income verification. The restaurant owner's $45,000 net income after deductions would not support a $500,000 home purchase. A Non-QM bank statement loan is specifically designed for this situation — it uses 12–24 months of bank deposits (potentially the $280,000 in annual deposits) to calculate qualifying income, reflecting actual cash flow rather than taxable income. This is the only standard product that can accommodate this borrower's situation."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;
+    } else {
+      ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}
+    }
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong command of loan types. You can match borrowers to programs, explain MIP vs PMI, understand VA eligibility, and identify when Non-QM applies. Ready for Module 3: The Loan Process.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the qualification criteria for each loan type, the MIP vs PMI distinction, the overlay concept, and the scenarios where Non-QM applies. These comparisons are heavily tested on the NMLS exam.';
+  }
+}
+</script>
+</body>
+</html>
