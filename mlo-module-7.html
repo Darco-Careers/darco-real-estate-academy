@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:;">
+<title>Mortgage & Lending Module 7: NMLS Exam Launch Pad — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#3D1A6E;--purple-mid:#5C2E9A;--purple-pale:#F3EEFB;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(61,26,110,0.12);
+  --green:#2E7D32;--green-pale:#F1F8F1;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;text-align:left;}
+strong{display:inline;font-weight:600;}
+nav{background:var(--purple);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--purple);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--purple-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--purple-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--purple);font-weight:600;}
+.progress-bar{background:var(--purple-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--purple-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(61,26,110,0.12);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--gold);border-radius:3px;width:100%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--gold);color:#5A3800;}
+.prog-dot.complete{background:var(--purple-mid);color:var(--white);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);}
+.hero{background:linear-gradient(135deg,#1A0838 0%,var(--purple) 55%,var(--purple-mid) 100%);padding:4rem 2.5rem;position:relative;overflow:hidden;text-align:center;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,0.12) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:680px;margin:0 auto;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.hero h1 em{color:var(--gold-light);font-style:italic;}
+.hero p{font-size:1.05rem;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:2rem;}
+.hero-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;}
+.hs-item{text-align:center;}
+.hs-num{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--gold-light);}
+.hs-label{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:0.5px;}
+.body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.section{margin-bottom:3.5rem;}
+h2.section-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+h2.section-title em{color:var(--purple);font-style:italic;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.6rem 0 1.5rem;}
+.section-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+/* EXAM DOMAINS */
+.domains{display:flex;flex-direction:column;gap:0.75rem;margin:1.5rem 0;}
+.domain{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1.25rem;}
+.domain-pct{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--purple);min-width:60px;text-align:center;}
+.domain-bar-wrap{flex:1;}
+.domain-name{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;}
+.domain-bar{height:6px;background:rgba(61,26,110,0.1);border-radius:3px;overflow:hidden;}
+.domain-fill{height:100%;background:var(--purple-mid);border-radius:3px;}
+/* NUMBERS GRID */
+.numbers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:1.5rem 0;}
+.num-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem;}
+.num-card .nc-num{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--purple);margin-bottom:0.2rem;}
+.num-card .nc-label{font-size:12px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.num-card .nc-law{font-size:11px;color:var(--text-light);}
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:0;}
+.cl-section{margin-bottom:1.5rem;}
+.cl-section h4{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--purple-mid);margin-bottom:0.75rem;}
+.cl-item{display:flex;gap:0.85rem;align-items:flex-start;padding:0.6rem 0;border-bottom:1px solid var(--border);}
+.cl-item:last-child{border-bottom:none;}
+.cl-check{width:20px;height:20px;border-radius:4px;border:2px solid var(--border);background:var(--white);cursor:pointer;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+.cl-check.checked{background:var(--green);border-color:var(--green);}
+.cl-check.checked::after{content:'✓';color:var(--white);font-size:11px;font-weight:700;}
+.cl-text{font-size:14px;color:var(--text-mid);line-height:1.6;}
+.cl-item.checked .cl-text{text-decoration:line-through;color:var(--text-light);}
+/* RESOURCES */
+.resources{display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0;}
+.resource-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;}
+.rc-badge{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-bottom:0.4rem;display:inline-block;}
+.rc-badge.free{background:var(--green-pale);color:var(--green);}
+.rc-badge.official{background:var(--purple-pale);color:var(--purple-mid);}
+.rc-badge.paid{background:var(--gold-pale);color:#8A6A20;}
+.resource-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.resource-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.resource-card a{display:inline-flex;align-items:center;white-space:nowrap;background:var(--purple-pale);color:var(--purple);border:1px solid rgba(61,26,110,0.2);padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;flex-shrink:0;}
+.resource-card a:hover{background:var(--purple);color:var(--white);}
+/* EXAM DAY */
+.exam-day{background:linear-gradient(135deg,#1A0838,var(--purple));border-radius:18px;padding:2rem 2.25rem;margin:2rem 0;color:var(--white);}
+.exam-day h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.ed-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.ed-item{background:rgba(255,255,255,0.07);border-radius:10px;padding:1rem 1.1rem;}
+.ed-item h4{font-size:13px;font-weight:700;color:var(--gold-light);margin-bottom:0.4rem;}
+.ed-item p{font-size:13px;color:rgba(255,255,255,0.82);line-height:1.65;}
+/* CONGRATS */
+.congrats{background:var(--gold-pale);border:2px solid var(--gold);border-radius:18px;padding:2.5rem;margin:2rem 0;text-align:center;}
+.congrats h2{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--purple);margin-bottom:0.75rem;}
+.congrats p{font-size:1rem;color:var(--text-mid);line-height:1.8;max-width:600px;margin:0 auto 1.5rem;}
+.congrats-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-purple{display:inline-flex;align-items:center;gap:6px;background:var(--purple);color:var(--white);padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-purple:hover{background:var(--purple-mid);}
+.btn-gold{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#5A3800;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-gold:hover{background:var(--gold-light);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(61,26,110,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--purple-mid);color:var(--purple);}
+footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="mortgage-lending.html" class="nav-back">← Mortgage &amp; Lending</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="mortgage-lending.html">Mortgage &amp; Lending</a>
+  <span class="sep">›</span>
+  <span class="current">Module 7: NMLS Exam Launch Pad</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Complete</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mlo-module-1.html" class="prog-dot complete">1</a>
+    <a href="mlo-module-2.html" class="prog-dot complete">2</a>
+    <a href="mlo-module-3.html" class="prog-dot complete">3</a>
+    <a href="mlo-module-4.html" class="prog-dot complete">4</a>
+    <a href="mlo-module-5.html" class="prog-dot complete">5</a>
+    <a href="mlo-module-6.html" class="prog-dot complete">6</a>
+    <span class="prog-dot active">7</span>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🎓 Final Module · Mortgage &amp; Lending Track</div>
+    <h1>NMLS Exam <em>Launch Pad</em></h1>
+    <p>You have completed all 6 content modules. This page is your final preparation before exam day — the numbers to know cold, a study checklist, the best free practice resources, and everything you need to walk into the testing center confident and ready.</p>
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:var(--gold-light);font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;margin-bottom:1.5rem;">✓ Updated for 2026 — Loan limits, NMLS MU4 changes, MAP Rule, BSA/AML</div>
+    <div class="hero-stats">
+      <div class="hs-item"><div class="hs-num">120</div><div class="hs-label">Exam questions</div></div>
+      <div class="hs-item"><div class="hs-num">75%</div><div class="hs-label">Passing score</div></div>
+      <div class="hs-item"><div class="hs-num">190</div><div class="hs-label">Minutes allowed</div></div>
+      <div class="hs-item"><div class="hs-num">58%</div><div class="hs-label">First-time pass rate</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="body">
+
+  <!-- EXAM STRUCTURE -->
+  <div class="section">
+    <h2 class="section-title">The NMLS exam — <em>what you are actually being tested on</em></h2>
+    <div class="gold-divider"></div>
+    <p class="section-text">The SAFE MLO exam contains 120 multiple-choice questions (115 scored, 5 unscored). You have 190 minutes to complete it. You need to answer at least 75% of scored questions correctly to pass. The exam is broken into five content domains — knowing the weight of each domain tells you where to focus your final study time.</p>
+
+    <div class="domains">
+      <div class="domain">
+        <div class="domain-pct">27%</div>
+        <div class="domain-bar-wrap">
+          <div class="domain-name">Mortgage Loan Origination Activities</div>
+          <div class="domain-bar"><div class="domain-fill" style="width:27%"></div></div>
+        </div>
+      </div>
+      <div class="domain">
+        <div class="domain-pct">24%</div>
+        <div class="domain-bar-wrap">
+          <div class="domain-name">Federal Mortgage-Related Laws</div>
+          <div class="domain-bar"><div class="domain-fill" style="width:24%"></div></div>
+        </div>
+      </div>
+      <div class="domain">
+        <div class="domain-pct">20%</div>
+        <div class="domain-bar-wrap">
+          <div class="domain-name">General Mortgage Knowledge</div>
+          <div class="domain-bar"><div class="domain-fill" style="width:20%"></div></div>
+        </div>
+      </div>
+      <div class="domain">
+        <div class="domain-pct">18%</div>
+        <div class="domain-bar-wrap">
+          <div class="domain-name">Ethics</div>
+          <div class="domain-bar"><div class="domain-fill" style="width:18%"></div></div>
+        </div>
+      </div>
+      <div class="domain">
+        <div class="domain-pct">11%</div>
+        <div class="domain-bar-wrap">
+          <div class="domain-name">Uniform State Content</div>
+          <div class="domain-bar"><div class="domain-fill" style="width:11%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUMBERS TO KNOW -->
+  <div class="section">
+    <h2 class="section-title">Numbers &amp; timelines — <em>know these cold before exam day</em></h2>
+    <div class="gold-divider"></div>
+    <p class="section-text">The NMLS exam tests specific numbers repeatedly. These are the most commonly tested figures across all five domains. Memorize every one of them.</p>
+
+    <div class="numbers-grid">
+      <div class="num-card">
+        <div class="nc-num">3 days</div>
+        <div class="nc-label">Loan Estimate delivery</div>
+        <div class="nc-law">After application received · TRID/RESPA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">3 days</div>
+        <div class="nc-label">Closing Disclosure delivery</div>
+        <div class="nc-law">Before closing · TRID/RESPA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">3 days</div>
+        <div class="nc-label">Right of rescission</div>
+        <div class="nc-law">Refinances only (not purchases) · TILA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">3 years</div>
+        <div class="nc-label">Extended rescission period</div>
+        <div class="nc-law">If lender fails to provide proper notice · TILA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">3 days</div>
+        <div class="nc-label">HOEPA special disclosure</div>
+        <div class="nc-law">Before closing on high-cost loan · HOEPA/TILA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">30 days</div>
+        <div class="nc-label">ECOA adverse action notice</div>
+        <div class="nc-law">After completed application received · ECOA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">15 days</div>
+        <div class="nc-label">Servicing transfer notice</div>
+        <div class="nc-law">Before effective transfer date · RESPA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">60 days</div>
+        <div class="nc-label">Payment grace after transfer</div>
+        <div class="nc-law">Cannot penalize for paying old servicer · RESPA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">5 / 30 days</div>
+        <div class="nc-label">QWR response timeline</div>
+        <div class="nc-law">Acknowledge in 5, resolve in 30 · RESPA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">2 months</div>
+        <div class="nc-label">Max escrow cushion</div>
+        <div class="nc-law">Overages of $50+ must be refunded · RESPA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">6.5%</div>
+        <div class="nc-label">HOEPA APR trigger — 1st lien</div>
+        <div class="nc-law">Above APOR · HOEPA Section 32</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">8.5%</div>
+        <div class="nc-label">HOEPA APR trigger — 2nd lien</div>
+        <div class="nc-law">Above APOR · HOEPA Section 32</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">5%</div>
+        <div class="nc-label">HOEPA points &amp; fees trigger</div>
+        <div class="nc-law">Of total loan amount · HOEPA Section 32</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">36 months</div>
+        <div class="nc-label">HOEPA prepayment penalty trigger</div>
+        <div class="nc-law">Beyond 36 months = high-cost · HOEPA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">3%</div>
+        <div class="nc-label">QM points &amp; fees cap</div>
+        <div class="nc-law">Qualified Mortgage safe harbor · Dodd-Frank/TILA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">March 1</div>
+        <div class="nc-label">HMDA LAR due date</div>
+        <div class="nc-law">Submitted to CFPB annually · HMDA</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">$10,000</div>
+        <div class="nc-label">RESPA Section 8 max fine</div>
+        <div class="nc-law">+ 1 year prison + 3x civil damages</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">1.75%</div>
+        <div class="nc-label">FHA upfront MIP</div>
+        <div class="nc-law">Added to loan balance · FHA program</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">580</div>
+        <div class="nc-label">FHA min credit — 3.5% down</div>
+        <div class="nc-law">500–579 = 10% down required · FHA</div>
+      </div>
+      <div class="num-card" style="border-top-color:#C9A84C;border-top:3px solid #C9A84C;">
+        <div class="nc-num">$832,750</div>
+        <div class="nc-label">2026 conforming loan limit</div>
+        <div class="nc-law">Standard 1-unit · FHFA (up from $726,200 in 2024)</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">115%</div>
+        <div class="nc-label">USDA income limit</div>
+        <div class="nc-law">Of area median income · USDA program</div>
+      </div>
+      <div class="num-card" style="border-top:3px solid #C9A84C;">
+        <div class="nc-num">$1,249,125</div>
+        <div class="nc-label">2026 conforming ceiling</div>
+        <div class="nc-law">High-cost areas (Alaska, Hawaii, high-cost metros) · FHFA</div>
+      </div>
+      <div class="num-card" style="border-top:3px solid #C9A84C;">
+        <div class="nc-num">$541,287</div>
+        <div class="nc-label">2026 FHA floor</div>
+        <div class="nc-law">Standard 1-unit FHA loan limit (up from $472,030 in 2024) · HUD</div>
+      </div>
+      <div class="num-card" style="border-top:3px solid #C9A84C;">
+        <div class="nc-num">30 days</div>
+        <div class="nc-label">SAR filing deadline</div>
+        <div class="nc-law">Suspicious Activity Report after detecting suspicious activity · BSA/AML</div>
+      </div>
+      <div class="num-card" style="border-top:3px solid #C9A84C;">
+        <div class="nc-num">$5,000</div>
+        <div class="nc-label">SAR filing threshold</div>
+        <div class="nc-law">Suspicious transactions at or above this amount require a SAR · BSA/AML</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">20 hours</div>
+        <div class="nc-label">Pre-licensing education</div>
+        <div class="nc-law">Required before SAFE exam · SAFE Act</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">8 hours</div>
+        <div class="nc-label">Annual continuing education</div>
+        <div class="nc-law">Required for license renewal · SAFE Act</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">75%</div>
+        <div class="nc-label">NMLS passing score</div>
+        <div class="nc-law">115 scored questions · SAFE exam</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAWS TO KNOW -->
+  <div class="section">
+    <h2 class="section-title">Laws &amp; their regulations — <em>the quick-reference pairs</em></h2>
+    <div class="gold-divider"></div>
+    <p class="section-text">Every major federal law has an implementing regulation. The exam tests both the law name and its regulation letter. Know these pairs.</p>
+
+    <div class="numbers-grid">
+      <div class="num-card">
+        <div class="nc-num">RESPA</div>
+        <div class="nc-label">Regulation X</div>
+        <div class="nc-law">1974 · Enforced by CFPB · Settlement transparency, kickbacks, escrow</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">TILA</div>
+        <div class="nc-label">Regulation Z</div>
+        <div class="nc-law">1968 · Enforced by CFPB · APR disclosure, right of rescission, HOEPA, ATR</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">ECOA</div>
+        <div class="nc-label">Regulation B</div>
+        <div class="nc-law">1974 · Enforced by CFPB · Credit discrimination, 30-day notice</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">HMDA</div>
+        <div class="nc-label">Regulation C</div>
+        <div class="nc-law">1975 · Enforced by CFPB · Data reporting, LAR, redlining detection</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">FCRA</div>
+        <div class="nc-label">Regulation V</div>
+        <div class="nc-law">Credit reporting. V = Visa (credit). FACT Act (inside FCRA) added Red Flag Rules (identity theft) AND the Disposal Rule — requiring proper destruction of consumer report data (shredding). Both are testable.</div>
+      </div>
+      <div class="num-card">
+        <div class="nc-num">Fair Housing</div>
+        <div class="nc-label">Enforced by HUD</div>
+        <div class="nc-law">1968 · Housing discrimination · Unique classes: familial status, disability</div>
+      </div>
+      <div class="num-card" style="border-top:3px solid #C9A84C;">
+        <div class="nc-num">MAP Rule</div>
+        <div class="nc-label">Regulation N</div>
+        <div class="nc-law">Mortgage Acts and Practices — Advertising. Prohibits misrepresenting "commercial communications." Key exam trap: cannot call a rate "fixed" if it can actually adjust.</div>
+      </div>
+      <div class="num-card" style="border-top:3px solid #C9A84C;">
+        <div class="nc-num">BSA / AML</div>
+        <div class="nc-label">Bank Secrecy Act</div>
+        <div class="nc-law">Anti-Money Laundering. SAR (Suspicious Activity Report) must be filed within 30 days for suspicious transactions ≥$5,000. Do not alert the subject — filing is confidential.</div>
+      </div>
+      <div class="num-card" style="border-top:3px solid #C9A84C;">
+        <div class="nc-num">E-Sign Act</div>
+        <div class="nc-label">Consumer Consent Rule</div>
+        <div class="nc-law">Borrowers must be given the option to receive paper disclosures instead of electronic ones. E-consent must be affirmative — it cannot be assumed or pre-checked.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--purple-pale);border-radius:12px;padding:1.25rem 1.5rem;margin-top:1rem;">
+      <p style="font-size:13.5px;color:var(--text-mid);line-height:1.75;"><strong>Laws inside laws — know the pattern:</strong> HOEPA lives inside TILA (Section 32). The FACT Act lives inside the FCRA. The SAFE Act lives inside HERA (Housing and Economic Recovery Act of 2008). When the exam asks which larger act contains a specific law — this is the answer.</p>
+    </div>
+
+    <div style="background:#FDF5E8;border:1px solid rgba(212,136,26,0.3);border-left:4px solid #D4881A;border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin-top:1rem;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4881A;margin-bottom:0.5rem;">⚠️ 2026 NMLS Disclosure Updates — Know These for the Current Exam</div>
+      <p style="font-size:13.5px;color:var(--text-dark);line-height:1.8;">The NMLS updated the MU4 Form (the individual license application form) effective Q1 2026. The exam now reflects these changes. Key updates to know: <strong>Updated definition of "Found"</strong> — now specifically includes public settlements, not just court convictions. <strong>Updated definition of "Consumer Protection Laws"</strong> — broadened to include additional state and federal statutes. <strong>Foreclosure Reporting</strong> — disclosure now applies to "efforts to foreclose" including both judicial and non-judicial proceedings, not just completed foreclosures. <strong>Regulatory Action Questions (Q20–21)</strong> — now allow "N/A" responses where a question is genuinely not applicable, to avoid misleading the registry. These changes affect how the exam tests licensing application knowledge — review the current NMLS content outline at nmlsportal.csbs.org for the most up-to-date version before your exam.</p>
+    </div>
+  </div>
+
+  <!-- STUDY CHECKLIST -->
+  <div class="section">
+    <h2 class="section-title">Pre-exam study checklist — <em>check off as you go</em></h2>
+    <div class="gold-divider"></div>
+
+    <div class="checklist" id="checklist">
+      <div class="cl-section">
+        <h4>📋 Loan Process &amp; Application</h4>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I can name the 6 steps of the mortgage loan process in order</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know what triggers a loan application under TRID (6 data points — not a signed 1003)</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know who created the 1003 form (Fannie Mae) and what it is called (Uniform Residential Loan Application)</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the difference between DU (Fannie Mae) and LP (Freddie Mac) automated underwriting systems</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the 5 C's of creditworthiness: Credit, Capacity, Capital, Collateral, Conditions</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I understand what a conditional approval is and the difference from a clear to close</div></div>
+      </div>
+
+      <div class="cl-section">
+        <h4>🏦 Loan Types</h4>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the key differences between conventional, FHA, VA, and USDA loans</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know FHA MIP structure: 1.75% upfront + monthly — and when it falls off</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know VA eligibility requirements, the COE, and that there is no PMI on VA loans</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I understand conforming vs non-conforming loans and the 2024 conforming loan limit ($726,200)</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know what an overlay is and why it matters for borderline borrowers</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the credit score decision rule: under 680 = FHA usually wins</div></div>
+      </div>
+
+      <div class="cl-section">
+        <h4>⚖️ Federal Laws</h4>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know RESPA's key timelines (LE 3 days, CD 3 days, servicing 15 days, escrow 2 months)</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know RESPA Section 8 penalties ($10K, 1 year prison, 3x civil damages)</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know TILA trigger terms, the APR-only advertising exception, and the bait-and-switch prohibition</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know all three HOEPA triggers (6.5%/8.5% above APOR, 5% fees, 36-month prepayment penalty)</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know ECOA protected classes and the 30-day adverse action notice requirement</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the difference between ECOA and Fair Housing Act — enforcer, scope, unique protected classes</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know HMDA is a data reporting law — LAR to CFPB by March 1st — connected to redlining</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know all 6 law/regulation pairs (RESPA/X, TILA/Z, ECOA/B, HMDA/C, FCRA/V, and Fair Housing/HUD)</div></div>
+      </div>
+
+      <div class="cl-section">
+        <h4>🔐 Ethics &amp; Compliance</h4>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the SAFE Act full name and that it lives inside HERA (2008)</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know SAFE Act requirements: 20 hours pre-licensing, background check, 75% passing score, 8 hours CE</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I can identify the 8 predatory lending practices (loan flipping, equity stripping, balloon payments, etc.)</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the straw buyer scheme, income falsification, dual contract, occupancy fraud, and other fraud types</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the FACT Act lives inside the FCRA and added both Red Flag Rules (identity theft) AND the Disposal Rule (proper destruction of consumer report data)</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the MAP Rule (Regulation N) prohibits misrepresenting commercial communications — including calling a rate "fixed" when it can actually adjust</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know BSA/AML: SARs must be filed within 30 days for suspicious transactions ≥$5,000 — and the subject must NOT be alerted</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the E-Sign Act requires affirmative consumer consent before sending electronic disclosures — borrowers must always have the paper option</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the 2026 NMLS MU4 updates: new "Found" definition includes public settlements, foreclosure disclosure covers "efforts to foreclose" (judicial AND non-judicial)</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know the ethics exam strategy: read answer choices first, look for the transparent/borrower-first option</div></div>
+      </div>
+
+      <div class="cl-section">
+        <h4>🧮 NMLS Exam Logistics</h4>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I have scheduled my exam at a Prometric testing center through the NMLS portal</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I know I need one valid government-issued ID with my name exactly matching my NMLS registration</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I have completed at least one full practice test under timed conditions</div></div>
+        <div class="cl-item" onclick="toggleCheck(this)"><div class="cl-check"></div><div class="cl-text">I have reviewed areas where I scored below average on practice tests</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FREE PRACTICE RESOURCES -->
+  <div class="section">
+    <h2 class="section-title">Free practice resources — <em>use these before exam day</em></h2>
+    <div class="gold-divider"></div>
+    <p class="section-text">These are the best freely available NMLS exam practice resources. Use at least one before your exam day. The NMLS official sample questions are the most accurate preview of how the real exam is written.</p>
+
+    <div class="resources">
+      <div class="resource-card">
+        <div>
+          <span class="rc-badge official">Official</span>
+          <h4>NMLS Official Sample Questions</h4>
+          <p>Sample questions published directly by the NMLS registry — the most accurate representation of actual exam question style and difficulty. Free.</p>
+        </div>
+        <a href="https://nmlsportal.csbs.org" target="_blank">Access →</a>
+      </div>
+      <div class="resource-card">
+        <div>
+          <span class="rc-badge free">Free</span>
+          <h4>GoTestPrep — NMLS Practice Test</h4>
+          <p>125 free practice questions organized by domain. Covers all five content areas with explanations. Our recommended first practice resource throughout this course.</p>
+        </div>
+        <a href="https://gotestprep.com/nmls-practice-test-study-guide/" target="_blank">Practice Free →</a>
+      </div>
+      <div class="resource-card">
+        <div>
+          <span class="rc-badge free">Free</span>
+          <h4>PracticeTestGeeks — NMLS Test</h4>
+          <p>Additional free practice questions with a different question bank than GoTestPrep. Good for a second round of practice after completing GoTestPrep.</p>
+        </div>
+        <a href="https://practicetestgeeks.com/nmls-test/" target="_blank">Practice Free →</a>
+      </div>
+      <div class="resource-card">
+        <div>
+          <span class="rc-badge paid">Recommended Book</span>
+          <h4>NMLS SAFE MLO Exam Test Prep — Samuel &amp; Rebecca Davidson</h4>
+          <p>The technical backbone behind this course's content. Covers all exam domains in comprehensive detail. Available as Kindle, paperback, or audiobook. Highly recommended for students who want a deeper study reference beyond this course.</p>
+        </div>
+        <a href="https://www.amazon.com/Mortgage-Originator-Study-Practice-Answers-ebook/dp/B0FCD2282S" target="_blank">Amazon →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAM DAY -->
+  <div class="exam-day">
+    <h3>📋 Exam Day — What to Expect</h3>
+    <div class="ed-grid">
+      <div class="ed-item">
+        <h4>Before You Go</h4>
+        <p>Arrive at the Prometric testing center 30 minutes early. Bring one valid government-issued ID — your name must exactly match your NMLS registration. No personal items allowed in the testing room. Phone, keys, and wallet go into a secure locker.</p>
+      </div>
+      <div class="ed-item">
+        <h4>The Exam Format</h4>
+        <p>120 questions total (115 scored + 5 unscored pilot questions you cannot identify). 190 minutes. Multiple choice. You will see your pass/fail result immediately upon completion. You will receive a score breakdown by domain — useful if you need to retake.</p>
+      </div>
+      <div class="ed-item">
+        <h4>If You Pass</h4>
+        <p>Congratulations — your NMLS exam requirement is complete. You still need to submit a state license application, complete the background check, and get sponsored by an employer before you can originate loans. Your score is valid for 5 years.</p>
+      </div>
+      <div class="ed-item">
+        <h4>If You Need to Retake</h4>
+        <p>Wait 30 days before retaking (30 days after a 2nd failure, and 180 days after a 3rd failure). Use your domain score breakdown to identify weaknesses. Focus on the highest-weighted domains you underperformed in. Most people pass on their second attempt with targeted review.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONGRATULATIONS -->
+  <div class="congrats">
+    <h2>🎓 You Have Completed the Mortgage &amp; Lending Track</h2>
+    <p>You have covered everything from what an MLO does and how to get licensed, through loan types, the origination process, seven federal laws, ethics and fraud, and how to build a business that lasts. Everything you need to pass this exam and start a career worth having is in your head right now. Go show them what you know.</p>
+    <div class="congrats-links">
+      <a href="mortgage-lending.html" class="btn-purple">← Back to Track Overview</a>
+      <a href="https://nmlsportal.csbs.org" target="_blank" class="btn-gold">Schedule Your Exam →</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mlo-module-6.html" class="btn-outline">← Module 6</a>
+  <div class="module-nav-info">
+    <p>Mortgage &amp; Lending Track</p>
+    <strong>Module 7 of 7 — Complete</strong>
+  </div>
+  <a href="mortgage-lending.html" class="btn-gold" style="background:var(--gold);color:#5A3800;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;">Track Overview →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals. Not a substitute for NMLS-approved pre-licensing education.</p>
+</footer>
+
+<script>
+function toggleCheck(item) {
+  var check = item.querySelector('.cl-check');
+  check.classList.toggle('checked');
+  item.classList.toggle('checked');
+  saveProgress();
+}
+
+function saveProgress() {
+  var items = document.querySelectorAll('.cl-item');
+  var state = [];
+  items.forEach(function(item) {
+    state.push(item.classList.contains('checked') ? 1 : 0);
+  });
+  try { localStorage.setItem('nmls_checklist', JSON.stringify(state)); } catch(e) {}
+}
+
+function loadProgress() {
+  try {
+    var saved = localStorage.getItem('nmls_checklist');
+    if (!saved) return;
+    var state = JSON.parse(saved);
+    var items = document.querySelectorAll('.cl-item');
+    items.forEach(function(item, i) {
+      if (state[i]) {
+        item.classList.add('checked');
+        item.querySelector('.cl-check').classList.add('checked');
+      }
+    });
+  } catch(e) {}
+}
+
+loadProgress();
+</script>
+</body>
+</html>
