@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Mortgage & Lending Module 3: The Loan Process — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#3D1A6E;--purple-mid:#5C2E9A;--purple-light:#7B4BBF;--purple-pale:#F3EEFB;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(61,26,110,0.12);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--purple);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--purple);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--purple-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--purple-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--purple);font-weight:600;}
+.progress-bar{background:var(--purple-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--purple-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(61,26,110,0.12);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--purple-mid);border-radius:3px;width:50%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--purple);color:var(--gold-light);}
+.prog-dot.complete{background:var(--purple-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(61,26,110,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);}
+.module-hero{background:linear-gradient(135deg,#1A0838 0%,var(--purple) 55%,var(--purple-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--purple);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.steps-list{display:flex;flex-direction:column;gap:0.85rem;margin:1.75rem 0;}
+.step-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--purple);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.step-content h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.step-content p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.five-cs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.c-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:0 12px 12px 0;padding:1.25rem;}
+.c-card .cc-letter{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--purple);margin-bottom:0.3rem;}
+.c-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;}
+.c-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0;}
+.doc-item{background:var(--purple-pale);border-radius:10px;padding:0.85rem 1rem;font-size:13px;color:var(--text-dark);display:flex;gap:8px;align-items:flex-start;}
+.doc-item::before{content:'📄';flex-shrink:0;}
+.trid-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.trid-card{border-radius:14px;padding:1.5rem;}
+.trid-card.le{background:var(--purple-pale);border:1px solid rgba(61,26,110,0.2);}
+.trid-card.cd{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.trid-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.trid-card.le h4{color:var(--purple);}
+.trid-card.cd h4{color:#8A6A20;}
+.trid-card ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
+.trid-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.trid-card.le ul li::before{content:'→';color:var(--purple-mid);font-weight:700;flex-shrink:0;}
+.trid-card.cd ul li::before{content:'→';color:#8A6A20;font-weight:700;flex-shrink:0;}
+.timeline{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
+.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:var(--border);}
+.tl-item{display:flex;gap:1.25rem;position:relative;padding-bottom:1.5rem;}
+.tl-dot{width:42px;height:42px;border-radius:50%;background:var(--purple);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;z-index:1;}
+.tl-content{flex:1;padding-top:8px;}
+.tl-content h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.tl-content p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+.video-section{margin:2.5rem 0;}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 4px 24px rgba(61,26,110,0.15);margin-bottom:0.75rem;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.bonus-resource{background:var(--cream-dark);border-radius:12px;padding:1.25rem 1.5rem;margin:1.5rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.bonus-resource div h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.bonus-resource div p{font-size:13px;color:var(--text-mid);}
+.bonus-resource a{display:inline-flex;align-items:center;white-space:nowrap;background:var(--purple-pale);color:var(--purple);border:1px solid rgba(61,26,110,0.2);padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;flex-shrink:0;}
+.bonus-resource a:hover{background:var(--purple);color:var(--white);}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(61,26,110,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.takeaways{background:linear-gradient(135deg,#1A0838,var(--purple));border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;color:var(--white);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.7;display:flex;gap:10px;}
+.takeaways ul li::before{content:'→';color:var(--gold-light);font-weight:700;flex-shrink:0;margin-top:1px;}
+.knowledge-check{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.75rem;}
+.question{margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.question p{font-size:15px;color:var(--text-dark);line-height:1.7;margin-bottom:0.85rem;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;}
+.option:hover{border-color:var(--purple-mid);background:var(--purple-pale);}
+.option.selected{border-color:var(--purple);background:var(--purple-pale);color:var(--text-dark);}
+.option.correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.incorrect{border-color:#C62828;background:#FFF5F5;color:#8B0000;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-light);flex-shrink:0;margin-top:1px;}
+.option.selected .option-letter{background:var(--purple);color:var(--white);}
+.option.correct .option-letter{background:#2E7D32;color:var(--white);}
+.option.incorrect .option-letter{background:#C62828;color:var(--white);}
+.explanation{font-size:13px;line-height:1.65;padding:0.75rem 1rem;border-radius:8px;margin-top:0.5rem;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:#F1F8F1;color:#1B5E20;}
+.explanation.incorrect-exp{background:#FFF5F5;color:#8B0000;}
+.check-btn{display:inline-block;background:var(--purple);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.check-btn:hover{background:var(--purple-mid);}
+.check-btn:disabled{background:#ccc;cursor:not-allowed;}
+.score-result{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.7;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:#F1F8F1;color:#1B5E20;border:1px solid #A5D6A7;}
+.score-result.fail{background:#FFF5F5;color:#8B0000;border:1px solid #FFCDD2;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--purple-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(61,26,110,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);}
+.btn-outline:hover{border-color:var(--purple-mid);color:var(--purple);}
+.btn-gold{background:var(--gold);color:#5A3800;}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+.fade-in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="mortgage-lending.html" class="nav-back">← Mortgage &amp; Lending</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="mortgage-lending.html">Mortgage &amp; Lending</a>
+  <span class="sep">›</span>
+  <span class="current">Module 3: The Loan Process — Application to Closing</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mlo-module-1.html" class="prog-dot complete">1</a>
+    <a href="mlo-module-2.html" class="prog-dot complete">2</a>
+    <span class="prog-dot active">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Mortgage &amp; Lending Track · Module 3 of 6</div>
+    <h1>The Loan Process — <em>Application to Closing</em></h1>
+    <p>The six steps of mortgage loan origination, the 1003 form, automated underwriting systems, the five C's of creditworthiness, TRID disclosures, conditional approval, and what happens at the closing table.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Primary Source: NMLS MLO Study Guide</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The six steps of mortgage loan origination — <em>pre-qualification through servicing</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The mortgage loan process follows a defined sequence that every MLO must know in order — both because it governs your daily work and because the NMLS exam tests it directly. The six steps are pre-qualification, application, processing, underwriting, closing, and servicing. Each stage has specific actions, disclosures, and legal requirements attached to it.</p>
+
+    <div class="timeline fade-in">
+      <div class="tl-item">
+        <div class="tl-dot">1</div>
+        <div class="tl-content">
+          <h4>Pre-Qualification</h4>
+          <p>The borrower gets an initial estimate of how much they can borrow based on self-reported income, assets, and credit. This is a preliminary assessment — not a commitment. Important distinction for the exam: a <strong>mortgage broker can only pre-qualify</strong> (estimate based on information provided). A <strong>mortgage lender can issue a pre-approval</strong> (based on documented, verified information). Pre-qualification gives the borrower a realistic budget range before they begin home shopping.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2</div>
+        <div class="tl-content">
+          <h4>Application — The 1003 Form</h4>
+          <p>The borrower formally applies for the loan. The standard residential loan application is called the <strong>Uniform Residential Loan Application — Form 1003</strong> (pronounced "ten-oh-three"), created by Fannie Mae (FNMA — Federal National Mortgage Association). The 1003 captures: borrower name and Social Security number, address history (2 years), employment history (2 years), income, assets, credit, property details, and loan purpose. Critical exam point: <strong>a lender does not need a completed 1003 to trigger federal disclosure obligations.</strong> Once six key pieces of information are collected — name, income, SSN, property address, estimated property value, and loan amount sought — the three-business-day clock for the Loan Estimate begins, regardless of whether the application is on a formal document or a napkin.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">3</div>
+        <div class="tl-content">
+          <h4>Processing</h4>
+          <p>The loan processor collects and verifies all documentation needed for underwriting. The file must be complete and accurate before it moves forward. The processor also orders the appraisal, title search, and title insurance, and may send out verifications of employment (VOEs). The loan officer may handle processing themselves or hand off to a dedicated processing department.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">4</div>
+        <div class="tl-content">
+          <h4>Underwriting</h4>
+          <p>The underwriter evaluates risk and issues an approval, conditional approval, suspension (needs more information), or denial. Most files are first run through an <strong>Automated Underwriting System (AUS)</strong> — Fannie Mae's system is <strong>Desktop Underwriter (DU)</strong>, Freddie Mac's is <strong>Loan Prospector (LP)</strong>. If the AUS approves the loan, a human underwriter then verifies that all documented information matches the application. If denied, the lender must provide an <strong>adverse action notice</strong> within 30 days under ECOA and the Fair Credit Reporting Act.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">5</div>
+        <div class="tl-content">
+          <h4>Closing</h4>
+          <p>The loan becomes official. The borrower signs the closing disclosure and loan documents, funds are dispersed, and ownership transfers. The closing is also called the <strong>day of consummation</strong> — the point at which the borrower is legally obligated to the loan. The <strong>Closing Disclosure (CD)</strong> must be provided at least <strong>3 business days before closing</strong> under TRID. For refinances (not purchases), borrowers have a <strong>3-business-day right of rescission</strong> under TILA to cancel the transaction.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">6</div>
+        <div class="tl-content">
+          <h4>Servicing</h4>
+          <p>After closing, the loan enters servicing — the ongoing management of monthly payments, escrow accounts, property tax and insurance payments, and default/foreclosure procedures if payments lapse. Loan servicing is regulated by <strong>RESPA</strong>. Servicing rights are often sold separately from the loan itself — borrowers must receive notice at least <strong>15 days before a servicing transfer</strong>. During the first 60 days after a transfer, borrowers cannot be penalized for sending payments to the old servicer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The five C's of creditworthiness — <em>how underwriters evaluate risk</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">When an underwriter evaluates a loan file, they are fundamentally answering one question: will this borrower repay this loan? The framework for that evaluation is the five C's of creditworthiness — a structured way to assess risk across five dimensions. Four of the C's form the core underwriting standard. The fifth — conditions — adds market and situational context. The NMLS exam tests your ability to identify and distinguish all five.</p>
+
+    <div class="five-cs fade-in">
+      <div class="c-card">
+        <div class="cc-letter">C₁</div>
+        <h4>Credit (Character)</h4>
+        <p>The borrower's history of repaying debts — reflected in FICO scores and credit report payment history. Credit reveals willingness to pay. FICO scores are generated by the Fair Isaac Corporation. Lenders pull all three bureaus (TransUnion, Experian, Equifax) and use the middle score of the three for each borrower.</p>
+      </div>
+      <div class="c-card">
+        <div class="cc-letter">C₂</div>
+        <h4>Capacity</h4>
+        <p>The borrower's ability to repay — measured by the debt-to-income (DTI) ratio. Front-end DTI = housing expenses ÷ gross monthly income. Back-end DTI = all monthly debts ÷ gross monthly income. This is the most complex C and the most common source of errors by inexperienced loan officers. Income calculation is fixed — errors here can kill a file with no workaround.</p>
+      </div>
+      <div class="c-card">
+        <div class="cc-letter">C₃</div>
+        <h4>Capital</h4>
+        <p>The borrower's savings, assets, and reserves — the down payment, closing costs, and months of reserves available after closing. Underwriters review 2 months of bank statements. Large unexplained deposits must be sourced and documented. Gift funds require a gift letter. Seasoning means funds have been in the account for 2+ statement cycles.</p>
+      </div>
+      <div class="c-card">
+        <div class="cc-letter">C₄</div>
+        <h4>Collateral</h4>
+        <p>The property securing the loan — its appraised value, condition, and title status. The appraisal confirms value and flags property condition issues. The title report identifies any clouds on title — liens, easements, or unresolved claims — that must be cleared before closing. An "as is" appraisal means no repairs required; "subject to" means repairs must be completed before funding.</p>
+      </div>
+      <div class="c-card" style="grid-column:1/-1;">
+        <div class="cc-letter">C₅</div>
+        <h4>Conditions</h4>
+        <p>The broader context surrounding the loan — market conditions, job stability, the purpose of the loan, current interest rates, and local economic factors. Conditions also refers to the specific items on a conditional approval letter that must be cleared before the loan can fund. Conditions are not a denial — they are a list of requirements the borrower and loan officer must satisfy to receive final approval and a "clear to close."</p>
+      </div>
+    </div>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 Capacity is the Most Dangerous C</div>
+      <p>Income calculation is where the most experienced-based errors occur. The reason: income calculation is a fixed historical fact — once the underwriter determines the correct number, there is almost nothing the borrower or loan officer can do to change it. A self-employed borrower's net income after deductions, variable income that requires a 2-year average, a second job that needs a 2-year history, an employment gap that needs to be explained — all of these are income calculation complexities that can collapse a pre-approval if the loan officer did not calculate them correctly from the start. Always verify complex income scenarios before promising a borrower they are approved.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 — VIDEOS + TRID -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">TRID disclosures — <em>the Loan Estimate and the Closing Disclosure</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The TILA-RESPA Integrated Disclosure rule — known as <strong>TRID</strong> — was implemented by the Consumer Financial Protection Bureau (CFPB) in 2015. TRID combined the disclosure requirements of the Truth in Lending Act (TILA) and the Real Estate Settlement Procedures Act (RESPA) into two standardized forms: the Loan Estimate and the Closing Disclosure. These two forms represent some of the most heavily tested content on the NMLS exam.</p>
+
+    <div class="trid-cards fade-in">
+      <div class="trid-card le">
+        <h4>📋 Loan Estimate (LE)</h4>
+        <ul>
+          <li>Replaces the old Good Faith Estimate (GFE) and early TILA disclosure</li>
+          <li>Must be provided within <strong>3 business days</strong> of application</li>
+          <li>Triggered by receipt of 6 key application data points — not a completed 1003</li>
+          <li>Shows estimated interest rate, monthly payment, and closing costs</li>
+          <li>Allows borrowers to compare loan offers side-by-side</li>
+          <li>Cannot be charged fees (except credit report fee) until borrower acknowledges receipt and indicates intent to proceed</li>
+          <li>Certain costs cannot change at closing; others can increase within limits</li>
+        </ul>
+      </div>
+      <div class="trid-card cd">
+        <h4>📋 Closing Disclosure (CD)</h4>
+        <ul>
+          <li>Replaces the old HUD-1 Settlement Statement</li>
+          <li>Must be provided at least <strong>3 business days before closing</strong></li>
+          <li>Shows final, actual loan terms and costs</li>
+          <li>Borrower can compare CD to LE to verify no unexpected changes</li>
+          <li>If certain key terms change, a new 3-business-day waiting period is required</li>
+          <li>Borrower signs the CD at the closing table</li>
+          <li>Day of consummation = the day the borrower becomes legally obligated to the loan</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Documentation collected during processing</h3>
+    <div class="docs-grid fade-in">
+      <div class="doc-item">Recent pay stubs (last 30 days)</div>
+      <div class="doc-item">W-2 forms (last 2 years)</div>
+      <div class="doc-item">Federal tax returns (last 2 years)</div>
+      <div class="doc-item">Bank statements (last 2 months)</div>
+      <div class="doc-item">Purchase contract (signed by both parties)</div>
+      <div class="doc-item">Credit report (pulled by lender)</div>
+      <div class="doc-item">Proof of assets (investment accounts, 401k)</div>
+      <div class="doc-item">Photo ID and Social Security verification</div>
+      <div class="doc-item">Profit &amp; loss statement (self-employed borrowers)</div>
+      <div class="doc-item">Gift letter (if using gift funds for down payment)</div>
+    </div>
+
+    <div class="video-section fade-in">
+      <h3>🎬 Watch: The Loan Process Explained</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/LT6UenG6j4A" title="Mortgage Loan Process Explained for the NMLS Exam" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);margin-bottom:1.5rem;">D. Kumar · Exam Breakdown Series · February 2025 · The 6 steps of the loan process, the 1003 form and who created it, automated underwriting systems (DU/LP), the five C's of creditworthiness, adverse action letters, TRID, right of rescission, and loan servicing — all from an NMLS exam preparation perspective with practice questions and explanations</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/cHVoyqkTTnc" title="What Happens When Your Loan Is Submitted to Underwriting?" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);margin-bottom:1.5rem;">Steve Ferguson · Modern Mortgage Loan Advisor · November 2024 · A practical walkthrough of the underwriting stage — how the underwriter reviews bank statements, what triggers a conditional approval, common causes of delays and denials, the difference between automated and manual underwriting, and what it takes to get to a clear to close</p>
+
+      <div class="bonus-resource">
+        <div>
+          <h4>🎧 Go Deeper — The Mortgage Underwriting Process (Podcast)</h4>
+          <p>A 40-minute expert conversation walking through each of the four C's with real borrower examples — capacity (income complexity), capital (sourcing and seasoning funds), credit (common traps), and collateral (appraisal and title). Recommended for students who want deeper practical understanding beyond the exam.</p>
+        </div>
+        <a href="https://www.youtube.com/watch?v=k1_5wlYpiGE" target="_blank">Watch →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Conditional approval, clear to close, and the right of rescission — <em>the final stretch</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Most loan approvals are not clean approvals — they are <strong>conditional approvals</strong>. This means the underwriter has approved the loan subject to a list of conditions that must be satisfied before the loan can fund. Understanding conditional approvals and how to clear conditions efficiently is one of the most practical skills a working MLO develops.</p>
+
+    <h3 class="sub-title">What happens after a conditional approval</h3>
+    <div class="steps-list fade-in">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Receive the conditional approval letter</h4>
+          <p>The underwriter issues an approval with a list of conditions — typically 8 to 15 items. Some are borrower conditions (provide an updated pay stub, explain a large deposit, provide a gift letter). Others are lender or title conditions (update the mortgage clause on the homeowner's insurance, clear a title lien). Your job as the MLO is to identify which conditions require borrower action and communicate them clearly and quickly.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Clear conditions and resubmit</h4>
+          <p>Gather the required documentation for each condition and submit back to the underwriter. Some conditions are black-and-white — easy to satisfy. Others fall into gray areas where the loan officer may need to advocate with the underwriter or escalate to an underwriting manager. The ability to argue gray-area conditions is where experienced MLOs separate themselves from beginners.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Receive the clear to close (CTC)</h4>
+          <p>When all conditions are satisfied, the underwriter issues a clear to close — authorization to proceed to the closing table. The closing disclosure must then be issued at least 3 business days before the scheduled closing date. The closing date cannot move forward until those 3 days have elapsed from CD delivery.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Closing — day of consummation</h4>
+          <p>The borrower meets with the settlement agent (title company or attorney depending on state). They review and sign the closing disclosure and all loan documents. Funds are dispersed — the seller receives sale proceeds, the borrower takes possession. The borrower should bring a cashier's check or wire transfer for the down payment and closing costs. Once signed and funded, the transaction is complete.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Right of Rescission — refinances only</h3>
+    <p class="lesson-text">Under the Truth in Lending Act (TILA), borrowers have a <strong>3-business-day right of rescission</strong> on refinance transactions that use their primary residence as collateral. This applies to refinances, home equity loans, and HELOCs — it does <strong>not</strong> apply to purchase transactions. During the rescission period, the lender cannot disperse funds. If the borrower exercises their right to rescind, the lender must return all fees and charges paid. If the lender fails to provide two copies of the notice of right to rescind, the rescission period extends to <strong>3 years</strong>.</p>
+
+    <div class="callout callout-warning fade-in">
+      <div class="callout-label">⚠️ Ethics Alert — Closing with Changed Circumstances</div>
+      <p>The NMLS exam tests ethics scenarios at the closing stage. The most common: a borrower's employment situation changes between loan approval and closing — they lose their job, their income is reduced, or they take on significant new debt. An MLO has an ethical (and legal) obligation to update the lender with material changes in the borrower's financial situation. Closing a loan when you know the borrower no longer qualifies is a violation of lending laws and professional ethics. The right answer on every exam ethics question involving changed circumstances is always: disclose to the lender and do not close the loan until the situation is re-evaluated.</p>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>Every loan file is a story. Pre-qualification is the first page — we think we know where it ends. Application is the middle — the details start to emerge. Processing is where the real picture forms. Underwriting is where the truth comes out. Closing is the ending everyone has been working toward. And servicing is the relationship that continues for the next 30 years. Your job as an MLO is to be the author who keeps that story moving forward — solving problems, communicating clearly, and never losing sight of the family on the other end of the file who is waiting to get their keys.</p>
+      <div class="mentor-name">Your Darco Mentor · Module 3 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 3 Key Takeaways</h3>
+    <ul>
+      <li>The six steps of the mortgage loan process in order: pre-qualification → application → processing → underwriting → closing → servicing. The NMLS exam tests this sequence directly — know it cold.</li>
+      <li>The Uniform Residential Loan Application is Form 1003, created by Fannie Mae (FNMA). Federal disclosure is triggered when 6 key data points are collected — not when the 1003 is completed. The Loan Estimate must be delivered within 3 business days of application.</li>
+      <li>Brokers can only pre-qualify borrowers; lenders can issue pre-approvals. Pre-approval is stronger because it is based on verified documentation, not self-reported information.</li>
+      <li>The five C's of creditworthiness: Credit (willingness to pay — FICO scores), Capacity (ability to pay — DTI ratio), Capital (down payment, reserves, assets), Collateral (the property — appraisal and title), Conditions (market context and conditional approval items). All five are tested on the NMLS exam.</li>
+      <li>Automated Underwriting Systems: Desktop Underwriter (DU) belongs to Fannie Mae. Loan Prospector (LP) belongs to Freddie Mac. AUS approvals speed the process but still require human underwriter verification of all documented information.</li>
+      <li>TRID (2015) created two key forms: the Loan Estimate (provided within 3 business days of application) and the Closing Disclosure (provided at least 3 business days before closing). These replaced the Good Faith Estimate and HUD-1.</li>
+      <li>Right of rescission applies to refinances, HELOCs, and home equity loans — NOT purchase transactions. Borrowers have 3 business days to cancel. If the lender fails to provide two copies of the rescission notice, the period extends to 3 years.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A loan officer is speaking with a potential borrower over the phone. During the conversation, the borrower provides their name, Social Security number, income, the property address they want to purchase, an estimated value of the property, and the loan amount they are seeking. The loan officer has not had the borrower complete the 1003 form yet. Has a loan application been triggered under TRID — and what does that mean?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">A</div> Yes — a loan application has been triggered. Under TRID, receipt of six specific pieces of information — name, income, SSN, property address, estimated property value, and loan amount sought — constitutes an application regardless of whether a formal 1003 has been completed. This starts the 3-business-day clock for providing the Loan Estimate.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> No — an application is only triggered when the borrower signs and submits the completed Uniform Residential Loan Application (Form 1003). A phone conversation does not constitute a formal application under TRID.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> No — the loan estimate clock only starts when the loan officer pulls the borrower's credit report, which is required before any application can be considered received.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Yes — but the 3-business-day clock for the Loan Estimate only begins when the borrower signs an intent to proceed, not when the six data points are collected.</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. What is the key difference between Fannie Mae's Desktop Underwriter (DU) and the role of the human underwriter — and why does an AUS approval not eliminate the need for a human underwriter?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> DU and the human underwriter perform identical functions — when DU issues an "Approve/Eligible" finding, the human underwriter simply stamps the file approved without conducting any additional review.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> DU evaluates the loan application data against Fannie Mae's risk guidelines and issues a finding (Approve/Eligible, Refer, or Ineligible) within seconds. However, DU cannot verify that the documented information actually matches what was entered. The human underwriter then reviews all documentation (pay stubs, bank statements, appraisal, title) to confirm everything lines up with the AUS finding. An AUS approval is a conditional pathway — it still requires human verification of every supporting document.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> DU is used exclusively for FHA loans while Loan Prospector (LP) is used for all conventional and government-backed loans. Human underwriters are only involved in manual underwriting scenarios when no AUS system is available.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Once DU issues an Approve/Eligible finding, lenders are no longer required to have a human underwriter review the file — the AUS finding alone is sufficient for loan funding under Fannie Mae guidelines.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A borrower receives a conditional approval with 12 conditions. Three of the conditions require the borrower to provide an updated pay stub, explain a $15,000 deposit in their bank account, and obtain a gift letter from their parents for the down payment. What is a conditional approval — and is the borrower approved for the loan?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> A conditional approval means the loan has been denied subject to the borrower meeting conditions — the borrower is not approved until all 12 conditions are cleared and a second full underwriting review is completed.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> A conditional approval means the underwriter has approved the loan subject to the listed conditions being satisfied. The borrower IS approved — but the loan cannot fund until all conditions are cleared. The three borrower conditions described are routine: an updated pay stub confirms continued employment, the deposit explanation rules out undisclosed debt, and the gift letter documents an acceptable source of funds. Once all conditions are cleared, the underwriter issues a clear to close and the closing disclosure can be sent.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> A conditional approval with 12 conditions is effectively a denial — lenders who intend to approve loans issue clean approvals with no conditions. A high number of conditions indicates the loan does not meet program guidelines.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> A conditional approval is the same as a pre-approval — it gives the borrower permission to shop for a home but does not commit the lender to funding the loan regardless of conditions.</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A borrower is refinancing their primary residence. They sign all the loan documents at the closing table on Monday. When is the earliest the lender can disburse funds — and why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Immediately — once the borrower signs the closing documents, the lender can disburse funds the same day. There is no waiting period for refinance transactions.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Tuesday — funds can be disbursed the next business day after all closing documents are signed, which is standard practice for both purchase and refinance transactions.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> Thursday at the earliest. Under TILA's right of rescission, borrowers have 3 business days to cancel a refinance on their primary residence after signing. Business days exclude Sundays and federal holidays. Signing on Monday: Tuesday, Wednesday, and Thursday count as the three business days. The right of rescission expires at midnight Thursday, making Friday the first day funds can technically be disbursed — though Thursday is the earliest if disbursement happens after midnight. This right of rescission applies to refinances, HELOCs, and home equity loans — NOT purchase transactions.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> The right of rescission does not apply to refinances — it only applies to purchase transactions where the borrower is buying a property they have not previously owned.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Three days before a scheduled closing, the loan officer learns that the borrower was laid off from their job two days ago. The closing disclosure has already been sent. What is the correct course of action — and what law is most relevant?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Proceed with the closing as scheduled — the loan was approved based on the borrower's employment at the time of underwriting, and the lender is legally committed to fund the loan once the closing disclosure has been delivered.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Proceed only if the borrower has sufficient reserves to cover at least 6 months of mortgage payments — this compensating factor is sufficient to replace the employment income under most loan program guidelines.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Do not close without notifying the lender immediately. The borrower's loss of employment is a material change in their financial circumstances that directly affects their ability to repay the loan — which is the core requirement of the Ability to Repay (ATR) rule under TILA and qualified mortgage standards. Proceeding to close a loan knowing the borrower no longer qualifies is both an ethical violation and a potential legal violation. The lender must be notified, the file must be re-evaluated, and if the borrower no longer qualifies, the loan cannot fund.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The loan officer should advise the borrower not to mention the job loss to the lender — since the closing disclosure has already been issued, the lender is contractually obligated to fund the loan regardless of changed circumstances.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 4: Federal Laws &amp; Consumer Protections</h3>
+    <p>You understand the process — now you need to understand the laws that govern it. Module 4 covers the federal regulatory framework that MLOs operate within: RESPA, TILA, ECOA, HMDA, the Fair Housing Act, and TRID in depth. These laws collectively represent 24% of the NMLS exam and are tested with specific numbers, timelines, and prohibited practices that every licensed MLO must know.</p>
+    <a href="mlo-module-4.html" class="next-module-cta">Module 4: Federal Laws &amp; Consumer Protections →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mlo-module-2.html" class="btn btn-outline">← Module 2</a>
+  <div class="module-nav-info">
+    <p>Mortgage &amp; Lending Track</p>
+    <strong>Module 3 of 6</strong>
+  </div>
+  <a href="mlo-module-4.html" class="btn btn-gold">Module 4: Federal Laws →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals. Not a substitute for NMLS-approved pre-licensing education.</p>
+</footer>
+
+<script>
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! This is one of the most important TRID concepts for the exam. Under Regulation Z and TRID, a loan application is considered received — triggering the 3-business-day Loan Estimate clock — when the lender has received six pieces of information: the borrower's name, income, Social Security number, the property address, an estimated value of the property, and the desired loan amount. The 1003 form does not need to be completed. A phone conversation, email, or even a napkin with these six items constitutes a received application.",incorrect:"Not quite. Under TRID, a loan application is triggered not by a signed 1003, but by the receipt of six specific data points: name, income, SSN, property address, estimated property value, and loan amount sought. Once these six items are received by the lender — regardless of format or document — the 3-business-day clock for the Loan Estimate begins. This is a heavily tested TRID distinction on the NMLS exam."},
+  q2:{correct:"Correct! Desktop Underwriter (DU) is Fannie Mae's automated underwriting system — it evaluates loan data against risk guidelines and issues findings in seconds. Loan Prospector (LP) is Freddie Mac's equivalent. But an AUS approval is conditional: it says 'if everything you entered is accurate and verifiable, we will buy this loan.' The human underwriter then reviews every supporting document to confirm accuracy. A 800 credit score borrower with a misleading income entry will still get caught at the human underwriting stage. AUS findings speed the process — they do not replace underwriter judgment.",incorrect:"Not quite. Desktop Underwriter (DU) belongs to Fannie Mae. Loan Prospector (LP) belongs to Freddie Mac. Both evaluate loan applications against GSE risk guidelines and issue findings quickly. But an AUS approval is not a final approval — it is a conditional pathway. The human underwriter must still verify that all documentation matches what was entered into the system. AUS findings reduce review time for clean files but do not eliminate the human underwriting requirement."},
+  q3:{correct:"Correct! A conditional approval is the most common type of underwriting decision — and it means the loan IS approved, subject to conditions. The underwriter has evaluated the file and determined it meets program guidelines with the listed conditions satisfied. The conditions described are all routine: updated pay stub (verification of continued employment), deposit explanation (ruling out undisclosed debt), and gift letter (documenting an acceptable source of funds). Once all conditions are cleared, the underwriter issues a clear to close, the closing disclosure is sent, and the closing can proceed.",incorrect:"Not quite. A conditional approval is actually the most common — and positive — underwriting outcome. It means the loan is approved subject to the listed conditions being met. Most approvals come with 8 to 15 conditions. The borrower IS approved; the loan simply cannot fund until conditions are cleared. The conditions described — pay stub, deposit explanation, gift letter — are all routine items that experienced loan officers clear regularly. Once all conditions are satisfied, the underwriter issues a clear to close."},
+  q4:{correct:"Correct! Under TILA's right of rescission, borrowers have 3 business days after signing to cancel a refinance transaction on their primary residence. Business days for rescission purposes include Saturdays but exclude Sundays and federal holidays. Signing on Monday: Tuesday, Wednesday, and Thursday are the three business days. The right expires at midnight on Thursday — making Friday the first day disbursement can occur. This right of rescission applies ONLY to refinances, HELOCs, and home equity loans using the primary residence as collateral — it does NOT apply to purchase transactions. If the lender fails to provide two copies of the rescission notice, the period extends to 3 years.",incorrect:"Not quite. Under TILA, refinance transactions on a primary residence are subject to a 3-business-day right of rescission. The borrower can cancel the loan during this period. Business days for rescission include Saturdays but exclude Sundays and federal holidays. Signing on Monday means Tuesday, Wednesday, and Thursday are the rescission days — funds cannot be disbursed until after midnight Thursday at the earliest. This right applies to refinances, HELOCs, and home equity loans — not purchase transactions."},
+  q5:{correct:"Correct! This is a classic NMLS ethics scenario. The Ability to Repay (ATR) rule under TILA requires lenders to evaluate and confirm a borrower's ability to repay the loan at the time of consummation (closing). A job loss three days before closing is a material change that directly affects this requirement. The ethical and legal obligation is clear: notify the lender immediately. Proceeding to close knowing the borrower is unemployed would violate the ATR rule, professional ethics standards, and likely constitute fraud. The loan must be re-evaluated — and if the borrower no longer qualifies, it cannot fund regardless of how close to closing the parties are.",incorrect:"Not quite. This is a classic NMLS ethics scenario with a clear correct answer. The Ability to Repay (ATR) rule under TILA requires that the borrower's ability to repay be confirmed at consummation — closing day. A job loss is a material change in financial circumstances. The loan officer must notify the lender immediately. Proceeding to close a loan knowing the borrower has lost their income — regardless of reserves or how close to closing — violates the ATR rule, professional ethics, and potentially constitutes mortgage fraud. The loan must be put on hold and re-evaluated."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;
+    } else {
+      ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}
+    }
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong command of the loan process. You understand TRID triggers, AUS systems, conditional approvals, the right of rescission, and the ethics of closing with changed circumstances. Ready for Module 4: Federal Laws & Consumer Protections.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the six-item application trigger under TRID, the difference between AUS and human underwriting, what a conditional approval means, the refinance right of rescission timeline, and the ATR rule. These process fundamentals are heavily tested on the NMLS exam.';
+  }
+}
+</script>
+</body>
+</html>
