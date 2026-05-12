@@ -16,7 +16,7 @@
   --warn:#D4881A;--warn-pale:#FDF5E8;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;text-align:left;}
 nav{background:var(--purple);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
 .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
 .nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--purple);}
@@ -81,18 +81,17 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0;}
 .doc-item{background:var(--purple-pale);border-radius:10px;padding:0.85rem 1rem;font-size:13px;color:var(--text-dark);display:flex;gap:8px;align-items:flex-start;}
 .doc-item::before{content:'📄';flex-shrink:0;}
-.trid-stack{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
-.trid-row{border-radius:14px;padding:1.5rem;display:flex;gap:1.5rem;align-items:flex-start;}
-.trid-row.le{background:var(--purple-pale);border:1px solid rgba(61,26,110,0.2);}
-.trid-row.cd{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
-.trid-label{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.3;min-width:180px;padding-top:2px;}
-.trid-row.le .trid-label{color:var(--purple);}
-.trid-row.cd .trid-label{color:#8A6A20;}
-.trid-items{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem;flex:1;}
-.trid-item{font-size:13px;color:var(--text-mid);line-height:1.6;display:flex;gap:7px;align-items:flex-start;}
-.trid-item::before{content:'→';font-weight:700;flex-shrink:0;margin-top:1px;}
-.trid-row.le .trid-item::before{color:var(--purple-mid);}
-.trid-row.cd .trid-item::before{color:#8A6A20;}
+.trid-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;align-items:start;}
+.trid-card{border-radius:14px;padding:1.5rem;}
+.trid-card.le{background:var(--purple-pale);border:1px solid rgba(61,26,110,0.2);}
+.trid-card.cd{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.trid-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.85rem;color:inherit;}
+.trid-card.le h4{color:var(--purple);}
+.trid-card.cd h4{color:#8A6A20;}
+.trid-card ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;text-align:left;}
+.trid-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.6;align-items:flex-start;text-align:left;}
+.trid-card.le ul li::before{content:'→';color:var(--purple-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
+.trid-card.cd ul li::before{content:'→';color:#8A6A20;font-weight:700;flex-shrink:0;margin-top:1px;}
 .timeline{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
 .timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:var(--border);}
 .tl-item{display:flex;gap:1.25rem;position:relative;padding-bottom:1.5rem;}
@@ -325,28 +324,30 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
 
     <p class="lesson-text">The TILA-RESPA Integrated Disclosure rule — known as <strong>TRID</strong> — was implemented by the Consumer Financial Protection Bureau (CFPB) in 2015. TRID combined the disclosure requirements of the Truth in Lending Act (TILA) and the Real Estate Settlement Procedures Act (RESPA) into two standardized forms: the Loan Estimate and the Closing Disclosure. These two forms represent some of the most heavily tested content on the NMLS exam.</p>
 
-    <div class="trid-stack fade-in">
-      <div class="trid-row le">
-        <div class="trid-label">📋 Loan Estimate (LE)</div>
-        <div class="trid-items">
-          <div class="trid-item">Replaces the old Good Faith Estimate (GFE) and the early TILA disclosure — introduced by TRID in 2015</div>
-          <div class="trid-item">Must be provided within <strong>3 business days</strong> of receiving the application</div>
-          <div class="trid-item">Triggered by receipt of 6 key data points — not a completed 1003 form</div>
-          <div class="trid-item">Shows the estimated interest rate, monthly payment, and total closing costs</div>
-          <div class="trid-item">No fees (except credit report) can be charged until the borrower acknowledges receipt and indicates intent to proceed</div>
-          <div class="trid-item">Certain costs are locked; others can increase within defined tolerance limits at closing</div>
-        </div>
+    <div class="trid-cards fade-in">
+      <div class="trid-card le">
+        <h4>📋 Loan Estimate (LE)</h4>
+        <ul>
+          <li>Replaces the old Good Faith Estimate (GFE) and early TILA disclosure</li>
+          <li>Must be provided within <strong>3 business days</strong> of receiving the application</li>
+          <li>Triggered by receipt of 6 key application data points — not a completed 1003</li>
+          <li>Shows estimated interest rate, monthly payment, and closing costs</li>
+          <li>Allows borrowers to compare loan offers side-by-side</li>
+          <li>Cannot be charged fees (except credit report fee) until borrower acknowledges receipt and indicates intent to proceed</li>
+          <li>Certain costs cannot change at closing; others can increase within limits</li>
+        </ul>
       </div>
-      <div class="trid-row cd">
-        <div class="trid-label">📋 Closing Disclosure (CD)</div>
-        <div class="trid-items">
-          <div class="trid-item">Replaces the old HUD-1 Settlement Statement — shows final, actual loan terms and costs</div>
-          <div class="trid-item">Must be provided at least <strong>3 business days</strong> before the scheduled closing date</div>
-          <div class="trid-item">Borrower compares CD to LE to verify no unexpected changes in terms or costs</div>
-          <div class="trid-item">If certain key terms change after the CD is issued, a new 3-business-day waiting period is triggered</div>
-          <div class="trid-item">Borrower signs the CD at the closing table — closing is also called the day of consummation</div>
-          <div class="trid-item">Day of consummation = the day the borrower becomes legally obligated to the loan</div>
-        </div>
+      <div class="trid-card cd">
+        <h4>📋 Closing Disclosure (CD)</h4>
+        <ul>
+          <li>Replaces the old HUD-1 Settlement Statement</li>
+          <li>Must be provided at least <strong>3 business days</strong> before the scheduled closing</li>
+          <li>Shows final, actual loan terms and costs</li>
+          <li>Borrower can compare CD to LE to verify no unexpected changes</li>
+          <li>If certain key terms change, a new 3-business-day waiting period is required</li>
+          <li>Borrower signs the CD at the closing table</li>
+          <li>Day of consummation = the day the borrower becomes legally obligated to the loan</li>
+        </ul>
       </div>
     </div>
 
