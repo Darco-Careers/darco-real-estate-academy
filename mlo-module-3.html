@@ -90,9 +90,9 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .trid-card.le h4{color:var(--purple);}
 .trid-card.cd h4{color:#8A6A20;}
 .trid-card ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;text-align:left;}
-.trid-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.6;align-items:flex-start;text-align:left;}
-.trid-card.le ul li::before{content:'→';color:var(--purple-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
-.trid-card.cd ul li::before{content:'→';color:#8A6A20;font-weight:700;flex-shrink:0;margin-top:1px;}
+.trid-card ul li{font-size:13px;color:var(--text-mid);display:block;line-height:1.6;text-align:left;padding-left:1.25rem;position:relative;}
+.trid-card.le ul li::before{content:'→';color:var(--purple-mid);font-weight:700;position:absolute;left:0;}
+.trid-card.cd ul li::before{content:'→';color:#8A6A20;font-weight:700;position:absolute;left:0;}
 .timeline{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
 .timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:var(--border);}
 .tl-item{display:flex;gap:1.25rem;position:relative;padding-bottom:1.5rem;}
