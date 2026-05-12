@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Mortgage & Lending Module 4: Federal Laws & Consumer Protections — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#3D1A6E;--purple-mid:#5C2E9A;--purple-light:#7B4BBF;--purple-pale:#F3EEFB;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(61,26,110,0.12);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;text-align:left;}
+strong{display:inline;font-weight:600;}
+nav{background:var(--purple);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--purple);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--purple-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--purple-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--purple);font-weight:600;}
+.progress-bar{background:var(--purple-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--purple-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(61,26,110,0.12);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--purple-mid);border-radius:3px;width:67%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--purple);color:var(--gold-light);}
+.prog-dot.complete{background:var(--purple-mid);color:var(--white);}
+.prog-dot.locked{background:rgba(61,26,110,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);}
+.module-hero{background:linear-gradient(135deg,#1A0838 0%,var(--purple) 55%,var(--purple-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--purple);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.law-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.25rem;}
+.law-card-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem;}
+.law-badge{background:var(--purple);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:3px;}
+.law-card-header h4{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--text-dark);}
+.law-card ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
+.law-card ul li{font-size:13.5px;color:var(--text-mid);display:block;line-height:1.65;padding-left:1.25rem;position:relative;}
+.law-card ul li::before{content:'→';color:var(--purple-mid);font-weight:700;position:absolute;left:0;}
+.compare-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:13.5px;}
+.compare-table th{background:var(--purple);color:var(--white);font-weight:700;padding:0.75rem 1rem;text-align:left;font-size:12px;letter-spacing:0.5px;}
+.compare-table td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;line-height:1.6;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table tr:nth-child(even) td{background:var(--purple-pale);}
+.compare-table .highlight{font-weight:700;color:var(--text-dark);}
+.timeline-simple{display:flex;flex-direction:column;gap:0.75rem;margin:1.5rem 0;}
+.ts-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1.1rem;}
+.ts-tag{background:var(--purple-pale);color:var(--purple);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.ts-item p{font-size:13.5px;color:var(--text-mid);line-height:1.65;}
+.video-section{margin:2.5rem 0;}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 4px 24px rgba(61,26,110,0.15);margin-bottom:0.75rem;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(61,26,110,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.takeaways{background:linear-gradient(135deg,#1A0838,var(--purple));border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;color:var(--white);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:1.25rem;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.7;display:block;padding-left:1.25rem;position:relative;}
+.takeaways ul li::before{content:'→';color:var(--gold-light);font-weight:700;position:absolute;left:0;margin-top:1px;}
+.knowledge-check{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.75rem;}
+.question{margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border);}
+.question:last-of-type{border-bottom:none;}
+.question p{font-size:15px;color:var(--text-dark);line-height:1.7;margin-bottom:0.85rem;font-weight:500;}
+.options{display:flex;flex-direction:column;gap:0.5rem;}
+.option{display:block;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.6;padding-left:2.5rem;position:relative;}
+.option:hover{border-color:var(--purple-mid);background:var(--purple-pale);}
+.option.selected{border-color:var(--purple);background:var(--purple-pale);color:var(--text-dark);}
+.option.correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.incorrect{border-color:#C62828;background:#FFF5F5;color:#8B0000;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-light);position:absolute;left:0.75rem;top:0.85rem;}
+.option.selected .option-letter{background:var(--purple);color:var(--white);}
+.option.correct .option-letter{background:#2E7D32;color:var(--white);}
+.option.incorrect .option-letter{background:#C62828;color:var(--white);}
+.explanation{font-size:13px;line-height:1.65;padding:0.75rem 1rem;border-radius:8px;margin-top:0.5rem;display:none;}
+.explanation.show{display:block;}
+.explanation.correct-exp{background:#F1F8F1;color:#1B5E20;}
+.explanation.incorrect-exp{background:#FFF5F5;color:#8B0000;}
+.check-btn{display:inline-block;background:var(--purple);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.check-btn:hover{background:var(--purple-mid);}
+.check-btn:disabled{background:#ccc;cursor:not-allowed;}
+.score-result{margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.7;display:none;}
+.score-result.show{display:block;}
+.score-result.pass{background:#F1F8F1;color:#1B5E20;border:1px solid #A5D6A7;}
+.score-result.fail{background:#FFF5F5;color:#8B0000;border:1px solid #FFCDD2;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--purple-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(61,26,110,0.07);}
+.module-nav-info{text-align:center;}
+.module-nav-info p{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+.module-nav-info strong{font-size:13px;color:var(--text-dark);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-outline{border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);}
+.btn-outline:hover{border-color:var(--purple-mid);color:var(--purple);}
+.btn-gold{background:var(--gold);color:#5A3800;}
+.btn-gold:hover{background:var(--gold-light);}
+footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+.fade-in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="mortgage-lending.html" class="nav-back">← Mortgage &amp; Lending</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Academy</a>
+  <span class="sep">›</span>
+  <a href="mortgage-lending.html">Mortgage &amp; Lending</a>
+  <span class="sep">›</span>
+  <span class="current">Module 4: Federal Laws &amp; Consumer Protections</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Track Progress</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mlo-module-1.html" class="prog-dot complete">1</a>
+    <a href="mlo-module-2.html" class="prog-dot complete">2</a>
+    <a href="mlo-module-3.html" class="prog-dot complete">3</a>
+    <span class="prog-dot active">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Mortgage &amp; Lending Track · Module 4 of 6</div>
+    <h1>Federal Laws &amp; <em>Consumer Protections</em></h1>
+    <p>The federal regulatory framework every MLO must know — RESPA, TILA, ECOA, HMDA, the Fair Housing Act, HOEPA, and the ATR rule. Federal laws represent 24% of the NMLS exam and are tested with specific timelines, penalties, and prohibited practices.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Primary Source: NMLS MLO Study Guide</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">RESPA — <em>transparency in settlement and the prohibition of kickbacks</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The Real Estate Settlement Procedures Act (RESPA) was enacted in 1974 and is administered by the Consumer Financial Protection Bureau (CFPB). Its core purpose is to protect consumers during the real estate settlement process by mandating transparency, prohibiting kickbacks, and regulating escrow accounts. RESPA applies to federally related mortgage loans — which includes virtually all residential mortgage transactions, including purchases, refinances, HELOCs, and assumptions. It does not apply to business-purpose loans, agricultural properties, or properties over 25 acres.</p>
+
+    <div class="law-card fade-in">
+      <div class="law-card-header">
+        <div class="law-badge">RESPA</div>
+        <h4>Real Estate Settlement Procedures Act — Key Provisions</h4>
+      </div>
+      <ul>
+        <li>Loan Estimate must be provided within <strong>3 business days</strong> of application (replaces old Good Faith Estimate)</li>
+        <li>Closing Disclosure must be provided at least <strong>3 business days</strong> before closing (replaces old HUD-1)</li>
+        <li>Servicing Disclosure Statement must be provided within <strong>3 business days</strong> of application — informs borrower whether loan will be sold</li>
+        <li>Servicing transfer notice required at least <strong>15 days before</strong> effective transfer date</li>
+        <li>During first <strong>60 days</strong> after a servicing transfer, borrowers cannot be penalized for sending payments to the old servicer</li>
+        <li>Escrow cushion limited to <strong>2 months</strong> of escrow payments — overages of $50+ must be refunded within 30 days</li>
+        <li>Qualified Written Requests (QWRs) must be acknowledged within <strong>5 business days</strong> and resolved within <strong>30 business days</strong></li>
+      </ul>
+    </div>
+
+    <h3 class="sub-title">Section 8 — The Kickback Prohibition</h3>
+    <p class="lesson-text">Section 8 of RESPA is one of the most heavily tested provisions on the NMLS exam. It makes it illegal for any party involved in a real estate transaction to receive a fee, kickback, or anything of value in exchange for referring a consumer to a settlement service provider. This means a real estate agent cannot receive payment from a title company for sending business to them, and a lender cannot pay a referral fee to a real estate agent for sending borrowers. Violations carry serious penalties — fines up to <strong>$10,000</strong>, imprisonment up to <strong>one year</strong>, and civil liability for <strong>three times</strong> the amount of the charge paid by the consumer.</p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 Affiliated Business Arrangements (ABAs)</div>
+      <p>Affiliated Business Arrangements — also called Controlled Business Arrangements — occur when a real estate agent or lender has an ownership interest in a settlement service provider (like a title company) and refers consumers to that company. ABAs are not illegal under RESPA — but they must be fully disclosed to the consumer through an ABA Disclosure Form. The disclosure must inform the borrower that they are not required to use the affiliated company and are free to shop for other providers. Failure to disclose an ABA is a RESPA violation.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">TILA, HOEPA, and the ATR Rule — <em>transparency in lending and protection from predatory loans</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The Truth in Lending Act (TILA), enacted in 1968 under Regulation Z, requires lenders to disclose the true cost of credit in a standardized way so borrowers can compare loan offers accurately. Its central requirement is disclosure of the <strong>Annual Percentage Rate (APR)</strong> — the true cost of borrowing that includes the interest rate plus fees, points, and other charges. TILA applies to mortgages, auto loans, personal loans, and credit cards.</p>
+
+    <div class="law-card fade-in">
+      <div class="law-card-header">
+        <div class="law-badge">TILA</div>
+        <h4>Truth in Lending Act — Key Provisions</h4>
+      </div>
+      <ul>
+        <li>Lenders must disclose the <strong>APR</strong> — the true cost of credit including fees and charges, not just the interest rate</li>
+        <li>Lenders must disclose the <strong>finance charge</strong> — the total dollar amount the borrower will pay over the life of the loan</li>
+        <li>Right of rescission: borrowers have <strong>3 business days</strong> to cancel refinances, HELOCs, and home equity loans on primary residences</li>
+        <li>If lender fails to provide two copies of the rescission notice, the period extends to <strong>3 years</strong></li>
+        <li>Advertising trigger terms: if an ad mentions a specific loan term (rate, payment, down payment), the APR and all related terms must also be disclosed</li>
+        <li>If only the APR is advertised by itself — no additional disclosure is required</li>
+        <li>Bait and switch is strictly prohibited under TILA — even if new terms are "similar"</li>
+        <li>Trigger terms and disclosure requirements apply to all media — print, TV, radio, online, and social media</li>
+      </ul>
+    </div>
+
+    <h3 class="sub-title">HOEPA — High-Cost Mortgage Protections (Section 32)</h3>
+    <p class="lesson-text">The Home Ownership and Equity Protection Act (HOEPA) lives inside TILA as Section 32. It was created to protect consumers from predatory lending on high-cost loans — those with unusually high rates, fees, or points. A loan is classified as a high-cost mortgage if it meets any of the following thresholds:</p>
+
+    <div class="timeline-simple fade-in">
+      <div class="ts-item">
+        <div class="ts-tag">Threshold 1</div>
+        <p>The APR exceeds the Average Prime Offered Rate (APOR) by more than <strong>6.5%</strong> for a first lien, or more than <strong>8.5%</strong> for a subordinate (second) lien</p>
+      </div>
+      <div class="ts-item">
+        <div class="ts-tag">Threshold 2</div>
+        <p>Points and fees exceed <strong>5%</strong> of the total loan amount for loans greater than $26,968 (adjusted annually)</p>
+      </div>
+      <div class="ts-item">
+        <div class="ts-tag">Threshold 3</div>
+        <p>Prepayment penalties extend beyond <strong>36 months</strong> or exceed <strong>2%</strong> of the prepaid loan amount</p>
+      </div>
+    </div>
+
+    <p class="lesson-text">When a loan is classified as high-cost under HOEPA, the lender must provide a special HOEPA disclosure at least <strong>3 business days before closing</strong>, informing the borrower of the high costs and advising them to consider other options. HOEPA also prohibits balloon payments, negative amortization, and prepayment penalties exceeding the thresholds above on high-cost loans.</p>
+
+    <h3 class="sub-title">The Ability to Repay (ATR) Rule</h3>
+    <p class="lesson-text">Established under the Dodd-Frank Act and implemented through TILA, the Ability to Repay rule requires lenders to make a reasonable, good-faith determination that a borrower can repay the loan before making it. Lenders must evaluate at least eight factors: current or reasonably expected income or assets, employment status, monthly mortgage payment, monthly payments on other loans, monthly payments for mortgage-related obligations, current debt obligations, monthly debt-to-income ratio or residual income, and credit history. Notably, a lender does not need to consider the property's future value when assessing ability to repay — value is assessed at the time of appraisal only.</p>
+
+    <div class="callout callout-insight fade-in">
+      <div class="callout-label">💡 Qualified Mortgage (QM) Safe Harbor</div>
+      <p>A Qualified Mortgage (QM) is a loan that meets specific standards under TILA that presume the lender has complied with the ATR rule. QM loans cannot have negative amortization, interest-only periods, balloon payments (with limited exceptions), or loan terms exceeding 30 years. QM loans also cap points and fees at 3% of the loan amount. If a lender makes a QM loan, they receive a safe harbor from ATR liability — meaning they are presumed to have satisfied the ability-to-repay requirement. This is why most lenders originate QM loans whenever possible.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 — ECOA, Fair Housing, HMDA + VIDEOS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">ECOA, Fair Housing Act &amp; HMDA — <em>anti-discrimination and fair lending laws</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Three federal laws form the anti-discrimination and fair lending framework that governs mortgage lending: the Equal Credit Opportunity Act (ECOA), the Fair Housing Act (FHA), and the Home Mortgage Disclosure Act (HMDA). Understanding the distinctions between these three — what each covers, who enforces it, and what the protected classes are — is critical for the NMLS exam.</p>
+
+    <div class="law-card fade-in">
+      <div class="law-card-header">
+        <div class="law-badge">ECOA</div>
+        <h4>Equal Credit Opportunity Act — enacted 1974, enforced by the CFPB</h4>
+      </div>
+      <ul>
+        <li>Prohibits discrimination in <strong>credit transactions</strong> — lending, not housing generally</li>
+        <li>Protected classes: race, color, religion, national origin, sex, marital status, age, and receipt of public assistance</li>
+        <li>Lender must provide <strong>notice of action taken within 30 days</strong> of receiving a completed application — whether approved, denied, or incomplete</li>
+        <li>If denied, lender must provide specific reasons for the denial (adverse action notice)</li>
+        <li>Lenders cannot require a spouse to co-sign a loan or deny credit based on marital status</li>
+        <li>Income from public assistance must be treated the same as income from employment</li>
+        <li>Originally created largely in response to women being required to have male co-signers — sex was the key protected class added at passage</li>
+      </ul>
+    </div>
+
+    <div class="law-card fade-in">
+      <div class="law-card-header">
+        <div class="law-badge">FHA</div>
+        <h4>Fair Housing Act — enacted 1968, enforced by HUD</h4>
+      </div>
+      <ul>
+        <li>Prohibits discrimination in <strong>housing-related activities</strong> — sales, rentals, financing, and advertising</li>
+        <li>Protected classes: race, color, religion, national origin, sex, <strong>familial status</strong>, and <strong>disability</strong></li>
+        <li>Familial status and disability are unique to Fair Housing — not in ECOA</li>
+        <li>Familial status = households with children under 18, pregnant women, or those in the process of adopting</li>
+        <li>55+ communities are exempt from familial status protections under specific conditions</li>
+        <li>Steering is prohibited — directing borrowers toward or away from neighborhoods based on protected characteristics</li>
+        <li>Discriminatory advertising is prohibited — including language that implies a preference for or against any protected class</li>
+      </ul>
+    </div>
+
+    <div class="law-card fade-in">
+      <div class="law-card-header">
+        <div class="law-badge">HMDA</div>
+        <h4>Home Mortgage Disclosure Act — enacted 1975, enforced by CFPB</h4>
+      </div>
+      <ul>
+        <li>HMDA is a <strong>data reporting law</strong> — it does not prohibit discrimination, it collects data to detect discriminatory patterns</li>
+        <li>Requires covered lenders to collect and report data on loan applications: race, ethnicity, sex, income, loan type, and property location</li>
+        <li>Data is submitted annually via the <strong>Loan Application Register (LAR)</strong></li>
+        <li>LAR must be submitted to the <strong>CFPB by March 1st</strong> of each year</li>
+        <li>Both approved and denied applications must be included in the LAR</li>
+        <li>Primary purpose: identify and prevent <strong>redlining</strong> — the discriminatory practice of refusing to lend in certain geographic areas based on race or ethnicity</li>
+        <li>Connect HMDA + redlining on the exam — they are directly linked</li>
+      </ul>
+    </div>
+
+    <h3 class="sub-title">ECOA vs. Fair Housing Act — key differences</h3>
+    <table class="compare-table fade-in">
+      <tr>
+        <th>Factor</th>
+        <th>ECOA</th>
+        <th>Fair Housing Act</th>
+      </tr>
+      <tr>
+        <td class="highlight">Focus</td>
+        <td>Credit and lending transactions</td>
+        <td>Housing — sales, rentals, financing, advertising</td>
+      </tr>
+      <tr>
+        <td class="highlight">Enforcer</td>
+        <td>CFPB (Consumer Financial Protection Bureau)</td>
+        <td>HUD (Department of Housing and Urban Development)</td>
+      </tr>
+      <tr>
+        <td class="highlight">Shared classes</td>
+        <td colspan="2">Race, color, religion, national origin, sex</td>
+      </tr>
+      <tr>
+        <td class="highlight">ECOA only</td>
+        <td>Marital status, age, receipt of public assistance</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="highlight">FHA only</td>
+        <td>—</td>
+        <td>Familial status, disability</td>
+      </tr>
+      <tr>
+        <td class="highlight">Key timeline</td>
+        <td>30 days to notify of action taken</td>
+        <td>No specific timeline — complaint filed with HUD</td>
+      </tr>
+    </table>
+
+    <div class="video-section fade-in">
+      <h3>🎬 Watch: Federal Laws Explained for the NMLS Exam</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/iDgG0RGdt_k" title="NMLS Exam Breakdown — ATR, TILA, HOEPA & Disclosure Requirements" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);margin-bottom:1.5rem;">D. Kumar · Exam Breakdown Series · March 2025 · Ability to Repay rule and its 8 factors, Qualified Mortgage safe harbor, HOEPA high-cost loan thresholds, TILA advertising requirements, trigger terms, APR-only advertising exception, bait and switch prohibition — all with practice exam questions and answer analysis</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/TqfT4hhFf2k" title="NMLS Exam Prep — ECOA, Fair Housing Act & HMDA" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--text-light);">D. Kumar · Exam Breakdown Series · May 2025 · ECOA protected classes and 30-day notice requirement, Fair Housing Act protected classes and the familial status/disability distinction, HMDA as a data reporting law, the Loan Application Register (LAR), redlining, enforcement bodies — with review questions and key takeaways</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Putting it together — <em>how the laws interact in daily MLO practice</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">On the NMLS exam, federal law questions are not always straightforward definitions — they often test your ability to apply the right law to a specific scenario. Understanding which law governs which situation is the key skill. Here is a practical framework for thinking about these laws in the context of real MLO work.</p>
+
+    <h3 class="sub-title">Which law applies — a quick decision guide</h3>
+    <div class="timeline-simple fade-in">
+      <div class="ts-item">
+        <div class="ts-tag">Disclosure — costs</div>
+        <p>When does a borrower need to see estimated and final loan costs? → <strong>RESPA/TRID</strong> — Loan Estimate within 3 days of application, Closing Disclosure 3 days before closing</p>
+      </div>
+      <div class="ts-item">
+        <div class="ts-tag">Disclosure — rates</div>
+        <p>When and how must the cost of borrowing be disclosed? → <strong>TILA</strong> — APR must be disclosed in all loan offers and ads that mention specific loan terms</p>
+      </div>
+      <div class="ts-item">
+        <div class="ts-tag">Discrimination — lending</div>
+        <p>A lender denies credit based on age, marital status, or sex → <strong>ECOA</strong> violation. Must notify borrower within 30 days with specific reasons.</p>
+      </div>
+      <div class="ts-item">
+        <div class="ts-tag">Discrimination — housing</div>
+        <p>A seller refuses to sell to a family with children, or an agent steers a buyer away from a neighborhood → <strong>Fair Housing Act</strong> violation, enforced by HUD</p>
+      </div>
+      <div class="ts-item">
+        <div class="ts-tag">Data reporting</div>
+        <p>Lender must collect and report application data annually to identify discriminatory patterns → <strong>HMDA</strong> — LAR submitted to CFPB by March 1st</p>
+      </div>
+      <div class="ts-item">
+        <div class="ts-tag">Kickbacks</div>
+        <p>A title company pays a lender for referrals → <strong>RESPA Section 8</strong> violation — $10,000 fine, up to 1 year imprisonment, 3x civil damages</p>
+      </div>
+      <div class="ts-item">
+        <div class="ts-tag">High-cost loan</div>
+        <p>APR exceeds APOR by more than 6.5%, or fees exceed 5% of loan → <strong>HOEPA</strong> (Section 32 of TILA) — requires special disclosures 3 days before closing</p>
+      </div>
+      <div class="ts-item">
+        <div class="ts-tag">Ability to repay</div>
+        <p>Did the lender verify the borrower can repay? → <strong>ATR Rule</strong> (Dodd-Frank/TILA) — 8 factors required. QM loans provide safe harbor from ATR liability.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-warning fade-in">
+      <div class="callout-label">⚠️ Exam Alert — Laws That Share Similar Names</div>
+      <p>The Fair Housing Act (FHA) and the Federal Housing Administration (FHA) share the same acronym. On the exam, context will make clear which is meant — the Fair Housing Act is an anti-discrimination law enforced by HUD, while the Federal Housing Administration is the agency that insures FHA loans. Similarly, TILA (Truth in Lending Act) and its regulation Regulation Z are the same thing — TILA is the law, Reg Z is how it is implemented. RESPA is implemented through Regulation X. Know the law and its regulation together.</p>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>These laws were not written to make your job harder. They were written because, before they existed, borrowers were charged hidden fees at closing, denied credit because of their race or gender, and steered into predatory loans they could never repay. Every disclosure you send, every question you answer honestly, every time you treat a borrower as an equal regardless of their background — you are living the intent of these laws. Know them not just to pass the exam, but to understand why they matter to the families sitting across the table from you.</p>
+      <div class="mentor-name">Your Darco Mentor · Module 4 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 4 Key Takeaways</h3>
+    <ul>
+      <li>RESPA (1974, enforced by CFPB) governs settlement transparency. Key timelines: Loan Estimate within 3 days of application, Closing Disclosure 3 days before closing, servicing transfer notice 15 days before transfer. Section 8 prohibits kickbacks — violations carry $10,000 fines, up to 1 year imprisonment, and 3x civil damages. Escrow cushion limited to 2 months.</li>
+      <li>TILA (1968, Regulation Z, enforced by CFPB) requires APR disclosure — the true cost of credit. Trigger terms in advertising require full disclosure of all related terms. If only the APR is advertised, no further disclosure is required. Bait and switch is prohibited in all media. Right of rescission: 3 days to cancel refinances/HELOCs on primary residences; extends to 3 years if lender fails to provide proper notice.</li>
+      <li>HOEPA (Section 32 of TILA) protects against predatory high-cost loans. Triggers: APR exceeds APOR by 6.5% (first lien) or 8.5% (subordinate lien), points/fees exceed 5% of loan amount, or prepayment penalties exceed 36 months or 2% of prepaid amount. Requires special disclosures 3 days before closing.</li>
+      <li>ATR Rule (Dodd-Frank/TILA) requires lenders to evaluate 8 factors of a borrower's ability to repay. Qualified Mortgage (QM) loans provide a safe harbor from ATR liability — no negative amortization, no interest-only periods, fees capped at 3%, max 30-year term. Future property value is NOT a required ATR factor.</li>
+      <li>ECOA (1974, enforced by CFPB) prohibits discrimination in credit transactions. Protected classes: race, color, religion, national origin, sex, marital status, age, public assistance. Lender must notify borrower of action taken within 30 days of completed application. ECOA-only classes: marital status, age, receipt of public assistance.</li>
+      <li>Fair Housing Act (1968, enforced by HUD) prohibits discrimination in housing sales, rentals, financing, and advertising. Protected classes include race, color, religion, national origin, sex, PLUS familial status and disability — these last two are unique to Fair Housing. Steering and discriminatory advertising are prohibited.</li>
+      <li>HMDA (1975, enforced by CFPB) is a data reporting law. Lenders must submit the Loan Application Register (LAR) to CFPB by March 1st annually. Both approved and denied applications are included. Primary purpose: detect redlining. Connect HMDA + redlining on every exam question about this law.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question" id="q1">
+      <p>1. A real estate agent refers all of her clients to a specific title company. Each month, the title company pays her a "marketing fee" as a thank you for the referrals. No disclosure of this arrangement has been made to consumers. Which law is being violated — and what are the potential penalties?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div>TILA — because the marketing fee represents an undisclosed cost of credit that must be included in the APR calculation and disclosed to borrowers before closing.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div>ECOA — because accepting referral fees based on a business relationship creates a disparate impact on certain protected classes of borrowers who may be steered toward this title company.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div>RESPA Section 8 — which prohibits any fee, kickback, or thing of value paid in exchange for referring a consumer to a settlement service provider. The "marketing fee" is an illegal kickback regardless of what it is called. Penalties include fines up to $10,000, imprisonment up to one year, and civil liability for three times the amount of the charge paid by the consumer.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div>HMDA — because the referral pattern may indicate discriminatory geographic lending practices that must be reported to the CFPB in the Loan Application Register.</div>
+      </div>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. A lender runs a radio advertisement saying "Get a 30-year mortgage at just 5.99%!" No other information is included. What additional disclosure is required under TILA — and what would change if the ad only stated "APR as low as 6.25%"?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">A</div>Advertising a specific interest rate is a trigger term under TILA that requires the APR to also be disclosed, along with all related terms including monthly payments, loan term, and down payment if applicable. However, if the ad stated only the APR (e.g., "APR as low as 6.25%"), no additional disclosure would be required — the APR standing alone is the one exception that requires no further information.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div>No additional disclosure is required — interest rate advertising is not a trigger term under TILA. Trigger terms only apply when an advertisement mentions down payment amounts or monthly payment figures, not interest rates.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div>The lender must disclose the APR, but only in print ads. Radio and TV ads are exempt from TILA trigger term requirements as long as a toll-free number is provided for consumers to call for more information.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div>Both the interest rate ad and the APR-only ad require the same additional disclosures — TILA treats all stated rates identically regardless of whether the APR or the note rate is advertised.</div>
+      </div>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. A lender denies a loan application from a 68-year-old borrower, citing concerns about whether the borrower will live long enough to repay the 30-year mortgage. The borrower has excellent credit, sufficient income, and a low DTI ratio. Which law is violated — and what must the lender do?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div>The Fair Housing Act — because age is a protected class under Fair Housing and the lender's decision constitutes housing discrimination that must be reported to HUD within 30 days.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div>ECOA — because age is a protected class under the Equal Credit Opportunity Act, and lenders cannot deny credit based solely on a borrower's age. The borrower's financial qualifications (credit, income, DTI) are the proper basis for lending decisions. The lender must provide a written notice of action taken with specific reasons for the denial within 30 days of the completed application. Using age as a basis for denial when the borrower is otherwise qualified is an ECOA violation enforced by the CFPB.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div>HMDA — because the lender must report the denied application in the Loan Application Register and the CFPB will identify age-based denial patterns during the annual data review process.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div>No law is violated — lenders have the right to evaluate a borrower's long-term ability to repay under the ATR rule, and age-related life expectancy is a legitimate factor in assessing whether a borrower can repay a 30-year mortgage.</div>
+      </div>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. A loan has a first-lien rate of 13.5% and the current Average Prime Offered Rate (APOR) for similar loans is 6.5%. Points and fees total 4.8% of the loan amount. Is this loan a high-cost mortgage under HOEPA — and if so, why?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div>No — this is not a high-cost mortgage because although the rate is high, points and fees of 4.8% are below the 5% HOEPA threshold. Both triggers must be met simultaneously for HOEPA to apply.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div>No — HOEPA only applies to subordinate (second) liens. First-lien mortgages are subject to ATR and QM rules but are exempt from HOEPA high-cost classification regardless of rate or fees.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div>Yes — this is a high-cost mortgage under HOEPA because the APR exceeds the APOR by more than 6.5 percentage points. The difference here is 7 points (13.5% minus 6.5%), which exceeds the 6.5% first-lien threshold. Only one trigger needs to be met for HOEPA to apply — not all three. This triggers the requirement for a special HOEPA disclosure at least 3 business days before closing.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div>No — the HOEPA threshold for first-lien loans requires the APR to exceed the APOR by more than 8.5 percentage points. A 7-point difference does not meet this threshold and therefore does not trigger HOEPA classification.</div>
+      </div>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. A lender collects mortgage application data from the past year including both approved and denied applications. The data includes borrower race, ethnicity, sex, income, loan type, and property location. By what date must this data be submitted — to whom — and what is the primary purpose of this reporting requirement?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div>January 1st to HUD — the Fair Housing Act requires lenders to annually report lending data to HUD so the agency can monitor compliance with fair housing requirements in housing sales and rentals.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div>April 15th to the CFPB — the Home Mortgage Disclosure Act requires this data submission annually, timed to coincide with the federal tax filing deadline to streamline compliance for financial institutions.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div>March 1st to the CFPB — under HMDA, covered lenders must submit the Loan Application Register (LAR) to the Consumer Financial Protection Bureau by March 1st of each year. Both approved and denied applications must be included. The primary purpose is to identify discriminatory lending patterns — particularly redlining, the practice of refusing to lend in certain geographic areas based on race or ethnicity. HMDA is a data reporting law — it does not itself prohibit discrimination, but the data it collects enables regulators to detect and investigate discriminatory practices.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div>December 31st to the NMLS — HMDA data is submitted to the Nationwide Multistate Licensing System as part of the annual MLO license renewal process, allowing regulators to monitor individual loan officer lending patterns across states.</div>
+      </div>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()" id="checkBtn">Check My Answers</button>
+    <div class="score-result" id="scoreResult"></div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 5: Ethics, Fraud &amp; Compliance</h3>
+    <p>You understand the laws. Now you need to understand what happens when they are violated — and how to recognize the warning signs before a problem becomes a crime. Module 5 covers mortgage fraud, predatory lending, professional ethics, and the compliance obligations that keep MLOs on the right side of the law throughout their careers.</p>
+    <a href="mlo-module-5.html" class="next-module-cta">Module 5: Ethics, Fraud &amp; Compliance →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mlo-module-3.html" class="btn btn-outline">← Module 3</a>
+  <div class="module-nav-info">
+    <p>Mortgage &amp; Lending Track</p>
+    <strong>Module 4 of 6</strong>
+  </div>
+  <a href="mlo-module-5.html" class="btn btn-gold">Module 5: Ethics &amp; Fraud →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals. Not a substitute for NMLS-approved pre-licensing education.</p>
+</footer>
+
+<script>
+var quizAnswers={};var quizDone=false;
+var explanations={
+  q1:{correct:"Correct! This is a textbook RESPA Section 8 violation. Section 8 prohibits any fee, kickback, or thing of value paid in exchange for a referral to a settlement service provider. It does not matter what the payment is called — 'marketing fee', 'desk fee', 'co-marketing fee' — if it is paid in exchange for referrals, it is an illegal kickback. The penalties are severe: up to $10,000 in fines, up to one year in prison, and civil liability for three times the amount of the charge paid by the consumer. The ABA disclosure process would not apply here because there is no ownership interest — this is a straightforward kickback arrangement.",incorrect:"Not quite. This is a RESPA Section 8 violation — the law that specifically prohibits kickbacks, referral fees, and anything of value paid in exchange for referring a consumer to a settlement service provider. The 'marketing fee' paid by the title company to the real estate agent for referrals is an illegal kickback under RESPA regardless of what it is called. Penalties include fines up to $10,000, imprisonment up to one year, and civil liability for three times the amount of the charge paid by the consumer."},
+  q2:{correct:"Correct! Under TILA's Regulation Z, advertising a specific interest rate is a trigger term that requires disclosure of the APR and all related terms including monthly payments, loan term, and any conditions. The one important exception: if an advertisement states only the APR — without mentioning the interest rate or any other specific term — no additional disclosure is required. This is a frequently tested TILA advertising distinction. Trigger term requirements apply to all media — print, radio, TV, online, and social media — not just specific formats.",incorrect:"Not quite. Under TILA's advertising requirements, mentioning a specific interest rate is a trigger term that requires the APR and all related loan terms to also be disclosed. The key TILA exception is that advertising only the APR — without mentioning any other specific term — requires no further disclosure. Trigger terms apply to all advertising media including radio, TV, print, and online — there is no media exemption."},
+  q3:{correct:"Correct! Age is a protected class under ECOA — the Equal Credit Opportunity Act, enforced by the CFPB. Lenders cannot deny credit based on age when the borrower is otherwise qualified based on income, credit, and DTI. The lender's reasoning — that the borrower may not live long enough to repay a 30-year loan — is age-based discrimination. Under ECOA, the lender must provide written notice of the action taken within 30 days of the completed application, including specific reasons for the denial. Note that age is NOT a protected class under the Fair Housing Act — that is an ECOA-specific protection.",incorrect:"Not quite. Age is a protected class under ECOA — the Equal Credit Opportunity Act — not the Fair Housing Act. The Fair Housing Act protects familial status and disability in addition to race, color, religion, national origin, and sex — but not age. The lender has violated ECOA by denying credit based on the borrower's age when the borrower is otherwise financially qualified. The lender must provide a written adverse action notice with specific reasons for denial within 30 days of the completed application."},
+  q4:{correct:"Correct! Under HOEPA, a first-lien loan is classified as high-cost if the APR exceeds the Average Prime Offered Rate (APOR) by more than 6.5 percentage points. Here the APR is 13.5% and the APOR is 6.5% — a difference of exactly 7 points, which exceeds the 6.5% threshold. Only one of the three HOEPA triggers needs to be met for the law to apply — you do not need all three. The fact that points and fees are below 5% is irrelevant once the rate trigger is already met. This triggers the HOEPA disclosure requirement at least 3 business days before closing.",incorrect:"Not quite. Under HOEPA (Section 32 of TILA), a first-lien loan is high-cost if the APR exceeds the APOR by more than 6.5 percentage points. The APR here is 13.5% and the APOR is 6.5% — that is a 7-point spread, exceeding the 6.5% first-lien threshold. The 8.5% threshold applies to subordinate liens, not first liens. And only one HOEPA trigger needs to be met — the loan is high-cost based on the rate trigger alone even though fees are below 5%."},
+  q5:{correct:"Correct! Under HMDA, covered lenders must submit the Loan Application Register (LAR) to the CFPB by March 1st of each year. The LAR includes data on both approved and denied applications — race, ethnicity, sex, income, loan type, and property location. The primary purpose of HMDA is to identify discriminatory lending patterns, particularly redlining — the practice of refusing to lend in certain geographic areas based on race or ethnicity. HMDA does not itself prohibit discrimination; it is a data collection and transparency law that enables regulators to detect patterns that may indicate discriminatory practices.",incorrect:"Not quite. Under HMDA, the Loan Application Register (LAR) must be submitted to the CFPB — the Consumer Financial Protection Bureau — by March 1st of each year. Not January 1st, not April 15th, not December 31st. The LAR includes both approved and denied applications. The primary purpose of HMDA is to identify discriminatory lending patterns — specifically redlining. Connect HMDA with redlining on every exam question about this law."}
+};
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=document.getElementById(qId).querySelectorAll('.option');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('selected');opts[i].querySelector('.option-letter').style.background='';}
+  el.classList.add('selected');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;var score=0;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];var ans=quizAnswers[qId];var expEl=document.getElementById(qId+'-exp');
+    ans.element.classList.remove('selected');
+    if(ans.isCorrect){
+      ans.element.classList.add('correct');expEl.className='explanation correct-exp show';expEl.textContent=explanations[qId].correct;score++;
+    } else {
+      ans.element.classList.add('incorrect');expEl.className='explanation incorrect-exp show';expEl.textContent=explanations[qId].incorrect;
+      var allOpts=document.getElementById(qId).querySelectorAll('.option');
+      for(var j=0;j<allOpts.length;j++){if(allOpts[j].getAttribute('data-correct')==='true'){allOpts[j].classList.add('correct');}}
+    }
+  }
+  var btn=document.getElementById('checkBtn');btn.disabled=true;btn.textContent='Answers Checked';
+  var scoreEl=document.getElementById('scoreResult');
+  if(score>=4){
+    scoreEl.className='score-result show pass';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5!</strong> Strong command of federal laws. You can identify RESPA kickback violations, TILA trigger terms, ECOA age discrimination, HOEPA thresholds, and HMDA reporting requirements. Ready for Module 5: Ethics, Fraud & Compliance.';
+  } else {
+    scoreEl.className='score-result show fail';
+    scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review RESPA Section 8 penalties, TILA trigger term exceptions, ECOA vs Fair Housing protected classes, HOEPA rate thresholds (6.5% first lien / 8.5% subordinate), and HMDA LAR submission date and purpose. These are heavily tested on the NMLS exam.';
+  }
+}
+</script>
+</body>
+</html>
