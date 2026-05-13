@@ -16,8 +16,7 @@
   --warn:#D4881A;--warn-pale:#FDF5E8;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;text-align:left;}
-strong{display:inline;font-weight:600;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
 nav{background:var(--purple);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
 .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
 .nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--purple);}
@@ -82,17 +81,17 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.5rem 0;}
 .doc-item{background:var(--purple-pale);border-radius:10px;padding:0.85rem 1rem;font-size:13px;color:var(--text-dark);display:flex;gap:8px;align-items:flex-start;}
 .doc-item::before{content:'📄';flex-shrink:0;}
-.trid-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;align-items:start;}
+.trid-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
 .trid-card{border-radius:14px;padding:1.5rem;}
 .trid-card.le{background:var(--purple-pale);border:1px solid rgba(61,26,110,0.2);}
 .trid-card.cd{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
-.trid-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.85rem;color:inherit;}
+.trid-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
 .trid-card.le h4{color:var(--purple);}
 .trid-card.cd h4{color:#8A6A20;}
-.trid-card ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;text-align:left;}
-.trid-card ul li{font-size:13px;color:var(--text-mid);display:block;line-height:1.6;text-align:left;padding-left:1.25rem;position:relative;}
-.trid-card.le ul li::before{content:'→';color:var(--purple-mid);font-weight:700;position:absolute;left:0;}
-.trid-card.cd ul li::before{content:'→';color:#8A6A20;font-weight:700;position:absolute;left:0;}
+.trid-card ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
+.trid-card ul li{font-size:13px;color:var(--text-mid);display:flex;gap:8px;line-height:1.55;}
+.trid-card.le ul li::before{content:'→';color:var(--purple-mid);font-weight:700;flex-shrink:0;}
+.trid-card.cd ul li::before{content:'→';color:#8A6A20;font-weight:700;flex-shrink:0;}
 .timeline{display:flex;flex-direction:column;gap:0;margin:2rem 0;position:relative;}
 .timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:var(--border);}
 .tl-item{display:flex;gap:1.25rem;position:relative;padding-bottom:1.5rem;}
@@ -255,7 +254,7 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
         <div class="tl-dot">4</div>
         <div class="tl-content">
           <h4>Underwriting</h4>
-          <p>The underwriter evaluates risk and issues an approval, conditional approval, suspension (needs more information), or denial. Most files are first run through an <strong>Automated Underwriting System (AUS)</strong> — Fannie Mae's system is <strong>Desktop Underwriter (DU)</strong>, Freddie Mac's is <strong>Loan Prospector (LP)</strong>. If the AUS approves the loan, a human underwriter then verifies that all documented information matches the application. If denied, the lender must provide an <strong>adverse action notice</strong> within 30 days under ECOA and the Fair Credit Reporting Act.</p>
+          <p>The underwriter evaluates risk and issues an approval, conditional approval, suspension (needs more information), or denial. Most files are first run through an <strong>Automated Underwriting System (AUS)</strong> — Fannie Mae's system is <strong>Desktop Underwriter (DU)</strong>, Freddie Mac's is <strong>Loan Product Advisor (LPA)</strong> (formerly called Loan Prospector/LP — you may see both names, but LPA is the current official name). If the AUS approves the loan, a human underwriter then verifies that all documented information matches the application. If denied, the lender must provide an <strong>adverse action notice</strong> within 30 days under ECOA and the Fair Credit Reporting Act.</p>
         </div>
       </div>
       <div class="tl-item">
@@ -330,7 +329,7 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
         <h4>📋 Loan Estimate (LE)</h4>
         <ul>
           <li>Replaces the old Good Faith Estimate (GFE) and early TILA disclosure</li>
-          <li>Must be provided within <span style="font-weight:600;color:var(--purple);">3 business days</span> of receiving the application</li>
+          <li>Must be provided within <strong>3 business days</strong> of application</li>
           <li>Triggered by receipt of 6 key application data points — not a completed 1003</li>
           <li>Shows estimated interest rate, monthly payment, and closing costs</li>
           <li>Allows borrowers to compare loan offers side-by-side</li>
@@ -342,7 +341,7 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
         <h4>📋 Closing Disclosure (CD)</h4>
         <ul>
           <li>Replaces the old HUD-1 Settlement Statement</li>
-          <li>Must be provided at least <span style="font-weight:600;color:#8A6A20;">3 business days</span> before the scheduled closing</li>
+          <li>Must be provided at least <strong>3 business days before closing</strong></li>
           <li>Shows final, actual loan terms and costs</li>
           <li>Borrower can compare CD to LE to verify no unexpected changes</li>
           <li>If certain key terms change, a new 3-business-day waiting period is required</li>
@@ -352,7 +351,20 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
       </div>
     </div>
 
-    <h3 class="sub-title">Documentation collected during processing</h3>
+    <div style="background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:1.5rem 1.75rem;margin:1.75rem 0;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;">⚠️ Exam Trap — "Business Day" Has Two Different Definitions Under TRID</div>
+      <p style="font-size:1rem;color:var(--text-dark);line-height:1.8;">The NMLS exam frequently tests the distinction between two definitions of "business day" — and they apply to different disclosures. Getting this wrong on a timing question will cost you the answer.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem;">
+          <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:0.4rem;">For the Loan Estimate (LE)</div>
+          <p style="font-size:13px;color:var(--text-mid);line-height:1.65;">A business day is any day the lender's offices are open to the public for substantially all business functions — typically Monday through Friday. If the lender is closed Saturday, Saturday does <strong>not</strong> count toward the 3-day LE window.</p>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem;">
+          <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:0.4rem;">For the Closing Disclosure (CD) &amp; Right of Rescission</div>
+          <p style="font-size:13px;color:var(--text-mid);line-height:1.65;">A business day is any calendar day <strong>except Sundays and federal holidays</strong>. Saturday counts — even if the lender is closed. This is why a CD delivered on a Wednesday means closing cannot happen before the following Monday (Thursday, Friday, Saturday = 3 days).</p>
+        </div>
+      </div>
+    </div>
     <div class="docs-grid fade-in">
       <div class="doc-item">Recent pay stubs (last 30 days)</div>
       <div class="doc-item">W-2 forms (last 2 years)</div>
@@ -371,7 +383,7 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
       <div class="video-embed">
         <iframe src="https://www.youtube.com/embed/LT6UenG6j4A" title="Mortgage Loan Process Explained for the NMLS Exam" allowfullscreen loading="lazy"></iframe>
       </div>
-      <p style="font-size:12px;color:var(--text-light);margin-bottom:1.5rem;">D. Kumar · Exam Breakdown Series · February 2025 · The 6 steps of the loan process, the 1003 form and who created it, automated underwriting systems (DU/LP), the five C's of creditworthiness, adverse action letters, TRID, right of rescission, and loan servicing — all from an NMLS exam preparation perspective with practice questions and explanations</p>
+      <p style="font-size:12px;color:var(--text-light);margin-bottom:1.5rem;">D. Kumar · Exam Breakdown Series · February 2025 · The 6 steps of the loan process, the 1003 form and who created it, automated underwriting systems (DU / LPA), the five C's of creditworthiness, adverse action letters, TRID, right of rescission, and loan servicing — all from an NMLS exam preparation perspective with practice questions and explanations</p>
 
       <div class="video-embed">
         <iframe src="https://www.youtube.com/embed/cHVoyqkTTnc" title="What Happens When Your Loan Is Submitted to Underwriting?" allowfullscreen loading="lazy"></iframe>
@@ -454,8 +466,8 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
       <li>The Uniform Residential Loan Application is Form 1003, created by Fannie Mae (FNMA). Federal disclosure is triggered when 6 key data points are collected — not when the 1003 is completed. The Loan Estimate must be delivered within 3 business days of application.</li>
       <li>Brokers can only pre-qualify borrowers; lenders can issue pre-approvals. Pre-approval is stronger because it is based on verified documentation, not self-reported information.</li>
       <li>The five C's of creditworthiness: Credit (willingness to pay — FICO scores), Capacity (ability to pay — DTI ratio), Capital (down payment, reserves, assets), Collateral (the property — appraisal and title), Conditions (market context and conditional approval items). All five are tested on the NMLS exam.</li>
-      <li>Automated Underwriting Systems: Desktop Underwriter (DU) belongs to Fannie Mae. Loan Prospector (LP) belongs to Freddie Mac. AUS approvals speed the process but still require human underwriter verification of all documented information.</li>
-      <li>TRID (2015) created two key forms: the Loan Estimate (provided within 3 business days of application) and the Closing Disclosure (provided at least 3 business days before closing). These replaced the Good Faith Estimate and HUD-1.</li>
+      <li>Automated Underwriting Systems: Desktop Underwriter (DU) belongs to Fannie Mae. Loan Product Advisor (LPA) belongs to Freddie Mac — formerly known as Loan Prospector (LP); both names may appear but LPA is current. AUS approvals speed the process but still require human underwriter verification of all documented information.</li>
+      <li>TRID (2015) created two key forms: the Loan Estimate (provided within 3 business days of application) and the Closing Disclosure (provided at least 3 business days before closing). These replaced the Good Faith Estimate and HUD-1. Critical exam distinction: "business day" for the LE means any day the lender is open (Mon–Fri). "Business day" for the CD and right of rescission means any day except Sundays and federal holidays — Saturday counts even if the lender is closed.</li>
       <li>Right of rescission applies to refinances, HELOCs, and home equity loans — NOT purchase transactions. Borrowers have 3 business days to cancel. If the lender fails to provide two copies of the rescission notice, the period extends to 3 years.</li>
     </ul>
   </div>
@@ -481,7 +493,7 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
       <div class="options">
         <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> DU and the human underwriter perform identical functions — when DU issues an "Approve/Eligible" finding, the human underwriter simply stamps the file approved without conducting any additional review.</div>
         <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> DU evaluates the loan application data against Fannie Mae's risk guidelines and issues a finding (Approve/Eligible, Refer, or Ineligible) within seconds. However, DU cannot verify that the documented information actually matches what was entered. The human underwriter then reviews all documentation (pay stubs, bank statements, appraisal, title) to confirm everything lines up with the AUS finding. An AUS approval is a conditional pathway — it still requires human verification of every supporting document.</div>
-        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> DU is used exclusively for FHA loans while Loan Prospector (LP) is used for all conventional and government-backed loans. Human underwriters are only involved in manual underwriting scenarios when no AUS system is available.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> DU is used exclusively for FHA loans while Loan Product Advisor (LPA) is used for all conventional and government-backed loans. Human underwriters are only involved in manual underwriting scenarios when no AUS system is available.</div>
         <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Once DU issues an Approve/Eligible finding, lenders are no longer required to have a human underwriter review the file — the AUS finding alone is sufficient for loan funding under Fannie Mae guidelines.</div>
       </div>
       <div class="explanation" id="q2-exp"></div>
@@ -552,7 +564,7 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
 var quizAnswers={};var quizDone=false;
 var explanations={
   q1:{correct:"Correct! This is one of the most important TRID concepts for the exam. Under Regulation Z and TRID, a loan application is considered received — triggering the 3-business-day Loan Estimate clock — when the lender has received six pieces of information: the borrower's name, income, Social Security number, the property address, an estimated value of the property, and the desired loan amount. The 1003 form does not need to be completed. A phone conversation, email, or even a napkin with these six items constitutes a received application.",incorrect:"Not quite. Under TRID, a loan application is triggered not by a signed 1003, but by the receipt of six specific data points: name, income, SSN, property address, estimated property value, and loan amount sought. Once these six items are received by the lender — regardless of format or document — the 3-business-day clock for the Loan Estimate begins. This is a heavily tested TRID distinction on the NMLS exam."},
-  q2:{correct:"Correct! Desktop Underwriter (DU) is Fannie Mae's automated underwriting system — it evaluates loan data against risk guidelines and issues findings in seconds. Loan Prospector (LP) is Freddie Mac's equivalent. But an AUS approval is conditional: it says 'if everything you entered is accurate and verifiable, we will buy this loan.' The human underwriter then reviews every supporting document to confirm accuracy. A 800 credit score borrower with a misleading income entry will still get caught at the human underwriting stage. AUS findings speed the process — they do not replace underwriter judgment.",incorrect:"Not quite. Desktop Underwriter (DU) belongs to Fannie Mae. Loan Prospector (LP) belongs to Freddie Mac. Both evaluate loan applications against GSE risk guidelines and issue findings quickly. But an AUS approval is not a final approval — it is a conditional pathway. The human underwriter must still verify that all documentation matches what was entered into the system. AUS findings reduce review time for clean files but do not eliminate the human underwriting requirement."},
+  q2:{correct:"Correct! Desktop Underwriter (DU) is Fannie Mae's automated underwriting system — it evaluates loan data against risk guidelines and issues findings in seconds. Loan Product Advisor (LPA) is Freddie Mac's equivalent (formerly called Loan Prospector/LP). But an AUS approval is conditional: it says 'if everything you entered is accurate and verifiable, we will buy this loan.' The human underwriter then reviews every supporting document to confirm accuracy. A 800 credit score borrower with a misleading income entry will still get caught at the human underwriting stage. AUS findings speed the process — they do not replace underwriter judgment.",incorrect:"Not quite. Desktop Underwriter (DU) belongs to Fannie Mae. Loan Product Advisor (LPA) belongs to Freddie Mac — it was formerly called Loan Prospector (LP) and you may see both names, but LPA is the current official name. Both evaluate loan applications against GSE risk guidelines and issue findings quickly. But an AUS approval is not a final approval — it is a conditional pathway. The human underwriter must still verify that all documentation matches what was entered into the system. AUS findings reduce review time for clean files but do not eliminate the human underwriting requirement."},
   q3:{correct:"Correct! A conditional approval is the most common type of underwriting decision — and it means the loan IS approved, subject to conditions. The underwriter has evaluated the file and determined it meets program guidelines with the listed conditions satisfied. The conditions described are all routine: updated pay stub (verification of continued employment), deposit explanation (ruling out undisclosed debt), and gift letter (documenting an acceptable source of funds). Once all conditions are cleared, the underwriter issues a clear to close, the closing disclosure is sent, and the closing can proceed.",incorrect:"Not quite. A conditional approval is actually the most common — and positive — underwriting outcome. It means the loan is approved subject to the listed conditions being met. Most approvals come with 8 to 15 conditions. The borrower IS approved; the loan simply cannot fund until conditions are cleared. The conditions described — pay stub, deposit explanation, gift letter — are all routine items that experienced loan officers clear regularly. Once all conditions are satisfied, the underwriter issues a clear to close."},
   q4:{correct:"Correct! Under TILA's right of rescission, borrowers have 3 business days after signing to cancel a refinance transaction on their primary residence. Business days for rescission purposes include Saturdays but exclude Sundays and federal holidays. Signing on Monday: Tuesday, Wednesday, and Thursday are the three business days. The right expires at midnight on Thursday — making Friday the first day disbursement can occur. This right of rescission applies ONLY to refinances, HELOCs, and home equity loans using the primary residence as collateral — it does NOT apply to purchase transactions. If the lender fails to provide two copies of the rescission notice, the period extends to 3 years.",incorrect:"Not quite. Under TILA, refinance transactions on a primary residence are subject to a 3-business-day right of rescission. The borrower can cancel the loan during this period. Business days for rescission include Saturdays but exclude Sundays and federal holidays. Signing on Monday means Tuesday, Wednesday, and Thursday are the rescission days — funds cannot be disbursed until after midnight Thursday at the earliest. This right applies to refinances, HELOCs, and home equity loans — not purchase transactions."},
   q5:{correct:"Correct! This is a classic NMLS ethics scenario. The Ability to Repay (ATR) rule under TILA requires lenders to evaluate and confirm a borrower's ability to repay the loan at the time of consummation (closing). A job loss three days before closing is a material change that directly affects this requirement. The ethical and legal obligation is clear: notify the lender immediately. Proceeding to close knowing the borrower is unemployed would violate the ATR rule, professional ethics standards, and likely constitute fraud. The loan must be re-evaluated — and if the borrower no longer qualifies, it cannot fund regardless of how close to closing the parties are.",incorrect:"Not quite. This is a classic NMLS ethics scenario with a clear correct answer. The Ability to Repay (ATR) rule under TILA requires that the borrower's ability to repay be confirmed at consummation — closing day. A job loss is a material change in financial circumstances. The loan officer must notify the lender immediately. Proceeding to close a loan knowing the borrower has lost their income — regardless of reserves or how close to closing — violates the ATR rule, professional ethics, and potentially constitutes mortgage fraud. The loan must be put on hold and re-evaluated."}
