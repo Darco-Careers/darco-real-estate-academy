@@ -150,6 +150,24 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
 .footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
 .footer-gold{color:var(--gold-light);}
+
+
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--purple-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--purple-mid);background:var(--purple-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--purple-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
 </style>
 </head>
 <body>
@@ -486,12 +504,115 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
   </div>
 
   <!-- NEXT MODULE -->
+  
+  <!-- MODULE GLOSSARY -->
+
+  
+
+  
+  <div class="module-glossary">
+    <h3>&#128218; Module 5 &mdash; Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch5" placeholder="Search terms..." oninput="mgFilter(this,5)">
+    <div class="mg-terms" id="mgTerms5">
+      <div class="mg-term" data-mg="aml bsa anti-money laundering bank secrecy act compliance sar must be filed within 30 days for suspicious transactions of $5,000 or more. subject must not be alerted.">
+        <div class="mg-term-header"><span class="mg-name">AML BSA</span><span class="mg-abbr">Anti-Money Laundering Bank Secrecy Act</span><span class="mg-law">Compliance</span></div>
+        <div class="mg-def">SAR must be filed within 30 days for suspicious transactions of $5,000 or more. Subject must NOT be alerted.</div>
+      </div>
+      <div class="mg-term" data-mg="appraisal fraud  mortgage fraud inflating a property's appraised value to support a larger loan.">
+        <div class="mg-term-header"><span class="mg-name">Appraisal Fraud</span><span class="mg-law">Mortgage Fraud</span></div>
+        <div class="mg-def">Inflating a property's appraised value to support a larger loan.</div>
+      </div>
+      <div class="mg-term" data-mg="balloon payment  predatory lending large lump-sum due at loan maturity after low payments. prohibited in qm loans.">
+        <div class="mg-term-header"><span class="mg-name">Balloon Payment</span><span class="mg-law">Predatory Lending</span></div>
+        <div class="mg-def">Large lump-sum due at loan maturity after low payments. Prohibited in QM loans.</div>
+      </div>
+      <div class="mg-term" data-mg="cfpb consumer financial protection bureau created by dodd-frank 2010 enforces tila, respa, ecoa, hmda, fcra. can order restitution, impose civil penalties, and refer cases to doj.">
+        <div class="mg-term-header"><span class="mg-name">CFPB</span><span class="mg-abbr">Consumer Financial Protection Bureau</span><span class="mg-law">Created by Dodd-Frank 2010</span></div>
+        <div class="mg-def">Enforces TILA, RESPA, ECOA, HMDA, FCRA. Can order restitution, impose civil penalties, and refer cases to DOJ.</div>
+      </div>
+      <div class="mg-term" data-mg="dodd-frank act wall street reform 2010 post-2008 reform. eliminated mlo dual compensation, created atr and qm framework, created cfpb, established udap standards.">
+        <div class="mg-term-header"><span class="mg-name">Dodd-Frank Act</span><span class="mg-abbr">Wall Street Reform</span><span class="mg-law">2010</span></div>
+        <div class="mg-def">Post-2008 reform. Eliminated MLO dual compensation, created ATR and QM framework, created CFPB, established UDAP standards.</div>
+      </div>
+      <div class="mg-term" data-mg="dual contract  mortgage fraud two contracts — one showing real price, one inflated submitted to lender. borrower obtains larger loan than property warrants.">
+        <div class="mg-term-header"><span class="mg-name">Dual Contract</span><span class="mg-law">Mortgage Fraud</span></div>
+        <div class="mg-def">Two contracts — one showing real price, one inflated submitted to lender. Borrower obtains larger loan than property warrants.</div>
+      </div>
+      <div class="mg-term" data-mg="e-sign act electronic signatures act compliance allows electronic loan documents. borrowers must always have the paper option. consent must be affirmative — cannot be pre-checked.">
+        <div class="mg-term-header"><span class="mg-name">E-Sign Act</span><span class="mg-abbr">Electronic Signatures Act</span><span class="mg-law">Compliance</span></div>
+        <div class="mg-def">Allows electronic loan documents. Borrowers must always have the paper option. Consent must be affirmative — cannot be pre-checked.</div>
+      </div>
+      <div class="mg-term" data-mg="equity stripping  predatory lending approving loans based on property equity rather than ability to repay. lender forecloses and captures equity when borrower defaults.">
+        <div class="mg-term-header"><span class="mg-name">Equity Stripping</span><span class="mg-law">Predatory Lending</span></div>
+        <div class="mg-def">Approving loans based on property equity rather than ability to repay. Lender forecloses and captures equity when borrower defaults.</div>
+      </div>
+      <div class="mg-term" data-mg="fact act fair and accurate credit transactions act 2003 inside fcra amends fcra. added red flag rules (identity theft detection) and disposal rule (shredding consumer report data).">
+        <div class="mg-term-header"><span class="mg-name">FACT Act</span><span class="mg-abbr">Fair and Accurate Credit Transactions Act</span><span class="mg-law">2003 Inside FCRA</span></div>
+        <div class="mg-def">Amends FCRA. Added Red Flag Rules (identity theft detection) and Disposal Rule (shredding consumer report data).</div><div class="mg-tip">💡 FACT Act = Fraud and Identity Theft.</div>
+      </div>
+      <div class="mg-term" data-mg="fcra fair credit reporting act regulation v cfpb governs collection, use, and sharing of credit information. contains the fact act.">
+        <div class="mg-term-header"><span class="mg-name">FCRA</span><span class="mg-abbr">Fair Credit Reporting Act</span><span class="mg-law">Regulation V CFPB</span></div>
+        <div class="mg-def">Governs collection, use, and sharing of credit information. Contains the FACT Act.</div><div class="mg-tip">💡 V for Visa or V equals Verify the credit.</div>
+      </div>
+      <div class="mg-term" data-mg="foreclosure rescue fraud  mortgage fraud fraudulent rescue offers targeting homeowners facing foreclosure — title transfer or upfront fees for services never delivered.">
+        <div class="mg-term-header"><span class="mg-name">Foreclosure Rescue Fraud</span><span class="mg-law">Mortgage Fraud</span></div>
+        <div class="mg-def">Fraudulent rescue offers targeting homeowners facing foreclosure — title transfer or upfront fees for services never delivered.</div>
+      </div>
+      <div class="mg-term" data-mg="fraud for housing  mortgage fraud category borrower misrepresents information to qualify for a loan they could not otherwise obtain.">
+        <div class="mg-term-header"><span class="mg-name">Fraud for Housing</span><span class="mg-law">Mortgage Fraud Category</span></div>
+        <div class="mg-def">Borrower misrepresents information to qualify for a loan they could not otherwise obtain.</div>
+      </div>
+      <div class="mg-term" data-mg="fraud for profit  mortgage fraud category industry insiders manipulate the lending process to extract money. carries heavier federal penalties than fraud for housing.">
+        <div class="mg-term-header"><span class="mg-name">Fraud for Profit</span><span class="mg-law">Mortgage Fraud Category</span></div>
+        <div class="mg-def">Industry insiders manipulate the lending process to extract money. Carries heavier federal penalties than fraud for housing.</div>
+      </div>
+      <div class="mg-term" data-mg="hppa homebuyers privacy protection act effective march 2026 amends fcra bans mortgage trigger leads. cras cannot sell mortgage applicant data to unrelated lenders. exceptions: current originator, servicer, or account-holding depository.">
+        <div class="mg-term-header"><span class="mg-name">HPPA</span><span class="mg-abbr">Homebuyers Privacy Protection Act</span><span class="mg-law">Effective March 2026 Amends FCRA</span></div>
+        <div class="mg-def">Bans mortgage trigger leads. CRAs cannot sell mortgage applicant data to unrelated lenders. Exceptions: current originator, servicer, or account-holding depository.</div><div class="mg-tip">💡 Can an MLO buy a list of people who applied with a competitor? In 2026 — NO.</div>
+      </div>
+      <div class="mg-term" data-mg="loan flipping churning predatory lending encouraging repeated refinancing to generate fees with no tangible net benefit to the borrower.">
+        <div class="mg-term-header"><span class="mg-name">Loan Flipping</span><span class="mg-abbr">Churning</span><span class="mg-law">Predatory Lending</span></div>
+        <div class="mg-def">Encouraging repeated refinancing to generate fees with no tangible net benefit to the borrower.</div><div class="mg-tip">💡 Key phrase: no tangible net benefit to the borrower.</div>
+      </div>
+      <div class="mg-term" data-mg="negative amortization  predatory lending payments so low they do not cover full interest — unpaid interest added to loan balance. balance grows over time. prohibited in qm loans.">
+        <div class="mg-term-header"><span class="mg-name">Negative Amortization</span><span class="mg-law">Predatory Lending</span></div>
+        <div class="mg-def">Payments so low they do not cover full interest — unpaid interest added to loan balance. Balance grows over time. Prohibited in QM loans.</div>
+      </div>
+      <div class="mg-term" data-mg="occupancy fraud  mortgage fraud claiming a property will be a primary residence to get owner-occupant rates when actually intended as investment or rental.">
+        <div class="mg-term-header"><span class="mg-name">Occupancy Fraud</span><span class="mg-law">Mortgage Fraud</span></div>
+        <div class="mg-def">Claiming a property will be a primary residence to get owner-occupant rates when actually intended as investment or rental.</div>
+      </div>
+      <div class="mg-term" data-mg="packing  predatory lending adding unnecessary products without full disclosure or informed consent, increasing cost without meaningful benefit.">
+        <div class="mg-term-header"><span class="mg-name">Packing</span><span class="mg-law">Predatory Lending</span></div>
+        <div class="mg-def">Adding unnecessary products without full disclosure or informed consent, increasing cost without meaningful benefit.</div>
+      </div>
+      <div class="mg-term" data-mg="sar suspicious activity report bsa aml filed within 30 days of detecting suspicious activity of $5,000 or more. subject must not be informed. filed with fincen.">
+        <div class="mg-term-header"><span class="mg-name">SAR</span><span class="mg-abbr">Suspicious Activity Report</span><span class="mg-law">BSA AML</span></div>
+        <div class="mg-def">Filed within 30 days of detecting suspicious activity of $5,000 or more. Subject must NOT be informed. Filed with FinCEN.</div>
+      </div>
+      <div class="mg-term" data-mg="straw buyer  mortgage fraud person who applies for a loan on behalf of someone who cannot qualify. both parties face federal fraud liability.">
+        <div class="mg-term-header"><span class="mg-name">Straw Buyer</span><span class="mg-law">Mortgage Fraud</span></div>
+        <div class="mg-def">Person who applies for a loan on behalf of someone who cannot qualify. Both parties face federal fraud liability.</div>
+      </div>
+      <div class="mg-term" data-mg="udap unfair deceptive or abusive acts or practices dodd-frank cfpb unfair = substantial injury consumers cannot avoid. deceptive = misleads reasonable person. abusive = takes advantage of consumers' lack of understanding.">
+        <div class="mg-term-header"><span class="mg-name">UDAP</span><span class="mg-abbr">Unfair Deceptive or Abusive Acts or Practices</span><span class="mg-law">Dodd-Frank CFPB</span></div>
+        <div class="mg-def">Unfair = substantial injury consumers cannot avoid. Deceptive = misleads reasonable person. Abusive = takes advantage of consumers' lack of understanding.</div>
+      </div>
+    </div>
+    <div class="mg-none" id="mgNone5">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mlo-glossary.html" style="font-size:13px;color:var(--purple-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 7 Modules) &rarr;</a>
+    </div>
+  </div>
+
   <div class="next-module">
     <h3>⏭️ What's Next — Module 6: Building Your Business as an MLO</h3>
     <p>You have the technical knowledge. You have the legal foundation. Now it is time to build the business. Module 6 covers everything you need to launch and grow a sustainable MLO career — from finding your first employer and building referral relationships with real estate agents, to personal branding, social media, CRM systems, and the mindset of a top producer.</p>
     <a href="mlo-module-6.html" class="next-module-cta">Module 6: Building Your Business →</a>
   </div>
 
+  
 </div>
 
 <div class="module-nav">
@@ -551,6 +672,19 @@ function checkAnswers(){
     scoreEl.className='score-result show fail';
     scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the definitions of loan flipping vs steering vs equity stripping, the straw buyer fraud scheme, the full SAFE Act name and purpose, the ECOA + FCRA dual adverse action requirement, and the correct response to discovering misrepresentation in a loan file. These scenarios are heavily tested on the NMLS exam.';
   }
+}
+
+
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
 }
 </script>
 </body>

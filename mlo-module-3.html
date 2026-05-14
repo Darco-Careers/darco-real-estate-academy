@@ -165,6 +165,24 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
 .footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
 .footer-gold{color:var(--gold-light);}
 .fade-in{opacity:1;transform:none;}
+
+
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--purple-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--purple-mid);background:var(--purple-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--purple-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
 </style>
 </head>
 <body>
@@ -537,12 +555,70 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
   </div>
 
   <!-- NEXT MODULE -->
+  
+
+  
+
+  
+  <div class="module-glossary">
+    <h3>&#128218; Module 3 &mdash; Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch3" placeholder="Search terms..." oninput="mgFilter(this,3)">
+    <div class="mg-terms" id="mgTerms3">
+      <div class="mg-term" data-mg="aliens application trigger acronym trid six data points triggering the le clock: address, loan amount, income, estimated value, name, ssn. all six collected = official application.">
+        <div class="mg-term-header"><span class="mg-name">ALIENS</span><span class="mg-abbr">Application Trigger Acronym</span><span class="mg-law">TRID</span></div>
+        <div class="mg-def">Six data points triggering the LE clock: Address, Loan Amount, Income, Estimated value, Name, SSN. All six collected = official application.</div><div class="mg-tip">💡 TBD Address keeps files in pre-app status without triggering the LE clock.</div>
+      </div>
+      <div class="mg-term" data-mg="atr rule ability to repay dodd-frank tila good-faith determination a borrower can repay. eight required factors. future property value is not required.">
+        <div class="mg-term-header"><span class="mg-name">ATR Rule</span><span class="mg-abbr">Ability to Repay</span><span class="mg-law">Dodd-Frank TILA</span></div>
+        <div class="mg-def">Good-faith determination a borrower can repay. Eight required factors. Future property value is NOT required.</div>
+      </div>
+      <div class="mg-term" data-mg="aus automated underwriting system underwriting fannie mae: desktop underwriter (du). freddie mac: loan product advisor (lpa), formerly loan prospector (lp). aus approval is conditional — human underwriter must still verify all documentation.">
+        <div class="mg-term-header"><span class="mg-name">AUS</span><span class="mg-abbr">Automated Underwriting System</span><span class="mg-law">Underwriting</span></div>
+        <div class="mg-def">Fannie Mae: Desktop Underwriter (DU). Freddie Mac: Loan Product Advisor (LPA), formerly Loan Prospector (LP). AUS approval is conditional — human underwriter must still verify all documentation.</div>
+      </div>
+      <div class="mg-term" data-mg="closing disclosure cd trid final loan document showing actual terms. replaced hud-1 in 2015. must be received at least 3 business days before closing. saturday counts; sundays and federal holidays do not.">
+        <div class="mg-term-header"><span class="mg-name">Closing Disclosure</span><span class="mg-abbr">CD</span><span class="mg-law">TRID</span></div>
+        <div class="mg-def">Final loan document showing actual terms. Replaced HUD-1 in 2015. Must be received at least 3 business days before closing. Saturday counts; Sundays and federal holidays do not.</div><div class="mg-tip">💡 Business day for CD = any day except Sundays and federal holidays.</div>
+      </div>
+      <div class="mg-term" data-mg="conditional approval  underwriting loan approved once specific conditions are met. most approvals are conditional. clear to close issued when all conditions satisfied.">
+        <div class="mg-term-header"><span class="mg-name">Conditional Approval</span><span class="mg-law">Underwriting</span></div>
+        <div class="mg-def">Loan approved once specific conditions are met. Most approvals are conditional. Clear to close issued when all conditions satisfied.</div>
+      </div>
+      <div class="mg-term" data-mg="five c's of credit  underwriting credit, capacity (income and dti, most dangerous), capital (assets and reserves), collateral (property appraisal), conditions (loan purpose and market).">
+        <div class="mg-term-header"><span class="mg-name">Five C's of Credit</span><span class="mg-law">Underwriting</span></div>
+        <div class="mg-def">Credit, Capacity (income and DTI, most dangerous), Capital (assets and reserves), Collateral (property appraisal), Conditions (loan purpose and market).</div>
+      </div>
+      <div class="mg-term" data-mg="loan estimate le trid initial disclosure showing estimated costs. replaced gfe in 2015. must be provided within 3 business days of application. business day = any day lender is open.">
+        <div class="mg-term-header"><span class="mg-name">Loan Estimate</span><span class="mg-abbr">LE</span><span class="mg-law">TRID</span></div>
+        <div class="mg-def">Initial disclosure showing estimated costs. Replaced GFE in 2015. Must be provided within 3 business days of application. Business day = any day lender is open.</div><div class="mg-tip">💡 3-7-3 Rule: LE within 3 days, 7-day wait, CD 3 days before closing.</div>
+      </div>
+      <div class="mg-term" data-mg="1003 form uniform residential loan application fannie mae standard mortgage application form. a signed 1003 alone does not trigger an application — all six aliens data points must be collected.">
+        <div class="mg-term-header"><span class="mg-name">1003 Form</span><span class="mg-abbr">Uniform Residential Loan Application</span><span class="mg-law">Fannie Mae</span></div>
+        <div class="mg-def">Standard mortgage application form. A signed 1003 alone does not trigger an application — all six ALIENS data points must be collected.</div>
+      </div>
+      <div class="mg-term" data-mg="trid tila-respa integrated disclosure rule 2015 combined tila and respa disclosures into le (replaced gfe) and cd (replaced hud-1). created the 3-7-3 timeline framework.">
+        <div class="mg-term-header"><span class="mg-name">TRID</span><span class="mg-abbr">TILA-RESPA Integrated Disclosure Rule</span><span class="mg-law">2015</span></div>
+        <div class="mg-def">Combined TILA and RESPA disclosures into LE (replaced GFE) and CD (replaced HUD-1). Created the 3-7-3 timeline framework.</div>
+      </div>
+      <div class="mg-term" data-mg="3-7-3 rule trid timeline exam framework le within 3 business days of application; 7-day waiting period before closing; cd received 3 business days before closing.">
+        <div class="mg-term-header"><span class="mg-name">3-7-3 Rule</span><span class="mg-abbr">TRID Timeline</span><span class="mg-law">Exam Framework</span></div>
+        <div class="mg-def">LE within 3 business days of application; 7-day waiting period before closing; CD received 3 business days before closing.</div>
+      </div>
+    </div>
+    <div class="mg-none" id="mgNone3">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mlo-glossary.html" style="font-size:13px;color:var(--purple-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 7 Modules) &rarr;</a>
+    </div>
+  </div>
+
   <div class="next-module fade-in">
     <h3>⏭️ What's Next — Module 4: Federal Laws &amp; Consumer Protections</h3>
     <p>You understand the process — now you need to understand the laws that govern it. Module 4 covers the federal regulatory framework that MLOs operate within: RESPA, TILA, ECOA, HMDA, the Fair Housing Act, and TRID in depth. These laws collectively represent 24% of the NMLS exam and are tested with specific numbers, timelines, and prohibited practices that every licensed MLO must know.</p>
     <a href="mlo-module-4.html" class="next-module-cta">Module 4: Federal Laws &amp; Consumer Protections →</a>
   </div>
 
+  
 </div>
 
 <div class="module-nav">
@@ -602,6 +678,19 @@ function checkAnswers(){
     scoreEl.className='score-result show fail';
     scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the six-item application trigger under TRID, the difference between AUS and human underwriting, what a conditional approval means, the refinance right of rescission timeline, and the ATR rule. These process fundamentals are heavily tested on the NMLS exam.';
   }
+}
+
+
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
 }
 </script>
 </body>

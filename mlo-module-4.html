@@ -146,6 +146,24 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
 .footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
 .footer-gold{color:var(--gold-light);}
 .fade-in{opacity:1;transform:none;}
+
+
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--purple-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--purple-mid);background:var(--purple-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--purple-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
 </style>
 </head>
 <body>
@@ -536,12 +554,94 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
   </div>
 
   <!-- NEXT MODULE -->
+  
+
+  
+
+  
+  <div class="module-glossary">
+    <h3>&#128218; Module 4 &mdash; Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch4" placeholder="Search terms..." oninput="mgFilter(this,4)">
+    <div class="mg-terms" id="mgTerms4">
+      <div class="mg-term" data-mg="aba affiliated business arrangement respa ownership interest in a settlement service provider with referrals to it. must be disclosed via aba disclosure form. borrowers are not required to use the affiliated company.">
+        <div class="mg-term-header"><span class="mg-name">ABA</span><span class="mg-abbr">Affiliated Business Arrangement</span><span class="mg-law">RESPA</span></div>
+        <div class="mg-def">Ownership interest in a settlement service provider with referrals to it. Must be disclosed via ABA Disclosure Form. Borrowers are not required to use the affiliated company.</div>
+      </div>
+      <div class="mg-term" data-mg="apr annual percentage rate tila regulation z true cost of borrowing including interest rate plus fees. if only the apr is advertised, no additional disclosure required. if the interest rate is mentioned, apr must be disclosed.">
+        <div class="mg-term-header"><span class="mg-name">APR</span><span class="mg-abbr">Annual Percentage Rate</span><span class="mg-law">TILA Regulation Z</span></div>
+        <div class="mg-def">True cost of borrowing including interest rate plus fees. If only the APR is advertised, no additional disclosure required. If the interest rate is mentioned, APR must be disclosed.</div>
+      </div>
+      <div class="mg-term" data-mg="ecoa equal credit opportunity act 1974 regulation b cfpb prohibits credit discrimination based on race, color, religion, national origin, sex, marital status, age, and public assistance receipt. 30-day adverse action notice required.">
+        <div class="mg-term-header"><span class="mg-name">ECOA</span><span class="mg-abbr">Equal Credit Opportunity Act</span><span class="mg-law">1974 Regulation B CFPB</span></div>
+        <div class="mg-def">Prohibits credit discrimination based on race, color, religion, national origin, sex, marital status, age, and public assistance receipt. 30-day adverse action notice required.</div><div class="mg-tip">💡 Reg B = Be Equal. ECOA-only classes: marital status, age, public assistance.</div>
+      </div>
+      <div class="mg-term" data-mg="fair housing act  1968 enforced by hud prohibits housing discrimination in sales, rentals, financing, and advertising. unique classes: familial status and disability. enforced by hud not cfpb.">
+        <div class="mg-term-header"><span class="mg-name">Fair Housing Act</span><span class="mg-law">1968 Enforced by HUD</span></div>
+        <div class="mg-def">Prohibits housing discrimination in sales, rentals, financing, and advertising. Unique classes: familial status and disability. Enforced by HUD not CFPB.</div>
+      </div>
+      <div class="mg-term" data-mg="finance charge  tila total dollar amount paid in interest and fees over the loan's life. required tila disclosure. different from apr — the finance charge is a dollar amount.">
+        <div class="mg-term-header"><span class="mg-name">Finance Charge</span><span class="mg-law">TILA</span></div>
+        <div class="mg-def">Total dollar amount paid in interest and fees over the loan's life. Required TILA disclosure. Different from APR — the finance charge is a dollar amount.</div>
+      </div>
+      <div class="mg-term" data-mg="hmda home mortgage disclosure act 1975 regulation c cfpb data reporting law. lar submitted to cfpb by march 1st annually. both approved and denied applications included. primary purpose: detect redlining.">
+        <div class="mg-term-header"><span class="mg-name">HMDA</span><span class="mg-abbr">Home Mortgage Disclosure Act</span><span class="mg-law">1975 Regulation C CFPB</span></div>
+        <div class="mg-def">Data reporting law. LAR submitted to CFPB by March 1st annually. Both approved and denied applications included. Primary purpose: detect redlining.</div><div class="mg-tip">💡 Reg C = Collect community data. HMDA and redlining always go together.</div>
+      </div>
+      <div class="mg-term" data-mg="hoepa home ownership and equity protection act section 32 of tila lives inside tila. triggers: apr exceeds apor by 6.5% first lien or 8.5% subordinate; points and fees exceed 5% for loans over $27,592 (2026); prepayment penalty beyond 36 months.">
+        <div class="mg-term-header"><span class="mg-name">HOEPA</span><span class="mg-abbr">Home Ownership and Equity Protection Act</span><span class="mg-law">Section 32 of TILA</span></div>
+        <div class="mg-def">Lives inside TILA. Triggers: APR exceeds APOR by 6.5% first lien or 8.5% subordinate; points and fees exceed 5% for loans over $27,592 (2026); prepayment penalty beyond 36 months.</div>
+      </div>
+      <div class="mg-term" data-mg="lar loan application register hmda annual hmda submission to cfpb by march 1st. includes both approved and denied applications. primary redlining detection tool.">
+        <div class="mg-term-header"><span class="mg-name">LAR</span><span class="mg-abbr">Loan Application Register</span><span class="mg-law">HMDA</span></div>
+        <div class="mg-def">Annual HMDA submission to CFPB by March 1st. Includes both approved and denied applications. Primary redlining detection tool.</div>
+      </div>
+      <div class="mg-term" data-mg="map rule mortgage acts and practices advertising regulation n prohibits misrepresenting commercial communications. cannot call a rate fixed when it can adjust. applies to all media.">
+        <div class="mg-term-header"><span class="mg-name">MAP Rule</span><span class="mg-abbr">Mortgage Acts and Practices Advertising</span><span class="mg-law">Regulation N</span></div>
+        <div class="mg-def">Prohibits misrepresenting commercial communications. Cannot call a rate fixed when it can adjust. Applies to all media.</div>
+      </div>
+      <div class="mg-term" data-mg="qm qualified mortgage dodd-frank tila atr safe harbor. no negative amortization, interest-only, balloon payments, or 30+ year terms. points and fees capped at 3%. general qm uses pricing-based test (apr vs apor).">
+        <div class="mg-term-header"><span class="mg-name">QM</span><span class="mg-abbr">Qualified Mortgage</span><span class="mg-law">Dodd-Frank TILA</span></div>
+        <div class="mg-def">ATR safe harbor. No negative amortization, interest-only, balloon payments, or 30+ year terms. Points and fees capped at 3%. General QM uses pricing-based test (APR vs APOR).</div>
+      </div>
+      <div class="mg-term" data-mg="redlining  fair lending refusing to lend or offering unfavorable terms in geographic areas based on race or ethnicity. detected through hmda data.">
+        <div class="mg-term-header"><span class="mg-name">Redlining</span><span class="mg-law">Fair Lending</span></div>
+        <div class="mg-def">Refusing to lend or offering unfavorable terms in geographic areas based on race or ethnicity. Detected through HMDA data.</div>
+      </div>
+      <div class="mg-term" data-mg="respa real estate settlement procedures act 1974 regulation x cfpb settlement transparency law. section 8 prohibits kickbacks: $10,000 fine + 1 year prison + 3x civil damages.">
+        <div class="mg-term-header"><span class="mg-name">RESPA</span><span class="mg-abbr">Real Estate Settlement Procedures Act</span><span class="mg-law">1974 Regulation X CFPB</span></div>
+        <div class="mg-def">Settlement transparency law. Section 8 prohibits kickbacks: $10,000 fine + 1 year prison + 3x civil damages.</div><div class="mg-tip">💡 Reg X = Re-X-PA.</div>
+      </div>
+      <div class="mg-term" data-mg="right of rescission  tila regulation z cancel a refinance or heloc on primary residence within 3 business days. does not apply to purchases. extends to 3 years if lender fails to provide proper notice.">
+        <div class="mg-term-header"><span class="mg-name">Right of Rescission</span><span class="mg-law">TILA Regulation Z</span></div>
+        <div class="mg-def">Cancel a refinance or HELOC on primary residence within 3 business days. Does NOT apply to purchases. Extends to 3 years if lender fails to provide proper notice.</div>
+      </div>
+      <div class="mg-term" data-mg="steering  ecoa fair housing dodd-frank directing borrowers toward or away from loan products or neighborhoods based on protected characteristics. both product and geographic steering are prohibited.">
+        <div class="mg-term-header"><span class="mg-name">Steering</span><span class="mg-law">ECOA Fair Housing Dodd-Frank</span></div>
+        <div class="mg-def">Directing borrowers toward or away from loan products or neighborhoods based on protected characteristics. Both product and geographic steering are prohibited.</div>
+      </div>
+      <div class="mg-term" data-mg="tila truth in lending act 1968 regulation z cfpb requires apr and finance charge disclosure. contains hoepa (section 32) and atr rule.">
+        <div class="mg-term-header"><span class="mg-name">TILA</span><span class="mg-abbr">Truth in Lending Act</span><span class="mg-law">1968 Regulation Z CFPB</span></div>
+        <div class="mg-def">Requires APR and finance charge disclosure. Contains HOEPA (Section 32) and ATR Rule.</div><div class="mg-tip">💡 Reg Z = Ti-Z-la — the big one.</div>
+      </div>
+      <div class="mg-term" data-mg="trigger terms  tila advertising words in ads requiring apr and all related term disclosures. exception: advertising only the apr needs no further disclosure. applies to all media.">
+        <div class="mg-term-header"><span class="mg-name">Trigger Terms</span><span class="mg-law">TILA Advertising</span></div>
+        <div class="mg-def">Words in ads requiring APR and all related term disclosures. Exception: advertising only the APR needs no further disclosure. Applies to all media.</div>
+      </div>
+    </div>
+    <div class="mg-none" id="mgNone4">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mlo-glossary.html" style="font-size:13px;color:var(--purple-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 7 Modules) &rarr;</a>
+    </div>
+  </div>
+
   <div class="next-module fade-in">
     <h3>⏭️ What's Next — Module 5: Ethics, Fraud &amp; Compliance</h3>
     <p>You understand the laws. Now you need to understand what happens when they are violated — and how to recognize the warning signs before a problem becomes a crime. Module 5 covers mortgage fraud, predatory lending, professional ethics, and the compliance obligations that keep MLOs on the right side of the law throughout their careers.</p>
     <a href="mlo-module-5.html" class="next-module-cta">Module 5: Ethics, Fraud &amp; Compliance →</a>
   </div>
 
+  
 </div>
 
 <div class="module-nav">
@@ -601,6 +701,19 @@ function checkAnswers(){
     scoreEl.className='score-result show fail';
     scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review RESPA Section 8 penalties, TILA trigger term exceptions, ECOA vs Fair Housing protected classes, HOEPA rate thresholds (6.5% first lien / 8.5% subordinate), and HMDA LAR submission date and purpose. These are heavily tested on the NMLS exam.';
   }
+}
+
+
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
 }
 </script>
 </body>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage & Lending Glossary — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#3D1A6E;--purple-mid:#5C2E9A;--purple-pale:#F3EEFB;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(61,26,110,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;text-align:left;}
+strong{display:inline;font-weight:600;}
+nav{background:var(--purple);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--purple);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.hero{background:linear-gradient(135deg,#1A0838 0%,var(--purple) 55%,var(--purple-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 50%,rgba(201,168,76,0.1) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.hero h1 em{color:var(--gold-light);font-style:italic;}
+.hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;margin-bottom:1.5rem;}
+.search-wrap{max-width:500px;}
+.search-box{width:100%;padding:12px 20px;border-radius:10px;border:2px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:var(--white);font-size:15px;font-family:'DM Sans',sans-serif;outline:none;transition:border 0.2s;}
+.search-box::placeholder{color:rgba(255,255,255,0.4);}
+.search-box:focus{border-color:var(--gold);background:rgba(255,255,255,0.12);}
+.body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.module-jump{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.jump-btn{background:var(--white);border:1.5px solid var(--border);color:var(--purple-mid);font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;text-decoration:none;transition:all 0.2s;cursor:pointer;}
+.jump-btn:hover{background:var(--purple);color:var(--white);border-color:var(--purple);}
+.module-section{margin-bottom:3.5rem;}
+.module-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--gold);}
+.module-num{width:40px;height:40px;border-radius:50%;background:var(--purple);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;flex-shrink:0;}
+.module-header-text h2{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--text-dark);}
+.module-header-text p{font-size:12px;color:var(--text-light);margin-top:2px;}
+.module-header a{font-size:12px;color:var(--purple-mid);text-decoration:none;font-weight:600;margin-left:auto;white-space:nowrap;}
+.module-header a:hover{color:var(--purple);}
+.terms{display:flex;flex-direction:column;gap:0;}
+.term{padding:1rem 0;border-bottom:1px solid var(--border);display:none;}
+.term.visible{display:block;}
+.term-header{display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.35rem;flex-wrap:wrap;}
+.term-name{font-size:15px;font-weight:700;color:var(--text-dark);}
+.term-abbr{font-size:12px;font-weight:600;color:var(--purple-mid);background:var(--purple-pale);padding:2px 8px;border-radius:10px;}
+.term-law{font-size:11px;color:var(--text-light);background:var(--gold-pale);padding:2px 8px;border-radius:10px;font-weight:600;}
+.term-def{font-size:14px;color:var(--text-mid);line-height:1.75;}
+.term-tip{font-size:12.5px;color:var(--purple-mid);margin-top:0.4rem;font-style:italic;}
+.no-results{text-align:center;padding:3rem;color:var(--text-light);font-size:15px;display:none;}
+.count-badge{font-size:12px;color:var(--text-light);margin-left:auto;}
+footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;margin-top:3rem;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="mortgage-lending.html" class="nav-back">← Mortgage &amp; Lending</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📖 Reference · Mortgage &amp; Lending Track</div>
+    <h1>Course <em>Glossary</em></h1>
+    <p>Every key term, acronym, law, regulation, and concept from all 7 modules — organized by module and searchable. Bookmark this page and return to it while studying.</p>
+    <div class="search-wrap">
+      <input type="text" class="search-box" id="searchBox" placeholder="Search any term, acronym, or law..." oninput="filterTerms()">
+    </div>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="module-jump">
+    <span style="font-size:12px;font-weight:600;color:var(--text-light);padding:6px 4px;">Jump to:</span>
+    <a class="jump-btn" onclick="scrollTo('mod1')">Module 1</a>
+    <a class="jump-btn" onclick="scrollTo('mod2')">Module 2</a>
+    <a class="jump-btn" onclick="scrollTo('mod3')">Module 3</a>
+    <a class="jump-btn" onclick="scrollTo('mod4')">Module 4</a>
+    <a class="jump-btn" onclick="scrollTo('mod5')">Module 5</a>
+    <a class="jump-btn" onclick="scrollTo('mod6')">Module 6</a>
+    <a class="jump-btn" onclick="scrollTo('mod7')">Module 7</a>
+  </div>
+
+  <div class="no-results" id="noResults">No terms found matching your search.</div>
+
+  <!-- MODULE 1 -->
+  <div class="module-section" id="mod1">
+    <div class="module-header">
+      <div class="module-num">1</div>
+      <div class="module-header-text">
+        <h2>What an MLO Does &amp; Career Path</h2>
+        <p>Licensing, career paths, the NMLS system, and what the job actually looks like day to day</p>
+      </div>
+      <a href="mlo-module-1.html">Go to Module →</a>
+    </div>
+    <div class="terms">
+
+      <div class="term visible" data-terms="broker channel mortgage broker wholesale">
+        <div class="term-header"><span class="term-name">Broker Channel</span></div>
+        <div class="term-def">A mortgage origination model where the MLO (mortgage broker) works independently, submitting loan applications to multiple wholesale lenders to find the best rate and terms for borrowers. The broker does not fund the loan — the wholesale lender does. Brokers typically have access to more products than retail loan officers.</div>
+      </div>
+
+      <div class="term visible" data-terms="ce continuing education annual nmls safe act">
+        <div class="term-header"><span class="term-name">Continuing Education (CE)</span><span class="term-abbr">CE</span></div>
+        <div class="term-def">Annual education requirement for licensed MLOs under the SAFE Act. Minimum 8 hours per year covering federal law, ethics, and elective topics. Must be completed before license renewal each year.</div>
+        <div class="term-tip">Exam tip: 20 hours pre-licensing, 8 hours CE annually — know both numbers.</div>
+      </div>
+
+      <div class="term visible" data-terms="correspondent lender channel">
+        <div class="term-header"><span class="term-name">Correspondent Lender</span></div>
+        <div class="term-def">A lender that originates and funds loans using its own capital, then sells them to larger investors (like Fannie Mae or Freddie Mac) shortly after closing. Sits between retail lenders and wholesale lenders in the market structure.</div>
+      </div>
+
+      <div class="term visible" data-terms="federally chartered institution registered loan officer bank">
+        <div class="term-header"><span class="term-name">Federally Chartered Institution</span></div>
+        <div class="term-def">Banks and credit unions regulated at the federal level (e.g., JP Morgan Chase, Bank of America). MLOs who work for federally chartered institutions are federally registered — not state licensed — and are exempt from the SAFE exam requirement, though many obtain licenses for career portability.</div>
+      </div>
+
+      <div class="term visible" data-terms="hard money private lending bridge loan">
+        <div class="term-header"><span class="term-name">Hard Money / Private Lending</span></div>
+        <div class="term-def">Short-term loans funded by private investors rather than traditional financial institutions. Typically used for fix-and-flip investment properties. Asset-based underwriting — qualification depends primarily on the property's value, not the borrower's income or credit. Very popular in the 2026 market due to tight inventory and strong investor demand.</div>
+      </div>
+
+      <div class="term visible" data-terms="hera housing economic recovery act 2008 safe act parent">
+        <div class="term-header"><span class="term-name">HERA</span><span class="term-abbr">Housing and Economic Recovery Act</span><span class="term-law">2008</span></div>
+        <div class="term-def">The federal legislation passed in 2008 that contained the SAFE Act. HERA is the "parent" law — the SAFE Act lives inside it. Classic "law inside a law" pattern on the NMLS exam.</div>
+        <div class="term-tip">Exam tip: If asked which act contains the SAFE Act — the answer is HERA.</div>
+      </div>
+
+      <div class="term visible" data-terms="MLO mortgage loan originator definition">
+        <div class="term-header"><span class="term-name">Mortgage Loan Originator</span><span class="term-abbr">MLO</span></div>
+        <div class="term-def">A licensed professional who takes residential mortgage loan applications and offers or negotiates the terms of residential mortgage loans for compensation. The person sitting across the table from the borrower — gathering documents, guiding the application, and connecting borrowers to the right loan products.</div>
+      </div>
+
+      <div class="term visible" data-terms="MU4 individual form nmls application license">
+        <div class="term-header"><span class="term-name">MU4 Form</span></div>
+        <div class="term-def">The individual license application form filed through the NMLS system. Requires disclosure of personal history, criminal background, financial history, and regulatory actions. Updated April 18, 2026 — new definition of "Found" now includes public settlements, and foreclosure disclosure now covers "efforts to foreclose" including non-judicial proceedings.</div>
+      </div>
+
+      <div class="term visible" data-terms="nmls nationwide multistate licensing system">
+        <div class="term-header"><span class="term-name">NMLS</span><span class="term-abbr">Nationwide Multistate Licensing System</span></div>
+        <div class="term-def">The centralized system for licensing and registering mortgage loan originators across all states. Every licensed MLO receives a unique NMLS ID number that follows them throughout their career regardless of employer or state. Managed by CSBS (Conference of State Bank Supervisors). Account created at mortgage.nationwidelicensingsystem.org.</div>
+      </div>
+
+      <div class="term visible" data-terms="retail channel loan officer bank lender direct">
+        <div class="term-header"><span class="term-name">Retail Channel</span></div>
+        <div class="term-def">A mortgage origination model where the MLO works directly for a lender (bank, credit union, or mortgage company) and originates loans using that lender's products and rates. The lender funds and services the loans. Best for new MLOs — provides training, support structure, and marketing resources.</div>
+      </div>
+
+      <div class="term visible" data-terms="safe act secure fair enforcement mortgage licensing">
+        <div class="term-header"><span class="term-name">SAFE Act</span><span class="term-abbr">Secure and Fair Enforcement for Mortgage Licensing Act</span><span class="term-law">2008 · Inside HERA</span></div>
+        <div class="term-def">Federal law enacted in 2008 requiring all state-licensed MLOs to register with the NMLS, pass a background check and credit check, complete 20 hours of pre-licensing education, and pass the SAFE MLO National Test (75% passing score). Created in direct response to the predatory lending wave that contributed to the 2008 financial crisis, when no licensing was required to originate mortgage loans.</div>
+        <div class="term-tip">Know all four words: Secure and Fair Enforcement. Exam often uses "Federal" or "Financial" as a distractor.</div>
+      </div>
+
+      <div class="term visible" data-terms="wholesale lender channel">
+        <div class="term-header"><span class="term-name">Wholesale Lender</span></div>
+        <div class="term-def">A lender that does not deal directly with consumers — instead, it funds loans originated by mortgage brokers. Wholesale lenders typically offer better rates than retail because they have lower overhead. The broker shops multiple wholesale lenders to find the best fit for each borrower.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div class="module-section" id="mod2">
+    <div class="module-header">
+      <div class="module-num">2</div>
+      <div class="module-header-text">
+        <h2>Mortgage Products &amp; Loan Types</h2>
+        <p>Conventional, FHA, VA, USDA, jumbo, non-QM, and how to match borrowers to products</p>
+      </div>
+      <a href="mlo-module-2.html">Go to Module →</a>
+    </div>
+    <div class="terms">
+
+      <div class="term visible" data-terms="apor average prime offered rate hoepa benchmark">
+        <div class="term-header"><span class="term-name">APOR</span><span class="term-abbr">Average Prime Offered Rate</span></div>
+        <div class="term-def">The benchmark rate published weekly by the CFPB used to determine whether a loan is a Higher-Priced Mortgage Loan (HPML) or a High-Cost Mortgage under HOEPA. HOEPA triggers when the APR exceeds the APOR by more than 6.5% (first lien) or 8.5% (subordinate lien).</div>
+      </div>
+
+      <div class="term visible" data-terms="conforming loan fannie freddie limit 832750">
+        <div class="term-header"><span class="term-name">Conforming Loan</span></div>
+        <div class="term-def">A mortgage that meets the guidelines set by Fannie Mae and Freddie Mac, including the annual loan limit set by the FHFA. 2026 standard limit: $832,750 (up to $1,249,125 in high-cost areas). Because conforming loans can be sold into the secondary market, lenders offer more favorable rates and terms.</div>
+        <div class="term-tip">2026 numbers: $832,750 standard / $1,249,125 high-cost ceiling.</div>
+      </div>
+
+      <div class="term visible" data-terms="coe certificate of eligibility va loan military">
+        <div class="term-header"><span class="term-name">COE</span><span class="term-abbr">Certificate of Eligibility</span><span class="term-law">VA Loans</span></div>
+        <div class="term-def">The document issued by the Department of Veterans Affairs that confirms a borrower's eligibility for a VA home loan. Required before a VA loan can be processed. MLOs can request a COE through the VA's automated system on behalf of the borrower.</div>
+      </div>
+
+      <div class="term visible" data-terms="dscr debt service coverage ratio investor non-qm rental">
+        <div class="term-header"><span class="term-name">DSCR Loan</span><span class="term-abbr">Debt Service Coverage Ratio</span><span class="term-law">Non-QM</span></div>
+        <div class="term-def">A non-QM loan product that qualifies real estate investors based on the rental income the property generates relative to the mortgage payment — not the borrower's personal income. A DSCR of 1.0 means rent covers the payment exactly; 1.25 means 25% more rent than payment. Primary tool for investors in 2026 with tight inventory and strong rental demand.</div>
+      </div>
+
+      <div class="term visible" data-terms="dti debt to income ratio qualifying">
+        <div class="term-header"><span class="term-name">DTI</span><span class="term-abbr">Debt-to-Income Ratio</span></div>
+        <div class="term-def">The percentage of a borrower's gross monthly income that goes toward debt payments. Calculated as total monthly debt payments divided by gross monthly income. Conventional loans generally require 43% or lower DTI, though up to ~50% is allowed with strong compensating factors. FHA allows up to 57% with AUS approval.</div>
+      </div>
+
+      <div class="term visible" data-terms="fha federal housing administration loan government insured">
+        <div class="term-header"><span class="term-name">FHA Loan</span><span class="term-abbr">Federal Housing Administration</span><span class="term-law">Government-Insured</span></div>
+        <div class="term-def">Government-insured mortgage loan allowing 3.5% down payment with a minimum 580 credit score (10% down for scores 500–579). Requires both upfront MIP (1.75% of loan amount) and monthly MIP for the life of the loan. Best for borrowers with credit scores under 680 or limited down payment savings. 2026 FHA floor: $541,287.</div>
+      </div>
+
+      <div class="term visible" data-terms="fhfa federal housing finance agency loan limit conforming">
+        <div class="term-header"><span class="term-name">FHFA</span><span class="term-abbr">Federal Housing Finance Agency</span></div>
+        <div class="term-def">The federal agency that regulates Fannie Mae and Freddie Mac and sets the conforming loan limits annually. 2026 baseline: $832,750. Limits are adjusted based on national average home price changes.</div>
+      </div>
+
+      <div class="term visible" data-terms="gse government sponsored enterprise fannie freddie">
+        <div class="term-header"><span class="term-name">GSE</span><span class="term-abbr">Government-Sponsored Enterprise</span></div>
+        <div class="term-def">Fannie Mae (Federal National Mortgage Association) and Freddie Mac (Federal Home Loan Mortgage Corporation) — the two entities that purchase conforming mortgages from lenders and package them into mortgage-backed securities. Their existence creates liquidity in the mortgage market, allowing lenders to offer better rates.</div>
+      </div>
+
+      <div class="term visible" data-terms="hpa homeowners protection act pmi removal 80% ltv">
+        <div class="term-header"><span class="term-name">HPA</span><span class="term-abbr">Homeowners Protection Act</span></div>
+        <div class="term-def">Federal law governing the cancellation and termination of Private Mortgage Insurance (PMI). Borrowers can request PMI removal when LTV reaches 80%. Lenders must automatically cancel PMI when LTV reaches 78% based on the original amortization schedule.</div>
+        <div class="term-tip">80% = can request. 78% = must cancel automatically. Both numbers are exam-tested.</div>
+      </div>
+
+      <div class="term visible" data-terms="jumbo loan non-conforming limit exceeds">
+        <div class="term-header"><span class="term-name">Jumbo Loan</span><span class="term-law">Non-Conforming</span></div>
+        <div class="term-def">A mortgage that exceeds the FHFA conforming loan limit ($832,750 in most areas as of 2026). Cannot be sold to Fannie Mae or Freddie Mac. Lenders bear more risk, so jumbo loans carry stricter requirements: typically 700+ credit score, 10–20%+ down, 12+ months reserves, lower DTI.</div>
+      </div>
+
+      <div class="term visible" data-terms="ltv loan to value ratio appraisal">
+        <div class="term-header"><span class="term-name">LTV</span><span class="term-abbr">Loan-to-Value Ratio</span></div>
+        <div class="term-def">The ratio of the loan amount to the appraised value of the property, expressed as a percentage. LTV = loan amount ÷ appraised value × 100. An 80% LTV means the borrower is financing 80% of the property's value and has 20% equity. Lower LTV = less risk for the lender = better rates for the borrower.</div>
+      </div>
+
+      <div class="term visible" data-terms="mip mortgage insurance premium fha upfront monthly">
+        <div class="term-header"><span class="term-name">MIP</span><span class="term-abbr">Mortgage Insurance Premium</span><span class="term-law">FHA Loans</span></div>
+        <div class="term-def">FHA's version of mortgage insurance. Unlike PMI (which can be removed), FHA MIP is typically required for the life of the loan. Two components: upfront MIP (1.75% of the loan amount, added to the loan balance at closing) and annual MIP (paid monthly, varies by loan term and LTV).</div>
+      </div>
+
+      <div class="term visible" data-terms="non-qm non qualified mortgage bank statement self employed">
+        <div class="term-header"><span class="term-name">Non-QM Loan</span><span class="term-abbr">Non-Qualified Mortgage</span></div>
+        <div class="term-def">Mortgage loans that do not meet the CFPB's Qualified Mortgage definition — typically because of alternative income documentation (bank statements instead of tax returns), higher DTI ratios, or property types that GSEs won't purchase. Includes DSCR loans, bank statement loans, and asset depletion loans. In 2026, Non-QM products are primary tools for serving investors and self-employed borrowers.</div>
+      </div>
+
+      <div class="term visible" data-terms="overlay lender requirement stricter guideline minimum">
+        <div class="term-header"><span class="term-name">Overlay</span></div>
+        <div class="term-def">Additional requirements imposed by an individual lender that are stricter than the minimum guidelines set by Fannie Mae, Freddie Mac, FHA, VA, or USDA. For example, FHA allows 500 credit scores but a lender's overlay may require 620. Overlays are set at the lender's discretion to manage risk.</div>
+        <div class="term-tip">Key insight: When a borrower is denied despite meeting program guidelines, always ask about the lender's overlays — and shop to a lender without that overlay.</div>
+      </div>
+
+      <div class="term visible" data-terms="pmi private mortgage insurance conventional removal">
+        <div class="term-header"><span class="term-name">PMI</span><span class="term-abbr">Private Mortgage Insurance</span><span class="term-law">Conventional Loans</span></div>
+        <div class="term-def">Insurance required on conventional loans when the down payment is less than 20% (LTV above 80%). Protects the lender — not the borrower — in case of default. Can be removed when LTV reaches 80% (borrower request) or 78% (automatic cancellation under HPA). Unlike FHA MIP, PMI is not required for the life of the loan.</div>
+      </div>
+
+      <div class="term visible" data-terms="usda rural housing loan income 115% ami">
+        <div class="term-header"><span class="term-name">USDA Loan</span><span class="term-law">Government-Guaranteed</span></div>
+        <div class="term-def">Zero down payment mortgage for rural and suburban properties, guaranteed by the U.S. Department of Agriculture. Income limit: household income cannot exceed 115% of the area median income (AMI) — includes all household members over 18, even if not on the loan. Property must be in a USDA-eligible area.</div>
+      </div>
+
+      <div class="term visible" data-terms="va loan veterans affairs military eligibility 90 181 days">
+        <div class="term-header"><span class="term-name">VA Loan</span><span class="term-law">Government-Guaranteed · Dept. of Veterans Affairs</span></div>
+        <div class="term-def">Zero down payment mortgage for eligible veterans, active-duty service members, and surviving spouses. No PMI required. Minimum service: 90 days active duty wartime or 181 days peacetime. Requires a Certificate of Eligibility (COE). VA loans consistently offer the lowest rates of any loan program for eligible borrowers.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 3 -->
+  <div class="module-section" id="mod3">
+    <div class="module-header">
+      <div class="module-num">3</div>
+      <div class="module-header-text">
+        <h2>The Loan Process — Application to Closing</h2>
+        <p>The six steps, TRID disclosures, underwriting, the five C's, and what happens at closing</p>
+      </div>
+      <a href="mlo-module-3.html">Go to Module →</a>
+    </div>
+    <div class="terms">
+
+      <div class="term visible" data-terms="aliens acronym application triggers six data points">
+        <div class="term-header"><span class="term-name">ALIENS</span><span class="term-abbr">Application Trigger Acronym</span></div>
+        <div class="term-def">The six pieces of information that — when all collected — officially trigger a loan application and start the 3-business-day Loan Estimate clock. Address (property address), Loan Amount, Income, Estimated value of property, Name, Social Security Number. Collecting all six = application received. The 1003 does not need to be signed.</div>
+        <div class="term-tip">TBD Address trick: MLOs often use "TBD" for the property address during pre-approval to keep the file in Pre-Application Lead status without triggering the LE clock.</div>
+      </div>
+
+      <div class="term visible" data-terms="atr ability to repay rule dodd frank eight factors">
+        <div class="term-header"><span class="term-name">ATR Rule</span><span class="term-abbr">Ability to Repay</span><span class="term-law">Dodd-Frank / TILA</span></div>
+        <div class="term-def">Requires lenders to make a reasonable, good-faith determination that a borrower can repay a mortgage loan before making it. Lenders must evaluate at least 8 factors: current income/assets, employment status, monthly mortgage payment, other monthly loan payments, mortgage-related obligations, current debt obligations, DTI ratio or residual income, and credit history. Future property value is NOT a required ATR factor.</div>
+      </div>
+
+      <div class="term visible" data-terms="aus automated underwriting system du lpa desktop underwriter loan product advisor">
+        <div class="term-header"><span class="term-name">AUS</span><span class="term-abbr">Automated Underwriting System</span></div>
+        <div class="term-def">Software that evaluates loan applications against GSE risk guidelines and issues findings in seconds. Fannie Mae's system: Desktop Underwriter (DU). Freddie Mac's system: Loan Product Advisor (LPA) — formerly called Loan Prospector (LP). Both names may appear on the exam; LPA is current. An AUS approval is conditional — a human underwriter must still verify all documentation.</div>
+      </div>
+
+      <div class="term visible" data-terms="cd closing disclosure final trid hud-1 replacement">
+        <div class="term-header"><span class="term-name">Closing Disclosure</span><span class="term-abbr">CD</span><span class="term-law">TRID</span></div>
+        <div class="term-def">The final loan document showing actual loan terms and costs. Replaced the HUD-1 Settlement Statement in 2015. Must be received by the borrower at least 3 business days before closing (business day = any day except Sundays and federal holidays — Saturday counts). Borrower compares CD to LE to verify no unexpected changes.</div>
+      </div>
+
+      <div class="term visible" data-terms="conditional approval subject to conditions underwriting">
+        <div class="term-header"><span class="term-name">Conditional Approval</span></div>
+        <div class="term-def">An underwriter's decision that a loan can be approved once specific conditions are met — typically additional documentation, verification of employment, or resolution of a credit issue. Most loan approvals are conditional at first. "Clear to close" is issued when all conditions have been satisfied.</div>
+      </div>
+
+      <div class="term visible" data-terms="five c's credit capacity capital collateral conditions">
+        <div class="term-header"><span class="term-name">Five C's of Credit</span></div>
+        <div class="term-def">The five factors underwriters evaluate when assessing a borrower's creditworthiness: Credit (credit history and score), Capacity (income and DTI — ability to repay), Capital (assets and reserves), Collateral (the property value/appraisal), and Conditions (loan purpose, market conditions, interest rate). Capacity is the most dangerous — income calculation errors are the #1 reason loans die in underwriting.</div>
+      </div>
+
+      <div class="term visible" data-terms="le loan estimate trid three business days application gfe replacement">
+        <div class="term-header"><span class="term-name">Loan Estimate</span><span class="term-abbr">LE</span><span class="term-law">TRID</span></div>
+        <div class="term-def">The initial disclosure showing estimated loan costs. Replaced the Good Faith Estimate (GFE) in 2015. Must be provided within 3 business days of application (business day = any day the lender's offices are open, typically Mon–Fri). Lenders cannot charge fees (except a credit report fee) until the borrower acknowledges receipt and indicates intent to proceed.</div>
+        <div class="term-tip">3-7-3 Rule: LE delivered within 3 days → 7-day waiting period before closing → CD delivered 3 days before closing.</div>
+      </div>
+
+      <div class="term visible" data-terms="1003 uniform residential loan application fannie mae">
+        <div class="term-header"><span class="term-name">1003 Form</span><span class="term-abbr">Uniform Residential Loan Application</span></div>
+        <div class="term-def">The standard mortgage loan application form created by Fannie Mae. Collects borrower information including income, assets, debts, employment history, and the property being financed. A signed 1003 alone does not trigger a loan application — the ALIENS six-point test determines when an official application is received.</div>
+      </div>
+
+      <div class="term visible" data-terms="trid tila respa integrated disclosure rule 2015">
+        <div class="term-header"><span class="term-name">TRID</span><span class="term-abbr">TILA-RESPA Integrated Disclosure Rule</span><span class="term-law">2015</span></div>
+        <div class="term-def">The 2015 rule that combined TILA and RESPA disclosure requirements into two unified forms: the Loan Estimate (replacing the GFE and early TILA disclosure) and the Closing Disclosure (replacing the HUD-1). Created the "3-7-3" timeline framework for mortgage disclosures.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 4 -->
+  <div class="module-section" id="mod4">
+    <div class="module-header">
+      <div class="module-num">4</div>
+      <div class="module-header-text">
+        <h2>Federal Laws &amp; Consumer Protections</h2>
+        <p>RESPA, TILA, HOEPA, ATR, ECOA, Fair Housing Act, HMDA, and all their regulations</p>
+      </div>
+      <a href="mlo-module-4.html">Go to Module →</a>
+    </div>
+    <div class="terms">
+
+      <div class="term visible" data-terms="aba affiliated business arrangement controlled respa disclosure">
+        <div class="term-header"><span class="term-name">Affiliated Business Arrangement</span><span class="term-abbr">ABA</span><span class="term-law">RESPA</span></div>
+        <div class="term-def">When a real estate agent or lender has an ownership interest in a settlement service provider (like a title company) and refers consumers to it. ABAs are not illegal — but must be disclosed to consumers through an ABA Disclosure Form. Borrowers must be informed they are not required to use the affiliated company.</div>
+      </div>
+
+      <div class="term visible" data-terms="apr annual percentage rate true cost of credit tila advertising">
+        <div class="term-header"><span class="term-name">APR</span><span class="term-abbr">Annual Percentage Rate</span><span class="term-law">TILA / Regulation Z</span></div>
+        <div class="term-def">The true cost of borrowing expressed as a yearly rate — includes the interest rate plus fees, points, and other charges. Required disclosure under TILA. Used to compare loan offers from different lenders. Key TILA rule: if only the APR is advertised, no additional disclosure is required. If the interest rate is mentioned, the APR must also be disclosed.</div>
+      </div>
+
+      <div class="term visible" data-terms="ecoa equal credit opportunity act regulation b protected classes 30 days">
+        <div class="term-header"><span class="term-name">ECOA</span><span class="term-abbr">Equal Credit Opportunity Act</span><span class="term-law">1974 · Regulation B · Enforced by CFPB</span></div>
+        <div class="term-def">Prohibits discrimination in credit transactions based on: race, color, religion, national origin, sex, marital status, age, and receipt of public assistance. Lenders must notify borrowers of action taken within 30 days of a completed application. ECOA-only classes (not in Fair Housing Act): marital status, age, receipt of public assistance. Memory trick: Reg B = "Be Equal."</div>
+      </div>
+
+      <div class="term visible" data-terms="fair housing act 1968 hud protected classes familial status disability">
+        <div class="term-header"><span class="term-name">Fair Housing Act</span><span class="term-law">1968 · Enforced by HUD</span></div>
+        <div class="term-def">Prohibits discrimination in housing — sales, rentals, financing, and advertising. Protected classes: race, color, religion, national origin, sex, familial status, and disability. Familial status and disability are unique to Fair Housing (not in ECOA). Steering and discriminatory advertising are prohibited. Enforced by HUD — not the CFPB.</div>
+      </div>
+
+      <div class="term visible" data-terms="finance charge tila total dollar cost borrowing">
+        <div class="term-header"><span class="term-name">Finance Charge</span><span class="term-law">TILA</span></div>
+        <div class="term-def">The total dollar amount the borrower will pay over the life of the loan in interest and fees. Required TILA disclosure. Distinct from the APR (which is a rate) — the finance charge is a dollar amount.</div>
+      </div>
+
+      <div class="term visible" data-terms="hmda home mortgage disclosure act regulation c lar redlining data reporting">
+        <div class="term-header"><span class="term-name">HMDA</span><span class="term-abbr">Home Mortgage Disclosure Act</span><span class="term-law">1975 · Regulation C · Enforced by CFPB</span></div>
+        <div class="term-def">A data reporting law requiring covered lenders to collect and report mortgage application data — race, ethnicity, sex, income, loan type, and property location — via the Loan Application Register (LAR). LAR submitted to CFPB by March 1st annually. Primary purpose: detect redlining and discriminatory lending patterns. HMDA does not prohibit discrimination — it provides the data to prove it. Memory trick: Reg C = "Collect" community data.</div>
+      </div>
+
+      <div class="term visible" data-terms="hoepa home ownership equity protection act section 32 high cost loan triggers">
+        <div class="term-header"><span class="term-name">HOEPA</span><span class="term-abbr">Home Ownership and Equity Protection Act</span><span class="term-law">Section 32 of TILA</span></div>
+        <div class="term-def">Lives inside TILA at Section 32. Protects consumers from predatory high-cost mortgages. A loan is high-cost if: APR exceeds APOR by more than 6.5% (first lien) or 8.5% (subordinate lien); points and fees exceed 5% of loan amount for loans over $27,592 (2026 threshold, adjusted annually by CPI); or prepayment penalties extend beyond 36 months. Requires special HOEPA disclosure at least 3 business days before closing.</div>
+      </div>
+
+      <div class="term visible" data-terms="lar loan application register hmda cfpb march 1">
+        <div class="term-header"><span class="term-name">LAR</span><span class="term-abbr">Loan Application Register</span><span class="term-law">HMDA</span></div>
+        <div class="term-def">The annual data submission required under HMDA. Includes data on both approved and denied mortgage applications. Submitted to the CFPB by March 1st of each year. The LAR is the primary tool regulators use to identify redlining and other discriminatory lending patterns.</div>
+      </div>
+
+      <div class="term visible" data-terms="map rule regulation n advertising mortgage acts practices misrepresentation">
+        <div class="term-header"><span class="term-name">MAP Rule</span><span class="term-abbr">Mortgage Acts and Practices — Advertising</span><span class="term-law">Regulation N</span></div>
+        <div class="term-def">Prohibits misrepresenting commercial communications about mortgage products. Key exam trap: an MLO cannot advertise a rate as "fixed" when it can actually adjust. Applies to all advertising — print, online, social media, TV, and radio.</div>
+      </div>
+
+      <div class="term visible" data-terms="qm qualified mortgage safe harbor dti pricing atr dodd frank">
+        <div class="term-header"><span class="term-name">Qualified Mortgage</span><span class="term-abbr">QM</span><span class="term-law">Dodd-Frank / TILA</span></div>
+        <div class="term-def">A loan meeting specific CFPB standards that creates a presumption of ATR compliance — a "safe harbor." QM loans cannot have: negative amortization, interest-only periods, balloon payments (with limited exceptions), or loan terms exceeding 30 years. Points and fees capped at 3% of the loan amount. The General QM definition now uses a pricing-based test (APR vs. APOR) rather than a strict 43% DTI cap.</div>
+      </div>
+
+      <div class="term visible" data-terms="redlining discrimination geographic area race hmda">
+        <div class="term-header"><span class="term-name">Redlining</span></div>
+        <div class="term-def">The discriminatory practice of refusing to lend, or offering unfavorable terms, in certain geographic areas based on the racial or ethnic composition of those neighborhoods. Named after the red lines drawn on maps to mark "undesirable" areas. Detected through HMDA data reporting. Connect HMDA + redlining on every exam question about this topic.</div>
+      </div>
+
+      <div class="term visible" data-terms="respa real estate settlement procedures act regulation x kickback section 8">
+        <div class="term-header"><span class="term-name">RESPA</span><span class="term-abbr">Real Estate Settlement Procedures Act</span><span class="term-law">1974 · Regulation X · Enforced by CFPB</span></div>
+        <div class="term-def">Protects consumers during the real estate settlement process. Key provisions: LE within 3 days of application, CD at least 3 days before closing, servicing transfer notice 15 days before effective transfer, servicing transfer grace period of 60 days, escrow cushion limited to 2 months. Section 8 prohibits kickbacks — violations carry $10,000 fine, 1 year prison, 3x civil damages. Memory trick: Reg X = "Re-X-PA."</div>
+      </div>
+
+      <div class="term visible" data-terms="right of rescission tila refinance three days three years">
+        <div class="term-header"><span class="term-name">Right of Rescission</span><span class="term-law">TILA / Regulation Z</span></div>
+        <div class="term-def">The right of a borrower to cancel a refinance, HELOC, or home equity loan on a primary residence within 3 business days of closing (business day = any day except Sundays and federal holidays). Does NOT apply to purchase transactions. If the lender fails to provide two copies of the rescission notice, the period extends to 3 years.</div>
+      </div>
+
+      <div class="term visible" data-terms="steering discrimination directing borrower product neighborhood">
+        <div class="term-header"><span class="term-name">Steering</span></div>
+        <div class="term-def">The prohibited practice of directing borrowers toward or away from loan products, neighborhoods, or housing based on protected class characteristics. Includes directing borrowers into more expensive loans for financial gain (product steering) and directing buyers away from certain neighborhoods based on race or ethnicity (geographic steering). Violates ECOA, Fair Housing Act, and Dodd-Frank.</div>
+      </div>
+
+      <div class="term visible" data-terms="tila truth in lending act regulation z apr disclosure advertising trigger terms">
+        <div class="term-header"><span class="term-name">TILA</span><span class="term-abbr">Truth in Lending Act</span><span class="term-law">1968 · Regulation Z · Enforced by CFPB</span></div>
+        <div class="term-def">Requires lenders to disclose the true cost of credit (APR and finance charge) in a standardized format so borrowers can compare offers. Key rules: APR must always be disclosed; if only the APR is advertised, no further disclosure required; trigger terms in ads require full disclosure; bait-and-switch prohibited; right of rescission for refinances on primary residences. Contains HOEPA (Section 32) and ATR Rule. Memory trick: Reg Z = "Ti-Z-la" or GodZilla — it's the big one.</div>
+      </div>
+
+      <div class="term visible" data-terms="trigger terms advertising tila disclosure required low monthly payments">
+        <div class="term-header"><span class="term-name">Trigger Terms</span><span class="term-law">TILA Advertising</span></div>
+        <div class="term-def">Specific words or phrases in mortgage advertising that require disclosure of APR and all related loan terms. Examples: stating a specific interest rate, monthly payment amount, or down payment amount. Applies to all media — print, TV, radio, online, and social media. Exception: advertising only the APR requires no further disclosure.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 5 -->
+  <div class="module-section" id="mod5">
+    <div class="module-header">
+      <div class="module-num">5</div>
+      <div class="module-header-text">
+        <h2>Ethics, Fraud &amp; Compliance</h2>
+        <p>Predatory lending, mortgage fraud schemes, the SAFE Act, FCRA, and professional ethics</p>
+      </div>
+      <a href="mlo-module-5.html">Go to Module →</a>
+    </div>
+    <div class="terms">
+
+      <div class="term visible" data-terms="aml anti money laundering bsa bank secrecy act sar suspicious activity">
+        <div class="term-header"><span class="term-name">AML / BSA</span><span class="term-abbr">Anti-Money Laundering / Bank Secrecy Act</span></div>
+        <div class="term-def">Federal laws requiring financial institutions to detect and report suspicious financial activity. MLOs must file a Suspicious Activity Report (SAR) within 30 days of detecting suspicious transactions involving $5,000 or more. The subject of the SAR must NOT be alerted — filing is confidential.</div>
+      </div>
+
+      <div class="term visible" data-terms="appraisal fraud inflated value scheme">
+        <div class="term-header"><span class="term-name">Appraisal Fraud</span><span class="term-law">Mortgage Fraud</span></div>
+        <div class="term-def">Inflating a property's appraised value to support a larger loan amount than the property actually warrants. Common pre-2008 when appraisers faced pressure from lenders to "hit the number." Independent appraisal requirements and appraiser independence rules now help prevent this.</div>
+      </div>
+
+      <div class="term visible" data-terms="balloon payment predatory lending large lump sum maturity">
+        <div class="term-header"><span class="term-name">Balloon Payment</span><span class="term-law">Predatory Lending Feature</span></div>
+        <div class="term-def">A large lump-sum payment due at the end of a loan term — often after years of artificially low monthly payments. A predatory feature when used to trap borrowers who cannot afford the balloon payment and are forced to refinance (paying more fees) or face foreclosure. Prohibited in QM loans.</div>
+      </div>
+
+      <div class="term visible" data-terms="cfpb consumer financial protection bureau enforcement dodd frank">
+        <div class="term-header"><span class="term-name">CFPB</span><span class="term-abbr">Consumer Financial Protection Bureau</span><span class="term-law">Created by Dodd-Frank Act</span></div>
+        <div class="term-def">Federal agency created by the Dodd-Frank Act with broad authority over consumer financial products and services. Enforces TILA, RESPA, ECOA, HMDA, FCRA, and other consumer protection laws. Powers include: ordering restitution to harmed consumers, imposing civil money penalties, referring cases to the Department of Justice for criminal prosecution, and recommending license revocation.</div>
+      </div>
+
+      <div class="term visible" data-terms="dodd frank wall street reform act 2010 dual compensation predatory">
+        <div class="term-header"><span class="term-name">Dodd-Frank Act</span><span class="term-law">Wall Street Reform and Consumer Protection Act · 2010</span></div>
+        <div class="term-def">Comprehensive financial reform legislation passed after the 2008 crisis. Key mortgage provisions: eliminated dual compensation for MLOs (cannot receive payment from both lender and borrower); created the ATR/QM framework; created the CFPB; established UDAP (Unfair, Deceptive, or Abusive Acts or Practices) standards.</div>
+      </div>
+
+      <div class="term visible" data-terms="dual contract inflated purchase price fraud scheme">
+        <div class="term-header"><span class="term-name">Dual Contract</span><span class="term-law">Mortgage Fraud</span></div>
+        <div class="term-def">A fraud scheme using two contracts — one showing the real purchase price and one (submitted to the lender) showing an inflated price. The borrower obtains a loan larger than the property's actual value. Often involves undisclosed seller concessions or kickbacks to third parties.</div>
+      </div>
+
+      <div class="term visible" data-terms="e-sign act electronic consent paper option consumer">
+        <div class="term-header"><span class="term-name">E-Sign Act</span><span class="term-law">Electronic Signatures in Global and National Commerce Act</span></div>
+        <div class="term-def">Federal law permitting electronic signatures and electronic delivery of loan documents. Key rule: borrowers must always be given the option to receive paper disclosures instead of electronic ones. Electronic consent must be affirmative — it cannot be assumed, pre-checked, or automatic.</div>
+      </div>
+
+      <div class="term visible" data-terms="equity stripping predatory lending home equity foreclosure">
+        <div class="term-header"><span class="term-name">Equity Stripping</span><span class="term-law">Predatory Lending</span></div>
+        <div class="term-def">Approving loans based primarily on a property's equity value rather than the borrower's ability to repay. When the borrower inevitably defaults, the lender forecloses and captures the equity. A direct ATR rule violation — lenders must qualify based on income and repayment ability, not just collateral.</div>
+      </div>
+
+      <div class="term visible" data-terms="fact act fair accurate credit transactions identity theft red flag disposal rule">
+        <div class="term-header"><span class="term-name">FACT Act</span><span class="term-abbr">Fair and Accurate Credit Transactions Act</span><span class="term-law">2003 · Inside FCRA</span></div>
+        <div class="term-def">Amendment to the FCRA enacted in 2003. Lives inside the FCRA — a law inside a law. Added the Red Flag Rules (written identity theft detection programs) and the Disposal Rule (requiring proper destruction of consumer report data — shredding documents containing credit information). Memory trick: FACT Act = Fraud/Identity Theft.</div>
+      </div>
+
+      <div class="term visible" data-terms="fcra fair credit reporting act regulation v credit bureau adverse action">
+        <div class="term-header"><span class="term-name">FCRA</span><span class="term-abbr">Fair Credit Reporting Act</span><span class="term-law">Regulation V · Enforced by CFPB</span></div>
+        <div class="term-def">Governs how consumer credit information is collected, used, and shared. Key provisions: consumers can access and dispute credit report information; lenders must provide adverse action notices when denying credit based on credit reports; credit reports can only be accessed for permissible purposes. Memory tricks: "V for Visa" or "V = Verify the credit." Contains the FACT Act.</div>
+      </div>
+
+      <div class="term visible" data-terms="foreclosure rescue fraud scam homeowner facing foreclosure">
+        <div class="term-header"><span class="term-name">Foreclosure Rescue Fraud</span><span class="term-law">Mortgage Fraud</span></div>
+        <div class="term-def">Targeting homeowners facing foreclosure with fraudulent "rescue" offers — often resulting in the homeowner transferring title or paying large upfront fees in exchange for services that never materialize. A predatory scheme specifically targeting vulnerable borrowers in financial distress.</div>
+      </div>
+
+      <div class="term visible" data-terms="fraud for housing borrower misrepresentation qualify">
+        <div class="term-header"><span class="term-name">Fraud for Housing</span><span class="term-law">Mortgage Fraud Category</span></div>
+        <div class="term-def">Mortgage fraud committed by a borrower who misrepresents information on a loan application to qualify for a loan they could not otherwise obtain. Examples: inflating income, fabricating employment, hiding debts. Even "rounding up" income by a small amount is federal fraud.</div>
+      </div>
+
+      <div class="term visible" data-terms="fraud for profit industry insiders scheme money">
+        <div class="term-header"><span class="term-name">Fraud for Profit</span><span class="term-law">Mortgage Fraud Category</span></div>
+        <div class="term-def">Mortgage fraud committed by industry insiders — loan officers, appraisers, title agents, real estate agents — who manipulate the lending process to extract money from lenders or the financial system. Typically involves complex schemes (straw buyers, inflated appraisals, dual contracts) and carries heavier federal penalties than fraud for housing.</div>
+      </div>
+
+      <div class="term visible" data-terms="hppa homebuyers privacy protection act trigger leads fcra 2026">
+        <div class="term-header"><span class="term-name">HPPA</span><span class="term-abbr">Homebuyers Privacy Protection Act</span><span class="term-law">Effective March 5, 2026 · Amends FCRA</span></div>
+        <div class="term-def">Signed into law September 5, 2025, effective March 5, 2026. Amends the FCRA to effectively ban mortgage trigger leads — credit bureaus can no longer sell a mortgage applicant's data to unrelated third-party lenders. Exceptions: the party is the consumer's current mortgage originator, current servicer, or an account-holding depository institution — or the consumer has given explicit opt-in consent. Exam tip: Can an MLO buy a list of people who just applied with a competitor? In 2026 — NO, unless an exception applies.</div>
+      </div>
+
+      <div class="term visible" data-terms="identity theft fraud straw buyer occupancy income">
+        <div class="term-header"><span class="term-name">Identity Theft</span><span class="term-law">Mortgage Fraud / FACT Act</span></div>
+        <div class="term-def">Using another person's identity and credit profile to obtain a mortgage loan. Covered specifically by the FACT Act's Red Flag Rules, which require lenders to have written programs to detect identity theft warning signs. A form of mortgage fraud prosecuted under federal law.</div>
+      </div>
+
+      <div class="term visible" data-terms="loan flipping churning refinance predatory fees no benefit">
+        <div class="term-header"><span class="term-name">Loan Flipping</span><span class="term-abbr">Also: Churning</span><span class="term-law">Predatory Lending</span></div>
+        <div class="term-def">Encouraging a borrower to refinance repeatedly — generating fees and points for the lender each time — while providing little or no financial benefit to the borrower. Each refinance resets the loan term and strips equity. Addressed by HOEPA, the ATR rule, and Dodd-Frank UDAP standards. The key phrase on the exam: "no tangible net benefit to the borrower."</div>
+      </div>
+
+      <div class="term visible" data-terms="negative amortization predatory loan balance increases payment below interest">
+        <div class="term-header"><span class="term-name">Negative Amortization</span><span class="term-law">Predatory Lending Feature</span></div>
+        <div class="term-def">A loan structure where monthly payments are so low they do not cover the full interest due — the unpaid interest is added back to the loan balance. The borrower's balance increases over time, potentially owing more than originally borrowed. Prohibited in Qualified Mortgage loans.</div>
+      </div>
+
+      <div class="term visible" data-terms="occupancy fraud primary residence investment misrepresentation">
+        <div class="term-header"><span class="term-name">Occupancy Fraud</span><span class="term-law">Mortgage Fraud</span></div>
+        <div class="term-def">Claiming a property will be a primary residence to obtain owner-occupant loan terms (better rates, lower down payment) when the borrower actually intends to use it as an investment or rental property. The lender's pricing and approval criteria are materially different for investment properties — misrepresenting occupancy intent is federal fraud.</div>
+      </div>
+
+      <div class="term visible" data-terms="packing unnecessary products add-on credit insurance predatory">
+        <div class="term-header"><span class="term-name">Packing</span><span class="term-law">Predatory Lending</span></div>
+        <div class="term-def">Adding unnecessary products or services to a loan — such as credit life insurance, credit disability insurance, or other add-ons — without clearly disclosing them or obtaining the borrower's informed consent. Increases the loan cost without providing meaningful benefit to the borrower.</div>
+      </div>
+
+      <div class="term visible" data-terms="sar suspicious activity report bsa aml 30 days 5000">
+        <div class="term-header"><span class="term-name">SAR</span><span class="term-abbr">Suspicious Activity Report</span><span class="term-law">BSA / AML</span></div>
+        <div class="term-def">A mandatory report filed with FinCEN when a financial institution detects suspicious activity. Must be filed within 30 days of detecting the activity. Generally required for suspicious transactions involving $5,000 or more. The subject of the SAR must NOT be informed — disclosure is prohibited and confidential.</div>
+      </div>
+
+      <div class="term visible" data-terms="straw buyer fraud scheme nominee applicant good credit">
+        <div class="term-header"><span class="term-name">Straw Buyer</span><span class="term-law">Mortgage Fraud</span></div>
+        <div class="term-def">A person who applies for a mortgage loan on behalf of another person (the actual buyer) who cannot qualify. Both parties knowing about the arrangement does not make it legal — it makes both parties liable for federal fraud charges. The lender is deceived about who the true borrower is. Distinct from a legitimate co-borrower, where both parties are genuinely responsible for the loan.</div>
+      </div>
+
+      <div class="term visible" data-terms="udap unfair deceptive abusive acts practices cfpb dodd frank">
+        <div class="term-header"><span class="term-name">UDAP</span><span class="term-abbr">Unfair, Deceptive, or Abusive Acts or Practices</span><span class="term-law">Dodd-Frank / CFPB</span></div>
+        <div class="term-def">Consumer protection standards enforced by the CFPB under Dodd-Frank. An act is unfair if it causes substantial injury that consumers cannot reasonably avoid. Deceptive if it misleads a reasonable person. Abusive if it takes advantage of consumers' lack of understanding or inability to protect their own interests. MLOs found guilty of UDAP violations face fines, restitution orders, and license revocation.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 6 -->
+  <div class="module-section" id="mod6">
+    <div class="module-header">
+      <div class="module-num">6</div>
+      <div class="module-header-text">
+        <h2>Building Your Business as an MLO</h2>
+        <p>Realtor relationships, the 12-week challenge, social media, CRM, personal brand, and scaling</p>
+      </div>
+      <a href="mlo-module-6.html">Go to Module →</a>
+    </div>
+    <div class="terms">
+
+      <div class="term visible" data-terms="crm customer relationship management total expert jungo salesforce database">
+        <div class="term-header"><span class="term-name">CRM</span><span class="term-abbr">Customer Relationship Management</span></div>
+        <div class="term-def">Software used by MLOs to manage their database of past clients, current leads, and referral sources — and automate follow-up touchpoints. Mortgage-specific CRMs (Total Expert, Jungo, Salesforce Mortgage) automate birthday messages, closing anniversaries, rate-drop alerts, and Realtor status updates. Essential infrastructure once a database grows beyond 50 files.</div>
+      </div>
+
+      <div class="term visible" data-terms="dscr investor non-qm rental income 2026">
+        <div class="term-header"><span class="term-name">DSCR Loans (Business Context)</span><span class="term-abbr">Debt Service Coverage Ratio</span></div>
+        <div class="term-def">From a business development perspective, DSCR loans allow MLOs to serve real estate investors whose personal DTI is high due to multiple properties. In 2026, with traditional inventory tight, DSCR loans are primary tools — not alternatives. An MLO who specializes in investor lending differentiates immediately from retail-only competitors.</div>
+      </div>
+
+      <div class="term visible" data-terms="loa loan officer assistant first hire 1003 data entry">
+        <div class="term-header"><span class="term-name">LOA</span><span class="term-abbr">Loan Officer Assistant</span></div>
+        <div class="term-def">An MLO's first hire. Handles front-end administrative tasks: collecting and organizing borrower documents, data entry into the 1003 application, following up with borrowers for missing items, scheduling appraisals, and communicating loan status to Realtor partners. Allows the MLO to stay in revenue-generating activities. Typically $20–35/hr or salaried. Does not require a license in most states for this role.</div>
+      </div>
+
+      <div class="term visible" data-terms="open house strategy realtor meeting agents saturday">
+        <div class="term-header"><span class="term-name">Open House Strategy</span></div>
+        <div class="term-def">A systematic approach to meeting active Realtors by visiting 3 open houses per Saturday, 15 Saturdays per year. Spend 10–15 minutes at each, connect on social media before leaving, follow up Monday. Of 45 agent contacts, expect to convert 8 into long-term referral partners — each worth $20–40K in annual commission, compounding every year.</div>
+      </div>
+
+      <div class="term visible" data-terms="pre-approval TBD underwriting upfront credit approved competitive offer">
+        <div class="term-header"><span class="term-name">TBD Underwriting</span><span class="term-abbr">Also: Upfront Underwriting</span></div>
+        <div class="term-def">Running a borrower through full underwriting before a specific property is identified. The file is credit-approved with only the property address missing. In a multiple-offer environment, a TBD-underwritten borrower is significantly stronger than a standard pre-approval — helping Realtor partners win more offers. Also allows the file to remain in "Pre-Application Lead" status in the CRM without triggering the ALIENS LE clock.</div>
+      </div>
+
+      <div class="term visible" data-terms="twelve week challenge 12 week prospecting system referral partners meetings">
+        <div class="term-header"><span class="term-name">12-Week Challenge</span></div>
+        <div class="term-def">A structured prospecting system for new MLOs. For 60 business days (84 calendar days): Day 1 — send written outreach to 10–12 new referral sources. Day 2 — call 12 people you previously contacted and schedule face-to-face meetings. Day 3 — attend the meetings. Expected outcome: 60 meetings → 15 real referral partners → 20+ loans in year one → $60K+ commission, compounding every year after.</div>
+      </div>
+
+      <div class="term visible" data-terms="unicorn realtor partner professional fulltime growth mode">
+        <div class="term-header"><span class="term-name">Unicorn Partnership</span></div>
+        <div class="term-def">The highest-value Realtor partnership — a relationship built on deep mutual trust, consistent referrals, and shared commitment to serving clients. Unicorn Realtors are professional, full-time, and in growth mode. Unicorn MLOs are available every day, deliver value before asking for referrals, and treat every deal as if the relationship depends on it — because it does.</div>
+      </div>
+
+      <div class="term visible" data-terms="value gap giving before asking service referral relationship">
+        <div class="term-header"><span class="term-name">Value Gap</span></div>
+        <div class="term-def">The competitive distance created between an MLO and competitors when they consistently bring genuine value to Realtor partners and clients before asking for anything in return. Built through sweat equity: working open houses, prospecting alongside agents, hosting educational events, being available at all times. The Value Gap is the most powerful long-term competitive advantage available to any MLO.</div>
+      </div>
+
+      <div class="term visible" data-terms="who not how scaling first hire capacity LOA processor">
+        <div class="term-header"><span class="term-name">Who Not How</span></div>
+        <div class="term-def">The mindset shift required to scale an MLO business: instead of asking "How do I do more?" ask "Who do I need?" Identify $25–40/hour tasks (1003 data entry, document chasing, scheduling) and hire someone to handle them. Focus your own time on $250–500/hour activities: building Realtor relationships, consulting borrowers, presenting at events. The MLO who masters this transition stops trading time for money.</div>
+      </div>
+
+      <div class="term visible" data-terms="30-10-5-5-3-1 social media formula daily networking dustin owen">
+        <div class="term-header"><span class="term-name">30-10-5-5-3-1 Formula</span></div>
+        <div class="term-def">Dustin Owen's proven daily social media networking formula for MLOs. 30 minutes total per day; 10 likes/reacts on client or referral source posts; 5 new connection requests; 5 thoughtful comments on others' posts; 3 direct messages (DMs); 1 original post of your own. In 2026, the "1 post" is most effective as short-form face-to-camera video (Reels, TikTok, YouTube Shorts).</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 7 -->
+  <div class="module-section" id="mod7">
+    <div class="module-header">
+      <div class="module-num">7</div>
+      <div class="module-header-text">
+        <h2>NMLS Exam Launch Pad</h2>
+        <p>2026 numbers, exam structure, key timelines, law pairs, and exam-day logistics</p>
+      </div>
+      <a href="mlo-module-7.html">Go to Module →</a>
+    </div>
+    <div class="terms">
+
+      <div class="term visible" data-terms="conforming loan limit 2026 832750 1249125 fhfa baseline ceiling">
+        <div class="term-header"><span class="term-name">2026 Conforming Loan Limits</span><span class="term-law">FHFA · Updated Annually</span></div>
+        <div class="term-def">Standard 1-unit baseline: $832,750. High-cost area ceiling (AK, HI, high-cost metros): $1,249,125. FHA floor (standard 1-unit): $541,287. HPML appraisal exemption: loans at or below $34,200 are exempt. HOEPA points/fees trigger: 5% for loans over $27,592 (8% for smaller loans). These numbers are adjusted annually — always verify for your exam date.</div>
+      </div>
+
+      <div class="term visible" data-terms="3-7-3 rule trid disclosure timeline loan estimate closing disclosure">
+        <div class="term-header"><span class="term-name">3-7-3 Rule</span><span class="term-law">TRID Timelines</span></div>
+        <div class="term-def">The three key TRID timelines: 3 business days to deliver the Loan Estimate after application; 7 business days from LE delivery before the loan can close; 3 business days before closing that the borrower must receive the Closing Disclosure. Business day definition differs: LE = any day lender is open (Mon–Fri); CD = any day except Sundays and federal holidays (Saturday counts).</div>
+      </div>
+
+      <div class="term visible" data-terms="nmls exam structure 120 questions 115 scored 5 unscored 190 minutes 75%">
+        <div class="term-header"><span class="term-name">NMLS SAFE Exam Structure</span></div>
+        <div class="term-def">120 total questions (115 scored + 5 unscored pilot questions). 190 minutes. 75% passing score. Five domains: Mortgage Loan Origination Activities (27%), Federal Mortgage-Related Laws (24%), General Mortgage Knowledge (20%), Ethics (18%), Uniform State Content (11%). First-time pass rate: approximately 58–62%. One exam covers both national and state content — "National Test with UST."</div>
+      </div>
+
+      <div class="term visible" data-terms="regulation b c v x z ecoa hmda fcra respa tila pairs mnemonics">
+        <div class="term-header"><span class="term-name">Regulation Letter Pairs</span><span class="term-law">Quick Reference</span></div>
+        <div class="term-def">Reg B = ECOA ("Be Equal"). Reg C = HMDA ("Collect" community data). Reg V = FCRA ("Visa" / "Verify the credit"). Reg X = RESPA ("Re-X-PA"). Reg Z = TILA ("Ti-Z-la" / GodZilla — the big one). Laws inside laws: HOEPA inside TILA (Section 32), FACT Act inside FCRA, SAFE Act inside HERA.</div>
+      </div>
+
+      <div class="term visible" data-terms="prometric testing center schedule exam registration payment nmls account">
+        <div class="term-header"><span class="term-name">SAFE Exam Registration Process</span></div>
+        <div class="term-def">Step 1: Log into NMLS account at mortgage.nationwidelicensingsystem.org. Step 2: Click "Testing Home" → "Pay for Test" → select "National Test with UST." Pay $110 fee. Step 3: Click "Schedule — Test Center" to be redirected to Prometric to select location and date. Bring one valid government-issued photo ID — name must exactly match NMLS registration. Score is valid 5 years.</div>
+      </div>
+
+      <div class="term visible" data-terms="mu4 found definition public settlement 2026 update disclosure">
+        <div class="term-header"><span class="term-name">2026 MU4 Updates</span><span class="term-law">Effective April 18, 2026</span></div>
+        <div class="term-def">Key changes to the individual NMLS license application (MU4 Form): "Found" now explicitly includes public settlements and agreements (not just court convictions or final orders). "Efforts to foreclose" must be disclosed — including non-judicial proceedings, not just completed foreclosures. Questions 20–21 now allow "N/A" responses where a question genuinely does not apply, to avoid misleading the registry.</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Mortgage &amp; Lending Track Glossary · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+function filterTerms() {
+  var q = document.getElementById('searchBox').value.toLowerCase().trim();
+  var terms = document.querySelectorAll('.term');
+  var sections = document.querySelectorAll('.module-section');
+  var totalVisible = 0;
+
+  terms.forEach(function(term) {
+    var data = (term.getAttribute('data-terms') || '').toLowerCase();
+    var text = term.textContent.toLowerCase();
+    var match = !q || data.indexOf(q) > -1 || text.indexOf(q) > -1;
+    term.classList.toggle('visible', match);
+    if (match) totalVisible++;
+  });
+
+  sections.forEach(function(section) {
+    var visibleInSection = section.querySelectorAll('.term.visible').length;
+    section.style.display = visibleInSection > 0 ? 'block' : 'none';
+  });
+
+  document.getElementById('noResults').style.display = totalVisible === 0 ? 'block' : 'none';
+}
+
+function scrollTo(id) {
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+</body>
+</html>

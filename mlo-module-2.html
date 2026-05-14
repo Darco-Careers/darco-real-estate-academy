@@ -164,6 +164,24 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
 .footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
 .footer-gold{color:var(--gold-light);}
 .fade-in{opacity:1;transform:none;}
+
+
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--purple-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--purple-mid);background:var(--purple-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--purple-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
 </style>
 </head>
 <body>
@@ -595,12 +613,102 @@ footer{background:var(--purple);color:rgba(255,255,255,0.7);text-align:center;pa
   </div>
 
   <!-- NEXT MODULE -->
+  
+
+  
+
+  
+  <div class="module-glossary">
+    <h3>&#128218; Module 2 &mdash; Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch2" placeholder="Search terms..." oninput="mgFilter(this,2)">
+    <div class="mg-terms" id="mgTerms2">
+      <div class="mg-term" data-mg="apor average prime offered rate hoepa benchmark rate used for hoepa high-cost classification. hoepa triggers when apr exceeds apor by 6.5% (first lien) or 8.5% (subordinate lien).">
+        <div class="mg-term-header"><span class="mg-name">APOR</span><span class="mg-abbr">Average Prime Offered Rate</span><span class="mg-law">HOEPA</span></div>
+        <div class="mg-def">Benchmark rate used for HOEPA high-cost classification. HOEPA triggers when APR exceeds APOR by 6.5% (first lien) or 8.5% (subordinate lien).</div>
+      </div>
+      <div class="mg-term" data-mg="bank statement loan  non-qm qualifies self-employed borrowers using 12-24 months of bank deposits rather than tax returns.">
+        <div class="mg-term-header"><span class="mg-name">Bank Statement Loan</span><span class="mg-law">Non-QM</span></div>
+        <div class="mg-def">Qualifies self-employed borrowers using 12-24 months of bank deposits rather than tax returns.</div>
+      </div>
+      <div class="mg-term" data-mg="coe certificate of eligibility va loans document confirming va loan eligibility. required before a va loan can be processed.">
+        <div class="mg-term-header"><span class="mg-name">COE</span><span class="mg-abbr">Certificate of Eligibility</span><span class="mg-law">VA Loans</span></div>
+        <div class="mg-def">Document confirming VA loan eligibility. Required before a VA loan can be processed.</div>
+      </div>
+      <div class="mg-term" data-mg="conforming loan  fannie mae freddie mac meets gse guidelines including the fhfa annual loan limit. 2026: $832,750 standard, $1,249,125 high-cost. can be sold into the secondary market.">
+        <div class="mg-term-header"><span class="mg-name">Conforming Loan</span><span class="mg-law">Fannie Mae Freddie Mac</span></div>
+        <div class="mg-def">Meets GSE guidelines including the FHFA annual loan limit. 2026: $832,750 standard, $1,249,125 high-cost. Can be sold into the secondary market.</div>
+      </div>
+      <div class="mg-term" data-mg="dscr loan debt service coverage ratio non-qm investors qualifies investors based on rental income relative to mortgage payment, not personal income. primary investor tool in 2026.">
+        <div class="mg-term-header"><span class="mg-name">DSCR Loan</span><span class="mg-abbr">Debt Service Coverage Ratio</span><span class="mg-law">Non-QM Investors</span></div>
+        <div class="mg-def">Qualifies investors based on rental income relative to mortgage payment, not personal income. Primary investor tool in 2026.</div>
+      </div>
+      <div class="mg-term" data-mg="dti debt-to-income ratio underwriting total monthly debt divided by gross monthly income. conventional: 43% or below generally. fha: up to 57% with aus approval.">
+        <div class="mg-term-header"><span class="mg-name">DTI</span><span class="mg-abbr">Debt-to-Income Ratio</span><span class="mg-law">Underwriting</span></div>
+        <div class="mg-def">Total monthly debt divided by gross monthly income. Conventional: 43% or below generally. FHA: up to 57% with AUS approval.</div>
+      </div>
+      <div class="mg-term" data-mg="fha loan federal housing administration government-insured 3.5% down with 580+ credit (10% down for 500-579). upfront mip 1.75% plus monthly mip for life of loan. 2026 fha floor: $541,287.">
+        <div class="mg-term-header"><span class="mg-name">FHA Loan</span><span class="mg-abbr">Federal Housing Administration</span><span class="mg-law">Government-Insured</span></div>
+        <div class="mg-def">3.5% down with 580+ credit (10% down for 500-579). Upfront MIP 1.75% plus monthly MIP for life of loan. 2026 FHA floor: $541,287.</div>
+      </div>
+      <div class="mg-term" data-mg="fhfa federal housing finance agency regulatory regulates fannie mae and freddie mac. sets annual conforming loan limits. 2026 baseline: $832,750.">
+        <div class="mg-term-header"><span class="mg-name">FHFA</span><span class="mg-abbr">Federal Housing Finance Agency</span><span class="mg-law">Regulatory</span></div>
+        <div class="mg-def">Regulates Fannie Mae and Freddie Mac. Sets annual conforming loan limits. 2026 baseline: $832,750.</div>
+      </div>
+      <div class="mg-term" data-mg="gse government-sponsored enterprise secondary market fannie mae and freddie mac — purchase conforming mortgages and create mortgage-backed securities, providing market liquidity.">
+        <div class="mg-term-header"><span class="mg-name">GSE</span><span class="mg-abbr">Government-Sponsored Enterprise</span><span class="mg-law">Secondary Market</span></div>
+        <div class="mg-def">Fannie Mae and Freddie Mac — purchase conforming mortgages and create mortgage-backed securities, providing market liquidity.</div>
+      </div>
+      <div class="mg-term" data-mg="hpa homeowners protection act pmi removal pmi cancellation law. can request removal at 80% ltv. automatic cancellation required at 78% ltv.">
+        <div class="mg-term-header"><span class="mg-name">HPA</span><span class="mg-abbr">Homeowners Protection Act</span><span class="mg-law">PMI Removal</span></div>
+        <div class="mg-def">PMI cancellation law. Can request removal at 80% LTV. Automatic cancellation required at 78% LTV.</div><div class="mg-tip">💡 80% = can request. 78% = must cancel automatically.</div>
+      </div>
+      <div class="mg-term" data-mg="jumbo loan  non-conforming exceeds fhfa limit ($832,750 in 2026). cannot be sold to gses. requires 700+ credit, 10-20%+ down, 12+ months reserves.">
+        <div class="mg-term-header"><span class="mg-name">Jumbo Loan</span><span class="mg-law">Non-Conforming</span></div>
+        <div class="mg-def">Exceeds FHFA limit ($832,750 in 2026). Cannot be sold to GSEs. Requires 700+ credit, 10-20%+ down, 12+ months reserves.</div>
+      </div>
+      <div class="mg-term" data-mg="ltv loan-to-value ratio underwriting loan amount divided by appraised value. 80% ltv = 20% equity. determines pmi requirement and removal eligibility.">
+        <div class="mg-term-header"><span class="mg-name">LTV</span><span class="mg-abbr">Loan-to-Value Ratio</span><span class="mg-law">Underwriting</span></div>
+        <div class="mg-def">Loan amount divided by appraised value. 80% LTV = 20% equity. Determines PMI requirement and removal eligibility.</div>
+      </div>
+      <div class="mg-term" data-mg="mip mortgage insurance premium fha loans fha mortgage insurance: 1.75% upfront plus monthly for life of loan. unlike pmi, cannot typically be removed.">
+        <div class="mg-term-header"><span class="mg-name">MIP</span><span class="mg-abbr">Mortgage Insurance Premium</span><span class="mg-law">FHA Loans</span></div>
+        <div class="mg-def">FHA mortgage insurance: 1.75% upfront plus monthly for life of loan. Unlike PMI, cannot typically be removed.</div>
+      </div>
+      <div class="mg-term" data-mg="non-qm loan non-qualified mortgage alternative lending does not meet qm definition. includes dscr and bank statement loans. primary tools for investors and self-employed in 2026.">
+        <div class="mg-term-header"><span class="mg-name">Non-QM Loan</span><span class="mg-abbr">Non-Qualified Mortgage</span><span class="mg-law">Alternative Lending</span></div>
+        <div class="mg-def">Does not meet QM definition. Includes DSCR and bank statement loans. Primary tools for investors and self-employed in 2026.</div>
+      </div>
+      <div class="mg-term" data-mg="overlay  lender policy lender requirements stricter than program minimums. fha allows 500 credit scores but a lender overlay may require 620.">
+        <div class="mg-term-header"><span class="mg-name">Overlay</span><span class="mg-law">Lender Policy</span></div>
+        <div class="mg-def">Lender requirements stricter than program minimums. FHA allows 500 credit scores but a lender overlay may require 620.</div><div class="mg-tip">💡 When denied despite meeting program guidelines, shop to a lender without that overlay.</div>
+      </div>
+      <div class="mg-term" data-mg="pmi private mortgage insurance conventional loans required when down payment is less than 20%. removable at 80% ltv (request) or 78% (automatic under hpa).">
+        <div class="mg-term-header"><span class="mg-name">PMI</span><span class="mg-abbr">Private Mortgage Insurance</span><span class="mg-law">Conventional Loans</span></div>
+        <div class="mg-def">Required when down payment is less than 20%. Removable at 80% LTV (request) or 78% (automatic under HPA).</div>
+      </div>
+      <div class="mg-term" data-mg="usda loan  government-guaranteed zero down for rural and suburban properties. income limit: 115% of area median income including all household members over 18.">
+        <div class="mg-term-header"><span class="mg-name">USDA Loan</span><span class="mg-law">Government-Guaranteed</span></div>
+        <div class="mg-def">Zero down for rural and suburban properties. Income limit: 115% of area median income including all household members over 18.</div>
+      </div>
+      <div class="mg-term" data-mg="va loan  government-guaranteed zero down for eligible veterans. no pmi. minimum service: 90 days wartime or 181 days peacetime. requires coe.">
+        <div class="mg-term-header"><span class="mg-name">VA Loan</span><span class="mg-law">Government-Guaranteed</span></div>
+        <div class="mg-def">Zero down for eligible veterans. No PMI. Minimum service: 90 days wartime or 181 days peacetime. Requires COE.</div>
+      </div>
+    </div>
+    <div class="mg-none" id="mgNone2">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mlo-glossary.html" style="font-size:13px;color:var(--purple-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 7 Modules) &rarr;</a>
+    </div>
+  </div>
+
   <div class="next-module fade-in">
     <h3>⏭️ What's Next — Module 3: The Loan Process from Application to Closing</h3>
     <p>You know the loan products. Now you need to know the process. Module 3 covers the complete mortgage origination process — from the initial borrower consultation and loan application through processing, underwriting, appraisal, and closing. You will learn what happens at each stage, what conditions arise and why, and how to keep a file moving toward a successful closing.</p>
     <a href="mlo-module-3.html" class="next-module-cta">Module 3: The Loan Process →</a>
   </div>
 
+  
 </div>
 
 <div class="module-nav">
@@ -660,6 +768,19 @@ function checkAnswers(){
     scoreEl.className='score-result show fail';
     scoreEl.innerHTML='<strong>You scored '+score+'/5.</strong> Review the qualification criteria for each loan type, the MIP vs PMI distinction, the overlay concept, and the scenarios where Non-QM applies. These comparisons are heavily tested on the NMLS exam.';
   }
+}
+
+
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
 }
 </script>
 </body>
