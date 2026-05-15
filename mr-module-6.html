@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 6: Interior Repairs — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rust:#8B3A1A;--rust-mid:#B04A22;--rust-light:#D0622E;--rust-pale:#FAF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(139,58,26,0.1);
+  --shadow-card:0 2px 16px rgba(139,58,26,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--rust);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--rust);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--rust-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--rust);font-weight:600;}
+.progress-bar{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--rust-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(139,58,26,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--rust-mid);border-radius:3px;width:75%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--rust-mid);color:var(--white);}
+.prog-dot.active{background:var(--rust);color:var(--gold-light);}
+.prog-dot.locked{background:rgba(139,58,26,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(139,58,26,0.25);}
+.module-hero{background:linear-gradient(135deg,#4A1A08 0%,var(--rust) 55%,var(--rust-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--rust);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-rust{background:var(--rust-pale);border-left:4px solid var(--rust-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-rust .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.5rem;}
+.callout-rust p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.steps{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;}
+.step{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.step-num{width:30px;height:30px;border-radius:50%;background:var(--rust);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.step h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.step p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--rust-pale);color:var(--rust-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+.sheen-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1.75rem 0;}
+.sheen-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;}
+.sheen-card h4{font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.sheen-card p{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+.sheen-card .sheen-use{font-size:11px;color:var(--rust-mid);font-weight:600;margin-top:0.3rem;}
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--rust);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+.takeaways{background:var(--rust);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.65;display:block;padding-left:1.5rem;position:relative;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;position:absolute;left:0;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(139,58,26,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.knowledge-check{background:var(--white);border:2px solid var(--rust-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--rust);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question-block{margin-bottom:1.75rem;}
+.q-text{font-size:14.5px;font-weight:600;color:var(--text-dark);line-height:1.6;margin-bottom:0.75rem;}
+.q-num{font-size:11px;font-weight:700;color:var(--rust-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;margin-bottom:0.5rem;}
+.option:hover{border-color:var(--rust-mid);background:var(--rust-pale);}
+.option.selected-correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.selected-wrong{border-color:#C62828;background:#FFF1F1;color:#B71C1C;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--rust-pale);color:var(--rust-mid);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.option.selected-correct .option-letter{background:#2E7D32;color:#fff;}
+.option.selected-wrong .option-letter{background:#C62828;color:#fff;}
+.explanation{display:none;padding:0.85rem 1rem;border-radius:8px;font-size:13.5px;line-height:1.65;margin-top:0.25rem;margin-bottom:0.75rem;}
+.explanation.correct{background:#F1F8F1;border:1px solid #A5D6A7;color:#1B5E20;}
+.explanation.wrong{background:#FFF1F1;border:1px solid #EF9A9A;color:#B71C1C;}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--rust-mid);}
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--rust-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--rust-mid);background:var(--rust-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--rust-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--rust-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;font-weight:600;text-decoration:none;color:var(--text-mid);transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--rust-mid);color:var(--rust);}
+.btn-gold{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;background:var(--gold);color:var(--rust);font-size:13px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-gold:hover{background:var(--gold-light);}
+.fade-in{opacity:1;transform:none;}
+footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="maintenance-repair.html" class="nav-back">← Maintenance &amp; Repair</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="maintenance-repair.html">Maintenance &amp; Repair</a><span class="sep">/</span>
+  <span class="current">Module 6 — Interior Repairs</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 6 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mr-module-1.html" class="prog-dot complete">1</a>
+    <a href="mr-module-2.html" class="prog-dot complete">2</a>
+    <a href="mr-module-3.html" class="prog-dot complete">3</a>
+    <a href="mr-module-4.html" class="prog-dot complete">4</a>
+    <a href="mr-module-5.html" class="prog-dot complete">5</a>
+    <span class="prog-dot active">6</span>
+    <span class="prog-dot locked">7</span>
+    <span class="prog-dot locked">8</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Maintenance &amp; Repair Track · Module 6 of 8</div>
+    <h1>Interior <em>Repairs</em></h1>
+    <p>Drywall patching, painting, doors, windows, locks, floors, and cabinets — the finishing skills that make a unit rent-ready and set apart the maintenance tech who can handle everything from move-out to move-in without calling a single contractor.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>5 Lessons</span></div>
+      <div class="meta-item">🎬 <span>4 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Sources: Home Maintenance For Dummies · Habitat for Humanity</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Drywall patching — <em>matching the method to the hole</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Drywall repair is one of the most visible skills a maintenance tech can demonstrate — and one of the easiest to do poorly. A bad patch shows through paint, comes back as a crack, or stands proud of the wall surface. A good patch disappears completely. The difference is almost entirely in the method and in having enough patience to let each coat dry before continuing.</p>
+
+    <h3 class="sub-title">Small holes and dents — under half an inch</h3>
+    <p class="lesson-text">Nail holes, small dings, and dents under about half an inch are filled with lightweight spackling compound — not joint compound, which shrinks too much in thin applications. Apply with a putty knife, slightly overfill, let dry completely, sand smooth with 220-grit, and prime before painting. This entire process takes five minutes of active work and a few hours of drying time. Never skip the primer — unprimed spackle absorbs paint differently than the surrounding wall and will flash (appear shinier or duller) even with a perfect color match.</p>
+
+    <h3 class="sub-title">Medium holes — half inch to four inches</h3>
+    <p class="lesson-text">For holes in the half-inch to four-inch range — a typical door knob punch-through, small cabinet impact, or repair around a removed anchor — use a self-adhesive metal mesh patch kit. Peel and stick the mesh patch over the hole, then apply joint compound in three thin coats, feathering each coat progressively wider. The first coat fills the mesh, the second smooths, the third blends. Each coat must be completely dry before the next — rushing produces a cracked, uneven patch every time.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 Feathering — Why It Makes Patches Invisible</div>
+      <p>Feathering means spreading each coat of joint compound progressively wider and thinner toward the edges — so the patch transitions invisibly into the surrounding wall. The final coat should extend 8–12 inches beyond the hole on all sides, tapering to nothing. Without feathering, the patch edge creates a visible ridge that shows through paint no matter how well you sand it. Each coat wider than the last. Sand between coats with 120-grit, final sand with 220-grit.</p>
+    </div>
+
+    <h3 class="sub-title">Large holes — over four inches</h3>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Cut a clean rectangle around the hole</h4>
+          <p>Use a drywall saw or utility knife to cut a clean square or rectangle. Clean edges make patching easier and produce a better result than trying to patch an irregular hole shape.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Install backing</h4>
+          <p>Use drywall clips (preferred) or wood strips cut slightly longer than the opening. Clips straddle the edge of the hole and provide screw-backing for the patch panel. Wood strips screw through the existing drywall and provide the same backing without specialty hardware.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Cut and install the drywall patch</h4>
+          <p>Cut a piece of drywall to fit the opening exactly. Screw it to the backing. The patch face should sit flush with the surrounding wall — not proud, not recessed.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h4>Tape, three coats, sand, prime, paint</h4>
+          <p>Apply paper tape over all seams with a thin bed of joint compound. Then three progressively wider coats, each dried fully. Sand smooth, prime the entire patched area, paint to match. Budget two to three days for drying time between coats — this is not a same-day repair.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ One Thick Coat Is Always Wrong</div>
+      <p>The most common drywall patching mistake at every experience level is applying one thick coat of joint compound instead of three thin ones. Thick coats crack as they dry, shrink unevenly, and never sand truly flat. Three thin coats applied over two to three days produce a smooth, invisible patch every time. If you are in a hurry, use a setting-type compound (not standard joint compound) — it dries by chemical reaction rather than water evaporation, so it dries faster and does not shrink.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Painting — <em>preparation is 80% of the job</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The difference between a paint job that looks professional and one that generates callbacks is almost entirely in the preparation — not the paint brand, not the brush quality, not the number of coats. Preparation means: filling and sanding all holes, cleaning walls of grease and dirt, priming all patches and bare drywall, taping off trim and fixtures, and protecting floors with drop cloths. Every shortcut in preparation creates a problem visible in the finished job.</p>
+
+    <h3 class="sub-title">Paint sheen — matching the right finish to the right surface</h3>
+
+    <div class="sheen-grid">
+      <div class="sheen-card">
+        <h4>Flat / Matte</h4>
+        <p>No sheen. Hides surface imperfections best. Cannot be wiped clean — paint lifts with moisture.</p>
+        <div class="sheen-use">Use: Ceilings only</div>
+      </div>
+      <div class="sheen-card">
+        <h4>Eggshell</h4>
+        <p>Very slight sheen. Slightly more durable than flat. Lightly wipeable.</p>
+        <div class="sheen-use">Use: Bedroom and living room walls</div>
+      </div>
+      <div class="sheen-card">
+        <h4>Satin</h4>
+        <p>Soft sheen. More durable and cleanable than eggshell. The most common apartment wall standard.</p>
+        <div class="sheen-use">Use: Most apartment walls — the standard choice</div>
+      </div>
+      <div class="sheen-card">
+        <h4>Semi-Gloss</h4>
+        <p>Noticeable sheen. Very durable, very cleanable, moisture resistant.</p>
+        <div class="sheen-use">Use: Trim, doors, bathrooms, kitchens — never flat in these areas</div>
+      </div>
+    </div>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 Never Use Flat Paint in Bathrooms or Kitchens</div>
+      <p>Flat paint absorbs moisture, harbors mold, and cannot be wiped clean. In any room that produces steam or splatter — bathrooms, kitchens, laundry rooms — always use satin or semi-gloss. A bathroom repainted with flat paint will show mold within months and cannot be cleaned without the paint coming off. This is one of the most common and most avoidable maintenance callbacks.</p>
+    </div>
+
+    <h3 class="sub-title">The painting sequence — always top to bottom</h3>
+
+    <p class="lesson-text">Always paint a room from top to bottom: ceiling first, walls second, trim and doors last. This order means any drips from the ceiling land on unpainted walls (which you are about to paint anyway) and any drips from walls land on unpainted trim. Reversing this order creates rework at every stage.</p>
+
+    <p class="lesson-text"><strong>Cut in before rolling.</strong> Use a 2-inch angled brush to paint a 2–3 inch strip along all edges — where the wall meets the ceiling, corners, around trim and fixtures — before rolling the main wall area. The roller cannot get close enough to these edges without making a mess. Cut in one wall section at a time and roll it immediately while the cut-in edge is still wet — this prevents lap marks where wet paint meets dry.</p>
+
+    <p class="lesson-text"><strong>Two thin coats, not one thick coat.</strong> One thick coat drips, sags, and dries unevenly. Two thin coats dry faster, cover more uniformly, and produce a harder, more durable finish. Always let the first coat dry completely before applying the second — rushing produces permanent roller texture in the finish.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 Matching Existing Paint — The Property Manager's Best Friend</div>
+      <p>Most property management companies have a standard paint color and sheen on file — often a specific Benjamin Moore or Sherwin-Williams formula. Find out what it is before you need it. When doing touch-up work, bring a paint chip or ask your supervisor for the formula. A color match that is even slightly off shows dramatically under different lighting conditions — especially in sunlight — and always requires repainting the entire wall to fix. Ten seconds of preparation saves two hours of rework.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Door Hinge Adjustment</div>
+    <h2 class="lesson-title">Door hitting the frame — <em>the hinge adjustment fix every tech needs</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pepe Gomez works through a real apartment work order — a door that is rubbing and hitting the door frame. He checks the hinges first (always the first step), then demonstrates a simple hinge adjustment to shift the door position and eliminate the contact. A repair that looks complicated and is actually a 10-minute fix once you know where to look.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/tPyHbIs0geg" title="Door Hitting Frame — Hinge Adjustment — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Pepe Gomez · Maintenance Man Narratives</span>
+        <h4>Door Hitting the Frame — Hinge Adjustment Fix</h4>
+        <p>A real apartment work order for a door that is rubbing the frame. Pepe checks hinge screws first, identifies the contact point, and demonstrates a hinge adjustment to reposition the door. Shows the correct diagnostic sequence — tighten screws first, adjust second, plane or sand only as a last resort.</p>
+        <div class="credit">Pepe Gomez · Maintenance Man Narratives · Apartment maintenance focused · Beginner-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Doors, windows, and locks — <em>the adjustments that eliminate daily complaints</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Doors that stick, windows that do not lock, locks that are hard to turn — these are quality-of-life complaints that residents notice every single day. They are also almost always simple mechanical adjustments or inexpensive hardware fixes that take under 30 minutes. A maintenance tech who resolves these quickly and completely is the one that residents and property managers remember positively.</p>
+
+    <h3 class="sub-title">Sticking and rubbing doors — the diagnostic sequence</h3>
+
+    <p class="lesson-text"><strong>Step 1 — Tighten hinge screws first.</strong> Loose hinge screws are the most common cause of a door that rubs or does not latch properly. Close the door slowly and watch where it contacts the frame, then tighten every screw on every hinge. If a screw spins freely in a stripped hole, fill the hole with wooden toothpicks dipped in wood glue, let dry, then drive the screw back in. This fixes the majority of sticking door complaints with no other work.</p>
+
+    <p class="lesson-text"><strong>Step 2 — Adjust the hinge if needed.</strong> If tightening does not solve it, the hinge position itself may need adjustment. Loosen the hinge screws slightly and shift the hinge leaf in the direction needed — a thin cardboard shim behind a hinge leaf moves the door toward the hinge side; removing material from the mortise moves it away. Make small adjustments and test the door after each one.</p>
+
+    <p class="lesson-text"><strong>Step 3 — Plane or sand as a last resort.</strong> If the door still rubs after hinge work, remove only material at the exact contact point — no more. Mark the contact area with a pencil during a slow close, sand or plane only that mark. Overshoot and the door will have a gap that lets drafts through and looks unprofessional.</p>
+
+    <p class="lesson-text"><strong>Strike plate misalignment:</strong> If the door closes but the latch does not engage the strike plate, loosen the strike plate screws and shift it slightly in the direction needed. If the misalignment is small, file the strike plate opening rather than moving the plate. The latch bolt should engage with no force — if a resident has to push the door hard to latch it, it will eventually damage the door frame.</p>
+
+    <h3 class="sub-title">Windows — the most overlooked maintenance item</h3>
+
+    <p class="lesson-text">Windows that are difficult to open or slide are almost always a lubrication and cleaning problem. Clean the track thoroughly — vacuum out debris, wipe with a damp cloth — then apply silicone spray lubricant. Never use oil-based lubricants on window tracks — they attract dirt and gum up the mechanism over time. For wood sash windows that stick, rub a bar of soap or a candle along the sash rail — a clean, dry lubricant that does not attract debris.</p>
+
+    <p class="lesson-text">Window lock problems are usually misalignment of the keeper (the part the lock hooks onto). With the window closed, check that the sash sits fully flush in the frame — if it does not, the lock physically cannot engage. Adjust the keeper by loosening its screws and repositioning it until the lock engages smoothly when the window is fully closed.</p>
+
+    <p class="lesson-text"><strong>Weatherstripping:</strong> Test window weatherstripping the same way as refrigerator gaskets — close the window on a dollar bill. If it slides out freely, the weatherstripping has compressed and is no longer sealing. Self-adhesive foam weatherstripping tape is the standard replacement — peel off the old material completely, clean and dry the surface, apply new tape, test the seal. Budget approximately $5–$10 per window for materials.</p>
+
+    <h3 class="sub-title">Locks — graphite, not oil</h3>
+
+    <p class="lesson-text">Stiff key locks are a lubrication problem in almost every case. Apply graphite powder lubricant directly into the keyhole with a squeeze applicator, then work the key in and out several times to distribute it. The lock will be smooth immediately. Never use WD-40 or any oil-based lubricant in a key lock — oil attracts dirt, accumulates in the pin tumblers, and makes the lock progressively stiffer over time. In a pinch, rubbing a pencil on the key and inserting it achieves the same effect as dry graphite.</p>
+
+    <p class="lesson-text">When a tenant moves out, re-keying or replacing the lockset is standard practice. Lockset replacement is a 10-minute job with a screwdriver — remove two screws from the interior rose plate, pull both knobs, remove the latch from the edge of the door, install the new latch and knobs, reinstall the screws. Document every lockset replacement in the work order with the unit number and date.</p>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 5</div>
+    <h2 class="lesson-title">Floors, cabinets, and <em>the turn-ready walk</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The final layer of interior maintenance — floor care, cabinet adjustments, and the systematic turn-ready inspection — is what separates a property that rents in three days from one that sits for three weeks. Residents notice everything on move-in day. A unit that is truly turn-ready starts the tenancy right, and residents who start satisfied stay longer.</p>
+
+    <h3 class="sub-title">Floor care by material</h3>
+
+    <p class="lesson-text"><strong>Vinyl and LVP (luxury vinyl plank)</strong> — The most common apartment flooring. Damp mop with a pH-neutral cleaner. Avoid steam mops — they can loosen the adhesive layer. For a floor bubble (lifted area), find and fix the moisture source first — re-gluing over active moisture will just re-lift. Apply vinyl adhesive, press firmly, and weight with books for 24 hours once the moisture source is resolved.</p>
+
+    <p class="lesson-text"><strong>Hardwood floors</strong> — Dry mop or vacuum only. Never wet mop — standing water warps and cups hardwood. Light scratches are nearly invisible with a matching wood repair marker. Deeper gouges: wood filler in matching color, dried and sanded smooth. Full refinishing (sanding and recoating) is a flooring specialist job.</p>
+
+    <p class="lesson-text"><strong>Carpet</strong> — Fresh stains: blot immediately (never rub), apply cold water, blot again. For set stains, enzyme-based carpet cleaner breaks down organic material. Carpet pulling up at seams: carpet seam tape and a seam iron re-bond edges without replacement. Always photograph carpet condition at every move-in and move-out — your photos are your evidence for security deposit disputes.</p>
+
+    <h3 class="sub-title">Cabinet adjustments — hinges first, always</h3>
+
+    <p class="lesson-text">Cabinet doors that hang unevenly or do not close fully are almost always a hinge adjustment, not a cabinet replacement. Modern European-style cup hinges (the standard in most apartments built since the 1990s) are fully adjustable with a screwdriver — no tools beyond a Phillips head. The mounting screw moves the door in and out from the cabinet face. The side adjustment screw moves it left and right. The depth screw moves it closer to or further from the door face. Three minutes of adjustment before assuming a cabinet door is broken saves the cost of replacement hardware.</p>
+
+    <p class="lesson-text">Drawer slides that stick or fall off track: clean the slide mechanism (remove debris, wipe dry), check that both ends of the slide are fully engaged at the front and rear mounting points. If the slide is bent or broken — cost $8–$20 per pair, 15-minute swap once you know the slide length and extension type (full extension vs. partial).</p>
+
+    <h3 class="sub-title">The turn-ready walk — every unit before every move-in</h3>
+
+    <p class="lesson-text">Build this checklist into every unit turn. Walk it systematically — do not rely on memory.</p>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 Turn-Ready Checklist</div>
+      <p><strong>Doors:</strong> Every door opens, closes, latches correctly, and locks securely. Lockset re-keyed.<br>
+      <strong>Windows:</strong> Every window opens, closes, locks, and has intact weatherstripping.<br>
+      <strong>Electrical:</strong> Every outlet and switch works. Every light fixture has a working bulb.<br>
+      <strong>Plumbing:</strong> Under every sink is dry with no stains or active drips. Every toilet flushes. Every faucet flows and shuts off completely.<br>
+      <strong>HVAC:</strong> Filter replaced. Thermostat working. Vents open and unobstructed.<br>
+      <strong>Walls:</strong> All holes patched, primed, and painted to match. No visible damage.<br>
+      <strong>Cabinets:</strong> All doors align and close fully. All drawers open and close smoothly.<br>
+      <strong>Appliances:</strong> All appliances clean and functional. Refrigerator cooling. Oven heating. Dishwasher draining.<br>
+      <strong>Floors:</strong> No damage, bubbles, or lifting edges. Clean throughout.<br>
+      <strong>Caulk:</strong> All caulk around tubs, showers, and sinks is intact, clean, and mold-free.<br>
+      <strong>Unit Scan:</strong> Under every sink, toilet base, water heater area, and HVAC filter — all clear and dry.</p>
+    </div>
+
+    <p class="lesson-text">A unit that passes this checklist completely is a unit that will not generate maintenance calls in the first two weeks of a new tenancy. Residents who move in and find everything working correctly are residents who renew leases. The turn-ready walk is not just a maintenance standard — it is a business standard for every property in the portfolio.</p>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Drywall Repair — All Hole Sizes</div>
+    <h2 class="lesson-title">Every drywall hole type — <em>the right method for each one</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">LRN2DIY covers all four drywall repair categories in one video — small holes (mud only), fist-size holes (mesh patch or California patch), larger holes needing backer boards, and major damage requiring stud-to-stud replacement. Also covers matching existing wall texture with spray cans at the end.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/uvQK7WTkKpI" title="Drywall Repair All Hole Types — LRN2DIY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">LRN2DIY · Drywall Repair</span>
+        <h4>How to Fix Every Type of Drywall Hole — Small, Medium, Large &amp; Major</h4>
+        <p>Covers all four hole categories with the correct method for each — including three techniques for fist-size holes (mesh patch, Presto patch, California patch), backer board installation for larger holes, and stud-to-stud replacement for major damage. Ends with orange peel and knockdown texture matching using spray cans.</p>
+        <div class="credit">LRN2DIY · Comprehensive drywall repair · Beginner to intermediate · Chapters available in video</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: How to Paint Like a Pro</div>
+    <h2 class="lesson-title">Painting technique — <em>tools, cut in, rolling, and the wet edge rule</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">A professional painter teaches the complete painting workflow — the right tools, why you never need blue tape if you know how to cut in, how to load and roll correctly using an extension pole, the wet edge rule that prevents lap marks, sanding between coats, and the direction-consistency rule for rollers. Practical, fast, and directly applicable to apartment painting.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/bLbUIevOxzY" title="How to Paint Like a Pro — Home RenoVision DIY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Home RenoVision DIY · Professional Painting Technique</span>
+        <h4>How to Paint Like a Pro — Cut In, Roll, Wet Edge, and More</h4>
+        <p>Complete professional painting walkthrough covering must-have tools, cutting in without tape, extension pole rolling technique, wet edge law (never stop mid-wall), sanding between coats, second-coat precision cutting, and direction consistency with the roller. Covers repainting over existing paint — exactly the apartment maintenance scenario.</p>
+        <div class="credit">Home RenoVision DIY · Professional painter · Repainting focused · Beginner to confident</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: LVP Flooring Installation</div>
+    <h2 class="lesson-title">LVP flooring — <em>installation from carpet removal to finished floor</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">A full LVP flooring installation from start to finish — pulling carpet, prepping the subfloor, laying underlayment, cutting and locking planks, working around door trim and closets, and installing baseboard. Practical guidance on measuring for room square, staggering seams, and planning cuts to minimize waste. Pay attention to the subfloor prep and measurement sections — these are where most floor installation problems start.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/oGiNCk_IUbQ" title="LVP Flooring Installation — Carpet to LVP" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">LVP Flooring Installation · Carpet to Finished Floor</span>
+        <h4>LVP Flooring Installation — Full Walkthrough from Carpet Removal to Baseboard</h4>
+        <p>Complete LVP installation: carpet removal, tack strip removal, subfloor prep and inspection for moisture, underlayment installation, plank locking technique, cutting around door trim and closets, measuring for square rooms, staggering seams, and baseboard reinstallation. Includes practical decisions made in the field for non-square rooms.</p>
+        <div class="credit">LVP flooring installation · Full walkthrough · Real apartment scenario · Beginner-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Doorknob and Deadbolt Installation &amp; Re-Keying</div>
+    <h2 class="lesson-title">Lockset installation and re-keying — <em>the turnover standard every tech needs</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">A complete Kwikset SmartKey doorknob and deadbolt installation — including the re-keying process that lets you change which key operates the lock without replacing any hardware. Re-keying at every turnover is the professional standard and takes under two minutes per lock once you know the process.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/H1CXsyhE5-Q" title="Doorknob and Deadbolt Installation and Re-Keying — Kwikset SmartKey" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Doorknob &amp; Deadbolt · Installation &amp; Re-Keying</span>
+        <h4>Install and Re-Key a Kwikset SmartKey Doorknob and Deadbolt</h4>
+        <p>Full doorknob and deadbolt installation including latch, strike plate, and hardware alignment. Then covers the SmartKey re-keying process step by step — current key in, 90-degree turn, smart key tool, remove key, insert new key, 180-degree turn, done. The re-keying section applies to every apartment turnover where the lockset is being reconfigured to a new key.</p>
+        <div class="credit">Kwikset SmartKey · Doorknob and deadbolt installation · Re-keying process · Beginner-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 5 — FLOOR REPAIRS AND TILE -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 5 of 5</div>
+    <h2 class="lesson-title">Floor repairs, tile, and <em>bathtub reglazing — the turnover finishing work</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">A unit that has been lived in for several years accumulates floor damage, grout deterioration, cracked tiles, and bathroom surfaces that have seen better days. Knowing how to address these correctly — and knowing when to call a specialist — is what separates a truly professional turnover from one that just passes a quick glance.</p>
+
+    <h3 class="sub-title">Vinyl and LVP floor repairs</h3>
+    <p class="lesson-text"><strong>Bubbles and lifting edges:</strong> Always find the moisture source first — re-gluing over active moisture guarantees re-lifting. Once the source is resolved and the subfloor is dry, apply vinyl adhesive (a syringe applicator makes it easy to get under lifted edges without cutting), press firmly, and weight with books or a heavy flat object for 24 hours. For LVP planks that have come apart at the seams: if they can be lifted without breaking, re-lock and tap back into place. If they are damaged, individual planks can be replaced — cut the damaged plank out with an oscillating tool, remove it, and snap a new plank in using the floating floor method.</p>
+
+    <p class="lesson-text"><strong>Scratches and scuffs:</strong> For surface scratches on LVP, a vinyl floor repair kit (available at any home center, $10–$20) fills and colors scratches to match. For deeper gouges, a wax fill stick in the matching color works well. Deep damage that exposes the core material requires plank replacement.</p>
+
+    <h3 class="sub-title">Ceramic and porcelain tile repairs</h3>
+    <p class="lesson-text"><strong>Cracked or chipped tile:</strong> A single cracked tile is a straightforward replacement — chisel out the damaged tile carefully without disturbing surrounding tiles, scrape the adhesive bed clean, set the replacement tile in fresh mastic or thin-set mortar, allow it to cure, and re-grout. Always check for spare tiles in a closet or storage area before ordering — the original installer often left extras. If no match is available, a tile from a closet floor can be relocated to the visible area and the closet patched with a close match.</p>
+
+    <p class="lesson-text"><strong>Re-grouting:</strong> Grout that is cracked, crumbling, stained beyond cleaning, or showing mold that will not bleach out needs replacement. Remove old grout with a grout saw or oscillating tool with a grout blade — do not rush this step. Apply new grout with a rubber float, pushing it diagonally into the joints, wipe excess with a damp sponge, allow to haze, and buff clean. After curing, apply grout sealer — this is the step most people skip and then wonder why the grout gets dirty again within months. Sealed grout resists staining and is dramatically easier to keep clean.</p>
+
+    <p class="lesson-text"><strong>Recaulking at tub and shower transitions:</strong> The joint where tile meets the tub or shower pan must be caulked — not grouted. This joint flexes slightly with use and temperature changes, and grout cracks here repeatedly. Remove all old caulk completely with a plastic scraper and caulk remover product, clean the surface with isopropyl alcohol, dry thoroughly, and apply a bead of 100% silicone caulk in a matching color. Smooth with a wet finger. Do not get the surface wet for 24 hours minimum.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 Tub/Shower Transition — Caulk, Not Grout</div>
+      <p>One of the most common bathroom maintenance errors is grouting the joint where the tile meets the tub or shower pan. This joint must always be caulk — flexible, waterproof, and able to move with the structure. Grout at this joint will crack within months from normal movement. When you see cracked or missing material at the tub-to-tile transition, replace it with silicone caulk — not grout. This single repair prevents water intrusion into the wall behind the tile, which leads to mold, rotted substrate, and eventually a full bathroom renovation.</p>
+    </div>
+
+    <h3 class="sub-title">Bathtub and shower reglazing — when to call a specialist</h3>
+    <p class="lesson-text">After years of use, bathtubs and shower pans develop worn enamel, staining that will not clean, chips, and a dull finish that makes the bathroom look old regardless of how clean it is. At turnover, this is the moment to decide: regrout and recaulk and leave the tub as-is, or have it reglazed.</p>
+
+    <p class="lesson-text"><strong>What reglazing is:</strong> A professional reglazing company chemically etches the existing tub or tile surface, applies a bonding primer, and sprays on a new finish coating that looks like new enamel. The result lasts 10–15 years with proper care. This is a specialist job — the chemicals involved require proper ventilation and protective equipment, and the finish quality depends entirely on surface preparation. Do not attempt this as a DIY repair.</p>
+
+    <p class="lesson-text"><strong>When reglazing makes sense:</strong> The cost of professional bathtub reglazing runs approximately $300–$500 depending on the market and the condition of the tub. A full tub replacement costs $1,500–$3,000 or more including labor and tile work. Reglazing is the right call when the tub is structurally sound but cosmetically worn — chipped, stained, or dull. It is not appropriate for a tub with cracks, significant structural damage, or severe rust-through.</p>
+
+    <p class="lesson-text"><strong>Tile reglazing:</strong> Bathroom tile that is dated (think 1970s avocado green or 1980s dusty rose) can also be reglazed to a neutral white or off-white — dramatically modernizing a bathroom without demolition. Same specialist process, similar cost range. For a property manager doing a major turnover on an older unit, this can be the difference between a bathroom that rents and one that does not.</p>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 Reglazing — What to Tell Your Property Manager</div>
+      <p>When you identify a tub or shower that needs more than recaulking — chips in the enamel, pervasive staining, worn finish — document it in your work order with photos and flag it for your property manager's decision. Include the estimated cost range ($300–$500 for reglazing vs. $1,500+ for replacement) so they have the information to make a call. This kind of proactive assessment and cost framing is exactly what separates a maintenance tech who adds value from one who just fixes what breaks.</p>
+    </div>
+  </div>
+
+  <!-- PRIMARY SOURCES -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Primary Sources</div>
+    <h2 class="lesson-title">The books and resources <em>behind this module</em></h2>
+    <div class="gold-divider"></div>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Maintenance For Dummies — 2nd Edition</div>
+          <div class="bi-author">James and Morris Carey · Wiley Publishing · 2010</div>
+          <div class="bi-desc">Chapter 11 (Walls and Ceilings) covers every drywall repair method by hole size, painting preparation, paint selection, and the full painting sequence. Chapter 12 (Floors and Interior Doors) covers all flooring types, door repairs, hinge adjustments, door hardware, and lock lubrication. Chapter 13 (Cabinets) covers hinge adjustment, drawer slide repair, and cabinet cleaning.</div>
+        </div>
+        <a href="https://www.amazon.com/Home-Maintenance-Dummies-James-Carey/dp/0470439106" target="_blank">Find It →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Repair &amp; Maintenance — DIY Tips for Homeowners</div>
+          <div class="bi-author">Habitat for Humanity · Multiple Contributors</div>
+          <div class="bi-desc">The painting section covers paint selection by room and surface type. The security and doors section covers lock lubrication, sliding door track cleaning, and door hardware maintenance. The floors section covers care tips for vinyl, hardwood, and carpet by material type.</div>
+        </div>
+        <a href="https://www.habitat.org" target="_blank">Habitat.org →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>"You have just finished the complete technical training — plumbing, electrical, HVAC, appliances, and now drywall, paint, doors, windows, locks, floors, and cabinets. That is the full toolkit of a working maintenance tech. The next two modules are about turning all of that into a career — getting hired by property managers and building toward independence. You have done the hard work. Now let's make sure it pays off."</p>
+      <div class="mentor-name">Your Darco Mentor · Module 6 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 6 Key Takeaways</h3>
+    <ul>
+      <li>Match the drywall repair method to the hole size: spackling for small holes, self-adhesive mesh patch for medium holes, cut-in drywall patch with backing for large holes. Always apply three thin coats of joint compound — never one thick coat. Always prime patches before painting or the finish will flash.</li>
+      <li>Painting preparation is 80% of the job: fill and sand all holes, clean walls, prime patches and bare drywall, tape off trim, protect floors. Paint top to bottom — ceiling, walls, trim. Cut in with a brush before rolling. Two thin coats always beat one thick coat. Never use flat paint in bathrooms or kitchens.</li>
+      <li>For sticking doors: tighten hinge screws first, adjust hinges second, plane or sand only as a last resort. For strike plate misalignment: shift or file the strike plate before adjusting the door. For window tracks: clean thoroughly, then apply silicone spray — never oil-based. For key locks: graphite lubricant, never WD-40.</li>
+      <li>For vinyl floor bubbles: find and fix the moisture source before re-gluing — re-gluing over active moisture causes immediate re-lifting. For hardwood: never wet mop. For carpet: photograph condition at every move-in and move-out — photos are your security deposit evidence.</li>
+      <li>Cabinet door alignment is almost always a hinge adjustment on European cup hinges — three adjustment screws, three minutes, no replacement needed. Drawer slides that stick: clean first, then replace the slide if bent. Replacement slides cost $8–$20 per pair.</li>
+      <li>The turn-ready walk covers every door, window, outlet, light, plumbing connection, HVAC filter, wall surface, cabinet, drawer, appliance, floor, and caulk line before a new resident moves in. A unit that passes this checklist completely does not generate maintenance calls in the first two weeks — and residents who move in satisfied stay longer.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question-block">
+      <div class="q-num">Question 1 of 5</div>
+      <div class="q-text">A tech patches a large drywall hole using a cut-in patch and applies one thick coat of joint compound to fill the area quickly. The next morning the patch has cracked and is uneven. What caused this?</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> The patch drywall piece was the wrong thickness — it should have been 5/8 inch instead of 1/2 inch.</div>
+      <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> One thick coat of joint compound cracks and shrinks unevenly as it dries. Three thin coats, each dried fully, is the correct method.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> The backing was not secure enough — drywall clips should have been used instead of wood strips.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> The joint compound brand was wrong — lightweight compound should not be used for large patches.</div>
+      <div class="explanation correct" id="q1-correct">Correct! One thick coat of joint compound is the single most common drywall patching error. Joint compound dries by water evaporation — a thick coat dries on the outside while the interior is still wet, causing uneven shrinkage, cracking, and surface irregularity. Three thin coats, each allowed to dry completely overnight, produce a smooth, stable patch. If you need faster drying, use setting-type compound — it dries by chemical reaction rather than evaporation and does not shrink.</div>
+      <div class="explanation wrong" id="q1-wrong">Not correct. The cause is the one-thick-coat approach. Joint compound dries by water evaporation, and a thick coat creates a moisture gradient — the outside surface dries and skins over while the interior remains wet. This uneven drying causes cracking and surface irregularity. The fix for next time: three thin coats, each dried fully before the next is applied. The backing material and drywall thickness were not the issue here.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 2 of 5</div>
+      <div class="q-text">A tech paints a bathroom that was previously painted with flat paint. They apply the new satin paint directly over it without priming. Six months later the property manager reports mold on the bathroom walls. What was the most likely contributing factor at the time of repainting?</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Satin paint should not be applied over flat paint without sanding — the surface is too smooth for adhesion.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> The new satin paint was too thin — a second coat should have been applied.</div>
+      <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Mold was likely already present in the existing flat paint layer — flat paint absorbs moisture and harbors mold, and painting over it without a mold-killing primer sealed the mold in place rather than eliminating it.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> The bathroom was not properly ventilated — mold is always a ventilation problem, not a paint problem.</div>
+      <div class="explanation correct" id="q2-correct">Correct! Flat paint in a bathroom absorbs moisture and is impossible to clean — mold grows in and behind it readily. When repainting over a surface that previously had flat paint in a bathroom, the correct process is to clean the surface thoroughly, treat any visible mold with a bleach solution or mold-killing primer, allow it to dry completely, then apply a mold-resistant primer before the finish coat. Painting over active mold — even with mold-resistant paint — seals it in place temporarily but does not kill it. It will re-emerge through the new paint.</div>
+      <div class="explanation wrong" id="q2-wrong">Not quite. The most likely contributing factor was mold already present in the flat paint layer — flat paint in bathrooms absorbs moisture and harbors mold. The correct process when repainting any bathroom with a history of flat paint: clean the walls thoroughly, treat any mold with a bleach solution and let it dry completely, apply a mold-killing primer, then apply the finish coat in satin or semi-gloss. Skipping the mold treatment and primer can seal existing mold in place, where it continues to grow and eventually breaks through the new paint.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 3 of 5</div>
+      <div class="q-text">A resident reports their front door is hard to close and requires a push to latch. The tech observes that the door rubs against the frame on the latch side near the top. What is the correct first step?</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Sand the latch side of the door at the contact point — wood doors swell in humidity and the door needs to be trimmed.</div>
+      <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Tighten all hinge screws on both the door and the frame — loose hinges are the most common cause of a door rubbing the frame, and tightening them resolves the majority of these calls without any other work.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Move the strike plate lower — the latch bolt is hitting above the strike plate opening.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Replace the hinges — rubbing doors are caused by worn hinge pins that allow the door to sag.</div>
+      <div class="explanation correct" id="q3-correct">Correct! Tightening hinge screws is always the first step for any sticking or rubbing door. Loose hinges allow the door to shift out of alignment — the door hangs at a slightly different angle than it was installed, creating contact with the frame. Tightening all screws on all hinges (not just the ones near the contact point) resolves the majority of sticking door complaints with no other work. Only after confirming the hinges are tight should you consider adjusting the hinge position, moving the strike plate, or sanding the door.</div>
+      <div class="explanation wrong" id="q3-wrong">Not quite. The diagnostic sequence for a sticking door always starts with hinge screws — tighten every screw on every hinge before doing anything else. Loose hinges are the most common cause of doors rubbing the frame, and tightening them resolves most of these calls without any cutting, sanding, or hardware replacement. Only after confirming all hinges are tight should you move to hinge adjustment, strike plate adjustment, or as a last resort, planing or sanding the door.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 4 of 5</div>
+      <div class="q-text">During a unit turn, a tech notices the vinyl floor has a bubble near the kitchen sink. There is no active leak visible at the moment. What should the tech do?</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Apply vinyl adhesive and weight the bubble down — the cause does not matter if there is no active leak right now.</div>
+      <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Investigate the moisture source before re-gluing — check the supply lines and P-trap under the sink for any drips or staining. Re-gluing over active or intermittent moisture will cause the floor to re-lift immediately.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Replace the vinyl in that section — a bubble means the adhesive has failed throughout and re-gluing is not reliable.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Note it in the work order and leave it for the next resident to report — if there is no active leak, the bubble is cosmetic only.</div>
+      <div class="explanation correct" id="q4-correct">Correct! A vinyl floor bubble near any plumbing fixture is almost always caused by moisture — either an intermittent drip from the supply line or P-trap, condensation, or a past leak that saturated the subfloor. Check under the sink thoroughly: look for water stains on the cabinet floor, feel the supply lines for any dampness, check the P-trap connections. Even if there is no active drip at the moment, the evidence of past moisture is clear from the bubble. Fix the moisture source (or confirm it has been resolved), allow the subfloor to dry completely, then re-glue and weight the flooring.</div>
+      <div class="explanation wrong" id="q4-wrong">Not correct. A vinyl floor bubble — especially near a plumbing fixture — is almost always caused by moisture. Re-gluing without identifying and fixing the moisture source causes the adhesive to fail again within days or weeks. Check under the sink for any drips, stains, or damp connections before re-gluing anything. If the source was a past leak that has been resolved, allow the subfloor to dry fully before re-gluing. Document both the bubble and the moisture investigation in your work order.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 5 of 5</div>
+      <div class="q-text">During a turn-ready walk, a tech finds that one of the kitchen cabinet doors hangs unevenly — it droops at the outside corner and the gap at the top is larger than the gap at the bottom. What should the tech check first?</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Replace the cabinet door — uneven hanging indicates the door itself is warped.</div>
+      <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> Adjust the European cup hinges — the side adjustment screw on each hinge moves the door left and right, and the mounting screw moves it in and out. Three minutes of adjustment resolves most cabinet door alignment problems.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> Replace both hinges — uneven door hang is caused by worn hinge mechanisms that can no longer hold the door in position.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Shim the cabinet box — the cabinet itself is not plumb, causing the door to hang unevenly.</div>
+      <div class="explanation correct" id="q5-correct">Correct! European cup hinges (the standard in most modern apartments) are fully adjustable without any tools beyond a Phillips screwdriver. The side adjustment screw moves the door left and right. The mounting screw moves it in and out from the cabinet face. The depth screw adjusts the gap between the door and frame. A drooping outside corner is typically resolved with the side adjustment screw on both hinges — turn in the same direction on both to shift the door evenly. This takes three minutes and eliminates the need for hinge replacement or cabinet adjustment in the vast majority of cases.</div>
+      <div class="explanation wrong" id="q5-wrong">Not quite. European cup hinges are fully adjustable — this is one of their primary design advantages. Before replacing anything, try the side adjustment screw on both hinges (moves the door left and right) to bring the door back into square alignment. A drooping outside corner is almost always an adjustment issue, not a worn hinge or warped door. Three minutes of adjustment resolves most cabinet door alignment problems. Only replace the hinges if they are visibly broken or if adjustment cannot bring the door into alignment.</div>
+    </div>
+
+    <button class="check-btn" onclick="checkAllAnswers()">Check My Answers</button>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="module-glossary">
+    <h3>📖 Module 6 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All interior repair terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch6" placeholder="Search terms..." oninput="mgFilter(this,6)">
+    <div class="mg-terms" id="mgTerms6">
+
+      <div class="mg-term" data-mg="cut in brush edge painting ceiling trim corners angle sash">
+        <div class="mg-term-header"><span class="mg-name">Cutting In</span><span class="mg-law">Painting Technique</span></div>
+        <div class="mg-def">The process of painting a precise strip along edges — where walls meet ceilings, at corners, around trim and fixtures — using an angled brush before rolling the main wall area. The roller cannot reach close enough to these edges cleanly. Cut in one wall section at a time and roll it immediately while the cut edge is still wet to prevent visible lap marks at the boundary.</div>
+      </div>
+
+      <div class="mg-term" data-mg="european cup hinge cabinet adjustment side depth mounting screw">
+        <div class="mg-term-header"><span class="mg-name">European Cup Hinge</span><span class="mg-law">Cabinet Hardware</span></div>
+        <div class="mg-def">The concealed hinge standard in most modern kitchen and bathroom cabinets. Consists of a cup that mounts inside the door and a arm that mounts on the cabinet frame. Fully adjustable with a Phillips screwdriver in three directions: side-to-side (left/right alignment), in-and-out (gap between door and frame), and depth (door position relative to cabinet face). Most cabinet door alignment problems are resolved by adjusting these three screws — no replacement needed.</div>
+        <div class="mg-tip">💡 Three minutes of hinge adjustment resolves most "cabinet door won't close" or "door hangs unevenly" work orders.</div>
+      </div>
+
+      <div class="mg-term" data-mg="feathering joint compound drywall patch blend wide thin edges invisible">
+        <div class="mg-term-header"><span class="mg-name">Feathering</span><span class="mg-law">Drywall Technique</span></div>
+        <div class="mg-def">Spreading joint compound in progressively wider, thinner coats so the patch edges blend invisibly into the surrounding wall. The final coat should extend 8–12 inches beyond the hole in all directions, tapering to nothing at the edges. Without feathering, the patch boundary creates a visible ridge that shows through paint regardless of how well it is sanded. Each coat is applied wider than the previous one.</div>
+      </div>
+
+      <div class="mg-term" data-mg="flashing paint patch sheen difference unprimed primer wall spot">
+        <div class="mg-term-header"><span class="mg-name">Flashing</span><span class="mg-law">Paint / Drywall Defect</span></div>
+        <div class="mg-def">A visible sheen or color difference at a drywall patch after painting, caused by unprimed joint compound or spackle absorbing paint at a different rate than the surrounding primed wall surface. Prevented entirely by applying drywall primer to any patched area before painting. Even with a perfect color match, an unprimed patch will flash — it must be primed first.</div>
+      </div>
+
+      <div class="mg-term" data-mg="graphite lubricant lock key dry powder pin tumbler stiff WD40">
+        <div class="mg-term-header"><span class="mg-name">Graphite Lubricant</span><span class="mg-law">Lock Maintenance</span></div>
+        <div class="mg-def">A dry lubricant made from powdered graphite, applied via squeeze tube directly into key lock keyholes. The correct lubricant for any pin-tumbler lock — does not attract dirt, does not gum up with age. Never use WD-40 or oil-based products in key locks — they attract debris and progressively stiffen the lock over time. In a pinch, rubbing a pencil on the key inserts graphite the same way.</div>
+      </div>
+
+      <div class="mg-term" data-mg="joint compound mud drywall patching three coats thin feather dry">
+        <div class="mg-term-header"><span class="mg-name">Joint Compound</span><span class="mg-abbr">Drywall Mud</span><span class="mg-law">Drywall Material</span></div>
+        <div class="mg-def">A gypsum-based paste used to finish drywall seams and patches. Dries by water evaporation — thick coats crack as they dry unevenly. Always apply in three thin coats, each dried completely before the next. Sand between coats (120-grit) and final-sand with 220-grit. Always prime joint compound before painting. Setting-type compound dries faster via chemical reaction and does not shrink — useful when time is limited.</div>
+      </div>
+
+      <div class="mg-term" data-mg="paint sheen flat matte eggshell satin semi-gloss bathroom kitchen wall">
+        <div class="mg-term-header"><span class="mg-name">Paint Sheen</span><span class="mg-law">Paint Selection</span></div>
+        <div class="mg-def">The level of reflectivity in a dried paint finish. Flat: no sheen, hides imperfections, cannot be cleaned — ceilings only. Eggshell: slight sheen, lightly wipeable — bedrooms and low-traffic walls. Satin: moderate sheen, cleanable, durable — the standard for most apartment walls. Semi-gloss: high sheen, very cleanable, moisture-resistant — trim, doors, bathrooms, and kitchens. Never use flat paint in wet areas.</div>
+      </div>
+
+      <div class="mg-term" data-mg="strike plate door latch alignment file shift misalignment latching">
+        <div class="mg-term-header"><span class="mg-name">Strike Plate</span><span class="mg-law">Door Hardware</span></div>
+        <div class="mg-def">The metal plate mortised into the door frame that the latch bolt engages when the door closes. When misaligned, the door does not latch without force. Fix: loosen the mounting screws and shift the plate in the direction needed, or file the opening to enlarge it slightly. The latch bolt should engage smoothly with no resistance — if a resident has to push the door to latch it, the strike plate needs adjustment.</div>
+      </div>
+
+      <div class="mg-term" data-mg="turn ready make ready unit preparation checklist move in rent ready">
+        <div class="mg-term-header"><span class="mg-name">Turn-Ready</span><span class="mg-abbr">Make-Ready</span><span class="mg-law">Property Management Standard</span></div>
+        <div class="mg-def">The condition of an apartment unit fully prepared for a new resident to move in. Every door, window, electrical outlet, light, plumbing fixture, appliance, wall surface, floor, and cabinet confirmed in proper working condition. Lockset re-keyed. Caulk inspected. HVAC filter replaced. A unit that is fully turn-ready does not generate maintenance calls in the first two weeks of occupancy — the standard every maintenance tech is held to at turnover.</div>
+      </div>
+
+      <div class="mg-term" data-mg="weatherstripping window door seal foam tape draft dollar bill test">
+        <div class="mg-term-header"><span class="mg-name">Weatherstripping</span><span class="mg-law">Window / Door Maintenance</span></div>
+        <div class="mg-def">Flexible sealing material along window and door frames that blocks drafts and moisture when the window or door is closed. Test: close on a dollar bill — if it slides out freely, the weatherstripping has compressed and needs replacement. Self-adhesive foam tape is the standard replacement for windows — peel off old material completely, clean the surface, apply new tape. Cost: $5–$10 per window.</div>
+      </div>
+
+    </div>
+    <div class="mg-none" id="mgNone6">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mr-glossary.html" style="font-size:13px;color:var(--rust-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 8 Modules) &rarr;</a>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 7: Getting Hired by Property Managers</h3>
+    <p>You have the complete technical skill set. Module 7 shifts to the business side — how to approach property management companies, what they actually look for when hiring, how to present yourself professionally, and how to turn your skills into a job offer.</p>
+    <a href="mr-module-7.html" class="next-module-cta">Module 7: Getting Hired →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mr-module-5.html" class="btn-outline">← Module 5</a>
+  <a href="mr-module-7.html" class="btn-gold">Module 7 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Maintenance &amp; Repair Track · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Always verify local licensing requirements before performing regulated work.</p>
+</footer>
+
+<script>
+var quizAnswers={};
+var quizDone=false;
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=el.parentElement.querySelectorAll('.option');
+  opts.forEach(function(o){o.classList.remove('selected-correct','selected-wrong');});
+  el.classList.add(isCorrect?'selected-correct':'selected-wrong');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAllAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var correctEl=document.getElementById(qId+'-correct');
+    var wrongEl=document.getElementById(qId+'-wrong');
+    if(ans.isCorrect){correctEl.style.display='block';}
+    else{wrongEl.style.display='block';}
+  }
+}
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
+}
+</script>
+</body>
+</html>
