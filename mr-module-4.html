@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 4: Electrical & HVAC — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rust:#8B3A1A;--rust-mid:#B04A22;--rust-light:#D0622E;--rust-pale:#FAF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(139,58,26,0.1);
+  --shadow-card:0 2px 16px rgba(139,58,26,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--rust);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--rust);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--rust-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--rust);font-weight:600;}
+.progress-bar{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--rust-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(139,58,26,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--rust-mid);border-radius:3px;width:57%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--rust-mid);color:var(--white);}
+.prog-dot.active{background:var(--rust);color:var(--gold-light);}
+.prog-dot.locked{background:rgba(139,58,26,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(139,58,26,0.25);}
+.module-hero{background:linear-gradient(135deg,#4A1A08 0%,var(--rust) 55%,var(--rust-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--rust);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-rust{background:var(--rust-pale);border-left:4px solid var(--rust-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-rust .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.5rem;}
+.callout-rust p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Scope table */
+.scope-table{margin:2rem 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.scope-header{display:grid;grid-template-columns:1.5fr 1fr 2fr;background:var(--rust);color:var(--white);}
+.scope-header div{padding:0.75rem 1rem;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
+.scope-row{display:grid;grid-template-columns:1.5fr 1fr 2fr;border-top:1px solid var(--border);}
+.scope-row:nth-child(even){background:var(--rust-pale);}
+.scope-row div{padding:0.65rem 1rem;font-size:13px;color:var(--text-mid);line-height:1.5;}
+.scope-row .task{color:var(--text-dark);font-weight:600;}
+.badge-tech{display:inline-block;background:#E8F5E9;color:#2E7D32;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;}
+.badge-pro{display:inline-block;background:#FFF1F1;color:#C62828;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;}
+.badge-epa{display:inline-block;background:#E3F2FD;color:#1565C0;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;}
+/* Steps */
+.steps{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;}
+.step{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.step-num{width:30px;height:30px;border-radius:50%;background:var(--rust);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.step h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.step p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Two col */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.two-col-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--rust-mid);border-radius:0 0 12px 12px;padding:1.25rem;}
+.two-col-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.75rem;}
+.two-col-card ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.two-col-card ul li{font-size:13px;color:var(--text-mid);line-height:1.55;padding-left:1.1rem;position:relative;}
+.two-col-card ul li::before{content:'→';color:var(--rust-mid);font-weight:700;position:absolute;left:0;font-size:11px;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--rust-pale);color:var(--rust-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--rust);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--rust);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.65;display:block;padding-left:1.5rem;position:relative;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;position:absolute;left:0;}
+/* Mentor bubble */
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(139,58,26,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+/* Knowledge Check */
+.knowledge-check{background:var(--white);border:2px solid var(--rust-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--rust);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question-block{margin-bottom:1.75rem;}
+.q-text{font-size:14.5px;font-weight:600;color:var(--text-dark);line-height:1.6;margin-bottom:0.75rem;}
+.q-num{font-size:11px;font-weight:700;color:var(--rust-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;margin-bottom:0.5rem;}
+.option:hover{border-color:var(--rust-mid);background:var(--rust-pale);}
+.option.selected-correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.selected-wrong{border-color:#C62828;background:#FFF1F1;color:#B71C1C;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--rust-pale);color:var(--rust-mid);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.option.selected-correct .option-letter{background:#2E7D32;color:#fff;}
+.option.selected-wrong .option-letter{background:#C62828;color:#fff;}
+.explanation{display:none;padding:0.85rem 1rem;border-radius:8px;font-size:13.5px;line-height:1.65;margin-top:0.25rem;margin-bottom:0.75rem;}
+.explanation.correct{background:#F1F8F1;border:1px solid #A5D6A7;color:#1B5E20;}
+.explanation.wrong{background:#FFF1F1;border:1px solid #EF9A9A;color:#B71C1C;}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--rust-mid);}
+/* Glossary */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--rust-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--rust-mid);background:var(--rust-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--rust-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+/* Next module */
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--rust-mid);}
+/* Nav bottom */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;font-weight:600;text-decoration:none;color:var(--text-mid);transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--rust-mid);color:var(--rust);}
+.btn-gold{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;background:var(--gold);color:var(--rust);font-size:13px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-gold:hover{background:var(--gold-light);}
+.fade-in{opacity:1;transform:none;}
+footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="maintenance-repair.html" class="nav-back">← Maintenance &amp; Repair</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="maintenance-repair.html">Maintenance &amp; Repair</a><span class="sep">/</span>
+  <span class="current">Module 4 — Electrical &amp; HVAC</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 4 of 7</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mr-module-1.html" class="prog-dot complete">1</a>
+    <a href="mr-module-2.html" class="prog-dot complete">2</a>
+    <a href="mr-module-3.html" class="prog-dot complete">3</a>
+    <span class="prog-dot active">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Maintenance &amp; Repair Track · Module 4 of 7</div>
+    <h1>Electrical <em>&amp; HVAC</em></h1>
+    <p>Outlets, switches, GFCI circuits, light fixtures, ceiling fans, circuit breakers, thermostats, HVAC filters, furnace maintenance, and AC diagnostics — what a maintenance tech can safely handle, what requires a license, and how to be the person who solves the problem before anyone has to call a contractor.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>5 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Sources: Home Maintenance For Dummies · Habitat for Humanity · Pepe Gomez</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Electrical basics — <em>what maintenance techs can legally and safely handle</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Electrical work intimidates more maintenance techs than almost any other system — and that fear causes two problems. Some techs avoid all electrical work and call a licensed electrician for repairs they could handle themselves, costing the property owner money. Others attempt work that genuinely requires a license, creating serious liability and safety risk. This lesson draws the line clearly so you know exactly where you stand.</p>
+
+    <p class="lesson-text">The most important electrical safety rule for any maintenance tech: <strong>always test before you touch.</strong> Turn off the breaker, then use your non-contact voltage tester to confirm the circuit is actually dead before touching any wire. Breakers are frequently mislabeled in older buildings — especially apartments. A circuit you think you turned off may still be live. The voltage tester takes three seconds and is non-negotiable.</p>
+
+    <h3 class="sub-title">The electrical scope — maintenance tech vs. licensed electrician</h3>
+
+    <div class="scope-table">
+      <div class="scope-header">
+        <div>Task</div>
+        <div>Who Handles It</div>
+        <div>Notes</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">GFCI outlet replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Self-contained swap. Turn off breaker, test, replace. No panel work.</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">Standard outlet replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Turn off breaker, test for voltage, swap outlet, match wire colors.</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">Light switch replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Photo before disconnecting. Single-pole switches are straightforward.</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">Light fixture replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Turn off breaker, test, match wires (black to black, white to white, ground to ground).</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">Ceiling fan installation</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Verify box is fan-rated before hanging. Fan-rated boxes support weight and vibration.</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">Smoke / CO detector replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Plug-in or hardwired swap. Critical life-safety device — do not defer.</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">Thermostat replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Low-voltage wiring only. Photo wires before removing old unit.</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">Circuit breaker reset</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Flip to OFF then ON. If it trips again immediately, escalate — do not keep resetting.</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">Circuit breaker replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Shut main breaker first. Match brand, amperage, and part number exactly.</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">New circuit installation</div>
+        <div><span class="badge-pro">Licensed Electrician</span></div>
+        <div>Requires permit and licensed electrician in all jurisdictions.</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">Main panel wiring / service entry</div>
+        <div><span class="badge-pro">Licensed Electrician</span></div>
+        <div>Service entry wires are always live — even with main breaker off.</div>
+      </div>
+      <div class="scope-row">
+        <div class="task">Sub-panel installation</div>
+        <div><span class="badge-pro">Licensed Electrician</span></div>
+        <div>Always requires permit and licensed work.</div>
+      </div>
+    </div>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ The Main Panel Warning You Must Know</div>
+      <p>When you open an electrical panel and turn off the main breaker, most of the panel is safe — but the three wires entering the panel at the top are <strong>always live, always, no exceptions.</strong> Those wires come directly from the utility and carry full voltage regardless of breaker position. Never touch them. Never work near them without proper electrical training. This is the one electrical rule that has killed experienced technicians who forgot it for a moment.</p>
+    </div>
+
+    <h3 class="sub-title">GFCI circuits — the most misdiagnosed electrical problem in apartment maintenance</h3>
+
+    <p class="lesson-text">A GFCI (Ground Fault Circuit Interrupter) outlet protects against shock by cutting power instantly when it detects a current imbalance. They are required by code near any water source — kitchen counters, bathrooms, garages, outdoor outlets, laundry areas. One GFCI outlet often controls multiple downstream outlets on the same circuit.</p>
+
+    <p class="lesson-text">This is why a resident will report that half their kitchen outlets are dead — and the cause is a tripped GFCI outlet that might not even be in the kitchen. It could be in a bathroom, a laundry room, a garage, or even outside on the patio. Before diagnosing any "dead outlet" complaint, your first step is always: <strong>look for a tripped GFCI somewhere on that circuit.</strong> Press the reset button on any GFCI outlets in nearby areas. This fixes the majority of "outlets not working" calls without any tools, parts, or electrical work whatsoever.</p>
+
+    <p class="lesson-text">If a GFCI keeps tripping after you reset it, the circuit is detecting a real ground fault — something on that circuit is leaking current. Use the process of elimination: unplug every device on the circuit, reset the GFCI, then plug devices back in one at a time until it trips again. The device that causes it to trip is the culprit. If the GFCI trips with nothing plugged in, the outlet itself or the downstream wiring may be the issue — at that point you replace the GFCI outlet or escalate.</p>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: GFCI Troubleshooting</div>
+    <h2 class="lesson-title">When outlets stop working — <em>finding and fixing the tripped GFCI</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">A clear, methodical walkthrough of how to find a tripped GFCI that is taking out outlets in another room — including testing the breaker, remote testing with a plug-in tester, and process of elimination when the cause is not immediately obvious.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/GETyRTWUOSk" title="Outlet and Light Not Working — GFCI Troubleshooting" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Outlet / Light Not Working — GFCI Diagnosis</span>
+        <h4>Outlet or Light Not Working — Check the Breaker and GFCI First</h4>
+        <p>Covers the complete diagnosis flow for a dead outlet or light: check breaker first, look for a tripped GFCI (which may be in a completely different room), reset the GFCI, and when to physically inspect outlets for damage. The tripped GFCI is the most common cause of "dead outlet" calls in any apartment.</p>
+        <div class="credit">DIY electrical tutorial · Beginner-friendly · Covers breaker, GFCI, and outlet inspection sequence</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Thermostat Diagnosis</div>
+    <h2 class="lesson-title">Is it the thermostat or the AC? — <em>how to tell the difference fast</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pepe Gomez explains exactly what a thermostat does and does not do — it is only a signal bridge, not the source of heating or cooling power — and walks through how to test whether the thermostat is the problem or whether the issue is upstream in the HVAC unit itself.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/YrtxNd38yL8" title="Bad Thermostat or Bad AC — How to Tell — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Pepe Gomez · Maintenance Man Narratives</span>
+        <h4>Bad Thermostat or Bad AC? Here's How to Tell</h4>
+        <p>Covers what thermostats actually do (bridge a 24-volt signal — nothing more), how to identify wire colors and terminal labels (R, G, Y, W), how to manually test each component by bridging connections, and how to determine whether the problem is the thermostat or the unit. Essential diagnostic knowledge for any maintenance tech.</p>
+        <div class="credit">Pepe Gomez · Maintenance Man Narratives · Apartment maintenance focused · Beginner-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Light fixtures, ceiling fans, and <em>the electrical repairs that save property managers thousands</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Light fixture and ceiling fan replacements are among the most common electrical work orders in apartment maintenance — and among the most commonly outsourced to electricians unnecessarily. A maintenance tech who can handle these confidently saves $150–$300 per call compared to bringing in a licensed electrician for work that requires no license and minimal skill once you know the process.</p>
+
+    <h3 class="sub-title">Light fixture replacement — the process every time</h3>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Turn off the breaker — then test</h4>
+          <p>Find the circuit breaker for the fixture and flip it off. Then use your non-contact voltage tester at the fixture before touching anything. If it beeps, you have the wrong breaker. Do not proceed until the tester confirms no voltage.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Photo before disconnecting</h4>
+          <p>Take a clear photo of the existing wiring before disconnecting anything. This is especially important if the wiring is non-standard or if multiple wires are present. The photo is your backup if anything is confusing during reassembly.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Remove the old fixture and check the box</h4>
+          <p>Support the fixture weight while removing mounting screws — older fixtures can be heavier than expected. Once down, check the junction box condition. For ceiling fans, verify the box is fan-rated — standard light fixture boxes are not designed to support the weight and vibration of a spinning fan. A fan on a non-rated box is a safety hazard.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h4>Connect matching wires</h4>
+          <p>Black to black (hot), white to white (neutral), bare copper or green to bare copper or green (ground). Use wire nuts and tug each connection firmly to confirm it is secure. Loose connections cause flickering, heat buildup, and fires.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <h4>Mount, restore power, and test</h4>
+          <p>Mount the new fixture per its instructions. Restore power at the breaker. Test the switch. If the fixture does not work and the wiring is correct, check the bulbs and the switch itself before assuming the fixture is defective.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The Fan-Rated Box Rule</div>
+      <p>A ceiling fan weighs 15–50 pounds and vibrates continuously while running. Standard electrical junction boxes are rated for 35 pounds static load — enough for a light fixture but not a ceiling fan over time. Installing a ceiling fan on a non-rated box is a common apartment maintenance error that eventually leads to the fan pulling out of the ceiling. Before installing any ceiling fan, confirm the box is labeled "acceptable for fan support" or "suitable for fan." If it is not, replace the box before hanging the fan.</p>
+    </div>
+
+    <h3 class="sub-title">Circuit breakers — reset first, replace second</h3>
+
+    <p class="lesson-text">A tripped breaker sits in the middle position between ON and OFF. To reset: flip it fully to OFF first, then back to ON. If it holds, the circuit is restored. If it trips again immediately, there is an active fault on the circuit — something is drawing too much current or there is a short somewhere. Do not keep resetting a breaker that keeps tripping. That is the breaker doing its job — protecting against something worse.</p>
+
+    <p class="lesson-text">When a breaker needs replacement — because it trips randomly with no overload, or because it is physically damaged — circuit breaker replacement is within maintenance tech territory as long as the main breaker is turned off first. The key rule: match the brand, amperage, and part number exactly. Different manufacturers' breakers are not interchangeable even if they look similar, and installing the wrong breaker can create a fire hazard. The part number is on the face of the existing breaker.</p>
+  </div>
+
+  <!-- VIDEO 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Circuit Breaker Replacement</div>
+    <h2 class="lesson-title">Replacing a circuit breaker — <em>safely, correctly, under $5</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">A clear step-by-step circuit breaker replacement walkthrough — including the critical warning that service entry wires are always live even with the main breaker off, how to match part numbers exactly, and the correct way to connect the wire to the new breaker.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/ta0CvuSGQgY" title="How to Replace a Circuit Breaker" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Circuit Breaker Replacement</span>
+        <h4>How to Replace a Circuit Breaker — Step by Step</h4>
+        <p>Covers the complete replacement process: identifying the right breaker, shutting the main breaker, the critical warning about always-live service entry wires, matching part numbers, correct wire connection technique, and restoring power. Under 15 minutes, under $5 in parts.</p>
+        <div class="credit">DIY electrical tutorial · Clear safety instruction · Beginner-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">HVAC fundamentals — <em>what you control, what you call</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">HVAC is the most complex system in any apartment — and also the most expensive to service when an outside contractor is called. A maintenance tech who understands HVAC basics can diagnose the majority of no-heat and no-cool calls without touching refrigerant, without violating EPA regulations, and without calling anyone. The key is knowing exactly where the line is.</p>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 EPA Section 608 — What It Is and Why It Matters</div>
+      <p>Federal law under Section 608 of the Clean Air Act requires anyone who handles refrigerants — adding refrigerant to a system, recovering it, or servicing equipment in a way that could release it — to be EPA 608 certified. This is a real legal requirement, not a recommendation. If you handle refrigerant without certification, you can be fined up to $44,539 per day per violation. The exam costs approximately $20, does not expire, and can be taken at any HVAC supply house. If you want to do refrigerant work — and it adds $3–5/hour to your pay — get certified. Until then, refrigerant work is always a licensed HVAC technician call.</p>
+    </div>
+
+    <h3 class="sub-title">The maintenance tech HVAC checklist — do these before calling anyone</h3>
+
+    <p class="lesson-text">The majority of "AC not working" and "no heat" calls in apartment maintenance have a simple cause that a maintenance tech can resolve in under 10 minutes. Before escalating any HVAC call, run through this checklist:</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Check the thermostat first</h4>
+          <p>Is it set to the correct mode (COOL vs HEAT)? Is the set temperature actually calling for the system to run — meaning it is set lower than room temperature for cooling, or higher for heat? Are the batteries dead? A blank or unresponsive thermostat is often just dead batteries. Replace them before diagnosing anything else.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Check the air filter</h4>
+          <p>A completely clogged air filter is one of the most common causes of HVAC failure. It starves the system of airflow, causes the evaporator coil to freeze, and can trigger the unit to shut off on a safety limit. Pull the filter — if you cannot see light through it, replace it. This fix costs nothing and prevents expensive repairs.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Check the circuit breaker</h4>
+          <p>HVAC systems typically have two breakers — one for the indoor air handler and one for the outdoor condensing unit. Check both. A tripped breaker is common after a power surge or after the unit was overloaded. Reset it and monitor whether it trips again.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h4>Check the outdoor disconnect</h4>
+          <p>Central AC systems have a disconnect switch mounted near the outdoor unit — a metal box on the wall near the condenser. Make sure it is in the ON position. Someone may have pulled it for safety during a previous repair and not replaced it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <h4>Check the condensate drain line</h4>
+          <p>Modern AC units have a safety float switch in the drain pan — if the drain line is clogged and water backs up, this switch cuts power to the unit to prevent water damage. Clear the drain line by flushing it with a 50/50 bleach and water solution or using a wet-vac. The unit will restart when the float drops.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div>
+          <h4>Check for ice on the indoor unit</h4>
+          <p>If the evaporator coil is frozen solid (you can feel ice through the cabinet or see it at the refrigerant lines), turn the system to FAN ONLY — not off, not cooling — and let it thaw. Frozen coils are usually caused by a dirty filter or low airflow. After thawing, replace the filter and restart. If it freezes again, the refrigerant charge may be low — call a licensed HVAC technician.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="two-col-card">
+        <h4>🔧 Maintenance tech HVAC territory</h4>
+        <ul>
+          <li>Filter replacement — every 1–3 months</li>
+          <li>Thermostat replacement and troubleshooting</li>
+          <li>Thermostat battery replacement</li>
+          <li>Circuit breaker reset and replacement</li>
+          <li>Outdoor disconnect check</li>
+          <li>Condensate drain line clearing</li>
+          <li>Outdoor coil cleaning (garden hose)</li>
+          <li>Flame sensor cleaning (gas furnaces)</li>
+          <li>Annual furnace tune-up steps</li>
+          <li>Duct tape repair of disconnected flex duct</li>
+          <li>Recognizing frozen coil and thawing safely</li>
+        </ul>
+      </div>
+      <div class="two-col-card">
+        <h4>🚫 Always call a licensed HVAC tech</h4>
+        <ul>
+          <li>Any refrigerant work (EPA 608 required)</li>
+          <li>Capacitor replacement (stores dangerous charge)</li>
+          <li>Contactor replacement</li>
+          <li>Compressor diagnosis or replacement</li>
+          <li>Gas valve work</li>
+          <li>Heat exchanger inspection (cracked = CO risk)</li>
+          <li>Full refrigerant system diagnosis</li>
+          <li>New equipment installation</li>
+          <li>Anything requiring EPA 608 certification</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: AC Not Cooling — What to Check First</div>
+    <h2 class="lesson-title">10 reasons AC is running but not cooling — <em>the maintenance tech checklist</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">A practical overview of why an AC system runs but does not cool — from the simple (wrong thermostat setting, dirty coils, disconnected duct) to the items that require a licensed technician (refrigerant, compressor, capacitor). Watch for the maintenance tech items — everything before the refrigerant section is within your scope.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/drb2fdVKZlk" title="10 Reasons AC Not Blowing Cold Air" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Fix's House · AC Diagnosis Overview</span>
+        <h4>AC Running But Not Blowing Cold Air — 10 Possible Reasons</h4>
+        <p>Covers the full range of AC not-cooling causes: thermostat not calling for cooling, dirty condenser coils, disconnected duct work, bad fuses at the disconnect, and more. Note: capacitor, fan motor, and refrigerant items in this video require a licensed HVAC technician — the maintenance tech checklist items are the thermostat, disconnect, fuses, coils, and duct connections.</p>
+        <div class="credit">Fix's House · YouTube · AC diagnosis for homeowners and maintenance techs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Furnace maintenance and <em>the annual tune-up every tech should know</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">A furnace that is properly maintained runs efficiently, lasts longer, and is less likely to fail on the coldest night of the year. The annual furnace tune-up is one of the highest-value preventive maintenance tasks in any apartment building — and most of it is squarely within maintenance tech territory. Property managers who do not budget for this pay for it in emergency HVAC calls during January.</p>
+
+    <h3 class="sub-title">The four-step annual furnace maintenance process</h3>
+
+    <p class="lesson-text"><strong>Step 1 — Safety first.</strong> Turn off both the electrical disconnect and the gas supply to the furnace before opening anything. The electrical disconnect is usually a switch mounted on the wall near the unit. The gas shutoff is a valve on the gas line feeding the furnace — turn it perpendicular to the pipe to close it.</p>
+
+    <p class="lesson-text"><strong>Step 2 — Replace the air filter.</strong> Check the filter every month, replace every 1–3 months depending on occupancy and conditions. Write the replacement date on the filter with a Sharpie. A clogged filter is the single most common cause of furnace inefficiency, early failure, and emergency no-heat calls. Keep spare filters on hand — never let a property run out.</p>
+
+    <p class="lesson-text"><strong>Step 3 — Clean the flame sensor.</strong> The flame sensor is a small metal rod that sits in front of the burner inside the furnace cabinet. Over time, it builds up a white oxidation coating that prevents it from sensing the flame — causing the furnace to light and immediately shut off. This is the most common furnace failure that looks like a major problem but costs nothing to fix. Remove the sensor (one screw), lightly sand the rod with fine sandpaper or rub it with a dollar bill, reinstall. Takes five minutes.</p>
+
+    <p class="lesson-text"><strong>Step 4 — Run a full cycle and observe.</strong> Restore gas and electricity, set the thermostat to call for heat, and watch the furnace through a complete ignition cycle. Listen for the inducer to start, watch for the igniter to glow, confirm the burners light, and check that the fan comes on after 30–60 seconds. The flame should be blue — orange or yellow flames can indicate a cracked heat exchanger or combustion issue, which requires a licensed HVAC contractor.</p>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ Orange Flames and Carbon Monoxide Risk</div>
+      <p>If you observe orange or yellow flames (not blue) when running a furnace after maintenance, stop the furnace and call a licensed HVAC contractor. Orange flames can indicate a cracked heat exchanger — a serious life-safety issue that allows combustion gases including carbon monoxide to mix with the air being distributed through the unit. Carbon monoxide is odorless and colorless. This is not a maintenance tech repair. Document your observation, shut down the furnace if it is safe to do so, notify your supervisor, and ensure CO detectors in affected units are operational.</p>
+    </div>
+
+    <h3 class="sub-title">HVAC filters — the single most important preventive maintenance item</h3>
+
+    <p class="lesson-text">Filter replacement is so simple that it is consistently overlooked — and consistently responsible for thousands of dollars in avoidable HVAC repairs every year. A 1-inch pleated filter costs $5–$15 and should be replaced every 1–3 months. A dirty filter that is left in place restricts airflow, causes the system to work harder, can freeze the evaporator coil in cooling mode, and in worst cases causes the heat exchanger to overheat in heating mode.</p>
+
+    <p class="lesson-text">The filter arrow points in the direction of airflow — toward the unit, not away from it. Write the replacement date on the filter frame. Build filter checks into every unit entry as part of the Unit Scan habit — if you are already in the unit for any reason, check the filter. A tenant who has not changed their filter in two years is not unusual. Document the condition and replace it.</p>
+
+    <p class="lesson-text">One important note: <strong>do not use high-MERV filters in standard 1-inch filter slots.</strong> High-efficiency filters with MERV ratings of 11–13 or higher create significant airflow restriction in a 1-inch slot — the surface area is too small to filter adequately without choking the system. Stick to MERV 8 for standard 1-inch applications unless the system has a dedicated high-efficiency filter cabinet.</p>
+  </div>
+
+  <!-- VIDEO 5 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Annual Furnace Tune-Up</div>
+    <h2 class="lesson-title">Furnace maintenance done right — <em>four steps, done every year</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">A professional HVAC tech walks through the complete annual furnace maintenance process — filter check, flame sensor cleaning, cabinet cleaning, and full system test run. Exactly the maintenance a property manager needs done on every furnace unit every fall.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/--A2I2s7aNw" title="How to Do a Furnace Tune-Up — Annual Maintenance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Everyday Home Repairs · DIY HVAC Guy</span>
+        <h4>How to Do a Furnace Tune-Up — Annual Maintenance Walkthrough</h4>
+        <p>Complete four-step furnace tune-up: safety shutoff, filter check and replacement, flame sensor cleaning with a wire brush, cabinet vacuum and wipe-down, and full ignition cycle test. Covers what to look for during the test run including blue vs. orange flames and what each means.</p>
+        <div class="credit">Everyday Home Repairs · DIY HVAC Guy guest · Annual furnace maintenance · Beginner-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIMARY SOURCES -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Primary Sources</div>
+    <h2 class="lesson-title">The books and resources <em>behind this module</em></h2>
+    <div class="gold-divider"></div>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Maintenance For Dummies — 2nd Edition</div>
+          <div class="bi-author">James and Morris Carey · Wiley Publishing · 2010</div>
+          <div class="bi-desc">Chapter 10 covers the complete HVAC system — forced-air furnaces, filter maintenance, duct care, air conditioning, and ventilation. Chapter 16 covers electrical safety systems including GFCI outlets, smoke detectors, and circuit protection. Explicit guidance throughout on what homeowners (and maintenance techs) can handle vs. what requires a licensed professional.</div>
+        </div>
+        <a href="https://www.amazon.com/Home-Maintenance-Dummies-James-Carey/dp/0470439106" target="_blank">Find It →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Repair &amp; Maintenance — DIY Tips for Homeowners</div>
+          <div class="bi-author">Habitat for Humanity · Multiple Contributors</div>
+          <div class="bi-desc">The electrical and HVAC sections contain practical field tips including the "electric map" concept for breaker labeling, monthly filter checks, condensate line maintenance with bleach solution, and the relationship between filter quality and system airflow efficiency.</div>
+        </div>
+        <a href="https://www.habitat.org" target="_blank">Habitat.org →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>"Most of the electrical and HVAC calls that cost property managers money are calls that never needed to happen. Tripped GFCI. Dead thermostat battery. Clogged filter that froze the coil. Dirty flame sensor that is basically just oxidation on a metal rod. These are not hard problems — they are just problems that require someone who knows where to look and what to look for. That is you now. Every time you solve one of these without making a phone call, you become more valuable than the person who just reaches for their phone."</p>
+      <div class="mentor-name">Your Darco Mentor · Module 4 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 4 Key Takeaways</h3>
+    <ul>
+      <li>Always test before touching any wire — turn off the breaker, then verify with a non-contact voltage tester. The service entry wires at the top of any electrical panel are always live even with the main breaker off. Never touch them.</li>
+      <li>A tripped GFCI outlet is the most common cause of dead outlets and lights in apartment maintenance. Before diagnosing any "dead outlet" call, check for a tripped GFCI outlet somewhere on the same circuit — it may be in a completely different room or even outside.</li>
+      <li>Maintenance tech electrical scope includes: GFCI replacement, standard outlet and switch replacement, light fixture replacement, ceiling fan installation (verify fan-rated box), thermostat replacement, circuit breaker reset and replacement. Always match the breaker brand, amperage, and part number exactly.</li>
+      <li>Before calling an HVAC technician for any no-heat or no-cool call, run the maintenance tech checklist: thermostat settings and batteries, air filter, circuit breakers (both indoor and outdoor), outdoor disconnect switch, condensate drain line, and look for a frozen evaporator coil.</li>
+      <li>EPA Section 608 certification is required by federal law for any refrigerant work. Cost: ~$20, does not expire. Until you have it, refrigerant diagnosis, capacitor replacement, and compressor work are always licensed HVAC technician calls.</li>
+      <li>Annual furnace maintenance — filter, flame sensor cleaning, cabinet cleaning, full cycle test — is within maintenance tech territory and prevents the most common furnace failures. Orange or yellow flames during a test run indicate a possible cracked heat exchanger — stop the furnace and call a licensed contractor immediately.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question-block">
+      <div class="q-num">Question 1 of 5</div>
+      <div class="q-text">A resident reports that three outlets in their kitchen are not working. The tech checks the circuit breaker panel and all breakers appear to be in the ON position. What should the tech do next?</div>
+      <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">A</div> Look for a tripped GFCI outlet in the kitchen, bathroom, garage, laundry room, or any nearby area — one GFCI often controls multiple outlets on the same circuit.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div> Call a licensed electrician — three dead outlets means a wiring problem that requires professional diagnosis.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Replace all three outlets — if multiple outlets are dead simultaneously, they are likely faulty.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Check whether the outlets are on a dedicated circuit and inform the resident that kitchen outlets require a licensed electrician to service.</div>
+      <div class="explanation correct" id="q1-correct">Correct! A tripped GFCI is the most common cause of multiple dead outlets, and it may be anywhere on the circuit — in a bathroom, garage, exterior outlet, or even outside. The GFCI can be in a completely different room from the outlets it protects. Before touching anything else, locate and reset any tripped GFCIs in the area. This resolves the majority of "multiple dead outlets" calls without any tools or parts.</div>
+      <div class="explanation wrong" id="q1-wrong">Not quite. The most common cause of multiple dead outlets in an apartment is a tripped GFCI outlet somewhere on the same circuit — which may not be in the kitchen at all. Check for a tripped GFCI in any adjacent rooms, the bathroom, garage, laundry area, or outside. Press the reset button on any GFCIs you find. This is a 60-second check that resolves the majority of these calls without calling anyone or replacing anything.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 2 of 5</div>
+      <div class="q-text">A tech is about to replace a light fixture. They turn off what they believe is the correct circuit breaker. What must they do before touching any wires?</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Turn the light switch to the off position — if the switch is off and the breaker is off, the circuit is safe to work on.</div>
+      <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Test the wires with a non-contact voltage tester to verify no voltage is present — even after turning off the breaker.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Ask the resident to confirm the light is off — if they confirm it, the circuit is de-energized.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Proceed — turning off the breaker is sufficient confirmation that the circuit has no power.</div>
+      <div class="explanation correct" id="q2-correct">Correct! Breakers are frequently mislabeled in older apartment buildings, and circuits are sometimes shared in unexpected ways. Turning off a breaker is not sufficient confirmation on its own. The non-contact voltage tester takes three seconds and gives a definitive answer. Test before touching any wire, every time, with no exceptions.</div>
+      <div class="explanation wrong" id="q2-wrong">Not quite. Turning off a breaker does not guarantee the circuit is de-energized — breakers are frequently mislabeled, especially in older buildings. The only reliable confirmation is testing with a non-contact voltage tester directly at the wires. This takes three seconds and must be done before touching anything, every single time.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 3 of 5</div>
+      <div class="q-text">A resident reports that their AC has been running all day but the apartment is not cooling. The tech arrives and confirms the outdoor unit is running. What is the correct first step?</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Call a licensed HVAC technician — if the outdoor unit is running but not cooling, it is likely a refrigerant issue.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Check the capacitor on the outdoor unit — a bad capacitor is the most common cause of cooling failure.</div>
+      <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Run the maintenance tech checklist first: check thermostat settings, pull the air filter, check for a frozen evaporator coil, check the condensate drain line, and look for disconnected ductwork before escalating.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Turn the system off and wait — the unit may just need time to cool down before resuming normal operation.</div>
+      <div class="explanation correct" id="q3-correct">Correct! The maintenance tech checklist resolves a large percentage of no-cool calls without calling anyone. A clogged filter, a dirty condenser coil, a frozen evaporator coil, a clogged condensate line, or a disconnected duct section can all cause an AC that runs but does not cool. Check all of these before concluding the problem is refrigerant-related. Capacitor diagnosis and refrigerant work require EPA 608 certification — only escalate after you have confirmed nothing on the maintenance tech checklist is the cause.</div>
+      <div class="explanation wrong" id="q3-wrong">Not quite. Before escalating to a licensed technician, run the maintenance tech checklist: thermostat settings, air filter condition, frozen coil check, condensate drain line, and ductwork connections. These causes account for a significant percentage of no-cool calls and are within maintenance tech scope. Capacitor and refrigerant work do require EPA 608 certification — but only escalate after confirming the simpler causes have been ruled out.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 4 of 5</div>
+      <div class="q-text">During an annual furnace tune-up, the tech cleans the flame sensor and runs a full ignition test cycle. When the burners light, the tech notices the flames are orange rather than blue. What should the tech do?</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Note it and move on — orange flames are normal during initial startup and will turn blue as the furnace warms up.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Adjust the gas valve to increase gas flow — orange flames indicate insufficient gas pressure.</div>
+      <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> Stop the furnace, document the observation, notify the supervisor, and call a licensed HVAC contractor — orange flames can indicate a cracked heat exchanger and carbon monoxide risk.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Clean the burners — orange flames are caused by dust on the burners and will clear after a few minutes of operation.</div>
+      <div class="explanation correct" id="q4-correct">Correct! Orange or yellow flames (rather than blue) in a gas furnace can indicate a cracked heat exchanger — a life-safety issue where combustion gases including carbon monoxide can mix with the air circulating through the building. Carbon monoxide is odorless and colorless. This is not a maintenance tech repair under any circumstances. Stop the furnace, document what you observed, notify your supervisor, confirm CO detectors in affected units are functional, and get a licensed HVAC contractor on-site to inspect the heat exchanger.</div>
+      <div class="explanation wrong" id="q4-wrong">Not correct. Orange or yellow flames in a gas furnace are a potential sign of a cracked heat exchanger — one of the most serious safety issues in residential HVAC. A cracked heat exchanger allows combustion gases including carbon monoxide to enter the air distribution system. This is not a maintenance tech repair. Stop the furnace, document your observation, notify your supervisor, and call a licensed HVAC contractor for heat exchanger inspection. Make sure CO detectors in the unit and nearby units are operational.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 5 of 5</div>
+      <div class="q-text">A maintenance tech wants to add refrigerant to an apartment AC system that is not cooling well. They have several years of maintenance experience and have successfully handled many HVAC calls. Is this within their scope?</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Yes — refrigerant top-offs are simple enough that experienced maintenance techs commonly handle them without certification.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Yes — as long as the tech is careful not to overcharge the system and uses the correct refrigerant type.</div>
+      <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> No — handling refrigerants requires EPA Section 608 certification under federal law, regardless of experience level. The exam costs ~$20 and does not expire. Until certified, refrigerant work is always a licensed HVAC technician call.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> It depends on the state — some states allow experienced maintenance techs to handle refrigerant work without EPA certification.</div>
+      <div class="explanation correct" id="q5-correct">Correct! EPA Section 608 is federal law — it applies in all 50 states regardless of state licensing rules. Anyone who maintains, services, repairs, or disposes of equipment in a way that could release regulated refrigerants must be certified. Fines can reach $44,539 per day per violation. The solution is simple: take the EPA 608 exam. It costs approximately $20, can be taken at most HVAC supply houses, does not expire, and adds $3–5/hour to a maintenance tech's pay. Until then, all refrigerant work is always a licensed HVAC technician call.</div>
+      <div class="explanation wrong" id="q5-wrong">Not correct. EPA Section 608 is federal law and applies uniformly in all 50 states. Experience level does not matter — anyone handling refrigerants must be certified, period. Fines for violations can reach $44,539 per day per violation. The good news is the exam is easy to get: approximately $20, available at most HVAC supply houses, does not expire, and adds real pay to a maintenance tech's hourly rate. Until you have it, refrigerant work is always a licensed HVAC technician call — no exceptions.</div>
+    </div>
+
+    <button class="check-btn" onclick="checkAllAnswers()">Check My Answers</button>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="module-glossary">
+    <h3>📖 Module 4 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All electrical and HVAC terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch4" placeholder="Search terms..." oninput="mgFilter(this,4)">
+    <div class="mg-terms" id="mgTerms4">
+
+      <div class="mg-term" data-mg="capacitor hvac start run compressor fan microfarad mfd">
+        <div class="mg-term-header"><span class="mg-name">Capacitor</span><span class="mg-law">HVAC Component · EPA 608 Territory</span></div>
+        <div class="mg-def">An electrical component in HVAC outdoor units that stores and releases energy to help start and run the compressor and outdoor fan motor. A failed capacitor (often visually identifiable by a bulged or mushroom-topped case) is one of the most common causes of AC not cooling. Capacitor replacement requires working near high-voltage components and requires knowledge of proper discharge procedures — this is EPA 608 / licensed HVAC tech territory, not maintenance tech scope.</div>
+        <div class="mg-tip">💡 A multimeter that reads microfarads (MFD) can test a capacitor without replacing it — useful diagnostic skill once you have EPA 608 certification.</div>
+      </div>
+
+      <div class="mg-term" data-mg="condensate drain line pan float switch water ac overflow">
+        <div class="mg-term-header"><span class="mg-name">Condensate Drain Line</span><span class="mg-law">HVAC Maintenance</span></div>
+        <div class="mg-def">The pipe that drains condensation from the AC evaporator coil's drain pan. When clogged, water backs up in the drain pan and triggers the float switch safety shutoff, cutting power to the unit. Clear by flushing with a 50/50 bleach and water solution or using a wet-vac at the outdoor drain termination. Maintenance tech territory — flush the condensate line at the start of every cooling season.</div>
+      </div>
+
+      <div class="mg-term" data-mg="epa 608 refrigerant certification section 608 clean air act federal law">
+        <div class="mg-term-header"><span class="mg-name">EPA Section 608</span><span class="mg-law">Federal Certification Requirement</span></div>
+        <div class="mg-def">Federal certification required under Section 608 of the Clean Air Act for anyone who handles regulated refrigerants — adding refrigerant, recovering it, or servicing equipment in a way that could release it. Applies in all 50 states regardless of state licensing. Cost: approximately $20. Does not expire. Available at most HVAC supply houses. Adds $3–5/hour to a maintenance tech's pay rate. Until certified, all refrigerant work must be performed by a licensed HVAC technician.</div>
+        <div class="mg-tip">💡 The EPA 608 exam is one of the highest-ROI certifications available to any maintenance tech. $20 investment, lifetime validity, immediate pay increase.</div>
+      </div>
+
+      <div class="mg-term" data-mg="evaporator coil indoor ac coil frozen freeze airflow filter">
+        <div class="mg-term-header"><span class="mg-name">Evaporator Coil</span><span class="mg-law">HVAC Component</span></div>
+        <div class="mg-def">The indoor coil of an AC system where refrigerant absorbs heat from the air passing over it, producing cooled air. When airflow is restricted (clogged filter, blocked return) or refrigerant charge is low, the coil can freeze solid — ice covers the coil and stops airflow. To thaw a frozen coil: set the system to FAN ONLY (not cooling) and run until the ice melts. Replace the filter and restart. If freezing recurs, the refrigerant charge may be low — licensed HVAC tech required.</div>
+      </div>
+
+      <div class="mg-term" data-mg="flame sensor furnace gas heat sensor rod oxidation cleaning white buildup">
+        <div class="mg-term-header"><span class="mg-name">Flame Sensor</span><span class="mg-law">Furnace Component · Maintenance Tech</span></div>
+        <div class="mg-def">A small metal rod inside a gas furnace that sits in the burner flame and generates a small electrical current when heated, signaling the control board that ignition was successful. Over time, oxidation builds up on the rod (visible as white coating) and blocks the electrical signal, causing the furnace to light briefly and immediately shut off. Fix: remove the sensor (one screw), lightly sand the rod with fine sandpaper, reinstall. Takes five minutes and costs nothing.</div>
+        <div class="mg-tip">💡 Dirty flame sensor is the single most common furnace failure. Many "furnace not working" emergency calls are resolved by cleaning this one inexpensive rod.</div>
+      </div>
+
+      <div class="mg-term" data-mg="gfci ground fault circuit interrupter outlet reset test button shock protection water">
+        <div class="mg-term-header"><span class="mg-name">GFCI</span><span class="mg-abbr">Ground Fault Circuit Interrupter</span><span class="mg-law">Electrical Safety Device</span></div>
+        <div class="mg-def">A shock protection device built into outlets near water sources (kitchens, bathrooms, garages, exteriors) that cuts power instantly when it detects a current imbalance. One GFCI outlet often protects multiple downstream outlets on the same circuit — which is why dead outlets in one room are often caused by a tripped GFCI in a completely different room. To reset: press the RESET button on the GFCI outlet. If it trips again, investigate the circuit for a fault before resetting again.</div>
+      </div>
+
+      <div class="mg-term" data-mg="heat exchanger furnace gas combustion cracked carbon monoxide orange flame">
+        <div class="mg-term-header"><span class="mg-name">Heat Exchanger</span><span class="mg-law">Furnace Component · Licensed HVAC</span></div>
+        <div class="mg-def">The metal component inside a gas furnace that separates combustion gases from the air being distributed through the building. When cracked, combustion gases including carbon monoxide can enter the air distribution system. Visual sign: orange or yellow flames instead of blue during operation. A cracked heat exchanger is a life-safety issue requiring immediate furnace shutdown and licensed HVAC contractor inspection — never a maintenance tech repair.</div>
+      </div>
+
+      <div class="mg-term" data-mg="merv filter air filter rating efficiency airflow restriction hvac">
+        <div class="mg-term-header"><span class="mg-name">MERV Rating</span><span class="mg-abbr">Minimum Efficiency Reporting Value</span><span class="mg-law">Filter Rating</span></div>
+        <div class="mg-def">A scale from 1–16 rating an air filter's ability to capture airborne particles. Higher MERV = finer filtration but also greater airflow restriction. For standard 1-inch filter slots, MERV 8 is recommended — high enough to filter dust and pollen effectively without restricting airflow. MERV 11–13 filters in 1-inch slots restrict airflow enough to damage the system. If high-efficiency filtration is needed, a dedicated 4-inch filter cabinet is required.</div>
+      </div>
+
+      <div class="mg-term" data-mg="non-contact voltage tester electrical safety live wire test before touch">
+        <div class="mg-term-header"><span class="mg-name">Non-Contact Voltage Tester</span><span class="mg-law">Electrical Safety Tool · Must-Have</span></div>
+        <div class="mg-def">A pen-shaped tool that detects the presence of electrical voltage without touching the wire — hold it near any wire and it beeps or flashes if voltage is present. Required before touching any wire in any electrical repair, even after turning off a breaker. Breakers are frequently mislabeled in older buildings. Always test. Cost: $15–$25.</div>
+      </div>
+
+      <div class="mg-term" data-mg="thermostat wiring rgy w low voltage bridge signal heat cool">
+        <div class="mg-term-header"><span class="mg-name">Thermostat Wiring Terminals</span><span class="mg-law">HVAC Low-Voltage Wiring</span></div>
+        <div class="mg-def">The labeled terminals on any thermostat that connect to the HVAC system via low-voltage wires. Standard labels: R = 24-volt power (red wire), G = fan (green wire), Y = cooling/compressor (yellow wire), W = heat (white wire), C = common wire for digital thermostats. Photo the existing wiring before removing any thermostat — the labels on the wires may not match standard colors if previous techs swapped wires.</div>
+        <div class="mg-tip">💡 If a thermostat replacement does not fix a heating or cooling problem, use the terminal bridging test shown in Pepe Gomez's video to verify whether the problem is the thermostat or the HVAC unit itself.</div>
+      </div>
+
+    </div>
+    <div class="mg-none" id="mgNone4">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mr-glossary.html" style="font-size:13px;color:var(--rust-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 7 Modules) &rarr;</a>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 5: Appliances &amp; Interior Repairs</h3>
+    <p>With plumbing, electrical, and HVAC covered, Module 5 moves into the repairs that fill the rest of any maintenance tech's workday — appliance troubleshooting and part swaps, drywall patching, painting, flooring, door and window adjustments, and lock and key work. These are the repairs that complete your toolkit and make you the maintenance tech every property manager wants to keep.</p>
+    <a href="mr-module-5.html" class="next-module-cta">Module 5: Appliances &amp; Interior Repairs →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mr-module-3.html" class="btn-outline">← Module 3</a>
+  <a href="mr-module-5.html" class="btn-gold">Module 5 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Maintenance &amp; Repair Track · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Always verify local licensing requirements before performing regulated work.</p>
+</footer>
+
+<script>
+var quizAnswers={};
+var quizDone=false;
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=el.parentElement.querySelectorAll('.option');
+  opts.forEach(function(o){o.classList.remove('selected-correct','selected-wrong');});
+  el.classList.add(isCorrect?'selected-correct':'selected-wrong');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAllAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var correctEl=document.getElementById(qId+'-correct');
+    var wrongEl=document.getElementById(qId+'-wrong');
+    if(ans.isCorrect){correctEl.style.display='block';}
+    else{wrongEl.style.display='block';}
+  }
+}
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
+}
+</script>
+</body>
+</html>
