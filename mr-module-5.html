@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5: Appliance Repairs — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rust:#8B3A1A;--rust-mid:#B04A22;--rust-light:#D0622E;--rust-pale:#FAF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(139,58,26,0.1);
+  --shadow-card:0 2px 16px rgba(139,58,26,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--rust);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--rust);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--rust-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--rust);font-weight:600;}
+.progress-bar{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--rust-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(139,58,26,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--rust-mid);border-radius:3px;width:62%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--rust-mid);color:var(--white);}
+.prog-dot.active{background:var(--rust);color:var(--gold-light);}
+.prog-dot.locked{background:rgba(139,58,26,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(139,58,26,0.25);}
+.module-hero{background:linear-gradient(135deg,#4A1A08 0%,var(--rust) 55%,var(--rust-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--rust);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-rust{background:var(--rust-pale);border-left:4px solid var(--rust-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-rust .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.5rem;}
+.callout-rust p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.swap-table{margin:2rem 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.swap-header{display:grid;grid-template-columns:1.5fr 0.75fr 0.75fr 2fr;background:var(--rust);color:var(--white);}
+.swap-header div{padding:0.75rem 1rem;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
+.swap-row{display:grid;grid-template-columns:1.5fr 0.75fr 0.75fr 2fr;border-top:1px solid var(--border);}
+.swap-row:nth-child(even){background:var(--rust-pale);}
+.swap-row div{padding:0.65rem 1rem;font-size:13px;color:var(--text-mid);line-height:1.5;}
+.swap-row .repair{color:var(--text-dark);font-weight:600;}
+.swap-row .cost-part{color:var(--rust-mid);font-weight:600;}
+.swap-row .cost-call{color:var(--text-light);}
+.video-placeholder{background:var(--cream-dark);border:2px dashed var(--border);border-radius:16px;padding:2rem;margin:1.75rem 0;text-align:center;}
+.video-placeholder p{font-size:13px;color:var(--text-light);font-style:italic;}
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--rust-pale);color:var(--rust-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--rust);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+.takeaways{background:var(--rust);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.65;display:block;padding-left:1.5rem;position:relative;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;position:absolute;left:0;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(139,58,26,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.knowledge-check{background:var(--white);border:2px solid var(--rust-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--rust);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question-block{margin-bottom:1.75rem;}
+.q-text{font-size:14.5px;font-weight:600;color:var(--text-dark);line-height:1.6;margin-bottom:0.75rem;}
+.q-num{font-size:11px;font-weight:700;color:var(--rust-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;margin-bottom:0.5rem;}
+.option:hover{border-color:var(--rust-mid);background:var(--rust-pale);}
+.option.selected-correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.selected-wrong{border-color:#C62828;background:#FFF1F1;color:#B71C1C;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--rust-pale);color:var(--rust-mid);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.option.selected-correct .option-letter{background:#2E7D32;color:#fff;}
+.option.selected-wrong .option-letter{background:#C62828;color:#fff;}
+.explanation{display:none;padding:0.85rem 1rem;border-radius:8px;font-size:13.5px;line-height:1.65;margin-top:0.25rem;margin-bottom:0.75rem;}
+.explanation.correct{background:#F1F8F1;border:1px solid #A5D6A7;color:#1B5E20;}
+.explanation.wrong{background:#FFF1F1;border:1px solid #EF9A9A;color:#B71C1C;}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--rust-mid);}
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--rust-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--rust-mid);background:var(--rust-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--rust-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--rust-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;font-weight:600;text-decoration:none;color:var(--text-mid);transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--rust-mid);color:var(--rust);}
+.btn-gold{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;background:var(--gold);color:var(--rust);font-size:13px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-gold:hover{background:var(--gold-light);}
+.fade-in{opacity:1;transform:none;}
+footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="maintenance-repair.html" class="nav-back">← Maintenance &amp; Repair</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="maintenance-repair.html">Maintenance &amp; Repair</a><span class="sep">/</span>
+  <span class="current">Module 5 — Appliance Repairs</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 5 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mr-module-1.html" class="prog-dot complete">1</a>
+    <a href="mr-module-2.html" class="prog-dot complete">2</a>
+    <a href="mr-module-3.html" class="prog-dot complete">3</a>
+    <a href="mr-module-4.html" class="prog-dot complete">4</a>
+    <span class="prog-dot active">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+    <span class="prog-dot locked">8</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Maintenance &amp; Repair Track · Module 5 of 8</div>
+    <h1>Appliance <em>Repairs</em></h1>
+    <p>Refrigerators, ovens, dryers, dishwashers, washing machines — the appliance repairs that property managers pay $150–$300 per service call for, that a skilled maintenance tech can handle in 20 minutes with a $20 part. This module teaches you to diagnose, research, and fix the most common appliance failures in any apartment building.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>4 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Sources: Home Maintenance For Dummies · Habitat for Humanity · Pepe Gomez</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The appliance repair mindset — <em>model number first, everything else second</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Appliance repair is the skill that separates maintenance techs who save property managers money from ones who just pass calls to contractors. A property manager who has to call an appliance service company pays $75–$150 before a single repair is done — plus parts and labor. A maintenance tech who diagnoses and fixes the same problem with a $20 part saves that money on every single call, on every appliance, in every unit.</p>
+
+    <p class="lesson-text">The foundation of appliance repair is a simple habit: <strong>always get the model number before searching for anything.</strong> Every appliance has a model number label — inside the refrigerator door frame, on the back panel, under the range top, inside the dishwasher door edge, inside the washer door. Write it down or photograph it before walking back to your cart. A search for "oven not igniting" returns thousands of generic results. A search for "Whirlpool WFG525S0HS not igniting" returns the exact repair video for that exact oven — often filmed by someone who had the identical problem on the identical unit.</p>
+
+    <p class="lesson-text">The six-step research system from Module 2 applies directly here: model number first, YouTube search with model and symptom, parts diagrams on RepairClinic.com or PartSelect.com, read the comments on the repair video, check the manufacturer's error code guide if applicable, and know when to stop and escalate. Most appliance repairs you will encounter as a maintenance tech are within this scope. The exceptions — sealed refrigerant systems, gas valve internals, and anything requiring EPA 608 — are always escalated to licensed technicians.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 Parts Sites That Every Maintenance Tech Should Know</div>
+      <p><strong>RepairClinic.com</strong> and <strong>PartSelect.com</strong> carry parts for virtually every major appliance brand ever manufactured. Enter the model number and they show you an exploded diagram of the entire appliance — exactly how it is assembled, what every part is called, and the part number for ordering. Both sites also have repair help sections with symptom-based guidance. When you have a model number and a symptom, these sites tell you exactly what part to order and often show you a repair video specific to that part on that model.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Refrigerators and ovens — <em>the highest-volume kitchen appliance calls</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Refrigerators and ovens generate more maintenance calls than any other kitchen appliances. Most of these calls are resolved by cleaning something, replacing an inexpensive part, or resetting a safety device — not by replacing the appliance or calling a specialist.</p>
+
+    <h3 class="sub-title">Refrigerator — the maintenance tech checklist</h3>
+
+    <p class="lesson-text"><strong>Not cooling or running constantly:</strong> The most commonly overlooked cause is dirty condenser coils. These coils — located under the unit behind a kickplate or on the back — release heat from the refrigeration system. When caked with dust and debris, they cannot release heat efficiently, forcing the compressor to run continuously and reducing cooling performance. Clean with a coil brush and vacuum. Takes 10 minutes. Do this before assuming any mechanical failure.</p>
+
+    <p class="lesson-text"><strong>Door not sealing:</strong> Test the door gasket by closing the door on a dollar bill. If it slides out easily with no resistance, the gasket is failing and warm air is entering the unit constantly. Gasket replacement is model-specific — order by model number. Most gaskets press into a channel around the door frame or are held by screws under the door liner. Cost: $15–$40. A failing door gasket causes the compressor to run constantly, wastes energy, and shortens compressor life.</p>
+
+    <p class="lesson-text"><strong>Ice maker not working:</strong> Check the ice maker arm — if it is in the raised (off) position, the ice maker is disabled. Check the water supply line shutoff valve behind the refrigerator. Check for a frozen water supply line (common in units where the refrigerator was moved and the line kinked). If the ice maker hums but does not cycle, the water inlet solenoid valve may be faulty — a $20–$40 part that controls water flow into the ice maker.</p>
+
+    <p class="lesson-text"><strong>Water on the floor inside or underneath:</strong> A clogged defrost drain is the most common cause of water pooling inside a refrigerator. The defrost system melts frost off the evaporator coil, and the water drains through a small drain hole at the bottom of the freezer compartment. When this drain clogs with debris, water backs up and leaks. Clear the drain with warm water and a small flexible brush or pipe cleaner. The drain opening is usually at the back of the freezer floor.</p>
+
+    <h3 class="sub-title">Gas oven — the igniter is almost always the answer</h3>
+
+    <p class="lesson-text">The most common gas oven failure is an oven that clicks or glows but does not light the burner. In modern gas ovens, a glow-bar igniter replaces the standing pilot — it heats up when the oven is turned on and opens the gas safety valve when it reaches sufficient temperature. When the igniter weakens with age, it glows but never gets hot enough to open the valve. The symptom is clear: the igniter glows orange, the oven does not heat, and you can sometimes smell gas briefly as the valve attempts to open.</p>
+
+    <p class="lesson-text">Oven igniter replacement does not involve disconnecting any gas lines. The igniter is connected by a plug — unplug the old one, plug in the new one. The igniter is held by one or two screws and is accessible after removing the oven floor panel. Order by model number. Cost: $20–$50. Time: 20–30 minutes. Calling a service technician for the same repair: $150–$300.</p>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ Always Check for Gas Smell Before Any Oven Repair</div>
+      <p>Before working on any gas appliance, smell the area around the appliance. If you detect a sulfur or rotten egg smell, stop immediately — do not turn on any lights, do not use your phone inside, do not create any spark. Exit the unit, leave the door open, and call the gas company from outside. Gas smell means gas leak — it is always a stop-everything emergency before any repair work begins.</p>
+    </div>
+
+    <p class="lesson-text"><strong>Electric oven not heating:</strong> Electric ovens have two heating elements — a bake element at the bottom and a broil element at the top. If an element is visibly damaged (blistered, cracked, has a burn hole), it is faulty. Test with a multimeter for continuity — no continuity means the element is open. Replacement is a straightforward swap: unscrew the element, disconnect the two wires, connect the new element. Cost: $20–$50. Time: 15 minutes.</p>
+
+    <!-- VIDEO 1 -->
+    <div class="lesson-section fade-in">
+      <div class="section-label"><div class="dot"></div> Watch: Oven Igniter Replacement</div>
+      <h2 class="lesson-title">Replacing a gas oven igniter — <em>the most common gas oven repair</em></h2>
+      <div class="gold-divider"></div>
+      <p class="lesson-text">AppliancePartsPros.com walks through a complete gas oven igniter replacement — removing the access panel, disconnecting the wiring harness, removing the oven floor and flame spreader, swapping the igniter, and reassembling. Clear safety reminders throughout: unplug the range and shut off the gas valve before starting.</p>
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/BWrqsbWP2jo" title="Gas Oven Igniter Replacement — AppliancePartsPros" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">AppliancePartsPros.com · Gas Oven Repair</span>
+          <h4>How to Replace a Gas Oven Igniter</h4>
+          <p>Complete step-by-step igniter replacement — access panel removal, wiring harness disconnect, oven floor and flame spreader removal, igniter swap, and full reassembly. Covers both plug-in igniters and wire-nut connections for universal igniters that fit multiple stove models.</p>
+          <div class="credit">AppliancePartsPros.com · Professional appliance repair tutorial · Safety-first instruction throughout</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 2 -->
+    <div class="lesson-section fade-in">
+      <div class="section-label"><div class="dot"></div> Watch: Refrigerator Door Not Closing</div>
+      <h2 class="lesson-title">Fridge door won't close — <em>the simple fixes most techs overlook</em></h2>
+      <div class="gold-divider"></div>
+      <p class="lesson-text">Pepe Gomez covers two of the most common causes of a refrigerator door that won't fully close — a crisper tray not pushed all the way back, and shelf rails installed in the wrong positions. Both are zero-cost, under-two-minute fixes that look like refrigerator failures but are just simple adjustments.</p>
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/a3rBuYWMzew" title="Refrigerator Door Not Closing — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Pepe Gomez · Maintenance Man Narratives</span>
+          <h4>Refrigerator Not Closing All the Way — Common Work Order Fix</h4>
+          <p>A real apartment work order — refrigerator door that residents have to push shut by hand. Two causes covered: crisper tray not seated fully, and shelf rails installed in wrong positions. Zero-cost fixes that resolve a large percentage of "refrigerator not closing" calls without parts or tools.</p>
+          <div class="credit">Pepe Gomez · Maintenance Man Narratives · Apartment maintenance focused · Beginner-friendly</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Dryers, washers, and dishwashers — <em>the laundry and kitchen appliance calls that never stop</em></h2>
+    <div class="gold-divider"></div>
+
+    <h3 class="sub-title">Dryer — vent first, parts second</h3>
+
+    <p class="lesson-text">Before diagnosing any dryer problem, check the dryer vent. A clogged dryer vent is the most common cause of poor dryer performance — and also the most dangerous maintenance item in any apartment building. Clogged dryer vents cause approximately 2,900 residential fires per year. Lint is highly flammable. When the vent is clogged, heat builds up inside the dryer, blows thermal fuses, damages heating elements, and eventually creates a fire risk.</p>
+
+    <p class="lesson-text">Signs of a clogged dryer vent: dryer takes multiple cycles to dry a single load, dryer feels very hot to the touch during operation, the exterior vent flap does not open when the dryer is running. Clear the vent by disconnecting the duct at the dryer, vacuuming from both ends, and confirming the exterior vent cap opens freely. Do this before replacing any parts — a clogged vent will blow a new thermal fuse within days from the same overheating that failed the original.</p>
+
+    <p class="lesson-text"><strong>Dryer runs but does not heat:</strong> After confirming the vent is clear, the thermal fuse is the most likely culprit. The thermal fuse is a one-time safety device that blows permanently when the dryer overheats. Test with a multimeter for continuity — a blown fuse reads infinite (open circuit). Cost: $8–$15. Located near the exhaust duct connection inside the dryer cabinet. If the thermal fuse is good but the dryer still does not heat, the heating element itself may be open — test the same way.</p>
+
+    <p class="lesson-text"><strong>Dryer runs but drum does not spin:</strong> The most common cause is a broken drive belt — the belt that wraps around the drum and the motor pulley. Open the dryer cabinet and check whether the drum turns freely by hand with no resistance. If it spins very easily (no tension), the belt is broken. Dryer belt replacement requires opening the cabinet and routing the new belt around the drum and pulleys — a 45-minute job with a model-specific YouTube video as your guide.</p>
+
+    <h3 class="sub-title">Washing machine — the lid switch is usually the answer</h3>
+
+    <p class="lesson-text">Top-loading washing machines have a lid switch — a safety device that prevents the machine from spinning with the lid open. When the lid switch fails, the machine fills and agitates normally but will not spin or advance to the drain cycle. To test: open the lid and press the lid switch plunger with a pen or screwdriver while the machine is in spin cycle. If the machine spins, the lid switch is the problem. Lid switch replacement costs $10–$25 and takes 20 minutes.</p>
+
+    <p class="lesson-text">For washing machines that do not agitate, the agitator dogs (small plastic ratchet components inside the agitator) are often worn. These allow the agitator to move in one direction only — when worn, the agitator spins freely in both directions instead of ratcheting. Agitator dog replacement costs $5–$15 and is one of the fastest appliance repairs available — the agitator pulls straight up off the shaft, the dogs sit in a basket at the top, and replacement takes under 10 minutes.</p>
+
+    <h3 class="sub-title">Dishwasher — clean the filter before calling anyone</h3>
+
+    <p class="lesson-text">Most modern dishwashers have a removable filter at the bottom of the tub — a cylindrical screen that catches food debris before it recirculates through the pump. Most residents never clean it. A clogged filter causes standing water in the tub, poor cleaning performance, and drain problems. Removing and cleaning the filter takes two minutes: twist counterclockwise to unlock, lift out, rinse under running water, replace. Do this before diagnosing any drain pump or motor issue.</p>
+
+    <p class="lesson-text">If the dishwasher still does not drain after cleaning the filter, check the drain hose for kinks — the hose runs from the dishwasher to the drain connection under the sink or to the garbage disposal. If the garbage disposal was recently replaced, confirm the knockout plug was removed from the dishwasher drain inlet on the disposal — this is one of the most common post-installation failures and takes 60 seconds to fix with a screwdriver.</p>
+
+    <!-- VIDEO 3 -->
+    <div class="lesson-section fade-in">
+      <div class="section-label"><div class="dot"></div> Watch: Refrigerator Door Gasket Replacement</div>
+      <h2 class="lesson-title">Replacing a fridge door gasket — <em>press-in replacement on any brand</em></h2>
+      <div class="gold-divider"></div>
+      <p class="lesson-text">A clean step-by-step gasket replacement covering LG, Bosch, Electrolux, Haier, GE, and most modern refrigerators — pull from the corner, clean the channel, press the new seal in starting at the corners, and use a hair dryer to close any small gaps. No tools required.</p>
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/5P9UlDnAIOY" title="Replace Refrigerator Door Gasket — Multi-Brand" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Refrigerator Gasket Replacement · Multi-Brand</span>
+          <h4>Replace Refrigerator Gasket — LG, Bosch, Electrolux, Haier, GE &amp; More</h4>
+          <p>Complete press-in door gasket replacement — pull from corner, clean the plastic channel with soapy water, press new seal in starting at corners, use a hair dryer to close any small gaps after installation. Applicable to most contemporary refrigerator brands.</p>
+          <div class="credit">Refrigerator repair tutorial · Multi-brand · No tools required · Beginner-friendly</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 4 -->
+    <div class="lesson-section fade-in">
+      <div class="section-label"><div class="dot"></div> Watch: Stuck Garbage Disposal</div>
+      <h2 class="lesson-title">Garbage disposal not working — <em>reset, Allen wrench, debris removal</em></h2>
+      <div class="gold-divider"></div>
+      <p class="lesson-text">The three-step garbage disposal fix — check for debris, press the reset button, and use a quarter-inch Allen wrench to free a jam. Always confirm power is off before reaching in or using the Allen wrench.</p>
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/b1PBa0eylDo" title="Stuck Garbage Disposal Fix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Garbage Disposal · Stuck / Not Working</span>
+          <h4>Stuck Garbage Disposal — Reset Button, Allen Wrench, Debris Removal</h4>
+          <p>The complete three-step process for a disposal that is stuck or not responding: check for debris with needle nose pliers, press the reset button on the bottom, and use a quarter-inch Allen wrench in the center port to manually free a jam. Power must be off before any hands-near-the-opening work.</p>
+          <div class="credit">Garbage disposal repair · Quick fix · Beginner-friendly · Safety-first</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WASHER / DRYER / DISHWASHER SELF-SEARCH -->
+    <div class="lesson-section fade-in">
+      <div class="section-label"><div class="dot"></div> Washers, Dryers &amp; Dishwashers — Search by Model for the Exact Fix</div>
+      <h2 class="lesson-title">Laundry and dishwasher repairs — <em>model number first, YouTube second</em></h2>
+      <div class="gold-divider"></div>
+      <p class="lesson-text">Washer, dryer, and dishwasher repairs vary enough by brand and model that the best resource is always a model-specific YouTube video rather than a generic tutorial. Get the model number, then search YouTube using this format: <strong>[Brand] [Model Number] [Symptom]</strong>. You will almost always find a repair video filmed on the exact unit you are working on. RepairClinic.com and PartSelect.com also have model-specific parts diagrams and repair guides for every major brand.</p>
+
+      <div class="callout-insight">
+        <div class="callout-label">💡 The Tech Sheet — The Hidden Repair Manual Inside Every Appliance</div>
+        <p>Most major appliances — especially washers and dryers — have a hidden paper "tech sheet" tucked inside the console or behind a body panel. It contains the complete wiring diagram and instructions for putting the machine into Diagnostic Mode to read error codes. Find it before calling anyone. On many units it is folded and tucked behind the front kick panel, inside the lid, or behind the back panel. It is the fastest path to a definitive diagnosis on any complex appliance fault.</p>
+      </div>
+
+      <h3 class="sub-title">🧺 Dryers — common repairs and what to search</h3>
+      <p class="lesson-text"><strong>Runs but does not heat:</strong> Blown thermal fuse or broken heating element. Test both with a multimeter for continuity. Always clear the dryer vent before replacing either part or the new parts will fail from the same overheating. Search: "[brand] [model] thermal fuse replacement" or "[brand] [model] heating element replacement."</p>
+      <p class="lesson-text"><strong>Drum does not spin / squeaking:</strong> Broken drive belt, worn idler pulley, or worn drum support rollers. Pop the top or front panels to inspect. A drum that turns with no resistance (no tension) has a broken belt. Search: "[brand] [model] drive belt replacement" or "[brand] [model] drum roller replacement."</p>
+
+      <h3 class="sub-title">🫧 Washers — common repairs and what to search</h3>
+      <p class="lesson-text"><strong>Fills but does not spin (top loader):</strong> Faulty lid switch — the machine thinks the lid is open. Test by pressing the switch manually during spin cycle. Search: "[brand] [model] lid switch replacement."</p>
+      <p class="lesson-text"><strong>Does not drain:</strong> Clogged or failed drain pump. Coins, socks, and small items frequently jam the pump impeller. Usually accessible from the bottom or back panel. Search: "[brand] [model] drain pump replacement" or "[brand] [model] drain pump clog."</p>
+      <p class="lesson-text"><strong>Agitator does not agitate (top loader):</strong> Worn agitator dogs — the plastic ratchet pieces inside the agitator top. Agitator pulls straight up, dogs replace in under 10 minutes. Search: "[brand] [model] agitator dogs replacement."</p>
+
+      <h3 class="sub-title">🍽️ Dishwashers — common repairs and what to search</h3>
+      <p class="lesson-text"><strong>Not draining / standing water:</strong> Clean the filter first (two minutes, no tools). Check drain hose for kinks. If disposal was just replaced, check the knockout plug. Search: "[brand] [model] drain pump replacement" only after filter and hose are confirmed clear.</p>
+      <p class="lesson-text"><strong>Not filling with water:</strong> Water inlet valve solenoid has likely failed. Located behind the bottom kickplate. Search: "[brand] [model] water inlet valve replacement."</p>
+      <p class="lesson-text"><strong>Poor cleaning performance:</strong> Clogged spray arms — food debris or hard water scaling plugging the holes. They usually pop off with a twist. Soak in vinegar, clear holes with a toothpick. Search: "[brand] [model] spray arm cleaning" or "[brand] [model] spray arm replacement."</p>
+      <p class="lesson-text"><strong>Leaking from front door:</strong> Door gasket failure. Pull old gasket from channel, press new one in. Search: "[brand] [model] door gasket replacement."</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The high-value swap reference — <em>and knowing when to stop</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">The most financially valuable maintenance tech knowledge is not how to fix everything — it is knowing exactly which repairs are simple part swaps worth attempting and which are beyond the scope of maintenance tech work. The table below gives you a reference for every common appliance repair in apartment maintenance.</p>
+
+    <div class="swap-table">
+      <div class="swap-header">
+        <div>Repair</div>
+        <div>Part Cost</div>
+        <div>Service Call</div>
+        <div>Notes</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Gas oven igniter</div>
+        <div class="cost-part">$20–$50</div>
+        <div class="cost-call">$150–$300</div>
+        <div>Plug-in swap — no gas disconnection. Order by model number.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Electric oven element</div>
+        <div class="cost-part">$20–$50</div>
+        <div class="cost-call">$120–$250</div>
+        <div>Two screws, two wire connectors. Bake or broil element — test with multimeter first.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Refrigerator coil cleaning</div>
+        <div class="cost-part">$0</div>
+        <div class="cost-call">$100–$200</div>
+        <div>Coil brush and vacuum. Do this before assuming mechanical failure.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Refrigerator door gasket</div>
+        <div class="cost-part">$15–$40</div>
+        <div class="cost-call">$120–$250</div>
+        <div>Dollar bill test confirms need. Press-in or screw-in by model.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Refrigerator water inlet solenoid</div>
+        <div class="cost-part">$20–$40</div>
+        <div class="cost-call">$150–$300</div>
+        <div>Controls water to ice maker and dispenser. Pull fridge out, swap valve behind unit.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Dryer vent cleaning</div>
+        <div class="cost-part">$0</div>
+        <div class="cost-call">$80–$150</div>
+        <div>Life-safety maintenance. Annual minimum. Clear from both ends.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Dryer thermal fuse</div>
+        <div class="cost-part">$8–$15</div>
+        <div class="cost-call">$120–$250</div>
+        <div>Always clear the vent first or the new fuse blows immediately.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Dryer heating element</div>
+        <div class="cost-part">$20–$40</div>
+        <div class="cost-call">$150–$300</div>
+        <div>Open cabinet, test with multimeter, swap element. Model-specific YouTube video required.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Washer lid switch</div>
+        <div class="cost-part">$10–$25</div>
+        <div class="cost-call">$120–$250</div>
+        <div>Test by pressing switch manually during spin. Pen test confirms before ordering part.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Washer agitator dogs</div>
+        <div class="cost-part">$5–$15</div>
+        <div class="cost-call">$100–$200</div>
+        <div>Agitator pulls straight up. Dogs sit inside top. Under 10 minutes total.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Dishwasher filter cleaning</div>
+        <div class="cost-part">$0</div>
+        <div class="cost-call">$100–$200</div>
+        <div>Twist out, rinse, replace. Do this before any drain diagnosis.</div>
+      </div>
+      <div class="swap-row">
+        <div class="repair">Disposal knockout plug</div>
+        <div class="cost-part">$0</div>
+        <div class="cost-call">$80–$150</div>
+        <div>After new disposal installation — confirm plug was removed from dishwasher drain inlet.</div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">When to stop and escalate</h3>
+
+    <p class="lesson-text">Not every appliance problem is a maintenance tech repair. Stop and escalate when: the repair requires handling refrigerant (EPA 608 required), the repair involves internal gas valve components, the part cost exceeds what a replacement appliance would cost in the property's budget, or three separate repairs on the same appliance have failed to resolve the problem. A maintenance tech who knows when to escalate is more valuable than one who keeps attempting repairs past the point of diminishing returns. Document what you tried, what you found, and why you are escalating — that information helps whoever handles it next.</p>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 Document Every Appliance Repair</div>
+      <p>Every appliance repair should be documented in the work order with: unit number, appliance brand and model number, symptom, what you checked, what you found, what part you replaced (with part number and cost), and the result. This creates a maintenance history per unit that helps the next tech, helps property managers make replacement decisions, and demonstrates your professionalism to every supervisor who reads your work orders.</p>
+    </div>
+  </div>
+
+  <!-- PRIMARY SOURCES -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Primary Sources</div>
+    <h2 class="lesson-title">The books and resources <em>behind this module</em></h2>
+    <div class="gold-divider"></div>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Maintenance For Dummies — 2nd Edition</div>
+          <div class="bi-author">James and Morris Carey · Wiley Publishing · 2010</div>
+          <div class="bi-desc">Chapter 14 covers all major kitchen and laundry appliances — gas and electric safety, cleaning protocols, maintenance schedules, and when to call a professional. Includes specific guidance on refrigerator coil cleaning, oven maintenance, and appliance safety shutoffs.</div>
+        </div>
+        <a href="https://www.amazon.com/Home-Maintenance-Dummies-James-Carey/dp/0470439106" target="_blank">Find It →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Repair &amp; Maintenance — DIY Tips for Homeowners</div>
+          <div class="bi-author">Habitat for Humanity · Multiple Contributors</div>
+          <div class="bi-desc">The appliance section covers refrigerator coil cleaning, dryer vent maintenance and fire hazard context, dishwasher filter cleaning, and washer care. Practical field-tested tips from real homeowners and maintenance professionals on the most common appliance maintenance tasks.</div>
+        </div>
+        <a href="https://www.habitat.org" target="_blank">Habitat.org →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>"Every time you fix a refrigerator that was 'not cooling' by cleaning the coils in 10 minutes — every time you replace an oven igniter for $30 instead of a $250 service call — you are proving something to the property manager who is watching. Not just that you can fix things. That you understand how to save them money. That is the difference between a maintenance tech who gets replaced and one who gets a raise. Know your appliances. Know your model numbers. Know when to stop."</p>
+      <div class="mentor-name">Your Darco Mentor · Module 5 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 5 Key Takeaways</h3>
+    <ul>
+      <li>Always get the model number before researching any appliance repair. Search YouTube for "[brand] [model] [symptom]" for model-specific repair videos. Use RepairClinic.com and PartSelect.com for parts diagrams and ordering by model number.</li>
+      <li>Dirty refrigerator condenser coils are the most overlooked cause of refrigerators running warm or running constantly. Clean with a coil brush and vacuum before assuming any mechanical failure. Test the door gasket with a dollar bill — replace if it slides out without resistance.</li>
+      <li>A gas oven igniter that glows but does not light the burner is a weak igniter — the most common gas oven failure. No gas line disconnection involved. Plug-in swap, $20–$50 part, 20 minutes. Always check for gas smell before starting any gas appliance repair.</li>
+      <li>Clean the dryer vent before diagnosing any dryer problem — clogged vents cause multiple-cycle drying, blow thermal fuses, and are a life-safety fire hazard. After clearing the vent, test the thermal fuse with a multimeter for continuity. Replace the vent-clear and fuse together if both are needed.</li>
+      <li>For washing machines that fill and agitate but do not spin: test the lid switch by pressing it manually during spin cycle. For washing machines that do not agitate: check the agitator dogs — a $5–$15 repair that takes under 10 minutes. For dishwashers not draining: clean the filter first, then check drain hose kinks and the disposal knockout plug.</li>
+      <li>Know when to stop: escalate when the repair requires refrigerant handling (EPA 608), internal gas valve work, or when the part cost exceeds replacement value. Document every appliance repair with appliance model number, symptom, what you checked, what you replaced, and the result.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question-block">
+      <div class="q-num">Question 1 of 5</div>
+      <div class="q-text">A resident reports their gas oven has not been working for two days. When the tech turns it on, the oven makes a clicking sound and a faint orange glow is visible inside, but the oven never heats up. What is the most likely cause?</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> The gas supply to the unit is shut off — check the gas meter outside.</div>
+      <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> The oven igniter is weak — it glows but cannot reach the temperature needed to open the gas safety valve. Replacement is a plug-in swap costing $20–$50.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> The gas valve is defective and must be replaced by a licensed gas technician.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> The oven control board has failed — this requires an appliance technician.</div>
+      <div class="explanation correct" id="q1-correct">Correct! An orange glow that does not lead to ignition is the classic weak igniter symptom. The igniter is receiving power and heating up, but it is not reaching the temperature threshold required to open the gas safety valve. The gas valve is not defective — it is working correctly by staying closed until it receives the proper heat signal. Oven igniter replacement does not involve disconnecting any gas lines. Order by model number, unplug the old igniter, plug in the new one. Cost $20–$50, time 20–30 minutes.</div>
+      <div class="explanation wrong" id="q1-wrong">Not quite. An orange glow inside the oven when it is turned on is the igniter — it is receiving power and heating up. The fact that it glows but does not light the burner is the classic weak igniter symptom. The igniter is not getting hot enough to open the gas safety valve. This is a plug-in part swap — no gas line disconnection involved. Order by oven model number, remove the oven floor panel, unplug old igniter, plug in new igniter. Cost $20–$50.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 2 of 5</div>
+      <div class="q-text">A refrigerator is running constantly and the freezer is not keeping things fully frozen. What should the tech check first before calling an appliance technician?</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Check the thermostat setting — the resident may have turned it down.</div>
+      <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Clean the condenser coils — dirty coils are the most common cause of a refrigerator running constantly and not cooling properly. 10 minutes with a coil brush and vacuum.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Call a technician — a compressor running constantly indicates compressor failure.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Check the door seal — a failing door gasket always causes the compressor to run constantly.</div>
+      <div class="explanation correct" id="q2-correct">Correct! Dirty condenser coils are the most overlooked and most common cause of refrigerators running constantly and not cooling properly. The coils release heat from the refrigeration cycle — when coated with dust, they cannot release heat efficiently, and the compressor has to run continuously to compensate. Clean with a coil brush (under the unit or behind it) and a vacuum. This free, 10-minute repair resolves a large percentage of refrigerator "not cooling" calls. Always do this before assuming compressor failure.</div>
+      <div class="explanation wrong" id="q2-wrong">Not quite. The first thing to check on any refrigerator that runs constantly and does not cool well is the condenser coils. Dirty coils are the most common and most overlooked cause of this exact symptom — they are located under the unit or on the back and collect dust over time. Clean them with a coil brush and vacuum before assuming any mechanical failure. A compressor running constantly is not evidence of compressor failure — it is evidence that something is forcing the compressor to work harder, most often dirty coils or a failing door gasket.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 3 of 5</div>
+      <div class="q-text">A tech replaces a dryer thermal fuse on a unit where the dryer was not heating. Three weeks later the same resident calls — the dryer is not heating again and the new thermal fuse has blown. What was most likely missed?</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> The wrong thermal fuse was installed — a higher-rated fuse should have been used.</div>
+      <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> The dryer vent was not cleared — a clogged vent causes overheating that blows the thermal fuse repeatedly. The vent must be cleaned before or alongside any thermal fuse replacement.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> The heating element is also failing and needs to be replaced alongside the thermal fuse.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> The dryer is at end of life and should be replaced — repeated thermal fuse failures indicate general failure.</div>
+      <div class="explanation correct" id="q3-correct">Correct! A thermal fuse that blows repeatedly is almost always caused by a clogged dryer vent that was not cleared before the replacement. The thermal fuse is a safety device that blows when the dryer overheats — if the vent is clogged, the dryer will continue to overheat, and any replacement fuse will blow within weeks for the same reason. The vent must be cleared completely before or alongside any thermal fuse replacement. Never install a higher-rated fuse — that defeats the safety protection and creates a fire hazard.</div>
+      <div class="explanation wrong" id="q3-wrong">Not correct. A thermal fuse that blows repeatedly is the signature of a clogged dryer vent that was not cleared. The thermal fuse blows because the dryer overheats — and the most common cause of dryer overheating is a blocked vent. If the vent is not cleared, any replacement fuse will blow again within weeks from the same overheating. The correct procedure is always: clear the vent first, then replace the fuse. Never install a higher-rated fuse to "solve" repeated blowing — the thermal fuse is a critical safety device and must be replaced with the correct rating.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 4 of 5</div>
+      <div class="q-text">A resident reports their top-loading washing machine fills with water but then stops — it does not agitate and does not spin. The tech suspects the lid switch. How can they test this without ordering any parts?</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Run a diagnostic cycle — most modern washing machines have a self-test mode that identifies lid switch failures.</div>
+      <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Open the lid, manually press and hold the lid switch plunger with a pen or screwdriver while the machine is in spin cycle — if the machine spins, the lid switch is faulty.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Remove the agitator and check the agitator dogs — if they are worn, the machine will not agitate or spin.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Check the circuit breaker — a partial electrical failure can cause the washer to fill but not spin.</div>
+      <div class="explanation correct" id="q4-correct">Correct! The lid switch pen test is the definitive no-parts diagnosis for a top-loader that fills but does not spin. The lid switch prevents the machine from spinning with the lid open — when it fails, the machine behaves as if the lid is always open, stopping after the fill cycle. By manually depressing the switch plunger while the machine is trying to spin, you bypass the failed switch. If the machine spins with the plunger pressed, the switch is confirmed faulty. Lid switch replacement costs $10–$25 and takes about 20 minutes.</div>
+      <div class="explanation wrong" id="q4-wrong">Not quite. The lid switch pen test is the fastest and cheapest way to confirm a lid switch failure without ordering parts. With the machine in spin cycle, open the lid and manually press the lid switch plunger with a pen or screwdriver. If the machine spins while the plunger is pressed, the switch is faulty — it is stuck in the open position and the machine thinks the lid is always open. Agitator dogs cause an agitation problem (agitator spins freely in both directions) but not a fill-and-stop problem. Check the lid switch first.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 5 of 5</div>
+      <div class="q-text">A new garbage disposal was installed in a unit three days ago. The resident now calls to say their dishwasher is not draining and there is standing water in the tub. What should the tech check first?</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> The dishwasher pump has failed — a new disposal installation can cause electrical interference with nearby appliances.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> The dishwasher filter — it may have been disturbed during the disposal installation and needs cleaning.</div>
+      <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> The knockout plug in the disposal's dishwasher drain inlet — if it was not removed during installation, the dishwasher drain is completely blocked. Remove the plug with a screwdriver and hammer. 60-second fix.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The drain hose connection at the disposal — it may have been disconnected during installation.</div>
+      <div class="explanation correct" id="q5-correct">Correct! Every new garbage disposal comes with a knockout plug in the dishwasher drain inlet — a plastic plug that must be removed if the dishwasher drain hose is connected to that port. If the installer forgot to remove the plug, the dishwasher drain is completely blocked and water cannot exit the machine at all. This is one of the most common post-installation failures. The fix: reach under the sink, find the dishwasher drain inlet on the side of the disposal, and knock the plug out from inside the disposal with a screwdriver and hammer. Remove the plug pieces from inside the disposal before running it. 60 seconds total.</div>
+      <div class="explanation wrong" id="q5-wrong">Not quite. When a dishwasher stops draining immediately after a new garbage disposal is installed, the first thing to check is the knockout plug. Every new disposal comes with a plastic plug in the dishwasher drain inlet — this plug must be removed if the dishwasher drain connects to that port. Forgetting to remove it completely blocks the dishwasher drain. Knock it out from inside with a screwdriver and remove the pieces before running the disposal. This is the most common reason a dishwasher suddenly stops draining after a disposal is replaced.</div>
+    </div>
+
+    <button class="check-btn" onclick="checkAllAnswers()">Check My Answers</button>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="module-glossary">
+    <h3>📖 Module 5 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All appliance repair terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch5" placeholder="Search terms..." oninput="mgFilter(this,5)">
+    <div class="mg-terms" id="mgTerms5">
+
+      <div class="mg-term" data-mg="agitator dogs washing machine ratchet plastic worn spin agitate">
+        <div class="mg-term-header"><span class="mg-name">Agitator Dogs</span><span class="mg-law">Washer Component</span></div>
+        <div class="mg-def">Small plastic ratchet components inside the top of a top-loading washer's agitator that allow it to rotate in one direction only during the agitation cycle. When worn, the agitator spins freely in both directions instead of ratcheting — the machine runs but the agitator does not scrub clothes. Replacement cost: $5–$15. The agitator pulls straight off the shaft, dogs are inside the top, replacement takes under 10 minutes.</div>
+      </div>
+
+      <div class="mg-term" data-mg="condenser coil refrigerator heat release cleaning dust dirty efficiency compressor">
+        <div class="mg-term-header"><span class="mg-name">Condenser Coils</span><span class="mg-law">Refrigerator Maintenance</span></div>
+        <div class="mg-def">The heat-releasing coils on a refrigerator, located under the unit behind the kickplate or on the back. Release heat absorbed from inside the refrigerator into the surrounding air. When coated with dust and lint, they cannot release heat efficiently — the compressor runs continuously and cooling performance drops. Clean annually with a coil brush and vacuum. The single most overlooked refrigerator maintenance item.</div>
+        <div class="mg-tip">💡 Clean refrigerator coils before assuming any mechanical failure — dirty coils cause most "not cooling" complaints.</div>
+      </div>
+
+      <div class="mg-term" data-mg="defrost drain refrigerator clog water inside ice buildup freezer floor">
+        <div class="mg-term-header"><span class="mg-name">Defrost Drain</span><span class="mg-law">Refrigerator Component</span></div>
+        <div class="mg-def">A small drain opening at the back of the freezer floor that channels water from the automatic defrost cycle out of the freezer compartment. When clogged with food debris or ice, water backs up and leaks inside the refrigerator or onto the floor below. Clear with warm water and a small flexible brush or pipe cleaner inserted into the drain opening.</div>
+      </div>
+
+      <div class="mg-term" data-mg="dishwasher filter screen debris clean drain standing water clog">
+        <div class="mg-term-header"><span class="mg-name">Dishwasher Filter</span><span class="mg-law">Dishwasher Maintenance</span></div>
+        <div class="mg-def">A removable cylindrical screen at the bottom of the dishwasher tub that traps food debris before it recirculates through the pump. Most residents never clean it. A clogged filter causes standing water, poor cleaning performance, and drain problems. To clean: twist counterclockwise, lift out, rinse under water, replace. Takes two minutes and resolves the majority of dishwasher drain complaints.</div>
+        <div class="mg-tip">💡 Always clean the dishwasher filter before diagnosing any drain pump or motor issue.</div>
+      </div>
+
+      <div class="mg-term" data-mg="door gasket refrigerator seal test dollar bill warm air compression">
+        <div class="mg-term-header"><span class="mg-name">Door Gasket</span><span class="mg-law">Refrigerator Component</span></div>
+        <div class="mg-def">The flexible rubber seal around the refrigerator or freezer door that creates an airtight seal when closed. Test: close the door on a dollar bill — if the bill slides out with little resistance, the gasket is failing and warm air is entering the unit. A failing gasket forces the compressor to run constantly. Replace by model number — gaskets press into a channel or are held by screws under the door liner.</div>
+      </div>
+
+      <div class="mg-term" data-mg="dryer vent clog lint fire hazard safety annual cleaning exterior flap">
+        <div class="mg-term-header"><span class="mg-name">Dryer Vent</span><span class="mg-law">Life-Safety Maintenance Item</span></div>
+        <div class="mg-def">The exhaust duct that carries hot, lint-laden air from the dryer to the outside of the building. Clogged dryer vents are a leading cause of residential fires — approximately 2,900 per year nationally. Signs of clogging: dryer takes multiple cycles to dry clothes, dryer runs very hot, exterior vent flap does not open. Clean at least annually by disconnecting the duct and vacuuming from both ends. Always clear the vent before replacing any dryer parts.</div>
+      </div>
+
+      <div class="mg-term" data-mg="knockout plug garbage disposal dishwasher drain installation plug blocked">
+        <div class="mg-term-header"><span class="mg-name">Knockout Plug</span><span class="mg-law">Garbage Disposal Installation</span></div>
+        <div class="mg-def">A plastic plug inside the dishwasher drain inlet port of every new garbage disposal. Must be removed with a screwdriver and hammer if the dishwasher drain hose connects to that port. Forgetting to remove it completely blocks the dishwasher drain — the most common cause of a dishwasher that stops draining immediately after a disposal is installed or replaced. Fix: knock it out from inside the disposal, remove the pieces before running the unit.</div>
+      </div>
+
+      <div class="mg-term" data-mg="lid switch washing machine safety spin top loader arm plunger test">
+        <div class="mg-term-header"><span class="mg-name">Lid Switch</span><span class="mg-law">Washer Safety Component</span></div>
+        <div class="mg-def">A safety device on top-loading washing machines that prevents the machine from spinning with the lid open. When it fails, the machine fills and may agitate but will not advance to the spin or drain cycle — it behaves as if the lid is always open. Test: manually press and hold the switch plunger with a pen while the machine is in spin cycle. If it spins, the switch is faulty. Replacement cost: $10–$25, approximately 20 minutes.</div>
+      </div>
+
+      <div class="mg-term" data-mg="oven igniter glow bar gas valve heat temperature weak orange glow">
+        <div class="mg-term-header"><span class="mg-name">Oven Igniter</span><span class="mg-abbr">Glow-Bar Igniter</span><span class="mg-law">Gas Oven Component</span></div>
+        <div class="mg-def">The component in a modern gas oven that replaces the standing pilot light. When the oven is turned on, the igniter heats up and opens the gas safety valve when it reaches sufficient temperature — typically 1,000–1,100°F. A weak igniter glows orange but does not reach the threshold temperature, so the valve never opens and the oven never heats. Replacement is a plug-in swap with no gas line disconnection. Cost: $20–$50. Most common gas oven failure.</div>
+      </div>
+
+      <div class="mg-term" data-mg="thermal fuse dryer safety blown overheat continuity multimeter test replace">
+        <div class="mg-term-header"><span class="mg-name">Thermal Fuse</span><span class="mg-law">Dryer Safety Component</span></div>
+        <div class="mg-def">A one-time safety device in electric dryers that permanently opens (blows) if the dryer overheats, cutting power to the heating element. Most common cause of a dryer that runs but does not heat. Test with multimeter for continuity — good fuse reads near zero ohms, blown fuse reads infinite. Cost: $8–$15. Always clear the dryer vent before replacing — a clogged vent will blow the new fuse immediately from the same overheating condition.</div>
+      </div>
+
+    </div>
+    <div class="mg-none" id="mgNone5">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mr-glossary.html" style="font-size:13px;color:var(--rust-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 8 Modules) &rarr;</a>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 6: Interior Repairs</h3>
+    <p>Module 6 covers the repairs that make a unit rent-ready — drywall patching, painting, door and window adjustments, locks, floors, and cabinets. These are the finishing skills that complete your toolkit and set apart the maintenance tech who can handle anything from move-out to move-in.</p>
+    <a href="mr-module-6.html" class="next-module-cta">Module 6: Interior Repairs →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mr-module-4.html" class="btn-outline">← Module 4</a>
+  <a href="mr-module-6.html" class="btn-gold">Module 6 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Maintenance &amp; Repair Track · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Always verify local licensing requirements before performing regulated work.</p>
+</footer>
+
+<script>
+var quizAnswers={};
+var quizDone=false;
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=el.parentElement.querySelectorAll('.option');
+  opts.forEach(function(o){o.classList.remove('selected-correct','selected-wrong');});
+  el.classList.add(isCorrect?'selected-correct':'selected-wrong');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAllAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var correctEl=document.getElementById(qId+'-correct');
+    var wrongEl=document.getElementById(qId+'-wrong');
+    if(ans.isCorrect){correctEl.style.display='block';}
+    else{wrongEl.style.display='block';}
+  }
+}
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
+}
+</script>
+</body>
+</html>
