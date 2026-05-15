@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 1: The Maintenance & Repair Career — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --steel:#2B4B6F;--steel-mid:#3D6494;--steel-light:#5A85B8;--steel-pale:#EBF1F8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(43,75,111,0.1);
+  --shadow-card:0 2px 16px rgba(43,75,111,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--steel);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--steel);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--steel-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--steel-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--steel);font-weight:600;}
+.progress-bar{background:var(--steel-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--steel-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(43,75,111,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--steel-mid);border-radius:3px;width:14%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--steel);color:var(--gold-light);}
+.prog-dot.locked{background:rgba(43,75,111,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(43,75,111,0.25);}
+.module-hero{background:linear-gradient(135deg,#0D1F35 0%,var(--steel) 55%,var(--steel-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--steel-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--steel);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-steel{background:var(--steel-pale);border-left:4px solid var(--steel-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-steel .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--steel-mid);margin-bottom:0.5rem;}
+.callout-steel p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Role cards */
+.role-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.role-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--steel-mid);border-radius:0 0 12px 12px;padding:1.1rem 1.25rem;}
+.role-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+.role-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.role-card .rc-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--steel-mid);margin-bottom:0.35rem;}
+/* Property types */
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin:2rem 0;}
+.prop-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.7rem 1rem;font-size:13px;color:var(--text-mid);line-height:1.5;}
+.prop-item strong{color:var(--text-dark);font-weight:600;font-size:13px;}
+/* Career ladder */
+.career-ladder{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
+.ladder-step{display:flex;align-items:stretch;gap:0;}
+.ladder-connector{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0;}
+.ladder-node{width:32px;height:32px;border-radius:50%;background:var(--steel);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.ladder-line{width:2px;background:var(--border);flex:1;margin:4px 0;}
+.ladder-content{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1.1rem;margin-bottom:0.5rem;flex:1;}
+.ladder-content h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.15rem;}
+.ladder-content p{font-size:12.5px;color:var(--text-mid);line-height:1.5;}
+.ladder-content .pay{font-size:12px;font-weight:700;color:var(--steel-mid);margin-top:0.3rem;}
+/* Unit scan */
+.unit-scan{background:linear-gradient(135deg,var(--steel),var(--steel-mid));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;color:var(--white);}
+.unit-scan h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold-light);margin-bottom:0.5rem;}
+.unit-scan p{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.75;margin-bottom:1rem;}
+.scan-items{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
+.scan-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:0.6rem 0.85rem;font-size:13px;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:8px;}
+.scan-item::before{content:'✓';color:var(--gold-light);font-weight:700;flex-shrink:0;}
+/* Path compare */
+.path-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.path-card{border-radius:14px;padding:1.5rem;}
+.path-card.hired{background:var(--steel-pale);border:1px solid rgba(43,75,111,0.2);}
+.path-card.independent{background:var(--gold-pale);border:1px solid rgba(201,168,76,0.3);}
+.path-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.path-card.hired h4{color:var(--steel);}
+.path-card.independent h4{color:#8A6A20;}
+.path-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.path-card ul li{font-size:13px;color:var(--text-mid);line-height:1.6;padding-left:1.25rem;position:relative;}
+.path-card.hired ul li::before{content:'→';color:var(--steel-mid);font-weight:700;position:absolute;left:0;}
+.path-card.independent ul li::before{content:'→';color:#8A6A20;font-weight:700;position:absolute;left:0;}
+/* CAMT steps */
+.camt-steps{display:flex;flex-direction:column;gap:0.65rem;margin:2rem 0;}
+.camt-step{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.camt-num{width:32px;height:32px;border-radius:50%;background:var(--steel);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.camt-step h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.camt-step p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--steel-pale);color:var(--steel-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--steel);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--steel);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.65;display:block;padding-left:1.5rem;position:relative;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;position:absolute;left:0;}
+/* Mentor bubble */
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--steel);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(43,75,111,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+/* Knowledge Check */
+.knowledge-check{background:var(--white);border:2px solid var(--steel-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--steel);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question-block{margin-bottom:1.75rem;}
+.question-block:last-of-type{margin-bottom:0;}
+.q-text{font-size:14.5px;font-weight:600;color:var(--text-dark);line-height:1.6;margin-bottom:0.75rem;}
+.q-num{font-size:11px;font-weight:700;color:var(--steel-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;margin-bottom:0.5rem;}
+.option:hover{border-color:var(--steel-mid);background:var(--steel-pale);}
+.option.selected-correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.selected-wrong{border-color:#C62828;background:#FFF1F1;color:#B71C1C;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--steel-pale);color:var(--steel-mid);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.option.selected-correct .option-letter{background:#2E7D32;color:#fff;}
+.option.selected-wrong .option-letter{background:#C62828;color:#fff;}
+.explanation{display:none;padding:0.85rem 1rem;border-radius:8px;font-size:13.5px;line-height:1.65;margin-top:0.25rem;margin-bottom:0.75rem;}
+.explanation.correct{background:#F1F8F1;border:1px solid #A5D6A7;color:#1B5E20;}
+.explanation.wrong{background:#FFF1F1;border:1px solid #EF9A9A;color:#B71C1C;}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--steel);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--steel-mid);}
+/* Glossary */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--steel-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--steel-mid);background:var(--steel-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--steel-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+/* Next module */
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--steel);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--steel-mid);}
+/* Nav bottom */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;font-weight:600;text-decoration:none;color:var(--text-mid);transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--steel-mid);color:var(--steel);}
+.btn-gold{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;background:var(--gold);color:var(--steel);font-size:13px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-gold:hover{background:var(--gold-light);}
+/* Fade in */
+.fade-in{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease;}
+footer{background:var(--steel);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;margin-top:0;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="maintenance-repair.html" class="nav-back">← Maintenance &amp; Repair</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="maintenance-repair.html">Maintenance &amp; Repair</a><span class="sep">/</span>
+  <span class="current">Module 1 — The Career</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 1 of 7</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <span class="prog-dot active">1</span>
+    <span class="prog-dot locked">2</span>
+    <span class="prog-dot locked">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Maintenance &amp; Repair Track · Module 1 of 7</div>
+    <h1>The Maintenance &amp; Repair <em>Career</em></h1>
+    <p>What the job actually is, who hires maintenance techs, the career ladder from porter to regional manager, the professional mindset that separates great techs from average ones, and the certification path that maximizes your earning potential.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Sources: Habitat for Humanity · CAMT · NAA</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">What apartment maintenance actually is — <em>and why this career matters</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Apartment maintenance is the backbone of the entire rental housing industry. Every time a tenant turns on a faucet, flips a light switch, or calls because their heat went out at midnight — a maintenance technician is the person who makes it right. Without skilled maintenance techs, properties deteriorate, tenants leave, and property owners lose millions. This is not a job that anyone can fake their way through. It takes real skill, real problem-solving, and real professionalism.</p>
+
+    <p class="lesson-text">At its core, <strong>apartment maintenance covers the upkeep and repair of multifamily residential properties</strong> — anything from a 10-unit walk-up to an 800-unit high-rise. The work spans plumbing, electrical, HVAC, appliances, interior repairs, exterior grounds, common areas, and everything in between. No two days are the same. You might start the morning fixing a no-heat call in 30-degree weather, spend midday changing a toilet flapper for an 82-year-old resident, and close the afternoon diagnosing a dryer that stopped heating. That variety is exactly what makes this career genuinely engaging for people who like working with their hands and solving problems.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 Why This Career Is Underrated</div>
+      <p>The median salary for general maintenance and repair workers in 2024 was over $40,000 — with experienced techs earning $55,000–$70,000 and maintenance supervisors regularly exceeding $70,000. Full-time, year-round work. No seasonal layoffs. Health insurance, 401k, and paid time off are standard at most property management companies. Many properties also offer rent discounts for on-site maintenance staff. This is a career with real stability, real upward mobility, and real earning potential — and most people entering it today face almost no competition for good positions.</p>
+    </div>
+
+    <h3 class="sub-title">The three types of maintenance roles</h3>
+    <p class="lesson-text">Understanding how the roles stack up helps you see exactly where you are starting and where you are headed.</p>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="rc-tag">Entry Level</div>
+        <h4>Maintenance Technician</h4>
+        <p>Handles the bulk of day-to-day repair and upkeep tasks. Needs a broad, diverse skill set. Responds to work orders, performs routine maintenance, and handles emergency repairs. This is where almost everyone starts.</p>
+      </div>
+      <div class="role-card">
+        <div class="rc-tag">Mid Level</div>
+        <h4>Maintenance Supervisor</h4>
+        <p>Organizes daily tasks, ensures compliance with safety standards, and oversees other technicians. Found at larger properties with multiple techs on staff. Usually requires 3+ years of experience and strong technical skills.</p>
+      </div>
+      <div class="role-card">
+        <div class="rc-tag">Senior Level</div>
+        <h4>Maintenance Manager</h4>
+        <p>Handles planning, scheduling, budgeting, and team management. At smaller properties (&lt;100 units), the manager often does repairs too. At larger properties (200+ units), this is a pure leadership role overseeing the full maintenance program.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The types of properties you will work on</h3>
+    <p class="lesson-text">Apartments come in many forms — and each type has its own maintenance profile. Understanding what you are walking into helps you prepare.</p>
+
+    <div class="prop-grid">
+      <div class="prop-item"><strong>Studios</strong> — Small one-room units. Quick repairs, high turnover. Good for building speed and efficiency.</div>
+      <div class="prop-item"><strong>Walk-ups</strong> — No elevator. Physically demanding — you carry tools up flights of stairs all day.</div>
+      <div class="prop-item"><strong>High-rises</strong> — 12+ stories. Elevator maintenance becomes a specialty. Complex building systems.</div>
+      <div class="prop-item"><strong>Lofts</strong> — High ceilings, exposed systems. HVAC and electrical runs are often visible and accessible.</div>
+      <div class="prop-item"><strong>Duplexes &amp; Triplexes</strong> — Smaller properties, often managed independently. Great for learning the full scope of a property.</div>
+      <div class="prop-item"><strong>Garden Apartments</strong> — Ground-floor units with outdoor access. Grounds maintenance becomes a daily task.</div>
+    </div>
+
+    <div class="callout-steel">
+      <div class="callout-label">📋 A General Hiring Ratio to Know</div>
+      <p>Most property management companies use a ratio of roughly <strong>two maintenance technicians per 100 units</strong>. A 200-unit property typically needs two full-time techs. An 800-unit complex might have four or five. Knowing this helps you understand the scope of any property you are applying to — and gives you context for how busy your days will be.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch This First</div>
+    <h2 class="lesson-title">A real day in apartment maintenance — <em>unfiltered</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pepe Gomez — a veteran apartment maintenance supervisor — takes you through a full real day at work. Pool chemicals at 7am, a stack of work orders, a water heater swap, an oven element repair, a dryer solenoid diagnosis, and a run to the parts store on lunch break. This is what the job actually looks like from drive-in to drive-home.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/cL6k7zjtmg8" title="A Real Day in Apartment Maintenance — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Pepe Gomez · Maintenance Man Narratives</span>
+        <h4>Maintenance Tech Work Day (Realistic Vlog)</h4>
+        <p>A full day following a veteran apartment maintenance supervisor — morning routine, pool and grounds, a stack of work orders, appliance repairs, parts runs, and an honest wrap-up at the end of the day. The most realistic picture of what this career looks like day to day.</p>
+        <div class="credit">Pepe Gomez · Maintenance Man Narratives · February 2020 · Apartment maintenance specific</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The professional mindset — <em>what separates great techs from average ones</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Technical skill gets you hired. Professional mindset gets you promoted — and keeps you employed. Property managers have worked with maintenance techs who were brilliant with tools but impossible to trust around residents. They have also worked with techs who were slower and less technically advanced but so professional, so respectful, and so reliable that tenants asked for them by name. The professional habits you build from day one will define your entire career trajectory.</p>
+
+    <h3 class="sub-title">How to enter a resident's unit — always</h3>
+    <p class="lesson-text">A resident's apartment is their home. Even though you have a work order and a key, you are entering someone's private space. There is a correct way to do this every single time — no exceptions, no shortcuts.</p>
+
+    <div class="callout-steel">
+      <div class="callout-label">🚪 The Standard Entry Protocol</div>
+      <p><strong>Step 1:</strong> Knock three times — loud and clear. Ring the doorbell if there is one. <strong>Step 2:</strong> Wait. If no answer after 10–15 seconds, knock again. <strong>Step 3:</strong> Open the door slightly and immediately call out "Maintenance!" in a clear, loud voice. Keep calling as you walk in. If the bathroom door is closed — knock on that too. People are in showers, on phone calls, taking naps. Never assume the unit is empty just because their car is not in the parking lot. Someone could be visiting. A neighbor could be pet-sitting. Always knock, always announce.</p>
+    </div>
+
+    <h3 class="sub-title">Always assume you are being recorded</h3>
+    <p class="lesson-text">In 2026, cameras are everywhere — ring doorbells, laptop cameras, outlet cameras, phone cameras left face-up on a counter. The smartest habit any maintenance tech can build is to act exactly the same whether a resident is present or not. <strong>Do not set your tool bag on their countertop</strong> — that is where they eat. <strong>Do not open the refrigerator</strong> unless the work order is specifically about the refrigerator. <strong>Do not wander into bedrooms</strong>. Do not take phone calls inside the unit and talk about other residents or gossip about the property. Every single time you enter a unit — act like someone is watching. Because they might be.</p>
+
+    <h3 class="sub-title">How to treat residents</h3>
+    <p class="lesson-text">Being kind to residents is not just the right thing to do — it is the smartest professional move you can make. A resident who loves their maintenance tech will give glowing reviews to the property manager. A resident who dislikes a tech will find reasons to complain about every repair, even ones done correctly. The tech who is friendly, communicates clearly, and leaves the space cleaner than they found it builds a reputation that opens doors career-wide.</p>
+
+    <p class="lesson-text"><strong>Do not take complaints personally.</strong> When a resident vents about rent increases, slow repair response times, or noisy neighbors — they are not venting at you specifically. You are the person standing in front of them with the company logo on your shirt. Let them talk. When they finish, acknowledge it calmly: "I hear you. I can't speak to all of that, but I'm here right now and I'm going to take care of this for you." That one response disarms almost every frustrated resident instantly.</p>
+
+    <p class="lesson-text"><strong>Never disclose what you see in other units.</strong> Residents will ask — "Is my neighbor's apartment messy?" "Is that her boyfriend?" "Do they have nicer appliances than me?" The answer to all of these questions is always some version of "I don't really pay attention to that — I just focus on the work order." Do not let residents drag you into conversations about other tenants. It always ends badly.</p>
+
+    <h3 class="sub-title">Work orders — the system that protects you</h3>
+    <p class="lesson-text"><strong>Never enter a unit without a work order.</strong> Not even to "just take a quick look." The work order system protects the resident and it protects you. If there is no work order and something goes wrong — something breaks, something goes missing, someone claims you were in their apartment without permission — you have no documentation. A work order is your record of why you were there, what you did, and when you did it.</p>
+
+    <p class="lesson-text">When a resident asks you to do additional things while you are already in their unit — "While you're here, can you also look at my stove?" — the correct answer is: "I can only complete what's on this work order. For anything else, contact the office and they'll put in a new one." This is not being unhelpful. This is being professional. Once residents learn they can catch you for a free honey-do list, they will start putting in work orders for trivial things just to get you into the unit — and then keep you there for an hour doing things that were never approved.</p>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ Never Move Tenant Furniture</div>
+      <p>If you need to access a wall, a window, or an appliance and furniture is in the way — ask the resident to move it. Never move it yourself. If something breaks, scratches, or tears during a move — even something minor — it becomes your liability. A scratched end table can become a "priceless antique" worth thousands in a resident complaint. If the resident is not home and furniture is blocking your access, leave a note, inform the office, and reschedule. It is always worth the extra trip.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Professional Habits from Day One</div>
+    <h2 class="lesson-title">Tips for someone <em>starting brand new in maintenance</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">This video was made specifically for people entering apartment maintenance for the first time. It covers how to start as a porter or groundskeeper, how to properly enter units, professional conduct around residents, work order discipline, what tools to buy first, and why YouTube is one of the most powerful training tools available to maintenance techs today.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/cQKcukWD5NE" title="Tips for New Apartment Maintenance Technicians — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Pepe Gomez · Maintenance Man Narratives</span>
+        <h4>Tips for Someone Starting Brand New in Maintenance</h4>
+        <p>A veteran maintenance supervisor shares the professional habits, entry protocols, resident relations tips, work order discipline, and essential tools that every new maintenance tech needs to know on day one. Packed with practical advice you will not find in any job description.</p>
+        <div class="credit">Pepe Gomez · Maintenance Man Narratives · Apartment maintenance specific · Beginner-focused</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The Unit Scan — <em>the habit that makes you invaluable</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Here is a habit that separates the best maintenance techs from everyone else — and it takes less than 60 seconds. Every single time you enter a unit to complete a work order, do a quick visual sweep of the space before you leave. Not a full inspection. Just a trained eye doing what it is trained to do.</p>
+
+    <div class="unit-scan">
+      <h3>The 60-Second Unit Scan</h3>
+      <p>Before you leave any unit, take one minute and check these six things. You are not doing a formal inspection — you are just looking with professional eyes. One spotted problem caught early can save a property owner thousands of dollars in water damage, mold remediation, or equipment replacement.</p>
+      <div class="scan-items">
+        <div class="scan-item">Under the kitchen sink — any drips, moisture, or soft cabinet floor</div>
+        <div class="scan-item">Toilet base — any moisture, warping, or staining around the base</div>
+        <div class="scan-item">Water heater area — condensation, rust, or water staining underneath</div>
+        <div class="scan-item">HVAC filter — is it visibly clogged or has it been changed recently</div>
+        <div class="scan-item">Caulking around tubs and sinks — cracking, peeling, or missing sections</div>
+        <div class="scan-item">Smoke detector — is the unit present and does the light flash</div>
+      </div>
+    </div>
+
+    <p class="lesson-text">A leaking toilet base that goes unnoticed for three months becomes subfloor damage and a $4,000 repair. A missing section of caulk behind a tub becomes mold behind the wall. An HVAC filter that has not been changed in a year burns out a blower motor. These are all problems that a maintenance tech with trained eyes catches in 60 seconds — and that a property manager values enormously when you bring them to their attention.</p>
+
+    <p class="lesson-text">Document everything you notice in your work order notes. "Completed toilet flapper replacement. Also noted minor moisture under kitchen sink — recommend monitoring." That notation takes 15 seconds to write. It protects the resident, protects the property owner, and makes you look like exactly the kind of professional every property management company wants on their team.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 This Is Also Your Competitive Advantage</div>
+      <p>When you are going independent as a handyman, the Unit Scan becomes a selling point. Property managers who hire independent contractors specifically look for techs who catch additional issues proactively — because it saves them from emergency calls and expensive contractor visits down the road. If you can say in an interview or a pitch meeting "I always do a quick unit scan before I leave — I document anything I notice and flag it for your team," you have just differentiated yourself from 90% of the people they talk to.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The career ladder — <em>and the certification path that maximizes your paycheck</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">This track gets you job-ready. The certification path is what gets you promoted, gets you raises, and eventually gets you running a maintenance program for a regional portfolio making over six figures. Here is how the ladder looks — and exactly what each step adds to your hourly rate and career options.</p>
+
+    <div class="career-ladder">
+      <div class="ladder-step">
+        <div class="ladder-connector"><div class="ladder-node">1</div><div class="ladder-line"></div></div>
+        <div class="ladder-content">
+          <h4>Porter / Groundskeeper</h4>
+          <p>Where almost everyone starts. Grounds cleanup, trash, common area cleaning, painting apartments. No experience required. This is how you get your foot in the door and start learning the property.</p>
+          <div class="pay">$15–$19/hour · Entry level · No certification required</div>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-connector"><div class="ladder-node">2</div><div class="ladder-line"></div></div>
+        <div class="ladder-content">
+          <h4>Maintenance Technician I</h4>
+          <p>Basic repairs — plumbing, electrical, appliances, drywall, painting. Responding to work orders independently. This is the primary focus of Modules 2–5 in this track.</p>
+          <div class="pay">$18–$24/hour · 0–2 years experience</div>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-connector"><div class="ladder-node">3</div><div class="ladder-line"></div></div>
+        <div class="ladder-content">
+          <h4>Maintenance Technician II + CAMT</h4>
+          <p>HVAC, complex electrical, appliance diagnosis, preventive maintenance programs. The CAMT certification signals to any employer that you have completed accredited training across all five technical domains.</p>
+          <div class="pay">$22–$30/hour · CAMT adds $3–6/hour above non-certified peers</div>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-connector"><div class="ladder-node">4</div><div class="ladder-line"></div></div>
+        <div class="ladder-content">
+          <h4>Senior Tech + EPA Section 608</h4>
+          <p>EPA 608 certification is required to legally handle HVAC refrigerants. This credential does not expire and immediately opens up HVAC diagnostic and repair work — the highest-paid skill set in apartment maintenance.</p>
+          <div class="pay">$26–$35/hour · EPA 608 adds $3–5/hour above non-certified peers</div>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-connector"><div class="ladder-node">5</div><div class="ladder-line"></div></div>
+        <div class="ladder-content">
+          <h4>Maintenance Supervisor + CPO</h4>
+          <p>Overseeing a team of techs. The CPO (Certified Pool Operator) credential is required at any property with a pool — adds immediate value if your property has one. Supervisors manage work orders, coordinate vendors, and train junior techs.</p>
+          <div class="pay">$35–$50,000/year salary range · Leadership role</div>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-connector"><div class="ladder-node">6</div><div class="ladder-line"></div></div>
+        <div class="ladder-content">
+          <h4>Maintenance Manager / Regional Manager</h4>
+          <p>Running the full maintenance program for one property or a regional portfolio. Budget management, vendor relationships, capital planning, hiring and training. The CAMT+L credential (leadership) positions you specifically for this role.</p>
+          <div class="pay">$55,000–$100,000+ per year · Full benefits package</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The two paths this course prepares you for</h3>
+    <div class="path-compare">
+      <div class="path-card hired">
+        <h4>🏢 Getting Hired by a Property Management Company</h4>
+        <ul>
+          <li>Stable full-time income with benefits from day one</li>
+          <li>On-the-job training — you learn while you earn</li>
+          <li>Clear promotion path from tech to supervisor to manager</li>
+          <li>Health insurance, 401k, paid time off are standard</li>
+          <li>Many properties offer rent discounts to on-site staff</li>
+          <li>Best starting point — builds skills, experience, and credentials</li>
+        </ul>
+      </div>
+      <div class="path-card independent">
+        <h4>🔧 Going Independent as a Handyman or Contractor</h4>
+        <ul>
+          <li>Set your own hours and choose your clients</li>
+          <li>Charge $65–$125/hour for skilled repair work</li>
+          <li>Property managers actively seek reliable independent techs</li>
+          <li>Low startup cost — tools, a van, and a phone</li>
+          <li>Income grows with your reputation and referral network</li>
+          <li>Best when you have 2+ years of experience and credentials</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The CAMT — your industry certification</h3>
+    <p class="lesson-text">The <strong>Certificate for Apartment Maintenance Technicians (CAMT)</strong> is the industry-standard credential issued by the National Apartment Association Education Institute (NAAEI). It is accredited by ANSI and recognized by property management companies nationwide. You do not need it to get your first job — but it will accelerate every step after that.</p>
+
+    <div class="camt-steps">
+      <div class="camt-step">
+        <div class="camt-num">1</div>
+        <div>
+          <h4>Meet the Minimum Age Requirement</h4>
+          <p>You must be at least 18 years old. No prior experience required to enroll — you earn your experience requirement while in the program.</p>
+        </div>
+      </div>
+      <div class="camt-step">
+        <div class="camt-num">2</div>
+        <div>
+          <h4>Complete 80 Hours of Coursework</h4>
+          <p>Five technical courses: Soft Skills, Electrical, Plumbing, HVAC, and Interior/Exterior Maintenance. Must be completed through a local NAA affiliate — cannot be done entirely online. Hands-on training is required.</p>
+        </div>
+      </div>
+      <div class="camt-step">
+        <div class="camt-num">3</div>
+        <div>
+          <h4>Pass the CAMT Exam</h4>
+          <p>100 questions, 2.5 hours. Must be passed within 12 months of declaring candidacy. You receive a Provisional CAMT immediately upon passing — full CAMT is issued once you have 12 months of apartment maintenance experience.</p>
+        </div>
+      </div>
+      <div class="camt-step">
+        <div class="camt-num">4</div>
+        <div>
+          <h4>Meet the Experience Requirement</h4>
+          <p>12 months of apartment or rental housing maintenance experience. This can be earned while you are taking the course — so you can be working and certifying at the same time.</p>
+        </div>
+      </div>
+      <div class="camt-step">
+        <div class="camt-num">5</div>
+        <div>
+          <h4>Cost and Where to Register</h4>
+          <p>Typically $881 for NAA members, $1,101 for non-members. Some community college programs include the CAMT exam and run approximately $2,280 total. Scholarships are available through local NAA affiliates. Find your local affiliate and register at naahq.org.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The Full Certification Stack — What Each One Adds</div>
+      <p><strong>CAMT</strong> — $881–$1,100 · The foundation credential. Signals broad technical competence across all five maintenance domains. Adds $3–6/hour above non-certified peers. <strong>EPA Section 608</strong> — approximately $20 exam fee · Required for all refrigerant handling work. Does not expire. Opens up HVAC diagnostic and repair work — the highest-paid skill in apartment maintenance. Adds $3–5/hour. <strong>CPO (Certified Pool Operator)</strong> — approximately $250–$400 · Required at any property with a pool or spa. Adds immediate value if your property has aquatic amenities. <strong>CAMT+L</strong> — leadership micro-credential from NAAEI · Positions you specifically for supervisor and regional manager roles. Worth pursuing once you are in a senior tech role and aiming for management.</p>
+    </div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Primary Sources for This Track</div>
+    <h2 class="lesson-title">The books and resources <em>behind this course</em></h2>
+    <div class="gold-divider"></div>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Maintenance For Dummies — 2nd Edition</div>
+          <div class="bi-author">James and Morris Carey · Wiley Publishing · 2010</div>
+          <div class="bi-desc">Primary technical source for Modules 2–5. The Carey Brothers — nationally recognized contractors with 60+ years of combined experience — cover every major home system: plumbing, HVAC, electrical, appliances, interior and exterior repairs. 411 pages of practical, hands-on guidance. The Carey Brothers received the George Foster Peabody Award for their work in public building education.</div>
+        </div>
+        <a href="https://www.amazon.com/Home-Maintenance-Dummies-James-Carey/dp/0470439106" target="_blank">Find It →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Repair &amp; Maintenance — DIY Tips for Homeowners</div>
+          <div class="bi-author">Habitat for Humanity · Multiple Contributors</div>
+          <div class="bi-desc">150+ practical home maintenance and repair tips collected from real homeowners and reviewed by Habitat for Humanity's maintenance experts. Covers appliances, electrical, HVAC, plumbing, water heaters, septic systems, well care, and lawn maintenance. Plain-language, beginner-friendly. Secondary source for Modules 2–5.</div>
+        </div>
+        <a href="https://www.habitat.org" target="_blank">Habitat.org →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">CAMT Skill Standards — National Apartment Association</div>
+          <div class="bi-author">NAAEI · National Apartment Association Education Institute</div>
+          <div class="bi-desc">The official curriculum framework for the Certificate for Apartment Maintenance Technicians. Covers the five core domains: Soft Skills, Electrical, Plumbing, HVAC, and Interior/Exterior Maintenance. Used throughout this course to align content with industry certification standards.</div>
+        </div>
+        <a href="https://naahq.org/naaei/credentials/camt-accreditation" target="_blank">NAAEI.org →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>"You just finished Module 1 — and you already know something that most people entering this field never take the time to learn: what the job actually is, how the career ladder works, and what professional habits separate the techs who get promoted from the ones who get stuck. That knowledge is not small. Most people show up on day one with a tool bag and no idea what they are walking into. You are already ahead. Now we build on it."</p>
+      <div class="mentor-name">Your Darco Mentor · Module 1 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 1 Key Takeaways</h3>
+    <ul>
+      <li>Apartment maintenance covers the upkeep and repair of multifamily residential properties — plumbing, electrical, HVAC, appliances, interior repairs, exterior grounds, and common areas. No two days are the same, which is exactly what makes this career genuinely engaging for people who like working with their hands.</li>
+      <li>The three core roles: Maintenance Technician (entry level, handles work orders and repairs), Maintenance Supervisor (mid level, oversees other techs at larger properties), and Maintenance Manager (senior level, handles planning, budgeting, and team leadership). Most careers start as a porter or groundskeeper and progress from there.</li>
+      <li>Professional mindset is as important as technical skill. Always knock and announce before entering. Always assume you are being recorded. Never move tenant furniture. Never disclose what you see in other units. Never do work without a work order. Let tenants vent without taking it personally — you are there to fix the problem, not win an argument.</li>
+      <li>The Unit Scan habit: every time you enter a unit to complete a work order, spend 60 seconds checking under the sink, the toilet base, the water heater area, the HVAC filter, the caulking, and the smoke detector. Document anything you notice. One spotted problem caught early can save a property owner thousands of dollars and makes you invaluable to any property management company.</li>
+      <li>The career ladder runs from Porter ($15–19/hr) to Technician I ($18–24/hr) to Technician II with CAMT ($22–30/hr) to Senior Tech with EPA 608 ($26–35/hr) to Supervisor ($35–50K/year) to Maintenance Manager ($55–100K+/year). The CAMT certification and EPA Section 608 are the two most impactful credentials for accelerating your pay.</li>
+      <li>The CAMT requires 80 hours of hands-on coursework through a local NAA affiliate, a 100-question exam, and 12 months of apartment maintenance experience (which can be earned while taking the course). Cost: $881–$1,101. Register at naahq.org. You do not need it to get your first job — but it accelerates every step after that.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question-block">
+      <div class="q-num">Question 1 of 5</div>
+      <div class="q-text">A maintenance tech arrives at a unit with a work order to fix a leaky faucet. She knocks twice, hears nothing, and uses her key to enter. Inside, she immediately walks to the kitchen sink and gets to work. What did she do wrong?</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Nothing — she had a work order and a key, which gives her full authorization to enter and proceed directly with the repair.</div>
+      <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> She did not announce herself after entering. She should have opened the door slowly while calling out "Maintenance!" clearly and repeatedly until she confirmed no one was present. Two knocks before entering is also below the standard — three clear knocks are expected.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> She should have called the resident on the phone before using her key to enter.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> She needed supervisor approval before entering an occupied unit unannounced.</div>
+      <div class="explanation correct" id="q1-correct">Correct! A work order and a key authorize entry — but not silent entry. The standard protocol is three loud clear knocks, waiting for a response, then opening the door slowly while calling "Maintenance!" repeatedly. You keep announcing yourself as you move through the unit. A resident could be asleep, in the shower, on a call, or simply not have heard. Entering silently — even with a work order — is unprofessional and potentially frightening to a resident who suddenly discovers a stranger in their home.</div>
+      <div class="explanation wrong" id="q1-wrong">Not quite. The issue here is not about having authorization to enter — a work order and a key provide that. The problem is entering silently. The standard protocol requires three clear knocks, then announcing "Maintenance!" as you enter and while you move through the unit. The resident may be asleep, in the shower, or simply not have heard. Entering without announcing yourself is unprofessional and startling.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 2 of 5</div>
+      <div class="q-text">A resident stops a maintenance tech in the hallway and says, "Hey, can you just come look at my bathroom faucet real quick? It's been dripping for a week." The tech knows exactly how to fix it and has the parts on his cart. What should he do?</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Go fix it — it is a quick repair, the resident is right there, and being helpful builds goodwill with tenants.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Ask the resident to write it down and slip it under the office door so it is semi-official.</div>
+      <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Kindly explain that all repairs require a work order through the office before he can enter the unit. Direct them to contact the office to submit one and let them know he will take care of it as soon as it comes through.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Tell the resident it is not his job and they need to call a plumber.</div>
+      <div class="explanation correct" id="q2-correct">Correct! The work order system exists to protect everyone — the resident, the property, and the tech. Without a work order, there is no documentation of why you were in the unit, what you did, or when. If anything goes wrong — something breaks, something goes missing, the resident claims the tech damaged something — there is no record. A work order also ensures the repair is tracked, budgeted, and part of the property's maintenance history. Being helpful means directing residents to the right process, not bypassing it.</div>
+      <div class="explanation wrong" id="q2-wrong">Not the right move. The work order system exists specifically to protect the tech, the resident, and the property. Entering a unit without a work order — even for a quick fix — leaves no documentation of the visit. If anything goes wrong or a dispute arises, there is no record you were authorized to be there. Always direct residents to submit a work order through the office. This is not being unhelpful — it is being professional.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 3 of 5</div>
+      <div class="q-text">After completing a work order to replace a toilet flapper, a tech does a quick unit scan before leaving. She notices moisture under the kitchen sink and slight warping of the cabinet floor — the resident never mentioned this. What is the correct action?</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Fix it right away since she is already in the unit and has her tools — it saves the resident time and reduces work orders for the office.</div>
+      <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Document the observation in her work order notes ("Completed flapper replacement. Noted moisture and cabinet floor warping under kitchen sink — recommend inspection") and report it to the office so a follow-up work order can be created.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Ignore it — the resident did not report it and it is not on the work order.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Tell the resident directly and let them decide whether to report it to the office.</div>
+      <div class="explanation correct" id="q3-correct">Correct! The Unit Scan habit is only valuable if you document and report what you find. A quick note on the work order — "Noted moisture and cabinet floor warping under kitchen sink — recommend follow-up inspection" — creates a record, alerts the office, and ensures a proper work order is created for the follow-up repair. This protects the resident from a growing problem, protects the property from escalating damage, and makes the tech look highly professional. Never fix unreported issues without authorization — always report and let the office create the proper work order.</div>
+      <div class="explanation wrong" id="q3-wrong">Not quite. The correct action is to document the observation in the work order notes and report it to the office — not to fix it on the spot (no work order exists for that repair) and not to ignore it. The Unit Scan habit creates value only when what you notice gets documented and reported. A note in the work order costs 15 seconds and could prevent thousands of dollars in water damage from an undetected slow leak.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 4 of 5</div>
+      <div class="q-text">A resident asks a maintenance tech: "Hey, the woman in 4B — is she renting with a roommate now? I've seen a different car in her spot." What is the correct response?</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Answer honestly — sharing basic information about neighbors builds community trust within the property.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Say "I think so" if the tech has seen someone else there — being vague is fine as long as nothing sensitive is disclosed.</div>
+      <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> Decline to comment on other residents' situations — "I honestly don't pay attention to that stuff, I just focus on the work orders. If you have any concerns about your neighbor, the office would be the right people to talk to."</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Report the question to the property manager as a potential noise or lease violation concern.</div>
+      <div class="explanation correct" id="q4-correct">Correct! Disclosing anything about another resident's living situation — who they are with, what their apartment looks like, what is going on in their unit — is a serious professional violation. Residents will ask these questions every day and in every creative form. The answer is always some version of "I don't really notice that — I just focus on the work orders." Redirect them to the office if they have genuine concerns. Gossiping about other residents, even casually, erodes trust, creates liability, and can get a tech fired.</div>
+      <div class="explanation wrong" id="q4-wrong">Not quite. Any information about another resident's living situation — who they live with, their visitors, their apartment contents — is confidential. A maintenance tech who shares this information, even casually, is violating the resident's privacy and the property's trust. The correct response is always to redirect: "I honestly don't pay attention to that — I just focus on the work orders." Never gossip about, speculate about, or share information about other residents under any circumstances.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 5 of 5</div>
+      <div class="q-text">A new maintenance tech is deciding whether to pursue the CAMT certification. He has just started his first job and is earning $19/hour. Which statement about the CAMT most accurately reflects its value?</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> The CAMT is required to legally work as a maintenance tech in most states — without it, a tech cannot be hired at any property management company.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> The CAMT is only useful for techs who want to become managers — it has no impact on hourly pay for front-line technicians.</div>
+      <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> The CAMT is not required to get hired, but it signals broad technical competence across all five maintenance domains and typically adds $3–6/hour above non-certified peers — making it one of the highest-return investments a maintenance tech can make early in their career.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The CAMT must be completed before starting work — no property management company will hire an uncertified tech for an entry-level position.</div>
+      <div class="explanation correct" id="q5-correct">Correct! The CAMT is not a legal requirement — it is a professional credential that demonstrates competence and commitment. For a tech currently earning $19/hour, the CAMT can translate to $22–25/hour at the same employer or a more competitive position at another property. At $3–6/hour above non-certified peers and a cost of $881–$1,100 for the course, the CAMT typically pays for itself within the first two to three months of the pay increase. It also dramatically accelerates the path to supervisor and manager roles, where the salary uplift is even more significant.</div>
+      <div class="explanation wrong" id="q5-wrong">Not quite. The CAMT is not a legal requirement — entry-level maintenance positions do not require it. But it is far from useless for front-line techs. The CAMT signals competence across all five technical domains (electrical, plumbing, HVAC, appliances, interior/exterior) and typically adds $3–6/hour above non-certified peers. At $881–$1,100 for the certification and $3–6/hour in additional pay, the credential pays for itself within months. It also accelerates the path to supervisor and manager roles significantly.</div>
+    </div>
+
+    <button class="check-btn" onclick="checkAllAnswers()">Check My Answers</button>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="module-glossary">
+    <h3>📖 Module 1 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch1" placeholder="Search terms..." oninput="mgFilter(this,1)">
+    <div class="mg-terms" id="mgTerms1">
+
+      <div class="mg-term" data-mg="camt certificate apartment maintenance technicians credential certification naaei national apartment association 80 hours exam">
+        <div class="mg-term-header"><span class="mg-name">CAMT</span><span class="mg-abbr">Certificate for Apartment Maintenance Technicians</span><span class="mg-law">NAAEI · ANSI Accredited</span></div>
+        <div class="mg-def">The industry-standard certification for apartment maintenance technicians, issued by the National Apartment Association Education Institute (NAAEI). Requires 80 hours of hands-on coursework through a local NAA affiliate, passing a 100-question exam, and 12 months of apartment maintenance experience. Cost: $881–$1,101. Typically adds $3–6/hour above non-certified peers.</div>
+        <div class="mg-tip">💡 Not required to get hired — but accelerates every promotion after that.</div>
+      </div>
+
+      <div class="mg-term" data-mg="cpo certified pool operator pool spa credential aquatic">
+        <div class="mg-term-header"><span class="mg-name">CPO</span><span class="mg-abbr">Certified Pool Operator</span></div>
+        <div class="mg-def">A certification required for maintenance technicians who manage pool and spa systems at residential properties. Covers water chemistry, equipment operation, safety standards, and health regulations. Required at any property with a pool or spa. Adds immediate value if your property has aquatic amenities. Cost: approximately $250–$400.</div>
+      </div>
+
+      <div class="mg-term" data-mg="epa section 608 refrigerant hvac certification required legally handle">
+        <div class="mg-term-header"><span class="mg-name">EPA Section 608</span><span class="mg-abbr">Refrigerant Handling Certification</span><span class="mg-law">Federal Requirement · Does Not Expire</span></div>
+        <div class="mg-def">Federal certification required by the Environmental Protection Agency for any technician who maintains, services, repairs, or disposes of HVAC equipment containing regulated refrigerants. Does not expire. Opens up HVAC diagnostic and repair work — the highest-paid skill in apartment maintenance. Exam fee approximately $20. Typically adds $3–5/hour above non-certified peers.</div>
+        <div class="mg-tip">💡 If you want to do HVAC refrigerant work, this is not optional — it is federal law.</div>
+      </div>
+
+      <div class="mg-term" data-mg="maintenance manager role senior planning budgeting team leadership portfolio">
+        <div class="mg-term-header"><span class="mg-name">Maintenance Manager</span></div>
+        <div class="mg-def">Senior maintenance role responsible for planning, scheduling, budgeting, vendor management, and team leadership. At smaller properties (&lt;100 units), the manager often completes repairs themselves. At larger properties (200+ units), this is a pure leadership position overseeing the full maintenance program. Salary range: $55,000–$100,000+ per year with full benefits.</div>
+      </div>
+
+      <div class="mg-term" data-mg="maintenance supervisor mid level role oversee technicians organize daily tasks compliance">
+        <div class="mg-term-header"><span class="mg-name">Maintenance Supervisor</span></div>
+        <div class="mg-def">Mid-level maintenance role found at larger properties with multiple technicians on staff. Organizes daily tasks, ensures compliance with safety standards, and oversees technicians as they perform their work. Typically requires 3+ years of experience and strong technical skills across all maintenance domains.</div>
+      </div>
+
+      <div class="mg-term" data-mg="maintenance technician entry level work orders repairs plumbing electrical hvac appliances">
+        <div class="mg-term-header"><span class="mg-name">Maintenance Technician</span></div>
+        <div class="mg-def">The primary front-line role in apartment maintenance. Handles the bulk of day-to-day repair and upkeep tasks — responding to work orders, performing routine preventive maintenance, and handling emergency repairs. Requires a broad, diverse skill set across plumbing, electrical, HVAC, appliances, and interior repairs. Where almost everyone starts their maintenance career.</div>
+      </div>
+
+      <div class="mg-term" data-mg="naaei national apartment association education institute credentials training programs">
+        <div class="mg-term-header"><span class="mg-name">NAAEI</span><span class="mg-abbr">National Apartment Association Education Institute</span></div>
+        <div class="mg-def">The educational arm of the National Apartment Association (NAA) that issues the CAMT, CAMT+E (energy efficiency), and CAMT+L (leadership) credentials. The CAMT program is accredited by ANSI (American National Standards Institute). Find local NAA affiliates and certification programs at naahq.org.</div>
+      </div>
+
+      <div class="mg-term" data-mg="porter groundskeeper entry level starting point cleaning grounds trash painting">
+        <div class="mg-term-header"><span class="mg-name">Porter / Groundskeeper</span><span class="mg-law">Entry Level</span></div>
+        <div class="mg-def">The most common starting point in apartment maintenance. Responsibilities include grounds cleanup, trash removal, common area cleaning, and painting apartments. No prior experience required. This is how most maintenance techs get their foot in the door — learn the property, demonstrate reliability, and work up to technician responsibilities. Pay range: $15–$19/hour.</div>
+      </div>
+
+      <div class="mg-term" data-mg="unit scan 60 second habit visual sweep professional inspect proactive">
+        <div class="mg-term-header"><span class="mg-name">Unit Scan</span><span class="mg-law">Professional Habit</span></div>
+        <div class="mg-def">A 60-second visual sweep performed by a maintenance tech before leaving any unit after completing a work order. Checks six key areas: under the kitchen sink, toilet base, water heater area, HVAC filter, caulking around tubs and sinks, and smoke detector. Catches unreported problems early — before they become expensive damage. Should be documented in work order notes.</div>
+        <div class="mg-tip">💡 One spotted slow leak can save a property owner $4,000+ in water damage repairs.</div>
+      </div>
+
+      <div class="mg-term" data-mg="work order system documentation record authorization repair request property management">
+        <div class="mg-term-header"><span class="mg-name">Work Order</span><span class="mg-law">Property Management System</span></div>
+        <div class="mg-def">A documented repair or maintenance request submitted through the property management system. Authorizes the maintenance tech to enter a specific unit for a specific task. Provides a record of what was requested, who completed it, when it was done, and what was found. Never enter a unit or perform repairs without a work order — it protects the tech, the resident, and the property.</div>
+      </div>
+
+    </div>
+    <div class="mg-none" id="mgNone1">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mr-glossary.html" style="font-size:13px;color:var(--steel-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 7 Modules) &rarr;</a>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 2: Tools, Safety &amp; Professional Judgment</h3>
+    <p>You understand the career, the mindset, and the path forward. Now we get into the practical work. Module 2 covers the essential tools every maintenance tech needs from day one, PPE and safety protocols, the "when to call a pro vs. handle it yourself" framework, and the research system that allows you to figure out any unfamiliar repair — fast.</p>
+    <a href="mr-module-2.html" class="next-module-cta">Module 2: Tools, Safety &amp; Professional Judgment →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="maintenance-repair.html" class="btn-outline">← Track Overview</a>
+  <a href="mr-module-2.html" class="btn-gold">Module 2 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Maintenance &amp; Repair Track · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Always verify local licensing requirements before performing regulated work.</p>
+</footer>
+
+<script>
+var quizAnswers={};
+var quizDone=false;
+
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=el.parentElement.querySelectorAll('.option');
+  opts.forEach(function(o){o.classList.remove('selected-correct','selected-wrong');});
+  el.classList.add(isCorrect?'selected-correct':'selected-wrong');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+
+function checkAllAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var correctEl=document.getElementById(qId+'-correct');
+    var wrongEl=document.getElementById(qId+'-wrong');
+    if(ans.isCorrect){correctEl.style.display='block';}
+    else{wrongEl.style.display='block';}
+  }
+}
+
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
+}
+
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+</script>
+</body>
+</html>
