@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 3: Plumbing Fundamentals — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rust:#8B3A1A;--rust-mid:#B04A22;--rust-light:#D0622E;--rust-pale:#FAF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(139,58,26,0.1);
+  --shadow-card:0 2px 16px rgba(139,58,26,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+  --green:#2E7D32;--green-pale:#F1F8F1;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--rust);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--rust);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--rust-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--rust);font-weight:600;}
+.progress-bar{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--rust-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(139,58,26,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--rust-mid);border-radius:3px;width:43%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--rust-mid);color:var(--white);}
+.prog-dot.active{background:var(--rust);color:var(--gold-light);}
+.prog-dot.locked{background:rgba(139,58,26,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(139,58,26,0.25);}
+.module-hero{background:linear-gradient(135deg,#4A1A08 0%,var(--rust) 55%,var(--rust-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--rust);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-rust{background:var(--rust-pale);border-left:4px solid var(--rust-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-rust .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.5rem;}
+.callout-rust p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Repair cards */
+.repair-grid{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
+.repair-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--rust-mid);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;}
+.repair-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;}
+.repair-card p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.repair-card .repair-tip{font-size:12.5px;color:var(--rust-mid);margin-top:0.5rem;font-style:italic;}
+/* Steps */
+.steps{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;}
+.step{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.step-num{width:30px;height:30px;border-radius:50%;background:var(--rust);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.step h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.step p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Two-col grid */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.two-col-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--rust-mid);border-radius:0 0 12px 12px;padding:1.25rem;}
+.two-col-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.75rem;}
+.two-col-card ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.two-col-card ul li{font-size:13px;color:var(--text-mid);line-height:1.55;padding-left:1.1rem;position:relative;}
+.two-col-card ul li::before{content:'→';color:var(--rust-mid);font-weight:700;position:absolute;left:0;font-size:11px;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--rust-pale);color:var(--rust-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Parts table */
+.parts-table{margin:2rem 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.parts-header{display:grid;grid-template-columns:1.5fr 1fr 2fr;background:var(--rust);color:var(--white);}
+.parts-header div{padding:0.75rem 1rem;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
+.parts-row{display:grid;grid-template-columns:1.5fr 1fr 2fr;border-top:1px solid var(--border);}
+.parts-row:nth-child(even){background:var(--rust-pale);}
+.parts-row div{padding:0.65rem 1rem;font-size:13px;color:var(--text-mid);line-height:1.5;}
+.parts-row .part-name{color:var(--text-dark);font-weight:600;}
+.parts-row .part-cost{color:var(--rust-mid);font-weight:600;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--rust);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--rust);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.65;display:block;padding-left:1.5rem;position:relative;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;position:absolute;left:0;}
+/* Mentor bubble */
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(139,58,26,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+/* Knowledge Check */
+.knowledge-check{background:var(--white);border:2px solid var(--rust-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--rust);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question-block{margin-bottom:1.75rem;}
+.q-text{font-size:14.5px;font-weight:600;color:var(--text-dark);line-height:1.6;margin-bottom:0.75rem;}
+.q-num{font-size:11px;font-weight:700;color:var(--rust-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;margin-bottom:0.5rem;}
+.option:hover{border-color:var(--rust-mid);background:var(--rust-pale);}
+.option.selected-correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.selected-wrong{border-color:#C62828;background:#FFF1F1;color:#B71C1C;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--rust-pale);color:var(--rust-mid);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.option.selected-correct .option-letter{background:#2E7D32;color:#fff;}
+.option.selected-wrong .option-letter{background:#C62828;color:#fff;}
+.explanation{display:none;padding:0.85rem 1rem;border-radius:8px;font-size:13.5px;line-height:1.65;margin-top:0.25rem;margin-bottom:0.75rem;}
+.explanation.correct{background:#F1F8F1;border:1px solid #A5D6A7;color:#1B5E20;}
+.explanation.wrong{background:#FFF1F1;border:1px solid #EF9A9A;color:#B71C1C;}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--rust-mid);}
+/* Glossary */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--rust-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--rust-mid);background:var(--rust-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--rust-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+/* Next module */
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--rust-mid);}
+/* Nav bottom */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;font-weight:600;text-decoration:none;color:var(--text-mid);transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--rust-mid);color:var(--rust);}
+.btn-gold{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;background:var(--gold);color:var(--rust);font-size:13px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-gold:hover{background:var(--gold-light);}
+.fade-in{opacity:1;transform:none;}
+footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="maintenance-repair.html" class="nav-back">← Maintenance &amp; Repair</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="maintenance-repair.html">Maintenance &amp; Repair</a><span class="sep">/</span>
+  <span class="current">Module 3 — Plumbing Fundamentals</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 3 of 7</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mr-module-1.html" class="prog-dot complete">1</a>
+    <a href="mr-module-2.html" class="prog-dot complete">2</a>
+    <span class="prog-dot active">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Maintenance &amp; Repair Track · Module 3 of 7</div>
+    <h1>Plumbing <em>Fundamentals</em></h1>
+    <p>Plumbing is the single largest category of work orders in apartment maintenance. Faucets, toilets, drains, water heaters — these are the repairs property managers need handled fast, without calling a licensed plumber. This module teaches you to handle all of them.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>3 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Sources: Home Maintenance For Dummies · Habitat for Humanity · Pepe Gomez</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">Understanding the plumbing system — <em>before you touch anything</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Every plumbing system in an apartment building works on a simple principle: water comes in under pressure through supply lines, gets used at fixtures, and leaves through drain lines by gravity. Understanding this two-system model — supply and drain — is the foundation for diagnosing any plumbing problem you will ever encounter.</p>
+
+    <p class="lesson-text">The <strong>supply system</strong> is pressurized. Cold water enters the building through the main shutoff, splits into a cold-water branch and a water heater feed, and pressurized hot and cold lines run throughout the building to every fixture. Because it is pressurized, a failure in the supply system — a burst pipe, a disconnected supply line, a blown fitting — releases water forcefully and continuously until you shut off the water. This is why the first rule of any plumbing repair is: <strong>know where your shutoff valves are before you start.</strong></p>
+
+    <p class="lesson-text">The <strong>drain system</strong> is not pressurized — it works entirely by gravity. Wastewater flows down and out through progressively larger pipes toward the sewer. Because gravity does the work, drain lines must slope downward consistently. The drain system also includes vent pipes that run up and out through the roof — these prevent siphoning and allow air into the system so drains flow freely. A slow drain is usually a clog. A drain that gurgles or smells bad is often a venting problem.</p>
+
+    <h3 class="sub-title">The shutoff hierarchy — your most important plumbing knowledge</h3>
+
+    <p class="lesson-text">Before any plumbing repair, you need to shut off the water to the affected fixture or area. Never start disconnecting supply lines or fittings without turning off the water first — even a standard supply line under a sink can release water at several gallons per minute if disconnected under pressure. Here is the hierarchy from most specific to most drastic:</p>
+
+    <div class="repair-grid">
+      <div class="repair-card">
+        <h4>Fixture shutoff valve</h4>
+        <p>Every toilet and sink has individual shutoff valves — the oval or football-shaped knobs under the sink or behind the toilet. Always try these first. Turn clockwise to close. For toilet repairs, use the valve behind and below the toilet. For sink repairs, use the valves under the cabinet (one for hot, one for cold).</p>
+        <div class="repair-tip">⚠️ Old valves in older buildings sometimes seize up or leak when turned. If a fixture shutoff is stuck, move up to the next level rather than forcing it.</div>
+      </div>
+      <div class="repair-card">
+        <h4>Branch shutoff</h4>
+        <p>Some buildings have shutoff valves for groups of units or specific floors — often in utility closets, mechanical rooms, or hallways. Knowing where these are saves you from having to shut off the whole building for a localized repair.</p>
+      </div>
+      <div class="repair-card">
+        <h4>Main building shutoff</h4>
+        <p>The master shutoff for the entire building — typically in a main mechanical or utility room. Shutting this off kills water to every unit. Only use this when the fixture and branch shutoffs are not working or are not accessible. Always notify residents before shutting the main.</p>
+        <div class="repair-tip">💡 Walk your building early in your career and find every shutoff valve. Document their locations. You will be glad you did at 2 AM.</div>
+      </div>
+    </div>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 Photo Before You Disassemble</div>
+      <p>Before disconnecting any plumbing for repair, take a photo of the existing piping with your phone. This is especially important under sinks, where multiple supply lines and drain connections can be confusing to reassemble. A 10-second photo saves you from a 20-minute puzzle when you are putting it back together. Bring the photo and any old parts to the plumbing supply store when ordering replacements — it eliminates guesswork entirely.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Faucets, toilets, and drains — <em>the three highest-volume work orders</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">If you can handle faucets, toilets, and clogged drains well, you have handled the vast majority of all plumbing work orders you will ever receive in apartment maintenance. These are not glamorous repairs — but they are the ones that keep residents happy, protect property, and demonstrate your value to every property manager who works with you.</p>
+
+    <h3 class="sub-title">Faucets — the drip that never stops</h3>
+
+    <p class="lesson-text">A dripping faucet is one of the most common maintenance requests in any apartment complex — and one of the most financially damaging if left unaddressed. A single dripping faucet can waste hundreds of gallons per month and, in buildings where the owner pays water, it adds up fast across dozens of units.</p>
+
+    <p class="lesson-text">Most faucet repairs come down to a small number of components. <strong>Cartridge faucets</strong> (the most common modern type) use a cartridge that controls both hot and cold flow. When they drip, the cartridge is usually worn and needs replacement. Get the faucet brand and look up the cartridge number — replacement cartridges for most common brands (Moen, Delta, Kohler) cost $15–$30. <strong>Ball faucets</strong> have a rotating ball mechanism and often come as a repair kit that replaces springs, seats, and the ball together. <strong>Compression faucets</strong> (older two-handle types) use rubber washers that wear out and need replacing — the cheapest fix in plumbing.</p>
+
+    <p class="lesson-text">The aerator is the screen at the end of the faucet spout. When a faucet runs slowly or sprays irregularly, a clogged aerator is the first thing to check. Unscrew it (counterclockwise), soak it in white vinegar for 30 minutes, rinse, and reinstall. This takes five minutes and fixes a huge percentage of "low water pressure" complaints. The aerator also controls flow rate — check that it is not the wrong size for the fixture before assuming the water pressure is the problem.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The Faucet Removal Tool</div>
+      <p>The <strong>basin wrench</strong> (also called an easy faucet remover) is a $20 tool that makes under-sink faucet work dramatically easier. Without it, you are lying on your back in a cramped cabinet trying to reach nuts 18 inches up in the dark with a regular wrench. With it, the whole job takes a fraction of the time. If you do not have one, get one. It will pay for itself the first time you use it.</p>
+    </div>
+
+    <h3 class="sub-title">Toilets — what is actually inside the tank</h3>
+
+    <p class="lesson-text">Most toilet problems are tank problems — and tank problems are almost always solved by replacing a small, inexpensive part. Before you order anything or call anyone, lift the tank lid and watch what happens when you flush. That 30 seconds of observation will tell you exactly what is wrong in most cases.</p>
+
+    <div class="parts-table">
+      <div class="parts-header">
+        <div>Part</div>
+        <div>Cost</div>
+        <div>Problem It Solves</div>
+      </div>
+      <div class="parts-row">
+        <div class="part-name">Flapper</div>
+        <div class="part-cost">$5–$12</div>
+        <div>Running toilet — water constantly trickling into bowl. Flapper wears out and no longer seals. Replace with matching brand/size.</div>
+      </div>
+      <div class="parts-row">
+        <div class="part-name">Fill valve (ballcock)</div>
+        <div class="part-cost">$12–$20</div>
+        <div>Toilet runs after flushing and won't stop, or refills too slowly. Fill valve regulates how the tank refills after each flush.</div>
+      </div>
+      <div class="parts-row">
+        <div class="part-name">Flush valve</div>
+        <div class="part-cost">$15–$35</div>
+        <div>Toilet doesn't flush fully or water leaks into bowl but flapper is fine. The flush valve seat may be cracked or corroded.</div>
+      </div>
+      <div class="parts-row">
+        <div class="part-name">Supply line</div>
+        <div class="part-cost">$8–$15</div>
+        <div>Leak at the connection between wall shutoff and toilet tank. Braided stainless lines are the most durable — upgrade if replacing.</div>
+      </div>
+      <div class="parts-row">
+        <div class="part-name">Wax ring</div>
+        <div class="part-cost">$8–$15</div>
+        <div>Water seeping from base of toilet to floor. Wax ring seals between toilet base and floor flange — replace when rocking toilet or persistent base leak.</div>
+      </div>
+      <div class="parts-row">
+        <div class="part-name">Tank bolts + washers</div>
+        <div class="part-cost">$5–$8</div>
+        <div>Leak around tank bolts where tank meets bowl. Apply a thin film of silicone caulk to underside of rubber washers before tightening.</div>
+      </div>
+    </div>
+
+    <p class="lesson-text"><strong>Clogged toilets</strong> are the highest-urgency plumbing call in any building — a resident with a non-functioning toilet cannot wait. Your first tool is always a flange plunger (not a cup plunger — make sure it has the extended rubber flap that seals the toilet drain). A good plunge with steady pressure clears most clogs in under a minute. If the plunger does not work, use a toilet auger — a 3–6 foot flexible snake designed for toilet drain geometry. Never use chemical drain openers in toilets — they can crack porcelain and damage pipe seals. And skip chemical drain cleaners in general: excessive use damages pipes over time and is a poor long-term solution.</p>
+
+    <h3 class="sub-title">Drains — prevention first, clear second</h3>
+
+    <p class="lesson-text">Slow or clogged drains are among the most preventable plumbing problems. The single most effective thing in any bathroom is a drain hair strainer — a $3 device that catches hair before it enters the drain and can be cleaned in seconds. In kitchens, the primary drain enemies are grease and food particles. Grease should never go down any drain — it cools, solidifies, and builds up in pipes over time, causing slow drains throughout entire drain lines.</p>
+
+    <p class="lesson-text">For slow sink drains, start with the P-trap. The P-trap is the curved section of pipe under every sink — the U-shaped piece that holds a small amount of water at all times to block sewer gases from entering the unit. Hair, soap scum, and debris collect here. Removing and cleaning the P-trap is a 10-minute job that clears the majority of slow sink drains. Place a bucket under the trap before removing the coupling nuts — there will be water.</p>
+
+    <p class="lesson-text">For drains that are slow but not blocked enough to pull the P-trap, the natural baking soda and vinegar method works well and does not damage pipes: pour half a cup of baking soda down the drain, follow with half a cup of white vinegar, let it fizz for ten minutes, then flush with hot water. For tub and shower drains, a drain snake (also called a hand snake or drum auger) lets you reach deeper than the P-trap to pull out hair clogs that are further down the line.</p>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ Chemical Drain Cleaners — Use Sparingly</div>
+      <p>Commercial chemical drain cleaners work by dissolving organic matter — but they also attack pipe joints, gaskets, and seals over time, especially in older buildings with older pipes. They are particularly damaging to PVC and older metal pipes. As a maintenance tech, a plunger and a drain snake will clear the same clogs without the side effects. If a clog keeps coming back in the same drain, that is a sign of a deeper blockage or a venting issue — both of which need diagnosis, not repeated chemical treatment.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Running Toilet Fix</div>
+    <h2 class="lesson-title">Quick flapper replacement — <em>one of the most common toilet work orders</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pepe Gomez demonstrates a running toilet fix — identifying a dried-out flapper as the cause, and replacing it quickly without even shutting off the water. This is exactly the kind of fast, confident repair that property managers expect from a skilled maintenance tech.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/Am8iXwi1C2c" title="Toilet Keeps Running — Flapper Replacement — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Pepe Gomez · Maintenance Man Narratives</span>
+        <h4>Toilet Keeps Running — Quick Flapper Fix</h4>
+        <p>A dried-out flapper is the most common cause of a running toilet. Pepe identifies it by sound and sight, swaps it out quickly, and confirms the fix. Clean, clear, beginner-friendly — and a repair anyone can do.</p>
+        <div class="credit">Pepe Gomez · Maintenance Man Narratives · Apartment maintenance focused · Beginner-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Water heaters — <em>what every maintenance tech needs to know</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Hot water complaints are urgent — residents tolerate a lot, but they do not tolerate cold showers. Understanding water heater basics lets you diagnose quickly, reset or repair what is within maintenance tech territory, and know immediately when it is time to call a licensed plumber or gas technician.</p>
+
+    <p class="lesson-text">Most apartment buildings use either <strong>gas-fired water heaters</strong> or <strong>electric water heaters</strong>. The basic operation is similar: cold water enters at the bottom through a dip tube, gets heated, and hot water rises to the top where the outlet pipe is. Both types have a <strong>temperature and pressure relief (T&amp;P) valve</strong> — a critical safety device that prevents the tank from over-pressurizing. This valve should never be capped or disabled. It should also not be dripping continuously — a dripping T&amp;P valve means the pressure inside the tank is too high and needs professional attention.</p>
+
+    <h3 class="sub-title">Gas water heater — what maintenance techs handle</h3>
+
+    <p class="lesson-text">The most common gas water heater issue maintenance techs encounter is a <strong>pilot light that will not stay lit</strong>. Before calling anyone, check the thermocouple — the small metal probe that sits in the pilot flame. The thermocouple's job is to sense that the pilot is lit and keep the gas valve open. When it fails, the pilot lights but goes out immediately when you release the button. Thermocouple replacement costs about $10–$20 in parts and takes 30–45 minutes. It is one of the most cost-effective repairs in the entire plumbing category.</p>
+
+    <p class="lesson-text">Beyond the thermocouple, gas water heater issues involve the gas valve, gas supply lines, or venting — all of which are <strong>outside maintenance tech territory</strong>. If the thermocouple is not the issue, document your findings and escalate to a licensed plumber or gas technician.</p>
+
+    <h3 class="sub-title">Electric water heater — what maintenance techs handle</h3>
+
+    <p class="lesson-text">Electric water heaters have two heating elements (upper and lower) and two thermostats. The most common issue is a <strong>tripped reset button</strong> — also called the high-limit switch — located behind the insulation access panel. If the water is not hot, press the red reset button and wait 30 minutes before testing. If it trips again, the thermostat or heating element likely needs replacement — both are maintenance tech-level repairs that require turning off the circuit breaker and draining part of the tank.</p>
+
+    <div class="two-col">
+      <div class="two-col-card">
+        <h4>🔧 Maintenance tech territory</h4>
+        <ul>
+          <li>Thermocouple replacement (gas heater)</li>
+          <li>Pilot light relight procedure</li>
+          <li>Reset button press (electric heater)</li>
+          <li>Thermostat replacement (electric heater)</li>
+          <li>Heating element replacement (electric heater)</li>
+          <li>Anode rod inspection and replacement</li>
+          <li>Annual tank flush to clear sediment</li>
+          <li>Supply line and shutoff valve check</li>
+          <li>T&amp;P valve test (press and release lever briefly)</li>
+          <li>Dip tube replacement</li>
+        </ul>
+      </div>
+      <div class="two-col-card">
+        <h4>🚫 Always call a licensed pro</h4>
+        <ul>
+          <li>Gas supply line connections or leaks</li>
+          <li>Gas valve replacement</li>
+          <li>Venting issues or blocked flue</li>
+          <li>Full tank replacement (state-dependent)</li>
+          <li>T&amp;P valve continuously dripping (pressure issue)</li>
+          <li>Cracked or corroded tank</li>
+          <li>Unusual smells coming from the tank</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The Anode Rod — The Most Overlooked Maintenance Item</div>
+      <p>The anode rod is a magnesium or aluminum rod inside the tank whose job is to corrode instead of the tank itself — a process called sacrificial corrosion. When it is completely consumed, the tank starts corroding instead. Checking and replacing the anode rod every 3–5 years adds years to the tank's life and is one of the most cost-effective maintenance actions available. A tank that costs $600–$1,200 to replace lasts 12–15 years with rod maintenance instead of 8–10 years without it.</p>
+    </div>
+
+    <p class="lesson-text"><strong>Annual tank flushing</strong> is simple preventive maintenance that most properties skip — and pay for later. Sediment from the water supply settles at the bottom of the tank, reducing efficiency and eventually causing early tank failure. Attaching a hose to the drain valve at the bottom of the tank and flushing until the water runs clear takes about 20 minutes and costs nothing. Add it to the annual maintenance calendar for every unit.</p>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Slow Flushing Toilet Fix</div>
+    <h2 class="lesson-title">Fill valve replacement — <em>fixing the toilet that never quite flushes right</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pepe Gomez tackles a toilet that flushes weakly — identifying a failing fill valve as the culprit, not a clog. He walks through the complete fill valve replacement step by step, including how to size the new valve, tighten without overtorquing, and adjust the water level. A very common work order that looks intimidating but takes under 20 minutes.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/xeqQw53hITw" title="How to Fix Slow Flushing Toilet — Fill Valve Replacement — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Pepe Gomez · Maintenance Man Narratives · 455K views</span>
+        <h4>How to Fix a Slow Flushing Toilet — Fill Valve Replacement</h4>
+        <p>A weak or incomplete flush is often mistaken for a clog — but the real culprit is usually the fill valve not delivering enough water to the tank. Pepe demonstrates a complete fill valve swap: shutoff, sponge out the tank, remove the old valve, size and install the new one, and confirm the fix with a strong flush.</p>
+        <div class="credit">Pepe Gomez · Maintenance Man Narratives · Apartment maintenance focused · Beginner-friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Unclogging a Toilet</div>
+    <h2 class="lesson-title">Plunger and auger technique — <em>the highest-urgency plumbing call handled fast</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">A clogged toilet is the most urgent plumbing work order in any building — a resident cannot wait. This video demonstrates proper plunger technique (filling the bellows with water before plunging, not air), the bucket-of-water method as a secondary approach, and when to escalate to a closet auger. Clean, clear, and covers all three tools in the right order.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/9WqTr6nTGcs" title="How to Unclog a Toilet — Plunger and Auger Technique" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Clogged Toilet — Plunger, Bucket &amp; Auger</span>
+        <h4>How to Unclog a Toilet — Plunger First, Auger Second</h4>
+        <p>Demonstrates the correct way to use a flange plunger — filling it with water first so you are pushing water, not air — plus the bucket method for stubborn clogs, and when to move to a closet auger. Covers all three approaches in the right sequence, exactly how a maintenance tech should approach any clogged toilet call.</p>
+        <div class="credit">Clogged toilet technique · Beginner-friendly · Covers plunger, bucket method, and closet auger</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Garbage disposals, washing machines, and <em>the repairs that save thousands</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Beyond faucets, toilets, and water heaters, maintenance techs encounter a set of plumbing-adjacent repairs that come up regularly and are squarely within maintenance territory — no license required, parts are cheap, and the alternative is a specialist call that costs ten to twenty times what the repair actually warrants.</p>
+
+    <h3 class="sub-title">Garbage disposals — reset first, replace second</h3>
+
+    <p class="lesson-text">When a garbage disposal is not working, the first step before anything else is to press the <strong>reset button</strong> — a small red or black button on the underside of the disposal unit. Disposals have an automatic overload protection that trips when the motor runs too hot or encounters a jam. Pressing reset and waiting 10 minutes for the motor to cool clears the majority of "dead disposal" calls without any tools or parts.</p>
+
+    <p class="lesson-text">If the reset does not work, the disposal may be jammed. There is a hex key slot on the underside of every disposal — use a 1/4 inch hex key (Allen wrench) to manually rotate the motor shaft and free the jam. Then press reset again. Never reach into the disposal — always shut off the power at the switch and, if possible, the circuit breaker before any hands-near-the-opening work. If the disposal hums but does not spin, it is jammed. If it is completely silent and reset does not help, it may be a wiring issue or the motor is burned out — replacement is then the next step.</p>
+
+    <p class="lesson-text">Garbage disposal replacement costs $80–$200 for the unit and takes about 30 minutes. Reuse the existing mounting ring if possible — same brand disposals usually use the same mount, which cuts the job to under 20 minutes. Always check the disposal manual that came with the building's unit before replacement, as some buildings have specific brand requirements.</p>
+
+    <h3 class="sub-title">Washing machine hose — the most dangerous appliance in any apartment</h3>
+
+    <p class="lesson-text">This sounds overstated until you have seen the damage a burst washing machine hose causes. A standard rubber washing machine supply hose that fails releases water at full supply pressure — four gallons per minute or more — with no automatic shutoff. In a multistory building, this floods the unit below within minutes and can cause tens of thousands of dollars in structural damage. It is one of the most expensive maintenance failures in property management.</p>
+
+    <p class="lesson-text">Every spring, check the hoses on every in-unit washer connection. Look for cracks, bulges, or any sign of wear at the connection points. Replace any rubber hoses that are more than 5 years old — or better, replace all rubber hoses with <strong>braided stainless steel hoses</strong>, which are burst-resistant, cost about $15 per pair, and essentially never fail. The cost of doing this proactively on every unit in a building is trivial compared to the cost of one hose failure.</p>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 Caulking — the Five-Dollar Repair That Prevents Thousand-Dollar Damage</div>
+      <p>Recaulking around tubs, showers, and sinks is not glamorous maintenance work — but failing caulk is one of the most common causes of water intrusion into walls, subfloors, and units below. A tube of silicone caulk costs about $5. Water damage from a failed caulk line costs hundreds to thousands. During every unit entry, add caulk inspection to your Unit Scan — look for gaps, mold, or peeling caulk at any water-adjacent edge. Reapply when needed. To recaulk: remove the old caulk completely with a plastic putty knife and a caulk remover product, clean and dry the surface thoroughly, apply a clean bead of 100% silicone caulk, smooth with a wet finger, and let it cure for 24 hours before water contact.</p>
+    </div>
+
+    <h3 class="sub-title">The Shut-Off Valve Audit — add to every unit entry</h3>
+
+    <p class="lesson-text">Whenever you are in a unit for any reason, take 60 seconds to check the condition of shut-off valves under sinks and behind toilets. Old valves — especially the multi-turn oval handle style common in buildings from the 1970s and 1980s — seize up and fail when turned after years of sitting in the open position. A valve that has not moved in 15 years may fail to close when you actually need it, or may leak when you turn it. The time to find this out is during a planned repair visit, not during an emergency.</p>
+
+    <p class="lesson-text">If you find a seized or questionable shut-off valve during routine maintenance, document it and flag it for replacement. <strong>Quarter-turn ball valves</strong> — the kind with a lever handle that goes perpendicular to the pipe when closed — are far more reliable than the old multi-turn style. They last decades, are easy to operate even in an emergency, and cost $15–$25 to replace.</p>
+  </div>
+
+  <!-- PRIMARY SOURCES -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Primary Sources</div>
+    <h2 class="lesson-title">The books and resources <em>behind this module</em></h2>
+    <div class="gold-divider"></div>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Maintenance For Dummies — 2nd Edition</div>
+          <div class="bi-author">James and Morris Carey · Wiley Publishing · 2010</div>
+          <div class="bi-desc">Chapters 7, 8, and 9 cover the complete plumbing system — water pipes, water heaters, all fixtures (faucets, toilets, tubs, showers), and sewer/drain systems. Step-by-step repair instructions for each component with explicit guidance on what homeowners and techs can handle vs. what requires a licensed plumber.</div>
+        </div>
+        <a href="https://www.amazon.com/Home-Maintenance-Dummies-James-Carey/dp/0470439106" target="_blank">Find It →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Repair &amp; Maintenance — DIY Tips for Homeowners</div>
+          <div class="bi-author">Habitat for Humanity · Multiple Contributors</div>
+          <div class="bi-desc">The plumbing and water heater sections contain practical field-tested tips from real maintenance professionals — including the baking soda/vinegar drain method, caulk gun technique, hair strainer advice, washing machine hose inspection protocol, and annual water heater flush recommendations.</div>
+        </div>
+        <a href="https://www.habitat.org" target="_blank">Habitat.org →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>"You have just learned the plumbing repairs that account for the biggest chunk of every maintenance tech's workday — and the ones that save property managers the most money when they are done right. A property manager who knows you can walk into a unit with a running toilet, a slow drain, and a water heater complaint and come out with all three handled without calling a single contractor is going to make sure you stay busy. That is exactly the reputation you are building right now."</p>
+      <div class="mentor-name">Your Darco Mentor · Module 3 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 3 Key Takeaways</h3>
+    <ul>
+      <li>The plumbing system has two sides: supply (pressurized, delivers water to fixtures) and drain (gravity-fed, removes waste water). Always identify which side you are working on before starting any repair. Know where every shutoff valve is in your building before you need one in an emergency.</li>
+      <li>Most faucet drips are cartridge or washer failures — cheap parts, straightforward replacement. A slow-flow faucet is almost always a clogged aerator — remove, soak in vinegar, reinstall. The faucet removal tool (basin wrench) is a $20 investment that makes under-sink work dramatically faster.</li>
+      <li>Toilet tank problems come down to a small number of inexpensive parts: flapper ($5–$12), fill valve ($12–$20), flush valve ($15–$35), supply line ($8–$15), wax ring ($8–$15). Lift the lid and watch what happens during a flush — that 30 seconds of observation tells you exactly what part is failing.</li>
+      <li>For clogged drains: plunger first, then a drain snake for toilets, P-trap cleaning for sink drains, and the baking soda/vinegar method for slow drains that are not fully blocked. Skip chemical drain cleaners — they damage pipes over time and are rarely necessary with the right tools.</li>
+      <li>Water heater maintenance territory includes thermocouple replacement (gas), heating element and thermostat (electric), reset button, anode rod, annual flush, and supply line/shutoff checks. Gas supply line work, gas valve replacement, and full tank replacement are always licensed pro territory.</li>
+      <li>Washing machine hose inspection and replacement is one of the highest-value preventive maintenance tasks in any building. Upgrade from rubber to braided stainless hoses wherever possible. Add caulk inspection to every unit entry — failing caulk is one of the most common and most preventable causes of water damage.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question-block">
+      <div class="q-num">Question 1 of 5</div>
+      <div class="q-text">A resident reports their toilet is "constantly running" — they can hear water trickling even when the toilet has not been flushed recently. Before ordering any parts, what should the tech do first?</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Order a new flapper, fill valve, and flush valve — replace all three at once to be thorough.</div>
+      <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Remove the tank lid and watch what happens during and after a flush — observe where water is going and what the tank components are doing to diagnose which part is actually failing.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Call a licensed plumber — running toilets often indicate a deeper water pressure issue that requires professional diagnosis.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Shut off the water supply to the toilet and tell the resident it will be fixed when parts arrive.</div>
+      <div class="explanation correct" id="q1-correct">Correct! Observation before ordering is the professional approach. Remove the tank lid and watch through an entire flush cycle. If the flapper is not sealing completely, you will see water trickling past it into the bowl — likely a worn flapper ($5–$12). If the fill valve keeps running after the tank should be full, the float may be set too high or the fill valve itself is failing. If water is running into the overflow tube, the float is set too high. Each scenario points to a different part — observation takes 30 seconds and eliminates guesswork entirely.</div>
+      <div class="explanation wrong" id="q1-wrong">Not quite. The professional move is observation first — remove the tank lid and watch through a complete flush cycle. Running toilets are almost always a single inexpensive part: flapper, fill valve, or float adjustment. Observation tells you which one without guessing. Replacing all three at once is wasteful. Calling a plumber for a running toilet is unnecessary and expensive. And telling the resident to wait without a diagnosis is poor service.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 2 of 5</div>
+      <div class="q-text">A tech is about to disconnect the supply lines under a bathroom sink to replace the faucet. What is the correct first action before touching any connections?</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Have a bucket ready — supply lines release slowly so there is time to catch the water after disconnecting.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Take a photo of the existing setup, then disconnect carefully — supply lines are not under high pressure.</div>
+      <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Turn off the shutoff valves under the sink (clockwise) before disconnecting anything, then take a photo of the existing piping configuration before disassembling.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Turn off the main building water supply to be safe before doing any plumbing work.</div>
+      <div class="explanation correct" id="q2-correct">Correct! Always shut off the fixture-level shutoff valves first — the oval knobs under the sink, one for hot and one for cold. Turn them clockwise until they stop. Supply lines ARE under full water pressure and will release water forcefully if disconnected while live. Then, before disassembling anything, take a photo of the existing piping layout — this makes reassembly much easier. Shutting off the main building supply is unnecessary and disruptive when fixture-level shutoffs are available and working.</div>
+      <div class="explanation wrong" id="q2-wrong">Not quite. Supply lines ARE under full water pressure — disconnecting them without turning off the shutoff valves first will release water forcefully. Always close the fixture shutoff valves (clockwise, under the sink) before disconnecting any supply line. Then take a photo of the existing setup before disassembling. Shutting off the main building supply is overkill when fixture-level shutoffs are functioning — it disrupts water service to the entire building unnecessarily.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 3 of 5</div>
+      <div class="q-text">A tech tries to relight the pilot on a gas water heater. The pilot lights successfully when they hold the button down, but goes out immediately when they release the button. What does this indicate?</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> The gas supply to the unit is insufficient — call the gas company to check pressure.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> The water heater tank needs replacement — this is a sign of internal failure.</div>
+      <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> The thermocouple is likely faulty — it is not generating enough voltage to signal the gas valve to stay open when the button is released.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> The gas valve is defective and needs to be replaced — call a licensed plumber.</div>
+      <div class="explanation correct" id="q3-correct">Correct! This is the classic thermocouple failure symptom. The thermocouple is a small probe that sits in the pilot flame and generates a small electrical current when heated. This current signals the gas valve to stay open. When the thermocouple is worn or faulty, it does not generate enough current, so the gas valve closes when you release the button — even if the pilot is still lit. Thermocouple replacement costs $10–$20 in parts and is well within maintenance tech territory. If replacing the thermocouple does not solve it, then escalate to a licensed pro for gas valve diagnosis.</div>
+      <div class="explanation wrong" id="q3-wrong">The symptom — pilot lights but goes out immediately when button is released — is the classic sign of thermocouple failure. The thermocouple is a probe that sits in the pilot flame and signals the gas valve to stay open. When it is worn or faulty, the gas valve closes when you release the button. This is a $10–$20 part replacement and is within maintenance tech territory. Gas supply issues would typically prevent the pilot from lighting at all. Only escalate to a pro if thermocouple replacement does not solve the problem.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 4 of 5</div>
+      <div class="q-text">A garbage disposal is completely silent when switched on — no hum, no grinding, nothing. What should the tech do first?</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Order a replacement disposal immediately — silence indicates motor failure.</div>
+      <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Press the reset button on the underside of the disposal unit, then wait 10 minutes for the motor to cool before trying the switch again.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Insert a hex key into the bottom of the disposal and manually turn it to free a jam.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Check the circuit breaker for the kitchen — the disposal circuit may be tripped.</div>
+      <div class="explanation correct" id="q4-correct">Correct! The reset button is always the first step. Garbage disposals have overload protection that trips automatically when the motor overheats. Pressing the small red or black button on the underside of the unit and waiting for the motor to cool clears the majority of "dead disposal" calls. Note: the hex key approach is for disposals that HUM but do not spin — that indicates a jam, not an overload. If the disposal hums, use the hex key first. If it is completely silent, press reset first. If reset does not help and the circuit breaker is fine, then proceed to further diagnosis or replacement.</div>
+      <div class="explanation wrong" id="q4-wrong">Not quite. The reset button is the correct first step for a completely silent disposal — silence often means the overload protection has tripped, not motor failure. Press the small red or black button on the underside of the unit, wait 10 minutes, then try the switch again. The hex key approach is for a disposal that HUMS but does not spin (indicating a jam). If the disposal is completely silent, the overload has tripped or there is a wiring issue — start with the reset button before assuming motor failure.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 5 of 5</div>
+      <div class="q-text">During a routine unit entry for an unrelated repair, the maintenance tech notices the washing machine hoses are original rubber hoses that appear to be about 8 years old. There is no active leak. What should the tech do?</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Note it mentally — rubber hoses last 10–15 years so there is no urgency yet.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Replace them immediately without notifying the property manager — it is a simple safety fix.</div>
+      <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Document the observation in the work order notes and flag the hoses for proactive replacement — aged rubber hoses are a significant water damage risk regardless of current condition.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Tell the resident to replace them — washing machine hoses are tenant responsibility.</div>
+      <div class="explanation correct" id="q3-correct" id="q5-correct">Correct! Rubber washing machine hoses should be replaced every 5 years as a standard preventive maintenance practice — 8 years is well past this threshold. The absence of a current leak is not reassuring — rubber hose failures often happen suddenly with no warning. Documenting the observation and flagging it for proactive replacement is the professional move. This gives the property manager the information to act before a failure. Braided stainless steel hoses (about $15 per pair) are the recommended upgrade. Never make unauthorized repairs without documentation and approval — even safety-motivated ones.</div>
+      <div class="explanation wrong" id="q5-wrong">Not quite. Eight-year-old rubber washing machine hoses are a real risk — rubber hoses should be replaced every 5 years as standard preventive maintenance. The correct action is to document the observation in your work order notes and flag them for proactive replacement through proper channels. This is the Unit Scan habit in action — noticing problems before they become emergencies. Never make unauthorized repairs without documentation. And never tell residents that building system maintenance is their responsibility — washing machine hookups are part of the unit systems.</div>
+    </div>
+
+    <button class="check-btn" onclick="checkAllAnswers()">Check My Answers</button>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="module-glossary">
+    <h3>📖 Module 3 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All plumbing terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch3" placeholder="Search terms..." oninput="mgFilter(this,3)">
+    <div class="mg-terms" id="mgTerms3">
+
+      <div class="mg-term" data-mg="anode rod sacrificial corrosion water heater tank life magnesium aluminum">
+        <div class="mg-term-header"><span class="mg-name">Anode Rod</span><span class="mg-law">Water Heater Maintenance</span></div>
+        <div class="mg-def">A magnesium or aluminum rod inside a water heater tank that corrodes preferentially, protecting the steel tank from rusting — a process called sacrificial corrosion. Should be inspected every 3 years and replaced when mostly consumed. Extending anode rod maintenance can add years to a tank's life and avoid premature replacement.</div>
+        <div class="mg-tip">💡 One of the most overlooked preventive maintenance items in apartment maintenance.</div>
+      </div>
+
+      <div class="mg-term" data-mg="ball valve quarter turn shutoff lever plumbing fixture water control">
+        <div class="mg-term-header"><span class="mg-name">Ball Valve</span><span class="mg-law">Plumbing Component</span></div>
+        <div class="mg-def">A shutoff valve with a lever handle that rotates 90 degrees (quarter-turn) between fully open and fully closed. Far more reliable than older multi-turn oval-handle valves — easy to operate in an emergency and does not seize up with age. The preferred replacement when upgrading aging shutoff valves.</div>
+      </div>
+
+      <div class="mg-term" data-mg="cartridge faucet valve flow control hot cold mixing repair replacement">
+        <div class="mg-term-header"><span class="mg-name">Cartridge</span><span class="mg-law">Faucet Component</span></div>
+        <div class="mg-def">The internal valve component in modern cartridge-style faucets that controls water flow and temperature mixing. When a cartridge faucet drips, the cartridge is usually worn and needs replacement. Cartridges are brand-specific — identify the faucet brand and model number before ordering. Cost: $15–$30 for most major brands.</div>
+      </div>
+
+      <div class="mg-term" data-mg="drain snake auger hand snake drum cable clog removal pipe">
+        <div class="mg-term-header"><span class="mg-name">Drain Snake</span><span class="mg-abbr">Hand Auger / Drum Auger</span></div>
+        <div class="mg-def">A flexible cable tool used to break up or remove clogs deeper in drain pipes than a plunger can reach. Available in hand (manual) and electric versions. For sink drains, a basic hand snake reaches several feet into the drain line. For toilets, use a toilet auger (closet auger) specifically designed for toilet drain geometry to avoid damaging the porcelain.</div>
+      </div>
+
+      <div class="mg-term" data-mg="dip tube water heater cold water inlet hot water separation">
+        <div class="mg-term-header"><span class="mg-name">Dip Tube</span><span class="mg-law">Water Heater Component</span></div>
+        <div class="mg-def">A tube inside the water heater tank that carries incoming cold water to the bottom of the tank, keeping it separated from the hot water at the top. When the dip tube cracks or breaks, cold water mixes with the hot water at the top and residents receive lukewarm water even though the heater is running. Replacement is a straightforward maintenance tech repair.</div>
+      </div>
+
+      <div class="mg-term" data-mg="flapper toilet tank seal flush valve rubber stopper running toilet">
+        <div class="mg-term-header"><span class="mg-name">Flapper</span><span class="mg-law">Toilet Component · Most Common Part</span></div>
+        <div class="mg-def">The rubber seal at the bottom of a toilet tank that lifts when the toilet is flushed and drops back to seal the tank as it refills. The most commonly replaced toilet part — a worn or warped flapper allows water to constantly trickle into the bowl, causing the toilet to "run." Cost: $5–$12. Match the brand and size to the existing flush valve seat.</div>
+        <div class="mg-tip">💡 A running toilet from a worn flapper can waste hundreds of gallons per month.</div>
+      </div>
+
+      <div class="mg-term" data-mg="fill valve ballcock toilet tank refill water level float mechanism">
+        <div class="mg-term-header"><span class="mg-name">Fill Valve</span><span class="mg-abbr">Ballcock</span><span class="mg-law">Toilet Component</span></div>
+        <div class="mg-def">The valve mechanism that controls how water enters the toilet tank after flushing. A failing fill valve causes the toilet to run continuously after the tank should be full, or to refill too slowly. Replacement is a standard maintenance repair — shut off the supply valve, flush, disconnect the supply line, and unscrew the fill valve locknut. Cost: $12–$20.</div>
+      </div>
+
+      <div class="mg-term" data-mg="aerator faucet spout screen flow control mineral buildup clog vinegar">
+        <div class="mg-term-header"><span class="mg-name">Faucet Aerator</span><span class="mg-law">Faucet Component</span></div>
+        <div class="mg-def">A small screen device threaded onto the end of a faucet spout that mixes air with water to create a smooth flow and reduce water use. When clogged with mineral deposits, it causes reduced flow or spray irregularity — the most common cause of resident "low water pressure" complaints at individual faucets. Clean by soaking in white vinegar for 30 minutes.</div>
+      </div>
+
+      <div class="mg-term" data-mg="p-trap u-bend drain pipe sewer gas water seal sink bathroom">
+        <div class="mg-term-header"><span class="mg-name">P-Trap</span><span class="mg-law">Drain Component</span></div>
+        <div class="mg-def">The U-shaped curved section of drain pipe directly under a sink or other plumbing fixture. Holds a small amount of water at all times to create a seal that prevents sewer gases from entering the unit. Collects hair, soap scum, and debris — cleaning the P-trap resolves the majority of slow sink drain complaints. Always place a bucket underneath before removing.</div>
+      </div>
+
+      <div class="mg-term" data-mg="temperature pressure relief valve tp valve safety water heater pressure">
+        <div class="mg-term-header"><span class="mg-name">T&amp;P Valve</span><span class="mg-abbr">Temperature &amp; Pressure Relief Valve</span><span class="mg-law">Safety Device</span></div>
+        <div class="mg-def">A critical safety valve on every water heater that opens automatically if the tank pressure or temperature exceeds safe levels, preventing catastrophic tank failure. Should never be capped or disabled. A T&P valve that drips continuously indicates excess tank pressure — this requires professional diagnosis, not maintenance tech repair. Test annually by briefly lifting the lever (have a bucket ready).</div>
+      </div>
+
+      <div class="mg-term" data-mg="thermocouple gas water heater pilot light gas valve sensor probe">
+        <div class="mg-term-header"><span class="mg-name">Thermocouple</span><span class="mg-law">Gas Water Heater Component</span></div>
+        <div class="mg-def">A small metal probe that sits in the pilot flame of a gas water heater and generates a small electrical current when heated. This current signals the gas valve to remain open. When the thermocouple fails, the pilot lights but goes out immediately when the button is released — the classic sign of a failed thermocouple. Replacement cost: $10–$20. This is a standard maintenance tech repair.</div>
+      </div>
+
+      <div class="mg-term" data-mg="wax ring toilet floor flange seal base leak replacement gasket">
+        <div class="mg-term-header"><span class="mg-name">Wax Ring</span><span class="mg-law">Toilet Installation Component</span></div>
+        <div class="mg-def">A soft wax seal between the base of a toilet and the drain flange in the floor that creates a watertight connection. Signs of a failed wax ring include water pooling around the base of the toilet or a toilet that rocks. Replacement requires removing the toilet, scraping off the old ring completely, installing a new ring, and carefully lowering the toilet back onto the floor flange. Cost: $8–$15.</div>
+      </div>
+
+    </div>
+    <div class="mg-none" id="mgNone3">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mr-glossary.html" style="font-size:13px;color:var(--rust-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 7 Modules) &rarr;</a>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 4: Electrical &amp; HVAC</h3>
+    <p>With plumbing fundamentals covered, the next highest-value skill set for any maintenance tech is electrical and HVAC. Module 4 covers what you can legally and safely handle — outlets, switches, light fixtures, ceiling fans, thermostats, HVAC filters and diagnostics — and where the hard line is for licensed electricians and EPA-certified HVAC technicians.</p>
+    <a href="mr-module-4.html" class="next-module-cta">Module 4: Electrical &amp; HVAC →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mr-module-2.html" class="btn-outline">← Module 2</a>
+  <a href="mr-module-4.html" class="btn-gold">Module 4 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Maintenance &amp; Repair Track · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Always verify local licensing requirements before performing regulated work.</p>
+</footer>
+
+<script>
+var quizAnswers={};
+var quizDone=false;
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=el.parentElement.querySelectorAll('.option');
+  opts.forEach(function(o){o.classList.remove('selected-correct','selected-wrong');});
+  el.classList.add(isCorrect?'selected-correct':'selected-wrong');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAllAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var correctEl=document.getElementById(qId+'-correct');
+    var wrongEl=document.getElementById(qId+'-wrong');
+    if(ans.isCorrect){correctEl.style.display='block';}
+    else{wrongEl.style.display='block';}
+  }
+}
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
+}
+</script>
+</body>
+</html>
