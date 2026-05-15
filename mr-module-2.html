@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.youtube.com https://youtube.com; img-src 'self' data: https:;">
+<title>Module 2: Tools, Safety & Professional Judgment — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rust:#8B3A1A;--rust-mid:#B04A22;--rust-light:#D0622E;--rust-pale:#FAF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(139,58,26,0.1);
+  --shadow-card:0 2px 16px rgba(139,58,26,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--rust);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--rust);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--rust-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--rust);font-weight:600;}
+.progress-bar{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--rust-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(139,58,26,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--rust-mid);border-radius:3px;width:28%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--rust-mid);color:var(--white);}
+.prog-dot.active{background:var(--rust);color:var(--gold-light);}
+.prog-dot.locked{background:rgba(139,58,26,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(139,58,26,0.25);}
+.module-hero{background:linear-gradient(135deg,#4A1A08 0%,var(--rust) 55%,var(--rust-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--rust);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-rust{background:var(--rust-pale);border-left:4px solid var(--rust-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-rust .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.5rem;}
+.callout-rust p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Tool categories */
+.tool-categories{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.tool-cat{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--rust-mid);border-radius:0 0 12px 12px;padding:1.25rem;}
+.tool-cat h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.75rem;}
+.tool-cat ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.tool-cat ul li{font-size:13px;color:var(--text-mid);line-height:1.55;padding-left:1.1rem;position:relative;}
+.tool-cat ul li::before{content:'→';color:var(--rust-mid);font-weight:700;position:absolute;left:0;font-size:11px;}
+.tool-cat .tc-note{font-size:11.5px;color:var(--text-light);margin-top:0.6rem;font-style:italic;}
+/* Pro vs DIY table */
+.pro-diy{margin:2rem 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.pro-diy-header{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--rust);color:var(--white);}
+.pro-diy-header div{padding:0.75rem 1rem;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
+.pro-diy-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--border);}
+.pro-diy-row:nth-child(even){background:var(--rust-pale);}
+.pro-diy-row div{padding:0.65rem 1rem;font-size:13px;color:var(--text-mid);line-height:1.5;}
+.pro-diy-row .task{color:var(--text-dark);font-weight:600;}
+.badge-tech{display:inline-block;background:#E8F5E9;color:#2E7D32;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;}
+.badge-pro{display:inline-block;background:#FFF1F1;color:#C62828;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;}
+.badge-gray{display:inline-block;background:#F5F5F5;color:#555;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;}
+/* Research steps */
+.research-steps{display:flex;flex-direction:column;gap:0.65rem;margin:2rem 0;}
+.research-step{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.rs-num{width:32px;height:32px;border-radius:50%;background:var(--rust);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.research-step h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.research-step p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* PPE grid */
+.ppe-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.65rem;margin:2rem 0;}
+.ppe-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;}
+.ppe-item h4{font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.ppe-item p{font-size:12px;color:var(--text-mid);line-height:1.5;}
+/* Video */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--rust-pale);color:var(--rust-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
+.books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
+.book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
+.book-item .bi-author{font-size:12px;color:var(--text-light);}
+.book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
+.book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--rust);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
+.takeaways{background:var(--rust);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.65;display:block;padding-left:1.5rem;position:relative;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;position:absolute;left:0;}
+/* Mentor bubble */
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(139,58,26,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+/* Knowledge Check */
+.knowledge-check{background:var(--white);border:2px solid var(--rust-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--rust);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question-block{margin-bottom:1.75rem;}
+.q-text{font-size:14.5px;font-weight:600;color:var(--text-dark);line-height:1.6;margin-bottom:0.75rem;}
+.q-num{font-size:11px;font-weight:700;color:var(--rust-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;margin-bottom:0.5rem;}
+.option:hover{border-color:var(--rust-mid);background:var(--rust-pale);}
+.option.selected-correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.selected-wrong{border-color:#C62828;background:#FFF1F1;color:#B71C1C;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--rust-pale);color:var(--rust-mid);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.option.selected-correct .option-letter{background:#2E7D32;color:#fff;}
+.option.selected-wrong .option-letter{background:#C62828;color:#fff;}
+.explanation{display:none;padding:0.85rem 1rem;border-radius:8px;font-size:13.5px;line-height:1.65;margin-top:0.25rem;margin-bottom:0.75rem;}
+.explanation.correct{background:#F1F8F1;border:1px solid #A5D6A7;color:#1B5E20;}
+.explanation.wrong{background:#FFF1F1;border:1px solid #EF9A9A;color:#B71C1C;}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--rust-mid);}
+/* Glossary */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--rust-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--rust-mid);background:var(--rust-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--rust-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+/* Next module */
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--rust-mid);}
+/* Nav bottom */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;font-weight:600;text-decoration:none;color:var(--text-mid);transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--rust-mid);color:var(--rust);}
+.btn-gold{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;background:var(--gold);color:var(--rust);font-size:13px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-gold:hover{background:var(--gold-light);}
+.fade-in{opacity:1;transform:none;transition:opacity 0.55s ease,transform 0.55s ease;}
+footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;margin-top:0;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="maintenance-repair.html" class="nav-back">← Maintenance &amp; Repair</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="maintenance-repair.html">Maintenance &amp; Repair</a><span class="sep">/</span>
+  <span class="current">Module 2 — Tools, Safety &amp; Professional Judgment</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 2 of 7</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mr-module-1.html" class="prog-dot complete">1</a>
+    <span class="prog-dot active">2</span>
+    <span class="prog-dot locked">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Maintenance &amp; Repair Track · Module 2 of 7</div>
+    <h1>Tools, Safety &amp; <em>Professional Judgment</em></h1>
+    <p>The essential tools every maintenance tech needs from day one, how to stay safe on the job, when to handle it yourself vs. call a licensed pro, and the research system that lets you figure out any unfamiliar repair — fast.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Sources: Home Maintenance For Dummies · Habitat for Humanity · Pepe Gomez</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The essential tools — <em>what to buy first and why</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">You do not need thousands of dollars in tools to start your maintenance career. What you need is the right tools — the ones that cover 75–80% of every work order you will ever receive. As an experienced maintenance supervisor who trains new techs puts it: <strong>having your own tools signals that you are serious about learning.</strong> A supervisor choosing between two new hires will almost always invest more time training the one who shows up with their own bag — because that person has already demonstrated they are committed.</p>
+
+    <p class="lesson-text">Start with quality where it counts — channel locks, screwdrivers, adjustable wrenches — and go budget where it does not. Harbor Freight and Home Depot have perfectly serviceable versions of many tools that will hold up fine through your first year. You can upgrade as you earn. The goal on day one is to have what you need to learn, not to have the best collection in the shop.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 What Your First Tool Kit Actually Costs</div>
+      <p>A fully functional beginner maintenance tool kit covering all the basics runs approximately <strong>$160–$500 total</strong> depending on brand choices. Pepe Gomez built a fully capable tote for $160–$170 using mostly Home Depot Husky and Stanley brand tools. A more comprehensive kit including power tools runs closer to $400–$500. You do not have to buy everything at once — start with the hand tools and add power tools as you earn your first paychecks.</p>
+    </div>
+
+    <h3 class="sub-title">Your core tool kit — organized by category</h3>
+
+    <div class="tool-categories">
+      <div class="tool-cat">
+        <h4>🔧 Hand Tools — The Foundation</h4>
+        <ul>
+          <li>Channel locks — 2 sizes (10" and 6"). Channel Lock brand lasts forever</li>
+          <li>Multi-bit screwdriver (6-in-1 or 11-in-1) — quarter inch and 5/16 nut drivers included</li>
+          <li>Dedicated Phillips #2 and flat head screwdrivers</li>
+          <li>Needle nose pliers — standard and long-reach (for sink drains)</li>
+          <li>Adjustable wrenches — 6" and 8"</li>
+          <li>Vice grips — standard and needle nose</li>
+          <li>Hammer — nothing fancy, harbor freight is fine</li>
+          <li>Utility knife — you will use this every single day</li>
+          <li>Allen wrench set — metric and standard</li>
+          <li>Hacksaw — for cutting pipe and conduit</li>
+        </ul>
+        <div class="tc-note">Budget: $60–$100 for this full category</div>
+      </div>
+      <div class="tool-cat">
+        <h4>🔌 Electrical Tools</h4>
+        <ul>
+          <li>Non-contact voltage tester — tells you if something is live before you touch it</li>
+          <li>GFCI outlet tester — plug in, instantly diagnoses outlet wiring issues</li>
+          <li>Wire strippers / dikes — Klein brand recommended</li>
+          <li>Linesman's pliers — for twisting wire and heavy-duty gripping</li>
+          <li>Multimeter — get one that reads microfarads for capacitor testing later</li>
+          <li>Electrical tape — multiple colors as you advance</li>
+        </ul>
+        <div class="tc-note">The non-contact tester and GFCI tester are must-haves from day one — they keep you safe</div>
+      </div>
+      <div class="tool-cat">
+        <h4>🚿 Plumbing Tools</h4>
+        <ul>
+          <li>Faucet removal tool ("easy faucet remover") — $20, saves hours under sinks</li>
+          <li>Plunger — toilet and sink styles</li>
+          <li>Toilet auger / closet snake</li>
+          <li>Teflon tape — every plumbing job needs this</li>
+          <li>Pick set — for O-rings and small components</li>
+          <li>Caulk gun — ratcheting style preferred</li>
+        </ul>
+        <div class="tc-note">The faucet removal tool is one of the highest-value $20 investments in your entire kit</div>
+      </div>
+      <div class="tool-cat">
+        <h4>📐 Measurement &amp; Layout</h4>
+        <ul>
+          <li>Tape measure — 25 foot Stanley Power Lock</li>
+          <li>Torpedo level — for hanging things, checking doors</li>
+          <li>Stud finder — basic model is fine for most properties</li>
+          <li>Speed square — marking straight lines for cuts</li>
+          <li>Notepad and pen — write down apartment numbers, parts needed, observations</li>
+        </ul>
+        <div class="tc-note">A notepad is underrated — when you are running 10+ work orders a day, apartment numbers blur together</div>
+      </div>
+      <div class="tool-cat">
+        <h4>💡 Lighting</h4>
+        <ul>
+          <li>Work light — battery powered, for under sinks and dark spaces</li>
+          <li>Flashlight or headlamp — residents keep their apartments dark, always have light</li>
+        </ul>
+        <div class="tc-note">You will be amazed how dark some apartments are — do not get caught without light</div>
+      </div>
+      <div class="tool-cat">
+        <h4>⚡ Power Tools</h4>
+        <ul>
+          <li>Cordless drill/driver — 12V is fine for apartment work</li>
+          <li>Impact driver — for driving screws fast</li>
+          <li>Drill bits — wood and metal, keep cheap spares</li>
+          <li>Driver bits — Phillips, flat, Torx, square</li>
+        </ul>
+        <div class="tc-note">Stick to one battery platform (Milwaukee, DeWalt, Ryobi) — one set of batteries charges everything</div>
+      </div>
+    </div>
+
+    <div class="callout-rust">
+      <div class="callout-label">🌡️ Pro Tip — The Thermometer</div>
+      <p>One tool most beginners miss but experienced techs swear by: <strong>a digital thermometer</strong>. When a resident says their AC is blowing hot or their water is not hot enough, you can stick the thermometer in the vent or run the tap and get an actual reading — 59°F at the AC vent, 118°F at the hot tap. Write that number on your work order. Now instead of your word against the resident's, you have documented data. It ends arguments instantly and protects you from false complaints. A basic digital thermometer costs $15–$30.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Building Your First Tool Kit</div>
+    <h2 class="lesson-title">The basic tools you need <em>to start in apartment maintenance</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pepe Gomez — veteran apartment maintenance supervisor — walks through a complete beginner tool tote built for under $170 from Home Depot. He covers every essential category, explains why having your own tools matters even as a porter, and gives practical advice on what to buy first and what to upgrade later.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/L7sRLNV28Gk" title="Apartment Maintenance Basic Tools — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Pepe Gomez · Maintenance Man Narratives · February 2025</span>
+        <h4>Apartment Maintenance's Basic Tools</h4>
+        <p>A complete beginner tool kit walkthrough — everything you need to start doing work orders, built for under $170. Covers hand tools, electrical tools, plumbing tools, and why owning your own tools signals seriousness to any supervisor training you.</p>
+        <div class="credit">Pepe Gomez · Maintenance Man Narratives · February 2025 · Beginner-focused · Apartment maintenance specific</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Safety on the job — <em>protecting yourself and the people around you</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Maintenance work involves real physical hazards — electricity, plumbing under pressure, sharp tools, heavy objects, ladders, and occasionally mold or chemical exposure. Most accidents are preventable with basic habits and the right protective gear. Building safety habits from day one is not about being overly cautious — it is about staying in the game long enough to build a career.</p>
+
+    <h3 class="sub-title">Personal Protective Equipment (PPE) — what to wear and when</h3>
+
+    <div class="ppe-grid">
+      <div class="ppe-item">
+        <h4>Safety Glasses</h4>
+        <p>Wear any time you are cutting, drilling, grinding, or working under a sink where debris can fall in your eyes. Keep a pair in your bag at all times.</p>
+      </div>
+      <div class="ppe-item">
+        <h4>Work Gloves</h4>
+        <p>Cut-resistant gloves for sharp edges and broken glass. Nitrile disposable gloves for plumbing work — protect from bacteria and chemicals.</p>
+      </div>
+      <div class="ppe-item">
+        <h4>Steel-Toe Boots</h4>
+        <p>Non-negotiable. You will be carrying heavy appliances, climbing ladders, and working in tight spaces all day. Protect your feet.</p>
+      </div>
+      <div class="ppe-item">
+        <h4>Dust Mask / N95</h4>
+        <p>For drywall sanding, insulation work, attic access, or any work that kicks up dust or particles. Keep a few in your tool bag.</p>
+      </div>
+      <div class="ppe-item">
+        <h4>Knee Pads</h4>
+        <p>You will spend a lot of time on hard floors working under sinks and on toilets. Knee pads are a long-term investment in your body.</p>
+      </div>
+      <div class="ppe-item">
+        <h4>Voltage Tester</h4>
+        <p>Always test before touching any wire or outlet. The non-contact voltage tester is your first line of defense against electrical shock.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Core safety habits — do these every time</h3>
+
+    <p class="lesson-text"><strong>Turn off the water before any plumbing repair.</strong> Find the shutoff valve under the sink, behind the toilet, or at the main shutoff and turn it off before disconnecting any supply line or fitting. A supply line blowing off under full pressure will flood an apartment in minutes.</p>
+
+    <p class="lesson-text"><strong>Test before you touch.</strong> Before working on any outlet, switch, or light fixture — use your non-contact voltage tester. Even if you turned off the breaker, test again. Breakers are mislabeled. Circuits are shared. Always test.</p>
+
+    <p class="lesson-text"><strong>Never work alone on a ladder in an occupied unit.</strong> If you need to work at height — ceiling fans, high fixtures, attic access — let someone know where you are. A fall with no one nearby is a serious emergency.</p>
+
+    <p class="lesson-text"><strong>When in doubt — stop and call.</strong> If you start a repair and discover something unexpected — wiring that does not look right, a gas smell, water damage behind a wall, suspected mold — stop the repair, document what you found, and report it to your supervisor immediately. This is not weakness. This is professional judgment.</p>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ Gas Smells — Always Stop Immediately</div>
+      <p>If you smell gas in a unit — do not turn any lights on or off, do not use your phone inside the unit, do not create any spark of any kind. Exit the unit immediately, leave the door open, evacuate nearby units if the smell is strong, and call the gas company from outside. Gas leaks are not a maintenance repair — they are an emergency. This is one of the items on the "always call a pro" list that has zero exceptions.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">When to handle it yourself — <em>and when to call a licensed professional</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">One of the most valuable skills a maintenance tech can develop is knowing exactly where their authority ends. Attempting work that requires a license — gas lines, main electrical panel work, structural repairs — creates real liability for you and the property owner. It can get you fired, fined, or worse. The best maintenance techs are not the ones who try to fix everything — they are the ones who know exactly what they can handle, handle it well, and escalate everything else quickly and clearly.</p>
+
+    <div class="pro-diy">
+      <div class="pro-diy-header">
+        <div>Task</div>
+        <div>Who Handles It</div>
+        <div>Why</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Faucet repair or replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>No license required. Standard plumbing repair.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Toilet flapper, fill valve, flush valve</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Common, simple part swaps. No license required.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">GFCI outlet replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Plug-and-play replacement. No panel work involved.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Light fixture or ceiling fan replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Standard swap. Always test for voltage first.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Thermostat replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Low-voltage wiring only. Label wires before removing old unit.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Oven igniter replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>No gas line disconnection. Just unplug old, plug in new.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Garbage disposal reset or replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Standard repair. Reset button or simple swap.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">HVAC filter change, thermocouple replacement</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Routine maintenance. No refrigerant involved.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Drywall patching, painting, caulking</div>
+        <div><span class="badge-tech">Maintenance Tech</span></div>
+        <div>Core maintenance skills. No license required.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">HVAC refrigerant handling</div>
+        <div><span class="badge-pro">Licensed Pro (EPA 608)</span></div>
+        <div>Federal law. EPA 608 certification required to handle refrigerants.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Main electrical panel work</div>
+        <div><span class="badge-pro">Licensed Electrician</span></div>
+        <div>Requires electrical license. Serious electrocution risk.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Gas supply line work</div>
+        <div><span class="badge-pro">Licensed Plumber / Gas Tech</span></div>
+        <div>No exceptions. Gas leaks are life-safety emergencies.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Structural repairs (beams, load-bearing walls)</div>
+        <div><span class="badge-pro">Licensed Contractor</span></div>
+        <div>Requires permit and licensed contractor in most jurisdictions.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Mold remediation</div>
+        <div><span class="badge-pro">Certified Remediation Company</span></div>
+        <div>Health hazard. Requires specialized equipment and protocols.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Sewer line replacement</div>
+        <div><span class="badge-pro">Licensed Plumber</span></div>
+        <div>Requires permit, excavation, licensed plumbing work.</div>
+      </div>
+      <div class="pro-diy-row">
+        <div class="task">Water heater replacement</div>
+        <div><span class="badge-gray">Depends on State</span></div>
+        <div>Some states allow maintenance techs. Others require a license. Know your state's rules.</div>
+      </div>
+    </div>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The High-Value Swap Mindset</div>
+      <p>Some of the most profitable repairs a maintenance tech can do are simple part swaps that look intimidating from the outside. An oven igniter replacement takes 20 minutes and costs $20–$50 in parts — a service call for the same repair runs $150–$300. A refrigerator door gasket replacement takes 10 minutes and costs $20 — same story. A toilet fill valve swap takes 15 minutes and costs $12. When you know which repairs are simple part swaps — and you have the tools and confidence to do them — you become enormously valuable to any property manager who would otherwise have to call a specialist every time.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: A Comprehensive Tool Kit for Apartment Maintenance</div>
+    <h2 class="lesson-title">Every tool you need to start — <em>and then some</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">An experienced apartment maintenance tech does a detailed tool bag tour covering everything from basic hand tools to electrical tools, plumbing tools, and power tools — with honest guidance on what to buy cheap and what to invest in. Practical cost breakdown included.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/bF7kNruew1Y" title="Every Tool You Need to Start Apartment Maintenance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Real World Tool Reviews · April 2022</span>
+        <h4>Every Tool You Need to Start Doing Apartment Maintenance</h4>
+        <p>A complete tool kit walkthrough built specifically for someone starting their first year in apartment maintenance. Covers hand tools, plumbing tools, electrical tools, power tools, lighting, and measurement — with honest guidance on brand choices and what you can buy cheap vs. where to invest.</p>
+        <div class="credit">Real World Tool Reviews · YouTube · April 2022 · Apartment maintenance specific · Beginner-focused</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">How to research any unfamiliar repair — <em>the system that makes you never get stuck</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Every maintenance tech — no matter how experienced — runs into unfamiliar repairs. A model of appliance they have never seen. A system configuration they have not worked on before. A symptom they cannot immediately diagnose. The best techs are not the ones who know everything — they are the ones who know how to find the answer fast. Here is the system that works.</p>
+
+    <div class="research-steps">
+      <div class="research-step">
+        <div class="rs-num">1</div>
+        <div>
+          <h4>Get the model number first — before searching anything</h4>
+          <p>Every appliance has a model number — inside the refrigerator door frame, on the back of the unit, under the range, inside the dishwasher door. Write it down. A generic search for "dishwasher not draining" returns generic results. A search for "Whirlpool WDT730PAHZ not draining" returns the exact repair for that exact machine — often with a video of someone fixing the identical issue on the identical model.</p>
+        </div>
+      </div>
+      <div class="research-step">
+        <div class="rs-num">2</div>
+        <div>
+          <h4>Search YouTube with the model number and the symptom</h4>
+          <p>YouTube is the single most powerful training resource available to any maintenance tech. Search "[brand] [model number] [symptom]" — "Rheem water heater pilot won't stay lit," "GE refrigerator not cooling model GSS25GGH," "Carrier AC not cooling." There is almost always a video of a real technician fixing the exact same problem on the exact same unit. Watch the full video before touching anything. As Pepe Gomez says: "The best trade school ever — YouTube."</p>
+        </div>
+      </div>
+      <div class="research-step">
+        <div class="rs-num">3</div>
+        <div>
+          <h4>Check parts sites for exploded diagrams</h4>
+          <p>RepairClinic.com, PartSelect.com, and AppliancePartsPros.com have exploded diagrams for virtually every appliance ever manufactured. You can see exactly how the unit is assembled before you start disassembling it. These sites also sell the parts — once you identify what you need, you can confirm the part number and order it or find it locally.</p>
+        </div>
+      </div>
+      <div class="research-step">
+        <div class="rs-num">4</div>
+        <div>
+          <h4>Read the YouTube comments</h4>
+          <p>This sounds minor but it is genuinely valuable. Other people who have done the same repair on the same unit leave comments about what went wrong, what tools they needed that the video did not mention, what the actual gotchas were. "Warning — the clip on the left side is plastic and snaps if you are not careful" is the kind of tip that saves you from making a bad repair worse.</p>
+        </div>
+      </div>
+      <div class="research-step">
+        <div class="rs-num">5</div>
+        <div>
+          <h4>Check the manufacturer's website and error codes</h4>
+          <p>Most major appliance brands (GE, Whirlpool, Samsung, LG, Rheem, Carrier) publish repair documentation and error code guides on their websites or YouTube channels. Error codes especially — a flashing light or digital error code on a modern appliance almost always has a specific meaning that points you directly to the problem. Do not start diagnosing until you have looked up the error code.</p>
+        </div>
+      </div>
+      <div class="research-step">
+        <div class="rs-num">6</div>
+        <div>
+          <h4>Know when to stop</h4>
+          <p>If your research reveals the repair requires specialized tools you do not have, involves a gas line, requires handling refrigerant (EPA 608 required), or the part costs more than a replacement unit would — stop. Document what you found, report it to your supervisor, and let the right person handle it. Knowing your limits is not a weakness. It is exactly what property managers want from a professional maintenance tech.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 Document Everything — Always</div>
+      <p>Every repair you complete should be documented in your work order with more than just "fixed." Write what you found, what you did, what parts you used, and any observations you made during the Unit Scan. Good documentation protects you from false complaints, helps the next tech who works on that unit, gives your property manager the data they need to budget for future repairs, and builds your professional reputation as a thorough, reliable technician. A few extra sentences on a work order costs 60 seconds and is worth far more than that.</p>
+    </div>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Primary Sources</div>
+    <h2 class="lesson-title">The books and resources <em>behind this module</em></h2>
+    <div class="gold-divider"></div>
+    <div class="books-section">
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Maintenance For Dummies — 2nd Edition</div>
+          <div class="bi-author">James and Morris Carey · Wiley Publishing · 2010</div>
+          <div class="bi-desc">Chapter 21 — "Ten Maintenance Skills You Need" covers the core practical skills every maintenance tech should master. Chapters throughout the book include explicit guidance on when a homeowner (or tech) should call a professional vs. handle a repair themselves — including specific flags for electrical, plumbing, HVAC, and structural work.</div>
+        </div>
+        <a href="https://www.amazon.com/Home-Maintenance-Dummies-James-Carey/dp/0470439106" target="_blank">Find It →</a>
+      </div>
+      <div class="book-item">
+        <div>
+          <div class="bi-title">Home Repair &amp; Maintenance — DIY Tips for Homeowners</div>
+          <div class="bi-author">Habitat for Humanity · Multiple Contributors</div>
+          <div class="bi-desc">The electrical, HVAC, and plumbing sections contain practical safety tips from real homeowners and maintenance professionals — including specific guidance on tool usage, when to turn off water before plumbing repairs, and how to safely troubleshoot common problems without creating bigger ones.</div>
+        </div>
+        <a href="https://www.habitat.org" target="_blank">Habitat.org →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>"The techs who get promoted fastest are not the ones with the most tools or the most experience — they are the ones who show up prepared, stay safe, know their limits, and document everything. You now have the system. Every time you walk into a work order you could not have imagined two days ago, you have a six-step process that will get you unstuck in under ten minutes. That is a real skill. Most people in this trade never build it deliberately — they just fumble through until something clicks. You are doing it the right way."</p>
+      <div class="mentor-name">Your Darco Mentor · Module 2 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 2 Key Takeaways</h3>
+    <ul>
+      <li>A fully functional beginner maintenance tool kit runs $160–$500 depending on brand choices. Start with hand tools (channel locks, multi-bit screwdriver, adjustable wrenches, needle nose pliers, hammer, utility knife, Allen keys) and add electrical tools (non-contact voltage tester, GFCI tester, wire strippers, multimeter) and plumbing tools (faucet removal tool, caulk gun, Teflon tape) before adding power tools.</li>
+      <li>The non-contact voltage tester and GFCI outlet tester are must-haves from day one — they are your primary electrical safety tools. Always test before touching any wire or outlet, even after turning off a breaker. Breakers are mislabeled. Circuits are shared. Always test.</li>
+      <li>The thermometer is the most underrated tool in any maintenance tech's bag. Measuring actual temperatures (AC vent output, hot water at the tap) instead of estimating eliminates arguments with residents and protects you with documented evidence on your work orders.</li>
+      <li>Core safety habits: turn off the water before any plumbing repair, test for voltage before touching any electrical component, never move tenant furniture, document everything you observe. If you smell gas — exit immediately, do not create any spark, call the gas company from outside.</li>
+      <li>The "when to call a pro" framework: maintenance tech territory covers faucets, toilets, outlets, light fixtures, thermostats, oven igniters, garbage disposals, HVAC filters, drywall, painting, and caulking. Always call a licensed pro for gas supply line work, main electrical panel work, refrigerant handling (EPA 608 required), structural repairs, and mold remediation. No exceptions on the always-call list.</li>
+      <li>The six-step research system for any unfamiliar repair: (1) get the model number, (2) search YouTube with model + symptom, (3) check parts sites for exploded diagrams, (4) read the comments, (5) check manufacturer documentation and error codes, (6) know when to stop and escalate. This system makes you never truly stuck on any repair.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question-block">
+      <div class="q-num">Question 1 of 5</div>
+      <div class="q-text">A maintenance tech is called to a unit because the AC is "blowing hot air." The resident is insistent the unit is broken. The tech turns on the AC and holds their hand over the vent — it feels cool but not cold. What is the most professional next step?</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Tell the resident the AC is working fine and leave — if it feels cool it is probably working.</div>
+      <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Use a thermometer to get the actual vent temperature reading, write it on the work order, and explain to the resident what the reading means. If the output temperature is within normal range, show them the reading. If it is not, begin diagnosing.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Agree with the resident that it does not seem cold enough and tell them you will order a new unit.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Call an HVAC contractor immediately — AC issues always require a licensed technician.</div>
+      <div class="explanation correct" id="q1-correct">Correct! The thermometer eliminates the "your word vs. their word" dynamic entirely. A vent temperature reading of 59°F documented on the work order is objective evidence. If the system is working correctly, you can show the resident the data and explain what a normal range looks like. If the temperature reading indicates a real problem, you now have a starting point for diagnosis. This is exactly what professional documentation looks like — and it protects you from false complaints.</div>
+      <div class="explanation wrong" id="q1-wrong">Not quite. The professional move here is to use a thermometer to get an actual temperature reading from the vent. "It feels cool" is subjective. "59°F at the vent, documented on the work order at 2:15pm" is professional evidence. The thermometer eliminates arguments, documents your findings, and gives you a starting point for diagnosis if the reading indicates a real problem. It is one of the most underrated tools in a maintenance tech's bag.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 2 of 5</div>
+      <div class="q-text">A maintenance tech is changing a light fixture and turns off what they believe is the correct breaker. Before touching the wires, what must they do?</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Proceed — they already turned off the breaker so the circuit is safe.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Ask the resident if the light is definitely off — if they confirm it, proceed.</div>
+      <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Test the wires with a non-contact voltage tester before touching anything — regardless of which breaker they turned off.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Call a licensed electrician — fixture replacement requires a license.</div>
+      <div class="explanation correct" id="q2-correct">Correct! Breakers are frequently mislabeled in older apartment buildings. Circuits are sometimes shared in ways that make no obvious sense. Turning off what you believe is the correct breaker does not guarantee the circuit is de-energized. The non-contact voltage tester takes three seconds and gives you a definitive answer. Always test before touching any wire — every single time. This habit has prevented countless serious injuries. Light fixture replacement does not require a license and is well within maintenance tech territory — as long as you verify the circuit is de-energized first.</div>
+      <div class="explanation wrong" id="q2-wrong">Not quite. Turning off a breaker is not sufficient confirmation that a circuit is de-energized. Breakers are frequently mislabeled, especially in older buildings, and circuits are sometimes shared in unexpected ways. The correct move is always to test with a non-contact voltage tester before touching any wire — regardless of what you did at the breaker box. This takes three seconds and is non-negotiable. Light fixture replacement is well within maintenance tech territory and does not require a license — but you must verify the circuit is dead first.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 3 of 5</div>
+      <div class="q-text">A tech is working on a gas oven and notices a faint sulfur smell in the kitchen. The oven igniter work order is already on their cart. What should they do?</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Open a window to ventilate and proceed with the igniter replacement — a faint smell is probably just residue from the burner.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> Turn off the kitchen light switch to reduce electrical load and call the gas company from inside the apartment.</div>
+      <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> Stop work immediately. Do not flip any switches or create any spark. Exit the unit calmly, leave the door open, notify other residents nearby if the smell is strong, and call the gas company from outside.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Complete the igniter replacement quickly — a new igniter will resolve the gas smell.</div>
+      <div class="explanation correct" id="q3-correct">Correct! A gas smell is always a stop-everything emergency — no exceptions. Do not flip switches (any spark can ignite gas), do not use your phone inside the unit, do not continue the repair. Exit immediately, leave the door open to help ventilate, and call the gas company from outside. Gas leaks are not a maintenance repair — they are a life-safety emergency. The oven igniter work order can wait. This is one of the absolute rules that has zero gray area.</div>
+      <div class="explanation wrong" id="q3-wrong">Not correct. A gas smell — even faint — is always a stop-everything emergency. Do not flip any switches or create any spark of any kind inside the unit — even turning a light off can create a spark sufficient to ignite gas. Exit the unit immediately without creating any sparks, leave the door open to ventilate, and call the gas company from outside the building. The oven igniter repair can wait. This is an absolute rule with no exceptions or judgment calls.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 4 of 5</div>
+      <div class="q-text">A tech receives a work order for a dryer that stopped heating. They have never worked on this specific brand before. What is the correct first step?</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Call an appliance repair specialist — dryer heating issues always require a certified technician.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Start by checking the lint trap and dryer vent — those are the most common causes and they do not require any research.</div>
+      <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> Find the model number on the dryer, then search YouTube for "[brand] [model number] not heating" — watch the video fully before touching anything, and check RepairClinic.com for the parts diagram.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Ask a more experienced tech to handle it — never attempt repairs on equipment you have not worked on before.</div>
+      <div class="explanation correct" id="q4-correct">Correct! The model number is always your starting point for any unfamiliar repair. A generic search returns generic results. A model-specific search returns exactly what you need — often a video of someone fixing the identical unit with the identical symptom. Watch the full video before touching anything. Check the parts diagram on RepairClinic.com to understand how the unit is assembled. Dryer heating issues are almost always a heating element, thermal fuse, or solenoid valve — all maintenance tech territory. A licensed appliance tech is rarely needed for standard dryer repairs.</div>
+      <div class="explanation wrong" id="q4-wrong">Not quite. The research-first approach is the correct starting point for any unfamiliar repair — not calling a specialist before you even understand the problem. Find the model number, search YouTube for that specific brand and model with the symptom, and watch the video fully before touching anything. Dryer heating issues are commonly caused by a heating element, thermal fuse, or solenoid valve — all standard maintenance tech repairs that do not require a specialist. The model number is the key that unlocks specific, accurate repair information.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 5 of 5</div>
+      <div class="q-text">A new maintenance tech has $200 to spend on their initial tool kit. Which approach gives them the most capability for their first year of work orders?</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Spend it all on a high-quality Milwaukee cordless drill and impact combo — power tools are the most important investment.</div>
+      <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div> Prioritize hand tools first (channel locks, multi-bit screwdriver, adjustable wrenches, utility knife, hammer), add the non-contact voltage tester and GFCI tester, and a basic flashlight — this covers the majority of work orders. Buy power tools later as income allows.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> Buy the most comprehensive set possible by choosing the cheapest version of every tool — quantity matters more than quality.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Focus on electrical tools only — that is where the advanced money is, so start there.</div>
+      <div class="explanation correct" id="q5-correct">Correct! Hand tools cover the vast majority of work orders in apartment maintenance. A $160–$170 tote built from Husky and Stanley tools at Home Depot can handle approximately 75% of all work orders a new tech will receive. The non-contact voltage tester and GFCI tester are must-haves for safety on any electrical work. Power tools are genuinely useful but not necessary on day one — a supervisor will often have them available, and you can borrow until you can buy your own. Never sacrifice hand tool quality for power tool quantity.</div>
+      <div class="explanation wrong" id="q5-wrong">Not quite. Hand tools cover the vast majority of work orders — channel locks, screwdrivers, adjustable wrenches, hammer, and utility knife alone handle a huge percentage of daily repairs. The non-contact voltage tester and GFCI tester are must-haves for electrical safety. Power tools are helpful but not required on day one — supervisors often have them available. A $160–$170 Husky/Stanley tote from Home Depot covers approximately 75% of work orders a new tech will encounter. Build hand tools first, add power tools as income allows.</div>
+    </div>
+
+    <button class="check-btn" onclick="checkAllAnswers()">Check My Answers</button>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="module-glossary">
+    <h3>📖 Module 2 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch2" placeholder="Search terms..." oninput="mgFilter(this,2)">
+    <div class="mg-terms" id="mgTerms2">
+
+      <div class="mg-term" data-mg="channel locks pliers adjustable jaw grip plumbing pipes fixtures">
+        <div class="mg-term-header"><span class="mg-name">Channel Locks</span><span class="mg-law">Hand Tool</span></div>
+        <div class="mg-def">Adjustable pliers with a slip-joint mechanism allowing the jaw to be set at multiple widths. One of the most-used tools in apartment maintenance — for gripping pipes, fixtures, supply lines, and hundreds of other applications. Get at least two sizes: 10" and 6". Channel Lock brand is recommended for quality at a reasonable price.</div>
+      </div>
+
+      <div class="mg-term" data-mg="error code appliance fault code diagnostic flashing light display">
+        <div class="mg-term-header"><span class="mg-name">Error Code</span><span class="mg-law">Appliance Diagnostics</span></div>
+        <div class="mg-def">A specific code displayed by a modern appliance (as a number, letter combination, or flashing light pattern) that indicates a specific fault or problem. Always look up error codes before diagnosing — they point directly to the problem and save significant troubleshooting time. Find error code guides on the manufacturer's website or YouTube.</div>
+        <div class="mg-tip">💡 Never start diagnosing a modern appliance without first checking if it is displaying an error code.</div>
+      </div>
+
+      <div class="mg-term" data-mg="gfci ground fault circuit interrupter outlet tester safety electrical">
+        <div class="mg-term-header"><span class="mg-name">GFCI Outlet Tester</span><span class="mg-abbr">Ground Fault Circuit Interrupter</span><span class="mg-law">Electrical Safety Tool</span></div>
+        <div class="mg-def">A plug-in diagnostic tool that tests whether an outlet is wired correctly, has power, and whether the GFCI protection is functioning. Essential for diagnosing "outlets not working" work orders. Also has a test button to trip GFCI outlets. Costs approximately $10–$15 and is one of the highest-value tools in any maintenance tech's bag.</div>
+      </div>
+
+      <div class="mg-term" data-mg="high value swap simple part replacement cost savings oven igniter refrigerator gasket dryer element">
+        <div class="mg-term-header"><span class="mg-name">High-Value Swap</span><span class="mg-law">Professional Concept</span></div>
+        <div class="mg-def">A repair that appears complex or specialized from the outside but is actually a simple part replacement requiring no license and minimal tools. Examples: oven igniter ($20–$50 part, 20 minutes vs. $150–$300 service call), refrigerator door gasket ($20, 10 minutes), dryer heating element ($30, 30 minutes). Knowing which repairs are high-value swaps is a core competency that makes a maintenance tech extremely valuable to property managers.</div>
+      </div>
+
+      <div class="mg-term" data-mg="model number appliance identifier brand serial lookup repair parts">
+        <div class="mg-term-header"><span class="mg-name">Model Number</span><span class="mg-law">Repair Research</span></div>
+        <div class="mg-def">A unique identifier for a specific appliance or equipment unit, usually found on a label inside the door, on the back panel, or underneath the unit. The most important piece of information to collect before researching any unfamiliar repair. A model-specific YouTube search returns exact repair videos for that exact unit — far more useful than generic searches.</div>
+      </div>
+
+      <div class="mg-term" data-mg="multimeter voltage ohms continuity microfarads capacitor electrical diagnostic tool">
+        <div class="mg-term-header"><span class="mg-name">Multimeter</span><span class="mg-law">Electrical Diagnostic Tool</span></div>
+        <div class="mg-def">A handheld electronic measuring instrument used to test voltage, continuity, resistance (ohms), and — in models that support it — capacitance (microfarads). Essential for diagnosing electrical faults and testing capacitors on HVAC systems. Get one that reads microfarads — it unlocks HVAC diagnostic work which is the highest-paid skill set in apartment maintenance.</div>
+        <div class="mg-tip">💡 If you have a multimeter and want to learn HVAC diagnostics, supervisors are much more likely to teach you — they can see you are serious.</div>
+      </div>
+
+      <div class="mg-term" data-mg="non-contact voltage tester live wire electrical safety test before touch">
+        <div class="mg-term-header"><span class="mg-name">Non-Contact Voltage Tester</span><span class="mg-law">Electrical Safety Tool · Must-Have</span></div>
+        <div class="mg-def">A pen-shaped tool that detects the presence of electrical voltage without touching the wire — just hold it near the wire and it beeps or lights up if the circuit is live. Must be used before touching any wire or electrical component, even after turning off a breaker. Breakers are frequently mislabeled in older buildings. Always test. Cost: approximately $15–$25.</div>
+      </div>
+
+      <div class="mg-term" data-mg="ppe personal protective equipment safety glasses gloves boots dust mask">
+        <div class="mg-term-header"><span class="mg-name">PPE</span><span class="mg-abbr">Personal Protective Equipment</span></div>
+        <div class="mg-def">Protective gear worn to reduce exposure to workplace hazards. For maintenance techs: safety glasses (drilling, cutting, under-sink work), work gloves (cut-resistant and nitrile disposable), steel-toe boots (daily), dust mask/N95 (drywall, insulation, attic work), knee pads (floor-level plumbing work). PPE should be standard practice, not an afterthought.</div>
+      </div>
+
+      <div class="mg-term" data-mg="teflon tape thread tape plumbing pipe threads seal leak prevention">
+        <div class="mg-term-header"><span class="mg-name">Teflon Tape</span><span class="mg-abbr">Thread Seal Tape / PTFE Tape</span><span class="mg-law">Plumbing Supply</span></div>
+        <div class="mg-def">A thin white tape wrapped around threaded pipe fittings before assembly to create a watertight seal. Required on virtually every plumbing repair involving threaded connections — supply line connections, shower arms, toilet supply lines, and more. Inexpensive and essential. Wrap clockwise (same direction as tightening) for proper sealing.</div>
+      </div>
+
+      <div class="mg-term" data-mg="thermometer digital temperature measurement ac vent hot water professional documentation">
+        <div class="mg-term-header"><span class="mg-name">Thermometer (Digital)</span><span class="mg-law">Diagnostic Tool · Documentation</span></div>
+        <div class="mg-def">A digital temperature measuring device used to document actual temperatures rather than estimates. For maintenance techs: used to measure AC vent output temperature, hot water temperature at the tap, and other temperature-dependent diagnostics. Eliminates "your word vs. the resident's word" disputes by producing objective, documentable data. Cost: $15–$30. One of the most underrated tools in apartment maintenance.</div>
+      </div>
+
+    </div>
+    <div class="mg-none" id="mgNone2">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mr-glossary.html" style="font-size:13px;color:var(--rust-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 7 Modules) &rarr;</a>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 3: Plumbing Fundamentals</h3>
+    <p>You have the tools, the safety habits, and the research system. Now the technical work begins. Module 3 covers the plumbing repairs that make up the single largest category of work orders in any apartment complex — faucets, toilets, drains, water heaters, garbage disposals, and more. These are the repairs property managers need done right, done fast, and done without calling a licensed plumber every time.</p>
+    <a href="mr-module-3.html" class="next-module-cta">Module 3: Plumbing Fundamentals →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mr-module-1.html" class="btn-outline">← Module 1</a>
+  <a href="mr-module-3.html" class="btn-gold">Module 3 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Maintenance &amp; Repair Track · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Always verify local licensing requirements before performing regulated work.</p>
+</footer>
+
+<script>
+var quizAnswers={};
+var quizDone=false;
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=el.parentElement.querySelectorAll('.option');
+  opts.forEach(function(o){o.classList.remove('selected-correct','selected-wrong');});
+  el.classList.add(isCorrect?'selected-correct':'selected-wrong');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAllAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var correctEl=document.getElementById(qId+'-correct');
+    var wrongEl=document.getElementById(qId+'-wrong');
+    if(ans.isCorrect){correctEl.style.display='block';}
+    else{wrongEl.style.display='block';}
+  }
+}
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
+}
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+</script>
+</body>
+</html>
