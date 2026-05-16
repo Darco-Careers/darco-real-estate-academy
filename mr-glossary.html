@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Course Glossary — Maintenance &amp; Repair Track — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rust:#8B3A1A;--rust-mid:#B04A22;--rust-light:#D0622E;--rust-pale:#FAF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(139,58,26,0.1);
+  --shadow-card:0 2px 16px rgba(139,58,26,0.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--rust);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--rust);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--rust-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--rust);font-weight:600;}
+.page-hero{background:linear-gradient(135deg,#4A1A08 0%,var(--rust) 60%,var(--rust-mid) 100%);padding:3rem 2.5rem;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.page-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.4rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.page-hero h1 em{color:var(--gold-light);font-style:italic;}
+.page-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;}
+.glossary-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.search-bar{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:1rem 1.5rem;margin-bottom:2rem;display:flex;gap:1rem;align-items:center;box-shadow:var(--shadow-card);}
+.search-bar input{flex:1;border:none;outline:none;font-size:15px;font-family:'DM Sans',sans-serif;color:var(--text-dark);background:transparent;}
+.search-bar input::placeholder{color:var(--text-light);}
+.search-bar .search-icon{color:var(--rust-mid);font-size:18px;flex-shrink:0;}
+.term-count{font-size:12px;color:var(--text-light);white-space:nowrap;}
+.alpha-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:2rem;}
+.alpha-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--text-mid);transition:all 0.18s;text-decoration:none;}
+.alpha-btn:hover,.alpha-btn.active{background:var(--rust);color:var(--white);border-color:var(--rust);}
+.alpha-btn.empty{opacity:0.3;cursor:default;pointer-events:none;}
+.section-header{display:flex;align-items:center;gap:1rem;margin:2rem 0 1rem;}
+.section-letter{width:44px;height:44px;background:var(--rust);color:var(--white);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;flex-shrink:0;}
+.section-line{flex:1;height:1px;background:var(--border);}
+.mg-term{padding:1rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.35rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--rust-mid);background:var(--rust-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-mod{font-size:11px;color:var(--text-light);background:var(--cream-dark);padding:2px 7px;border-radius:8px;font-weight:500;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.75;}
+.mg-tip{font-size:12px;color:var(--rust-mid);margin-top:0.35rem;font-style:italic;}
+.none-msg{text-align:center;padding:3rem 0;font-size:14px;color:var(--text-light);display:none;}
+.module-links{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem 2rem;margin-bottom:2rem;box-shadow:var(--shadow-card);}
+.module-links h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:1rem;}
+.mod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;}
+.mod-link{display:flex;align-items:center;justify-content:center;padding:0.6rem;border-radius:8px;border:1.5px solid var(--border);font-size:12px;font-weight:600;text-decoration:none;color:var(--rust-mid);transition:all 0.18s;text-align:center;line-height:1.3;}
+.mod-link:hover{background:var(--rust-pale);border-color:var(--rust-mid);}
+footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;margin-top:0;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="maintenance-repair.html" class="nav-back">← Maintenance &amp; Repair</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="maintenance-repair.html">Maintenance &amp; Repair</a><span class="sep">/</span>
+  <span class="current">Full Course Glossary</span>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-badge">Maintenance &amp; Repair Track · All 8 Modules</div>
+    <h1>Full Course <em>Glossary</em></h1>
+    <p>Every key term, tool, component, certification, and professional concept introduced across all 8 modules — searchable in one place. Use this as a reference throughout your career, not just during the course.</p>
+  </div>
+</div>
+
+<div class="glossary-body">
+
+  <!-- Module Links -->
+  <div class="module-links">
+    <h3>Jump to a module:</h3>
+    <div class="mod-grid">
+      <a href="mr-module-1.html" class="mod-link">Module 1<br>The Career</a>
+      <a href="mr-module-2.html" class="mod-link">Module 2<br>Tools &amp; Safety</a>
+      <a href="mr-module-3.html" class="mod-link">Module 3<br>Plumbing</a>
+      <a href="mr-module-4.html" class="mod-link">Module 4<br>Electrical &amp; HVAC</a>
+      <a href="mr-module-5.html" class="mod-link">Module 5<br>Appliances</a>
+      <a href="mr-module-6.html" class="mod-link">Module 6<br>Interior Repairs</a>
+      <a href="mr-module-7.html" class="mod-link">Module 7<br>Getting Hired</a>
+      <a href="mr-module-8.html" class="mod-link">Module 8<br>Going Independent</a>
+    </div>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="glossarySearch" placeholder="Search any term, abbreviation, or concept..." oninput="filterGlossary(this.value)">
+    <span class="term-count" id="termCount">62 terms</span>
+  </div>
+
+  <!-- Alpha Nav -->
+  <div class="alpha-nav" id="alphaNav"></div>
+
+  <div id="noneMsg" class="none-msg">No terms match your search.</div>
+
+  <!-- ======================== A ======================== -->
+  <div class="section-header" data-letter="A"><div class="section-letter">A</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="anode rod sacrificial corrosion water heater tank life magnesium aluminum">
+    <div class="mg-term-header"><span class="mg-name">Anode Rod</span><span class="mg-law">Water Heater Maintenance</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">A magnesium or aluminum rod inside a water heater tank that corrodes preferentially, protecting the steel tank from rusting — a process called sacrificial corrosion. Should be inspected every 3 years and replaced when mostly consumed. Extending anode rod maintenance can add years to a tank's life and avoid premature water heater replacement.</div>
+    <div class="mg-tip">💡 One of the most overlooked preventive maintenance items in apartment maintenance — and one of the highest-value 20-minute repairs a tech can do proactively.</div>
+  </div>
+
+  <!-- ======================== B ======================== -->
+  <div class="section-header" data-letter="B"><div class="section-letter">B</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="ball valve quarter turn shutoff lever plumbing fixture water control">
+    <div class="mg-term-header"><span class="mg-name">Ball Valve</span><span class="mg-law">Plumbing Component</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">A shutoff valve with a lever handle that rotates 90 degrees (quarter-turn) between fully open and fully closed. Far more reliable than older multi-turn oval-handle valves — easy to operate in an emergency and does not seize up with age. The preferred replacement when upgrading aging shutoff valves.</div>
+  </div>
+
+  <!-- ======================== C ======================== -->
+  <div class="section-header" data-letter="C"><div class="section-letter">C</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="camt certified apartment maintenance technician naa national apartment association credential pay raise">
+    <div class="mg-term-header"><span class="mg-name">CAMT</span><span class="mg-abbr">Certified Apartment Maintenance Technician</span><span class="mg-law">NAA · ANSI Accredited</span><span class="mg-mod">Modules 1, 7, 8</span></div>
+    <div class="mg-def">The primary professional certification for apartment maintenance technicians in the United States, administered by the National Apartment Association (NAA). Requires 12 months of apartment or rental housing maintenance experience (concurrent with coursework), completion of five technical courses plus a soft skills course, and a passing score on the comprehensive exam. Cost: approximately $881 for NAA members / $1,101 for non-members. Adds $3–$6/hour to pay. Find local chapters at naahq.org.</div>
+    <div class="mg-tip">💡 Some employers cover or reimburse CAMT exam costs upon completion — ask during the hiring conversation. The certification pays for itself within two months of the pay increase it generates.</div>
+  </div>
+
+  <div class="mg-term" data-mg="capacitor hvac start run compressor fan microfarad mfd bulge mushroom hvac ac">
+    <div class="mg-term-header"><span class="mg-name">Capacitor</span><span class="mg-law">HVAC Component</span><span class="mg-mod">Module 4</span></div>
+    <div class="mg-def">An electrical component in HVAC outdoor units that stores and releases energy to help start and run the compressor and outdoor fan motor. A failed capacitor — often visually identifiable by a bulged or mushroom-topped case — is one of the most common causes of AC not cooling. Capacitor work requires knowledge of high-voltage discharge procedures and EPA 608 certification. Diagnosable with a multimeter that reads microfarads.</div>
+    <div class="mg-tip">💡 A multimeter that reads microfarads (MFD) can test a capacitor without replacing it — valuable diagnostic skill once you have EPA 608 certification.</div>
+  </div>
+
+  <div class="mg-term" data-mg="cartridge faucet valve flow control hot cold mixing repair replacement drip">
+    <div class="mg-term-header"><span class="mg-name">Cartridge</span><span class="mg-law">Faucet Component</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">The internal valve component in modern cartridge-style faucets that controls water flow and temperature mixing. When a cartridge faucet drips, the cartridge is usually worn and needs replacement. Cartridges are brand-specific — identify the faucet brand and model number before ordering a replacement. Cost: $15–$30 for most major brands.</div>
+  </div>
+
+  <div class="mg-term" data-mg="channel locks pliers adjustable jaw grip plumbing pipes fixtures essential tool">
+    <div class="mg-term-header"><span class="mg-name">Channel Locks</span><span class="mg-law">Hand Tool · Essential</span><span class="mg-mod">Module 2</span></div>
+    <div class="mg-def">Adjustable pliers with a slip-joint mechanism allowing the jaw to be set at multiple widths. One of the most-used tools in apartment maintenance — for gripping pipes, fixtures, supply lines, and hundreds of other applications. Get at least two sizes: 10" and 6". Channel Lock brand is recommended for quality at a reasonable price.</div>
+  </div>
+
+  <div class="mg-term" data-mg="condensate drain line pan float switch water ac overflow bleach flush clog">
+    <div class="mg-term-header"><span class="mg-name">Condensate Drain Line</span><span class="mg-law">HVAC Maintenance</span><span class="mg-mod">Module 4</span></div>
+    <div class="mg-def">The pipe that drains condensation from the AC evaporator coil's drain pan. When clogged, water backs up in the drain pan and triggers the float switch safety shutoff, cutting power to the unit. Clear by flushing with a 50/50 bleach and water solution or using a wet-vac at the outdoor drain termination. Flush the condensate line at the start of every cooling season — standard preventive maintenance.</div>
+  </div>
+
+  <div class="mg-term" data-mg="condenser coil refrigerator dirty cleaning compressor efficiency brush vacuum lint">
+    <div class="mg-term-header"><span class="mg-name">Condenser Coils</span><span class="mg-law">Refrigerator Maintenance</span><span class="mg-mod">Module 5</span></div>
+    <div class="mg-def">The heat-releasing coils on a refrigerator, located underneath behind the kickplate or on the back of the unit. Over time they collect dust and debris that insulates them, forcing the compressor to work harder. Clean annually with a coil brush and vacuum. Dirty coils are the most common and most overlooked cause of refrigerators running warm or cycling excessively — a 10-minute cleaning often fixes a "refrigerator not cooling" work order before any parts are ordered.</div>
+    <div class="mg-tip">💡 Clean the coils before calling for service or ordering parts. Nine times out of ten, it resolves the complaint.</div>
+  </div>
+
+  <div class="mg-term" data-mg="cpo certified pool spa operator nspf pool chemicals safety water apartment">
+    <div class="mg-term-header"><span class="mg-name">CPO</span><span class="mg-abbr">Certified Pool/Spa Operator</span><span class="mg-law">PHTA Certification</span><span class="mg-mod">Modules 1, 8</span></div>
+    <div class="mg-def">Professional certification covering pool and spa water chemistry, equipment operation, maintenance procedures, and health and safety regulations. Required at most apartment communities with pools. Two-day course plus exam. Cost: $250–$400. Valid for 5 years, renewable. Find courses at phta.org or pooloperator.com. Pay impact: +$1–$3/hour or explicit per-property management premium.</div>
+  </div>
+
+  <div class="mg-term" data-mg="cutting in paint brush edge ceiling trim corners angle sash technique">
+    <div class="mg-term-header"><span class="mg-name">Cutting In</span><span class="mg-law">Painting Technique</span><span class="mg-mod">Module 6</span></div>
+    <div class="mg-def">The process of painting a precise strip along edges — where walls meet ceilings, at corners, around trim and fixtures — using an angled brush before rolling the main wall area. Cut in one wall section at a time and roll it immediately while the cut edge is still wet to prevent visible lap marks at the boundary. The roller cannot reach close enough to edges cleanly — cutting in first is non-negotiable for a professional finish.</div>
+  </div>
+
+  <!-- ======================== D ======================== -->
+  <div class="section-header" data-letter="D"><div class="section-letter">D</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="dip tube water heater cold water inlet hot water separation lukewarm repair">
+    <div class="mg-term-header"><span class="mg-name">Dip Tube</span><span class="mg-law">Water Heater Component</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">A tube inside the water heater tank that carries incoming cold water to the bottom of the tank, keeping it separated from the hot water at the top. When the dip tube cracks or breaks, cold water mixes with the hot water at the top and residents receive lukewarm water even though the heater is functioning. Replacement is a standard maintenance tech repair.</div>
+  </div>
+
+  <div class="mg-term" data-mg="drain snake auger hand snake drum cable clog removal pipe toilet">
+    <div class="mg-term-header"><span class="mg-name">Drain Snake</span><span class="mg-abbr">Hand Auger / Closet Auger</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">A flexible cable tool used to break up or remove clogs deeper in drain pipes than a plunger can reach. Available in hand (manual) and electric versions. For sink drains, a basic hand snake reaches several feet into the drain line. For toilets, use a toilet auger (closet auger) specifically designed for toilet drain geometry — the vinyl sleeve protects the porcelain from scratching.</div>
+  </div>
+
+  <div class="mg-term" data-mg="dryer vent lint fire hazard clog annual cleaning safety thermal fuse blows">
+    <div class="mg-term-header"><span class="mg-name">Dryer Vent</span><span class="mg-law">Life-Safety Maintenance Item</span><span class="mg-mod">Module 5</span></div>
+    <div class="mg-def">The duct that exhausts hot, lint-laden air from a dryer to the outside of the building. When clogged with lint, it restricts airflow, causes dryers to overheat, blows thermal fuses repeatedly, and is a leading cause of residential fires. Signs of a clogged vent: dryer takes multiple cycles to dry, exterior vent flap does not open during operation, dryer feels very hot to the touch. Clean at least annually. Always clean the dryer vent before replacing a thermal fuse — a clogged vent will blow the new fuse immediately.</div>
+  </div>
+
+  <!-- ======================== E ======================== -->
+  <div class="section-header" data-letter="E"><div class="section-letter">E</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="epa section 608 refrigerant federal law certification handling hvac 20 dollars lifetime clean air act">
+    <div class="mg-term-header"><span class="mg-name">EPA Section 608</span><span class="mg-law">Federal Refrigerant Certification · Lifetime</span><span class="mg-mod">Modules 1, 4, 8</span></div>
+    <div class="mg-def">Federal certification required under Section 608 of the Clean Air Act for anyone who handles regulated refrigerants — adding refrigerant, recovering it, or servicing equipment in ways that could release refrigerant. Applies in all 50 states regardless of state licensing. Exam cost: approximately $20. Does not expire — lifetime certification. Available at most HVAC supply houses. Pay impact: +$3–$5/hour. The highest return-on-investment certification available to any maintenance tech.</div>
+    <div class="mg-tip">💡 Type II certification (high-pressure systems) covers most residential and apartment HVAC equipment. Universal certification covers all types.</div>
+  </div>
+
+  <div class="mg-term" data-mg="error code appliance fault code diagnostic flashing light display model">
+    <div class="mg-term-header"><span class="mg-name">Error Code</span><span class="mg-law">Appliance Diagnostics</span><span class="mg-mod">Modules 2, 5</span></div>
+    <div class="mg-def">A specific code displayed by a modern appliance (as a number, letter combination, or flashing light pattern) that indicates a specific fault or problem. Always look up error codes on the manufacturer's website or YouTube before diagnosing — they point directly to the problem and save significant troubleshooting time. Never start diagnosing a modern appliance without first checking whether it is displaying an error code.</div>
+  </div>
+
+  <div class="mg-term" data-mg="european cup hinge cabinet adjustment side depth mounting screw alignment door">
+    <div class="mg-term-header"><span class="mg-name">European Cup Hinge</span><span class="mg-law">Cabinet Hardware</span><span class="mg-mod">Module 6</span></div>
+    <div class="mg-def">The concealed hinge standard in most modern kitchen and bathroom cabinets. Consists of a cup mounted inside the door and an arm mounted on the cabinet frame. Fully adjustable in three directions with a Phillips screwdriver: side-to-side (left/right alignment), in-and-out (gap between door and frame), and depth (door position relative to cabinet face). Most cabinet door alignment problems are resolved in three minutes by adjusting these screws — no replacement needed.</div>
+    <div class="mg-tip">💡 Three minutes of hinge adjustment resolves most "cabinet door won't close" or "door hangs unevenly" work orders.</div>
+  </div>
+
+  <div class="mg-term" data-mg="evaporator coil indoor ac coil frozen freeze airflow filter refrigerant low charge">
+    <div class="mg-term-header"><span class="mg-name">Evaporator Coil</span><span class="mg-law">HVAC Component</span><span class="mg-mod">Module 4</span></div>
+    <div class="mg-def">The indoor coil of an AC system where refrigerant absorbs heat from the air passing over it, producing cooled air. When airflow is restricted (clogged filter, blocked return) or refrigerant charge is low, the coil can freeze solid. To thaw a frozen coil: set the system to FAN ONLY (not cooling) and run until the ice melts. Replace the filter and restart. If freezing recurs, refrigerant charge may be low — EPA 608 licensed technician required.</div>
+  </div>
+
+  <!-- ======================== F ======================== -->
+  <div class="section-header" data-letter="F"><div class="section-letter">F</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="faucet aerator spout screen flow control mineral buildup clog vinegar low pressure">
+    <div class="mg-term-header"><span class="mg-name">Faucet Aerator</span><span class="mg-law">Faucet Component</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">A small screen device threaded onto the end of a faucet spout that mixes air with water to create a smooth flow and reduce water use. When clogged with mineral deposits, it causes reduced flow or spray irregularity — the most common cause of resident "low water pressure" complaints at individual faucets. Clean by soaking in white vinegar for 30 minutes or replacing entirely (cost: $3–$8).</div>
+  </div>
+
+  <div class="mg-term" data-mg="feathering joint compound drywall patch blend wide thin edges invisible transition">
+    <div class="mg-term-header"><span class="mg-name">Feathering</span><span class="mg-law">Drywall Technique</span><span class="mg-mod">Module 6</span></div>
+    <div class="mg-def">Spreading joint compound in progressively wider, thinner coats so the patch edges blend invisibly into the surrounding wall. The final coat should extend 8–12 inches beyond the hole in all directions, tapering to nothing at the edges. Without feathering, the patch boundary creates a visible ridge that shows through paint regardless of how well it is sanded. Each coat is applied wider than the previous one.</div>
+  </div>
+
+  <div class="mg-term" data-mg="fill valve ballcock toilet tank refill water level float mechanism running">
+    <div class="mg-term-header"><span class="mg-name">Fill Valve</span><span class="mg-abbr">Ballcock</span><span class="mg-law">Toilet Component</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">The valve mechanism that controls how water enters the toilet tank after flushing. A failing fill valve causes the toilet to run continuously after the tank should be full, or to refill too slowly. Replacement: shut off the supply valve, flush, disconnect the supply line, unscrew the fill valve locknut. Cost: $12–$20. Standard maintenance tech repair.</div>
+  </div>
+
+  <div class="mg-term" data-mg="flame sensor furnace gas heat rod oxidation cleaning white buildup sandpaper intermittent shutdown">
+    <div class="mg-term-header"><span class="mg-name">Flame Sensor</span><span class="mg-law">Furnace Component</span><span class="mg-mod">Module 4</span></div>
+    <div class="mg-def">A small metal rod inside a gas furnace that sits in the burner flame and generates a small electrical current when heated, signaling the control board that ignition was successful. Over time, oxidation builds up on the rod (visible as white coating) and blocks the electrical signal, causing the furnace to light briefly and immediately shut off. Fix: remove the sensor (one screw), lightly sand the rod with fine sandpaper, reinstall. Takes five minutes and costs nothing.</div>
+    <div class="mg-tip">💡 Dirty flame sensor is the single most common furnace failure. Many "furnace not working" emergency calls are resolved by cleaning this one inexpensive rod.</div>
+  </div>
+
+  <div class="mg-term" data-mg="flapper toilet tank seal flush valve rubber stopper running toilet water waste">
+    <div class="mg-term-header"><span class="mg-name">Flapper</span><span class="mg-law">Toilet Component · Most Common Part</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">The rubber seal at the bottom of a toilet tank that lifts when the toilet is flushed and drops back to seal the tank as it refills. The most commonly replaced toilet part — a worn or warped flapper allows water to constantly trickle into the bowl, causing the toilet to "run." Cost: $5–$12. Match the brand and size to the existing flush valve seat.</div>
+    <div class="mg-tip">💡 A running toilet from a worn flapper can waste hundreds of gallons per month — resolving it quickly protects the property owner from elevated water bills.</div>
+  </div>
+
+  <div class="mg-term" data-mg="flashing paint patch visible sheen difference unprimed primer wall spot repair">
+    <div class="mg-term-header"><span class="mg-name">Flashing</span><span class="mg-law">Paint / Drywall Defect</span><span class="mg-mod">Module 6</span></div>
+    <div class="mg-def">A visible sheen or color difference at a drywall patch after painting, caused by unprimed joint compound absorbing paint at a different rate than the surrounding primed wall. Even with a perfect color match, an unprimed patch will flash. Prevented entirely by applying drywall primer to any patched area before painting and allowing it to dry fully.</div>
+  </div>
+
+  <!-- ======================== G ======================== -->
+  <div class="section-header" data-letter="G"><div class="section-letter">G</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="general liability insurance contractor property damage bodily injury coverage certificate independent">
+    <div class="mg-term-header"><span class="mg-name">General Liability Insurance</span><span class="mg-law">Independent Contractor Essential</span><span class="mg-mod">Module 8</span></div>
+    <div class="mg-def">Insurance coverage that protects an independent contractor against claims of property damage and bodily injury that occur during their work. Standard minimum for maintenance contractors is $1 million per occurrence. Most property management companies require a certificate of insurance before awarding any contract work — you cannot get the contract without it. Cost: $500–$1,500/year. Must be obtained before the first paid independent job.</div>
+  </div>
+
+  <div class="mg-term" data-mg="gfci ground fault circuit interrupter outlet reset test button shock protection water bathroom kitchen">
+    <div class="mg-term-header"><span class="mg-name">GFCI</span><span class="mg-abbr">Ground Fault Circuit Interrupter</span><span class="mg-law">Electrical Safety Device</span><span class="mg-mod">Modules 2, 4</span></div>
+    <div class="mg-def">A shock protection device built into outlets near water sources (kitchens, bathrooms, garages, exteriors) that cuts power instantly when it detects a current imbalance. One GFCI outlet often protects multiple downstream outlets on the same circuit — which is why dead outlets in one room are often caused by a tripped GFCI in a completely different room. To reset: press the RESET button on the GFCI outlet. If it trips again, investigate the circuit for a fault before resetting.</div>
+  </div>
+
+  <div class="mg-term" data-mg="graphite lubricant lock key dry powder pin tumbler stiff WD40 never oil">
+    <div class="mg-term-header"><span class="mg-name">Graphite Lubricant</span><span class="mg-law">Lock Maintenance</span><span class="mg-mod">Module 6</span></div>
+    <div class="mg-def">A dry lubricant made from powdered graphite, applied via squeeze tube directly into key lock keyholes. The correct lubricant for any pin-tumbler lock — does not attract dirt or gum up with age. Never use WD-40 or oil-based products in key locks — they attract debris and progressively stiffen the lock over time. In a pinch, rubbing a pencil on the key inserts graphite the same way.</div>
+    <div class="mg-tip">💡 Never use WD-40 in a key lock. It is oil-based and will make the lock worse over time.</div>
+  </div>
+
+  <!-- ======================== H ======================== -->
+  <div class="section-header" data-letter="H"><div class="section-letter">H</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="heat exchanger furnace gas combustion cracked carbon monoxide orange flame safety shutdown">
+    <div class="mg-term-header"><span class="mg-name">Heat Exchanger</span><span class="mg-law">Furnace Component · Licensed HVAC Only</span><span class="mg-mod">Module 4</span></div>
+    <div class="mg-def">The metal component inside a gas furnace that separates combustion gases from the air being distributed through the building. When cracked, combustion gases including carbon monoxide can enter the air distribution system. Visual sign: orange or yellow flames instead of blue during operation. A cracked heat exchanger is a life-safety issue requiring immediate furnace shutdown and licensed HVAC contractor inspection — never a maintenance tech repair.</div>
+  </div>
+
+  <div class="mg-term" data-mg="high value swap simple part replacement cost savings oven igniter refrigerator gasket dryer element appliance">
+    <div class="mg-term-header"><span class="mg-name">High-Value Swap</span><span class="mg-law">Professional Concept</span><span class="mg-mod">Modules 2, 5</span></div>
+    <div class="mg-def">A repair that appears complex or specialized from the outside but is actually a simple part replacement requiring no license and minimal tools. Examples: oven igniter ($20–$50 part, 20 minutes vs. $150–$300 service call), refrigerator door gasket ($20, 10 minutes), dryer heating element ($30, 30 minutes). Knowing which repairs are high-value swaps is a core competency that makes a maintenance tech extremely valuable to property managers.</div>
+  </div>
+
+  <!-- ======================== J ======================== -->
+  <div class="section-header" data-letter="J"><div class="section-letter">J</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="joint compound mud drywall patching three coats thin feather dry shrink crack">
+    <div class="mg-term-header"><span class="mg-name">Joint Compound</span><span class="mg-abbr">Drywall Mud</span><span class="mg-law">Drywall Material</span><span class="mg-mod">Module 6</span></div>
+    <div class="mg-def">A gypsum-based paste used to finish drywall seams and patches. Dries by water evaporation — thick coats crack as they dry unevenly. Always apply in three thin coats, each dried completely before the next. Sand between coats (120-grit) and final-sand with 220-grit. Always prime joint compound before painting to prevent flashing. Setting-type compound dries faster via chemical reaction and does not shrink — useful when time is limited.</div>
+  </div>
+
+  <!-- ======================== L ======================== -->
+  <div class="section-header" data-letter="L"><div class="section-letter">L</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="llc limited liability company business structure formation sole proprietor protection assets">
+    <div class="mg-term-header"><span class="mg-name">LLC</span><span class="mg-abbr">Limited Liability Company</span><span class="mg-law">Business Structure</span><span class="mg-mod">Module 8</span></div>
+    <div class="mg-def">A business structure that separates personal assets from business liability. If a client sues an LLC for a repair that went wrong, the owner's personal savings, home, and vehicle are protected. Operating as a sole proprietor without an LLC leaves personal assets exposed to business liability. Formation: $50–$500 depending on state, filed online through the state's Secretary of State website. An EIN (free at irs.gov) is needed for a business bank account and tax filing.</div>
+  </div>
+
+  <!-- ======================== M ======================== -->
+  <div class="section-header" data-letter="M"><div class="section-letter">M</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="maintenance manager role senior planning budgeting team leadership portfolio salary">
+    <div class="mg-term-header"><span class="mg-name">Maintenance Manager</span><span class="mg-law">Senior Role</span><span class="mg-mod">Module 1</span></div>
+    <div class="mg-def">Senior maintenance role responsible for planning, scheduling, budgeting, vendor management, and team leadership across a property or portfolio. At smaller properties, the manager often completes repairs themselves. At larger properties (200+ units), this is a pure leadership position. Salary range: $55,000–$100,000+ per year with full benefits.</div>
+  </div>
+
+  <div class="mg-term" data-mg="maintenance supervisor mid level role oversee technicians organize daily tasks compliance property">
+    <div class="mg-term-header"><span class="mg-name">Maintenance Supervisor</span><span class="mg-law">Mid-Level Leadership Role</span><span class="mg-mod">Modules 1, 7</span></div>
+    <div class="mg-def">Mid-level maintenance role found at larger properties with multiple technicians on staff. Organizes daily tasks, ensures compliance with safety standards, oversees technicians, and coordinates with property management on scheduling and priorities. Typically requires 3–5 years of experience. Often includes on-site housing benefit. Salary range: $35,000–$55,000/year.</div>
+  </div>
+
+  <div class="mg-term" data-mg="maintenance technician entry level work orders repairs plumbing electrical hvac appliances daily">
+    <div class="mg-term-header"><span class="mg-name">Maintenance Technician</span><span class="mg-law">Primary Front-Line Role</span><span class="mg-mod">Module 1</span></div>
+    <div class="mg-def">The primary front-line role in apartment maintenance. Handles the bulk of day-to-day repair and upkeep tasks — responding to work orders, performing routine preventive maintenance, and handling emergency repairs. Requires a broad skill set across plumbing, electrical, HVAC, appliances, and interior repairs. Where almost everyone in apartment maintenance starts their career after the porter level.</div>
+  </div>
+
+  <div class="mg-term" data-mg="make ready turn unit preparation apartment turnover between tenants checklist">
+    <div class="mg-term-header"><span class="mg-name">Make-Ready Technician</span><span class="mg-law">Property Management Role</span><span class="mg-mod">Modules 6, 7</span></div>
+    <div class="mg-def">A maintenance tech role focused specifically on preparing apartment units for new residents — patching, painting, cleaning, replacing hardware, and completing the full turn-ready checklist between tenants. Common job title for entry to mid-level maintenance positions. Some properties have dedicated make-ready teams; others rotate the work across all maintenance staff.</div>
+  </div>
+
+  <div class="mg-term" data-mg="merv filter air filter rating efficiency airflow restriction hvac 1 inch furnace">
+    <div class="mg-term-header"><span class="mg-name">MERV Rating</span><span class="mg-abbr">Minimum Efficiency Reporting Value</span><span class="mg-law">Filter Rating</span><span class="mg-mod">Module 4</span></div>
+    <div class="mg-def">A scale from 1–16 rating an air filter's ability to capture airborne particles. Higher MERV = finer filtration but also greater airflow restriction. For standard 1-inch filter slots, MERV 8 is recommended. MERV 11–13 filters in 1-inch slots restrict airflow enough to damage the system over time. If high-efficiency filtration is needed, a dedicated 4-inch filter cabinet is required.</div>
+  </div>
+
+  <div class="mg-term" data-mg="model number appliance identifier brand serial lookup repair parts YouTube search">
+    <div class="mg-term-header"><span class="mg-name">Model Number</span><span class="mg-law">Repair Research</span><span class="mg-mod">Modules 2, 5</span></div>
+    <div class="mg-def">A unique identifier for a specific appliance or equipment unit, usually found on a label inside the door, on the back panel, or underneath the unit. The most important piece of information to collect before researching any unfamiliar repair. A model-specific YouTube search returns exact repair videos for that exact unit — far more useful than generic searches by symptom alone.</div>
+  </div>
+
+  <div class="mg-term" data-mg="multimeter voltage ohms continuity microfarads capacitor electrical diagnostic tool hvac">
+    <div class="mg-term-header"><span class="mg-name">Multimeter</span><span class="mg-law">Electrical Diagnostic Tool</span><span class="mg-mod">Modules 2, 4</span></div>
+    <div class="mg-def">A handheld electronic measuring instrument used to test voltage, continuity, resistance (ohms), and — in models that support it — capacitance (microfarads). Essential for diagnosing electrical faults and testing HVAC capacitors. Get one that reads microfarads — it unlocks HVAC diagnostic work, which is the highest-paid skill set in apartment maintenance.</div>
+    <div class="mg-tip">💡 If you have a multimeter and want to learn HVAC diagnostics, supervisors are much more likely to teach you — it signals seriousness and real ambition.</div>
+  </div>
+
+  <!-- ======================== N ======================== -->
+  <div class="section-header" data-letter="N"><div class="section-letter">N</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="naa national apartment association industry organization property management naahq affiliates">
+    <div class="mg-term-header"><span class="mg-name">NAA</span><span class="mg-abbr">National Apartment Association</span><span class="mg-law">Industry Organization</span><span class="mg-mod">Modules 7, 8</span></div>
+    <div class="mg-def">The largest apartment industry organization in the United States, representing over 10 million apartment homes and 145 state and local affiliates. Administers the CAMT certification and other apartment industry credentials. Find your local affiliate at naahq.org to begin CAMT enrollment.</div>
+  </div>
+
+  <div class="mg-term" data-mg="non-contact voltage tester live wire electrical safety test before touch breaker mislabeled">
+    <div class="mg-term-header"><span class="mg-name">Non-Contact Voltage Tester</span><span class="mg-law">Electrical Safety Tool · Must-Have</span><span class="mg-mod">Modules 2, 4</span></div>
+    <div class="mg-def">A pen-shaped tool that detects the presence of electrical voltage without touching the wire — hold it near any wire and it beeps or flashes if voltage is present. Required before touching any wire in any electrical repair, even after turning off a breaker. Breakers are frequently mislabeled in older buildings. Always test. Cost: $15–$25.</div>
+  </div>
+
+  <!-- ======================== O ======================== -->
+  <div class="section-header" data-letter="O"><div class="section-letter">O</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="on call rotation emergency after hours phone property maintenance water leak heating cooling">
+    <div class="mg-term-header"><span class="mg-name">On-Call Rotation</span><span class="mg-law">Maintenance Employment Condition</span><span class="mg-mod">Module 7</span></div>
+    <div class="mg-def">A schedule requirement at most apartment properties where maintenance techs take turns carrying an emergency phone and responding to after-hours calls — typically one week at a time, rotating among staff. Emergency calls usually involve water leaks, heating/cooling failures, lockouts, and safety concerns. Most calls are resolved in under an hour. Ask about on-call structure before accepting any maintenance position.</div>
+  </div>
+
+  <div class="mg-term" data-mg="on site housing benefit apartment supervisor compensation total free reduced rent salary">
+    <div class="mg-term-header"><span class="mg-name">On-Site Housing Benefit</span><span class="mg-law">Property Management Compensation</span><span class="mg-mod">Module 7</span></div>
+    <div class="mg-def">Free or reduced-rate apartment housing provided to maintenance supervisors and senior techs as part of their compensation package. A $1,300/month housing benefit adds $15,600/year in real compensation value. Always calculate total compensation including housing when comparing property management offers — it dramatically changes the financial picture at the supervisor level.</div>
+  </div>
+
+  <div class="mg-term" data-mg="osha 10 30 safety certification department of labor workplace construction property management">
+    <div class="mg-term-header"><span class="mg-name">OSHA 10 / OSHA 30</span><span class="mg-law">Safety Certification · DOL</span><span class="mg-mod">Modules 1, 8</span></div>
+    <div class="mg-def">Safety awareness certifications from the Occupational Safety and Health Administration. OSHA 10 is a 10-hour course covering basic workplace safety — widely recognized and increasingly required by large property management operators. OSHA 30 is a 30-hour course preferred for supervisory roles. Available online and in-person. Cost: $30–$100. Pay impact: +$0.50–$2/hour.</div>
+  </div>
+
+  <!-- ======================== P ======================== -->
+  <div class="section-header" data-letter="P"><div class="section-letter">P</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="paint sheen flat matte eggshell satin semi-gloss gloss finish bathroom kitchen wall ceiling">
+    <div class="mg-term-header"><span class="mg-name">Paint Sheen</span><span class="mg-law">Paint Selection</span><span class="mg-mod">Module 6</span></div>
+    <div class="mg-def">The level of reflectivity in a dried paint finish. Flat: ceilings only — hides imperfections, cannot be cleaned. Eggshell: lightly wipeable — bedrooms and low-traffic walls. Satin: moderate sheen, cleanable, durable — the standard for most apartment walls. Semi-gloss: high sheen, very cleanable, moisture-resistant — trim, doors, bathrooms, and kitchens. Never use flat paint in bathrooms or kitchens.</div>
+  </div>
+
+  <div class="mg-term" data-mg="p-trap u-bend drain pipe sewer gas water seal sink bathroom slow drain clog">
+    <div class="mg-term-header"><span class="mg-name">P-Trap</span><span class="mg-law">Drain Component</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">The U-shaped curved section of drain pipe directly under a sink or other plumbing fixture. Holds a small amount of water at all times to create a seal that prevents sewer gases from entering the unit. Collects hair, soap scum, and debris — cleaning the P-trap resolves the majority of slow sink drain complaints. Always place a bucket underneath before removing the P-trap.</div>
+  </div>
+
+  <div class="mg-term" data-mg="porter groundskeeper entry level starting point cleaning grounds trash painting maintenance career">
+    <div class="mg-term-header"><span class="mg-name">Porter / Groundskeeper</span><span class="mg-law">Entry-Level Role</span><span class="mg-mod">Modules 1, 7</span></div>
+    <div class="mg-def">The standard entry-level position in apartment maintenance. Responsibilities include grounds cleanup, trash removal, common area cleaning, and painting apartments. No prior experience required. This is how most maintenance techs get their foot in the door — learn the property, demonstrate reliability, and work up to technician responsibilities within 6–18 months. Pay range: $15–$19/hour.</div>
+  </div>
+
+  <div class="mg-term" data-mg="ppe personal protective equipment safety glasses gloves boots dust mask knee pads">
+    <div class="mg-term-header"><span class="mg-name">PPE</span><span class="mg-abbr">Personal Protective Equipment</span><span class="mg-mod">Module 2</span></div>
+    <div class="mg-def">Protective gear worn to reduce exposure to workplace hazards. For maintenance techs: safety glasses (drilling, cutting, under-sink work), work gloves (cut-resistant and nitrile disposable), steel-toe boots (daily wear), dust mask/N95 (drywall, insulation, attic work), knee pads (floor-level plumbing work). PPE should be standard practice, not an afterthought.</div>
+  </div>
+
+  <!-- ======================== S ======================== -->
+  <div class="section-header" data-letter="S"><div class="section-letter">S</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="self employment tax 15.3 percent independent contractor social security medicare quarterly estimated">
+    <div class="mg-term-header"><span class="mg-name">Self-Employment Tax</span><span class="mg-law">Independent Contractor Tax</span><span class="mg-mod">Module 8</span></div>
+    <div class="mg-def">A 15.3% federal tax that independent contractors pay on net self-employment income, covering both the employee and employer portions of Social Security and Medicare. Employees only pay 7.65% because their employer covers the other half. This is why independent contractors must charge 1.5–2x their target net hourly rate. Set aside 25–30% of every payment for quarterly estimated taxes to avoid IRS penalties.</div>
+  </div>
+
+  <div class="mg-term" data-mg="strike plate door latch alignment file shift misalignment latching hardware frame">
+    <div class="mg-term-header"><span class="mg-name">Strike Plate</span><span class="mg-law">Door Hardware</span><span class="mg-mod">Module 6</span></div>
+    <div class="mg-def">The metal plate mortised into the door frame that the latch bolt engages when the door closes. When misaligned, the door does not latch without force. Fix: loosen the mounting screws and shift the plate in the needed direction, or file the opening to enlarge it slightly. The latch bolt should engage smoothly with no resistance.</div>
+  </div>
+
+  <!-- ======================== T ======================== -->
+  <div class="section-header" data-letter="T"><div class="section-letter">T</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="teflon tape thread tape plumbing pipe threads seal leak prevention supply line">
+    <div class="mg-term-header"><span class="mg-name">Teflon Tape</span><span class="mg-abbr">Thread Seal Tape / PTFE Tape</span><span class="mg-law">Plumbing Supply</span><span class="mg-mod">Modules 2, 3</span></div>
+    <div class="mg-def">A thin white tape wrapped around threaded pipe fittings before assembly to create a watertight seal. Required on virtually every plumbing repair involving threaded connections — supply line connections, shower arms, toilet supply lines, and more. Wrap clockwise (same direction as tightening) for proper sealing. Inexpensive and essential — keep it in your bag at all times.</div>
+  </div>
+
+  <div class="mg-term" data-mg="temp to hire staffing agency property management maintenance placement employment">
+    <div class="mg-term-header"><span class="mg-name">Temp-to-Hire</span><span class="mg-law">Employment Pathway</span><span class="mg-mod">Module 7</span></div>
+    <div class="mg-def">An employment arrangement where a staffing agency places a worker at a property management company on a temporary basis, with the expectation of conversion to permanent employment if the placement is successful. Common in property management maintenance hiring. Lower initial pay than direct hire, but provides a pathway to employment without requiring the full hiring commitment upfront. Companies like TrueBlue specialize in this model.</div>
+  </div>
+
+  <div class="mg-term" data-mg="temperature pressure relief valve tp valve safety water heater pressure catastrophic tank">
+    <div class="mg-term-header"><span class="mg-name">T&amp;P Valve</span><span class="mg-abbr">Temperature &amp; Pressure Relief Valve</span><span class="mg-law">Safety Device</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">A critical safety valve on every water heater that opens automatically if the tank pressure or temperature exceeds safe levels, preventing catastrophic tank failure. Should never be capped or disabled. A T&P valve that drips continuously indicates excess tank pressure — this requires professional diagnosis, not maintenance tech repair. Test annually by briefly lifting the lever (have a bucket ready).</div>
+  </div>
+
+  <div class="mg-term" data-mg="thermal fuse dryer safety device blown overheat continuity test no heat replace vent">
+    <div class="mg-term-header"><span class="mg-name">Thermal Fuse</span><span class="mg-law">Dryer Safety Component</span><span class="mg-mod">Module 5</span></div>
+    <div class="mg-def">A one-time safety device in electric dryers that opens permanently if the dryer overheats, cutting power to the heating element. A blown thermal fuse is one of the most common causes of a dryer that runs but does not heat. Test with a multimeter for continuity. Cost: approximately $10. Always clean the dryer vent before replacing the fuse — a clogged vent causes overheating and will blow the new fuse immediately.</div>
+  </div>
+
+  <div class="mg-term" data-mg="thermocouple gas water heater pilot light gas valve sensor probe won't stay lit">
+    <div class="mg-term-header"><span class="mg-name">Thermocouple</span><span class="mg-law">Gas Water Heater Component</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">A small metal probe that sits in the pilot flame of a gas water heater and generates a small electrical current when heated. This current signals the gas valve to remain open. When the thermocouple fails, the pilot lights but goes out immediately when the button is released — the classic symptom. Replacement cost: $10–$20. Standard maintenance tech repair.</div>
+  </div>
+
+  <div class="mg-term" data-mg="thermostat wiring rgy w low voltage bridge signal heat cool hvac terminal">
+    <div class="mg-term-header"><span class="mg-name">Thermostat Wiring Terminals</span><span class="mg-law">HVAC Low-Voltage Wiring</span><span class="mg-mod">Module 4</span></div>
+    <div class="mg-def">The labeled terminals on any thermostat that connect to the HVAC system via low-voltage wires. Standard labels: R = 24-volt power (red wire), G = fan (green wire), Y = cooling/compressor (yellow wire), W = heat (white wire), C = common wire for digital thermostats. Always photograph the existing wiring before removing any thermostat — labels on wires may not match standard colors if previous techs swapped wires.</div>
+    <div class="mg-tip">💡 Photo the wiring first, always. One missed wire connection on a thermostat swap can prevent heating or cooling from working.</div>
+  </div>
+
+  <div class="mg-term" data-mg="thermometer digital temperature measurement ac vent hot water professional documentation disputes">
+    <div class="mg-term-header"><span class="mg-name">Thermometer (Digital)</span><span class="mg-law">Diagnostic Tool · Documentation</span><span class="mg-mod">Modules 2, 4</span></div>
+    <div class="mg-def">A digital temperature measuring device used to document actual temperatures rather than estimates. Used to measure AC vent output temperature, hot water temperature at the tap, and other temperature-dependent diagnostics. Eliminates "your word vs. the resident's word" disputes by producing objective, documentable data. Cost: $15–$30. One of the most underrated tools in apartment maintenance.</div>
+  </div>
+
+  <div class="mg-term" data-mg="turn ready make ready unit preparation checklist move in rent ready all systems">
+    <div class="mg-term-header"><span class="mg-name">Turn-Ready</span><span class="mg-abbr">Make-Ready</span><span class="mg-law">Property Management Standard</span><span class="mg-mod">Modules 6, 7</span></div>
+    <div class="mg-def">The condition of an apartment unit fully prepared for a new resident to move in. Every door, window, electrical outlet, light, plumbing fixture, appliance, wall surface, floor, and cabinet confirmed in proper working condition. Lockset re-keyed. Caulk inspected. HVAC filter replaced. A unit that is fully turn-ready does not generate maintenance calls in the first two weeks of occupancy — the standard every maintenance tech is held to at turnover.</div>
+  </div>
+
+  <!-- ======================== U ======================== -->
+  <div class="section-header" data-letter="U"><div class="section-letter">U</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="unit scan 60 second habit visual sweep professional inspect proactive drip leak filter caulk">
+    <div class="mg-term-header"><span class="mg-name">Unit Scan</span><span class="mg-law">Professional Maintenance Habit</span><span class="mg-mod">Modules 1, 7</span></div>
+    <div class="mg-def">A 60-second visual sweep performed by a maintenance tech before leaving any unit after completing a work order. Checks six key areas: under the kitchen sink, toilet base, water heater area, HVAC filter, caulking around tubs and sinks, and smoke detector. Catches unreported problems early — before they become expensive damage. Should be documented in work order notes every time it is performed.</div>
+    <div class="mg-tip">💡 One spotted slow leak can save a property owner $4,000+ in water damage repairs. The Unit Scan is the habit that earns trust and builds careers.</div>
+  </div>
+
+  <!-- ======================== V ======================== -->
+  <div class="section-header" data-letter="V"><div class="section-letter">V</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="vinyl bubble moisture lift adhesive subfloor plumbing leak floor repair lvp">
+    <div class="mg-term-header"><span class="mg-name">Vinyl Floor Bubble</span><span class="mg-law">Flooring Defect</span><span class="mg-mod">Module 6</span></div>
+    <div class="mg-def">An area of vinyl flooring that has separated from the subfloor and lifted, creating a raised area. Almost always caused by moisture underneath — from a plumbing leak, condensation, or subfloor moisture. Must not be re-glued until the moisture source is identified and eliminated. Fix the moisture source, allow the subfloor to dry completely, then re-adhere and weight the flooring for 24 hours.</div>
+  </div>
+
+  <!-- ======================== W ======================== -->
+  <div class="section-header" data-letter="W"><div class="section-letter">W</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="wax ring toilet floor flange seal base leak replacement gasket water pooling">
+    <div class="mg-term-header"><span class="mg-name">Wax Ring</span><span class="mg-law">Toilet Installation Component</span><span class="mg-mod">Module 3</span></div>
+    <div class="mg-def">A soft wax seal between the base of a toilet and the drain flange in the floor that creates a watertight connection. Signs of a failed wax ring: water pooling around the base of the toilet, or a toilet that rocks. Replacement requires removing the toilet, scraping off the old ring completely, installing a new ring, and carefully lowering the toilet back onto the floor flange. Cost: $8–$15.</div>
+  </div>
+
+  <div class="mg-term" data-mg="weatherstripping window door seal foam tape draft dollar bill test replacement">
+    <div class="mg-term-header"><span class="mg-name">Weatherstripping</span><span class="mg-law">Window / Door Maintenance</span><span class="mg-mod">Module 6</span></div>
+    <div class="mg-def">Flexible sealing material along window and door frames that blocks drafts and moisture when the window or door is closed. Test: close on a dollar bill — if it slides out freely, the weatherstripping has compressed and needs replacement. Self-adhesive foam tape is the standard replacement for windows — peel off old material completely, clean the surface, apply new tape. Cost: $5–$10 per window.</div>
+  </div>
+
+  <div class="mg-term" data-mg="work order documentation maintenance record repair history property unit professional standard">
+    <div class="mg-term-header"><span class="mg-name">Work Order</span><span class="mg-law">Property Management System · Documentation Standard</span><span class="mg-mod">Modules 1, 7</span></div>
+    <div class="mg-def">A documented repair or maintenance request submitted through the property management system that authorizes the maintenance tech to enter a specific unit for a specific task. Also the written record of what was found, what was done, what parts were used, and what was observed during the visit. Never enter a unit or perform repairs without a work order — it protects the tech, the resident, and the property. Write what you found and what you did, not just "fixed."</div>
+  </div>
+
+  <!-- ======================== 1 ======================== -->
+  <div class="section-header" data-letter="#"><div class="section-letter">#</div><div class="section-line"></div></div>
+
+  <div class="mg-term" data-mg="1099 independent contractor self employed freelance property management contract work tax">
+    <div class="mg-term-header"><span class="mg-name">1099 Contractor</span><span class="mg-law">Employment Classification</span><span class="mg-mod">Module 8</span></div>
+    <div class="mg-def">An independent contractor who receives IRS Form 1099 (not W-2) for payment — meaning no taxes are withheld and the contractor is responsible for their own self-employment tax, estimated tax payments, and business expenses. The standard classification for independent maintenance contractors working with property management companies. 1099 work offers flexibility and higher gross rates but requires the contractor to manage their own taxes, insurance, and benefits.</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Maintenance &amp; Repair Track · Full Course Glossary · <span class="footer-gold">A Darco Organization Program</span></p>
+</footer>
+
+<script>
+var allTerms = document.querySelectorAll('.mg-term');
+var allSections = document.querySelectorAll('.section-header');
+var totalVisible = allTerms.length;
+
+// Build alpha nav
+var letters = [];
+allSections.forEach(function(s){ letters.push(s.getAttribute('data-letter')); });
+var alphaNav = document.getElementById('alphaNav');
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ#'.split('').forEach(function(l){
+  var btn = document.createElement('a');
+  btn.className = 'alpha-btn' + (letters.indexOf(l) === -1 ? ' empty' : '');
+  btn.textContent = l;
+  if(letters.indexOf(l) > -1){
+    btn.href = '#';
+    btn.onclick = function(e){
+      e.preventDefault();
+      var sec = document.querySelector('.section-header[data-letter="'+l+'"]');
+      if(sec) sec.scrollIntoView({behavior:'smooth', block:'start'});
+    };
+  }
+  alphaNav.appendChild(btn);
+});
+
+function filterGlossary(q){
+  q = q.toLowerCase().trim();
+  var visible = 0;
+  allTerms.forEach(function(t){
+    var text = (t.getAttribute('data-mg') + ' ' + t.textContent).toLowerCase();
+    var show = !q || text.indexOf(q) > -1;
+    t.classList.toggle('mg-hidden', !show);
+    if(show) visible++;
+  });
+  // Show/hide section headers
+  allSections.forEach(function(s){
+    var letter = s.getAttribute('data-letter');
+    // find next sibling terms until next section header
+    var hasVisible = false;
+    var node = s.nextElementSibling;
+    while(node && !node.classList.contains('section-header')){
+      if(node.classList.contains('mg-term') && !node.classList.contains('mg-hidden')) hasVisible = true;
+      node = node.nextElementSibling;
+    }
+    s.style.display = hasVisible ? '' : 'none';
+  });
+  document.getElementById('termCount').textContent = visible + ' term' + (visible !== 1 ? 's' : '');
+  document.getElementById('noneMsg').style.display = visible === 0 ? 'block' : 'none';
+}
+
+document.getElementById('termCount').textContent = allTerms.length + ' terms';
+</script>
+</body>
+</html>
