@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 7: Getting Hired by Property Managers — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rust:#8B3A1A;--rust-mid:#B04A22;--rust-light:#D0622E;--rust-pale:#FAF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(139,58,26,0.1);
+  --shadow-card:0 2px 16px rgba(139,58,26,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--rust);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--rust);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--rust-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--rust);font-weight:600;}
+.progress-bar{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--rust-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(139,58,26,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--rust-mid);border-radius:3px;width:87%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--rust-mid);color:var(--white);}
+.prog-dot.active{background:var(--rust);color:var(--gold-light);}
+.prog-dot.locked{background:rgba(139,58,26,0.12);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(139,58,26,0.25);}
+.module-hero{background:linear-gradient(135deg,#4A1A08 0%,var(--rust) 55%,var(--rust-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--rust);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-rust{background:var(--rust-pale);border-left:4px solid var(--rust-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-rust .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.5rem;}
+.callout-rust p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.steps{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;}
+.step{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.step-num{width:30px;height:30px;border-radius:50%;background:var(--rust);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.step h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.step p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.career-ladder{margin:2rem 0;display:flex;flex-direction:column;gap:0.5rem;}
+.ladder-rung{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;align-items:center;}
+.ladder-rung:nth-child(odd){background:var(--rust-pale);}
+.ladder-rung .role{font-size:14px;font-weight:700;color:var(--text-dark);}
+.ladder-rung .pay{font-size:13px;color:var(--rust-mid);font-weight:600;}
+.ladder-rung .notes{font-size:12px;color:var(--text-mid);line-height:1.5;}
+.ladder-header{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;padding:0.6rem 1.25rem;background:var(--rust);border-radius:10px 10px 0 0;margin-bottom:0;}
+.ladder-header div{font-size:11px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.5px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.two-col-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--rust-mid);border-radius:0 0 12px 12px;padding:1.25rem;}
+.two-col-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.75rem;}
+.two-col-card ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.two-col-card ul li{font-size:13px;color:var(--text-mid);line-height:1.55;padding-left:1.1rem;position:relative;}
+.two-col-card ul li::before{content:'→';color:var(--rust-mid);font-weight:700;position:absolute;left:0;font-size:11px;}
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--rust-pale);color:var(--rust-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+.takeaways{background:var(--rust);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.65;display:block;padding-left:1.5rem;position:relative;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;position:absolute;left:0;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(139,58,26,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.knowledge-check{background:var(--white);border:2px solid var(--rust-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--rust);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question-block{margin-bottom:1.75rem;}
+.q-text{font-size:14.5px;font-weight:600;color:var(--text-dark);line-height:1.6;margin-bottom:0.75rem;}
+.q-num{font-size:11px;font-weight:700;color:var(--rust-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;margin-bottom:0.5rem;}
+.option:hover{border-color:var(--rust-mid);background:var(--rust-pale);}
+.option.selected-correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.selected-wrong{border-color:#C62828;background:#FFF1F1;color:#B71C1C;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--rust-pale);color:var(--rust-mid);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.option.selected-correct .option-letter{background:#2E7D32;color:#fff;}
+.option.selected-wrong .option-letter{background:#C62828;color:#fff;}
+.explanation{display:none;padding:0.85rem 1rem;border-radius:8px;font-size:13.5px;line-height:1.65;margin-top:0.25rem;margin-bottom:0.75rem;}
+.explanation.correct{background:#F1F8F1;border:1px solid #A5D6A7;color:#1B5E20;}
+.explanation.wrong{background:#FFF1F1;border:1px solid #EF9A9A;color:#B71C1C;}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--rust-mid);}
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--rust-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--rust-mid);background:var(--rust-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--rust-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
+.next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.next-module-cta{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.next-module-cta:hover{background:var(--rust-mid);}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;font-weight:600;text-decoration:none;color:var(--text-mid);transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--rust-mid);color:var(--rust);}
+.btn-gold{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;background:var(--gold);color:var(--rust);font-size:13px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-gold:hover{background:var(--gold-light);}
+.fade-in{opacity:1;transform:none;}
+footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="maintenance-repair.html" class="nav-back">← Maintenance &amp; Repair</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="maintenance-repair.html">Maintenance &amp; Repair</a><span class="sep">/</span>
+  <span class="current">Module 7 — Getting Hired by Property Managers</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 7 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mr-module-1.html" class="prog-dot complete">1</a>
+    <a href="mr-module-2.html" class="prog-dot complete">2</a>
+    <a href="mr-module-3.html" class="prog-dot complete">3</a>
+    <a href="mr-module-4.html" class="prog-dot complete">4</a>
+    <a href="mr-module-5.html" class="prog-dot complete">5</a>
+    <a href="mr-module-6.html" class="prog-dot complete">6</a>
+    <span class="prog-dot active">7</span>
+    <span class="prog-dot locked">8</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Maintenance &amp; Repair Track · Module 7 of 8</div>
+    <h1>Getting Hired by <em>Property Managers</em></h1>
+    <p>You have the skills. This module is about turning those skills into a job offer — how the property management hiring process actually works, what property managers look for and what disqualifies people immediately, how to find openings, how to present yourself, and what the career ladder looks like from porter to supervisor to regional.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Sources: CAMT Program · NAA · Pepe Gomez · Industry Research</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">How property management companies hire — <em>and what they actually look for</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Property management companies hire maintenance techs differently than most industries. They are not hiring for a fixed set of tasks — they are hiring for reliability, range, and judgment. A property manager who hires a maintenance tech is trusting that person to represent their property to hundreds of residents, handle situations that cannot always be anticipated, and make decisions independently throughout the day. The hiring decision is about character and capability equally.</p>
+
+    <p class="lesson-text">The most important thing to understand about property management hiring: <strong>they are almost always hiring out of urgency.</strong> A maintenance tech left, or was let go, and the property has a backlog of work orders and a property manager who now has to handle every complaint personally. They need someone reliable who can start quickly and handle the basics confidently. This is actually good news — it means the bar to get in the door is lower than most people think, and the opportunity to distinguish yourself immediately is real.</p>
+
+    <h3 class="sub-title">What property managers look for in a maintenance tech</h3>
+
+    <div class="two-col">
+      <div class="two-col-card">
+        <h4>✅ What gets you hired</h4>
+        <ul>
+          <li>Showing up on time — to the interview and every day after</li>
+          <li>Your own tools — signals commitment before day one</li>
+          <li>Basic plumbing and electrical confidence</li>
+          <li>Clean background — most properties require a check</li>
+          <li>Valid driver's license — you will drive on the property</li>
+          <li>Ability to communicate professionally with residents</li>
+          <li>Willingness to learn and take direction</li>
+          <li>A maintenance mindset — you notice problems</li>
+          <li>References from anyone who has worked with you</li>
+        </ul>
+      </div>
+      <div class="two-col-card">
+        <h4>❌ What disqualifies people immediately</h4>
+        <ul>
+          <li>Criminal background with violent offenses — most properties will not hire</li>
+          <li>No-call no-show history — references matter more than résumés</li>
+          <li>Unable to pass a drug test — standard in most companies</li>
+          <li>No driver's license or valid ID</li>
+          <li>Attitude problems in the interview — maintenance techs work closely with residents</li>
+          <li>Claiming skills they cannot demonstrate</li>
+          <li>No phone or unreliable contact — you must be reachable on call</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The Porter Path — The Most Reliable Entry Point</div>
+      <p>If you have no apartment maintenance experience, the porter (or groundskeeper) position is the standard entry point. Porter work is grounds maintenance, trash, basic cleaning, light repairs — unglamorous work that most people overlook. But a porter who shows up reliably, demonstrates a maintenance mindset, and learns quickly gets noticed fast. Property managers are always looking for people to promote internally. The porter path typically takes 6–18 months to advance to a maintenance tech role, and many experienced techs started this way. It is not a step down — it is the door.</p>
+    </div>
+
+    <h3 class="sub-title">Where to find property management maintenance openings</h3>
+
+    <p class="lesson-text"><strong>Indeed.com and LinkedIn</strong> are the primary job boards for property management positions. Search for "maintenance technician apartment," "apartment maintenance," "property maintenance tech," or "make-ready technician." Filter by city and radius. Set up job alerts so new postings arrive immediately — property management companies often fill positions quickly when they are urgent.</p>
+
+    <p class="lesson-text"><strong>Walk-in applications</strong> at apartment complexes are still effective in property management — more so than in most industries. Property management is a people business and a property manager who meets a confident, put-together applicant in person often moves faster than one reviewing résumés. Go to apartment complexes in your area, ask for the property manager, introduce yourself, and ask if they have or expect any maintenance openings. Leave your name and number. This works.</p>
+
+    <p class="lesson-text"><strong>Staffing agencies</strong> that specialize in property management and construction (Apartment List, Associa, staffing companies like TrueBlue) place maintenance techs as temp-to-hire at apartment communities. This is an excellent way to get your foot in the door, gain experience on your résumé, and often convert to full-time. The pay starts lower, but the pathway to permanent placement is clear.</p>
+
+    <p class="lesson-text"><strong>Property management company websites</strong> — major operators like Greystar, Aimco, Equity Residential, Camden, UDR, and NMI all have careers pages with maintenance tech openings. These large operators have dozens or hundreds of properties and hire frequently. They also have structured career ladders and training programs, which is valuable for someone starting out.</p>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Tips for New Maintenance Techs</div>
+    <h2 class="lesson-title">What Pepe Gomez tells every new tech — <em>before they start their first job</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pepe Gomez speaks directly to someone starting out in apartment maintenance — what supervisors are actually looking for, why attitude matters as much as skill, how to learn fast on the job, and the mindset that separates maintenance techs who advance quickly from ones who stay entry-level. Watch this before your first interview.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/cQKcukWD5NE" title="Tips for New Maintenance Techs — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Pepe Gomez · Maintenance Man Narratives</span>
+        <h4>Tips for New Maintenance Technicians — What Supervisors Are Looking For</h4>
+        <p>Pepe speaks candidly about what makes a new tech stand out — or get replaced — in the first few months. Covers attitude, showing up, being teachable, the importance of your own tools, and how to build trust with a supervisor quickly. Exactly what a first-time applicant needs to hear before walking into an interview.</p>
+        <div class="credit">Pepe Gomez · Maintenance Man Narratives · Apartment maintenance focused · Beginner-specific</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">The résumé and the interview — <em>how to present yourself for a maintenance position</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Maintenance tech résumés are shorter and more skill-focused than most. Property managers are not reading for keywords — they are reading to understand what systems you have worked on, what tools you own, and whether you can communicate clearly. A one-page résumé that answers those questions directly is better than two pages of generic text.</p>
+
+    <h3 class="sub-title">What to include on a maintenance tech résumé</h3>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Contact information and a professional email</h4>
+          <p>Name, phone number, email, and city/state. Your email address matters — firstnamelastname@gmail.com is professional. Nicknames or old handles are not. If your current email looks unprofessional, create a new one before you apply.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Skills summary — specific and technical</h4>
+          <p>List your actual skills: plumbing (faucets, toilets, supply lines), electrical (outlets, fixtures, breakers), HVAC (filter replacement, thermostat replacement, condensate drain), appliance repair, drywall, painting, flooring. Be specific — "general maintenance" tells a property manager nothing. "Toilet flapper and fill valve replacement, GFCI outlet troubleshooting, oven igniter replacement" tells them something real.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Work history — any relevant experience</h4>
+          <p>List any maintenance, construction, trades, janitorial, or hands-on work experience. Even if you were a porter, a groundskeeper, a construction laborer, or did handyman work for family — include it with specific duties. If you have no formal maintenance experience, include any job where you demonstrated reliability, physical work, and problem-solving. Property managers hire character.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h4>Tools owned</h4>
+          <p>List your tool kit. This is unusual on a résumé but completely standard in maintenance tech applications. "Own complete hand tool set including channel locks, multi-bit screwdrivers, adjustable wrenches, voltage tester, multimeter, and cordless drill" signals exactly the right level of seriousness to a property manager.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <h4>Certifications and training</h4>
+          <p>List any EPA 608 certification, OSHA 10, CPO (pool operator), CAMT coursework, or any other relevant certification. If you completed this course — include it. "Completed Darco Real Estate Academy Maintenance &amp; Repair Training" is legitimate and demonstrates you invested in learning this trade before your first day.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The interview — what to say and what not to say</h3>
+
+    <p class="lesson-text">Property management interviews are usually straightforward. The property manager wants to know three things: Can you do the work? Will you show up? Can you interact with residents professionally? Answer those three questions clearly and directly and you are almost always in.</p>
+
+    <p class="lesson-text"><strong>Common interview questions and how to answer them:</strong></p>
+
+    <p class="lesson-text"><strong>"What maintenance experience do you have?"</strong> — Be specific. Name the systems you have worked on, the repairs you can handle confidently, and anything you learned in training. Do not say "a little bit of everything" — that sounds like nothing in particular. Say "I can handle basic plumbing — faucets, running toilets, clogged drains. I am comfortable with electrical outlets, GFCI troubleshooting, and light fixture replacement. I have done drywall patching, painting, and appliance troubleshooting."</p>
+
+    <p class="lesson-text"><strong>"Tell me about a time you solved a problem under pressure."</strong> — Use a real example if you have one. If not, describe how you would approach an unfamiliar repair — research the model number, search for the repair video, watch before touching anything, escalate if it is outside your scope. The property manager is testing for judgment, not just skill.</p>
+
+    <p class="lesson-text"><strong>"Are you comfortable working alone?"</strong> — Yes. Maintenance techs often work independently with minimal supervision. Confirm you are self-directed and can manage a work order list without needing hand-holding at every step.</p>
+
+    <p class="lesson-text"><strong>"What are your salary expectations?"</strong> — Know your market before you walk in. Use Indeed and LinkedIn salary data for your city. For a first maintenance tech role in most US markets, the range is $18–$24/hour. Start in the middle of that range and leave room to negotiate. Do not say "whatever you think is fair" — it signals that you have not done your homework.</p>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 The One Thing That Gets You Hired Over Everyone Else</div>
+      <p>Show up on time. To the interview. Every day after. This sounds obvious, but property managers report that no-call no-shows and chronic lateness are the most common reasons maintenance techs are let go — even skilled ones. A reliable tech with moderate skills is worth more to a property manager than a highly skilled tech who cannot be counted on. Reliability is the skill they are most desperate for. Demonstrate it from the first call you make to schedule the interview.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">The career ladder — <em>from porter to regional maintenance director</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Apartment maintenance is one of the clearest career ladders in any trade. Every rung is defined, the pay increases at each level are significant, and advancement is based on demonstrated skill and reliability — not on degrees, connections, or luck. Someone who starts as a porter at $15/hour with zero experience can reach $35–$50/hour as a certified maintenance supervisor within five to seven years. The path is straightforward. The work to get there is real, but it is learnable.</p>
+
+    <div class="ladder-header">
+      <div>Role</div>
+      <div>Pay Range</div>
+      <div>Notes</div>
+    </div>
+    <div class="career-ladder">
+      <div class="ladder-rung">
+        <div class="role">Porter / Groundskeeper</div>
+        <div class="pay">$15–$19/hr</div>
+        <div class="notes">Entry point. Grounds, trash, light cleaning, basic repairs. No experience required.</div>
+      </div>
+      <div class="ladder-rung">
+        <div class="role">Maintenance Tech I</div>
+        <div class="pay">$18–$24/hr</div>
+        <div class="notes">Basic work orders — plumbing, electrical, drywall, appliances. 1–2 years experience.</div>
+      </div>
+      <div class="ladder-rung">
+        <div class="role">Maintenance Tech II</div>
+        <div class="pay">$22–$30/hr</div>
+        <div class="notes">Handles complex repairs, HVAC diagnostics, mentors new techs. 3–5 years experience.</div>
+      </div>
+      <div class="ladder-rung">
+        <div class="role">Senior Tech / CAMT</div>
+        <div class="pay">$26–$35/hr</div>
+        <div class="notes">CAMT certification, EPA 608, leads maintenance program on a property. 5+ years.</div>
+      </div>
+      <div class="ladder-rung">
+        <div class="role">Maintenance Supervisor</div>
+        <div class="pay">$35–$55K/yr salary</div>
+        <div class="notes">Manages all maintenance staff at a property. Often includes on-site housing benefit.</div>
+      </div>
+      <div class="ladder-rung">
+        <div class="role">Regional Maintenance Director</div>
+        <div class="pay">$55K–$100K+/yr</div>
+        <div class="notes">Oversees maintenance across a portfolio of properties. Senior management role.</div>
+      </div>
+    </div>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The On-Site Housing Benefit — The Hidden Compensation</div>
+      <p>Many apartment communities offer maintenance supervisors and senior techs free or reduced-rate on-site housing as part of their compensation package. For a maintenance supervisor earning $42,000/year in salary, free housing in a market where a 1-bedroom apartment costs $1,400/month adds $16,800/year in real compensation — bringing total compensation closer to $59,000. When evaluating any property management maintenance offer that includes housing, calculate the total compensation including the housing value before comparing it to other offers. This benefit dramatically changes the financial picture at the supervisor level.</p>
+    </div>
+
+    <h3 class="sub-title">The CAMT certification — the credential that separates entry-level from career</h3>
+
+    <p class="lesson-text">The CAMT (Certified Apartment Maintenance Technician) is the primary professional credential in apartment maintenance, administered by the National Apartment Association (NAA). It signals to any property management company that you have met a national standard of competence across all systems — plumbing, electrical, HVAC, appliances, interior, and exterior maintenance.</p>
+
+    <p class="lesson-text"><strong>Requirements:</strong> Minimum 12 months of apartment or rental housing maintenance experience (this can be concurrent with the coursework — you do not need to wait a year before starting). Completion of CAMT coursework — five technical courses covering hands-on training plus online scenarios, plus a non-technical soft skills course. A passing score on the comprehensive online exam within 12 months of declaring candidacy.</p>
+
+    <p class="lesson-text"><strong>Cost:</strong> Approximately $881 for NAA members / $1,101 for non-members. Some employers cover the cost or reimburse upon completion — ask during the hiring conversation. NAA affiliate chapters also offer scholarships.</p>
+
+    <p class="lesson-text"><strong>Pay impact:</strong> CAMT certification typically adds $3–$6/hour to a maintenance tech's hourly rate. At 40 hours per week, that is $6,000–$12,500 per year in additional income. The certification pays for itself in less than two months of the pay increase it generates.</p>
+
+    <p class="lesson-text"><strong>How to start:</strong> Find your local NAA affiliate at naahq.org. The CAMT program requires classroom instruction and cannot be completed fully online — you must work with a local NAA chapter. Contact them directly for upcoming course schedules and enrollment.</p>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: A Day in the Life of an Apartment Maintenance Tech</div>
+    <h2 class="lesson-title">What the job actually looks like — <em>before you apply</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pepe Gomez follows a full workday as an apartment maintenance tech — the work orders, the resident interactions, the problem-solving, the pace. Watch this as a realistic preview of what you are signing up for. The job is hands-on, varied, and never boring. It is also demanding. Know what you are walking into before you walk in.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/cL6k7zjtmg8" title="A Day in the Life — Apartment Maintenance Tech — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Pepe Gomez · Maintenance Man Narratives</span>
+        <h4>A Day in the Life of an Apartment Maintenance Technician</h4>
+        <p>A full workday following Pepe Gomez through real apartment maintenance work orders — the variety of repairs, the resident interactions, the pace of the work, and the satisfaction of solving problems across a full shift. A realistic preview of what an entry-level to mid-level apartment maintenance position actually looks like day to day.</p>
+        <div class="credit">Pepe Gomez · Maintenance Man Narratives · Apartment maintenance focused · Real field footage</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">On the job — <em>what to do in the first 90 days to make yourself indispensable</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Getting hired is step one. Making yourself indispensable in the first 90 days is what determines whether you have a job or a career. Property managers remember who showed up and performed when it mattered. The first 90 days are when you build that reputation — and it is far easier to build a strong reputation early than to rebuild a weak one later.</p>
+
+    <h3 class="sub-title">The first week habits that set you apart</h3>
+
+    <p class="lesson-text"><strong>Learn the property before you try to fix anything.</strong> Walk every building, every floor, every mechanical room. Find every water shutoff, every electrical panel, every HVAC unit, every roof hatch. Find the parts room and learn what is stocked. Know where the clean-out plugs are and where the gas shutoffs are. The property manager who watches you walk in and ask the right questions on day one immediately trusts you more.</p>
+
+    <p class="lesson-text"><strong>Document everything from day one.</strong> Write detailed work orders — what you found, what you did, what parts you used, what you observed. A new tech who writes thorough work orders immediately signals professionalism. Property managers share work order notes with each other and with ownership. Your documentation is your professional record.</p>
+
+    <p class="lesson-text"><strong>Do the Unit Scan on every entry.</strong> Every time you enter a unit for any reason — check under every sink, look at the toilet base, feel the water heater area, check the HVAC filter, look at the caulk around the tub. The Unit Scan takes 60 seconds and catches problems that residents never report. The first time you tell a property manager "I was in 204 for a work order and noticed a slow drip under the kitchen sink — I fixed it before it became a problem," your relationship with that property manager changes permanently.</p>
+
+    <p class="lesson-text"><strong>Ask to learn, not just to do.</strong> If a licensed HVAC contractor comes out, ask if you can watch. If the plumber is replacing a wax ring, watch how they do it. Every experienced person on that property is a free training resource. The maintenance techs who advance fastest are the ones who treat every repair they have not done before as a learning opportunity — not just a task to complete and move on from.</p>
+
+    <p class="lesson-text"><strong>Be the person who communicates.</strong> Call residents when a part is delayed. Update the property manager before they have to ask. Let your supervisor know when you encounter something unexpected — not after you have already tried to handle it, but when you first discover it. The single biggest frustration property managers have with maintenance techs is being left in the dark. Be the tech who keeps everyone informed, and you become the tech who gets trusted with more.</p>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 The On-Call Reality — What You Need to Know Before You Accept</div>
+      <p>Most apartment maintenance positions include on-call rotation — you carry a property phone for one week out of every few weeks and handle emergency calls after hours and on weekends. Emergency calls are typically water leaks, no heat in winter, no AC in summer, lockouts, and security concerns. On-call does not mean you work all night — most emergency calls are resolved in under an hour. But it does mean your phone is on and you are reachable. Before accepting any maintenance position, ask how the on-call rotation works, how many people share it, and what the emergency call volume typically looks like. This is a real part of the job and knowing what you are signing up for before day one is part of professional preparation.</p>
+    </div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>"Every property manager you will ever work for started with someone giving them a chance they may not have fully deserved yet. They remember that. The ones who last in this business are not the ones who came in knowing everything — they are the ones who showed up, paid attention, did the Unit Scan, wrote the work order correctly, and called before anyone had to ask. You are more prepared to walk into that first interview than most people who have been doing this for a year. Go get it."</p>
+      <div class="mentor-name">Your Darco Mentor · Module 7 Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 7 Key Takeaways</h3>
+    <ul>
+      <li>Property managers hire for reliability first, skill second. The most common reason maintenance techs lose jobs is not incompetence — it is no-call no-shows and chronic lateness. Demonstrate reliability from the first phone call to schedule the interview.</li>
+      <li>The porter position is the standard entry point for anyone with no apartment maintenance experience. Porters who show up reliably and demonstrate a maintenance mindset advance to maintenance tech roles within 6–18 months. It is not a step down — it is the door.</li>
+      <li>Walk-in applications at apartment complexes are effective in property management. Go in person, ask for the property manager, and introduce yourself. Major operators — Greystar, Aimco, Camden, Equity Residential — post openings regularly on their career pages and on Indeed.</li>
+      <li>Your maintenance tech résumé should list specific skills (not "general maintenance"), tools you own, any relevant work history, and any certifications or training including this course. One clear, specific page outperforms two vague ones.</li>
+      <li>The CAMT certification adds $3–$6/hour to your pay rate, requires 12 months of experience (concurrent with coursework), and costs approximately $881–$1,101. Find your local NAA affiliate at naahq.org. Some employers cover the cost. The certification pays for itself in under two months of the pay increase it generates.</li>
+      <li>In the first 90 days: learn the property before fixing anything, document every work order thoroughly, do the Unit Scan on every unit entry, ask to learn from every experienced person on the property, and communicate proactively before anyone has to ask. These habits are what turn a job into a career.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question-block">
+      <div class="q-num">Question 1 of 5</div>
+      <div class="q-text">A person with no apartment maintenance experience wants to get into property management maintenance. They have done general labor on construction sites and own basic hand tools. What is the most realistic first step?</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Apply directly for maintenance tech II positions — construction experience is equivalent to apartment maintenance experience.</div>
+      <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Apply for porter or groundskeeper positions at apartment complexes — this is the standard entry point for people without direct apartment maintenance experience, and porters who demonstrate reliability and a maintenance mindset advance to tech roles within 6–18 months.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Complete the CAMT certification before applying — property management companies will not hire anyone without a certification.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Apply only to large operators like Greystar — small properties do not hire people without experience.</div>
+      <div class="explanation correct" id="q1-correct">Correct! The porter position is the standard and intentional entry point for apartment maintenance. It requires no prior apartment experience, demonstrates that you can show up and work reliably, and gives you direct exposure to the property and its systems every day. Property managers hire from within — a porter who shows up on time, does the work well, and shows initiative is almost always the first person a property manager considers when a maintenance tech position opens. Construction experience is genuinely valuable background — it just does not substitute for apartment-specific experience in the eyes of most property managers.</div>
+      <div class="explanation wrong" id="q1-wrong">Not quite. The porter or groundskeeper position is the correct answer — it is the standard entry point that most apartment maintenance professionals started at. Maintenance tech II positions require 3–5 years of apartment-specific experience. CAMT certification requires 12 months of apartment experience before it can be earned. And large operators like Greystar hire at all experience levels, including porter positions. Start at the porter level, demonstrate reliability and aptitude, and advance from there.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 2 of 5</div>
+      <div class="q-text">A property manager asks a maintenance tech applicant "what maintenance experience do you have?" The applicant has completed this training course, done minor repairs at home, and helped a friend with some apartment repairs. What is the best answer?</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> "I have a little bit of experience with everything — I am a fast learner." (Generic and signals nothing specific.)</div>
+      <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Name specific skills confidently: "I can handle basic plumbing — faucets, running toilets, clogged drains. I am comfortable with GFCI troubleshooting, outlet replacement, and light fixture swaps. I have done drywall patching, painting, and appliance troubleshooting. I completed a structured maintenance training program and own my own tool kit."</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> "I have extensive maintenance experience and can handle any repair." (Overstating experience creates expectations you cannot meet.)</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Apologize for the limited experience and explain that the applicant is willing to work for a reduced wage until they prove themselves.</div>
+      <div class="explanation correct" id="q2-correct">Correct! Specific skills stated confidently are far more compelling to a property manager than vague claims of general experience. "I can handle basic plumbing, GFCI troubleshooting, light fixture replacement, drywall patching, and appliance troubleshooting" is a real, credible answer that gives the property manager a clear picture of what you can handle on day one. Adding "I completed a structured maintenance training program and own my own tool kit" reinforces that you are serious and prepared. Do not overstate what you cannot do — it will surface quickly — but do not undersell what you genuinely know.</div>
+      <div class="explanation wrong" id="q2-wrong">Not correct. Vague answers like "a little bit of everything" tell a property manager nothing — and actually suggest you cannot identify specific skills, which is a red flag. Overstating experience creates expectations that collapse the moment you are asked to demonstrate a skill you claimed. The correct approach is to confidently name the specific repairs you can handle, mention your training, and mention your tools. Specific and honest is always the right answer.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 3 of 5</div>
+      <div class="q-text">A maintenance tech is in a unit fixing a leaky faucet. While packing up their tools, they notice the HVAC filter looks extremely dirty and the caulk around the bathtub is cracked and pulling away from the wall. The work order only covered the faucet. What should the tech do?</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Leave — the work order was for the faucet only. Doing additional work without authorization could create liability.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div> Fix both issues immediately without telling anyone — taking initiative shows good character.</div>
+      <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div> Note both items on the work order and report them to the property manager — "while in 308 for the faucet, I observed a severely clogged HVAC filter and cracked caulk at the tub/wall transition. Recommending filter replacement and recaulking." This is the Unit Scan in action.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Ask the resident if they have noticed any other problems — they will know what else needs fixing.</div>
+      <div class="explanation correct" id="q3-correct">Correct! This is exactly the Unit Scan habit in professional practice. Document what you observed on the work order and report it to the property manager — do not just fix things without authorization (which can create liability and work order tracking problems), but absolutely do not leave without flagging what you saw. A maintenance tech who writes "while in 308 for the faucet, observed severely clogged HVAC filter and cracked tub caulk — recommending immediate attention" is adding real value beyond the work order. This is the habit that earns trust and advances careers.</div>
+      <div class="explanation wrong" id="q3-wrong">Not quite. The correct action is to document the observations on the work order and report them to the property manager — not to silently fix everything without authorization, and not to leave without saying anything. Working outside the authorized scope without reporting creates liability. Leaving without noting the problems misses the entire value of the Unit Scan habit. Document what you saw, report it professionally, and let the property manager decide on next steps. That is the professional standard.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 4 of 5</div>
+      <div class="q-text">What does CAMT stand for and what organization administers it?</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Certified Apartment Maintenance Trainer — administered by the American Contractors Association.</div>
+      <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Certified Apartment Maintenance Technician — administered by the National Apartment Association (NAA).</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Certified Apartment Management Technician — administered by the Institute of Real Estate Management (IREM).</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Certified Apartment Maintenance Tech — administered by OSHA.</div>
+      <div class="explanation correct" id="q4-correct">Correct! CAMT stands for Certified Apartment Maintenance Technician and is administered by the National Apartment Association (NAA). It is the primary professional credential for apartment maintenance professionals in the United States. Requirements include 12 months of apartment or rental housing maintenance experience, completion of CAMT coursework (five technical courses plus a soft skills course), and a passing score on the comprehensive exam. Cost is approximately $881 for NAA members and $1,101 for non-members. Find your local NAA affiliate at naahq.org.</div>
+      <div class="explanation wrong" id="q4-wrong">Not correct. CAMT stands for Certified Apartment Maintenance Technician and is administered by the National Apartment Association (NAA) — not the ACA, IREM, or OSHA. It is the primary professional credential in apartment maintenance. Requirements include 12 months of experience (concurrent with coursework), completion of CAMT courses, and a passing exam score. Cost: approximately $881 NAA members / $1,101 non-members. Start at naahq.org to find your local chapter.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 5 of 5</div>
+      <div class="q-text">A maintenance tech has been offered two positions: Position A pays $22/hour with no benefits. Position B pays $19/hour but includes free on-site housing in a 1-bedroom apartment that rents for $1,300/month in that market. Which position offers higher total compensation?</div>
+      <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">A</div> Position B — $19/hour plus $1,300/month in housing equals approximately $34,600/year in wages plus $15,600/year in housing value, totaling approximately $50,200 in annual compensation vs. Position A's $45,760.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Position A — $22/hour is always higher than $19/hour regardless of additional benefits.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div> They are approximately equal — the housing benefit roughly offsets the pay difference.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> It depends on the local market — housing benefits are only valuable in expensive cities.</div>
+      <div class="explanation correct" id="q5-correct">Correct! Position B offers higher total compensation. At 40 hours/week and 52 weeks/year: Position A = $22 × 2,080 hours = $45,760/year. Position B = $19 × 2,080 hours = $39,520/year in wages, plus $1,300/month × 12 months = $15,600/year in housing value, totaling approximately $55,120 in real compensation. That is nearly $9,360 more per year than Position A. On-site housing benefits are one of the most financially significant and most commonly underestimated components of property management maintenance compensation. Always calculate total compensation including housing before comparing offers.</div>
+      <div class="explanation wrong" id="q5-wrong">Not correct. On-site housing benefits dramatically change the compensation comparison. Position A: $22 × 2,080 hours = $45,760/year. Position B: $19 × 2,080 = $39,520 in wages + $15,600 in housing value = $55,120 total. Position B pays approximately $9,360 more per year in total compensation despite having a lower hourly wage. Always calculate the full value of housing benefits before comparing maintenance offers — this is one of the most financially significant compensation elements at the supervisor and senior tech level.</div>
+    </div>
+
+    <button class="check-btn" onclick="checkAllAnswers()">Check My Answers</button>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="module-glossary">
+    <h3>📖 Module 7 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">All career and hiring terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch7" placeholder="Search terms..." oninput="mgFilter(this,7)">
+    <div class="mg-terms" id="mgTerms7">
+
+      <div class="mg-term" data-mg="camt certified apartment maintenance technician naa national apartment association credential">
+        <div class="mg-term-header"><span class="mg-name">CAMT</span><span class="mg-abbr">Certified Apartment Maintenance Technician</span><span class="mg-law">Professional Credential · NAA</span></div>
+        <div class="mg-def">The primary professional certification for apartment maintenance technicians in the United States, administered by the National Apartment Association (NAA). Requires 12 months of apartment or rental housing maintenance experience (concurrent with coursework), completion of five technical courses plus a soft skills course, and a passing score on the comprehensive exam. Cost: approximately $881 for NAA members / $1,101 for non-members. Adds $3–$6/hour to pay. Find local chapters at naahq.org.</div>
+        <div class="mg-tip">💡 Some employers reimburse the CAMT exam cost upon completion — ask during the hiring conversation.</div>
+      </div>
+
+      <div class="mg-term" data-mg="make ready turn unit preparation apartment turnover between tenants">
+        <div class="mg-term-header"><span class="mg-name">Make-Ready Technician</span><span class="mg-law">Property Management Role</span></div>
+        <div class="mg-def">A maintenance tech role focused specifically on preparing apartment units for new residents — patching, painting, cleaning, replacing hardware, and completing the full turn-ready checklist between tenants. Common job title for entry to mid-level maintenance positions. Some properties have dedicated make-ready teams; others rotate the work across all maintenance staff.</div>
+      </div>
+
+      <div class="mg-term" data-mg="naa national apartment association industry organization property management">
+        <div class="mg-term-header"><span class="mg-name">NAA</span><span class="mg-abbr">National Apartment Association</span><span class="mg-law">Industry Organization</span></div>
+        <div class="mg-def">The largest apartment industry organization in the United States, representing over 10 million apartment homes and 145 state and local affiliates. Administers the CAMT certification and other apartment industry credentials. Membership provides access to CAMT training, industry events, salary benchmarks, and local affiliate networks. Find your local affiliate at naahq.org.</div>
+      </div>
+
+      <div class="mg-term" data-mg="on call rotation emergency after hours phone property maintenance">
+        <div class="mg-term-header"><span class="mg-name">On-Call Rotation</span><span class="mg-law">Maintenance Employment Condition</span></div>
+        <div class="mg-def">A schedule requirement at most apartment properties where maintenance techs take turns carrying an emergency phone and responding to after-hours calls — typically one week at a time, rotating among staff. Emergency calls usually involve water leaks, heating/cooling failures, lockouts, and safety concerns. On-call does not mean working all night — most calls are resolved in under an hour — but it does mean your phone is on and you must be reachable. Ask about on-call structure before accepting any position.</div>
+      </div>
+
+      <div class="mg-term" data-mg="on site housing benefit apartment supervisor compensation total free reduced rent">
+        <div class="mg-term-header"><span class="mg-name">On-Site Housing Benefit</span><span class="mg-law">Property Management Compensation</span></div>
+        <div class="mg-def">Free or reduced-rate apartment housing provided to maintenance supervisors and senior techs as part of their compensation package. Common at apartment communities where having a senior maintenance person on-site overnight improves emergency response. Dramatically increases total compensation — a $1,300/month housing benefit adds $15,600/year in real compensation value. Always calculate total compensation including housing when evaluating property management offers.</div>
+      </div>
+
+      <div class="mg-term" data-mg="porter groundskeeper entry level apartment maintenance first job no experience">
+        <div class="mg-term-header"><span class="mg-name">Porter / Groundskeeper</span><span class="mg-law">Entry-Level Property Management Role</span></div>
+        <div class="mg-def">The standard entry-level position in apartment maintenance. Responsibilities include grounds maintenance, trash and recycling management, common area cleaning, light repairs, and supporting the maintenance team. No prior apartment experience required. The primary pathway into apartment maintenance for someone starting from scratch — porters who demonstrate reliability and maintenance aptitude advance to maintenance tech roles within 6–18 months in most properties.</div>
+      </div>
+
+      <div class="mg-term" data-mg="temp to hire staffing agency property management maintenance placement">
+        <div class="mg-term-header"><span class="mg-name">Temp-to-Hire</span><span class="mg-law">Employment Pathway</span></div>
+        <div class="mg-def">An employment arrangement where a staffing agency places a worker at a property management company on a temporary basis, with the expectation of conversion to permanent employment if the placement is successful. Common in property management maintenance hiring. Lower initial pay than direct hire, but provides a pathway to employment without a permanent hiring commitment — and allows both parties to evaluate fit before committing. Companies like TrueBlue specialize in this model for property management placements.</div>
+      </div>
+
+      <div class="mg-term" data-mg="unit scan habit inspection proactive maintenance tech unit entry 60 seconds">
+        <div class="mg-term-header"><span class="mg-name">Unit Scan</span><span class="mg-law">Professional Maintenance Habit</span></div>
+        <div class="mg-def">The professional habit of performing a quick visual inspection of every apartment unit every time you enter it for any reason. Check under sinks for drips, look at toilet bases for moisture, check the HVAC filter, inspect caulk around tubs and showers, look for any obvious damage or safety concerns. Takes approximately 60 seconds. Catches problems before they become expensive — leaks that become water damage, filters that have gone unchanged for months, outlets that spark. The habit that most clearly separates professional maintenance techs from entry-level ones in the eyes of property managers.</div>
+        <div class="mg-tip">💡 Document Unit Scan observations on your work order every time — this is your professional record of proactive maintenance.</div>
+      </div>
+
+      <div class="mg-term" data-mg="work order documentation maintenance record repair history property unit">
+        <div class="mg-term-header"><span class="mg-name">Work Order Documentation</span><span class="mg-law">Professional Standard</span></div>
+        <div class="mg-def">The written record of every maintenance task completed at a property — what was reported, what was found, what was done, what parts were used, and any observations made during the visit. Good work order documentation protects the tech from false complaints, gives the next tech a clear history of the unit, helps property managers track recurring issues, and demonstrates professionalism to supervisors and ownership. Standard is to write what you found, what you did, and what you observed — not just "fixed."</div>
+      </div>
+
+    </div>
+    <div class="mg-none" id="mgNone7">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mr-glossary.html" style="font-size:13px;color:var(--rust-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 8 Modules) &rarr;</a>
+    </div>
+  </div>
+
+  <!-- NEXT MODULE -->
+  <div class="next-module fade-in">
+    <h3>⏭️ What's Next — Module 8: Going Independent &amp; Certifications</h3>
+    <p>Module 8 covers the path beyond employment — going independent as a maintenance contractor or handyman, building a client base with property managers, the certifications that open the highest-paying work (CAMT, EPA 608, CPO), and what the long-term career picture looks like for someone who masters this trade.</p>
+    <a href="mr-module-8.html" class="next-module-cta">Module 8: Going Independent →</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mr-module-6.html" class="btn-outline">← Module 6</a>
+  <a href="mr-module-8.html" class="btn-gold">Module 8 →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Maintenance &amp; Repair Track · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Salary and compensation data reflects general market ranges and may vary by region and employer.</p>
+</footer>
+
+<script>
+var quizAnswers={};
+var quizDone=false;
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=el.parentElement.querySelectorAll('.option');
+  opts.forEach(function(o){o.classList.remove('selected-correct','selected-wrong');});
+  el.classList.add(isCorrect?'selected-correct':'selected-wrong');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAllAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var correctEl=document.getElementById(qId+'-correct');
+    var wrongEl=document.getElementById(qId+'-wrong');
+    if(ans.isCorrect){correctEl.style.display='block';}
+    else{wrongEl.style.display='block';}
+  }
+}
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
+}
+</script>
+</body>
+</html>
