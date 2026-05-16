@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 5: Appliance Repairs — Darco Real Estate Academy</title>
+<title>Module 5: Appliances & Interior Repairs — Darco Real Estate Academy</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -34,7 +34,7 @@ nav{background:var(--rust);padding:0 2.5rem;display:flex;align-items:center;just
 .progress-bar{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
 .progress-label{font-size:12px;font-weight:600;color:var(--rust-mid);white-space:nowrap;}
 .progress-track{flex:1;height:6px;background:rgba(139,58,26,0.15);border-radius:3px;overflow:hidden;}
-.progress-fill{height:100%;background:var(--rust-mid);border-radius:3px;width:62%;}
+.progress-fill{height:100%;background:var(--rust-mid);border-radius:3px;width:62.5%;}
 .progress-modules{display:flex;gap:6px;}
 .prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
 .prog-dot.complete{background:var(--rust-mid);color:var(--white);}
@@ -71,6 +71,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .callout-rust{background:var(--rust-pale);border-left:4px solid var(--rust-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
 .callout-rust .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.5rem;}
 .callout-rust p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* High value swap table */
 .swap-table{margin:2rem 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
 .swap-header{display:grid;grid-template-columns:1.5fr 0.75fr 0.75fr 2fr;background:var(--rust);color:var(--white);}
 .swap-header div{padding:0.75rem 1rem;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
@@ -80,8 +81,13 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .swap-row .repair{color:var(--text-dark);font-weight:600;}
 .swap-row .cost-part{color:var(--rust-mid);font-weight:600;}
 .swap-row .cost-call{color:var(--text-light);}
-.video-placeholder{background:var(--cream-dark);border:2px dashed var(--border);border-radius:16px;padding:2rem;margin:1.75rem 0;text-align:center;}
-.video-placeholder p{font-size:13px;color:var(--text-light);font-style:italic;}
+/* Drywall steps */
+.steps{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;}
+.step{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.step-num{width:30px;height:30px;border-radius:50%;background:var(--rust);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.step h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.step p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* Video */
 .video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
 .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
 .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
@@ -90,18 +96,21 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
 .video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
 .video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+/* Books */
 .books-section{display:flex;flex-direction:column;gap:0.9rem;margin:2rem 0;}
 .book-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
 .book-item .bi-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.1rem;}
 .book-item .bi-author{font-size:12px;color:var(--text-light);}
 .book-item .bi-desc{font-size:12.5px;color:var(--text-mid);margin-top:0.3rem;line-height:1.5;}
 .book-item a{display:inline-flex;align-items:center;gap:6px;background:var(--rust);color:var(--white);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+/* Takeaways */
 .takeaways{background:var(--rust);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
 .takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
 .takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
 .takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
 .takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.65;display:block;padding-left:1.5rem;position:relative;}
 .takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;position:absolute;left:0;}
+/* Mentor bubble */
 .mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
 .mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(139,58,26,0.25);}
 .mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
@@ -109,6 +118,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
 .mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
 .mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+/* Knowledge Check */
 .knowledge-check{background:var(--white);border:2px solid var(--rust-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
 .knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--rust);margin-bottom:0.4rem;}
 .knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
@@ -127,6 +137,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .explanation.wrong{background:#FFF1F1;border:1px solid #EF9A9A;color:#B71C1C;}
 .check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;font-family:'DM Sans',sans-serif;}
 .check-btn:hover{background:var(--rust-mid);}
+/* Glossary */
 .module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
 .module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
 .mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
@@ -143,6 +154,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
 .mg-tip{font-size:12px;color:var(--rust-mid);margin-top:0.3rem;font-style:italic;}
 .mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+/* Next module */
 .next-module{background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
 .next-module h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;}
 .next-module p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
@@ -178,7 +190,7 @@ footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padd
 <div class="breadcrumb">
   <a href="index.html">Home</a><span class="sep">/</span>
   <a href="maintenance-repair.html">Maintenance &amp; Repair</a><span class="sep">/</span>
-  <span class="current">Module 5 — Appliance Repairs</span>
+  <span class="current">Module 5 — Appliances &amp; Interior Repairs</span>
 </div>
 
 <div class="progress-bar">
@@ -199,11 +211,11 @@ footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padd
 <div class="module-hero">
   <div class="module-hero-inner">
     <div class="module-badge">Maintenance &amp; Repair Track · Module 5 of 8</div>
-    <h1>Appliance <em>Repairs</em></h1>
-    <p>Refrigerators, ovens, dryers, dishwashers, washing machines — the appliance repairs that property managers pay $150–$300 per service call for, that a skilled maintenance tech can handle in 20 minutes with a $20 part. This module teaches you to diagnose, research, and fix the most common appliance failures in any apartment building.</p>
+    <h1>Appliances <em>&amp; Interior Repairs</em></h1>
+    <p>Appliance troubleshooting and high-value part swaps, drywall patching, painting like a pro, door and window adjustments, floors, locks — the repairs that fill the rest of every maintenance tech's workday and set apart the techs property managers trust to handle anything.</p>
     <div class="module-meta">
       <div class="meta-item">📖 <span>4 Lessons</span></div>
-      <div class="meta-item">🎬 <span>4 Videos</span></div>
+      <div class="meta-item">🎬 <span>2 Videos</span></div>
       <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
       <div class="meta-item">📚 <span>Sources: Home Maintenance For Dummies · Habitat for Humanity · Pepe Gomez</span></div>
     </div>
@@ -215,283 +227,215 @@ footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padd
   <!-- LESSON 1 -->
   <div class="lesson-section fade-in">
     <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
-    <h2 class="lesson-title">The appliance repair mindset — <em>model number first, everything else second</em></h2>
+    <h2 class="lesson-title">Appliance repairs — <em>the high-value swaps that save property managers thousands</em></h2>
     <div class="gold-divider"></div>
 
-    <p class="lesson-text">Appliance repair is the skill that separates maintenance techs who save property managers money from ones who just pass calls to contractors. A property manager who has to call an appliance service company pays $75–$150 before a single repair is done — plus parts and labor. A maintenance tech who diagnoses and fixes the same problem with a $20 part saves that money on every single call, on every appliance, in every unit.</p>
+    <p class="lesson-text">The most financially valuable skill set in apartment maintenance is not the most complex one — it is knowing which appliance repairs are simple part swaps that look expensive from the outside. When a property manager has to call an appliance service company, they pay $75–$150 just for the service call, before any repair is done. A maintenance tech who can diagnose and fix the same problem in 20 minutes with a $20 part saves that money on every single call — and builds an irreplaceable reputation.</p>
 
-    <p class="lesson-text">The foundation of appliance repair is a simple habit: <strong>always get the model number before searching for anything.</strong> Every appliance has a model number label — inside the refrigerator door frame, on the back panel, under the range top, inside the dishwasher door edge, inside the washer door. Write it down or photograph it before walking back to your cart. A search for "oven not igniting" returns thousands of generic results. A search for "Whirlpool WFG525S0HS not igniting" returns the exact repair video for that exact oven — often filmed by someone who had the identical problem on the identical unit.</p>
+    <p class="lesson-text">The key principle: <strong>always get the model number before searching for anything.</strong> Every appliance has a model number label — inside the refrigerator door frame, on the back panel, under the range top, inside the dishwasher door edge. Search YouTube for "[brand] [model number] [symptom]" and you will find a repair video for the exact unit in most cases. This is how experienced maintenance techs approach every unfamiliar appliance repair — model first, YouTube second, parts third.</p>
 
-    <p class="lesson-text">The six-step research system from Module 2 applies directly here: model number first, YouTube search with model and symptom, parts diagrams on RepairClinic.com or PartSelect.com, read the comments on the repair video, check the manufacturer's error code guide if applicable, and know when to stop and escalate. Most appliance repairs you will encounter as a maintenance tech are within this scope. The exceptions — sealed refrigerant systems, gas valve internals, and anything requiring EPA 608 — are always escalated to licensed technicians.</p>
-
-    <div class="callout-insight">
-      <div class="callout-label">💡 Parts Sites That Every Maintenance Tech Should Know</div>
-      <p><strong>RepairClinic.com</strong> and <strong>PartSelect.com</strong> carry parts for virtually every major appliance brand ever manufactured. Enter the model number and they show you an exploded diagram of the entire appliance — exactly how it is assembled, what every part is called, and the part number for ordering. Both sites also have repair help sections with symptom-based guidance. When you have a model number and a symptom, these sites tell you exactly what part to order and often show you a repair video specific to that part on that model.</p>
-    </div>
-  </div>
-
-  <!-- LESSON 2 -->
-  <div class="lesson-section fade-in">
-    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
-    <h2 class="lesson-title">Refrigerators and ovens — <em>the highest-volume kitchen appliance calls</em></h2>
-    <div class="gold-divider"></div>
-
-    <p class="lesson-text">Refrigerators and ovens generate more maintenance calls than any other kitchen appliances. Most of these calls are resolved by cleaning something, replacing an inexpensive part, or resetting a safety device — not by replacing the appliance or calling a specialist.</p>
-
-    <h3 class="sub-title">Refrigerator — the maintenance tech checklist</h3>
-
-    <p class="lesson-text"><strong>Not cooling or running constantly:</strong> The most commonly overlooked cause is dirty condenser coils. These coils — located under the unit behind a kickplate or on the back — release heat from the refrigeration system. When caked with dust and debris, they cannot release heat efficiently, forcing the compressor to run continuously and reducing cooling performance. Clean with a coil brush and vacuum. Takes 10 minutes. Do this before assuming any mechanical failure.</p>
-
-    <p class="lesson-text"><strong>Door not sealing:</strong> Test the door gasket by closing the door on a dollar bill. If it slides out easily with no resistance, the gasket is failing and warm air is entering the unit constantly. Gasket replacement is model-specific — order by model number. Most gaskets press into a channel around the door frame or are held by screws under the door liner. Cost: $15–$40. A failing door gasket causes the compressor to run constantly, wastes energy, and shortens compressor life.</p>
-
-    <p class="lesson-text"><strong>Ice maker not working:</strong> Check the ice maker arm — if it is in the raised (off) position, the ice maker is disabled. Check the water supply line shutoff valve behind the refrigerator. Check for a frozen water supply line (common in units where the refrigerator was moved and the line kinked). If the ice maker hums but does not cycle, the water inlet solenoid valve may be faulty — a $20–$40 part that controls water flow into the ice maker.</p>
-
-    <p class="lesson-text"><strong>Water on the floor inside or underneath:</strong> A clogged defrost drain is the most common cause of water pooling inside a refrigerator. The defrost system melts frost off the evaporator coil, and the water drains through a small drain hole at the bottom of the freezer compartment. When this drain clogs with debris, water backs up and leaks. Clear the drain with warm water and a small flexible brush or pipe cleaner. The drain opening is usually at the back of the freezer floor.</p>
-
-    <h3 class="sub-title">Gas oven — the igniter is almost always the answer</h3>
-
-    <p class="lesson-text">The most common gas oven failure is an oven that clicks or glows but does not light the burner. In modern gas ovens, a glow-bar igniter replaces the standing pilot — it heats up when the oven is turned on and opens the gas safety valve when it reaches sufficient temperature. When the igniter weakens with age, it glows but never gets hot enough to open the valve. The symptom is clear: the igniter glows orange, the oven does not heat, and you can sometimes smell gas briefly as the valve attempts to open.</p>
-
-    <p class="lesson-text">Oven igniter replacement does not involve disconnecting any gas lines. The igniter is connected by a plug — unplug the old one, plug in the new one. The igniter is held by one or two screws and is accessible after removing the oven floor panel. Order by model number. Cost: $20–$50. Time: 20–30 minutes. Calling a service technician for the same repair: $150–$300.</p>
-
-    <div class="callout-warning">
-      <div class="callout-label">⚠️ Always Check for Gas Smell Before Any Oven Repair</div>
-      <p>Before working on any gas appliance, smell the area around the appliance. If you detect a sulfur or rotten egg smell, stop immediately — do not turn on any lights, do not use your phone inside, do not create any spark. Exit the unit, leave the door open, and call the gas company from outside. Gas smell means gas leak — it is always a stop-everything emergency before any repair work begins.</p>
-    </div>
-
-    <p class="lesson-text"><strong>Electric oven not heating:</strong> Electric ovens have two heating elements — a bake element at the bottom and a broil element at the top. If an element is visibly damaged (blistered, cracked, has a burn hole), it is faulty. Test with a multimeter for continuity — no continuity means the element is open. Replacement is a straightforward swap: unscrew the element, disconnect the two wires, connect the new element. Cost: $20–$50. Time: 15 minutes.</p>
-
-    <!-- VIDEO 1 -->
-    <div class="lesson-section fade-in">
-      <div class="section-label"><div class="dot"></div> Watch: Oven Igniter Replacement</div>
-      <h2 class="lesson-title">Replacing a gas oven igniter — <em>the most common gas oven repair</em></h2>
-      <div class="gold-divider"></div>
-      <p class="lesson-text">AppliancePartsPros.com walks through a complete gas oven igniter replacement — removing the access panel, disconnecting the wiring harness, removing the oven floor and flame spreader, swapping the igniter, and reassembling. Clear safety reminders throughout: unplug the range and shut off the gas valve before starting.</p>
-      <div class="video-card">
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/BWrqsbWP2jo" title="Gas Oven Igniter Replacement — AppliancePartsPros" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="video-info">
-          <span class="video-badge">AppliancePartsPros.com · Gas Oven Repair</span>
-          <h4>How to Replace a Gas Oven Igniter</h4>
-          <p>Complete step-by-step igniter replacement — access panel removal, wiring harness disconnect, oven floor and flame spreader removal, igniter swap, and full reassembly. Covers both plug-in igniters and wire-nut connections for universal igniters that fit multiple stove models.</p>
-          <div class="credit">AppliancePartsPros.com · Professional appliance repair tutorial · Safety-first instruction throughout</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- VIDEO 2 -->
-    <div class="lesson-section fade-in">
-      <div class="section-label"><div class="dot"></div> Watch: Refrigerator Door Not Closing</div>
-      <h2 class="lesson-title">Fridge door won't close — <em>the simple fixes most techs overlook</em></h2>
-      <div class="gold-divider"></div>
-      <p class="lesson-text">Pepe Gomez covers two of the most common causes of a refrigerator door that won't fully close — a crisper tray not pushed all the way back, and shelf rails installed in the wrong positions. Both are zero-cost, under-two-minute fixes that look like refrigerator failures but are just simple adjustments.</p>
-      <div class="video-card">
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/a3rBuYWMzew" title="Refrigerator Door Not Closing — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="video-info">
-          <span class="video-badge">Pepe Gomez · Maintenance Man Narratives</span>
-          <h4>Refrigerator Not Closing All the Way — Common Work Order Fix</h4>
-          <p>A real apartment work order — refrigerator door that residents have to push shut by hand. Two causes covered: crisper tray not seated fully, and shelf rails installed in wrong positions. Zero-cost fixes that resolve a large percentage of "refrigerator not closing" calls without parts or tools.</p>
-          <div class="credit">Pepe Gomez · Maintenance Man Narratives · Apartment maintenance focused · Beginner-friendly</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- LESSON 3 -->
-  <div class="lesson-section fade-in">
-    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
-    <h2 class="lesson-title">Dryers, washers, and dishwashers — <em>the laundry and kitchen appliance calls that never stop</em></h2>
-    <div class="gold-divider"></div>
-
-    <h3 class="sub-title">Dryer — vent first, parts second</h3>
-
-    <p class="lesson-text">Before diagnosing any dryer problem, check the dryer vent. A clogged dryer vent is the most common cause of poor dryer performance — and also the most dangerous maintenance item in any apartment building. Clogged dryer vents cause approximately 2,900 residential fires per year. Lint is highly flammable. When the vent is clogged, heat builds up inside the dryer, blows thermal fuses, damages heating elements, and eventually creates a fire risk.</p>
-
-    <p class="lesson-text">Signs of a clogged dryer vent: dryer takes multiple cycles to dry a single load, dryer feels very hot to the touch during operation, the exterior vent flap does not open when the dryer is running. Clear the vent by disconnecting the duct at the dryer, vacuuming from both ends, and confirming the exterior vent cap opens freely. Do this before replacing any parts — a clogged vent will blow a new thermal fuse within days from the same overheating that failed the original.</p>
-
-    <p class="lesson-text"><strong>Dryer runs but does not heat:</strong> After confirming the vent is clear, the thermal fuse is the most likely culprit. The thermal fuse is a one-time safety device that blows permanently when the dryer overheats. Test with a multimeter for continuity — a blown fuse reads infinite (open circuit). Cost: $8–$15. Located near the exhaust duct connection inside the dryer cabinet. If the thermal fuse is good but the dryer still does not heat, the heating element itself may be open — test the same way.</p>
-
-    <p class="lesson-text"><strong>Dryer runs but drum does not spin:</strong> The most common cause is a broken drive belt — the belt that wraps around the drum and the motor pulley. Open the dryer cabinet and check whether the drum turns freely by hand with no resistance. If it spins very easily (no tension), the belt is broken. Dryer belt replacement requires opening the cabinet and routing the new belt around the drum and pulleys — a 45-minute job with a model-specific YouTube video as your guide.</p>
-
-    <h3 class="sub-title">Washing machine — the lid switch is usually the answer</h3>
-
-    <p class="lesson-text">Top-loading washing machines have a lid switch — a safety device that prevents the machine from spinning with the lid open. When the lid switch fails, the machine fills and agitates normally but will not spin or advance to the drain cycle. To test: open the lid and press the lid switch plunger with a pen or screwdriver while the machine is in spin cycle. If the machine spins, the lid switch is the problem. Lid switch replacement costs $10–$25 and takes 20 minutes.</p>
-
-    <p class="lesson-text">For washing machines that do not agitate, the agitator dogs (small plastic ratchet components inside the agitator) are often worn. These allow the agitator to move in one direction only — when worn, the agitator spins freely in both directions instead of ratcheting. Agitator dog replacement costs $5–$15 and is one of the fastest appliance repairs available — the agitator pulls straight up off the shaft, the dogs sit in a basket at the top, and replacement takes under 10 minutes.</p>
-
-    <h3 class="sub-title">Dishwasher — clean the filter before calling anyone</h3>
-
-    <p class="lesson-text">Most modern dishwashers have a removable filter at the bottom of the tub — a cylindrical screen that catches food debris before it recirculates through the pump. Most residents never clean it. A clogged filter causes standing water in the tub, poor cleaning performance, and drain problems. Removing and cleaning the filter takes two minutes: twist counterclockwise to unlock, lift out, rinse under running water, replace. Do this before diagnosing any drain pump or motor issue.</p>
-
-    <p class="lesson-text">If the dishwasher still does not drain after cleaning the filter, check the drain hose for kinks — the hose runs from the dishwasher to the drain connection under the sink or to the garbage disposal. If the garbage disposal was recently replaced, confirm the knockout plug was removed from the dishwasher drain inlet on the disposal — this is one of the most common post-installation failures and takes 60 seconds to fix with a screwdriver.</p>
-
-    <!-- VIDEO 3 -->
-    <div class="lesson-section fade-in">
-      <div class="section-label"><div class="dot"></div> Watch: Refrigerator Door Gasket Replacement</div>
-      <h2 class="lesson-title">Replacing a fridge door gasket — <em>press-in replacement on any brand</em></h2>
-      <div class="gold-divider"></div>
-      <p class="lesson-text">A clean step-by-step gasket replacement covering LG, Bosch, Electrolux, Haier, GE, and most modern refrigerators — pull from the corner, clean the channel, press the new seal in starting at the corners, and use a hair dryer to close any small gaps. No tools required.</p>
-      <div class="video-card">
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/5P9UlDnAIOY" title="Replace Refrigerator Door Gasket — Multi-Brand" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="video-info">
-          <span class="video-badge">Refrigerator Gasket Replacement · Multi-Brand</span>
-          <h4>Replace Refrigerator Gasket — LG, Bosch, Electrolux, Haier, GE &amp; More</h4>
-          <p>Complete press-in door gasket replacement — pull from corner, clean the plastic channel with soapy water, press new seal in starting at corners, use a hair dryer to close any small gaps after installation. Applicable to most contemporary refrigerator brands.</p>
-          <div class="credit">Refrigerator repair tutorial · Multi-brand · No tools required · Beginner-friendly</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- VIDEO 4 -->
-    <div class="lesson-section fade-in">
-      <div class="section-label"><div class="dot"></div> Watch: Stuck Garbage Disposal</div>
-      <h2 class="lesson-title">Garbage disposal not working — <em>reset, Allen wrench, debris removal</em></h2>
-      <div class="gold-divider"></div>
-      <p class="lesson-text">The three-step garbage disposal fix — check for debris, press the reset button, and use a quarter-inch Allen wrench to free a jam. Always confirm power is off before reaching in or using the Allen wrench.</p>
-      <div class="video-card">
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/b1PBa0eylDo" title="Stuck Garbage Disposal Fix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="video-info">
-          <span class="video-badge">Garbage Disposal · Stuck / Not Working</span>
-          <h4>Stuck Garbage Disposal — Reset Button, Allen Wrench, Debris Removal</h4>
-          <p>The complete three-step process for a disposal that is stuck or not responding: check for debris with needle nose pliers, press the reset button on the bottom, and use a quarter-inch Allen wrench in the center port to manually free a jam. Power must be off before any hands-near-the-opening work.</p>
-          <div class="credit">Garbage disposal repair · Quick fix · Beginner-friendly · Safety-first</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- WASHER / DRYER / DISHWASHER SELF-SEARCH -->
-    <div class="lesson-section fade-in">
-      <div class="section-label"><div class="dot"></div> Washers, Dryers &amp; Dishwashers — Search by Model for the Exact Fix</div>
-      <h2 class="lesson-title">Laundry and dishwasher repairs — <em>model number first, YouTube second</em></h2>
-      <div class="gold-divider"></div>
-      <p class="lesson-text">Washer, dryer, and dishwasher repairs vary enough by brand and model that the best resource is always a model-specific YouTube video rather than a generic tutorial. Get the model number, then search YouTube using this format: <strong>[Brand] [Model Number] [Symptom]</strong>. You will almost always find a repair video filmed on the exact unit you are working on. RepairClinic.com and PartSelect.com also have model-specific parts diagrams and repair guides for every major brand.</p>
-
-      <div class="callout-insight">
-        <div class="callout-label">💡 The Tech Sheet — The Hidden Repair Manual Inside Every Appliance</div>
-        <p>Most major appliances — especially washers and dryers — have a hidden paper "tech sheet" tucked inside the console or behind a body panel. It contains the complete wiring diagram and instructions for putting the machine into Diagnostic Mode to read error codes. Find it before calling anyone. On many units it is folded and tucked behind the front kick panel, inside the lid, or behind the back panel. It is the fastest path to a definitive diagnosis on any complex appliance fault.</p>
-      </div>
-
-      <h3 class="sub-title">🧺 Dryers — common repairs and what to search</h3>
-      <p class="lesson-text"><strong>Runs but does not heat:</strong> Blown thermal fuse or broken heating element. Test both with a multimeter for continuity. Always clear the dryer vent before replacing either part or the new parts will fail from the same overheating. Search: "[brand] [model] thermal fuse replacement" or "[brand] [model] heating element replacement."</p>
-      <p class="lesson-text"><strong>Drum does not spin / squeaking:</strong> Broken drive belt, worn idler pulley, or worn drum support rollers. Pop the top or front panels to inspect. A drum that turns with no resistance (no tension) has a broken belt. Search: "[brand] [model] drive belt replacement" or "[brand] [model] drum roller replacement."</p>
-
-      <h3 class="sub-title">🫧 Washers — common repairs and what to search</h3>
-      <p class="lesson-text"><strong>Fills but does not spin (top loader):</strong> Faulty lid switch — the machine thinks the lid is open. Test by pressing the switch manually during spin cycle. Search: "[brand] [model] lid switch replacement."</p>
-      <p class="lesson-text"><strong>Does not drain:</strong> Clogged or failed drain pump. Coins, socks, and small items frequently jam the pump impeller. Usually accessible from the bottom or back panel. Search: "[brand] [model] drain pump replacement" or "[brand] [model] drain pump clog."</p>
-      <p class="lesson-text"><strong>Agitator does not agitate (top loader):</strong> Worn agitator dogs — the plastic ratchet pieces inside the agitator top. Agitator pulls straight up, dogs replace in under 10 minutes. Search: "[brand] [model] agitator dogs replacement."</p>
-
-      <h3 class="sub-title">🍽️ Dishwashers — common repairs and what to search</h3>
-      <p class="lesson-text"><strong>Not draining / standing water:</strong> Clean the filter first (two minutes, no tools). Check drain hose for kinks. If disposal was just replaced, check the knockout plug. Search: "[brand] [model] drain pump replacement" only after filter and hose are confirmed clear.</p>
-      <p class="lesson-text"><strong>Not filling with water:</strong> Water inlet valve solenoid has likely failed. Located behind the bottom kickplate. Search: "[brand] [model] water inlet valve replacement."</p>
-      <p class="lesson-text"><strong>Poor cleaning performance:</strong> Clogged spray arms — food debris or hard water scaling plugging the holes. They usually pop off with a twist. Soak in vinegar, clear holes with a toothpick. Search: "[brand] [model] spray arm cleaning" or "[brand] [model] spray arm replacement."</p>
-      <p class="lesson-text"><strong>Leaking from front door:</strong> Door gasket failure. Pull old gasket from channel, press new one in. Search: "[brand] [model] door gasket replacement."</p>
-    </div>
-  </div>
-
-  <!-- LESSON 4 -->
-  <div class="lesson-section fade-in">
-    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
-    <h2 class="lesson-title">The high-value swap reference — <em>and knowing when to stop</em></h2>
-    <div class="gold-divider"></div>
-
-    <p class="lesson-text">The most financially valuable maintenance tech knowledge is not how to fix everything — it is knowing exactly which repairs are simple part swaps worth attempting and which are beyond the scope of maintenance tech work. The table below gives you a reference for every common appliance repair in apartment maintenance.</p>
+    <h3 class="sub-title">The high-value swap reference — what to know before calling anyone</h3>
 
     <div class="swap-table">
       <div class="swap-header">
         <div>Repair</div>
         <div>Part Cost</div>
         <div>Service Call</div>
-        <div>Notes</div>
+        <div>What to Check / How to Fix</div>
       </div>
       <div class="swap-row">
-        <div class="repair">Gas oven igniter</div>
+        <div class="repair">Oven not igniting (gas)</div>
         <div class="cost-part">$20–$50</div>
         <div class="cost-call">$150–$300</div>
-        <div>Plug-in swap — no gas disconnection. Order by model number.</div>
+        <div>Igniter glows but no flame = weak igniter. Unplug old igniter connector, plug in new one. No gas line disconnection. Check igniter resistance with multimeter if unsure.</div>
       </div>
       <div class="swap-row">
-        <div class="repair">Electric oven element</div>
-        <div class="cost-part">$20–$50</div>
-        <div class="cost-call">$120–$250</div>
-        <div>Two screws, two wire connectors. Bake or broil element — test with multimeter first.</div>
-      </div>
-      <div class="swap-row">
-        <div class="repair">Refrigerator coil cleaning</div>
-        <div class="cost-part">$0</div>
-        <div class="cost-call">$100–$200</div>
-        <div>Coil brush and vacuum. Do this before assuming mechanical failure.</div>
+        <div class="repair">Refrigerator not cooling</div>
+        <div class="cost-part">$0–$30</div>
+        <div class="cost-call">$150–$400</div>
+        <div>Check: coils under/behind fridge (clean with brush), condenser fan running, door gasket sealing. Dirty coils cause most "not cooling" calls. Clean first before assuming compressor failure.</div>
       </div>
       <div class="swap-row">
         <div class="repair">Refrigerator door gasket</div>
         <div class="cost-part">$15–$40</div>
         <div class="cost-call">$120–$250</div>
-        <div>Dollar bill test confirms need. Press-in or screw-in by model.</div>
+        <div>Test: close door on a dollar bill — if it slides out easily, the gasket is failing. Order by fridge model number. Most gaskets press or screw into a channel around the door frame.</div>
       </div>
       <div class="swap-row">
-        <div class="repair">Refrigerator water inlet solenoid</div>
-        <div class="cost-part">$20–$40</div>
+        <div class="repair">Dryer not heating</div>
+        <div class="cost-part">$15–$40</div>
         <div class="cost-call">$150–$300</div>
-        <div>Controls water to ice maker and dispenser. Pull fridge out, swap valve behind unit.</div>
+        <div>Most common cause: blown thermal fuse ($10). Test with multimeter for continuity. Also check heating element and thermostat. Always clean dryer vent fully before replacing parts — a clogged vent blows thermal fuses repeatedly.</div>
       </div>
       <div class="swap-row">
-        <div class="repair">Dryer vent cleaning</div>
+        <div class="repair">Dryer vent clog</div>
         <div class="cost-part">$0</div>
         <div class="cost-call">$80–$150</div>
-        <div>Life-safety maintenance. Annual minimum. Clear from both ends.</div>
+        <div>Disconnect duct, vacuum from both ends, clear the exterior vent cap. A clogged dryer vent is a fire hazard. Clean at least once per year per unit. Takes 20 minutes.</div>
       </div>
       <div class="swap-row">
-        <div class="repair">Dryer thermal fuse</div>
-        <div class="cost-part">$8–$15</div>
+        <div class="repair">Dishwasher not draining</div>
+        <div class="cost-part">$0–$20</div>
         <div class="cost-call">$120–$250</div>
-        <div>Always clear the vent first or the new fuse blows immediately.</div>
+        <div>Check and clean the filter basket first (most residents never clean it). Check the drain hose for kinks. If the disposal was recently replaced, confirm the knockout plug was removed from the dishwasher drain inlet.</div>
       </div>
       <div class="swap-row">
-        <div class="repair">Dryer heating element</div>
-        <div class="cost-part">$20–$40</div>
+        <div class="repair">Washing machine not spinning</div>
+        <div class="cost-part">$10–$30</div>
         <div class="cost-call">$150–$300</div>
-        <div>Open cabinet, test with multimeter, swap element. Model-specific YouTube video required.</div>
+        <div>Check lid switch (top loaders) — most common cause. Press and hold the lid switch with a pen while running; if machine spins, the switch is faulty. Lid switch replacement is a 20-minute job.</div>
       </div>
       <div class="swap-row">
-        <div class="repair">Washer lid switch</div>
-        <div class="cost-part">$10–$25</div>
-        <div class="cost-call">$120–$250</div>
-        <div>Test by pressing switch manually during spin. Pen test confirms before ordering part.</div>
-      </div>
-      <div class="swap-row">
-        <div class="repair">Washer agitator dogs</div>
-        <div class="cost-part">$5–$15</div>
-        <div class="cost-call">$100–$200</div>
-        <div>Agitator pulls straight up. Dogs sit inside top. Under 10 minutes total.</div>
-      </div>
-      <div class="swap-row">
-        <div class="repair">Dishwasher filter cleaning</div>
-        <div class="cost-part">$0</div>
-        <div class="cost-call">$100–$200</div>
-        <div>Twist out, rinse, replace. Do this before any drain diagnosis.</div>
-      </div>
-      <div class="swap-row">
-        <div class="repair">Disposal knockout plug</div>
-        <div class="cost-part">$0</div>
+        <div class="repair">Microwave turntable not spinning</div>
+        <div class="cost-part">$8–$20</div>
         <div class="cost-call">$80–$150</div>
-        <div>After new disposal installation — confirm plug was removed from dishwasher drain inlet.</div>
+        <div>Turntable motor is under the floor of the microwave. One or two screws. Plug in new motor. Three-minute repair.</div>
       </div>
     </div>
 
-    <h3 class="sub-title">When to stop and escalate</h3>
+    <div class="callout-insight">
+      <div class="callout-label">💡 Refrigerator Coil Cleaning — The Most Overlooked Maintenance Item</div>
+      <p>Refrigerator condenser coils are located either underneath the unit (behind a kickplate) or on the back. Over time they collect dust, pet hair, and debris that insulates them — forcing the compressor to work harder and eventually fail early. A refrigerator that runs constantly, runs warm, or cycles on and off frequently often has nothing wrong with it except dirty coils. Cleaning coils takes 10 minutes with a coil brush and vacuum. A refrigerator that costs $600–$1,200 to replace lasts years longer with annual coil cleaning. Add it to the annual maintenance calendar for every unit.</p>
+    </div>
 
-    <p class="lesson-text">Not every appliance problem is a maintenance tech repair. Stop and escalate when: the repair requires handling refrigerant (EPA 608 required), the repair involves internal gas valve components, the part cost exceeds what a replacement appliance would cost in the property's budget, or three separate repairs on the same appliance have failed to resolve the problem. A maintenance tech who knows when to escalate is more valuable than one who keeps attempting repairs past the point of diminishing returns. Document what you tried, what you found, and why you are escalating — that information helps whoever handles it next.</p>
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ Dryer Vents Are a Fire Hazard — Not Just an Efficiency Issue</div>
+      <p>Clogged dryer vents cause approximately 2,900 residential fires per year in the United States. Lint is highly flammable, and a clogged vent traps heat inside the dryer. Symptoms: dryer takes multiple cycles to dry clothes, exterior vent flap does not open when dryer is running, dryer feels very hot to the touch. Clean the dryer vent at least annually per unit — more frequently in high-use laundry rooms. This is a life-safety maintenance item, not optional.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: Real Appliance Work Orders on the Job</div>
+    <h2 class="lesson-title">Appliance repairs in the field — <em>how experienced techs diagnose and fix fast</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Dirty Maintenance Nation follows a maintenance tech through a full day of apartment work orders including a no-heat call (hydronic system with pump wire off), a light bulb replacement, and a refrigerator ice maker solenoid repair — showing exactly how experienced techs diagnose, communicate with residents, and resolve each call efficiently.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/mqkHlC4fvsc" title="Apartment Maintenance Work Orders — Dirty Maintenance Nation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Dirty Maintenance Nation · Lex Vance</span>
+        <h4>Real Apartment Work Orders — No Heat, Appliance Repair, and More</h4>
+        <p>A full maintenance workday including a no-heat call diagnosed and resolved without calling HVAC, a refrigerator solenoid identified as the cause of a repeat freezing problem (two previous techs missed it), and a practical look at how experienced techs move through work orders efficiently. Shows professional resident communication throughout.</p>
+        <div class="credit">Dirty Maintenance Nation · Lex Vance · Apartment maintenance focused · Real field footage</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Drywall patching and painting — <em>the repairs that make a unit rent-ready</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Every apartment turns over eventually — and when it does, drywall and paint are almost always part of getting it rent-ready. A maintenance tech who can patch drywall cleanly and paint professionally is worth thousands of dollars per year to any property manager who would otherwise call a contractor for these repairs. These are not difficult skills — they are patient, methodical skills that improve with practice.</p>
+
+    <h3 class="sub-title">Drywall repair — matching the method to the hole size</h3>
+
+    <p class="lesson-text"><strong>Small holes and dents (under 1/2 inch)</strong> — Use lightweight spackle or vinyl spackling compound. Apply with a putty knife, overfill slightly, let dry completely, sand smooth. Prime the patch before painting or the paint finish will be uneven. This is the repair for nail holes, small door knob dents, and minor dings from furniture.</p>
+
+    <p class="lesson-text"><strong>Medium holes (1/2 inch to 4 inches)</strong> — Use a metal patch kit (also called a California patch or self-adhesive mesh patch). These stick directly over the hole and provide a surface for joint compound. Apply two to three thin coats of joint compound — not one thick coat. Each coat must dry fully before the next. Feather the edges wide (8–10 inches) so the patch blends invisibly. Sand between coats with 120-grit, final sand with 220-grit.</p>
+
+    <p class="lesson-text"><strong>Large holes (over 4 inches)</strong> — Cut a clean square or rectangle around the hole. Use drywall clips or a wooden backing strip to support the patch. Cut a matching piece of drywall, screw it to the backing, tape the seams with paper tape and joint compound, and feather out three coats. This is a 2–3 day process with drying time — plan accordingly.</p>
 
     <div class="callout-rust">
-      <div class="callout-label">📋 Document Every Appliance Repair</div>
-      <p>Every appliance repair should be documented in the work order with: unit number, appliance brand and model number, symptom, what you checked, what you found, what part you replaced (with part number and cost), and the result. This creates a maintenance history per unit that helps the next tech, helps property managers make replacement decisions, and demonstrates your professionalism to every supervisor who reads your work orders.</p>
+      <div class="callout-label">📋 The Three-Coat Rule — Why Drywall Patches Show Through Paint</div>
+      <p>The most common drywall patching mistake is applying one thick coat of joint compound instead of three thin coats. Thick coats crack as they dry, shrink unevenly, and never sand truly flat. Three thin coats — each allowed to dry completely — produce a smooth, invisible patch every time. The second most common mistake is skipping primer on the patch before painting. Unprimed patches absorb paint differently than surrounding wall, creating a visible sheen difference even when the color matches perfectly. Always prime the patch first.</p>
     </div>
+
+    <h3 class="sub-title">Painting — the professional approach that saves callbacks</h3>
+
+    <p class="lesson-text">The difference between a paint job that looks good and a paint job that calls back is almost entirely in the preparation — not the paint itself. Preparation means: fill all holes and sand smooth, clean walls of grease and dirt (especially kitchens and bathrooms), prime any patches and any areas of bare drywall, tape off trim and fixtures, and protect floors and countertops with drop cloths. Skipping preparation is the source of almost every paint callback.</p>
+
+    <p class="lesson-text">Always paint a room from top to bottom — ceiling first, then walls, then trim. Use a brush to cut in along edges (where the roller cannot reach) before rolling the main wall area. Maintain a wet edge — do not let the edge of your last roller stroke dry before continuing. Dry edges create lap marks that show through the finish coat. Two thin coats of finish paint always look better than one thick coat.</p>
+
+    <p class="lesson-text"><strong>Paint sheen selection matters.</strong> Flat or matte paint hides surface imperfections but cannot be cleaned — appropriate for ceilings and low-traffic areas only. Eggshell and satin are the standard for apartment walls — slightly wipeable, reasonable durability. Semi-gloss is used for trim, doors, and bathrooms — very cleanable, very durable. Never use flat paint in a bathroom or kitchen — it absorbs moisture and mold and cannot be cleaned.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 Matching Existing Paint — The Property Manager's Best Friend</div>
+      <p>Most property management companies have a standard paint color and sheen for their units — often a specific Benjamin Moore or Sherwin-Williams formula stored on file. Find out what the standard color is before you need it. When doing touch-up work, bring a paint chip or a sample of the existing wall to the paint store — do not guess from memory. A color match that is even slightly off shows dramatically under different lighting conditions and always requires repainting the entire wall to fix. Ten seconds of preparation saves two hours of rework.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Doors, windows, locks, and <em>the adjustments that eliminate the most common complaints</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Doors that stick, windows that do not lock, locks that are hard to turn, door knobs that rattle — these are quality-of-life complaints that residents notice every day and that are almost always simple mechanical adjustments or inexpensive hardware replacements. A maintenance tech who resolves these quickly and completely is the tech that residents and property managers remember.</p>
+
+    <h3 class="sub-title">Sticking and rubbing doors</h3>
+
+    <p class="lesson-text">Doors stick for two main reasons: wood swelling from humidity, or the door frame shifting. Before doing anything else, close the door slowly and watch where it makes contact with the frame — top, bottom, or side. Use a pencil to mark exactly where it rubs. Then determine the cause before choosing the fix.</p>
+
+    <p class="lesson-text">If the door rubs along the top or latch side, the hinges are often the cause — either loose hinge screws or hinges that have settled over time. Tighten all hinge screws first. If screws spin in stripped holes, fill the holes with wooden toothpicks dipped in wood glue, let dry, and reinstall the screws. If the door still rubs after tightening, plane or sand the contact area with a belt sander or hand plane. Remove only material at the contact point — overshoot and the door will not latch properly.</p>
+
+    <p class="lesson-text">If the door will not latch because the latch bolt is not aligning with the strike plate, loosen the strike plate screws and shift the plate slightly in the direction needed. If the misalignment is small, file the opening in the strike plate rather than moving it. The latch bolt should engage smoothly with no forcing.</p>
+
+    <h3 class="sub-title">Window repairs and adjustments</h3>
+
+    <p class="lesson-text">The most common window complaints in apartments are windows that do not lock securely, windows that are difficult to open, and windows that have damaged or missing weatherstripping causing drafts. For windows that are difficult to slide, clean the track thoroughly (vacuum, then wipe with a damp cloth) and apply a silicone spray lubricant — never oil-based, which attracts dirt. For sash windows that stick, rub the sash rail lightly with a bar of soap or a candle for a clean, dry lubricant.</p>
+
+    <p class="lesson-text">Window lock problems are often just worn or misaligned hardware. Check that the lock engages fully when the window is closed — if the window sash does not sit flush in the frame, the lock cannot engage properly. Adjust the keeper (the part the lock hooks into) by loosening its screws and repositioning it. Weatherstripping that has compressed and lost its seal can be replaced with self-adhesive foam tape — peel off the old material, clean the surface, apply new tape, and test the seal by closing the window on a piece of paper. The paper should not slide out freely when the window is locked.</p>
+
+    <h3 class="sub-title">Locks and keys</h3>
+
+    <p class="lesson-text">Stiff or difficult key locks are almost always a lubrication problem. Apply a graphite-based lubricant (available as a dry powder in a squeeze tube) directly into the keyhole, then work the key in and out several times to distribute it. Never use WD-40 or oil-based lubricants in key locks — they temporarily loosen the mechanism but attract dirt and gum up the pins over time, making the problem worse. Graphite is the correct lubricant for any pin-tumbler lock.</p>
+
+    <p class="lesson-text">When a tenant moves out, re-keying the lockset is standard practice. In most apartment settings, property managers keep a small stock of re-keying kits or a set of pre-keyed locksets that rotate between units. Maintenance techs should know how to replace a lockset completely — it is a 10-minute job with a screwdriver — and many properties now use smart locks or keypad locks that require tech familiarity for installation and battery management.</p>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 Document Hardware Replacements in Work Orders</div>
+      <p>Every time you replace a lockset, doorknob, window lock, or hinge, document it in your work order — unit number, location, hardware type, and reason for replacement. This creates a maintenance history that helps the next tech understand what has already been done, helps property managers track maintenance costs per unit, and protects you if a resident later claims the hardware was damaged during your visit. Three sentences in a work order can prevent hours of dispute later.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: A Full Maintenance Day</div>
+    <h2 class="lesson-title">Garbage disposals, no-heat calls, and <em>how real maintenance days actually run</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Dirty Maintenance Nation follows a maintenance tech through a complete workday — two garbage disposal work orders, pool maintenance, a no-heat call resolved without an HVAC contractor, and the professional habits that make techs effective across a full shift. Watch for how experienced techs approach each work order, communicate with residents, and manage their time.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/mGW7HLrKIs0" title="A Full Maintenance Day — Garbage Disposal, No Heat, and More" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Dirty Maintenance Nation · Lex Vance</span>
+        <h4>Typical Maintenance Day — Disposals, No Heat, Pool, and More</h4>
+        <p>A full-day vlog covering two garbage disposal calls (reset button, Allen wrench jam clearing, one unplugged), pool winterization in cold weather, a no-heat call, and resident interactions throughout. Real work, real properties, real communication — exactly what a full maintenance shift looks like.</p>
+        <div class="credit">Dirty Maintenance Nation · Lex Vance · Apartment maintenance focused · Full-day field footage · Clean language ✅</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">Floors, cabinets, and <em>the finishing work that makes a unit shine</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Turn-ready units are the difference between a property that rents in three days and one that sits for three weeks. The final layer of interior maintenance — floor care, cabinet adjustments, countertop touch-ups, and the small items that residents notice immediately — is what separates a truly professional maintenance tech from someone who just fixes what breaks. Property managers notice this distinction and reward it.</p>
+
+    <h3 class="sub-title">Floor care — matching the maintenance to the material</h3>
+
+    <p class="lesson-text"><strong>Vinyl and LVP (luxury vinyl plank)</strong> are the most common apartment flooring types. Clean with a damp mop and a pH-neutral cleaner — avoid steam mops on vinyl, which can loosen the adhesive layer over time. For bubbles or lifting edges, the cause is almost always moisture underneath — find and fix the moisture source before attempting to re-glue the flooring. Pressing a bubble down without addressing the moisture will just re-lift. For a truly lifted edge, apply vinyl adhesive, press firmly, and weight it with books for 24 hours.</p>
+
+    <p class="lesson-text"><strong>Hardwood floors</strong> require a dry mop or vacuum — never wet mop. Standing water on hardwood causes warping and cupping. For light scratches, a wood repair marker in the matching finish color makes them nearly invisible. For deeper scratches or gouges, wood filler in a matching color, sanded smooth and sealed, is the repair. Surface refinishing (sanding and recoating the entire floor) is a specialist job — not maintenance tech territory.</p>
+
+    <p class="lesson-text"><strong>Carpet</strong> in apartments primarily needs stain treatment and professional cleaning at turnover. For fresh stains: blot (never rub), apply cold water, blot again. For set stains, enzyme-based carpet cleaners break down organic matter effectively. For carpet that is pulling up at seams or edges, a carpet seam iron and seam tape can re-bond the edges without replacing the carpet. Document carpet condition with photos at every move-in and move-out — this is your evidence for security deposit disputes.</div>
+
+    <h3 class="sub-title">Cabinet repairs and adjustments</h3>
+
+    <p class="lesson-text">Cabinet doors that hang unevenly, hinges that do not close fully, and drawers that stick are the most common cabinet complaints — and almost all of them are fixed by adjusting or replacing the hinges rather than the cabinet itself. European-style cup hinges (the most common in modern apartments) are fully adjustable with a screwdriver: the mounting screw moves the door in and out from the cabinet, the side adjustment screw moves it left and right, and the depth screw moves it closer to or further from the door face. Spend three minutes adjusting the hinges before assuming a cabinet door needs replacement.</p>
+
+    <p class="lesson-text">Drawer slides that stick or fall off track are almost always fixed by cleaning the slide mechanism (remove debris, wipe with a dry cloth) and checking that the slide is fully engaged at both the front and rear mounting points. If the slide is bent or broken, slides are inexpensive ($8–$20 per pair) and swapping them out takes 15 minutes once you know the slide length and extension type.</p>
+
+    <h3 class="sub-title">The turn-ready walk — what every unit needs before a new resident moves in</h3>
+
+    <p class="lesson-text">Build a mental checklist for every unit turn. Every door opens, closes, and latches correctly. Every window opens, closes, locks, and has intact weatherstripping. Every cabinet door aligns and closes fully. Every drawer opens and closes smoothly. Every outlet and switch works. Every light fixture has a working bulb. Every appliance is clean and functional. Every surface is patched, primed, and painted to match. Plumbing under every sink is dry with no stains. Caulk around tubs, showers, and sinks is intact and mold-free. The unit passes the Unit Scan — check under every sink, at every toilet base, at the water heater, at the HVAC filter. A resident who moves into a unit with all of this done right starts their tenancy satisfied — and satisfied residents renew leases.</p>
   </div>
 
   <!-- PRIMARY SOURCES -->
@@ -504,7 +448,7 @@ footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padd
         <div>
           <div class="bi-title">Home Maintenance For Dummies — 2nd Edition</div>
           <div class="bi-author">James and Morris Carey · Wiley Publishing · 2010</div>
-          <div class="bi-desc">Chapter 14 covers all major kitchen and laundry appliances — gas and electric safety, cleaning protocols, maintenance schedules, and when to call a professional. Includes specific guidance on refrigerator coil cleaning, oven maintenance, and appliance safety shutoffs.</div>
+          <div class="bi-desc">Chapter 11 (Walls and Ceilings) covers drywall patching techniques, painting preparation and process, paint selection by sheen. Chapter 12 (Floors and Interior Doors) covers all flooring types, door repairs, and hardware maintenance. Chapter 13 (Cabinets and Countertops) covers cabinet cleaning, refinishing, hinge and drawer adjustments. Chapter 14 (Appliances) covers appliance safety, cleaning, and maintenance.</div>
         </div>
         <a href="https://www.amazon.com/Home-Maintenance-Dummies-James-Carey/dp/0470439106" target="_blank">Find It →</a>
       </div>
@@ -512,7 +456,7 @@ footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padd
         <div>
           <div class="bi-title">Home Repair &amp; Maintenance — DIY Tips for Homeowners</div>
           <div class="bi-author">Habitat for Humanity · Multiple Contributors</div>
-          <div class="bi-desc">The appliance section covers refrigerator coil cleaning, dryer vent maintenance and fire hazard context, dishwasher filter cleaning, and washer care. Practical field-tested tips from real homeowners and maintenance professionals on the most common appliance maintenance tasks.</div>
+          <div class="bi-desc">The appliance section covers refrigerator coil cleaning, dryer vent maintenance (including fire hazard context), dishwasher filter cleaning, and washer care. The cleaning and floors section covers floor-specific care tips by material type. The security and doors section covers sliding door tracks, lock lubrication, and entry security hardware.</div>
         </div>
         <a href="https://www.habitat.org" target="_blank">Habitat.org →</a>
       </div>
@@ -523,7 +467,7 @@ footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padd
   <div class="mentor-bubble-wrap fade-in">
     <div class="mentor-avatar">D</div>
     <div class="mentor-bubble">
-      <p>"Every time you fix a refrigerator that was 'not cooling' by cleaning the coils in 10 minutes — every time you replace an oven igniter for $30 instead of a $250 service call — you are proving something to the property manager who is watching. Not just that you can fix things. That you understand how to save them money. That is the difference between a maintenance tech who gets replaced and one who gets a raise. Know your appliances. Know your model numbers. Know when to stop."</p>
+      <p>"You have just completed the full technical foundation — plumbing, electrical, HVAC, appliances, and interior repairs. That is the complete skill set of a working maintenance tech. Every property manager who watches you handle a dryer that is not heating, patch a drywall hole, and touch up the paint to match — all in the same afternoon — is going to want to make sure you stay. The next two modules are about turning those skills into a career. You have done the hard work."</p>
       <div class="mentor-name">Your Darco Mentor · Module 5 Complete</div>
     </div>
   </div>
@@ -532,12 +476,12 @@ footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padd
   <div class="takeaways fade-in">
     <h3>📌 Module 5 Key Takeaways</h3>
     <ul>
-      <li>Always get the model number before researching any appliance repair. Search YouTube for "[brand] [model] [symptom]" for model-specific repair videos. Use RepairClinic.com and PartSelect.com for parts diagrams and ordering by model number.</li>
-      <li>Dirty refrigerator condenser coils are the most overlooked cause of refrigerators running warm or running constantly. Clean with a coil brush and vacuum before assuming any mechanical failure. Test the door gasket with a dollar bill — replace if it slides out without resistance.</li>
-      <li>A gas oven igniter that glows but does not light the burner is a weak igniter — the most common gas oven failure. No gas line disconnection involved. Plug-in swap, $20–$50 part, 20 minutes. Always check for gas smell before starting any gas appliance repair.</li>
-      <li>Clean the dryer vent before diagnosing any dryer problem — clogged vents cause multiple-cycle drying, blow thermal fuses, and are a life-safety fire hazard. After clearing the vent, test the thermal fuse with a multimeter for continuity. Replace the vent-clear and fuse together if both are needed.</li>
-      <li>For washing machines that fill and agitate but do not spin: test the lid switch by pressing it manually during spin cycle. For washing machines that do not agitate: check the agitator dogs — a $5–$15 repair that takes under 10 minutes. For dishwashers not draining: clean the filter first, then check drain hose kinks and the disposal knockout plug.</li>
-      <li>Know when to stop: escalate when the repair requires refrigerant handling (EPA 608), internal gas valve work, or when the part cost exceeds replacement value. Document every appliance repair with appliance model number, symptom, what you checked, what you replaced, and the result.</li>
+      <li>Always get the model number before diagnosing any appliance repair — search YouTube for "[brand] [model] [symptom]" to find repair videos for the exact unit. High-value swaps include: oven igniter ($20–50), refrigerator door gasket ($15–40), dryer thermal fuse ($10), dishwasher filter cleaning ($0), washing machine lid switch ($10–30).</li>
+      <li>Clean refrigerator condenser coils annually — dirty coils are the most overlooked cause of refrigerators running warm and compressor failure. Clean dryer vents at least annually — clogged dryer vents are a life-safety fire hazard, not just an efficiency issue. These are the two most important appliance maintenance items in any apartment building.</li>
+      <li>Drywall patching requires matching the method to the hole size: spackle for small holes, metal patch kit for medium holes, cut-in drywall patch with backing for large holes. Apply three thin coats of joint compound — never one thick coat. Always prime the patch before painting or the finish will show through.</li>
+      <li>Paint preparation is 80% of the job — fill holes, sand, clean surfaces, tape off trim, prime patches and bare drywall, protect floors. Always paint top to bottom: ceiling first, walls second, trim last. Never use flat paint in bathrooms or kitchens. Match the property's standard color and sheen before doing any touch-up work.</li>
+      <li>Sticking doors are almost always loose hinge screws or minor seasonal wood movement — tighten screws first, then plane or sand only at the contact point if needed. Use graphite lubricant (never WD-40 or oil) for sticky key locks. Document all hardware replacements in the work order.</li>
+      <li>The turn-ready walk is the professional standard: every door, window, outlet, light, cabinet, drawer, appliance, floor surface, wall patch, and plumbing connection confirmed before the next resident moves in. A unit that passes the turn-ready walk starts the tenancy right — and residents who start satisfied stay longer.</li>
     </ul>
   </div>
 
@@ -548,57 +492,57 @@ footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padd
 
     <div class="question-block">
       <div class="q-num">Question 1 of 5</div>
-      <div class="q-text">A resident reports their gas oven has not been working for two days. When the tech turns it on, the oven makes a clicking sound and a faint orange glow is visible inside, but the oven never heats up. What is the most likely cause?</div>
-      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> The gas supply to the unit is shut off — check the gas meter outside.</div>
-      <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> The oven igniter is weak — it glows but cannot reach the temperature needed to open the gas safety valve. Replacement is a plug-in swap costing $20–$50.</div>
-      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> The gas valve is defective and must be replaced by a licensed gas technician.</div>
-      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> The oven control board has failed — this requires an appliance technician.</div>
-      <div class="explanation correct" id="q1-correct">Correct! An orange glow that does not lead to ignition is the classic weak igniter symptom. The igniter is receiving power and heating up, but it is not reaching the temperature threshold required to open the gas safety valve. The gas valve is not defective — it is working correctly by staying closed until it receives the proper heat signal. Oven igniter replacement does not involve disconnecting any gas lines. Order by model number, unplug the old igniter, plug in the new one. Cost $20–$50, time 20–30 minutes.</div>
-      <div class="explanation wrong" id="q1-wrong">Not quite. An orange glow inside the oven when it is turned on is the igniter — it is receiving power and heating up. The fact that it glows but does not light the burner is the classic weak igniter symptom. The igniter is not getting hot enough to open the gas safety valve. This is a plug-in part swap — no gas line disconnection involved. Order by oven model number, remove the oven floor panel, unplug old igniter, plug in new igniter. Cost $20–$50.</div>
+      <div class="q-text">A gas oven igniter glows orange when the oven is turned on, but the burner never lights. The tech suspects a weak igniter. What is the correct next step before ordering a replacement?</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Call a licensed gas appliance technician — any gas appliance repair requires professional service.</div>
+      <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Get the oven model number from the label inside the door or drawer, search YouTube for "[brand] [model] igniter" to confirm the diagnosis and repair procedure, then order the correct igniter part.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Order a generic igniter — all gas oven igniters are interchangeable by size.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Replace the gas valve — if the igniter is glowing but not lighting, the gas is not reaching the burner.</div>
+      <div class="explanation correct" id="q1-correct">Correct! The model number is always the starting point for any appliance repair. A glowing igniter that does not light the burner is the classic sign of a weak igniter — the glow confirms the igniter is receiving power, but it is not getting hot enough to open the gas safety valve. Order by model number — igniter specifications vary and a wrong fit creates a safety hazard. Oven igniter replacement does not involve disconnecting any gas lines and is well within maintenance tech territory. A model-specific YouTube search will confirm the diagnosis and show the exact replacement procedure for that oven.</div>
+      <div class="explanation wrong" id="q1-wrong">Not quite. An oven igniter that glows but does not light the burner is a classic weak igniter — common maintenance tech repair. Gas line disconnection is not involved: the old igniter unplugs from a connector, and the new one plugs in. Before ordering any part, get the model number and confirm the diagnosis with a model-specific YouTube search. Parts are not interchangeable across brands and models — ordering by model number is essential. Gas valve replacement is not indicated here — the valve behavior is controlled by the igniter's heat, and a glowing-but-weak igniter is the correct diagnosis.</div>
     </div>
 
     <div class="question-block">
       <div class="q-num">Question 2 of 5</div>
-      <div class="q-text">A refrigerator is running constantly and the freezer is not keeping things fully frozen. What should the tech check first before calling an appliance technician?</div>
-      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Check the thermostat setting — the resident may have turned it down.</div>
-      <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Clean the condenser coils — dirty coils are the most common cause of a refrigerator running constantly and not cooling properly. 10 minutes with a coil brush and vacuum.</div>
-      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Call a technician — a compressor running constantly indicates compressor failure.</div>
-      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Check the door seal — a failing door gasket always causes the compressor to run constantly.</div>
-      <div class="explanation correct" id="q2-correct">Correct! Dirty condenser coils are the most overlooked and most common cause of refrigerators running constantly and not cooling properly. The coils release heat from the refrigeration cycle — when coated with dust, they cannot release heat efficiently, and the compressor has to run continuously to compensate. Clean with a coil brush (under the unit or behind it) and a vacuum. This free, 10-minute repair resolves a large percentage of refrigerator "not cooling" calls. Always do this before assuming compressor failure.</div>
-      <div class="explanation wrong" id="q2-wrong">Not quite. The first thing to check on any refrigerator that runs constantly and does not cool well is the condenser coils. Dirty coils are the most common and most overlooked cause of this exact symptom — they are located under the unit or on the back and collect dust over time. Clean them with a coil brush and vacuum before assuming any mechanical failure. A compressor running constantly is not evidence of compressor failure — it is evidence that something is forcing the compressor to work harder, most often dirty coils or a failing door gasket.</div>
+      <div class="q-text">A resident reports their dryer takes three cycles to dry a single load. The tech checks and finds no error codes. What should be checked first?</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Replace the heating element — multiple cycle drying is always caused by a partially failed heating element.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div> Replace the thermal fuse — a blown thermal fuse is the most common cause of dryer inefficiency.</div>
+      <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div> Check and clean the dryer vent fully — a clogged vent is the most common cause of poor dryer performance, and it must be cleared before any parts are replaced or it will blow the new parts immediately.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Check the load size — the resident may simply be overloading the dryer.</div>
+      <div class="explanation correct" id="q2-correct">Correct! A clogged dryer vent is the most common cause of a dryer that runs but takes multiple cycles to dry clothes — and it is also the most commonly missed first step. If the vent is clogged and you replace the thermal fuse without clearing the vent, the new fuse will blow again within days from the same overheating that blew the original. Always clear the vent completely first: disconnect the duct, vacuum from both ends, check the exterior vent cap. Then test the dryer before ordering any parts. A clogged vent is also a fire hazard — document it and note in your work order that the vent was cleaned.</div>
+      <div class="explanation wrong" id="q2-wrong">Not quite. The correct first step is always to check and clear the dryer vent before replacing any parts. A clogged vent starves the dryer of airflow, causing it to overheat and dry inefficiently — it is the most common cause of multiple-cycle drying. More importantly, if you replace a thermal fuse without clearing a clogged vent, the new fuse will blow again from the same overheating condition. Clear the vent first, test the dryer, then diagnose the heating element or thermal fuse if the problem persists after the vent is clear.</div>
     </div>
 
     <div class="question-block">
       <div class="q-num">Question 3 of 5</div>
-      <div class="q-text">A tech replaces a dryer thermal fuse on a unit where the dryer was not heating. Three weeks later the same resident calls — the dryer is not heating again and the new thermal fuse has blown. What was most likely missed?</div>
-      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> The wrong thermal fuse was installed — a higher-rated fuse should have been used.</div>
-      <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> The dryer vent was not cleared — a clogged vent causes overheating that blows the thermal fuse repeatedly. The vent must be cleaned before or alongside any thermal fuse replacement.</div>
-      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> The heating element is also failing and needs to be replaced alongside the thermal fuse.</div>
-      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> The dryer is at end of life and should be replaced — repeated thermal fuse failures indicate general failure.</div>
-      <div class="explanation correct" id="q3-correct">Correct! A thermal fuse that blows repeatedly is almost always caused by a clogged dryer vent that was not cleared before the replacement. The thermal fuse is a safety device that blows when the dryer overheats — if the vent is clogged, the dryer will continue to overheat, and any replacement fuse will blow within weeks for the same reason. The vent must be cleared completely before or alongside any thermal fuse replacement. Never install a higher-rated fuse — that defeats the safety protection and creates a fire hazard.</div>
-      <div class="explanation wrong" id="q3-wrong">Not correct. A thermal fuse that blows repeatedly is the signature of a clogged dryer vent that was not cleared. The thermal fuse blows because the dryer overheats — and the most common cause of dryer overheating is a blocked vent. If the vent is not cleared, any replacement fuse will blow again within weeks from the same overheating. The correct procedure is always: clear the vent first, then replace the fuse. Never install a higher-rated fuse to "solve" repeated blowing — the thermal fuse is a critical safety device and must be replaced with the correct rating.</div>
+      <div class="q-text">A tech patches a drywall hole with joint compound and paints it the same day. The resident later reports the patch is visible — it looks shinier than the surrounding wall. What caused this and how should it be fixed?</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> The joint compound was not the right brand — different brands dry at different sheens.</div>
+      <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> The patch was not primed before painting — unprimed joint compound absorbs paint differently than the surrounding wall, creating a sheen difference even when the color matches exactly. The fix is to sand the area, apply primer, and repaint.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> The paint was applied too thickly over the patch — thick paint reflects light differently.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> The wall paint is too old to accept new paint over a patch — the entire wall needs repainting.</div>
+      <div class="explanation correct" id="q3-correct">Correct! Unprimed joint compound is porous and absorbs paint at a different rate than the surrounding primed wall surface, creating a visible sheen difference — often called "flashing" — even when the color is a perfect match. This is one of the most common drywall patching errors. The fix: sand the area lightly, apply a coat of drywall primer (or PVA primer), let it dry fully, then repaint. The primer seals the patch and makes it absorb paint the same way as the surrounding wall. Always prime patches before painting — it takes five minutes and prevents this exact callback.</div>
+      <div class="explanation wrong" id="q3-wrong">Not correct. The visible sheen difference is caused by skipping primer on the patch. Unprimed joint compound absorbs paint at a different rate than the surrounding primed wall — this creates a sheen difference called "flashing" even when the color is a perfect match. The fix is to sand the area, apply drywall primer, let it dry fully, and repaint. This is one of the most common drywall patching callbacks and is entirely preventable by priming the patch before painting.</div>
     </div>
 
     <div class="question-block">
       <div class="q-num">Question 4 of 5</div>
-      <div class="q-text">A resident reports their top-loading washing machine fills with water but then stops — it does not agitate and does not spin. The tech suspects the lid switch. How can they test this without ordering any parts?</div>
-      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Run a diagnostic cycle — most modern washing machines have a self-test mode that identifies lid switch failures.</div>
-      <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div> Open the lid, manually press and hold the lid switch plunger with a pen or screwdriver while the machine is in spin cycle — if the machine spins, the lid switch is faulty.</div>
-      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div> Remove the agitator and check the agitator dogs — if they are worn, the machine will not agitate or spin.</div>
-      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> Check the circuit breaker — a partial electrical failure can cause the washer to fill but not spin.</div>
-      <div class="explanation correct" id="q4-correct">Correct! The lid switch pen test is the definitive no-parts diagnosis for a top-loader that fills but does not spin. The lid switch prevents the machine from spinning with the lid open — when it fails, the machine behaves as if the lid is always open, stopping after the fill cycle. By manually depressing the switch plunger while the machine is trying to spin, you bypass the failed switch. If the machine spins with the plunger pressed, the switch is confirmed faulty. Lid switch replacement costs $10–$25 and takes about 20 minutes.</div>
-      <div class="explanation wrong" id="q4-wrong">Not quite. The lid switch pen test is the fastest and cheapest way to confirm a lid switch failure without ordering parts. With the machine in spin cycle, open the lid and manually press the lid switch plunger with a pen or screwdriver. If the machine spins while the plunger is pressed, the switch is faulty — it is stuck in the open position and the machine thinks the lid is always open. Agitator dogs cause an agitation problem (agitator spins freely in both directions) but not a fill-and-stop problem. Check the lid switch first.</div>
+      <div class="q-text">A resident reports their front door lock is very stiff and the key is hard to turn. The tech has WD-40 on their cart. Should they use it?</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> Yes — WD-40 is the standard lubricant for key locks and will resolve the stiffness immediately.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> Yes — spray WD-40 into the keyhole and work the key in and out to distribute it.</div>
+      <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> No — use graphite lubricant instead. WD-40 temporarily loosens the lock but attracts dirt and gums up the pin tumblers over time, making the problem worse. Graphite is the correct lubricant for pin-tumbler locks.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> No — a stiff lock must be replaced. Lubrication does not resolve a mechanical lock problem.</div>
+      <div class="explanation correct" id="q4-correct">Correct! WD-40 is a water displacement product, not a long-term lubricant. It temporarily loosens a stiff lock, but it is oil-based — it attracts dirt and debris, which then accumulates inside the pin tumblers and makes the lock stiffer than it was before over time. Graphite lubricant (dry graphite powder in a squeeze applicator) is the correct product for any pin-tumbler lock. Insert the nozzle into the keyhole, squeeze a small amount in, and work the key in and out to distribute it. The lock will be smooth immediately and stay smooth without attracting dirt.</div>
+      <div class="explanation wrong" id="q4-wrong">Not correct. WD-40 should not be used in key locks. It is a water displacement product — not a long-term lubricant — and it is oil-based, which means it attracts dirt. Over time, WD-40 in a pin-tumbler lock accumulates debris that makes the lock stiffer and eventually jams it. The correct lubricant is graphite powder, which is dry, does not attract dirt, and keeps locks smooth long-term. In a pinch, rubbing a pencil on the key and working it in and out also works — pencil lead is graphite.</div>
     </div>
 
     <div class="question-block">
       <div class="q-num">Question 5 of 5</div>
-      <div class="q-text">A new garbage disposal was installed in a unit three days ago. The resident now calls to say their dishwasher is not draining and there is standing water in the tub. What should the tech check first?</div>
-      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> The dishwasher pump has failed — a new disposal installation can cause electrical interference with nearby appliances.</div>
-      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> The dishwasher filter — it may have been disturbed during the disposal installation and needs cleaning.</div>
-      <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> The knockout plug in the disposal's dishwasher drain inlet — if it was not removed during installation, the dishwasher drain is completely blocked. Remove the plug with a screwdriver and hammer. 60-second fix.</div>
-      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> The drain hose connection at the disposal — it may have been disconnected during installation.</div>
-      <div class="explanation correct" id="q5-correct">Correct! Every new garbage disposal comes with a knockout plug in the dishwasher drain inlet — a plastic plug that must be removed if the dishwasher drain hose is connected to that port. If the installer forgot to remove the plug, the dishwasher drain is completely blocked and water cannot exit the machine at all. This is one of the most common post-installation failures. The fix: reach under the sink, find the dishwasher drain inlet on the side of the disposal, and knock the plug out from inside the disposal with a screwdriver and hammer. Remove the plug pieces from inside the disposal before running it. 60 seconds total.</div>
-      <div class="explanation wrong" id="q5-wrong">Not quite. When a dishwasher stops draining immediately after a new garbage disposal is installed, the first thing to check is the knockout plug. Every new disposal comes with a plastic plug in the dishwasher drain inlet — this plug must be removed if the dishwasher drain connects to that port. Forgetting to remove it completely blocks the dishwasher drain. Knock it out from inside with a screwdriver and remove the pieces before running the disposal. This is the most common reason a dishwasher suddenly stops draining after a disposal is replaced.</div>
+      <div class="q-text">During a unit turn between tenants, the tech notices the vinyl floor has a bubble — an area where the floor has lifted away from the subfloor. What should the tech do first before attempting to re-glue it?</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> Apply vinyl adhesive immediately and weight the bubble down with books for 24 hours.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Cut the bubble and patch it with a piece of matching vinyl from the supply closet.</div>
+      <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Identify and address the moisture source — vinyl bubbles are almost always caused by moisture under the floor from a plumbing leak or subfloor moisture. Re-gluing without fixing the moisture source will just re-lift.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Replace the entire vinyl floor — a bubble means the adhesive has failed throughout and re-gluing is not a reliable repair.</div>
+      <div class="explanation correct" id="q5-correct">Correct! A vinyl floor bubble is almost always caused by moisture underneath — from a plumbing leak above (dripping pipe, leaking supply line) or from below (moisture in the subfloor, condensation). If you re-glue the bubble without finding and fixing the moisture source, the adhesive will fail again as moisture continues to accumulate. Check for any plumbing under or near the bubble location. Fix the moisture source first, let the subfloor dry completely, then re-glue and weight the flooring. Document the moisture source and your repair in the work order.</div>
+      <div class="explanation wrong" id="q5-wrong">Not quite. A vinyl floor bubble is almost always caused by moisture underneath the flooring — from a dripping supply line, a leaking fitting, or subfloor moisture. If you re-glue without addressing the moisture, the adhesive will fail again as moisture continues to lift the floor. Find the moisture source first: check all plumbing under and adjacent to the area. Fix the source, let the subfloor dry, then apply vinyl adhesive and weight the area. Document the moisture source in your work order — it may indicate a plumbing issue that needs a more permanent fix.</div>
     </div>
 
     <button class="check-btn" onclick="checkAllAnswers()">Check My Answers</button>
@@ -607,74 +551,74 @@ footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padd
   <!-- GLOSSARY -->
   <div class="module-glossary">
     <h3>📖 Module 5 — Key Terms &amp; Definitions</h3>
-    <p class="mg-sub">All appliance repair terms introduced in this module. Search to find any definition instantly.</p>
+    <p class="mg-sub">All appliance and interior repair terms introduced in this module. Search to find any definition instantly.</p>
     <input type="text" class="mg-search" id="mgSearch5" placeholder="Search terms..." oninput="mgFilter(this,5)">
     <div class="mg-terms" id="mgTerms5">
 
-      <div class="mg-term" data-mg="agitator dogs washing machine ratchet plastic worn spin agitate">
-        <div class="mg-term-header"><span class="mg-name">Agitator Dogs</span><span class="mg-law">Washer Component</span></div>
-        <div class="mg-def">Small plastic ratchet components inside the top of a top-loading washer's agitator that allow it to rotate in one direction only during the agitation cycle. When worn, the agitator spins freely in both directions instead of ratcheting — the machine runs but the agitator does not scrub clothes. Replacement cost: $5–$15. The agitator pulls straight off the shaft, dogs are inside the top, replacement takes under 10 minutes.</div>
-      </div>
-
-      <div class="mg-term" data-mg="condenser coil refrigerator heat release cleaning dust dirty efficiency compressor">
+      <div class="mg-term" data-mg="condenser coil refrigerator dirty cleaning compressor efficiency brush">
         <div class="mg-term-header"><span class="mg-name">Condenser Coils</span><span class="mg-law">Refrigerator Maintenance</span></div>
-        <div class="mg-def">The heat-releasing coils on a refrigerator, located under the unit behind the kickplate or on the back. Release heat absorbed from inside the refrigerator into the surrounding air. When coated with dust and lint, they cannot release heat efficiently — the compressor runs continuously and cooling performance drops. Clean annually with a coil brush and vacuum. The single most overlooked refrigerator maintenance item.</div>
-        <div class="mg-tip">💡 Clean refrigerator coils before assuming any mechanical failure — dirty coils cause most "not cooling" complaints.</div>
+        <div class="mg-def">The heat-releasing coils on a refrigerator, located either underneath behind the kickplate or on the back of the unit. Over time they collect dust and debris that insulates them, forcing the compressor to work harder and reducing the refrigerator's cooling efficiency. Clean annually with a coil cleaning brush and vacuum. Dirty coils are the most common and most overlooked cause of refrigerators running warm or cycling excessively.</div>
+        <div class="mg-tip">💡 A refrigerator that runs constantly or cannot maintain temperature often has nothing wrong except dirty coils — a 10-minute cleaning before calling for service.</div>
       </div>
 
-      <div class="mg-term" data-mg="defrost drain refrigerator clog water inside ice buildup freezer floor">
-        <div class="mg-term-header"><span class="mg-name">Defrost Drain</span><span class="mg-law">Refrigerator Component</span></div>
-        <div class="mg-def">A small drain opening at the back of the freezer floor that channels water from the automatic defrost cycle out of the freezer compartment. When clogged with food debris or ice, water backs up and leaks inside the refrigerator or onto the floor below. Clear with warm water and a small flexible brush or pipe cleaner inserted into the drain opening.</div>
-      </div>
-
-      <div class="mg-term" data-mg="dishwasher filter screen debris clean drain standing water clog">
-        <div class="mg-term-header"><span class="mg-name">Dishwasher Filter</span><span class="mg-law">Dishwasher Maintenance</span></div>
-        <div class="mg-def">A removable cylindrical screen at the bottom of the dishwasher tub that traps food debris before it recirculates through the pump. Most residents never clean it. A clogged filter causes standing water, poor cleaning performance, and drain problems. To clean: twist counterclockwise, lift out, rinse under water, replace. Takes two minutes and resolves the majority of dishwasher drain complaints.</div>
-        <div class="mg-tip">💡 Always clean the dishwasher filter before diagnosing any drain pump or motor issue.</div>
-      </div>
-
-      <div class="mg-term" data-mg="door gasket refrigerator seal test dollar bill warm air compression">
-        <div class="mg-term-header"><span class="mg-name">Door Gasket</span><span class="mg-law">Refrigerator Component</span></div>
-        <div class="mg-def">The flexible rubber seal around the refrigerator or freezer door that creates an airtight seal when closed. Test: close the door on a dollar bill — if the bill slides out with little resistance, the gasket is failing and warm air is entering the unit. A failing gasket forces the compressor to run constantly. Replace by model number — gaskets press into a channel or are held by screws under the door liner.</div>
-      </div>
-
-      <div class="mg-term" data-mg="dryer vent clog lint fire hazard safety annual cleaning exterior flap">
+      <div class="mg-term" data-mg="dryer vent lint fire hazard clog annual cleaning safety">
         <div class="mg-term-header"><span class="mg-name">Dryer Vent</span><span class="mg-law">Life-Safety Maintenance Item</span></div>
-        <div class="mg-def">The exhaust duct that carries hot, lint-laden air from the dryer to the outside of the building. Clogged dryer vents are a leading cause of residential fires — approximately 2,900 per year nationally. Signs of clogging: dryer takes multiple cycles to dry clothes, dryer runs very hot, exterior vent flap does not open. Clean at least annually by disconnecting the duct and vacuuming from both ends. Always clear the vent before replacing any dryer parts.</div>
+        <div class="mg-def">The duct that exhausts hot, lint-laden air from a dryer to the outside of the building. When clogged with lint, it restricts airflow, causes dryers to overheat, blows thermal fuses repeatedly, and is a leading cause of residential fires. Signs of a clogged vent: dryer takes multiple cycles to dry, exterior vent flap does not open during operation, dryer feels very hot. Clean at least annually by disconnecting the duct and vacuuming from both ends. This is a life-safety maintenance item — not optional.</div>
       </div>
 
-      <div class="mg-term" data-mg="knockout plug garbage disposal dishwasher drain installation plug blocked">
-        <div class="mg-term-header"><span class="mg-name">Knockout Plug</span><span class="mg-law">Garbage Disposal Installation</span></div>
-        <div class="mg-def">A plastic plug inside the dishwasher drain inlet port of every new garbage disposal. Must be removed with a screwdriver and hammer if the dishwasher drain hose connects to that port. Forgetting to remove it completely blocks the dishwasher drain — the most common cause of a dishwasher that stops draining immediately after a disposal is installed or replaced. Fix: knock it out from inside the disposal, remove the pieces before running the unit.</div>
+      <div class="mg-term" data-mg="feathering joint compound drywall patch blend edges smooth transition">
+        <div class="mg-term-header"><span class="mg-name">Feathering</span><span class="mg-law">Drywall Technique</span></div>
+        <div class="mg-def">The technique of spreading joint compound in progressively wider, thinner coats extending beyond the patch area so the edges blend invisibly into the surrounding wall. Feathering eliminates visible ridges at the patch boundary. The final coat should extend 8–12 inches beyond the hole on all sides, tapering to nothing at the edges. Without feathering, even a well-sanded patch will show as a raised ridge after painting.</div>
       </div>
 
-      <div class="mg-term" data-mg="lid switch washing machine safety spin top loader arm plunger test">
-        <div class="mg-term-header"><span class="mg-name">Lid Switch</span><span class="mg-law">Washer Safety Component</span></div>
-        <div class="mg-def">A safety device on top-loading washing machines that prevents the machine from spinning with the lid open. When it fails, the machine fills and may agitate but will not advance to the spin or drain cycle — it behaves as if the lid is always open. Test: manually press and hold the switch plunger with a pen while the machine is in spin cycle. If it spins, the switch is faulty. Replacement cost: $10–$25, approximately 20 minutes.</div>
+      <div class="mg-term" data-mg="flashing paint patch visible sheen difference unprimed primer wall">
+        <div class="mg-term-header"><span class="mg-name">Flashing</span><span class="mg-law">Paint / Drywall Defect</span></div>
+        <div class="mg-def">A visible sheen or color difference at a drywall patch after painting, caused by unprimed joint compound absorbing paint at a different rate than the surrounding primed wall. Even with a perfect color match, an unprimed patch will flash — usually appearing shinier or duller than the surrounding wall. Prevented entirely by applying a coat of drywall primer to the patch and allowing it to dry fully before painting.</div>
       </div>
 
-      <div class="mg-term" data-mg="oven igniter glow bar gas valve heat temperature weak orange glow">
-        <div class="mg-term-header"><span class="mg-name">Oven Igniter</span><span class="mg-abbr">Glow-Bar Igniter</span><span class="mg-law">Gas Oven Component</span></div>
-        <div class="mg-def">The component in a modern gas oven that replaces the standing pilot light. When the oven is turned on, the igniter heats up and opens the gas safety valve when it reaches sufficient temperature — typically 1,000–1,100°F. A weak igniter glows orange but does not reach the threshold temperature, so the valve never opens and the oven never heats. Replacement is a plug-in swap with no gas line disconnection. Cost: $20–$50. Most common gas oven failure.</div>
+      <div class="mg-term" data-mg="graphite lubricant lock key pin tumbler dry powder stiff">
+        <div class="mg-term-header"><span class="mg-name">Graphite Lubricant</span><span class="mg-law">Lock Maintenance</span></div>
+        <div class="mg-def">A dry lubricant made from powdered graphite, used to lubricate pin-tumbler key locks. Applied directly into the keyhole via a squeeze tube applicator. Unlike oil-based lubricants, graphite does not attract dirt or gum up the lock mechanism over time. The correct lubricant for any residential or commercial key lock. In a pinch, rubbing a pencil (graphite) on the key achieves a similar effect.</div>
+        <div class="mg-tip">💡 Never use WD-40 in a key lock — it is oil-based and will attract dirt, making the lock stiffer over time.</div>
       </div>
 
-      <div class="mg-term" data-mg="thermal fuse dryer safety blown overheat continuity multimeter test replace">
+      <div class="mg-term" data-mg="joint compound mud drywall patching feathering coating walls">
+        <div class="mg-term-header"><span class="mg-name">Joint Compound</span><span class="mg-abbr">Drywall Mud</span><span class="mg-law">Drywall Material</span></div>
+        <div class="mg-def">A gypsum-based paste used to finish drywall seams, tape, and patches. Available as all-purpose, lightweight, and topping compound. Apply in multiple thin coats (three is standard) rather than one thick coat — thick coats crack and shrink unevenly. Must dry completely between coats. Sand between coats with 120-grit and finish with 220-grit. Always prime joint compound before painting to prevent flashing.</div>
+      </div>
+
+      <div class="mg-term" data-mg="paint sheen flat matte eggshell satin semi-gloss gloss finish durability">
+        <div class="mg-term-header"><span class="mg-name">Paint Sheen</span><span class="mg-law">Paint Selection</span></div>
+        <div class="mg-def">The level of reflectivity in a paint finish, ranging from flat (no sheen) to high-gloss (maximum sheen). For apartment maintenance: flat for ceilings only; eggshell or satin for walls (standard in most units — slightly wipeable); semi-gloss for trim, doors, kitchens, and bathrooms (most durable and cleanable). Never use flat paint in bathrooms or kitchens — it absorbs moisture, harbors mold, and cannot be cleaned.</div>
+      </div>
+
+      <div class="mg-term" data-mg="thermal fuse dryer safety device blown overheat continuity test">
         <div class="mg-term-header"><span class="mg-name">Thermal Fuse</span><span class="mg-law">Dryer Safety Component</span></div>
-        <div class="mg-def">A one-time safety device in electric dryers that permanently opens (blows) if the dryer overheats, cutting power to the heating element. Most common cause of a dryer that runs but does not heat. Test with multimeter for continuity — good fuse reads near zero ohms, blown fuse reads infinite. Cost: $8–$15. Always clear the dryer vent before replacing — a clogged vent will blow the new fuse immediately from the same overheating condition.</div>
+        <div class="mg-def">A one-time safety device in electric dryers that opens (blows) permanently if the dryer overheats, cutting power to the heating element. A blown thermal fuse is one of the most common causes of a dryer that runs but does not heat. Test with a multimeter for continuity — a good fuse reads near zero ohms; a blown fuse reads infinite (open circuit). Cost: approximately $10. Always clean the dryer vent before replacing the thermal fuse — a clogged vent causes overheating and will blow the new fuse immediately.</div>
+      </div>
+
+      <div class="mg-term" data-mg="turn ready unit turnover make ready rental preparation checklist">
+        <div class="mg-term-header"><span class="mg-name">Turn-Ready</span><span class="mg-abbr">Make-Ready</span><span class="mg-law">Property Management Standard</span></div>
+        <div class="mg-def">The condition of an apartment unit that is fully prepared for a new resident to move in. Includes: all repairs completed, all surfaces patched and painted, all appliances functional and clean, all plumbing confirmed dry, all electrical confirmed working, all doors and windows operating correctly, all locks re-keyed. A unit that is turn-ready the day a resident moves in is the standard that property managers hold maintenance techs accountable to.</div>
+      </div>
+
+      <div class="mg-term" data-mg="vinyl bubble moisture lift adhesive subfloor plumbing leak floor repair">
+        <div class="mg-term-header"><span class="mg-name">Vinyl Floor Bubble</span><span class="mg-law">Flooring Defect</span></div>
+        <div class="mg-def">An area of vinyl flooring that has separated from the subfloor and lifted, creating a visible raised area. Almost always caused by moisture underneath the flooring — from a plumbing leak above, condensation, or subfloor moisture. Must not be re-glued until the moisture source is identified and eliminated — re-gluing over an active moisture problem causes the adhesive to fail again immediately. Fix the moisture source, allow the subfloor to dry completely, then re-adhere and weight the flooring for 24 hours.</div>
       </div>
 
     </div>
     <div class="mg-none" id="mgNone5">No terms found.</div>
     <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
-      <a href="mr-glossary.html" style="font-size:13px;color:var(--rust-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 8 Modules) &rarr;</a>
+      <a href="mr-glossary.html" style="font-size:13px;color:var(--rust-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 7 Modules) &rarr;</a>
     </div>
   </div>
 
   <!-- NEXT MODULE -->
   <div class="next-module fade-in">
-    <h3>⏭️ What's Next — Module 6: Interior Repairs</h3>
-    <p>Module 6 covers the repairs that make a unit rent-ready — drywall patching, painting, door and window adjustments, locks, floors, and cabinets. These are the finishing skills that complete your toolkit and set apart the maintenance tech who can handle anything from move-out to move-in.</p>
-    <a href="mr-module-6.html" class="next-module-cta">Module 6: Interior Repairs →</a>
+    <h3>⏭️ What's Next — Module 6: Getting Hired by Property Managers</h3>
+    <p>You have the full technical skill set. Module 6 shifts focus to the business side — how to approach property management companies, what they actually look for when hiring maintenance techs, how to present yourself, and how to turn your skills into a job offer. This is where the technical training becomes a career.</p>
+    <a href="mr-module-6.html" class="next-module-cta">Module 6: Getting Hired →</a>
   </div>
 
 </div>
