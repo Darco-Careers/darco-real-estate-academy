@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 8: Going Independent & Certifications — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rust:#8B3A1A;--rust-mid:#B04A22;--rust-light:#D0622E;--rust-pale:#FAF0EA;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F4;--cream-dark:#EEE9DF;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(139,58,26,0.1);
+  --shadow-card:0 2px 16px rgba(139,58,26,0.07);
+  --warn:#D4881A;--warn-pale:#FDF5E8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--rust);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.2);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--rust);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--gold-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--rust-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--rust);font-weight:600;}
+.progress-bar{background:var(--rust-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--rust-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(139,58,26,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--rust-mid);border-radius:3px;width:100%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--rust-mid);color:var(--white);}
+.prog-dot.active{background:var(--rust);color:var(--gold-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(139,58,26,0.25);}
+.module-hero{background:linear-gradient(135deg,#4A1A08 0%,var(--rust) 55%,var(--rust-mid) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:var(--gold-light);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:var(--gold-light);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--rust);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.gold-divider{width:50px;height:3px;background:var(--gold);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-insight{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--warn-pale);border-left:4px solid var(--warn);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-rust{background:var(--rust-pale);border-left:4px solid var(--rust-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-rust .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--rust-mid);margin-bottom:0.5rem;}
+.callout-rust p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.cert-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--rust-mid);border-radius:0 0 14px 14px;padding:1.5rem;}
+.cert-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;}
+.cert-card .cert-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;background:var(--gold-pale);color:#8A6A20;margin-bottom:0.75rem;}
+.cert-card ul{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
+.cert-card ul li{font-size:13px;color:var(--text-mid);line-height:1.55;padding-left:1.1rem;position:relative;}
+.cert-card ul li::before{content:'→';color:var(--rust-mid);font-weight:700;position:absolute;left:0;font-size:11px;}
+.steps{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;}
+.step{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;}
+.step-num{width:30px;height:30px;border-radius:50%;background:var(--rust);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.step h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.step p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.pay-table{margin:2rem 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.pay-header{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;background:var(--rust);color:var(--white);}
+.pay-header div{padding:0.75rem 1rem;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
+.pay-row{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;border-top:1px solid var(--border);}
+.pay-row:nth-child(even){background:var(--rust-pale);}
+.pay-row div{padding:0.65rem 1rem;font-size:13px;color:var(--text-mid);line-height:1.5;}
+.pay-row .cert{color:var(--text-dark);font-weight:600;}
+.pay-row .pay-bump{color:var(--rust-mid);font-weight:700;}
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.75rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--rust-pale);color:var(--rust-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.video-info .credit{font-size:12px;color:var(--text-light);margin-top:0.4rem;}
+.completion-banner{background:linear-gradient(135deg,#4A1A08 0%,var(--rust) 60%,var(--rust-mid) 100%);border-radius:18px;padding:2.5rem;margin:2rem 0;text-align:center;position:relative;overflow:hidden;}
+.completion-banner::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.15) 0%,transparent 60%);}
+.completion-banner h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:var(--white);margin-bottom:0.75rem;position:relative;}
+.completion-banner h2 em{color:var(--gold-light);font-style:italic;}
+.completion-banner p{font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.8;max-width:560px;margin:0 auto 1.5rem;position:relative;}
+.completion-banner .cert-badge{display:inline-block;background:var(--gold);color:var(--rust);font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;padding:0.75rem 2rem;border-radius:10px;position:relative;}
+.takeaways{background:var(--rust);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;position:relative;overflow:hidden;}
+.takeaways::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.07) 0%,transparent 60%);}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold-light);margin-bottom:1rem;position:relative;}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;}
+.takeaways ul li{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.65;display:block;padding-left:1.5rem;position:relative;}
+.takeaways ul li::before{content:'✓';color:var(--gold-light);font-weight:700;position:absolute;left:0;}
+.mentor-bubble-wrap{margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+.mentor-avatar{width:52px;height:52px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--gold-light);flex-shrink:0;margin-top:4px;box-shadow:0 2px 12px rgba(139,58,26,0.25);}
+.mentor-bubble{background:#FFFDF7;border:2px solid #C9A02A;border-radius:16px;border-top-left-radius:4px;padding:1.25rem 1.5rem;flex:1;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;left:-10px;top:14px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:10px solid #C9A02A;}
+.mentor-bubble::after{content:'';position:absolute;left:-7px;top:15px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid #FFFDF7;}
+.mentor-bubble p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#1A1E26;line-height:1.75;}
+.mentor-name{font-family:'DM Sans',sans-serif;font-style:normal;font-size:11px;font-weight:600;color:#8A6A20;margin-top:0.6rem;letter-spacing:0.5px;text-transform:uppercase;}
+.knowledge-check{background:var(--white);border:2px solid var(--rust-pale);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;}
+.knowledge-check h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--rust);margin-bottom:0.4rem;}
+.knowledge-check .kc-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.question-block{margin-bottom:1.75rem;}
+.q-text{font-size:14.5px;font-weight:600;color:var(--text-dark);line-height:1.6;margin-bottom:0.75rem;}
+.q-num{font-size:11px;font-weight:700;color:var(--rust-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.option{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.18s;font-size:14px;color:var(--text-mid);line-height:1.55;margin-bottom:0.5rem;}
+.option:hover{border-color:var(--rust-mid);background:var(--rust-pale);}
+.option.selected-correct{border-color:#2E7D32;background:#F1F8F1;color:#1B5E20;}
+.option.selected-wrong{border-color:#C62828;background:#FFF1F1;color:#B71C1C;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:var(--rust-pale);color:var(--rust-mid);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.option.selected-correct .option-letter{background:#2E7D32;color:#fff;}
+.option.selected-wrong .option-letter{background:#C62828;color:#fff;}
+.explanation{display:none;padding:0.85rem 1rem;border-radius:8px;font-size:13.5px;line-height:1.65;margin-top:0.25rem;margin-bottom:0.75rem;}
+.explanation.correct{background:#F1F8F1;border:1px solid #A5D6A7;color:#1B5E20;}
+.explanation.wrong{background:#FFF1F1;border:1px solid #EF9A9A;color:#B71C1C;}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;font-family:'DM Sans',sans-serif;}
+.check-btn:hover{background:var(--rust-mid);}
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--rust-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-term-header{display:flex;align-items:baseline;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);}
+.mg-abbr{font-size:11px;font-weight:600;color:var(--rust-mid);background:var(--rust-pale);padding:2px 7px;border-radius:8px;}
+.mg-law{font-size:11px;color:#8A6A20;background:var(--gold-pale);padding:2px 7px;border-radius:8px;font-weight:600;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-tip{font-size:12px;color:var(--rust-mid);margin-top:0.3rem;font-style:italic;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;}
+.btn-outline{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;font-weight:600;text-decoration:none;color:var(--text-mid);transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--rust-mid);color:var(--rust);}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:8px;background:var(--gold);color:var(--rust);font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-gold:hover{background:var(--gold-light);}
+.fade-in{opacity:1;transform:none;}
+footer{background:var(--rust);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-gold{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="maintenance-repair.html" class="nav-back">← Maintenance &amp; Repair</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="maintenance-repair.html">Maintenance &amp; Repair</a><span class="sep">/</span>
+  <span class="current">Module 8 — Going Independent &amp; Certifications</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 8 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="mr-module-1.html" class="prog-dot complete">1</a>
+    <a href="mr-module-2.html" class="prog-dot complete">2</a>
+    <a href="mr-module-3.html" class="prog-dot complete">3</a>
+    <a href="mr-module-4.html" class="prog-dot complete">4</a>
+    <a href="mr-module-5.html" class="prog-dot complete">5</a>
+    <a href="mr-module-6.html" class="prog-dot complete">6</a>
+    <a href="mr-module-7.html" class="prog-dot complete">7</a>
+    <span class="prog-dot active">8</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">Maintenance &amp; Repair Track · Module 8 of 8 · Final Module</div>
+    <h1>Going Independent <em>&amp; Certifications</em></h1>
+    <p>The certifications that open the highest-paying work, the path to independent maintenance contracting, how to build a client base with property managers, what it takes to run your own operation — and what the long-term career picture looks like for someone who masters this trade.</p>
+    <div class="module-meta">
+      <div class="meta-item">📖 <span>4 Lessons</span></div>
+      <div class="meta-item">🎬 <span>1 Video</span></div>
+      <div class="meta-item">🧠 <span>5 Knowledge Check Questions</span></div>
+      <div class="meta-item">📚 <span>Sources: NAA · EPA · NSPF · Industry Research</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+    <h2 class="lesson-title">The certifications that pay — <em>CAMT, EPA 608, CPO, and what each one is worth</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Certifications in apartment maintenance are not credentials for a résumé — they are pay increases, plain and simple. Each certification you earn unlocks a category of work that you could not legally or credibly handle before, and property managers pay for that capability. The three most financially impactful certifications for any maintenance tech are CAMT, EPA 608, and CPO — and all three are attainable without a degree, without years of waiting, and without breaking the bank.</p>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <h4>CAMT</h4>
+        <div class="cert-tag">Certified Apartment Maintenance Technician · NAA</div>
+        <ul>
+          <li>The primary professional credential in apartment maintenance</li>
+          <li>Requires 12 months experience (concurrent with coursework)</li>
+          <li>Five technical courses + soft skills + comprehensive exam</li>
+          <li>Cost: ~$881 NAA members / ~$1,101 non-members</li>
+          <li>Pay impact: +$3–$6/hour</li>
+          <li>How to start: naahq.org — find your local chapter</li>
+          <li>Cannot be completed fully online — requires local NAA affiliate</li>
+        </ul>
+      </div>
+      <div class="cert-card">
+        <h4>EPA Section 608</h4>
+        <div class="cert-tag">Refrigerant Handling · Federal Law · EPA</div>
+        <ul>
+          <li>Required by federal law to handle refrigerants</li>
+          <li>No experience required to take the exam</li>
+          <li>Exam cost: approximately $20</li>
+          <li>Does not expire — lifetime certification</li>
+          <li>Pay impact: +$3–$5/hour</li>
+          <li>Available at most HVAC supply houses</li>
+          <li>Four certification types — Type II (high-pressure) covers most apartment HVAC</li>
+        </ul>
+      </div>
+      <div class="cert-card">
+        <h4>CPO</h4>
+        <div class="cert-tag">Certified Pool/Spa Operator · NSPF</div>
+        <ul>
+          <li>Required at most apartment communities with pools</li>
+          <li>Covers water chemistry, equipment, health/safety regulations</li>
+          <li>Two-day course plus exam</li>
+          <li>Cost: $250–$400 depending on provider</li>
+          <li>Valid for 5 years, renewable</li>
+          <li>Pay impact: +$1–$3/hour or explicit per-property premium</li>
+          <li>Find courses at nspf.org or pooloperator.com</li>
+        </ul>
+      </div>
+      <div class="cert-card">
+        <h4>OSHA 10 / OSHA 30</h4>
+        <div class="cert-tag">Safety Certification · OSHA / DOL</div>
+        <ul>
+          <li>OSHA 10: 10-hour safety awareness course — widely recognized</li>
+          <li>OSHA 30: 30-hour course — preferred for supervisory roles</li>
+          <li>Available online and in-person</li>
+          <li>Cost: $30–$100 depending on provider</li>
+          <li>Does not expire (no formal renewal required)</li>
+          <li>Increasingly required by large property management operators</li>
+          <li>Demonstrates professional safety awareness to any employer</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pay-table">
+      <div class="pay-header">
+        <div>Certification</div>
+        <div>Cost</div>
+        <div>Pay Bump</div>
+        <div>Annual Value</div>
+      </div>
+      <div class="pay-row">
+        <div class="cert">EPA Section 608</div>
+        <div>~$20</div>
+        <div class="pay-bump">+$3–5/hr</div>
+        <div>+$6,240–$10,400/yr</div>
+      </div>
+      <div class="pay-row">
+        <div class="cert">CAMT</div>
+        <div>$881–$1,101</div>
+        <div class="pay-bump">+$3–6/hr</div>
+        <div>+$6,240–$12,480/yr</div>
+      </div>
+      <div class="pay-row">
+        <div class="cert">CPO</div>
+        <div>$250–$400</div>
+        <div class="pay-bump">+$1–3/hr</div>
+        <div>+$2,080–$6,240/yr</div>
+      </div>
+      <div class="pay-row">
+        <div class="cert">OSHA 10</div>
+        <div>$30–$100</div>
+        <div class="pay-bump">+$0.50–2/hr</div>
+        <div>+$1,040–$4,160/yr</div>
+      </div>
+      <div class="pay-row">
+        <div class="cert">EPA 608 + CAMT combined</div>
+        <div>~$900–$1,120</div>
+        <div class="pay-bump">+$6–11/hr</div>
+        <div>+$12,480–$22,880/yr</div>
+      </div>
+    </div>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The EPA 608 — The Highest ROI Certification Available to Any Maintenance Tech</div>
+      <p>The EPA Section 608 exam costs approximately $20, takes a few hours, does not expire, and immediately adds $3–$5/hour to your pay rate. At 40 hours per week, that is $6,240–$10,400 per year in additional income — from a $20 investment. Nothing in any trade has a better return. If you have been maintaining HVAC systems and directing refrigerant work to licensed technicians, passing the EPA 608 exam means you can now handle that work yourself. Take this exam as soon as you have enough HVAC exposure to pass it comfortably — which is usually after 6–12 months of hands-on maintenance work.</p>
+    </div>
+  </div>
+
+  <!-- VIDEO 1 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Watch: YouTube as Trade School</div>
+    <h2 class="lesson-title">How Pepe Gomez learned this trade — <em>and what it means for your career</em></h2>
+    <div class="gold-divider"></div>
+    <p class="lesson-text">Pepe Gomez talks about how he taught himself apartment maintenance — starting with four days of on-the-job training and building the rest through YouTube, watching repair videos every night before bed. He speaks directly to anyone who thinks they cannot afford trade school or does not have time to go back to school. This is the mindset that carries you through every module in this course and every year of this career.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/Cf19x2CNWEs" title="YouTube as Trade School — Pepe Gomez" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Pepe Gomez · Maintenance Man Narratives</span>
+        <h4>YouTube Is the Best Trade School — How to Learn Maintenance for Free</h4>
+        <p>Pepe explains how he built his maintenance career from four days of on-the-job training, learning every system through YouTube videos watched late at night alongside his family responsibilities. Speaks to the supply/demand reality of the trades — fewer young people entering, more opportunity for those who do — and makes the case for continuous self-education as the engine of career advancement in maintenance.</p>
+        <div class="credit">Pepe Gomez · Maintenance Man Narratives · Career mindset · Beginner and career-building focused</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+    <h2 class="lesson-title">Going independent — <em>what maintenance contracting actually looks like</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Going independent as a maintenance contractor or handyman is not a single decision — it is a progression. The vast majority of successful independent maintenance contractors spent several years working for a property management company first. Those years are not just income — they are the skill development, the professional network, the understanding of what property managers actually need, and the reputation that makes an independent business viable. Going independent too early, before you have the skills and the relationships, is the most common reason independent maintenance businesses fail.</p>
+
+    <p class="lesson-text">The independent maintenance path has two primary forms. The first is becoming a <strong>freelance maintenance contractor</strong> — working directly with property management companies as a 1099 independent contractor, typically on a per-property or per-call basis. This is the most common path for experienced maintenance techs going independent. The second is a <strong>handyman service business</strong> — serving homeowners, small landlords, and small commercial properties directly, without going through property management companies. Both have distinct advantages and distinct challenges.</p>
+
+    <h3 class="sub-title">The property management contractor model</h3>
+
+    <p class="lesson-text">Property management companies frequently need contractors who can handle specific work that their in-house maintenance team is not equipped for — specialized appliance repairs, large-scale painting contracts, HVAC work that requires EPA 608, make-ready turnovers during peak seasons when in-house staff cannot keep up. A maintenance tech with experience, certifications, and a professional reputation can build a steady stream of contract work from property management relationships built during their employment years.</p>
+
+    <p class="lesson-text">The key advantage of the property management contractor model is that you are already solving a known problem for a market you understand. You know how property managers think, what they prioritize, how work orders work, and what a professional turnover looks like. You speak the language. That is an enormous head start over someone coming into this market from the outside.</p>
+
+    <p class="lesson-text"><strong>How to start building contractor relationships:</strong> The best time to plant this seed is while you are still employed. Deliver excellent work, build relationships with multiple property managers and regional managers across your portfolio, and let the right people know — professionally and without burning bridges — that you are building toward independent work. Property managers who trust you as an employee often become your first clients as a contractor.</p>
+
+    <div class="callout-rust">
+      <div class="callout-label">📋 The Non-Compete Question — Read Before You Sign Anything</div>
+      <p>Some property management employment contracts include non-compete or non-solicitation clauses that restrict you from working for competing companies or soliciting former employer clients after you leave. Before signing any employment agreement, read it carefully — or have someone read it for you. If a non-compete is present, understand exactly what it restricts, for how long, and in what geographic area. Non-competes in maintenance and property management vary widely in enforceability by state, but they should inform your timeline and strategy for going independent. This is not a reason to not take a job — it is a reason to be informed before you sign.</p>
+    </div>
+
+    <h3 class="sub-title">The handyman service business model</h3>
+
+    <p class="lesson-text">A handyman or home repair service business serves homeowners, small landlords (landlords who own fewer than 10 units and do not use a property management company), and small commercial property owners directly. This market is enormous — there are millions of small rental property owners in the United States who do not have a maintenance team and need reliable repair help on an as-needed basis.</p>
+
+    <p class="lesson-text">The handyman model has lower per-job revenue than property management contracting but higher volume and more variety. It also requires more marketing and client acquisition — homeowners do not find you through an existing work order system; they have to find you through referrals, Google, Nextdoor, and local platforms like Thumbtack or Angi. Building a consistent homeowner client base typically takes 12–24 months of consistent marketing effort.</p>
+
+    <p class="lesson-text"><strong>Handyman licensing requirements by state:</strong> This is the most important legal question before starting any independent maintenance business. Most states require a contractor's license for work above a specific dollar threshold — commonly $500 to $1,000 per job. Some states require a general contractor's license for any paid repair work. Others have a specific handyman exemption for small jobs. Look up your state's contractor licensing requirements before doing any paid independent work. Operating without a required license creates real liability and in some states is a criminal offense.</p>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+    <h2 class="lesson-title">Setting up your independent business — <em>pricing, insurance, and the basics</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Starting an independent maintenance business requires addressing four practical things before taking your first paid job: business structure, insurance, pricing, and tools. None of these are complicated, but skipping any of them creates real exposure — financial, legal, or reputational.</p>
+
+    <h3 class="sub-title">Business structure — LLC is the standard starting point</h3>
+
+    <p class="lesson-text">For most independent maintenance contractors and handyman businesses, forming a single-member LLC (Limited Liability Company) is the right starting structure. An LLC separates your personal assets from your business liability — if a client sues your business over a repair that went wrong, your personal savings, home, and car are protected. Operating as a sole proprietor with no LLC means your personal assets are exposed to any business liability. LLC formation costs $50–$500 depending on your state and is typically completed online in a few hours through your state's Secretary of State website.</p>
+
+    <h3 class="sub-title">Insurance — general liability before your first job</h3>
+
+    <p class="lesson-text">General liability insurance covers property damage and bodily injury that occurs during your work — a broken fixture, a flooded apartment from a plumbing repair gone wrong, someone tripping over your tools. For a maintenance contractor, general liability is non-negotiable before taking any paid job. Most property management companies will require proof of general liability coverage before hiring any contractor. Cost: $500–$1,500/year for $1 million in coverage, depending on your state and the volume of work you do.</p>
+
+    <p class="lesson-text">If you hire employees or subcontractors, workers' compensation insurance is required in most states. As a solo contractor, workers' comp may not be required — but check your state's requirements. Some states require it even for single-person operations doing certain types of work.</p>
+
+    <h3 class="sub-title">Pricing your work</h3>
+
+    <p class="lesson-text">Pricing is where most new independent contractors undercharge — and regret it within a year when they realize they are earning less than they did as an employee after accounting for self-employment tax (15.3%), insurance, tools, vehicle costs, and unpaid administrative time. A contractor who charges $25/hour as an employee equivalent is actually netting far less than an employee earning $25/hour, because the employer was covering all those costs.</p>
+
+    <p class="lesson-text">A basic pricing framework for independent maintenance work: <strong>take your desired net hourly rate, multiply by 1.5–2x, and that is your minimum billable rate.</strong> If you want to net $25/hour after taxes and expenses, you need to bill $37.50–$50/hour. For property management contract work, the market rate for an experienced independent maintenance contractor in most US markets is $45–$85/hour depending on the type of work, certifications, and region.</p>
+
+    <p class="lesson-text">For flat-rate pricing (quoting a job price rather than hourly), the formula is: estimated hours × your hourly rate + materials cost + a 10–15% materials markup. Flat-rate pricing is preferred by most property management clients because it gives them budget certainty — but it requires accurate time estimation, which only comes with experience doing similar jobs.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Form your LLC</h4>
+          <p>File with your state's Secretary of State. Cost: $50–$500. Get an EIN (free at irs.gov) for tax filing and opening a business bank account.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Open a separate business bank account</h4>
+          <p>Never mix personal and business finances. A dedicated business account makes bookkeeping, tax filing, and profitability tracking dramatically simpler.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Get general liability insurance</h4>
+          <p>Before your first paid job. Get at least $1 million in coverage. Most property management clients will require a certificate of insurance before awarding any contract work.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h4>Check your state's contractor licensing requirements</h4>
+          <p>Look up your state's contractor license threshold and handyman exemption rules. Do not do paid work that requires a license you do not have.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <h4>Set up invoicing and tracking</h4>
+          <p>Use a free or low-cost invoicing tool (Wave, FreshBooks, QuickBooks Simple Start) to track income, expenses, and issue professional invoices. Set aside 25–30% of every payment for quarterly estimated taxes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section fade-in">
+    <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+    <h2 class="lesson-title">The long-term picture — <em>what this career becomes</em></h2>
+    <div class="gold-divider"></div>
+
+    <p class="lesson-text">Apartment maintenance is not a stepping stone to something better. For a large number of people who master it, it is the thing. The career ceiling is higher than most trades people realize when they start, the income trajectory is real and achievable, and the demand — unlike many fields — is structural and growing. Every apartment that is built needs to be maintained. Residents will always need things fixed. That demand does not disappear.</p>
+
+    <h3 class="sub-title">The full career arc — where this goes over 10–20 years</h3>
+
+    <p class="lesson-text"><strong>Years 1–2:</strong> Porter or Tech I. Building the foundation — showing up, learning systems, getting the first certifications, developing the Unit Scan habit, building a reputation with the first few property managers who trust you.</p>
+
+    <p class="lesson-text"><strong>Years 2–5:</strong> Tech II and Senior Tech. CAMT completed. EPA 608 in hand. Handling complex HVAC work, mentoring newer techs, being the person the property manager calls first for anything unusual. Pay in the $22–$30/hour range plus on-site housing benefit at many properties.</p>
+
+    <p class="lesson-text"><strong>Years 5–10:</strong> Maintenance Supervisor or beginning to go independent. Leading the maintenance program at a property or starting to build a contractor client list. At the supervisor level, salary plus housing can represent total compensation of $55,000–$75,000 in most markets. Independent contractors with CAMT and EPA 608 billing $60–$75/hour to property management clients can gross $90,000–$130,000+ depending on volume.</p>
+
+    <p class="lesson-text"><strong>Years 10+:</strong> Regional Maintenance Director, multi-property independent contractor, or business owner employing other techs. Regional directors at major operators earn $70,000–$120,000+. Independent maintenance business owners with a small team can build to $200,000–$400,000 in annual revenue.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The Pepe Gomez Principle — Never Stop Learning</div>
+      <p>Pepe Gomez describes watching repair videos every night before bed — not because he has to, but because he is always learning. The maintenance techs who reach the top of this career are almost universally the ones who never stopped treating every repair as a learning opportunity, every experienced person as a teacher, and every YouTube video as a potential shortcut to a skill they have not mastered yet. The career arc described above is not guaranteed by time alone — it is built by continuous, deliberate skill development. You now have the foundation. What you build on top of it is up to you.</p>
+    </div>
+
+    <h3 class="sub-title">The trades advantage — why this career is stronger now than it has ever been</h3>
+
+    <p class="lesson-text">Fewer young people are entering the skilled trades than in any previous generation. The average age of an experienced maintenance tech, plumber, or electrician is rising every year. The demand for people who can fix things — reliably, professionally, with the right skills — is not going away. If anything, as the existing generation of experienced tradespeople ages out, the people coming into this field now will face less competition for the best positions and the highest-paying contract work than any generation before them.</p>
+
+    <p class="lesson-text">This is not a pitch. It is a supply-and-demand reality that experienced techs across the country describe the same way: <strong>there are not enough good maintenance people.</strong> Property managers are not turning away qualified candidates. They are desperately looking for them. The opportunity in this field, for anyone willing to do the work and build the skills, is genuine and significant.</p>
+  </div>
+
+  <!-- COMPLETION BANNER -->
+  <div class="completion-banner fade-in">
+    <h2>You have completed the <em>Maintenance &amp; Repair Track</em></h2>
+    <p>Eight modules. Plumbing, electrical, HVAC, appliances, interior repairs, floors, certifications, and the full career path from porter to regional director. You came in with a goal. You now have the knowledge, the vocabulary, and the framework to walk into a property management interview, handle a work order list, and build a career in one of the most in-demand trades in the country.</p>
+    <div class="cert-badge">🎓 Darco Real Estate Academy — Maintenance &amp; Repair Track Complete</div>
+  </div>
+
+  <!-- MENTOR BUBBLE -->
+  <div class="mentor-bubble-wrap fade-in">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-bubble">
+      <p>"This is where the course ends and the career begins. You know the systems. You know the tools. You know how to research what you do not know, how to document what you find, how to communicate with property managers, and how to build on this foundation year after year. The people who succeed in this trade are not the smartest or the most experienced — they are the ones who kept showing up. You are already one of those people. Go do it."</p>
+      <div class="mentor-name">Your Darco Mentor · Course Complete</div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways fade-in">
+    <h3>📌 Module 8 Key Takeaways</h3>
+    <ul>
+      <li>The EPA Section 608 exam costs approximately $20, does not expire, and adds $3–$5/hour to your pay rate immediately — the highest return-on-investment certification available to any maintenance tech. Take it as soon as you have enough HVAC exposure to pass it comfortably (typically 6–12 months into the trade).</li>
+      <li>CAMT adds $3–$6/hour, requires 12 months of experience (concurrent with coursework), and costs $881–$1,101. CPO covers pool/spa certification required at most apartment communities with pools, costs $250–$400, and adds $1–$3/hour. OSHA 10 is $30–$100 and increasingly required by large operators.</li>
+      <li>Going independent works best after several years in the industry — the skills, relationships, and professional reputation built during employment years are the foundation of any viable independent maintenance business. Most successful independent contractors started as employees first.</li>
+      <li>Before taking any paid independent work: form an LLC, open a business bank account, get general liability insurance, and check your state's contractor licensing requirements. Operating without required coverage or licensing creates real financial and legal exposure.</li>
+      <li>Price your independent work at 1.5–2x your target net hourly rate to account for self-employment tax (15.3%), insurance, tools, vehicle costs, and unpaid administrative time. The market rate for experienced independent maintenance contractors in most US markets is $45–$85/hour depending on certifications and work type.</li>
+      <li>The demand for skilled maintenance technicians is growing as fewer young people enter the trades. Property managers are not turning away qualified candidates — they are desperate for them. The opportunity in this field, for anyone willing to build the skills and show up reliably, is significant and growing.</li>
+    </ul>
+  </div>
+
+  <!-- KNOWLEDGE CHECK -->
+  <div class="knowledge-check fade-in">
+    <h3>🧠 Final Knowledge Check</h3>
+    <p class="kc-sub">5 questions — click your answer, then check all at once.</p>
+
+    <div class="question-block">
+      <div class="q-num">Question 1 of 5</div>
+      <div class="q-text">A maintenance tech wants to start handling refrigerant work on apartment HVAC systems instead of always calling a licensed HVAC contractor. What must they do first, and approximately how much does it cost?</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div> Complete the CAMT certification — CAMT covers refrigerant handling as part of its HVAC coursework.</div>
+      <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div> Pass the EPA Section 608 exam — required by federal law for anyone handling refrigerants. Cost: approximately $20. Does not expire.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div> Obtain a state HVAC license — refrigerant work requires a state-issued HVAC contractor license in all 50 states.</div>
+      <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div> Complete OSHA 30 training — OSHA covers refrigerant safety as part of the 30-hour program.</div>
+      <div class="explanation correct" id="q1-correct">Correct! EPA Section 608 is the federal certification required for anyone who handles regulated refrigerants — adding refrigerant, recovering it, or servicing equipment in a way that could release it. It applies in all 50 states regardless of state licensing rules. The exam costs approximately $20, can be taken at most HVAC supply houses, and does not expire. It is completely independent of CAMT, OSHA, or state HVAC licensing. After passing EPA 608, a maintenance tech can legally perform refrigerant work — unlocking HVAC diagnostic and repair work that previously had to be outsourced, and adding $3–$5/hour to their pay rate.</div>
+      <div class="explanation wrong" id="q1-wrong">Not correct. The EPA Section 608 exam is the specific requirement for refrigerant handling — it is a federal requirement under Section 608 of the Clean Air Act, independent of CAMT, state licensing, or OSHA. It costs approximately $20, takes a few hours, and does not expire. CAMT covers HVAC maintenance broadly but does not authorize refrigerant handling without EPA 608. State HVAC licenses cover full HVAC system installation and may be required for some work, but EPA 608 is the specific refrigerant certification required.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 2 of 5</div>
+      <div class="q-text">A maintenance tech is considering leaving their property management job to go independent as a maintenance contractor. They have two years of experience and no current clients. What is the most important thing to do before leaving?</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div> Register a business name and build a website immediately — marketing must come first.</div>
+      <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div> Continue building skills, certifications, and professional relationships for at least another 1–3 years before going independent — the skills, reputation, and relationships built during employment are the foundation of any viable independent business.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div> Purchase all the tools needed for independent work before leaving — equipment is the primary barrier to going independent.</div>
+      <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div> Give two weeks notice immediately — the sooner you leave, the sooner you can start building your independent business.</div>
+      <div class="explanation correct" id="q2-correct">Correct! Two years of experience is not typically enough foundation for a viable independent maintenance business. The most successful independent contractors spent 5–7+ years building their skills, earning certifications like CAMT and EPA 608, and developing the professional relationships that become their first clients. Going independent too early — before the skills are deep, the certifications are earned, and the relationships are in place — is the most common reason independent maintenance businesses fail within the first two years. Use your employment years to build all three foundations, and leave when you have the skill set, the credentials, and ideally some prospective clients already lined up.</div>
+      <div class="explanation wrong" id="q2-wrong">Not correct. Two years of experience is rarely enough to support a viable independent maintenance business. The successful independent contractors in this field almost universally spent several years employed first — building the skills, earning certifications, and developing the professional relationships that become their first client base. The answer is to keep building the foundation: get CAMT, get EPA 608, develop the professional network, and go independent when you have the skill set, credentials, and relationships to support it. Leaving too early is the most common reason independent maintenance businesses fail.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 3 of 5</div>
+      <div class="q-text">An independent maintenance contractor wants to start working with property management companies. Before taking their first contract job, what insurance must they have?</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div> Workers' compensation only — this covers any injuries that occur during the work.</div>
+      <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div> General liability insurance — covers property damage and bodily injury during work. Most property management companies require a certificate of insurance before awarding any contract. Cost: $500–$1,500/year for $1 million in coverage.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div> No insurance is required until revenue exceeds $50,000/year — small contractors are exempt.</div>
+      <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div> Professional liability (errors and omissions) insurance — this covers mistakes made during maintenance work.</div>
+      <div class="explanation correct" id="q3-correct">Correct! General liability insurance is the essential first coverage for any independent maintenance contractor. It covers property damage and bodily injury that occurs during your work — a broken fixture, a flooded apartment, someone tripping over your tools. Most property management companies require a certificate of general liability insurance before awarding any contract work, so you will not get the work without it. Cost: $500–$1,500/year for $1 million in coverage, which is a standard minimum requirement. Workers' comp may be required if you hire employees. Professional liability covers advice-based errors — relevant for some professions but not the primary coverage for maintenance contractors.</div>
+      <div class="explanation wrong" id="q3-wrong">Not correct. General liability insurance is the essential first coverage for any independent maintenance contractor. It covers property damage and bodily injury that occurs during your work. Most property management companies require a certificate of insurance before awarding any contract — you will not get the work without it. There is no revenue-based exemption; coverage is needed from your first paid job. Workers' comp is required if you have employees. Professional liability is for advice-based errors, not typically the primary coverage for maintenance contractors.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 4 of 5</div>
+      <div class="q-text">A maintenance tech wants to net $30/hour after taxes and business expenses as an independent contractor. Using the 1.5–2x pricing framework, what should their minimum billable rate be?</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div> $30/hour — the net rate and the billable rate are the same for independent contractors.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div> $38/hour — adding the self-employment tax rate (15.3%) to the target net rate gives the correct billable rate.</div>
+      <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div> $45–$60/hour — using the 1.5–2x framework: $30 × 1.5 = $45 minimum, $30 × 2 = $60 target, to account for self-employment tax, insurance, tools, vehicle costs, and unpaid administrative time.</div>
+      <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div> $25/hour — independent contractors should price lower than employees to attract clients.</div>
+      <div class="explanation correct" id="q4-correct">Correct! The 1.5–2x framework accounts for all the costs that an employer covers for an employee but that an independent contractor must cover themselves: self-employment tax (15.3% — both the employee and employer portions of Social Security and Medicare), general liability insurance, tools and equipment, vehicle costs (gas, maintenance, insurance), and unpaid administrative time (invoicing, bookkeeping, client communication). An independent contractor billing $30/hour is not netting $30/hour — they are netting significantly less. Billing $45–$60/hour to target a $30/hour net is the correct framework for sustainable independent pricing.</div>
+      <div class="explanation wrong" id="q4-wrong">Not correct. As an independent contractor, your billable rate must be significantly higher than your target net rate because you cover costs that an employer would otherwise pay: self-employment tax (15.3%), general liability insurance, tools, vehicle costs, and unpaid administrative time. Simply adding the tax rate is not sufficient — the correct framework is 1.5–2x the target net rate. To net $30/hour: $30 × 1.5 = $45 minimum billable, $30 × 2 = $60 target billable. Never price lower than employees — that race to the bottom is unsustainable and signals that you have not priced your services correctly.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-num">Question 5 of 5</div>
+      <div class="q-text">Which of the following best describes why the demand for skilled maintenance technicians is expected to grow over the next decade?</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div> New technology is creating entirely new categories of maintenance work that did not exist before.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div> Government programs are increasing funding for apartment maintenance positions nationally.</div>
+      <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div> Fewer young people are entering the skilled trades than in previous generations, while demand for maintenance services continues — creating a supply shortfall that benefits people entering the field now.</div>
+      <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div> Apartment construction is slowing, which means existing maintenance techs will command higher wages per unit.</div>
+      <div class="explanation correct" id="q5-correct">Correct! The supply-and-demand dynamic in the skilled trades is straightforward: the average age of experienced maintenance techs, plumbers, electricians, and HVAC technicians is rising as fewer young people choose trades careers. Meanwhile, the demand for maintenance services — driven by the existing housing stock that needs constant upkeep — continues. This creates a growing supply shortfall that directly benefits anyone entering these fields now. Property managers across the country consistently report the same thing: there are not enough qualified, reliable maintenance people. The opportunity is real, it is growing, and it rewards people who take the skills seriously.</div>
+      <div class="explanation wrong" id="q5-wrong">Not correct. The primary driver of growing demand for maintenance techs is the supply-side shortage — fewer young people entering the trades while experienced tradespeople age out, combined with steady demand for maintenance services from the existing housing stock. This supply shortfall benefits people entering the field now with fewer competitors for the best positions and highest-paying work. New technology, government programs, and construction rates are secondary factors that do not explain the structural supply/demand shift happening in the trades right now.</div>
+    </div>
+
+    <button class="check-btn" onclick="checkAllAnswers()">Check My Answers</button>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="module-glossary">
+    <h3>📖 Module 8 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Certification and independent business terms from this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch8" placeholder="Search terms..." oninput="mgFilter(this,8)">
+    <div class="mg-terms" id="mgTerms8">
+
+      <div class="mg-term" data-mg="cpo certified pool spa operator nspf pool chemicals safety water">
+        <div class="mg-term-header"><span class="mg-name">CPO</span><span class="mg-abbr">Certified Pool/Spa Operator</span><span class="mg-law">NSPF Certification</span></div>
+        <div class="mg-def">Professional certification covering pool and spa water chemistry, equipment operation, maintenance procedures, and health and safety regulations. Required at most apartment communities with pools. Two-day course plus exam. Cost: $250–$400. Valid for 5 years, renewable. Find courses at nspf.org or pooloperator.com. Pay impact: +$1–$3/hour or explicit per-property management premium.</div>
+      </div>
+
+      <div class="mg-term" data-mg="epa section 608 refrigerant federal law certification handling hvac 20 dollars lifetime">
+        <div class="mg-term-header"><span class="mg-name">EPA Section 608</span><span class="mg-law">Federal Refrigerant Certification</span></div>
+        <div class="mg-def">Federal certification required by Section 608 of the Clean Air Act for anyone who handles regulated refrigerants — adding, recovering, or servicing equipment in ways that could release refrigerant. Applies in all 50 states regardless of state licensing. Exam cost: approximately $20. Does not expire — lifetime certification. Available at most HVAC supply houses. Pay impact: +$3–$5/hour. The highest return-on-investment certification available to any maintenance tech.</div>
+        <div class="mg-tip">💡 Type II certification (high-pressure systems) covers most residential and apartment HVAC equipment. Universal certification covers all types.</div>
+      </div>
+
+      <div class="mg-term" data-mg="general liability insurance contractor property damage bodily injury coverage certificate">
+        <div class="mg-term-header"><span class="mg-name">General Liability Insurance</span><span class="mg-law">Independent Contractor Essential</span></div>
+        <div class="mg-def">Insurance coverage that protects an independent contractor against claims of property damage and bodily injury that occur during their work. Standard minimum for maintenance contractors is $1 million per occurrence. Most property management companies require a certificate of insurance before awarding any contract work — you cannot get the job without it. Cost: $500–$1,500/year. Must be obtained before the first paid independent job.</div>
+      </div>
+
+      <div class="mg-term" data-mg="llc limited liability company business structure formation sole proprietor protection">
+        <div class="mg-term-header"><span class="mg-name">LLC</span><span class="mg-abbr">Limited Liability Company</span><span class="mg-law">Business Structure</span></div>
+        <div class="mg-def">A business structure that separates personal assets from business liability. If a client sues an LLC for a repair that went wrong, the owner's personal savings, home, and vehicle are protected. Operating as a sole proprietor without an LLC leaves personal assets exposed to business liability. Formation: $50–$500 depending on state, filed online through the state's Secretary of State website. An EIN (free at irs.gov) is needed for a business bank account and tax filing.</div>
+      </div>
+
+      <div class="mg-term" data-mg="osha 10 30 safety certification department of labor workplace construction">
+        <div class="mg-term-header"><span class="mg-name">OSHA 10 / OSHA 30</span><span class="mg-law">Safety Certification · DOL</span></div>
+        <div class="mg-def">Safety awareness certifications from the Occupational Safety and Health Administration. OSHA 10 is a 10-hour course covering basic workplace safety — widely recognized and increasingly required by large property management operators. OSHA 30 is a 30-hour course preferred for supervisory roles. Available online and in-person. Cost: $30–$100. No formal expiration. Pay impact: +$0.50–$2/hour.</div>
+      </div>
+
+      <div class="mg-term" data-mg="self employment tax 15.3 percent independent contractor social security medicare quarterly">
+        <div class="mg-term-header"><span class="mg-name">Self-Employment Tax</span><span class="mg-law">Independent Contractor Tax</span></div>
+        <div class="mg-def">A 15.3% federal tax that independent contractors pay on net self-employment income, covering both the employee and employer portions of Social Security and Medicare. Employees only pay the employee portion (7.65%) because their employer pays the other half. Independent contractors pay both halves. This is the primary reason independent contractors must charge significantly more than equivalent employee rates — typically 1.5–2x the target net hourly rate. Pay estimated quarterly taxes to avoid IRS penalties.</div>
+      </div>
+
+      <div class="mg-term" data-mg="1099 independent contractor self employed freelance property management contract work">
+        <div class="mg-term-header"><span class="mg-name">1099 Contractor</span><span class="mg-law">Employment Classification</span></div>
+        <div class="mg-def">An independent contractor who receives IRS Form 1099 (not W-2) for payment — meaning no taxes are withheld and the contractor is responsible for their own self-employment tax, estimated tax payments, and business expenses. The standard classification for independent maintenance contractors working with property management companies. 1099 work offers flexibility and higher gross rates but requires the contractor to manage their own taxes, insurance, and benefits.</div>
+      </div>
+
+    </div>
+    <div class="mg-none" id="mgNone8">No terms found.</div>
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;">
+      <a href="mr-glossary.html" style="font-size:13px;color:var(--rust-mid);text-decoration:none;font-weight:600;">View Full Course Glossary (All 8 Modules) &rarr;</a>
+    </div>
+  </div>
+
+  <!-- BACK TO TRACK -->
+  <div style="background:var(--cream-dark);border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;text-align:center;">
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.5rem;">🎓 Course Complete</h3>
+    <p style="font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:1.25rem;">You have completed all 8 modules of the Maintenance &amp; Repair Track. Return to the track landing page to review modules, access the full glossary, or explore other Darco career tracks.</p>
+    <a href="maintenance-repair.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;">← Back to Maintenance &amp; Repair Track</a>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="mr-module-7.html" class="btn-outline">← Module 7</a>
+  <a href="maintenance-repair.html" class="btn-gold">Track Complete 🎓</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Darco Real Estate Academy</div>
+  <p>Maintenance &amp; Repair Track · <span class="footer-gold">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;">Educational content only. Licensing, certification, and tax requirements vary by state and circumstance. Verify all requirements with appropriate authorities before beginning independent work.</p>
+</footer>
+
+<script>
+var quizAnswers={};
+var quizDone=false;
+function selectOption(el,qId,isCorrect){
+  if(quizDone)return;
+  var opts=el.parentElement.querySelectorAll('.option');
+  opts.forEach(function(o){o.classList.remove('selected-correct','selected-wrong');});
+  el.classList.add(isCorrect?'selected-correct':'selected-wrong');
+  quizAnswers[qId]={element:el,isCorrect:isCorrect};
+}
+function checkAllAnswers(){
+  var qIds=['q1','q2','q3','q4','q5'];
+  var allAnswered=true;
+  for(var i=0;i<qIds.length;i++){if(!quizAnswers[qIds[i]]){allAnswered=false;break;}}
+  if(!allAnswered){alert('Please answer all 5 questions before checking.');return;}
+  quizDone=true;
+  for(var i=0;i<qIds.length;i++){
+    var qId=qIds[i];
+    var ans=quizAnswers[qId];
+    var correctEl=document.getElementById(qId+'-correct');
+    var wrongEl=document.getElementById(qId+'-wrong');
+    if(ans.isCorrect){correctEl.style.display='block';}
+    else{wrongEl.style.display='block';}
+  }
+}
+function mgFilter(el,n){
+  var q=el.value.toLowerCase();
+  var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');
+  var count=0;
+  terms.forEach(function(t){
+    var match=!q||t.getAttribute('data-mg').indexOf(q)>-1;
+    t.classList.toggle('mg-hidden',!match);
+    if(match)count++;
+  });
+  document.getElementById('mgNone'+n).style.display=count===0?'block':'none';
+}
+</script>
+</body>
+</html>
