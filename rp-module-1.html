@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1: The Real Estate Photography Career — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#1C1A18;--dark-mid:#2E2B28;--dark-light:#4A4540;--dark-pale:#F5F2EE;
+  --warm:#C8A96A;--warm-mid:#A8893A;--warm-light:#DFC88A;--warm-pale:#FBF7EE;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(28,26,24,0.1);
+  --shadow-card:0 2px 16px rgba(28,26,24,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+
+/* NAV */
+nav{background:var(--dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.3);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--warm);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--dark);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--warm-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--warm-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--dark-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--dark-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--dark);font-weight:600;}
+
+/* PROGRESS BAR */
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--dark-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--warm-mid),var(--warm));border-radius:3px;width:14.3%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--warm-mid);color:var(--white);}
+.prog-dot.active{background:var(--dark);color:var(--warm-light);}
+.prog-dot.locked{background:rgba(28,26,24,0.1);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
+
+/* HERO */
+.module-hero{background:linear-gradient(135deg,#0E0D0C 0%,var(--dark) 55%,var(--dark-mid) 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(200,169,106,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--warm-light),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,106,0.15);border:1px solid rgba(200,169,106,0.3);color:var(--warm-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--warm-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:600px;line-height:1.85;font-weight:300;}
+
+/* MENTOR BUBBLE */
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--warm-mid);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--warm-mid) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--warm-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+
+/* PAGE BODY */
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+
+/* SECTION HEADERS */
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--warm);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--dark-mid);font-style:italic;}
+.warm-rule{width:44px;height:3px;background:var(--warm);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+
+/* BODY TEXT */
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+
+/* CALLOUT BOX */
+.callout{background:var(--warm-pale);border-left:4px solid var(--warm-mid);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--warm-mid);font-style:italic;line-height:1.7;}
+
+/* INFO CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin:1.5rem 0;}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:box-shadow 0.2s;}
+.info-card:hover{box-shadow:var(--shadow-card);}
+.info-card .ic-icon{font-size:1.6rem;margin-bottom:0.5rem;}
+.info-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;}
+.info-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.info-card .ic-tag{font-size:11px;font-weight:700;color:var(--warm-mid);margin-top:0.4rem;}
+
+/* SERVICES TABLE */
+.services-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.services-table th{background:var(--dark);color:var(--warm-light);padding:0.8rem 1rem;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.services-table th:first-child{border-radius:10px 0 0 0;}
+.services-table th:last-child{border-radius:0 10px 0 0;}
+.services-table td{padding:0.85rem 1rem;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;line-height:1.6;}
+.services-table tr:nth-child(even) td{background:var(--cream);}
+.services-table tr:last-child td{border-bottom:none;}
+.services-table .svc-name{font-weight:600;color:var(--text-dark);}
+.services-table .svc-rate{font-weight:700;color:var(--warm-mid);white-space:nowrap;}
+
+/* CAREER LADDER */
+.career-ladder{margin:1.5rem 0;}
+.cl-row{display:grid;grid-template-columns:1.6fr 1fr 2fr;align-items:center;padding:0.9rem 1.25rem;border:1px solid var(--border);border-top:none;background:var(--white);}
+.cl-row:first-child{border-top:1px solid var(--border);border-radius:12px 12px 0 0;}
+.cl-row:last-child{border-radius:0 0 12px 12px;}
+.cl-row:nth-child(even){background:var(--warm-pale);}
+.cl-header{background:var(--dark)!important;border-radius:12px 12px 0 0!important;border-color:var(--dark)!important;}
+.cl-header .cl-role,.cl-header .cl-pay,.cl-header .cl-note{font-size:11px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.5px;}
+.cl-role{font-size:13px;font-weight:700;color:var(--text-dark);}
+.cl-pay{font-size:13px;font-weight:700;color:var(--warm-mid);}
+.cl-note{font-size:12px;color:var(--text-mid);line-height:1.5;}
+
+/* VIDEO */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.5rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--dark-pale);color:var(--dark-mid);}
+.video-badge.supplemental{background:var(--warm-pale);color:var(--warm-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* QUIZ */
+.quiz-section{background:var(--dark);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-section p{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warm-light);margin-bottom:0.4rem;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(200,169,106,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--warm-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--warm);color:var(--dark);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--warm-light);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(200,169,106,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.quiz-result .result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--warm-light);}
+.quiz-result .result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.quiz-result .result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.quiz-result .retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.quiz-result .retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--warm-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wrong-item .wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wrong-item .wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wrong-item .wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wrong-item .wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+
+/* MODULE NAV */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(28,26,24,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--dark);color:var(--warm-light);}
+.btn-nav.primary:hover{background:var(--dark-mid);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--dark-mid);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+
+/* SUPPLEMENTAL */
+.supplemental-section{background:var(--warm-pale);border:1px solid rgba(168,137,58,0.15);border-radius:16px;padding:1.75rem;margin:2rem 0;}
+.supplemental-section h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:0.35rem;}
+.supplemental-section p{font-size:13px;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6;}
+
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb{padding:0.75rem 1.25rem;}
+  .progress-bar{padding:0.9rem 1.25rem;}
+  .module-nav{padding:1rem 1.25rem;}
+  .cl-row{grid-template-columns:1fr 1fr;}
+  .cl-note{display:none;}
+  .services-table{font-size:12px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-photography.html">Track Overview</a></li>
+    <li><a href="real-estate-photography.html" class="nav-back">← Photography Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-photography.html">Real Estate Photography</a><span class="sep">/</span>
+  <span class="current">Module 1: The Career</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 1 of 7</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <span class="prog-dot active">1</span>
+    <span class="prog-dot locked">2</span>
+    <span class="prog-dot locked">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Photography Track · Module 1 of 7</div>
+    <h1>The Real Estate Photography <em>Career</em></h1>
+    <p>What this business actually is, who hires photographers and why, what the different services are, what the money looks like at every stage — and how to know whether this is the right path for you.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"Welcome to the track. Before we talk about cameras or editing or clients, we need to make sure you actually understand what you're getting into. Real estate photography is a real business — not a hobby that pays. This module is about seeing it clearly so you can decide with your eyes open."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+  <h2 class="lesson-title">Why Real Estate Photography <em>Exists as a Business</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">Twenty years ago, when someone wanted to buy a house, their first call was to a real estate agent. The agent held all the information — listings were kept in printed books at brokerages, not on the internet. Buyers couldn't browse. They described what they wanted and trusted the agent to bring them options.</p>
+
+  <p class="body-text">That world is gone. Today, the overwhelming majority of buyers go to Zillow or Realtor.com first. They scroll through dozens of listings in an afternoon. They form an impression of a home — and of the agent marketing it — in under five seconds. And that impression is built almost entirely on photographs.</p>
+
+  <p class="body-text">This shift is what created the real estate photography industry. Agents now compete for buyers' attention in an online marketplace where visual quality is the first and often only filter. An agent whose listings look dark, cluttered, or amateurish loses showings to the listing one row below with brighter, better-composed images. The photography isn't decoration — it's the entire first impression of the listing and of the agent.</p>
+
+  <div class="callout">
+    <p>"There are more homes that need to be shot than there are qualified real estate photographers to shoot them — at least in most markets. When you win a real estate agent as a client, a lot of times you're not even competing with another photography company. You're just getting a new client in the market."</p>
+  </div>
+
+  <p class="body-text">What makes this particularly strong as a business is the repeat nature of the work. A productive real estate agent lists 20, 30, 50 properties per year — and needs a photographer for every single one. Once you build a relationship with even a handful of active agents, you have a recurring revenue base that compounds over time through referrals, repeat bookings, and upsells.</p>
+
+  <div class="video-card">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/iKpG7X_IPss" title="Watch This Before Starting a Real Estate Photography Business 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-info">
+      <span class="video-badge">Market Context</span>
+      <h4>Watch This Before Starting a Real Estate Photography Business (2024)</h4>
+      <p>Why the shift to online listings created the photography market, what the market looks like right now, what to do right in 2024 to compete, and the honest take on timing — including the quote "there's never a bad time to start a good business." From REPP Launch, the most credible education channel in real estate photography.</p>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+  <h2 class="lesson-title">What Real Estate Photographers <em>Actually Sell</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">The phrase "real estate photography" is shorthand for a full menu of visual media services. When you start out, photography is all you need to offer. As you grow, adding services multiplies your average invoice without adding proportionally more time. Here is what the full service menu looks like:</p>
+
+  <table class="services-table">
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>What it is</th>
+        <th>Pricing range</th>
+        <th>When to add it</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="svc-name">📷 Standard Photography</td>
+        <td>Interior and exterior stills — the core product every agent needs for every listing.</td>
+        <td class="svc-rate">$150–$300</td>
+        <td>Start here. This is your foundation.</td>
+      </tr>
+      <tr>
+        <td class="svc-name">🎬 Video Walkthrough</td>
+        <td>Short-form listing videos for MLS, social media, and agent marketing. Increasingly expected by sellers on mid-range and luxury homes.</td>
+        <td class="svc-rate">$250–$500 add-on</td>
+        <td>Add once photography is generating consistent income.</td>
+      </tr>
+      <tr>
+        <td class="svc-name">🚁 Aerial / Drone</td>
+        <td>FAA Part 107 licensed drone photography and video for exteriors, land, and luxury properties. High-margin add-on.</td>
+        <td class="svc-rate">$150–$300 add-on</td>
+        <td>After getting Part 107 licensed. 30 extra minutes, $200+ more per invoice.</td>
+      </tr>
+      <tr>
+        <td class="svc-name">🏠 Virtual Staging</td>
+        <td>AI-powered digital furnishing of empty rooms. Popular with investors and developers marketing vacant units.</td>
+        <td class="svc-rate">$30–$75 per room</td>
+        <td>Easy to add once photography workflow is established.</td>
+      </tr>
+      <tr>
+        <td class="svc-name">🔄 3D / Matterport Tour</td>
+        <td>Interactive 3D walkthroughs allowing buyers to virtually tour a property. Valuable for luxury and out-of-state markets.</td>
+        <td class="svc-rate">$200–$400 add-on</td>
+        <td>After investing in a 360 camera or Matterport device.</td>
+      </tr>
+      <tr>
+        <td class="svc-name">✨ Twilight Photography</td>
+        <td>Photos at dusk with interior lights on and a deep blue sky. Dramatic, premium feel. Popular in luxury and waterfront markets.</td>
+        <td class="svc-rate">$100–$200 add-on</td>
+        <td>Once you're comfortable with exterior exposure and timing.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="body-text">You do not need to offer all of these to build a profitable business. Plenty of photographers run sustainable full-time operations on standard photography alone. But the path from $3,000/month to $8,000/month almost always runs through adding at least one high-value add-on — drone and video being the two with the best time-to-revenue ratio.</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-icon">🎯</div>
+      <h4>Who hires you</h4>
+      <p>Primarily real estate agents — both listing agents and buyer's agents who need marketing materials. Secondarily: real estate investors, property managers, developers, and Airbnb hosts.</p>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🔁</div>
+      <h4>Why it compounds</h4>
+      <p>One active agent = 20–50 shoots per year. Once they trust you, they book automatically. Three to five loyal agents is enough to build a full-time income — and they refer their colleagues.</p>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">📍</div>
+      <h4>Market dynamics</h4>
+      <p>The photography market doesn't move with home prices — it moves with listing volume. In any market, hot or cool, homes are listed and agents need photos. Demand is relatively recession-resistant.</p>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+  <h2 class="lesson-title">The Money — What to <em>Realistically Expect</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">The income in real estate photography is project-based, variable, and seasonal — with strong markets in spring and fall, slower winters in most regions. What separates photographers who earn well from those who struggle is not photography skill — it's client volume and average order value.</p>
+
+  <p class="body-text">Here is what the financial journey actually looks like broken down by phase. These numbers reflect the US market generally; stronger markets like Miami, LA, and New York run higher.</p>
+
+  <div class="career-ladder">
+    <div class="cl-row cl-header">
+      <div class="cl-role">Phase</div>
+      <div class="cl-pay">Monthly Revenue</div>
+      <div class="cl-note">What defines this phase</div>
+    </div>
+    <div class="cl-row">
+      <div class="cl-role">Getting Started</div>
+      <div class="cl-pay">$1K–$3K/mo</div>
+      <div class="cl-note">Building the first handful of agent clients. Part-time volume. Learning your workflow and turnaround rhythm.</div>
+    </div>
+    <div class="cl-row">
+      <div class="cl-role">Solo Operator</div>
+      <div class="cl-pay">$4K–$8K/mo</div>
+      <div class="cl-note">3–6 reliable agent clients. Consistent bookings, 2–4 shoots per day possible. One or two add-ons in the mix.</div>
+    </div>
+    <div class="cl-row">
+      <div class="cl-role">Full-Service Business</div>
+      <div class="cl-pay">$8K–$15K/mo</div>
+      <div class="cl-note">Photography + video + drone + virtual staging. Strong client base with referrals coming in. Outsourcing editing.</div>
+    </div>
+    <div class="cl-row">
+      <div class="cl-role">Small Team</div>
+      <div class="cl-pay">$15K–$40K+/mo</div>
+      <div class="cl-note">Hired first photographer. Running operations and client management. Stepping into a business owner role.</div>
+    </div>
+  </div>
+
+  <p class="body-text">On profit margins: the solo operator phase is the most efficient — expect 75–80% profit margins when it's just you. Equipment costs are front-loaded, ongoing expenses are low (editing software, gas, insurance), and there's no payroll. Once you hire your first employee, margins compress to 50–60%. That's normal and expected.</p>
+
+  <div class="callout">
+    <p>"I was able to build an awesome business and bought my first supercar before I ever launched a coaching business or taught anyone how to do this. Real estate photography has a lot of potential — if you do what needs to be done."</p>
+  </div>
+
+  <p class="body-text">The math at the solo level is straightforward. At $250 average per shoot (blending basic photo shoots with drone and video upsells), five shoots per week generates $5,000/month in revenue. Ten shoots per week — entirely achievable once you have a rhythm — gets you to $10,000/month. One shoot takes roughly 90 minutes on location. The rest of the day is editing, delivery, and prospecting.</p>
+
+  <div class="video-card">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/EYomG16996I" title="How Much Money Real Estate Photographers Make" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-info">
+      <span class="video-badge">Income Reality</span>
+      <h4>How Much Money Real Estate Photographers Make — All Phases Explained</h4>
+      <p>A genuine breakdown of the solo operator phase, small team phase, and scaled business phase — with real numbers on revenue, profit margins, and what to expect at each stage. This is the most honest income overview available for this career. Watch this before forming any expectations.</p>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 4 -->
+  <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+  <h2 class="lesson-title">What a Real Day <em>Actually Looks Like</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">Real estate photography is one of the most schedule-friendly independent businesses available. The work happens on weekday mornings and afternoons — shoot seasons typically run 8am to 4pm. Evenings and weekends are largely yours. There is no storefront to manage, no employees to supervise at the start, and no office required.</p>
+
+  <p class="body-text">Here is what a typical busy day looks like in practice:</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-icon">🏢</div>
+      <h4>8:00am — Vacant Condo</h4>
+      <p>Empty unit. Full control of the space. Set up flash, shoot HDR brackets in every room, do the exterior. Finished in under 90 minutes. Vacant shoots are the fastest and cleanest.</p>
+      <div class="ic-tag">~90 min · $200 invoice</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🏠</div>
+      <h4>10:30am — Occupied Home</h4>
+      <p>Family still living in the house. Work through each room methodically, communicate calmly with the homeowner. Occupied shoots take longer — budget 2 hours. Professionalism here drives referrals.</p>
+      <div class="ic-tag">~2 hrs · $250 invoice</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🚁</div>
+      <h4>1:00pm — Drone Add-On</h4>
+      <p>Aerial shoot for a waterfront listing. Check airspace and weather. Fly for 30 minutes, capture exterior and aerial footage. This one add-on adds $250 to the invoice for 30 extra minutes of work.</p>
+      <div class="ic-tag">~30 min · +$250 to invoice</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">💻</div>
+      <h4>3:00pm — Edit and Deliver</h4>
+      <p>Edit yesterday's shoots. Lightroom culling, color correction, HDR blending, sky replacement. Upload finished galleries to Pixieset with download links. Agents who get fast turnaround recommend you constantly.</p>
+      <div class="ic-tag">~2 hrs · galleries delivered</div>
+    </div>
+  </div>
+
+  <p class="body-text">The less obvious truth about this career is that the shoot itself is usually the easiest part. The challenges are: weather forcing reschedules, homeowners who haven't cleaned or prepared the property, agents adding last-minute services, and the persistent need to keep prospecting for new clients even when you're busy. These are manageable problems — but they're real, and you should know about them before starting.</p>
+
+  <div class="video-card">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/Uc6BOsGSQH4" title="Day in the Life of a Real Estate Photographer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-info">
+      <span class="video-badge">Day in the Life</span>
+      <h4>A Real Day in the Life — Five Shoots, Real Problems, Real Results</h4>
+      <p>Mike Burke takes you through a full day: five shoots including a vacant house, a messy occupied home, a drone add-on surprise, a makeup exterior shoot, and a high-end property. Unfiltered — weather problems, running behind, a homeowner who didn't prepare. This is what the job actually looks like on a busy day.</p>
+    </div>
+  </div>
+
+  <!-- SUPPLEMENTAL -->
+  <div class="supplemental-section">
+    <h3>📚 Supplemental Resources</h3>
+    <p>Going deeper on Module 1 topics — additional videos that complement the lessons above.</p>
+    <div class="video-card" style="margin-top:0.75rem;">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/CNkDmRKxcIM" title="How to Go From Beginner to Pro Real Estate Photographer 2025" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge supplemental">Supplemental · Business Launch</span>
+        <h4>From Beginner to Pro — The Step-by-Step 2025 Launch System</h4>
+        <p>A full business launch framework from REPP/Eli: minimum gear, first shoot process, free shoot client acquisition strategy, outsourcing editing from day one, and the math to $10K/month. Best watched after completing all 7 modules — it will make more sense with the full technical foundation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section" id="quizSection">
+    <h3>Module 1 Knowledge Check</h3>
+    <p>10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">What fundamental shift in buyer behavior created the real estate photography industry?</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">A</div>Buyers started using mobile phones to search for homes instead of desktop computers.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">B</div>Real estate agents began requiring professional photos as part of their MLS listing agreements.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div>Buyers began searching for homes online first — on sites like Zillow and Realtor.com — instead of starting with a real estate agent, making the listing photos the first and most critical impression.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">D</div>Home prices increased to the point where professional marketing became standard.</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. The shift from agent-gatekeeper to online search changed everything. Buyers now form their entire first impression of a property — and the agent marketing it — from photographs. This is the fundamental reason the industry exists.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ Not quite. The key shift was buyers going to Zillow and Realtor.com first — before contacting any agent — which made photography the first and most important filter in the home-search process.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">Which real estate photography service typically provides the best time-to-revenue ratio as a first add-on after standard photography?</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">A</div>Virtual staging — digitally furnishing empty rooms for investors.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">B</div>3D Matterport tours — interactive walkthroughs for luxury buyers.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div>Drone / aerial photography — 30 extra minutes on location, $150–$300 additional per invoice, and it requires only one license (FAA Part 107) to unlock commercially.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">D</div>Twilight photography — photos at dusk with interior lights on.</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. Drone is consistently cited as the highest-return add-on at the early business stage. The time cost is minimal, the revenue increase per invoice is significant, and Part 107 is a one-time test.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ The best early add-on is drone. It adds roughly 30 minutes on location and $150–$300 to the invoice — the highest revenue-per-time-invested of any add-on at the beginning stages.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">What profit margin should a solo real estate photographer realistically expect at the $10,000/month revenue level?</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">A</div>30–40% — the industry norm for any photography business.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">B</div>50–60% — decent for a creative service business.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div>75–80% — the solo phase has low overhead (no payroll, minimal equipment costs after initial investment), making it the most profitable phase of the business.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">D</div>Profit margins don't stabilize until you hit $20,000/month.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. The solo operator phase is the most financially efficient. With no employees, low ongoing costs, and outsourced editing at $15–$30 per shoot, 75–80% profit margins are realistic and expected.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ The solo phase has unusually high margins — 75–80% — because there's no payroll, equipment costs are front-loaded, and ongoing expenses are minimal. This is one of the most attractive things about the business.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">Why is real estate photography described as having relatively recession-resistant demand compared to other photography niches?</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">A</div>Homes are listed in every market condition — in a buyers market, there are more listings but agents compete harder on marketing quality; in a sellers market, volume is lower but demand for photography remains. Listing volume shifts but never disappears.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">B</div>Real estate agents are legally required to use professional photography in most states, creating guaranteed demand regardless of market conditions.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">C</div>Real estate photography contracts are long-term retainer arrangements that lock in revenue regardless of market shifts.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">D</div>Demand is tied to interest rates, not home prices — and interest rates remain relatively stable compared to home values.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. In any market condition, homes get listed. The market dynamics shift — in a buyers market, agents compete harder and invest more in photography; in a sellers market, volume is higher but per-listing spend may be lower. Either way, the photographer stays busy.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ The key insight is that homes get listed in every market condition. The dynamics shift (more volume in sellers markets, higher spend per listing in buyers markets) but demand for photography is never zero.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">At what monthly revenue level does it generally make sense to hire your first employee in a real estate photography business?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">A</div>$3,000–$5,000/month — hire early to grow faster.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">B</div>$7,000–$9,000/month — when you feel consistently busy.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div>$15,000–$18,000/month — when you genuinely cannot take on more work without hiring, having first maximized your own efficiency as a solo operator.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">D</div>Hire as soon as cash flow permits — the sooner you scale, the better.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. Hiring before maximizing solo efficiency is a common and costly mistake. Reaching $15K–$18K/month as a solo operator means you've found all the efficiencies that will translate to your first hire — and you have the financial foundation to support payroll.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ The recommendation is to reach $15,000–$18,000/month before hiring. Hiring before that point often means taking on payroll before you've maximized your own efficiency — which reduces profit without proportionally increasing output.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">A real estate agent who lists 30 properties per year books you for every shoot. They refer two colleagues who each use you for 20 properties per year. How many annual shoots does this one original client relationship generate?</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">A</div>30 shoots — just the original agent's listings.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">B</div>50 shoots — the original agent plus one colleague.</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">C</div>70 shoots — the original 30 plus 20 from each of the two referrals, demonstrating why individual agent relationships compound dramatically over time.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">D</div>60 shoots — 30 from the original agent plus 30 total from referrals.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. 30 + 20 + 20 = 70 annual shoots from one original relationship. At $250 average per shoot, that's $17,500 per year from clients who came from one initial connection. This is why agent relationship quality drives business growth more than marketing spend.</div>
+        <div class="feedback incorrect" id="q6-wrong">✗ The math: 30 (original agent) + 20 + 20 (two referrals) = 70 annual shoots. At $250 per shoot, that's $17,500/year from one relationship tree. This compounding effect is the core of why real estate photography builds reliable income over time.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">Which of the following describes the primary reason real estate photography income is project-based rather than salaried?</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">A</div>Clients prefer not to commit to long-term contracts with photographers.</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">C</div>Each photography engagement is tied to a specific property listing — listings come in batches, vary by season, and are not predictable far in advance, making project-based billing the natural industry model.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">B</div>Tax and legal regulations require photographers to be classified as independent contractors.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">D</div>Photography equipment depreciates rapidly, requiring frequent re-investment that prevents stable salary structures.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. Photography is tied to individual listings — each one is a separate job. Agents don't know their listing volume months in advance, so the industry naturally runs on per-shoot pricing. The job of the photographer is to build enough agent relationships that this variability averages out to a reliable monthly income.</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ The project-based model exists because each shoot is tied to a specific property listing. Listings don't come on a predictable schedule — the photographer's job is to build enough client relationships that the variability averages out to reliable income over time.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">What is the approximate on-site time for a standard single-family home photography shoot once a photographer has a consistent workflow?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">A</div>3–4 hours — a thorough shoot takes time to do properly.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">B</div>60–90 minutes — a photographer with a refined workflow can complete a standard shoot in this window, enabling 3–5 shoots per day in a strong market.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">C</div>30 minutes — experienced photographers work very quickly.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">D</div>2–3 hours — most agents expect a thorough walkthrough and detail work.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. A standard shoot runs 60–90 minutes on location once you have a reliable system. This is what makes 3–5 shoots per day possible, which is the volume needed for full-time income. Vacant properties are faster; occupied homes with less-prepared owners can run longer.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ A standard shoot runs 60–90 minutes with a refined workflow. This is the on-location time — add drive time between shoots. The 90-minute window is what makes multiple shoots per day feasible and is a key economic factor in how photographers build income.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">Which of these is NOT listed as a common challenge in the real estate photography day-to-day?</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">A</div>Weather forcing last-minute reschedules, especially for exterior and drone shots.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">B</div>Homeowners who haven't cleaned or prepared the property before the shoot arrives.</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">C</div>High equipment maintenance costs that erode profit margins throughout the year.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">D</div>The persistent need to keep prospecting for new clients even when current bookings feel busy enough.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. Equipment maintenance is not a significant ongoing cost in real estate photography. The real day-to-day challenges are weather, unprepared properties, and consistent client prospecting — not equipment upkeep.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ Equipment maintenance costs are not a primary challenge in this business. The real operational challenges are weather forcing reschedules, unprepared properties extending shoot time, and the discipline required to keep prospecting for clients even when things feel busy.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">A photographer charges $250 per shoot average and does 8 shoots per week across 4 weeks. What is their monthly gross revenue, and what is their approximate take-home at a 75% profit margin?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">A</div>$6,000 gross / $4,500 take-home</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">B</div>$7,000 gross / $5,250 take-home</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">C</div>$8,000 gross / $6,000 take-home — 8 shoots × $250 = $2,000/week × 4 weeks = $8,000 gross. At 75% margin, take-home is $6,000/month.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">D</div>$8,000 gross / $4,800 take-home</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. 8 × $250 = $2,000/week. $2,000 × 4 = $8,000/month gross. At 75% profit margin: $8,000 × 0.75 = $6,000 take-home. This is a realistic mid-stage solo operator scenario and demonstrates why volume combined with add-on services is the income lever.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ The math: 8 shoots × $250 = $2,000/week × 4 weeks = $8,000 gross/month. At 75% profit: $8,000 × 0.75 = $6,000 take-home. This is a solid mid-range solo operator result — and it improves significantly when drone or video add-ons push the average shoot value above $250.</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end page-body -->
+
+<div class="module-nav">
+  <a href="real-estate-photography.html" class="btn-nav outline">← Track Overview</a>
+  <div class="nav-module-title">
+    <strong>Up Next: Module 2</strong>
+    Your Gear — Camera, Lens, Flash & Tripod
+  </div>
+  <a href="rp-module-2.html" class="btn-nav primary">Module 2 →</a>
+</div>
+
+<script>
+var answers = {};
+var quizData = {
+  q1:{correct:'C',question:'What fundamental shift in buyer behavior created the real estate photography industry?',options:{A:'Buyers started using mobile phones to search for homes instead of desktop computers.',B:'Real estate agents began requiring professional photos as part of their MLS listing agreements.',C:'Buyers began searching for homes online first — on sites like Zillow and Realtor.com — instead of starting with a real estate agent, making the listing photos the first and most critical impression.',D:'Home prices increased to the point where professional marketing became standard.'},explanation:'The shift from agent-gatekeeper to online search changed everything. Buyers now form their entire first impression of a property — and the agent marketing it — from photographs on Zillow and Realtor.com. This is the fundamental reason the industry exists.'},
+  q2:{correct:'C',question:'Which real estate photography service typically provides the best time-to-revenue ratio as a first add-on after standard photography?',options:{A:'Virtual staging — digitally furnishing empty rooms for investors.',B:'3D Matterport tours — interactive walkthroughs for luxury buyers.',C:'Drone / aerial photography — 30 extra minutes on location, $150–$300 additional per invoice, and it requires only one license (FAA Part 107) to unlock commercially.',D:'Twilight photography — photos at dusk with interior lights on.'},explanation:'Drone is consistently the highest-return add-on at the early business stage. It adds ~30 minutes on location and $150–$300 to the invoice with the lowest barrier to entry (one FAA Part 107 test).'},
+  q3:{correct:'C',question:'What profit margin should a solo real estate photographer realistically expect at the $10,000/month revenue level?',options:{A:'30–40% — the industry norm for any photography business.',B:'50–60% — decent for a creative service business.',C:'75–80% — the solo phase has low overhead (no payroll, minimal equipment costs after initial investment), making it the most profitable phase of the business.',D:'Profit margins do not stabilize until you hit $20,000/month.'},explanation:'The solo operator phase is the most financially efficient. No payroll, low ongoing costs, and outsourced editing at $15–$30 per shoot make 75–80% profit margins realistic and expected.'},
+  q4:{correct:'A',question:'Why is real estate photography described as having relatively recession-resistant demand compared to other photography niches?',options:{A:'Homes are listed in every market condition — in a buyers market there are more listings and agents compete harder on marketing quality; in a sellers market volume is lower but demand remains. Listing volume shifts but never disappears.',B:'Real estate agents are legally required to use professional photography in most states, creating guaranteed demand.',C:'Real estate photography contracts are long-term retainer arrangements that lock in revenue regardless of market shifts.',D:'Demand is tied to interest rates, not home prices — and interest rates remain relatively stable.'},explanation:'In any market condition, homes get listed. The dynamics shift — in buyers markets, agents invest more in photography to stand out; in sellers markets, volume is higher. Either way, the photographer stays busy.'},
+  q5:{correct:'C',question:'At what monthly revenue level does it generally make sense to hire your first employee in a real estate photography business?',options:{A:'$3,000–$5,000/month — hire early to grow faster.',B:'$7,000–$9,000/month — when you feel consistently busy.',C:'$15,000–$18,000/month — when you genuinely cannot take on more work without hiring, having first maximized your own efficiency as a solo operator.',D:'Hire as soon as cash flow permits — the sooner you scale, the better.'},explanation:'Hiring before maximizing solo efficiency is a common and costly mistake. Reaching $15K–$18K/month first means you have the financial foundation to support payroll and the efficiency insights that will make your first hire productive.'},
+  q6:{correct:'C',question:'An agent who lists 30 properties/year refers two colleagues who each use you for 20 shoots/year. How many annual shoots does this one original relationship generate?',options:{A:'30 shoots — just the original agent\'s listings.',B:'50 shoots — the original agent plus one colleague.',C:'70 shoots — the original 30 plus 20 from each of the two referrals.',D:'60 shoots — 30 from the original agent plus 30 total from referrals.'},explanation:'30 + 20 + 20 = 70 annual shoots from one original relationship. At $250 average, that\'s $17,500/year from clients who came from a single initial connection. This is why agent relationship quality drives business growth more than marketing spend.'},
+  q7:{correct:'C',question:'Which describes the primary reason real estate photography income is project-based rather than salaried?',options:{A:'Clients prefer not to commit to long-term contracts with photographers.',C:'Each engagement is tied to a specific property listing — listings come in batches, vary by season, and are not predictable far in advance, making project-based billing the natural model.',B:'Tax and legal regulations require photographers to be classified as independent contractors.',D:'Photography equipment depreciates rapidly, requiring frequent re-investment.'},explanation:'Photography is tied to individual listings — each one is a separate job. Agents don\'t know their listing volume months ahead, so per-shoot pricing is the natural model. The photographer\'s job is to build enough client relationships that variability averages out to reliable monthly income.'},
+  q8:{correct:'B',question:'What is the approximate on-site time for a standard single-family home photography shoot once a photographer has a consistent workflow?',options:{A:'3–4 hours — a thorough shoot takes time to do properly.',B:'60–90 minutes — a photographer with a refined workflow can complete a standard shoot in this window, enabling 3–5 shoots per day.',C:'30 minutes — experienced photographers work very quickly.',D:'2–3 hours — most agents expect a thorough walkthrough.'},explanation:'60–90 minutes on location is the standard for a well-practiced photographer. This is what makes 3–5 shoots per day possible and is the key economic factor behind how photographers build full-time income.'},
+  q9:{correct:'C',question:'Which of these is NOT listed as a common challenge in the real estate photography day-to-day?',options:{A:'Weather forcing last-minute reschedules for exterior and drone shots.',B:'Homeowners who haven\'t cleaned or prepared the property before the shoot.',C:'High equipment maintenance costs that erode profit margins throughout the year.',D:'The persistent need to keep prospecting for new clients even when current bookings feel busy.'},explanation:'Equipment maintenance is not a significant ongoing cost in real estate photography. The real challenges are weather, unprepared properties, and maintaining consistent client prospecting discipline.'},
+  q10:{correct:'C',question:'A photographer charges $250/shoot average, does 8 shoots/week across 4 weeks. Monthly gross revenue and take-home at 75% profit margin?',options:{A:'$6,000 gross / $4,500 take-home',B:'$7,000 gross / $5,250 take-home',C:'$8,000 gross / $6,000 take-home — 8 × $250 = $2,000/week × 4 weeks = $8,000 gross. At 75% margin: $6,000 take-home.',D:'$8,000 gross / $4,800 take-home'},explanation:'8 shoots × $250 = $2,000/week × 4 = $8,000 gross/month. At 75% profit: $8,000 × 0.75 = $6,000 take-home. This improves significantly when drone or video add-ons push the average above $250.'}
+};
+
+function selectOption(el, qId, isCorrect){
+  var block = el.parentElement;
+  var opts = block.querySelectorAll('.option');
+  opts.forEach(function(o){ o.onclick = null; o.style.pointerEvents='none'; });
+  if(isCorrect){
+    el.classList.add('correct');
+    block.querySelector('#'+qId+'-correct').style.display='block';
+  } else {
+    el.classList.add('incorrect');
+    block.querySelector('#'+qId+'-wrong').style.display='block';
+    // highlight correct
+    opts.forEach(function(o){
+      if(o.getAttribute('data-correct')==='true') o.classList.add('correct');
+    });
+  }
+  answers[qId] = {selected: el.querySelector('.option-letter').textContent, correct: isCorrect};
+  // check if all answered
+  var total = Object.keys(quizData).length;
+  if(Object.keys(answers).length === total){
+    document.getElementById('submitBtn').disabled = false;
+  }
+}
+
+function submitQuiz(){
+  var score = 0;
+  Object.keys(answers).forEach(function(q){ if(answers[q].correct) score++; });
+  var total = Object.keys(quizData).length;
+  var pct = Math.round((score/total)*100);
+  document.getElementById('quizForm').style.display='none';
+  var result = document.getElementById('quizResult');
+  result.style.display='block';
+  document.getElementById('resultScore').textContent = score+'/'+total;
+  var passed = score >= 8;
+  document.getElementById('resultLabel').textContent = passed ? '✓ Module 1 Passed' : 'Keep Reviewing';
+  document.getElementById('resultLabel').style.color = passed ? '#7DEFA1' : '#F8ADB4';
+  document.getElementById('resultMsg').textContent = passed
+    ? 'Strong foundation. You understand why this business exists, what the income looks like at each stage, and what the real day-to-day involves. Module 2 gets into the gear — the exact equipment you need to start and what can wait.'
+    : 'Review the lessons above, especially the income phases and the service menu breakdown. Understanding the business model clearly before moving into the technical modules makes everything that follows more meaningful.';
+  // wrong review
+  var wrongs = Object.keys(answers).filter(function(q){ return !answers[q].correct; });
+  if(wrongs.length > 0){
+    var wr = document.getElementById('wrongReview');
+    wr.style.display='block';
+    var wl = document.getElementById('wrongList');
+    wl.innerHTML = '';
+    wrongs.forEach(function(q){
+      var d = quizData[q];
+      var sel = answers[q].selected;
+      var div = document.createElement('div');
+      div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div>'
+        +'<div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div>'
+        +'<div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div>'
+        +'<div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+
+function retryQuiz(){
+  answers = {};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled = true;
+  var opts = document.querySelectorAll('.option');
+  opts.forEach(function(o){
+    o.className='option';
+    o.style.pointerEvents='';
+    // re-assign onclick
+    var qId = o.parentElement.querySelector('.question-num').textContent.replace('Question ','').replace(' of 10','');
+    qId = 'q'+qId;
+    var isCorrect = o.getAttribute('data-correct')==='true';
+    o.onclick = function(){ selectOption(o, qId, isCorrect); };
+  });
+  var feedbacks = document.querySelectorAll('.feedback');
+  feedbacks.forEach(function(f){ f.style.display='none'; });
+}
+</script>
+
+</body>
+</html>
