@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 3: Shooting Interiors & Exteriors — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#1C1A18;--dark-mid:#2E2B28;--dark-light:#4A4540;--dark-pale:#F5F2EE;
+  --warm:#C8A96A;--warm-mid:#A8893A;--warm-light:#DFC88A;--warm-pale:#FBF7EE;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(28,26,24,0.1);
+  --shadow-card:0 2px 16px rgba(28,26,24,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.3);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--warm);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--dark);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--warm-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--warm-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--dark-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--dark-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--dark);font-weight:600;}
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--dark-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--warm-mid),var(--warm));border-radius:3px;width:42.9%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--warm-mid);color:var(--white);}
+.prog-dot.active{background:var(--dark);color:var(--warm-light);}
+.prog-dot.locked{background:rgba(28,26,24,0.1);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
+.module-hero{background:linear-gradient(135deg,#0E0D0C 0%,var(--dark) 55%,var(--dark-mid) 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(200,169,106,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--warm-light),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,106,0.15);border:1px solid rgba(200,169,106,0.3);color:var(--warm-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--warm-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:600px;line-height:1.85;font-weight:300;}
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--warm-mid);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--warm-mid) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--warm-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--warm);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--dark-mid);font-style:italic;}
+.warm-rule{width:44px;height:3px;background:var(--warm);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+.callout{background:var(--warm-pale);border-left:4px solid var(--warm-mid);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--warm-mid);font-style:italic;line-height:1.7;}
+.warning{background:#FBF0EE;border-left:4px solid #C0392B;border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.warning p{font-size:13.5px;color:#8B2F20;line-height:1.7;}
+.warning strong{font-weight:700;}
+/* SETTINGS TABLE */
+.settings-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.settings-table th{background:var(--dark);color:var(--warm-light);padding:0.75rem 1rem;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.settings-table th:first-child{border-radius:10px 0 0 0;}
+.settings-table th:last-child{border-radius:0 10px 0 0;}
+.settings-table td{padding:0.8rem 1rem;border-bottom:1px solid var(--border);color:var(--text-mid);line-height:1.6;vertical-align:top;}
+.settings-table tr:nth-child(even) td{background:var(--cream);}
+.settings-table tr:last-child td{border-bottom:none;}
+.settings-table .s-name{font-weight:700;color:var(--text-dark);}
+.settings-table .s-val{font-family:monospace;font-size:13px;color:var(--dark);font-weight:600;}
+/* ROOM CARDS */
+.room-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin:1.5rem 0;}
+.room-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;transition:box-shadow 0.2s;}
+.room-card:hover{box-shadow:var(--shadow-card);}
+.room-icon{font-size:1.6rem;margin-bottom:0.5rem;}
+.room-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:0.4rem;}
+.room-card .room-shots{font-size:11px;font-weight:700;color:var(--warm-mid);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;}
+.room-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.room-card .room-tip{font-size:12px;color:var(--warm-mid);font-style:italic;margin-top:0.4rem;border-top:1px solid var(--border);padding-top:0.4rem;}
+/* CHECKLIST */
+.checklist{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin:1.5rem 0;}
+.checklist h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:1rem;}
+.check-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:0.65rem;font-size:13.5px;color:var(--text-mid);line-height:1.55;}
+.check-item::before{content:'✓';color:var(--warm-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
+.check-item strong{color:var(--text-dark);}
+/* STEP SEQUENCE */
+.steps-seq{display:flex;flex-direction:column;gap:0.75rem;margin:1.5rem 0;}
+.step-seq{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;transition:box-shadow 0.2s;}
+.step-seq:hover{box-shadow:var(--shadow-card);}
+.step-num{width:30px;height:30px;background:var(--dark);color:var(--warm-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;flex-shrink:0;}
+.step-seq h4{font-size:13.5px;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.step-seq p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* VIDEO */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.5rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--dark-pale);color:var(--dark-mid);}
+.video-badge.supplemental{background:var(--warm-pale);color:var(--warm-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* SUPPLEMENTAL */
+.supplemental-section{background:var(--warm-pale);border:1px solid rgba(168,137,58,0.15);border-radius:16px;padding:1.75rem;margin:2rem 0;}
+.supplemental-section h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:0.35rem;}
+.supplemental-section p{font-size:13px;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6;}
+/* QUIZ */
+.quiz-section{background:var(--dark);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-section p.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warm-light);margin-bottom:0.4rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(200,169,106,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--warm-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--warm);color:var(--dark);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--warm-light);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(200,169,106,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--warm-light);}
+.result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--warm-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+/* MODULE NAV */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(28,26,24,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--dark);color:var(--warm-light);}
+.btn-nav.primary:hover{background:var(--dark-mid);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--dark-mid);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
+  .room-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-photography.html">Track Overview</a></li>
+    <li><a href="real-estate-photography.html" class="nav-back">← Photography Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-photography.html">Real Estate Photography</a><span class="sep">/</span>
+  <span class="current">Module 3: Shooting Interiors & Exteriors</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 3 of 7</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="rp-module-1.html" class="prog-dot complete">1</a>
+    <a href="rp-module-2.html" class="prog-dot complete">2</a>
+    <span class="prog-dot active">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Photography Track · Module 3 of 7</div>
+    <h1>Shooting Interiors <em>&amp; Exteriors</em></h1>
+    <p>Camera settings, composition rules, how to shoot every room type, the exterior shot sequence, and the pre-shoot preparation that separates professionals from amateurs.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"You've got the gear. Now you need to know what to do with it on location. The photographers who deliver consistently great results aren't more talented — they have a repeatable system. This module is that system."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 5</div>
+  <h2 class="lesson-title">Camera Settings — <em>Set Once, Shoot All Day</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">One of the biggest advantages of real estate photography over other genres is that your camera settings barely change across an entire shoot day. You are not chasing moving subjects or changing light. You are shooting stationary rooms from a tripod in controlled conditions. Set these once at the start of the day and leave them.</p>
+
+  <table class="settings-table">
+    <thead>
+      <tr><th>Setting</th><th>Value</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="s-name">Mode</td><td class="s-val">Aperture Priority (A/Av)</td><td>You control depth of field; camera handles shutter speed automatically</td></tr>
+      <tr><td class="s-name">Aperture</td><td class="s-val">f/8</td><td>Deep depth of field — everything from foreground to back wall stays sharp</td></tr>
+      <tr><td class="s-name">ISO</td><td class="s-val">100–400</td><td>100 for crop sensors (cleaner); 400 acceptable on full-frame for faster brackets</td></tr>
+      <tr><td class="s-name">White Balance</td><td class="s-val">Auto</td><td>Color correction handled in editing — auto keeps brackets consistent</td></tr>
+      <tr><td class="s-name">File Format</td><td class="s-val">RAW</td><td>RAW retains all exposure data for HDR blending — never shoot JPEG for paid work</td></tr>
+      <tr><td class="s-name">Aspect Ratio</td><td class="s-val">3:2</td><td>Standard ratio for MLS delivery</td></tr>
+      <tr><td class="s-name">Focus Mode</td><td class="s-val">Single AF (AF-S)</td><td>Focuses once, locks — prevents the camera shifting focus between brackets</td></tr>
+      <tr><td class="s-name">Drive Mode</td><td class="s-val">AEB — 5 shots, 2.0 EV steps</td><td>Shoots 5 bracketed exposures automatically: 2 dark, 1 metered, 2 bright</td></tr>
+      <tr><td class="s-name">Self-Timer</td><td class="s-val">2 seconds</td><td>Eliminates camera shake — press shutter, step back, camera fires cleanly</td></tr>
+    </tbody>
+  </table>
+
+  <p class="body-text">The AEB (Auto Exposure Bracketing) setting is the most important. Set to 5 shots at 2.0 EV steps, one press of the shutter fires five frames automatically — two underexposed, one metered, two overexposed. These give you everything you need to blend a properly exposed interior in editing regardless of the lighting conditions in the room.</p>
+
+  <div class="callout">
+    <p>"I set my ISO to 400 and leave it there all day. It helps fire off the brackets faster and gets me in and out of a shoot quicker. These Sony cameras handle noise so well there's no perceptible difference between 400 and 100."</p>
+  </div>
+
+  <p class="body-text"><strong>Always use the remote shutter.</strong> Even with the 2-second timer, physically pressing the camera button risks nudging it slightly. Use your wireless remote or cable release on every single shot — it takes one second and guarantees sharp images across the bracket sequence.</p>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 5</div>
+  <h2 class="lesson-title">Composition — <em>The Three Rules That Cover Everything</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">Real estate composition is not about artistic vision — it is about showing rooms accurately, attractively, and at their best. There are three rules that, if followed consistently, produce professional results in every room every time.</p>
+
+  <div class="steps-seq">
+    <div class="step-seq">
+      <div class="step-num">1</div>
+      <div>
+        <h4>Camera Height — Balance Floor and Ceiling</h4>
+        <p>Start at waist height. This creates an even balance of floor and ceiling in the frame — the most natural and flattering perspective for most rooms. Raise for kitchens and bathrooms where you need to see countertops clearly. Lower for rooms with very high ceilings or low furniture. Never shoot at eye level — you end up with too much ceiling and the room looks smaller than it is.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">2</div>
+      <div>
+        <h4>Camera Placement — Show Two Walls</h4>
+        <p>Position the camera in or near a corner so two walls are visible in the frame. This shows the room's depth and gives buyers a clear sense of the space. For rectangular rooms, shoot from opposing corners — one shot shows two walls, the second shot covers the other two. Always get the widest possible angle before moving in for detail shots. Standing outside the doorway with the lens just over the threshold is always wider than standing inside the room.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">3</div>
+      <div>
+        <h4>Verticals — Keep Them Straight</h4>
+        <p>Vertical lines — door frames, wall edges, window frames — must be perfectly straight in the image. A wide-angle lens on a slightly tilted camera produces converging or diverging verticals that look distorted and amateur. Level your tripod head with the bubble level first, then fine-tune the tilt axis by looking at a door frame or wall edge on the edge of your frame until it is perfectly vertical. This is non-negotiable — crooked verticals are the most common sign of an unprofessional shoot.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning">
+    <p><strong>The one exception to straight verticals:</strong> Two-story foyers and staircases. Tilting the camera upward to show height is expected and correct in these spaces. Similarly, shooting down a staircase from the landing is a standard shot that benefits from a deliberate downward tilt. In all other rooms — keep it level.</p>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 5</div>
+  <h2 class="lesson-title">Pre-Shoot Preparation — <em>What to Do Before the First Shot</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">The two minutes you spend walking through a property before shooting saves you thirty minutes of reshoots and editing corrections. Every professional photographer does a pre-shoot walkthrough. It has nothing to do with skill level — it is a standard operating procedure.</p>
+
+  <div class="checklist">
+    <h4>Pre-Shoot Walkthrough Checklist</h4>
+    <div class="check-item"><strong>Turn on every light</strong> in the house — ceiling lights, lamps, under-cabinet lighting. More light means better exposures and warmer-feeling spaces.</div>
+    <div class="check-item"><strong>Deal with window treatments</strong> in each room — blinds up if they look clean, or slats open flat if bunched blinds look messy. You want light coming in and a view out the window.</div>
+    <div class="check-item"><strong>Close all toilet seats.</strong> Every time. Without exception.</div>
+    <div class="check-item"><strong>Clear countertops</strong> in kitchens and bathrooms — remove toothbrushes, soap dispensers, sponges, and clutter. A few items (knife block, fruit bowl) are fine and add life. Junk is not.</div>
+    <div class="check-item"><strong>Identify your equipment storage spot</strong> — a closet or out-of-the-way space to stash your bag and cases so they are not in any shots.</div>
+    <div class="check-item"><strong>Note key features to highlight</strong> — a beautiful fireplace, new appliances, a view through a window, custom tile work. Plan your composition around what makes this property worth photographing.</div>
+    <div class="check-item"><strong>Move small items</strong> that are in the way — always tell the homeowner you may need to move a few things and that you will replace them. Most are happy to help.</div>
+  </div>
+
+  <p class="body-text">One important note on staging: <strong>you are a photographer, not a housekeeper or interior designer.</strong> Moving a lamp or clearing a counter is part of the job. Moving furniture, cleaning a dirty kitchen, or doing a full staging is not. If a property is not prepared for photography, contact the agent before the shoot — not after you have already driven there.</p>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 4 -->
+  <div class="section-label"><div class="dot"></div> Lesson 4 of 5</div>
+  <h2 class="lesson-title">Interior Shooting — <em>Room by Room</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">Move through the house systematically — one side to the other, room by room, ending with the exterior. Do not jump around. Missing rooms means going back, which breaks your workflow and wastes time. Here is the minimum shot count and approach for every room type you will encounter.</p>
+
+  <div class="video-card">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/uK61dhBDAJo" title="How to Shoot Luxury Real Estate Photography — Full Walkthrough" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-info">
+      <span class="video-badge">Full Shoot Walkthrough</span>
+      <h4>How to Shoot a Luxury Real Estate Listing — Complete Walkthrough</h4>
+      <p>Reggie from fulltime-r.com walks through a complete luxury listing shoot from setup to final exterior. Covers HDR vs flash decision, camera settings, the three-step composition process (height, placement, verticals), shooting flow room by room, the thumbnail exterior shot, and reflections management. Watch this alongside the room-by-room guide below.</p>
+    </div>
+  </div>
+
+  <div class="room-grid">
+    <div class="room-card">
+      <div class="room-icon">🛏️</div>
+      <div class="room-shots">Minimum: 1–2 shots</div>
+      <h4>Bedrooms</h4>
+      <p>One wide shot from the doorway showing the full room. A second shot from the opposite corner if there is an attached bathroom, walk-in closet, or other feature worth showing. Camera at waist height. No closer shots needed unless the room has architectural details worth highlighting.</p>
+      <div class="room-tip">Always get the wide shot first — agents will always ask for it if you don't.</div>
+    </div>
+    <div class="room-card">
+      <div class="room-icon">🚿</div>
+      <div class="room-shots">Minimum: 1 shot</div>
+      <h4>Bathrooms</h4>
+      <p>Tightest room in the house — shoot from outside the door with the lens just over the threshold. Camera higher than waist to see countertops. Include the door frame in the shot if needed to get the widest possible angle. Close toilet seat. Second shot if there is nice tile, a glass shower, or a freestanding tub worth showing.</p>
+      <div class="room-tip">Make it look as large as possible — shoot from as far back as you can get.</div>
+    </div>
+    <div class="room-card">
+      <div class="room-icon">🛋️</div>
+      <div class="room-shots">Minimum: 2 shots</div>
+      <h4>Living &amp; Dining Rooms</h4>
+      <p>Two shots from opposing corners — together they cover every wall of the room. If there is a fireplace, get a third tighter shot of it. If living and dining share an open plan, treat each zone as its own subject and include shots that show how the spaces connect.</p>
+      <div class="room-tip">Opposing corners cover the whole room between them — always do both.</div>
+    </div>
+    <div class="room-card">
+      <div class="room-icon">🍳</div>
+      <div class="room-shots">Minimum: 4 shots</div>
+      <h4>Kitchen</h4>
+      <p>One shot from each of the four corners. Raise camera height to chest level — you want to see countertops clearly, not the underside of cabinets. Add a fifth shot if there is an eating area, island detail, or sink view worth showing. The kitchen is the most important room in the listing — never under-shoot it.</p>
+      <div class="room-tip">Four corners minimum. More if there is an island, eat-in area, or premium appliances to feature.</div>
+    </div>
+    <div class="room-card">
+      <div class="room-icon">🚪</div>
+      <div class="room-shots">1–2 shots</div>
+      <h4>Entry &amp; Hallways</h4>
+      <p>One wide shot of the entry from just outside the front door. If there is a two-story foyer, tilt the camera upward to show the height — this is one of the exceptions where an unlevel shot is correct and expected. Shoot down a staircase from the landing for the second classic foyer shot.</p>
+      <div class="room-tip">Two-story foyers: tilt up to show the height. This is one of the few times to deliberately go off-level.</div>
+    </div>
+    <div class="room-card">
+      <div class="room-icon">🏡</div>
+      <div class="room-shots">Minimum: 4–6 shots</div>
+      <h4>Exterior</h4>
+      <p>Covered in full in Lesson 5. Minimum: one from the left, one centered, one from the right, one of the front entry. Add backyard, patio/deck, and special features. The first exterior shot is the listing thumbnail — spend extra time getting it right.</p>
+      <div class="room-tip">The thumbnail shot drives click-throughs on Zillow more than any other image. Prioritize it.</div>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 5 -->
+  <div class="section-label"><div class="dot"></div> Lesson 5 of 5</div>
+  <h2 class="lesson-title">Exterior Shooting — <em>The Sequence That Works Every Time</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">Exterior photography has one major constraint interior work does not: you cannot control the light. The sun's direction, cloud cover, and time of day are fixed when you arrive. Your job is to work within those conditions — and in most cases the result is fine. When it is not, sky replacement in editing solves overcast skies, and rescheduling solves harsh midday direct sun on the face of the house.</p>
+
+  <p class="body-text">The practical advice: <strong>shoot exteriors first when you arrive.</strong> If the light is working, you have it. If it deteriorates while you are inside, you already have your exterior shots. If it is poor when you arrive, shoot them anyway — you can either replace the sky in editing or reshoot the exterior on a better day without redoing the full interior.</p>
+
+  <div class="steps-seq">
+    <div class="step-seq">
+      <div class="step-num">1</div>
+      <div>
+        <h4>Front — Off to the Left</h4>
+        <p>Position yourself to the front-left of the property at a 45-degree angle. Show the front facade and as much of the left side as possible. Tripod at full height for most houses — you want to be roughly level with the center of the building's horizontal mass. This is your establishing shot and often the listing thumbnail.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">2</div>
+      <div>
+        <h4>Front — Center Shot</h4>
+        <p>Straight on, centered on the front door or main entrance. Keep horizontal roof lines perfectly level. Zoom in slightly (35–50mm equivalent) if the house is large — this compresses the perspective and makes the facade look more realistic and proportional than shooting ultra-wide from close range.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">3</div>
+      <div>
+        <h4>Front — Off to the Right</h4>
+        <p>Mirror of shot 1 from the opposite side. Between shots 1 and 3, you now have full coverage of the front of the property at different angles. If one side has a garage, driveway detail, or landscaping worth featuring, adjust your angle to include it.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">4</div>
+      <div>
+        <h4>Front Entry Close-Up</h4>
+        <p>Lower the tripod to chest height and move close to the front door. This is the detail shot showing the door, entry hardware, any stonework or architectural detail. Keep horizontals level. Crop in post if needed to frame it tightly.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">5</div>
+      <div>
+        <h4>Backyard — Patio, Deck, or Yard</h4>
+        <p>Lower the tripod for patios and decks to show the space properly. Raise umbrellas, remove grill covers, uncover outdoor furniture — this makes the space look inviting and functional. Get at least one shot from each rear corner facing outward to show the yard's depth and any features like pools, fencing, or mature trees.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">6</div>
+      <div>
+        <h4>Back of House</h4>
+        <p>One shot facing the rear facade of the house from the backyard — shows the back architecture and any rear-facing windows or doors. Combine with one shot from each back corner of the yard facing back toward the house to complete full exterior coverage.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text">On the thumbnail shot specifically — this is the first exterior image that appears as the listing preview on Zillow and the MLS. Agents and buyers form their first impression from this image. Spend a few extra minutes on it. Try both a wide shot and a slightly zoomed-in version (35–50mm). The slightly compressed version typically looks more natural and attractive than the ultra-wide version for the thumbnail.</p>
+
+  <div class="callout">
+    <p>"I always shoot wide and also a cropped version — I'll often send both to the agent. The wide shot shows the full property in context. The crop makes the house look more proportional and impressive. Let the agent choose."</p>
+  </div>
+
+  <!-- SUPPLEMENTAL -->
+  <div class="supplemental-section">
+    <h3>📚 Supplemental Resource</h3>
+    <p>Mike Burke's full real estate photography course covers every room type in depth, full camera settings walkthrough, and the complete exterior sequence. Start at the shooting section (approximately 18:00) for the room-by-room on-location demonstration that reinforces everything in this module.</p>
+    <div class="video-card" style="margin-top:0.75rem;">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/k1txx3cc9lg" title="Full Real Estate Photography Course — Mike Burke" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge supplemental">Supplemental · Full Course</span>
+        <h4>Full Real Estate Photography Course — Shooting, Editing, Business (Mike Burke)</h4>
+        <p>For this module, watch from 18:00 — the on-location shooting demonstration covering bedroom, bathroom, living room, kitchen, two-story foyer, and exterior sequences. The same composition and height principles covered in this module shown in action across a real house. Over a decade of professional experience distilled into one free course.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section" id="quizSection">
+    <h3>Module 3 Knowledge Check</h3>
+    <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">What aperture setting is standard for real estate interior photography and why?</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div>f/2.8 — a wide aperture lets in more light, reducing the need for HDR bracketing in dark interiors.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">B</div>f/16 — maximum depth of field ensures the sharpest possible images from front to back.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div>f/8 — provides deep depth of field so everything from the foreground furniture to the back wall stays sharp, without the diffraction softening that occurs at very small apertures like f/16.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div>f/4 — a good compromise between light-gathering and depth of field for low-light interiors.</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. f/8 is the industry standard for real estate interiors. It delivers deep depth of field — everything sharp from a couch leg in the foreground to the far wall — without the diffraction softening that starts to appear at f/11 and beyond.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ f/8 is the standard. It provides deep depth of field (everything sharp front to back) without the diffraction softening that occurs at very small apertures. You are shooting from a tripod so you do not need a wide aperture to gather light.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">Why should you always use the remote shutter release rather than pressing the camera button directly?</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div>Remote shutter releases allow you to adjust camera settings without approaching the tripod between shots.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div>Physically pressing the camera shutter button can nudge or vibrate the camera, introducing blur across the bracket sequence. A remote eliminates all contact with the camera during exposure.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div>Remote triggers activate the AEB bracketing mode — without one the camera shoots single frames only.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div>Remote shutter releases prevent accidental focus changes between the five bracketed frames.</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. Any physical contact with the camera can cause micro-vibration that blurs the image. With the 2-second timer set, pressing the button and stepping back works too — but a remote eliminates the contact entirely and is faster across many shots per day.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ The reason is vibration. Pressing the camera button physically contacts and can nudge the camera, introducing blur in long-exposure interior shots. The remote eliminates all contact. The 2-second self-timer helps when you must press the camera, but a remote is always better.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">What does the AEB setting "5 shots at 2.0 EV steps" produce?</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">A</div>Five automatically shot frames: one at the metered exposure, two progressively darker (underexposed), and two progressively brighter (overexposed) — giving full dynamic range coverage in one shutter press.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div>Five identical frames shot at the metered exposure for safety — extra copies in case one is blurry.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div>Five frames at different focus distances, ensuring at least one is sharp throughout the depth of field.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div>Five frames with different white balance settings to cover different color temperature scenarios.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. AEB at 5 shots / 2.0 EV gives you the metered frame plus two darker and two brighter frames — covering a wide dynamic range in one sequence. In editing, you blend these to show detail in both the darkest corners and the brightest windows simultaneously.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ AEB produces frames at different exposure levels: one metered, two darker (capturing highlight detail), two brighter (capturing shadow detail). Together they cover the full dynamic range of the scene, which you blend in editing to produce a properly exposed final image.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">A bedroom has a walk-in closet along one wall and an attached bathroom through a door on the opposite wall. How many shots should you take minimum?</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div>One shot — bedrooms only ever need one wide shot from the doorway.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div>Two shots — one wide shot from the doorway showing the main bedroom, and a second shot from the opposite corner showing the walk-in closet and/or attached bathroom doorway as background elements.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div>Four shots — one from each corner to cover the full room like a kitchen.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div>Three shots — wide, closet detail, bathroom doorway.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. The standard is one wide bedroom shot, plus a second if there is a feature worth showing from the opposite direction — like a walk-in closet, attached bathroom, or architectural detail. This bedroom warrants two shots because it has both a closet and a bathroom to show.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ Two shots is correct. The minimum of one applies to plain bedrooms. When there is a feature worth showing — walk-in closet, attached bathroom, fireplace — a second shot from the opposite corner adds value and covers what the first shot couldn't show.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">Why do you raise the camera height in kitchens compared to other rooms?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div>Kitchens have higher ceilings that require a higher camera position to balance the floor-to-ceiling ratio.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div>Shooting at waist height in kitchens puts the camera below countertop level — you see the underside of cabinets instead of the countertops and appliances. Raising to chest height lets you see the counter surface and everything on it clearly.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div>Higher camera positions reduce wide-angle lens distortion on kitchen cabinets and appliances.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div>A higher angle makes kitchens look larger and more spacious in photos.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. At waist height you see the underside of the upper cabinets and cannot see the countertops — the most important and interesting part of a kitchen. Raising to chest height puts you above counter level so the surfaces, appliances, and details are fully visible.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ The reason is countertop visibility. At waist height the camera is below counter level — you see cabinet undersides instead of the surface. Raising to chest height clears the counter edge and puts the countertops, appliances, and backsplash properly in view.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">Which of the following is the correct approach for shooting a standard bathroom?</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">A</div>Stand inside the bathroom and shoot toward the door to show the full room from the inside out.</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">B</div>Position the camera completely outside the bathroom with the lens just over the door threshold, at slightly above waist height, to get the widest possible shot that shows the vanity, mirror, and as much of the room as possible.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">C</div>Stand at the far end of the bathroom near the shower and shoot toward the entrance to show the full length of the room.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">D</div>Use a fisheye lens for bathrooms specifically — the extreme wide angle is the only way to capture tight spaces properly.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. Positioning outside the door with the lens just over the threshold gives you the maximum possible width — further back than you could ever stand inside the room. Raising slightly above waist height lets you see the counter surface clearly.</div>
+        <div class="feedback incorrect" id="q6-wrong">✗ The correct approach is camera outside the door, lens just over the threshold. This gives you more distance from the subject than you could achieve standing inside — creating a wider, more spacious-looking image. Height slightly above waist to see countertops clearly.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">What is the recommended approach for the exterior thumbnail shot — the first image that appears as the listing preview on Zillow?</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">A</div>Use the widest possible angle to show the maximum amount of the property and surrounding landscaping.</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">B</div>Try both a wide shot and a slightly zoomed version (35–50mm equivalent). The slightly compressed version typically looks more proportional and natural — send both to the agent and let them choose.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">C</div>Always shoot the thumbnail dead-center, facing straight onto the front door, for a consistent and symmetrical look.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">D</div>The thumbnail should always be shot at twilight for maximum visual impact and click-through rate.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. The thumbnail drives listing click-throughs on Zillow more than any other image — it is worth extra time. The slightly compressed version at 35–50mm often looks more realistic and attractive than an ultra-wide shot. Shooting both and letting the agent choose is professional and practical.</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ The thumbnail is your most important exterior shot. Shooting both wide and slightly zoomed (35–50mm) gives the agent options. The zoomed version often looks more proportional and realistic than ultra-wide — which can make the house look smaller or distorted at the edges.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">A living room and dining area share an open floor plan. What is the minimum recommended approach?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">A</div>One wide shot showing both areas together from the entrance — open plans should always be captured in a single image.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">C</div>Treat each zone as its own subject — at minimum two opposing corner shots covering the full space, plus any connecting shots that show how the zones flow together. One shot cannot cover an open-plan space adequately.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">B</div>Two shots of the living area only — dining rooms are not important enough to photograph separately.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">D</div>Four shots minimum — one from each corner of the combined space, treating it like a kitchen.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. Open-plan spaces need at minimum two opposing corner shots to cover all four walls. Include shots that show how the zones connect — buyers want to understand the flow between living and dining. A single image can never capture the full space adequately.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ Open-plan spaces need at minimum two opposing corner shots. One image cannot cover all four walls of a combined living/dining space. Include at least one shot that shows how the zones connect — buyers want to understand the flow and spatial relationship.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">Which of the following is the correct pre-shoot approach to window blinds and curtains?</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">A</div>Close all blinds and curtains — controlling interior light is more important than window views.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">B</div>Leave everything as-is — touching window treatments is outside the photographer's role.</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">C</div>Raise blinds if they look clean when raised, or set slats open flat if raising them creates a bunched-up look at the top. The goal is maximum light into the room and a clear view out the window.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">D</div>Remove all window treatments before shooting — they clutter the composition and make rooms look smaller.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. The goal is light and a clear window view — but how you achieve it depends on what looks good in that specific window. If raising blinds leaves them bunched and ugly at the top, slats open flat is cleaner. You want light in and a view out, without making the window treatment look messy.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ The goal is maximum light and a clear view out the window — but how you achieve it depends on the blinds. Raised is ideal if they look neat. If they bunch up messily, open slats flat instead. Closed blinds block light and make rooms feel dark and claustrophobic.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">When is it acceptable to deliberately shoot with a tilted (non-level) camera in real estate photography?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">A</div>Never — straight verticals are required in all real estate photography without exception.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">B</div>Whenever the composition looks more interesting at an angle — creative license applies in real estate as in any photography.</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">C</div>In two-story foyers when tilting upward to show dramatic ceiling height, and when shooting down a staircase from the landing. These are specific architectural scenarios where a deliberate tilt is standard and expected.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">D</div>For all exterior shots — slight upward tilts make houses look more impressive and larger from the street.</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. The two deliberate tilt scenarios in real estate photography are: tilting up in two-story foyers to show height, and shooting down a staircase from the landing. In all other rooms, straight verticals are non-negotiable. Tilting exteriors upward is a mistake that makes the house appear to lean backward.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ Deliberate tilts are appropriate in exactly two scenarios: upward in two-story foyers to show height, and downward when shooting a staircase from the landing. All other rooms require straight verticals. Tilting exterior shots upward actually makes the house look like it is leaning backward — avoid it.</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="rp-module-2.html" class="btn-nav outline">← Module 2</a>
+  <div class="nav-module-title">
+    <strong>Up Next: Module 4</strong>
+    Editing Your Photos
+  </div>
+  <a href="rp-module-4.html" class="btn-nav primary">Module 4 →</a>
+</div>
+
+<footer style="background:var(--dark);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--warm-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var answers={};
+var quizData={
+  q1:{correct:'C',question:'What aperture setting is standard for real estate interior photography and why?',options:{A:'f/2.8 — a wide aperture lets in more light, reducing the need for HDR bracketing.',B:'f/16 — maximum depth of field ensures the sharpest possible images.',C:'f/8 — provides deep depth of field so everything from foreground furniture to the back wall stays sharp, without diffraction softening.',D:'f/4 — a good compromise between light-gathering and depth of field.'},explanation:'f/8 is the industry standard. It delivers deep depth of field — everything sharp from foreground to back wall — without the diffraction softening that starts at f/11 and beyond. You are on a tripod so you do not need a wide aperture to gather light.'},
+  q2:{correct:'B',question:'Why should you always use the remote shutter release rather than pressing the camera button directly?',options:{A:'Remote shutter releases allow you to adjust camera settings without approaching the tripod.',B:'Physically pressing the camera shutter can nudge or vibrate the camera, introducing blur across the bracket sequence. A remote eliminates all contact during exposure.',C:'Remote triggers activate the AEB bracketing mode — without one the camera shoots single frames only.',D:'Remote shutter releases prevent accidental focus changes between the five bracketed frames.'},explanation:'Any physical contact with the camera can cause micro-vibration that blurs long-exposure interior shots. The remote eliminates all contact. The 2-second timer helps but a remote is always better and faster across many shots per day.'},
+  q3:{correct:'A',question:'What does the AEB setting "5 shots at 2.0 EV steps" produce?',options:{A:'Five automatically shot frames: one at metered exposure, two progressively darker, and two progressively brighter — giving full dynamic range coverage in one shutter press.',B:'Five identical frames at the metered exposure for safety — extra copies in case one is blurry.',C:'Five frames at different focus distances ensuring at least one is sharp throughout the depth of field.',D:'Five frames with different white balance settings to cover different color temperature scenarios.'},explanation:'AEB at 5 shots / 2.0 EV produces the metered frame plus two darker and two brighter — covering the full dynamic range. In editing you blend these to show detail in both the darkest corners and the brightest windows simultaneously.'},
+  q4:{correct:'B',question:'A bedroom has a walk-in closet and an attached bathroom. How many shots minimum?',options:{A:'One shot — bedrooms only ever need one wide shot from the doorway.',B:'Two shots — one wide from the doorway showing the main bedroom, and a second from the opposite corner showing the closet and/or bathroom doorway.',C:'Four shots — one from each corner like a kitchen.',D:'Three shots — wide, closet detail, bathroom doorway.'},explanation:'Two shots is correct. The standard minimum of one applies to plain bedrooms. When there is a feature worth showing from the opposite direction — walk-in closet, attached bathroom, fireplace — a second shot adds value and covers what the first shot could not show.'},
+  q5:{correct:'B',question:'Why do you raise the camera height in kitchens compared to other rooms?',options:{A:'Kitchens have higher ceilings requiring a higher camera position to balance the floor-to-ceiling ratio.',B:'Shooting at waist height puts the camera below countertop level — you see cabinet undersides instead of countertops and appliances. Raising to chest height shows the counter surface clearly.',C:'Higher camera positions reduce wide-angle lens distortion on kitchen cabinets.',D:'A higher angle makes kitchens look larger and more spacious.'},explanation:'At waist height the camera is below counter level — you see underside of cabinets instead of the surface. Raising to chest height puts the countertops, appliances, and backsplash properly in view. The countertop surface is the most important visual element in a kitchen.'},
+  q6:{correct:'B',question:'What is the correct approach for shooting a standard bathroom?',options:{A:'Stand inside the bathroom and shoot toward the door to show the full room from inside out.',B:'Position the camera completely outside with the lens just over the door threshold, at slightly above waist height, for the widest possible shot showing vanity, mirror, and as much of the room as possible.',C:'Stand at the far end near the shower and shoot toward the entrance to show the full length.',D:'Use a fisheye lens for bathrooms — the extreme wide angle is the only way to capture tight spaces.'},explanation:'Camera outside the door, lens just over the threshold gives maximum distance from subject — wider than you could achieve standing inside. Height slightly above waist to see countertops clearly. Including the door frame is acceptable for tight bathrooms.'},
+  q7:{correct:'B',question:'What is the recommended approach for the exterior thumbnail shot?',options:{A:'Use the widest possible angle to show the maximum amount of property and surrounding landscaping.',B:'Try both a wide shot and a slightly zoomed version (35–50mm equivalent). The slightly compressed version often looks more proportional and natural — send both to the agent.',C:'Always shoot the thumbnail dead-center, facing straight onto the front door, for a consistent symmetrical look.',D:'The thumbnail should always be shot at twilight for maximum visual impact.'},explanation:'The thumbnail drives listing click-throughs more than any other image. Shooting both wide and slightly zoomed (35–50mm) and letting the agent choose is professional. The zoomed version often looks more realistic — ultra-wide can make houses appear smaller or distorted at edges.'},
+  q8:{correct:'C',question:'A living room and dining area share an open floor plan. What is the minimum recommended approach?',options:{A:'One wide shot showing both areas together from the entrance.',C:'Treat each zone as its own subject — at minimum two opposing corner shots covering the full space, plus connecting shots showing how zones flow together.',B:'Two shots of the living area only — dining rooms are not important enough to photograph separately.',D:'Four shots minimum — one from each corner of the combined space.'},explanation:'Open-plan spaces need at minimum two opposing corner shots to cover all four walls. One image cannot cover the full space. Include at least one shot showing how the living and dining zones connect so buyers understand the spatial flow.'},
+  q9:{correct:'C',question:'What is the correct pre-shoot approach to window blinds and curtains?',options:{A:'Close all blinds and curtains — controlling interior light is more important than window views.',B:'Leave everything as-is — touching window treatments is outside the photographer\'s role.',C:'Raise blinds if they look clean when raised, or set slats open flat if raising creates a bunched-up look. The goal is maximum light into the room and a clear view out the window.',D:'Remove all window treatments before shooting — they clutter the composition.'},explanation:'The goal is light and a clear window view. How you achieve it depends on the specific blinds — raised is ideal if neat, open slats flat if they bunch messily when raised. Closed blinds block light and make rooms feel dark.'},
+  q10:{correct:'C',question:'When is it acceptable to deliberately shoot with a tilted (non-level) camera in real estate photography?',options:{A:'Never — straight verticals are required in all real estate photography without exception.',B:'Whenever the composition looks more interesting at an angle.',C:'In two-story foyers when tilting upward to show dramatic ceiling height, and when shooting down a staircase from the landing. These are specific architectural scenarios where a deliberate tilt is standard and expected.',D:'For all exterior shots — slight upward tilts make houses look more impressive.'},explanation:'The two acceptable deliberate tilt scenarios: upward in two-story foyers to show height, and downward when shooting a staircase from the landing. All other rooms require straight verticals. Tilting exterior shots upward makes the house appear to lean backward.'}
+};
+
+function selectOption(el,qId,isCorrect){
+  var block=el.parentElement;
+  var opts=block.querySelectorAll('.option');
+  opts.forEach(function(o){o.onclick=null;o.style.pointerEvents='none';});
+  if(isCorrect){
+    el.classList.add('correct');
+    block.querySelector('#'+qId+'-correct').style.display='block';
+  } else {
+    el.classList.add('incorrect');
+    block.querySelector('#'+qId+'-wrong').style.display='block';
+    opts.forEach(function(o){if(o.getAttribute('data-correct')==='true')o.classList.add('correct');});
+  }
+  answers[qId]={selected:el.querySelector('.option-letter').textContent,correct:isCorrect};
+  if(Object.keys(answers).length===Object.keys(quizData).length)document.getElementById('submitBtn').disabled=false;
+}
+
+function submitQuiz(){
+  var score=0;
+  Object.keys(answers).forEach(function(q){if(answers[q].correct)score++;});
+  var total=Object.keys(quizData).length;
+  document.getElementById('quizForm').style.display='none';
+  var result=document.getElementById('quizResult');
+  result.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  var passed=score>=8;
+  document.getElementById('resultLabel').textContent=passed?'✓ Module 3 Passed':'Keep Reviewing';
+  document.getElementById('resultLabel').style.color=passed?'#7DEFA1':'#F8ADB4';
+  document.getElementById('resultMsg').textContent=passed
+    ?'Solid. You have the shooting system down — settings, composition, room sequence, and the exterior walkthrough. Module 4 takes you to the computer: how to edit those five brackets into a finished image agents are proud to publish.'
+    :'Review the room-by-room shot counts and the three composition rules. Understanding the system clearly before going on location saves you reshoots and makes every shoot faster and more confident.';
+  var wrongs=Object.keys(answers).filter(function(q){return !answers[q].correct;});
+  if(wrongs.length>0){
+    var wr=document.getElementById('wrongReview');
+    wr.style.display='block';
+    var wl=document.getElementById('wrongList');
+    wl.innerHTML='';
+    wrongs.forEach(function(q){
+      var d=quizData[q];
+      var sel=answers[q].selected;
+      var div=document.createElement('div');
+      div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div>'
+        +'<div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div>'
+        +'<div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div>'
+        +'<div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+
+function retryQuiz(){
+  answers={};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled=true;
+  document.querySelectorAll('.option').forEach(function(o){
+    o.className='option';o.style.pointerEvents='';
+    var qNum=o.closest('.question-block').querySelector('.question-num').textContent.replace('Question ','').replace(' of 10','');
+    var qId='q'+qNum;
+    var isCorrect=o.getAttribute('data-correct')==='true';
+    o.onclick=function(){selectOption(o,qId,isCorrect);};
+  });
+  document.querySelectorAll('.feedback').forEach(function(f){f.style.display='none';});
+}
+</script>
+</body>
+</html>
