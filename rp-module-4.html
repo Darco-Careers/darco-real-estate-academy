@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 4: Editing Your Photos — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#1C1A18;--dark-mid:#2E2B28;--dark-light:#4A4540;--dark-pale:#F5F2EE;
+  --warm:#C8A96A;--warm-mid:#A8893A;--warm-light:#DFC88A;--warm-pale:#FBF7EE;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(28,26,24,0.1);
+  --shadow-card:0 2px 16px rgba(28,26,24,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.3);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--warm);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--dark);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--warm-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--warm-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--dark-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--dark-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--dark);font-weight:600;}
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--dark-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--warm-mid),var(--warm));border-radius:3px;width:57.1%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--warm-mid);color:var(--white);}
+.prog-dot.active{background:var(--dark);color:var(--warm-light);}
+.prog-dot.locked{background:rgba(28,26,24,0.1);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
+.module-hero{background:linear-gradient(135deg,#0E0D0C 0%,var(--dark) 55%,var(--dark-mid) 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(200,169,106,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--warm-light),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,106,0.15);border:1px solid rgba(200,169,106,0.3);color:var(--warm-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--warm-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:600px;line-height:1.85;font-weight:300;}
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--warm-mid);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--warm-mid) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--warm-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--warm);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--dark-mid);font-style:italic;}
+.warm-rule{width:44px;height:3px;background:var(--warm);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+.callout{background:var(--warm-pale);border-left:4px solid var(--warm-mid);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--warm-mid);font-style:italic;line-height:1.7;}
+/* METHOD CARDS */
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin:1.75rem 0;}
+.method-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s;}
+.method-card:hover{box-shadow:var(--shadow-card);}
+.method-card.featured{border-color:var(--warm-mid);}
+.method-header{padding:1rem 1.25rem 0.75rem;border-bottom:1px solid var(--border);}
+.method-header.fast{background:var(--cream-dark);}
+.method-header.quality{background:var(--dark);}
+.method-header.ai{background:linear-gradient(135deg,#1C3A1A,#2E5828);}
+.method-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.25rem;}
+.method-header.fast .method-tag{color:var(--text-light);}
+.method-header.quality .method-tag{color:var(--warm-light);}
+.method-header.ai .method-tag{color:#7DEFA1;}
+.method-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;}
+.method-header.fast .method-name{color:var(--text-dark);}
+.method-header.quality .method-name{color:var(--white);}
+.method-header.ai .method-name{color:var(--white);}
+.method-sub{font-size:11.5px;margin-top:0.2rem;}
+.method-header.fast .method-sub{color:var(--text-mid);}
+.method-header.quality .method-sub{color:rgba(255,255,255,0.6);}
+.method-header.ai .method-sub{color:rgba(255,255,255,0.65);}
+.method-body{padding:1rem 1.25rem 1.25rem;}
+.method-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:0.55rem;font-size:13px;color:var(--text-mid);line-height:1.5;}
+.method-item::before{content:'→';color:var(--warm-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
+.method-verdict{font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:8px;display:inline-block;margin-top:0.5rem;}
+.method-verdict.start{background:var(--dark-pale);color:var(--dark-mid);}
+.method-verdict.manual{background:var(--warm-pale);color:var(--warm-mid);}
+.method-verdict.now{background:rgba(45,130,45,0.1);color:#1A6B1A;}
+/* FEATURE GRID */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0;}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem;transition:box-shadow 0.2s;}
+.feature-card:hover{box-shadow:var(--shadow-card);}
+.feature-icon{font-size:1.4rem;margin-bottom:0.4rem;}
+.feature-card h4{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:0.25rem;}
+.feature-card p{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+/* WORKFLOW STEPS */
+.workflow{display:flex;flex-direction:column;gap:0.75rem;margin:1.5rem 0;}
+.wf-step{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;transition:box-shadow 0.2s;}
+.wf-step:hover{box-shadow:var(--shadow-card);}
+.wf-num{width:30px;height:30px;background:var(--dark);color:var(--warm-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;flex-shrink:0;}
+.wf-step h4{font-size:13.5px;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.wf-step p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* COMPARISON TABLE */
+.comp-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.comp-table th{background:var(--dark);color:var(--warm-light);padding:0.75rem 1rem;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.comp-table th:first-child{border-radius:10px 0 0 0;}
+.comp-table th:last-child{border-radius:0 10px 0 0;}
+.comp-table td{padding:0.8rem 1rem;border-bottom:1px solid var(--border);color:var(--text-mid);line-height:1.6;vertical-align:top;}
+.comp-table tr:nth-child(even) td{background:var(--cream);}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table .t-name{font-weight:700;color:var(--text-dark);}
+.comp-table .t-yes{color:#2A6A2A;font-weight:600;}
+.comp-table .t-no{color:#C0392B;font-weight:600;}
+.comp-table .t-mid{color:var(--warm-mid);font-weight:600;}
+/* VIDEO */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.5rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--dark-pale);color:var(--dark-mid);}
+.video-badge.supplemental{background:var(--warm-pale);color:var(--warm-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* SUPPLEMENTAL */
+.supplemental-section{background:var(--warm-pale);border:1px solid rgba(168,137,58,0.15);border-radius:16px;padding:1.75rem;margin:2rem 0;}
+.supplemental-section h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:0.35rem;}
+.supplemental-section p{font-size:13px;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6;}
+/* QUIZ */
+.quiz-section{background:var(--dark);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warm-light);margin-bottom:0.4rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(200,169,106,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--warm-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--warm);color:var(--dark);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--warm-light);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(200,169,106,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--warm-light);}
+.result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;}
+.retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--warm-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(28,26,24,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--dark);color:var(--warm-light);}
+.btn-nav.primary:hover{background:var(--dark-mid);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--dark-mid);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
+  .method-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-photography.html">Track Overview</a></li>
+    <li><a href="real-estate-photography.html" class="nav-back">← Photography Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-photography.html">Real Estate Photography</a><span class="sep">/</span>
+  <span class="current">Module 4: Editing Your Photos</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 4 of 7</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="rp-module-1.html" class="prog-dot complete">1</a>
+    <a href="rp-module-2.html" class="prog-dot complete">2</a>
+    <a href="rp-module-3.html" class="prog-dot complete">3</a>
+    <span class="prog-dot active">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Photography Track · Module 4 of 7</div>
+    <h1>Editing Your <em>Photos</em></h1>
+    <p>How HDR editing works, the three methods available to you, why AI has changed the editing workflow permanently, and how to deliver finished photos to clients professionally.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"Editing used to be the part that kept real estate photographers up until midnight. That time is over. The tools available today let you go shoot all day and have finished, delivered photos before you sit down for dinner. But you need to understand what editing actually does before you can use any tool — manual or AI — intelligently."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+  <h2 class="lesson-title">Why Real Estate Photos Need Editing — <em>The Dynamic Range Problem</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">Your camera cannot do what your eyes do. When you stand in a room and look toward a bright window, your eyes constantly adjust — you can see both the interior detail in the room and the scene outside the window simultaneously. Your camera cannot. If you expose for the interior, the windows blow out to pure white. If you expose for the window view, the interior goes dark. This gap between the brightest and darkest areas in a scene is called <strong>dynamic range</strong> — and managing it is the core problem that real estate photo editing solves.</p>
+
+  <p class="body-text">This is exactly why you shoot AEB brackets in Module 3. Each of the five frames captures a different slice of the scene's tonal range. The dark frames capture window detail. The bright frames capture shadow detail in dark corners. The middle frame is your baseline. <strong>Editing is the process of combining these frames into a single image that shows everything properly exposed at once.</strong></p>
+
+  <div class="callout">
+    <p>"Real estate photographers would often work into the night editing. I personally did that for years. And frankly, it was awful. The ideal lifestyle is you go shoot in the day, you do three or four shoots, you come back and you're done. We're finally there."</p>
+  </div>
+
+  <p class="body-text">Beyond the dynamic range blend, editing also handles: color correction (removing the orange cast from interior lighting), lens correction (fixing the barrel distortion from a wide-angle lens), sharpening, and final delivery preparation. None of this is optional — unedited RAW brackets look flat, dark, and unfinished. The editing is what transforms your raw files into the polished images agents publish.</p>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+  <h2 class="lesson-title">The Three Editing Methods — <em>Good, Fast, or Cheap: Pick Two</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">There is a framework that applies perfectly to real estate photo editing: <strong>good, fast, or cheap — pick two.</strong> Until recently, you had to choose. Now AI has largely broken the rule — but understanding the three methods helps you make the right decision for where you are in your business.</p>
+
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-header fast">
+        <div class="method-tag">Fast + Cheap</div>
+        <div class="method-name">Lightroom Auto-Merge</div>
+        <div class="method-sub">Adobe Lightroom Classic</div>
+      </div>
+      <div class="method-body">
+        <div class="method-item">Select all brackets, right-click → Photo Merge → HDR. Lightroom blends them automatically.</div>
+        <div class="method-item">Fast and free if you already have Adobe CC. No Photoshop required.</div>
+        <div class="method-item">Results are decent but limited — window masking and color correction still require manual work.</div>
+        <div class="method-item">Good for learning or when you need images back the same hour.</div>
+        <span class="method-verdict start">Best for: getting started</span>
+      </div>
+    </div>
+    <div class="method-card featured">
+      <div class="method-header quality">
+        <div class="method-tag">High Quality + Cheap</div>
+        <div class="method-name">Lightroom + Photoshop</div>
+        <div class="method-sub">Manual luminosity masking</div>
+      </div>
+      <div class="method-body">
+        <div class="method-item">Open brackets as layers in Photoshop. Use luminosity masking (Command+click RGB channel) to blend exposures precisely.</div>
+        <div class="method-item">Mask windows using the Pen tool for clean, precise selections.</div>
+        <div class="method-item">Return to Lightroom for final color correction, sharpening, and lens corrections.</div>
+        <div class="method-item">The gold standard — full control, best results, but significant learning curve and time investment per image.</div>
+        <span class="method-verdict manual">Best for: learning the craft</span>
+      </div>
+    </div>
+    <div class="method-card">
+      <div class="method-header ai">
+        <div class="method-tag">Fast + High Quality</div>
+        <div class="method-name">AI Editing — AutoHDR</div>
+        <div class="method-sub">Automated AI workflow</div>
+      </div>
+      <div class="method-body">
+        <div class="method-item">Upload RAW brackets to AutoHDR. AI blends, corrects, and delivers finished images in 15–30 minutes.</div>
+        <div class="method-item">Results match or exceed human editors — consistent every time, no communication required.</div>
+        <div class="method-item">Also handles sky replacement, grass correction, virtual twilight, virtual staging, object removal, TV screens, and more.</div>
+        <div class="method-item">~$0.50 per image. Integrates directly with Spiro for seamless delivery.</div>
+        <span class="method-verdict now">Best for: working photographers now</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text">The practical recommendation: <strong>learn the Lightroom + Photoshop method first</strong> — even if you switch to AI immediately after. Understanding what good editing looks like and why makes you a better photographer, a smarter client of editing services, and able to catch and fix problems when they occur. Then switch to AutoHDR for your paid work as soon as your business starts generating income.</p>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+  <h2 class="lesson-title">AI Editing in Practice — <em>What AutoHDR Actually Does</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">AutoHDR is the AI photo editing platform that has become the dominant solution for working real estate photographers. It was built by someone who also runs a real estate media company — which means the features are designed around exactly what agents actually need, not what generic photo editors provide. Here is what the platform delivers beyond basic HDR blending:</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🪟</div>
+      <h4>Window Pulls</h4>
+      <p>Accurate exterior views through windows — properly exposed and color-corrected without manual masking in Photoshop.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">☁️</div>
+      <h4>Sky Replacement</h4>
+      <p>Replaces dull or overcast skies with clean blue skies automatically. Standard practice on virtually every exterior image.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌿</div>
+      <h4>Grass Enhancement</h4>
+      <p>Corrects yellowed or patchy grass in exterior shots — makes the property look its best regardless of seasonal conditions.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌇</div>
+      <h4>Virtual Twilight</h4>
+      <p>Converts a daytime exterior shot into a twilight image — adds dramatic sky and lit interior effect without a separate twilight shoot.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛋️</div>
+      <h4>Virtual Staging</h4>
+      <p>Digitally furnishes empty rooms with furniture and decor — buyers can visualize the space without physical staging costs.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h4>Fireplace &amp; TV Inserts</h4>
+      <p>Adds a fire to empty fireplaces and realistic content to blank TV screens — small details that significantly improve listing appeal.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🗑️</div>
+      <h4>Object Removal</h4>
+      <p>Removes unwanted items — clutter, signage, a photographer's reflection, a hand in the frame — cleanly and automatically.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h4>Paint Color Accuracy</h4>
+      <p>Corrects or adjusts wall colors down to the exact hex code — ensures the listing photo matches the actual paint color accurately.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>"We've been using AutoHDR at Norman and Young for quite some time. Not a single client has noticed. If anything, the photos have gotten better. And we get them back in 15 minutes instead of the next morning."</p>
+  </div>
+
+  <p class="body-text">The three key advantages of AI editing over a human editor are consistency, speed, and reliability. A human editor has good days and bad days. They get busy and quality slips. They are asleep when you need them. AutoHDR delivers the same result every time, in 15–30 minutes, regardless of time of day, and with no communication required. For a working photographer, eliminating that single variable from the business simplifies operations significantly.</p>
+
+  <div class="video-card">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/STay23MzNxA" title="Best AI Real Estate Photo Editor — We Switched 100% to AutoHDR" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-info">
+      <span class="video-badge">2026 · AI Editing</span>
+      <h4>Best AI Real Estate Photo Editor — We Switched 100% to AutoHDR</h4>
+      <p>Eli from REPP shows his actual Norman and Young account using AutoHDR — grass replacement, virtual twilight generation, the full feature suite, and the business case for why AI editing has replaced both manual editing and human outsourcing for working photographers. Includes a live demonstration of the twilight conversion feature from a real shoot.</p>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 4 -->
+  <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+  <h2 class="lesson-title">Delivering Photos — <em>The Last Step Before Getting Paid</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">Delivery is not just uploading files to a shared folder. How you deliver photos is part of your product — it affects how professional you appear, whether you get paid on time, and whether agents book you again. The standard in the industry has moved to dedicated real estate media delivery platforms that handle payment, gallery presentation, and property websites in one system.</p>
+
+  <div class="workflow">
+    <div class="wf-step">
+      <div class="wf-num">1</div>
+      <div>
+        <h4>Cull and Select Before Uploading</h4>
+        <p>Go through all your edited images and select only the best from each angle. Do not send every shot — send the best version of each composition. Create a "discard" folder for unused images and keep them — agents occasionally ask for an angle you did not include. You want to have it available without a reshoot.</p>
+      </div>
+    </div>
+    <div class="wf-step">
+      <div class="wf-num">2</div>
+      <div>
+        <h4>Use a Dedicated Delivery Platform</h4>
+        <p>Upload to a real estate media platform like Spiro ($5 per listing), HDPhotoHub, or ShowAndTour. These platforms do three things generic file sharing does not: they present your photos in a professional branded gallery, they create a shareable property website, and — most importantly — they require the agent to pay before downloading. This single feature eliminates the most common source of payment friction in photography businesses.</p>
+      </div>
+    </div>
+    <div class="wf-step">
+      <div class="wf-num">3</div>
+      <div>
+        <h4>Set Up Pay-Before-Download</h4>
+        <p>In your delivery platform agent settings, enable payment required before download. Once agents download their photos, their motivation to pay drops significantly. Many photographers end up chasing payments for weeks. Pay-before-download removes this problem entirely — the agent cannot access their files until payment clears. Build the platform cost ($5) into your pricing from the start.</p>
+      </div>
+    </div>
+    <div class="wf-step">
+      <div class="wf-num">4</div>
+      <div>
+        <h4>Confirm Delivery Personally</h4>
+        <p>After sending the delivery email, follow up with a text or call confirming the agent received it. Emails go to spam. Delivery links time out. Agents get busy. A 30-second follow-up that confirms everything is accessible prevents the frustrated late-night call asking where the photos are. It also shows professionalism that agents remember and mention to colleagues.</p>
+      </div>
+    </div>
+    <div class="wf-step">
+      <div class="wf-num">5</div>
+      <div>
+        <h4>Deliver Fast — Same Day or Next Morning</h4>
+        <p>Speed of delivery is one of the top factors agents mention when recommending a photographer. Agents who get photos back the same day can list immediately — which is valuable in a fast-moving market. With AI editing returning files in 15–30 minutes, same-day delivery on morning shoots is entirely achievable. Set this as your standard and communicate it in your pricing materials.</p>
+      </div>
+    </div>
+  </div>
+
+  <table class="comp-table">
+    <thead>
+      <tr><th>Delivery Method</th><th>Professional Look</th><th>Pay-Before-Download</th><th>Property Website</th><th>Cost</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="t-name">Google Drive / Dropbox</td><td class="t-no">No</td><td class="t-no">No</td><td class="t-no">No</td><td>Free</td></tr>
+      <tr><td class="t-name">Spiro</td><td class="t-yes">Yes</td><td class="t-yes">Yes</td><td class="t-yes">Yes</td><td>$5/listing</td></tr>
+      <tr><td class="t-name">HDPhotoHub</td><td class="t-yes">Yes</td><td class="t-yes">Yes</td><td class="t-yes">Yes</td><td>Subscription</td></tr>
+      <tr><td class="t-name">Pixieset</td><td class="t-yes">Yes</td><td class="t-mid">Optional</td><td class="t-mid">Basic</td><td>Subscription</td></tr>
+    </tbody>
+  </table>
+
+  <!-- SUPPLEMENTAL -->
+  <div class="supplemental-section">
+    <h3>📚 Supplemental Resource</h3>
+    <p>The 3-method framework for HDR editing — Lightroom auto-merge, Photoshop luminosity masking, and outsourcing — explained step by step with screen recordings. Understanding the manual process makes you a more intelligent user of any editing tool, including AI.</p>
+    <div class="video-card" style="margin-top:0.75rem;">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/AopjNOOGTfE" title="How to Edit HDR Real Estate Photos — Top 3 Methods" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge supplemental">Supplemental · Manual Editing Methods</span>
+        <h4>How to Edit HDR Real Estate Photos — Top 3 Methods Explained</h4>
+        <p>Reggie covers all three editing methods with screen recordings: Lightroom auto HDR merge (fast and easy), Photoshop luminosity masking (precise and high quality), and outsourcing. Watch this to understand what the manual process actually involves — it makes the AI workflow much more meaningful once you understand what it is replacing.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section" id="quizSection">
+    <h3>Module 4 Knowledge Check</h3>
+    <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">What is the core problem that real estate photo editing solves?</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div>Correcting focus errors that occur when the camera autofocuses incorrectly in dark rooms.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div>The dynamic range problem — cameras cannot simultaneously expose properly for both bright windows and dark interior areas the way human eyes can. Editing blends multiple exposures to show the full scene properly.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div>Removing wide-angle lens distortion that makes rooms look curved or stretched.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div>Adjusting white balance, which cannot be set accurately in-camera during a shoot.</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. The dynamic range problem is why we shoot brackets and why editing is non-negotiable. A camera exposed for the interior produces blown-out white windows. Exposed for the window, the interior goes dark. Editing combines the correctly-exposed portions of multiple frames into one properly-exposed image.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ The core problem is dynamic range. Your camera cannot expose properly for both the bright windows and the dark interior simultaneously. Bracketed HDR editing solves this by blending multiple frames — each exposed for a different part of the tonal range — into a single well-exposed image.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">In the "good, fast, cheap — pick two" framework, which editing method falls in the "fast + high quality" category?</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div>Lightroom auto-merge — it is fast and produces excellent quality automatically.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div>Lightroom + Photoshop manual — precise masking gives the highest possible quality quickly.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div>AI editing (AutoHDR) — delivers high-quality results in 15–30 minutes at low cost per image, largely breaking the traditional framework.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div>Human outsourcing — overseas editors deliver overnight turnaround at high quality.</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. AI editing breaks the traditional framework — it delivers high quality, fast turnaround, and low cost simultaneously. This is the fundamental shift that has changed the real estate photography editing landscape in the past few years.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ AI editing (AutoHDR) is the "fast + high quality" option that largely breaks the traditional framework. It delivers results in 15–30 minutes at roughly $0.50 per image — replacing the overnight outsourcing model while matching or exceeding the quality of manual editing.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">What is luminosity masking in Photoshop and why is it used for real estate HDR editing?</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">A</div>A technique that creates a selection based on the brightness values in the image (via Command+click on RGB channel), allowing you to blend exposures precisely — bright areas from one frame blend naturally with darker areas from another based on their actual tonal relationship.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div>A filter that automatically brightens dark areas in an image without affecting already-bright areas.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div>A way to adjust the color temperature of specific light sources within a scene independently.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div>A selection method that identifies windows and exterior areas automatically for easy masking.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. Luminosity masking uses the image's own tonal values to create a selection — Command+click on the RGB channel creates a selection based on brightness. When used as a layer mask, it allows the brighter layers to blend naturally through the darker areas, creating a smooth and natural-looking HDR blend.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ Luminosity masking creates a selection based on the image's brightness values (Command+click RGB channel in Photoshop). This selection, used as a layer mask, allows bright and dark exposures to blend precisely along their natural tonal boundaries — producing a more natural result than a manual painted mask.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">Why is pay-before-download a critical feature in a photo delivery platform?</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div>It prevents agents from sharing your photos with other photographers who might copy your style.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div>Once agents download their photos, their motivation to pay drops significantly — they have what they needed. Pay-before-download eliminates the payment chase entirely by requiring payment before file access is granted.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div>It allows you to charge different prices to different agents for the same service.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div>It creates a record of delivery in case of billing disputes later.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. The payment psychology is clear — once an agent has the photos they needed, paying the invoice becomes lower priority. Pay-before-download removes this entirely. The agent cannot access files until payment is complete, eliminating the most common source of payment friction in photography businesses.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ Pay-before-download eliminates the payment chase. Once agents have their photos, paying the invoice drops in priority — they already have what they needed. Requiring payment before download means agents pay without exception, every time, without any follow-up required from you.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">What is the recommended approach to learning editing even if you plan to use AI from day one?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div>There is no benefit to learning manual editing if AI produces better results — skip directly to AutoHDR.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div>Learn the Lightroom + Photoshop method first — understanding what good editing looks like and why makes you a better photographer, a smarter AI editing client, and able to catch and correct problems when they occur.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div>Learn only Lightroom auto-merge — Photoshop is too complex and unnecessary given current AI tools.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div>Learn manual editing for the first 6 months before switching to AI to build proper habits.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. Understanding the manual process — what luminosity masking does, why window pulls matter, how color correction works — makes you a more intelligent user of any tool, including AI. You can evaluate whether AI output is good, catch problems, and know when to make manual corrections.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ Learning the manual process first is still recommended even if you plan to use AI for paid work. Understanding what good editing actually involves — why window masking matters, how color casts form and are removed — makes you a better photographer and a more effective user of AI editing tools.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">What is the approximate per-image cost of AutoHDR AI editing?</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">A</div>$3–$5 per image — similar to human outsourcing rates.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">B</div>$1–$2 per image — slightly cheaper than human editors.</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">C</div>Approximately $0.50 per image — dramatically cheaper than human editors, with 15–30 minute turnaround instead of overnight.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">D</div>$0.10 per image — AI editing has made photo editing essentially free.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. AutoHDR runs approximately $0.50 per image — significantly cheaper than human editors who typically charge $1–$3 per image. Combined with 15–30 minute turnaround (vs. overnight for human editors), the cost-to-value calculation is clear for working photographers.</div>
+        <div class="feedback incorrect" id="q6-wrong">✗ AutoHDR costs approximately $0.50 per image. At a standard shoot delivering 25–30 photos, that is $12.50–$15 per shoot for editing — a small fraction of your shoot revenue, and cheaper than any human editor while delivering faster and more consistently.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">Why should you create a "discard" folder for unused images rather than deleting them after a shoot?</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">A</div>Discarded images can be sold as stock photography for additional revenue.</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">B</div>Agents occasionally ask for an angle or feature that was not included in the delivered set. Having unused images in a discard folder means you can fulfill that request without a reshoot — which would cost you time and damage the client relationship.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">C</div>Discarded images provide backup copies in case delivered files are corrupted or lost.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">D</div>Keeping discarded images protects against legal disputes about what was and was not photographed.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. Keeping discarded images (not deleting them) protects you from a simple but common situation: an agent says "did you get a shot of the laundry room?" and you need to check. Having the discard folder means you can check and deliver additional angles without going back to the property.</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ Keep discarded images in a separate folder rather than deleting them. Agents occasionally ask for angles or features not included in the delivered set. Having the discard folder means you can check and deliver additional shots without scheduling a reshoot — saving time and avoiding an awkward client conversation.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">Which of the following is NOT a feature offered by AutoHDR?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">A</div>Virtual twilight conversion — turning a daytime exterior into a twilight image.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">B</div>Grass enhancement — correcting yellowed or patchy lawn in exterior shots.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">C</div>Floor plan generation — automatically creating a dimensioned floor plan from the listing photos.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">D</div>Paint color accuracy — adjusting wall colors to match an exact hex code.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. Floor plan generation is not an AutoHDR feature — it requires a separate scan or manual measurement. AutoHDR's feature set covers image editing and enhancement: HDR blending, sky replacement, grass correction, virtual twilight, virtual staging, object removal, fireplace/TV inserts, and paint color accuracy.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ Floor plan generation is not an AutoHDR feature. Floor plans require either a dedicated 3D scanning device (like Matterport) or manual measurement. AutoHDR focuses on image editing and enhancement: HDR blending, sky replacement, grass correction, virtual twilight, virtual staging, and other image-level modifications.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">What is the key advantage of AI editing over human outsourcing beyond cost and speed?</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">A</div>AI editing can be done on any device without specialized software.</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">B</div>Consistency — AI produces the same result every time to the same specifications, eliminating the variability that comes with human editors whose quality fluctuates, who get busy and miss uploads, and who need ongoing relationship management.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">C</div>AI editing produces significantly higher resolution output than human editors working in Photoshop.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">D</div>AI editing allows you to avoid Adobe Creative Cloud subscription costs entirely.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. Consistency is the most underrated advantage. Human editors have good days and bad days. They get busy. They leave and you have to find a new one. AI delivers the same calibrated result every time — you can trust the output without reviewing every image carefully, which saves significant time.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ Consistency is the key advantage beyond cost and speed. Human editors vary in quality over time, miss uploads, and eventually need replacing. AI delivers the same result to the same specifications every time — no relationship management, no quality drift, no missed deliveries. You upload, it processes, you deliver.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">A photographer completes a morning shoot at 9am, uploads RAW brackets to AutoHDR immediately, and has a second shoot at 11am. When are their edited photos from the first shoot realistically ready for delivery?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">A</div>Tomorrow morning — AI editing still requires overnight processing like human editors.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">B</div>That evening — AI editing takes several hours for a full set of images.</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">C</div>By 9:30am — AutoHDR typically returns finished images in 15–30 minutes. The photographer could deliver the first shoot's photos before leaving for the second shoot, enabling same-morning delivery.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">D</div>Immediately after upload — AI processes images in real time as they are uploaded.</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. AutoHDR's 15–30 minute turnaround means photos from a 9am shoot are ready well before the 11am shoot. This enables same-day or even same-morning delivery — a significant competitive advantage over photographers who deliver next morning at the earliest. Speed of delivery is one of the top factors agents cite when recommending photographers.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ AutoHDR returns finished images in 15–30 minutes. A 9am upload means edited photos are ready by 9:30am — well before the 11am second shoot. This makes same-morning delivery entirely achievable, which is a major competitive differentiator. Agents who get photos back fast can list immediately and they remember who made that possible.</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="rp-module-3.html" class="btn-nav outline">← Module 3</a>
+  <div class="nav-module-title">
+    <strong>Up Next: Module 5</strong>
+    Drone Photography & FAA Part 107
+  </div>
+  <a href="rp-module-5.html" class="btn-nav primary">Module 5 →</a>
+</div>
+
+<footer style="background:var(--dark);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--warm-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var answers={};
+var quizData={
+  q1:{correct:'B',question:'What is the core problem that real estate photo editing solves?',options:{A:'Correcting focus errors that occur when the camera autofocuses incorrectly in dark rooms.',B:'The dynamic range problem — cameras cannot simultaneously expose properly for both bright windows and dark interior areas the way human eyes can.',C:'Removing wide-angle lens distortion that makes rooms look curved or stretched.',D:'Adjusting white balance, which cannot be set accurately in-camera during a shoot.'},explanation:'Dynamic range is the core problem. A camera exposed for the interior produces blown-out white windows. Exposed for the window, the interior goes dark. Bracketed HDR editing solves this by blending multiple frames — each exposed for a different tonal range — into one properly-exposed image.'},
+  q2:{correct:'C',question:'In the "good, fast, cheap — pick two" framework, which editing method falls in the "fast + high quality" category?',options:{A:'Lightroom auto-merge — it is fast and produces excellent quality automatically.',B:'Lightroom + Photoshop manual — precise masking gives the highest possible quality quickly.',C:'AI editing (AutoHDR) — delivers high-quality results in 15–30 minutes at low cost, largely breaking the traditional framework.',D:'Human outsourcing — overseas editors deliver overnight turnaround at high quality.'},explanation:'AI editing breaks the traditional framework by delivering high quality, fast turnaround, and low cost simultaneously. This is the fundamental shift that has changed the real estate photography editing landscape.'},
+  q3:{correct:'A',question:'What is luminosity masking in Photoshop and why is it used for real estate HDR editing?',options:{A:'A technique that creates a selection based on brightness values (Command+click RGB channel), allowing precise exposure blending where bright areas from one frame blend naturally with darker areas from another.',B:'A filter that automatically brightens dark areas without affecting already-bright areas.',C:'A way to adjust color temperature of specific light sources independently.',D:'A selection method that identifies windows and exterior areas automatically.'},explanation:'Luminosity masking uses the image\'s own tonal values to create a selection. When used as a layer mask, it allows the brighter layers to blend naturally through the darker areas, creating a smooth and natural-looking HDR blend — more natural than a manually painted mask.'},
+  q4:{correct:'B',question:'Why is pay-before-download a critical feature in a photo delivery platform?',options:{A:'It prevents agents from sharing your photos with other photographers who might copy your style.',B:'Once agents download their photos, their motivation to pay drops significantly. Pay-before-download eliminates the payment chase entirely by requiring payment before file access.',C:'It allows you to charge different prices to different agents for the same service.',D:'It creates a record of delivery in case of billing disputes later.'},explanation:'Once an agent has their photos, paying the invoice drops in priority — they already have what they needed. Pay-before-download means agents pay without exception, every time, without any follow-up required from you.'},
+  q5:{correct:'B',question:'What is the recommended approach to learning editing even if you plan to use AI from day one?',options:{A:'There is no benefit to learning manual editing if AI produces better results — skip directly to AutoHDR.',B:'Learn the Lightroom + Photoshop method first — understanding what good editing looks like makes you a better photographer, smarter AI editing client, and able to catch problems.',C:'Learn only Lightroom auto-merge — Photoshop is too complex given current AI tools.',D:'Learn manual editing for 6 months before switching to AI to build proper habits.'},explanation:'Understanding the manual process — why window masking matters, how color casts form and are removed — makes you a more intelligent user of any tool including AI. You can evaluate whether AI output is good and know when to make corrections.'},
+  q6:{correct:'C',question:'What is the approximate per-image cost of AutoHDR AI editing?',options:{A:'$3–$5 per image — similar to human outsourcing rates.',B:'$1–$2 per image — slightly cheaper than human editors.',C:'Approximately $0.50 per image — dramatically cheaper than human editors, with 15–30 minute turnaround instead of overnight.',D:'$0.10 per image — AI editing has made photo editing essentially free.'},explanation:'AutoHDR costs approximately $0.50 per image — significantly cheaper than human editors who typically charge $1–$3 per image. A 25-photo shoot costs roughly $12.50 to edit — a small fraction of your shoot revenue.'},
+  q7:{correct:'B',question:'Why should you create a "discard" folder for unused images rather than deleting them?',options:{A:'Discarded images can be sold as stock photography for additional revenue.',B:'Agents occasionally ask for an angle not included in the delivered set. Having unused images in a discard folder means you can fulfill that request without a reshoot.',C:'Discarded images provide backup copies in case delivered files are corrupted or lost.',D:'Keeping discarded images protects against legal disputes about what was photographed.'},explanation:'Keeping discarded images protects you from a simple but common situation: an agent asks for an angle not in the delivered set. Having the discard folder means you can check and deliver additional shots without a reshoot — saving time and avoiding an awkward conversation.'},
+  q8:{correct:'C',question:'Which of the following is NOT a feature offered by AutoHDR?',options:{A:'Virtual twilight conversion — turning a daytime exterior into a twilight image.',B:'Grass enhancement — correcting yellowed or patchy lawn in exterior shots.',C:'Floor plan generation — automatically creating a dimensioned floor plan from listing photos.',D:'Paint color accuracy — adjusting wall colors to match an exact hex code.'},explanation:'Floor plan generation is not an AutoHDR feature — it requires a dedicated scan or manual measurement. AutoHDR covers image-level editing: HDR blending, sky replacement, grass correction, virtual twilight, virtual staging, object removal, fireplace/TV inserts, and paint color accuracy.'},
+  q9:{correct:'B',question:'What is the key advantage of AI editing over human outsourcing beyond cost and speed?',options:{A:'AI editing can be done on any device without specialized software.',B:'Consistency — AI produces the same result every time, eliminating the variability that comes with human editors whose quality fluctuates and who need ongoing relationship management.',C:'AI editing produces significantly higher resolution output than human editors.',D:'AI editing allows you to avoid Adobe Creative Cloud subscription costs entirely.'},explanation:'Consistency is the most underrated advantage. Human editors vary in quality, miss uploads, and eventually leave. AI delivers the same calibrated result every time — no relationship management, no quality drift, no missed deliveries.'},
+  q10:{correct:'C',question:'A photographer completes a 9am shoot, uploads to AutoHDR immediately, and has a second shoot at 11am. When are their edited photos from the first shoot realistically ready?',options:{A:'Tomorrow morning — AI editing still requires overnight processing like human editors.',B:'That evening — AI editing takes several hours for a full set.',C:'By 9:30am — AutoHDR returns finished images in 15–30 minutes, enabling same-morning delivery before the 11am shoot.',D:'Immediately after upload — AI processes images in real time as they are uploaded.'},explanation:'AutoHDR\'s 15–30 minute turnaround means a 9am upload produces finished photos by 9:30am — well before the 11am second shoot. Same-morning delivery is entirely achievable and is a major competitive differentiator.'}
+};
+
+function selectOption(el,qId,isCorrect){
+  var block=el.parentElement;
+  var opts=block.querySelectorAll('.option');
+  opts.forEach(function(o){o.onclick=null;o.style.pointerEvents='none';});
+  if(isCorrect){el.classList.add('correct');block.querySelector('#'+qId+'-correct').style.display='block';}
+  else{el.classList.add('incorrect');block.querySelector('#'+qId+'-wrong').style.display='block';opts.forEach(function(o){if(o.getAttribute('data-correct')==='true')o.classList.add('correct');});}
+  answers[qId]={selected:el.querySelector('.option-letter').textContent,correct:isCorrect};
+  if(Object.keys(answers).length===Object.keys(quizData).length)document.getElementById('submitBtn').disabled=false;
+}
+
+function submitQuiz(){
+  var score=0;
+  Object.keys(answers).forEach(function(q){if(answers[q].correct)score++;});
+  var total=Object.keys(quizData).length;
+  document.getElementById('quizForm').style.display='none';
+  var result=document.getElementById('quizResult');
+  result.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  var passed=score>=8;
+  document.getElementById('resultLabel').textContent=passed?'✓ Module 4 Passed':'Keep Reviewing';
+  document.getElementById('resultLabel').style.color=passed?'#7DEFA1':'#F8ADB4';
+  document.getElementById('resultMsg').textContent=passed
+    ?'You understand the editing workflow — the dynamic range problem, the three methods, and how AI has changed the delivery timeline. Module 5 adds the most valuable add-on service in real estate photography: drone and FAA Part 107.'
+    :'Review the three editing methods and the delivery workflow. Understanding why you edit (dynamic range), how you edit (the three methods), and how you deliver (pay-before-download) are the three pillars of this module.';
+  var wrongs=Object.keys(answers).filter(function(q){return !answers[q].correct;});
+  if(wrongs.length>0){
+    var wr=document.getElementById('wrongReview');wr.style.display='block';
+    var wl=document.getElementById('wrongList');wl.innerHTML='';
+    wrongs.forEach(function(q){
+      var d=quizData[q];var sel=answers[q].selected;
+      var div=document.createElement('div');div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div><div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div><div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div><div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+
+function retryQuiz(){
+  answers={};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled=true;
+  document.querySelectorAll('.option').forEach(function(o){
+    o.className='option';o.style.pointerEvents='';
+    var qNum=o.closest('.question-block').querySelector('.question-num').textContent.replace('Question ','').replace(' of 10','');
+    var isCorrect=o.getAttribute('data-correct')==='true';
+    o.onclick=function(){selectOption(o,'q'+qNum,isCorrect);};
+  });
+  document.querySelectorAll('.feedback').forEach(function(f){f.style.display='none';});
+}
+</script>
+</body>
+</html>
