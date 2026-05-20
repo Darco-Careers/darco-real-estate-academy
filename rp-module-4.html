@@ -133,6 +133,23 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 .supplemental-section h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:0.35rem;}
 .supplemental-section p{font-size:13px;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6;}
 /* QUIZ */
+
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.25rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--warm-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.mg-abbr{display:inline-block;font-size:11px;font-weight:600;color:var(--warm-mid);background:var(--warm-pale);padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.mg-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;}
+.mg-footer a{color:var(--warm-mid);text-decoration:none;font-weight:600;}
+.mg-footer a:hover{color:var(--warm);}
 .quiz-section{background:var(--dark);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
 .quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
 .quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
@@ -453,6 +470,52 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
   </div>
 
   <!-- QUIZ -->
+  <div class="module-glossary">
+    <h3>&#128218; Module 4 &mdash; Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch4" placeholder="Search terms..." oninput="mgFilter(this,4)">
+    <div class="mg-terms" id="mgTerms4">
+      <div class="mg-term" data-mg="dynamic range difference brightest darkest camera cannot capture both windows interior">
+        <div class="mg-name">Dynamic Range</div>
+        <div class="mg-def">The difference between the darkest and brightest areas a camera can capture simultaneously. Interior real estate photography has extreme dynamic range — bright windows vs dark corners. Human eyes adjust instantly; cameras cannot. HDR bracketing and blending solves this fundamental problem.</div>
+      </div>
+      <div class="mg-term" data-mg="hdr high dynamic range combine multiple exposures blend interior window technique">
+        <div class="mg-name">HDR <span class="mg-abbr">High Dynamic Range</span></div>
+        <div class="mg-def">A technique combining multiple exposures of the same scene to show detail in both dark shadows and bright windows simultaneously. The most widely used editing method in residential real estate photography. Can be done manually (Lightroom + Photoshop), automatically (Lightroom merge), or by AI (AutoHDR).</div>
+      </div>
+      <div class="mg-term" data-mg="luminosity masking photoshop command click rgb channel blend exposures bright dark natural">
+        <div class="mg-name">Luminosity Masking</div>
+        <div class="mg-def">A Photoshop technique creating a selection based on the image's brightness values (Command/Ctrl + click the RGB channel). Allows HDR exposures to blend naturally along actual tonal boundaries — considered the gold standard for manual HDR blending. Produces more realistic results than painted masks.</div>
+      </div>
+      <div class="mg-term" data-mg="window pull window masking blown out overexposed darker bracket photoshop pen tool">
+        <div class="mg-name">Window Pull / Window Masking</div>
+        <div class="mg-def">The process of replacing blown-out windows in an interior photo with correctly exposed exterior detail from a darker bracket. Requires selecting the window area in Photoshop (pen tool) or Lightroom (masking) and blending in the darker frame. The most time-consuming manual editing task — automated by AI platforms like AutoHDR.</div>
+      </div>
+      <div class="mg-term" data-mg="color cast orange yellow tint artificial lighting warm interior ceiling lightroom correction">
+        <div class="mg-name">Color Cast</div>
+        <div class="mg-def">An unwanted color tint caused by artificial lighting — most commonly orange/yellow from incandescent or warm LED bulbs. Very common in interior real estate photos. Corrected in Lightroom using Color Range masking (reduce saturation of the offending color) or in Photoshop using Hue/Saturation adjustments.</div>
+      </div>
+      <div class="mg-term" data-mg="autohdr ai photo editing platform 15-30 minutes real estate automates HDR blending sky replacement">
+        <div class="mg-name">AutoHDR</div>
+        <div class="mg-def">An AI-powered photo editing platform built for real estate photographers. Returns finished images in 15-30 minutes at ~$0.50/image. Features: HDR blending, window pulls, sky replacement, grass enhancement, virtual twilight, virtual staging, object removal, TV screen replacement, paint color accuracy. Integrates with Spiro.</div>
+      </div>
+      <div class="mg-term" data-mg="lightroom classic adobe organize develop hdr merge lens correction sharpening export">
+        <div class="mg-name">Lightroom Classic</div>
+        <div class="mg-def">Adobe's professional photo management and editing software. The primary editing environment for real estate photographers — used for organizing brackets, HDR auto-merge, global adjustments, lens corrections, color grading, and batch exporting. The Classic desktop version is required (not the cloud app) for advanced features.</div>
+      </div>
+      <div class="mg-term" data-mg="pay before download delivery platform require payment before access photos spiro protection">
+        <div class="mg-name">Pay-Before-Download</div>
+        <div class="mg-def">A delivery platform setting requiring agents to pay their invoice before accessing and downloading photos. Once agents have their files, motivation to pay drops significantly. Pay-before-download eliminates payment chasing entirely — a critical business protection mechanism built into platforms like Spiro.</div>
+      </div>
+      <div class="mg-term" data-mg="spiro delivery platform $5 per listing photo gallery property website booking payment">
+        <div class="mg-name">Spiro</div>
+        <div class="mg-def">A real estate media delivery platform ($5/listing) combining professional photo galleries, property websites, pay-before-download payment processing, online booking, and scheduling. Integrates directly with AutoHDR. The most recommended delivery platform among working photographers in this course.</div>
+      </div>
+    </div>
+    <p class="mg-none" id="mgNone4">No matching terms found.</p>
+    <div class="mg-footer">Looking for a term not listed here? <a href="rp-glossary.html">View the Full Course Glossary (All 7 Modules) &rarr;</a></div>
+  </div>
+
   <div class="quiz-section" id="quizSection">
     <h3>Module 4 Knowledge Check</h3>
     <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
@@ -602,6 +665,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 </footer>
 
 <script>
+function mgFilter(input,n){var v=input.value.toLowerCase();var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');var any=false;terms.forEach(function(t){var match=t.getAttribute('data-mg').includes(v)||t.textContent.toLowerCase().includes(v);t.classList.toggle('mg-hidden',!match);if(match)any=true;});document.getElementById('mgNone'+n).style.display=any?'none':'block';}
 var answers={};
 var quizData={
   q1:{correct:'B',question:'What is the core problem that real estate photo editing solves?',options:{A:'Correcting focus errors that occur when the camera autofocuses incorrectly in dark rooms.',B:'The dynamic range problem — cameras cannot simultaneously expose properly for both bright windows and dark interior areas the way human eyes can.',C:'Removing wide-angle lens distortion that makes rooms look curved or stretched.',D:'Adjusting white balance, which cannot be set accurately in-camera during a shoot.'},explanation:'Dynamic range is the core problem. A camera exposed for the interior produces blown-out white windows. Exposed for the window, the interior goes dark. Bracketed HDR editing solves this by blending multiple frames — each exposed for a different tonal range — into one properly-exposed image.'},

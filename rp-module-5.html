@@ -116,6 +116,23 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 .supplemental-section h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:0.35rem;}
 .supplemental-section p{font-size:13px;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6;}
 /* QUIZ */
+
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.25rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--warm-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.mg-abbr{display:inline-block;font-size:11px;font-weight:600;color:var(--warm-mid);background:var(--warm-pale);padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.mg-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;}
+.mg-footer a{color:var(--warm-mid);text-decoration:none;font-weight:600;}
+.mg-footer a:hover{color:var(--warm);}
 .quiz-section{background:var(--dark);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
 .quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
 .quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
@@ -422,6 +439,56 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
   </div>
 
   <!-- QUIZ -->
+  <div class="module-glossary">
+    <h3>&#128218; Module 5 &mdash; Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch5" placeholder="Search terms..." oninput="mgFilter(this,5)">
+    <div class="mg-terms" id="mgTerms5">
+      <div class="mg-term" data-mg="faa federal aviation administration regulates commercial drone part 107 civil aviation">
+        <div class="mg-name">FAA <span class="mg-abbr">Federal Aviation Administration</span></div>
+        <div class="mg-def">The U.S. government agency regulating all civil aviation including commercial drone operations. Requires Part 107 certification for any drone flown for compensation. Manages airspace classification, drone registration, Remote ID requirements, and LAANC authorization.</div>
+      </div>
+      <div class="mg-term" data-mg="part 107 faa regulation commercial drone license certificate 60 questions 70% 400 feet">
+        <div class="mg-name">Part 107</div>
+        <div class="mg-def">The FAA regulation (14 CFR Part 107) governing commercial drone operations. Required for any drone flight conducted for compensation — regardless of drone size. 60-question exam, $175 fee, 70% passing score. Recurrency training required every 24 months online for free. Maximum altitude: 400 feet AGL.</div>
+      </div>
+      <div class="mg-term" data-mg="pic pilot in command licensed operator responsible part 107 compliance legal accountability">
+        <div class="mg-name">PIC <span class="mg-abbr">Pilot in Command</span></div>
+        <div class="mg-def">The FAA-designated licensed drone operator legally responsible for all aspects of a commercial flight — Part 107 compliance, visual line of sight, airspace clearance, weather assessment, and incident reporting. Only a Part 107 certificate holder can serve as PIC on a commercial operation.</div>
+      </div>
+      <div class="mg-term" data-mg="laanc low altitude authorization notification capability automated airspace authorization app controlled">
+        <div class="mg-name">LAANC <span class="mg-abbr">Low Altitude Authorization and Notification Capability</span></div>
+        <div class="mg-def">The FAA's automated system for granting real-time airspace authorization near airports. Part 107 pilots request through apps like B4UFLY and AirMap — approval often arrives in minutes. Some restricted zones require advance application up to 90 days. Always check before accepting a drone booking.</div>
+      </div>
+      <div class="mg-term" data-mg="notam notice to airmen temporary airspace restriction event presidential emergency">
+        <div class="mg-name">NOTAM <span class="mg-abbr">Notice to Airmen</span></div>
+        <div class="mg-def">Official notices about temporary airspace changes or hazards — large events, presidential travel, emergency operations, forest fires. Part 107 pilots must check NOTAMs before every flight. Available at 1800wxbrief.com and integrated into B4UFLY and AirMap apps.</div>
+      </div>
+      <div class="mg-term" data-mg="tfr temporary flight restriction sporting event president no fly zone drone prohibited">
+        <div class="mg-name">TFR <span class="mg-abbr">Temporary Flight Restriction</span></div>
+        <div class="mg-def">A temporary airspace restriction for specific events — sporting events, presidential travel, disaster sites, national security. Drone pilots cannot fly in active TFRs. Severe civil and criminal penalties apply. Check B4UFLY or AirMap before every mission.</div>
+      </div>
+      <div class="mg-term" data-mg="agl above ground level altitude measured from ground 400 feet limit drone">
+        <div class="mg-name">AGL <span class="mg-abbr">Above Ground Level</span></div>
+        <div class="mg-def">An altitude measurement from the ground directly below the aircraft. The FAA's 400-foot drone altitude limit is measured in AGL. Important Part 107 exam distinction — some questions specify MSL (Mean Sea Level) while the drone altitude limit uses AGL.</div>
+      </div>
+      <div class="mg-term" data-mg="orbit point of interest poi drone circle property full coverage all angles">
+        <div class="mg-name">Orbit / Point of Interest <span class="mg-abbr">POI</span></div>
+        <div class="mg-def">A drone flight pattern that circles the property at consistent altitude with the camera pointed at the subject. Shows the full property from all angles — lot boundaries, roof, backyard, surrounding context. Most DJI drones have an automated POI mode. The most-used drone pattern in residential real estate.</div>
+      </div>
+      <div class="mg-term" data-mg="hero reveal luxury flight pattern low behind obstruction trees gate fly forward upward dramatic">
+        <div class="mg-name">Hero Reveal</div>
+        <div class="mg-def">A cinematic drone flight pattern for luxury listings. Starts low behind a natural obstruction (trees, gate, wall) and flies forward and upward to dramatically reveal the property. Creates an exclusive, narrative feel for high-end listings with gated or screened approaches.</div>
+      </div>
+      <div class="mg-term" data-mg="neighborhood context shot drone rise retreat location surroundings lakes schools proximity">
+        <div class="mg-name">Neighborhood Context Shot</div>
+        <div class="mg-def">A drone flight pattern that rises and retreats from the property while the gimbal tilts down to keep the house in frame — gradually revealing surrounding geography. Shows buyers proximity to lakes, parks, schools, highways, and neighborhood layout. Answers: "What is around this property?"</div>
+      </div>
+    </div>
+    <p class="mg-none" id="mgNone5">No matching terms found.</p>
+    <div class="mg-footer">Looking for a term not listed here? <a href="rp-glossary.html">View the Full Course Glossary (All 7 Modules) &rarr;</a></div>
+  </div>
+
   <div class="quiz-section" id="quizSection">
     <h3>Module 5 Knowledge Check</h3>
     <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
@@ -571,6 +638,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 </footer>
 
 <script>
+function mgFilter(input,n){var v=input.value.toLowerCase();var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');var any=false;terms.forEach(function(t){var match=t.getAttribute('data-mg').includes(v)||t.textContent.toLowerCase().includes(v);t.classList.toggle('mg-hidden',!match);if(match)any=true;});document.getElementById('mgNone'+n).style.display=any?'none':'block';}
 var answers={};
 var quizData={
   q1:{correct:'B',question:'A photographer owns a DJI Mini 3 weighing under 250g. They plan to shoot aerial photos for a real estate agent and charge $150. Do they need an FAA Part 107 certificate?',options:{A:'No — drones under 250g are exempt from Part 107 requirements entirely, including for commercial use.',B:'Yes — Part 107 is required for ALL commercial drone operations regardless of drone weight. The under-250g exemption only applies to drone registration, not the commercial pilot certificate.',C:'Only if operated in controlled airspace near an airport.',D:'No — the $150 charge is below the threshold requiring commercial licensing.'},explanation:'Part 107 is required for any commercial drone operation — any flight for compensation, regardless of drone size. The under-250g exemption only covers FAA drone registration. Flying commercially without a certificate risks fines up to $250,000.'},

@@ -115,6 +115,23 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 .supplemental-section h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:0.35rem;}
 .supplemental-section p{font-size:13px;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6;}
 /* QUIZ */
+
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.25rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--warm-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.mg-abbr{display:inline-block;font-size:11px;font-weight:600;color:var(--warm-mid);background:var(--warm-pale);padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.mg-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;}
+.mg-footer a{color:var(--warm-mid);text-decoration:none;font-weight:600;}
+.mg-footer a:hover{color:var(--warm);}
 .quiz-section{background:var(--dark);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
 .quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
 .quiz-section p.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
@@ -455,6 +472,44 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
   </div>
 
   <!-- QUIZ -->
+  <div class="module-glossary">
+    <h3>&#128218; Module 3 &mdash; Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch3" placeholder="Search terms..." oninput="mgFilter(this,3)">
+    <div class="mg-terms" id="mgTerms3">
+      <div class="mg-term" data-mg="aperture f8 f-stop opening lens light depth of field">
+        <div class="mg-name">Aperture</div>
+        <div class="mg-def">The opening in a camera lens controlling how much light reaches the sensor, measured in f-stops. f/8 is the standard for real estate photography — deep depth of field keeps everything from foreground furniture to the back wall sharp. Set in Aperture Priority mode (A/Av).</div>
+      </div>
+      <div class="mg-term" data-mg="iso sensor sensitivity light noise grain 100 400 real estate">
+        <div class="mg-name">ISO</div>
+        <div class="mg-def">Controls the camera sensor's sensitivity to light. Lower ISO (100-200) produces cleaner images with less noise. Recommended: ISO 100-200 for crop sensors, up to 400 on full-frame. Real estate is shot on a tripod so a wide aperture is not needed to gather light — keep ISO low.</div>
+      </div>
+      <div class="mg-term" data-mg="raw file format uncompressed all data shadow highlight hdr essential">
+        <div class="mg-name">RAW</div>
+        <div class="mg-def">An uncompressed image file format retaining all sensor data — including full shadow and highlight detail. Essential for HDR bracket blending. JPEG discards this data permanently. Always shoot RAW for paid work.</div>
+      </div>
+      <div class="mg-term" data-mg="depth of field dof sharp range focus f8 deep real estate">
+        <div class="mg-name">Depth of Field <span class="mg-abbr">DOF</span></div>
+        <div class="mg-def">The range of distance in a scene that appears acceptably sharp. Deep DOF (at f/8) keeps everything from a nearby couch to the far wall in focus — ideal for real estate. Shallow DOF (f/2.8) blurs backgrounds — used in portraits but avoided in real estate.</div>
+      </div>
+      <div class="mg-term" data-mg="ev exposure value stops apart bracket sequence steps difference">
+        <div class="mg-name">EV <span class="mg-abbr">Exposure Value</span></div>
+        <div class="mg-def">A numerical representation of the exposure level. In AEB settings, "2.0 EV steps" describes how far apart each bracket is — larger EV steps capture a wider tonal range, useful in high-contrast scenes with bright windows and dark corners.</div>
+      </div>
+      <div class="mg-term" data-mg="bracket bracketing sequence different exposures dark bright metered hdr blend">
+        <div class="mg-name">Bracket / Bracketing</div>
+        <div class="mg-def">A sequence of photos taken at different exposure levels — typically 3 or 5 frames — to capture the full tonal range of a scene. Shot with AEB and blended in editing to produce a single properly exposed image showing both interior detail and window views simultaneously.</div>
+      </div>
+      <div class="mg-term" data-mg="composition two corners floor ceiling camera height waist level framing">
+        <div class="mg-name">Composition (Real Estate)</div>
+        <div class="mg-def">The three rules for real estate photography: camera at waist height (balanced floor/ceiling ratio), positioned to show two walls, and verticals kept perfectly straight. These fundamentals produce professional results in every room consistently.</div>
+      </div>
+    </div>
+    <p class="mg-none" id="mgNone3">No matching terms found.</p>
+    <div class="mg-footer">Looking for a term not listed here? <a href="rp-glossary.html">View the Full Course Glossary (All 7 Modules) &rarr;</a></div>
+  </div>
+
   <div class="quiz-section" id="quizSection">
     <h3>Module 3 Knowledge Check</h3>
     <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
@@ -604,6 +659,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 </footer>
 
 <script>
+function mgFilter(input,n){var v=input.value.toLowerCase();var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');var any=false;terms.forEach(function(t){var match=t.getAttribute('data-mg').includes(v)||t.textContent.toLowerCase().includes(v);t.classList.toggle('mg-hidden',!match);if(match)any=true;});document.getElementById('mgNone'+n).style.display=any?'none':'block';}
 var answers={};
 var quizData={
   q1:{correct:'C',question:'What aperture setting is standard for real estate interior photography and why?',options:{A:'f/2.8 — a wide aperture lets in more light, reducing the need for HDR bracketing.',B:'f/16 — maximum depth of field ensures the sharpest possible images.',C:'f/8 — provides deep depth of field so everything from foreground furniture to the back wall stays sharp, without diffraction softening.',D:'f/4 — a good compromise between light-gathering and depth of field.'},explanation:'f/8 is the industry standard. It delivers deep depth of field — everything sharp from foreground to back wall — without the diffraction softening that starts at f/11 and beyond. You are on a tripod so you do not need a wide aperture to gather light.'},

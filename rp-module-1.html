@@ -128,6 +128,22 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 .video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
 
 /* QUIZ */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.25rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--warm-mid);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.mg-abbr{display:inline-block;font-size:11px;font-weight:600;color:var(--warm-mid);background:var(--warm-pale);padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.mg-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;}
+.mg-footer a{color:var(--warm-mid);text-decoration:none;font-weight:600;}
+.mg-footer a:hover{color:var(--warm);}
 .quiz-section{background:var(--dark);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
 .quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
 .quiz-section p{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
@@ -476,6 +492,40 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
   </div>
 
   <!-- QUIZ -->
+  <div class="module-glossary">
+    <h3>📖 Module 1 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch1" placeholder="Search terms..." oninput="mgFilter(this,1)">
+    <div class="mg-terms" id="mgTerms1">
+      <div class="mg-term" data-mg="mls multiple listing service shared database real estate agents list search properties">
+        <div class="mg-name">MLS<span class="mg-abbr">Multiple Listing Service</span></div>
+        <div class="mg-def">The shared database used by real estate agents to list and search properties for sale. MLS systems require listing photos to meet specific standards — JPEG format, minimum resolution, and specific aspect ratios. Delivering MLS-ready photos is a core requirement of the job.</div>
+      </div>
+      <div class="mg-term" data-mg="listing photos primary still images interior exterior mls zillow realtor core deliverable">
+        <div class="mg-name">Listing Photos</div>
+        <div class="mg-def">The primary set of interior and exterior still images used for MLS, Zillow, Realtor.com, and agent marketing materials. The core deliverable of every real estate photography shoot — the foundation everything else is built on.</div>
+      </div>
+      <div class="mg-term" data-mg="direct hire path non-union independent photographer working directly for real estate agents">
+        <div class="mg-name">Direct-Hire Path</div>
+        <div class="mg-def">The business model covered in this course — working directly for real estate agents as an independent photographer, without going through a union apprenticeship or large media company. Agents hire you per-listing, you set your own rates, and you build client relationships directly.</div>
+      </div>
+      <div class="mg-term" data-mg="average order value aov total invoice amount per shoot including add-on services">
+        <div class="mg-name">Average Order Value<span class="mg-abbr">AOV</span></div>
+        <div class="mg-def">The average dollar amount of each client invoice, including base photography plus any add-on services (drone, video, virtual staging, 3D tour). Increasing AOV — rather than just shoot volume — is the fastest way to grow monthly income without working more days.</div>
+      </div>
+      <div class="mg-term" data-mg="real estate media photos video drone 3d tour virtual staging full service menu">
+        <div class="mg-name">Real Estate Media</div>
+        <div class="mg-def">The full suite of visual content produced for property listings — still photography, video walkthroughs, drone aerials, virtual staging, 3D tours, and AI-generated listing videos. Photographers who offer multiple media services as a one-stop shop command higher average order values and stronger client loyalty.</div>
+      </div>
+      <div class="mg-term" data-mg="one stop shop full service all media types single photographer single booking">
+        <div class="mg-name">One-Stop Shop</div>
+        <div class="mg-def">A photographer who offers all listing media services — photos, video, drone, virtual tours, and virtual staging — under one booking. Agents strongly prefer one-stop shops because it eliminates coordinating multiple vendors. Building toward a full service menu is a key growth strategy covered throughout this course.</div>
+      </div>
+    </div>
+    <p class="mg-none" id="mgNone1">No matching terms found.</p>
+    <div class="mg-footer">Looking for a term not listed here? <a href="rp-glossary.html">View the Full Course Glossary (All 7 Modules) →</a></div>
+  </div>
+
   <div class="quiz-section" id="quizSection">
     <h3>Module 1 Knowledge Check</h3>
     <p>10 questions · 8/10 to pass · Review wrong answers below if needed</p>
@@ -625,6 +675,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 </footer>
 
 <script>
+function mgFilter(input,n){var v=input.value.toLowerCase();var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');var any=false;terms.forEach(function(t){var match=t.getAttribute('data-mg').includes(v)||t.textContent.toLowerCase().includes(v);t.classList.toggle('mg-hidden',!match);if(match)any=true;});document.getElementById('mgNone'+n).style.display=any?'none':'block';}
 var answers = {};
 var quizData = {
   q1:{correct:'C',question:'What fundamental shift in buyer behavior created the real estate photography industry?',options:{A:'Buyers started using mobile phones to search for homes instead of desktop computers.',B:'Real estate agents began requiring professional photos as part of their MLS listing agreements.',C:'Buyers began searching for homes online first — on sites like Zillow and Realtor.com — instead of starting with a real estate agent, making the listing photos the first and most critical impression.',D:'Home prices increased to the point where professional marketing became standard.'},explanation:'The shift from agent-gatekeeper to online search changed everything. Buyers now form their entire first impression of a property — and the agent marketing it — from photographs on Zillow and Realtor.com. This is the fundamental reason the industry exists.'},
