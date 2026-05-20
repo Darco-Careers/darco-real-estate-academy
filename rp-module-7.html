@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 7: Building Your Business & Getting Clients — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#1C1A18;--dark-mid:#2E2B28;--dark-light:#4A4540;--dark-pale:#F5F2EE;
+  --warm:#C8A96A;--warm-mid:#A8893A;--warm-light:#DFC88A;--warm-pale:#FBF7EE;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(28,26,24,0.1);
+  --shadow-card:0 2px 16px rgba(28,26,24,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.3);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--warm);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--dark);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--warm-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--warm-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--dark-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--dark-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--dark);font-weight:600;}
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--dark-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--warm-mid),var(--warm));border-radius:3px;width:100%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--warm-mid);color:var(--white);}
+.prog-dot.active{background:var(--dark);color:var(--warm-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
+.module-hero{background:linear-gradient(135deg,#0E0D0C 0%,var(--dark) 55%,var(--dark-mid) 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(200,169,106,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--warm-light),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,106,0.15);border:1px solid rgba(200,169,106,0.3);color:var(--warm-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--warm-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:600px;line-height:1.85;font-weight:300;}
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--warm-mid);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--warm-mid) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--warm-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--warm);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--dark-mid);font-style:italic;}
+.warm-rule{width:44px;height:3px;background:var(--warm);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+.callout{background:var(--warm-pale);border-left:4px solid var(--warm-mid);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--warm-mid);font-style:italic;line-height:1.7;}
+/* PRICING TABLE */
+.pricing-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.pricing-table th{background:var(--dark);color:var(--warm-light);padding:0.75rem 1rem;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px;}
+.pricing-table th:first-child{border-radius:10px 0 0 0;}
+.pricing-table th:last-child{border-radius:0 10px 0 0;}
+.pricing-table td{padding:0.85rem 1rem;border-bottom:1px solid var(--border);color:var(--text-mid);line-height:1.6;vertical-align:top;}
+.pricing-table tr:nth-child(even) td{background:var(--cream);}
+.pricing-table tr:last-child td{border-bottom:none;}
+.pricing-table .svc{font-weight:700;color:var(--text-dark);}
+.pricing-table .price{font-weight:700;color:var(--warm-mid);white-space:nowrap;}
+/* STEPS */
+.steps-seq{display:flex;flex-direction:column;gap:0.75rem;margin:1.5rem 0;}
+.step-seq{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;transition:box-shadow 0.2s;}
+.step-seq:hover{box-shadow:var(--shadow-card);}
+.step-num{width:30px;height:30px;background:var(--dark);color:var(--warm-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;flex-shrink:0;}
+.step-seq h4{font-size:13.5px;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.step-seq p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* INFO GRID */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.5rem 0;}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:box-shadow 0.2s;}
+.info-card:hover{box-shadow:var(--shadow-card);}
+.info-card .ic-icon{font-size:1.6rem;margin-bottom:0.5rem;}
+.info-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;}
+.info-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.info-card .ic-tag{font-size:11px;font-weight:700;color:var(--warm-mid);margin-top:0.4rem;}
+/* MATH BOX */
+.math-box{background:var(--dark);border-radius:16px;padding:2rem;margin:1.5rem 0;color:var(--white);}
+.math-box h4{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--warm-light);margin-bottom:1rem;}
+.math-row{display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:13.5px;}
+.math-row:last-child{border-bottom:none;padding-top:1rem;margin-top:0.5rem;border-top:1px solid rgba(255,255,255,0.2);}
+.math-row .math-label{color:rgba(255,255,255,0.65);}
+.math-row .math-value{font-weight:700;color:var(--warm-light);}
+.math-row.total .math-label{color:var(--white);font-weight:600;}
+.math-row.total .math-value{font-size:1.3rem;color:var(--warm-light);}
+/* VIDEO */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.5rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--dark-pale);color:var(--dark-mid);}
+.video-badge.supplemental{background:var(--warm-pale);color:var(--warm-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* COMPLETION BANNER */
+.completion-banner{background:linear-gradient(135deg,var(--dark) 0%,var(--dark-mid) 100%);border-radius:20px;padding:2.5rem;margin:2.5rem 0;text-align:center;position:relative;overflow:hidden;}
+.completion-banner::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,169,106,0.15) 0%,transparent 70%);pointer-events:none;}
+.completion-banner h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;}
+.completion-banner h3 em{color:var(--warm-light);font-style:italic;}
+.completion-banner p{font-size:14px;color:rgba(255,255,255,0.65);max-width:500px;margin:0 auto 1.5rem;line-height:1.8;}
+.completion-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-bottom:1.75rem;}
+.cs-item .cs-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--warm-light);}
+.cs-item .cs-label{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:0.5px;text-transform:uppercase;margin-top:2px;}
+/* SUPPLEMENTAL */
+.supplemental-section{background:var(--warm-pale);border:1px solid rgba(168,137,58,0.15);border-radius:16px;padding:1.75rem;margin:2rem 0;}
+.supplemental-section h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:0.35rem;}
+.supplemental-section p{font-size:13px;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6;}
+/* QUIZ */
+.quiz-section{background:var(--dark);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warm-light);margin-bottom:0.4rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(200,169,106,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--warm-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--warm);color:var(--dark);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--warm-light);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(200,169,106,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--warm-light);}
+.result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;}
+.retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--warm-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(28,26,24,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--warm);color:var(--dark);}
+.btn-nav.primary:hover{background:var(--warm-light);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--dark-mid);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
+  .completion-stats{gap:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-photography.html">Track Overview</a></li>
+    <li><a href="real-estate-photography.html" class="nav-back">← Photography Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-photography.html">Real Estate Photography</a><span class="sep">/</span>
+  <span class="current">Module 7: Building Your Business & Getting Clients</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 7 of 7</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="rp-module-1.html" class="prog-dot complete">1</a>
+    <a href="rp-module-2.html" class="prog-dot complete">2</a>
+    <a href="rp-module-3.html" class="prog-dot complete">3</a>
+    <a href="rp-module-4.html" class="prog-dot complete">4</a>
+    <a href="rp-module-5.html" class="prog-dot complete">5</a>
+    <a href="rp-module-6.html" class="prog-dot complete">6</a>
+    <span class="prog-dot active">7</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Photography Track · Module 7 of 7</div>
+    <h1>Building Your Business <em>&amp; Getting Clients</em></h1>
+    <p>How to price your services, land your first paying clients, build the systems that make your business run professionally, and grow a client base that sustains itself through referrals.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"You now have the full technical foundation — camera, editing, drone, AI tools. Everything in this final module is about turning that knowledge into a real business. The photographers who succeed are not always the most technically skilled. They are the most consistent, the most professional, and the most relentless about finding and serving clients."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+  <h2 class="lesson-title">Pricing Your Services — <em>How to Set Rates That Win the Right Clients</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">Pricing is one of the most common mistakes new photographers make — almost always in the direction of charging too little. Low prices do not build a photography business. They attract the worst clients: the ones who are most demanding, most likely to complain, and first to leave when someone cheaper comes along. Your pricing communicates your value before a single image is seen.</p>
+
+  <p class="body-text">The correct approach to setting your initial rates is simple: <strong>research your local market, average it, and price yourself in the middle of the pack.</strong> Look up 5–7 competing real estate photography companies in your city. Find what they charge to shoot a 2,000 square foot home. Add those prices together and divide by the number of companies. That average is where you should be priced.</p>
+
+  <div class="callout">
+    <p>"Pricing yourself at the bottom of the barrel to undercut everyone is a huge mistake. You attract the worst type of clients — cheap, complain the most, and have no loyalty. Price yourself in the middle of the pack. You're communicating that you believe in your product and deserve to be there."</p>
+  </div>
+
+  <p class="body-text">Most photographers use one of two pricing models. The <strong>square footage model</strong> is the cleaner option — the house is a certain size so it is a certain price, end of story. No counting photos during the shoot, no disputes about what was or wasn't delivered. Set tiers: 0–1,500 sq ft at one price, 1,500–2,500 at another, and so on. The <strong>image count model</strong> is an alternative where you price by number of photos delivered — but it adds mental overhead during the shoot that pulls your focus from composition.</p>
+
+  <table class="pricing-table">
+    <thead>
+      <tr><th>Service</th><th>Typical Range</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="svc">📷 Standard Photography</td><td class="price">$150–$300</td><td>Base price varies by home size and market. Research your local competitors.</td></tr>
+      <tr><td class="svc">🎬 Video Walkthrough</td><td class="price">$250–$500 add-on</td><td>Traditional video with gimbal. Higher in luxury markets.</td></tr>
+      <tr><td class="svc">🎥 AI Listing Video</td><td class="price">$75–$150 add-on</td><td>Photo-to-video AI. Lower cost, high margin since tool cost is ~$10–$15.</td></tr>
+      <tr><td class="svc">🚁 Drone Photography</td><td class="price">$150–$300 add-on</td><td>Requires Part 107. ~30 min extra on location.</td></tr>
+      <tr><td class="svc">🏠 Virtual Staging</td><td class="price">$30–$75 per room</td><td>Per empty room staged. AI tools keep costs very low.</td></tr>
+      <tr><td class="svc">🔄 3D Tour (phone-based)</td><td class="price">$100–$200 add-on</td><td>Sphere AI or CubiCasa. Lower than Matterport pricing.</td></tr>
+      <tr><td class="svc">🔄 3D Tour (Matterport)</td><td class="price">$200–$400 add-on</td><td>Premium option for luxury and commercial listings.</td></tr>
+      <tr><td class="svc">✨ Twilight Photography</td><td class="price">$100–$200 add-on</td><td>Separate dusk session or AI twilight conversion.</td></tr>
+    </tbody>
+  </table>
+
+  <p class="body-text">Build your pricing page around packages rather than à la carte items wherever possible. A "Standard Package" (photos + AI video + drone) presented as a single price point is easier for agents to say yes to than a list of individual line items. It also increases your average order value without requiring agents to actively choose each add-on.</p>
+
+  <div class="video-card">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/iKpG7X_IPss" title="Watch This Before Starting a Real Estate Photography Business 2024" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-info">
+      <span class="video-badge">Market Context & Business</span>
+      <h4>Watch This Before Starting a Real Estate Photography Business — Market Reality Check</h4>
+      <p>Eli from REPP covers why the market shift to online listings has permanently increased demand for real estate photography, what to do right in 2024 to compete (quality standard, one-stop-shop service menu, booking system), common mistakes that stop photographers from building their business, and the honest case for why there's never been a better time to start — regardless of what the housing market is doing.</p>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+  <h2 class="lesson-title">Getting Your First Clients — <em>The Free Shoot Strategy</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">The hardest part of starting a real estate photography business is not the photography. It is getting the first handful of agents to trust you with their listings. Without clients, nothing else matters — not your gear, not your editing, not your pricing. The fastest path to your first paying clients is the free shoot strategy.</p>
+
+  <p class="body-text">This is not about working for free indefinitely. <strong>One free shoot per agent, offered as a lead magnet, to give them a zero-risk way to experience your work.</strong> Think of it like a free sample. You are confident enough in your product to let it sell itself. Once an agent sees their listing look better than it ever has, they book you again — at full price.</p>
+
+  <div class="steps-seq">
+    <div class="step-seq">
+      <div class="step-num">1</div>
+      <div>
+        <h4>Build a Practice Portfolio First</h4>
+        <p>Before reaching out to any agent, you need 5–10 images to show. Shoot your own home, a family member's home, or a friend's place. Vacant rental units work well — no clutter, easy to shoot. Edit them properly. Your portfolio should look like the work you plan to deliver professionally. If it does not, keep practicing before reaching out to clients.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">2</div>
+      <div>
+        <h4>Identify 20–30 Target Agents</h4>
+        <p>Search Instagram and Zillow for active real estate agents in your market. Look for agents who are currently listing properties — agents with active listings need photographers right now. Spend 30–60 seconds on each agent's profile before contacting them. Find something specific about their work, their market, or their listings to reference in your message. Personalization matters.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">3</div>
+      <div>
+        <h4>Send Personalized DMs — Not Bulk Messages</h4>
+        <p>Send a personalized Instagram DM to each agent referencing something specific about their work. Offer one free shoot — no strings attached — to show them the quality of your images. Do not send copy-paste messages to 100 agents at once. You will burn leads and risk being banned. Send to 20–30 at a time, track responses, and aim for a 10% reply rate. If you're below that, adjust your message before sending more.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">4</div>
+      <div>
+        <h4>Deliver Exceptionally — Then Follow Up</h4>
+        <p>When an agent accepts a free shoot, treat it like your most important paying client. Deliver same-day or next-morning. Follow up personally to confirm they received the photos and are happy. Ask if they have upcoming listings. The goal is not just one great shoot — it is becoming their go-to photographer for every listing going forward.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">5</div>
+      <div>
+        <h4>Treat It Like a Pipeline — Not a One-Time Ask</h4>
+        <p>Most agents will not respond immediately. Some respond days later. Some respond a month later. One photographer reported receiving a reply to a free shoot offer from 2018 — seven years after it was sent. Think of every DM as a seed planted. You are building a pipeline, not chasing immediate results. The photographers who give up after two weeks of low response rates are the ones who never build a business.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>"Without clients you don't have a company. There are so many broke photographers out there — they focus on the craft side and ignore acquisition. The ones who grow fastest offer a free shoot intentionally, deliver perfectly, and repeat that process until referrals take over."</p>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+  <h2 class="lesson-title">Business Setup — <em>Systems That Make You Look and Run Professionally</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">How you run your business is part of your product. An agent who has to chase you for invoices, figures out how to book you by texting back and forth, and receives photos via a generic Dropbox link will not recommend you to colleagues — even if your photos are good. The photographers who build strong referral businesses make it effortless to work with them at every touchpoint.</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-icon">📅</div>
+      <h4>Booking System</h4>
+      <p>Agents need to be able to book online, specify the address, choose services, and confirm scheduling without a phone call. Spiro, HDPhotoHub, and similar platforms include booking pages. Set yours up before you launch.</p>
+      <div class="ic-tag">Spiro · HDPhotoHub · ShowAndTour</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">📸</div>
+      <h4>Photo Delivery</h4>
+      <p>Deliver via a professional gallery platform with pay-before-download enabled. Agents get a branded gallery, a property website link they can share, and a clean download experience. Covered in Module 4.</p>
+      <div class="ic-tag">Spiro · Pixieset · HDPhotoHub</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">📋</div>
+      <h4>Simple Contract</h4>
+      <p>A one-page contract covers: what you will deliver, your turnaround time, your cancellation policy, and payment terms. It protects you and signals professionalism. Templates are available from photography associations or easily drafted.</p>
+      <div class="ic-tag">Protects you + signals professionalism</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">💰</div>
+      <h4>Financial Tracking</h4>
+      <p>QuickBooks tracks income, expenses, and mileage (tax deductible). Set aside 25–30% of every payment for quarterly estimated taxes. Photographers who do not do this face a painful tax bill at year end.</p>
+      <div class="ic-tag">QuickBooks · set aside 25–30% for taxes</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🛡️</div>
+      <h4>Liability Insurance</h4>
+      <p>You are entering strangers' homes and flying drones over their properties. Liability insurance is non-negotiable. Drone adds complexity — State Farm has been recommended by working photographers at around $55/month for combined coverage.</p>
+      <div class="ic-tag">State Farm · ~$55/mo with drone coverage</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🌐</div>
+      <h4>Online Presence</h4>
+      <p>A portfolio website with your best work and a clear pricing/booking path. Instagram is equally important — post every listing, tag the agent, use local hashtags. Agents discover photographers on Instagram regularly.</p>
+      <div class="ic-tag">Website + Instagram = your storefront</div>
+    </div>
+  </div>
+
+  <p class="body-text">One business decision worth making early: <strong>use your own name or a business name?</strong> Starting under your own name is perfectly acceptable and costs nothing. A business name and LLC structure adds credibility and legal protection as you grow — but it is not necessary before your first paying client. Focus on clients first, business formalization second.</p>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 4 -->
+  <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+  <h2 class="lesson-title">The Income Math — <em>What It Actually Takes to Hit Your Goal</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">One of the most powerful things you can do early in building this business is get honest about the math. Real estate photography income is not mysterious — it is shoots times average invoice. Work backwards from your target and you know exactly what you need to build.</p>
+
+  <div class="math-box">
+    <h4>Sample Solo Photographer Income Calculation</h4>
+    <div class="math-row"><span class="math-label">Photos per week</span><span class="math-value">8 shoots</span></div>
+    <div class="math-row"><span class="math-label">Average invoice (photos + AI video + drone on some shoots)</span><span class="math-value">$275</span></div>
+    <div class="math-row"><span class="math-label">Weekly gross revenue</span><span class="math-value">$2,200</span></div>
+    <div class="math-row"><span class="math-label">Monthly gross (~4.3 weeks)</span><span class="math-value">$9,460</span></div>
+    <div class="math-row"><span class="math-label">Editing (AutoHDR ~$15/shoot)</span><span class="math-value">−$480</span></div>
+    <div class="math-row"><span class="math-label">Delivery platform (Spiro ~$5/listing)</span><span class="math-value">−$160</span></div>
+    <div class="math-row"><span class="math-label">Insurance, software, gas (~$400/mo)</span><span class="math-value">−$400</span></div>
+    <div class="math-row total"><span class="math-label">Estimated monthly take-home (~83% margin)</span><span class="math-value">~$8,420</span></div>
+  </div>
+
+  <p class="body-text">Eight shoots per week is very achievable once you have 4–6 reliable agent clients. Each shoot runs 60–90 minutes on location. A full shoot day of 4 properties takes 6–8 hours including drive time. Three full days per week gets you to 12 shoots — more than enough for $10,000+ months as a solo operator.</p>
+
+  <p class="body-text">The lever that moves income most is <strong>average order value, not shoot volume.</strong> Adding drone to your menu and getting 50% of agents to take it at $200 per shoot adds $400/week to revenue with no additional time on location. Adding AI video at $100 on half your shoots adds another $200/week. These upsells compound quickly:</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-icon">📷</div>
+      <h4>Photos Only</h4>
+      <p>8 shoots × $200 average = $1,600/week. Solid start. Leaves significant income on the table from available add-ons.</p>
+      <div class="ic-tag">$6,400–$7,000/month</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🚁</div>
+      <h4">+ Drone on 50% of Shoots</h4>
+      <p>4 shoots add $200 drone = $800 more per week. 30 extra minutes each time. Part 107 is a one-time test.</p>
+      <div class="ic-tag">+$3,200/month</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🎥</div>
+      <h4>+ AI Video on 50% of Shoots</h4>
+      <p>4 shoots add $100 AI video = $400 more per week. 20 minutes of post-processing. No additional location time.</p>
+      <div class="ic-tag">+$1,600/month</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">💰</div>
+      <h4>Full Service Package</h4>
+      <p>Photos + drone + AI video on most shoots brings average invoice to $400+. Same shoot count, dramatically higher monthly revenue.</p>
+      <div class="ic-tag">$11,000–$14,000/month</div>
+    </div>
+  </div>
+
+  <p class="body-text">The most important thing to understand about client acquisition is that it compounds. An agent who uses you for 30 listings per year refers two colleagues who each use you for 20 listings. Those 70 annual shoots from one original relationship — at $275 average — represent $19,250 per year from a single connection. <strong>Building genuine relationships with five or six productive agents is enough to sustain a full-time solo photography business indefinitely.</strong></p>
+
+  <div class="callout">
+    <p>"Real estate photography has three things that make it uniquely great: referral business, repeat business, and required business. Agents refer you to other agents. They hire you over and over. And they need to hire you — the photos are required to sell the house. Two of those three kick in automatically once you get the relationship rolling."</p>
+  </div>
+
+  <!-- SUPPLEMENTAL -->
+  <div class="supplemental-section">
+    <h3>📚 Supplemental Resource — The Complete Beginner to Pro Launch System</h3>
+    <p>Eli's step-by-step framework for going from zero to $10K/month: minimum gear to start, how to shoot your first house for a portfolio, the free shoot funnel with exact DM strategy, outsourcing editing from day one, and the full income math breakdown. Best watched after completing all 7 modules — the technical foundation makes this business framework much more actionable.</p>
+    <div class="video-card" style="margin-top:0.75rem;">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/CNkDmRKxcIM" title="How to Go From Beginner to Pro Real Estate Photographer 2025" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge supplemental">Supplemental · Full Launch System</span>
+        <h4>From Beginner to Pro — The Step-by-Step 2025 Launch System</h4>
+        <p>The complete business launch framework: minimum gear, first shoot process, free shoot client acquisition funnel, outsourcing editing from day one with AutoHDR, the Instagram DM method with exact targeting, and the income math to $10K/month. Eli's most practical video for photographers who are ready to launch their business immediately after completing technical training.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION BANNER -->
+  <div class="completion-banner">
+    <h3>You've Completed the <em>Real Estate Photography Track</em></h3>
+    <p>Seven modules, seven quizzes, and the complete knowledge base to start and build a professional real estate photography business — from camera settings to AI tools to client acquisition.</p>
+    <div class="completion-stats">
+      <div class="cs-item"><div class="cs-num">7</div><div class="cs-label">Modules Completed</div></div>
+      <div class="cs-item"><div class="cs-num">70</div><div class="cs-label">Quiz Questions</div></div>
+      <div class="cs-item"><div class="cs-num">15+</div><div class="cs-label">Tools & Platforms Covered</div></div>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:13px;">Now go shoot something. The only thing left is to start.</p>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section" id="quizSection">
+    <h3>Module 7 Knowledge Check</h3>
+    <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">What is the recommended method for setting your initial photography pricing when entering a new market?</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div>Price 20–30% below the market average to win clients faster when getting started.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div>Research 5–7 competitors, find what they charge for a standard shoot, average those prices, and position yourself in the middle of the pack — communicating quality without being the premium or budget option.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div>Start at the highest price in the market to signal premium quality from day one.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div>Copy the exact pricing of the most successful photographer in your market.</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. Research 5–7 local competitors, average their pricing for a standard shoot, and price yourself in the middle. This signals quality without positioning you as the cheapest option — which attracts the wrong type of client — or the most expensive, which is hard to justify without an established portfolio.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ The recommended method is to average your local market. Research 5–7 competitors, add their prices, divide by the number of companies, and price yourself at that average. Pricing at the bottom attracts the worst clients. Pricing in the middle communicates quality and filters for agents who value good work.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">Why is the square footage pricing model generally preferred over the image count model for real estate photography?</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">A</div>It is cleaner and eliminates mental overhead during the shoot — the house is a certain size so it is a certain price, with no need to track how many photos you've taken or negotiate what the final count should be.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div>It generates higher revenue per shoot because larger homes always have more rooms to photograph.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div>MLS platforms require square footage-based pricing for all listing photography invoices.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div>It makes it easier to charge for additional services like drone and virtual staging.</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. Square footage pricing is simple and unambiguous — one number determines the price. There is no counting photos during the shoot, no arguing about what was included, and no scope creep. It lets you focus entirely on composition and quality rather than tracking deliverables.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ Square footage pricing is cleaner — the house size determines the price, full stop. No counting photos while shooting, no disputes about what was included in the package, no mental overhead that pulls focus from composition. The house is a certain size so it is a certain price.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">What is the correct framing for the free shoot strategy — why is it NOT just working for free to gain experience?</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div>It is working for free, but only for a short time — a necessary sacrifice before building a paid client base.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div>It is a lead magnet — one free shoot per agent to demonstrate your quality with zero risk to them. The goal is not experience, it is converting that agent into a repeat paying client. You are confident enough in your work to let it sell itself.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div>It builds your portfolio quickly, which is the primary reason to do free shoots.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div>It establishes goodwill — agents remember the photographer who helped them when they were starting out.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. The free shoot is a strategic lead magnet — not charity, not working for free forever, not portfolio building. One shoot per agent gives them a zero-risk way to experience your quality. Once they see the results, they book you again at full price. You are treating it as an investment with a clear expected return.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ The free shoot is a lead magnet, not free work. One shoot per agent to give them zero-risk access to your quality. The moment they see how good their listing looks, they become a paying repeat client. It is a deliberate business strategy — not charity and not portfolio building.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">What response rate should you aim for when sending personalized Instagram DMs to real estate agents as part of a client acquisition campaign?</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div>50% — half of agents contacted should express interest if your message is well-crafted.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div>25% — one in four agents is a reasonable target for a strong personalized outreach campaign.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div>10% — for every 10 DMs sent, aim for one reply expressing interest. This is the benchmark that indicates your message is working. Below 10% means adjust the message before sending more.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div>1–2% — DM campaigns have very low response rates and volume is the only solution.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. 10% — one reply per 10 DMs — is the target benchmark. Below that means something in the message is not working and you should adjust before burning more leads. Above that means your message is strong and you can send more volume. The goal is quality replies, not maximum messages sent.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ 10% is the benchmark — one reply per 10 DMs sent. If you're below that, adjust your message before sending more. Sending hundreds of poorly converting messages burns your lead pool. Test with 20–30 at a time, measure the reply rate, and optimize before scaling volume.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">A photographer has 5 reliable agent clients who each list an average of 25 properties per year. Each client refers one colleague who lists 15 properties per year. How many annual shoots does this network represent?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div>125 shoots — just the 5 original clients × 25 listings each.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div>175 shoots — 5 original clients plus partial referral credit.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div>200 shoots — 5 original clients × 25 = 125, plus 5 referrals × 15 = 75. Total: 200 annual shoots from 10 client relationships.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div>250 shoots — referrals typically match or exceed the original client's volume.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. 5 × 25 = 125 from original clients. 5 × 15 = 75 from referrals. Total: 200 annual shoots. At $275 average invoice that is $55,000/year in revenue from 10 client relationships — most of which came from the original 5. This is the compounding power of referral-based business that makes real estate photography such a strong model.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ 5 original clients × 25 = 125 shoots. 5 referrals × 15 = 75 shoots. Total: 200 annual shoots. At $275 average invoice that is $55,000/year from 10 relationships that grew from 5. This compounding referral dynamic is why building genuine long-term relationships with a handful of productive agents is more valuable than constantly chasing new clients.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">Why is pay-before-download essential in a photography delivery platform — and not just a nice convenience feature?</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">A</div>It allows you to charge different prices to different agents for the same work.</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">B</div>Once agents download their photos, their motivation to pay the invoice drops significantly — they already have what they needed. Pay-before-download eliminates the payment chase entirely. It is a business protection mechanism, not a convenience feature.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">C</div>It creates an automatic payment record for tax purposes without requiring separate invoicing software.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">D</div>It is required by most MLS systems as a condition of listing photo delivery.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. After an agent downloads their photos, the urgency to pay disappears. They got what they needed. Pay-before-download removes this entirely — payment is required before access. It is a critical business protection mechanism that eliminates the most common source of cash flow friction in photography businesses.</div>
+        <div class="feedback incorrect" id="q6-wrong">✗ Pay-before-download is a business protection mechanism. Once agents have their photos, paying the invoice becomes low priority. Pay-before-download means every client pays every time without you ever having to chase a payment. Build the $5 delivery platform cost into your pricing and treat it as non-negotiable.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">What percentage of your income should be set aside regularly for estimated quarterly taxes as a self-employed photographer?</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">A</div>10–15% — self-employment taxes are similar to standard payroll withholding.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">B</div>15–20% — a reasonable estimate for most income levels.</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">C</div>25–30% — self-employed individuals pay both the employee and employer portions of Social Security and Medicare on top of income tax. Setting aside this amount from every payment prevents a painful surprise at tax time.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">D</div>Only set aside money when you know you will owe — quarterly payments are optional until you exceed $1,000 annual tax liability.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. Self-employed photographers pay the full 15.3% self-employment tax (Social Security + Medicare) on top of income tax. Setting aside 25–30% of every payment into a separate account means you always have what you need when quarterly estimated taxes are due — and you avoid the IRS underpayment penalty.</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ Set aside 25–30% of every payment. Self-employed individuals pay both the employee and employer portions of Social Security and Medicare (15.3% combined) plus income tax. Photographers who don't set this aside face a devastating tax bill at year end. Set it aside from the first dollar you earn.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">A photographer currently charges $200 per shoot and does 8 shoots per week. They add drone service at $200 per shoot and 50% of agents take it. What is the weekly revenue increase?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">A</div>$400 — all 8 shoots get the drone add-on.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">B</div>$800 — 4 shoots × $200 drone = $800 additional per week. Monthly that is approximately $3,400 in additional revenue for roughly 2 extra hours of drone flying per week.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">C</div>$600 — industry average drone uptake is closer to 30% not 50%.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">D</div>$1,600 — drone doubles the value of every shoot when properly marketed.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. 4 shoots × $200 = $800 additional weekly revenue. Over a 4.3-week month that is approximately $3,440/month. Each drone session adds roughly 30 minutes on location. This is why drone is consistently cited as the highest-return add-on service — significant revenue per hour of extra time invested.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ 50% of 8 shoots = 4 drone shoots. 4 × $200 = $800/week additional. Monthly: ~$3,440. Each drone session adds ~30 minutes on location. That is why drone is the highest-return first add-on — $800/week more revenue for 2 extra hours per week of flying time total.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">Why should a new photographer set up a booking system before launching their business — even before having any clients?</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">A</div>Booking systems automatically generate leads from agents searching for photographers online.</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">B</div>How you run your business is part of your product. An agent who has to book you through a series of text messages will not recommend you to colleagues — even if your photos are excellent. A professional booking experience signals that you are easy and reliable to work with.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">C</div>Booking systems are required by MLS rules for commercial real estate photographers.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">D</div>They prevent double-bookings when your shoot volume grows past 5 per week.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. The booking experience is part of your brand. Agents who book you easily, receive photos professionally, and pay through a clean system are more likely to rebook and refer than agents who had a friction-filled experience — regardless of how good the photos were. Build the professional infrastructure before you need it.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ Your business infrastructure is part of your product. An agent who has to book via text, receives a Dropbox link, and gets an invoice chased a week later will not recommend you — even if the photos are great. Professional systems (booking, delivery, payment) signal that you are easy and reliable. Build them before your first client.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">What are the three characteristics that make real estate photography uniquely strong as a business compared to other photography niches?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">A</div>High prices, luxury clients, and low competition in most markets.</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">B</div>Referral business (agents refer you to other agents), repeat business (the same agents hire you over and over for every listing), and required business (agents need professional photos to sell effectively — it is not optional spending).</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">C</div>Flexible hours, low equipment cost, and no licensing requirements to get started.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">D</div>Year-round demand, simple subject matter, and consistent pay regardless of market conditions.</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. The three Rs: Referral (agents constantly refer colleagues), Repeat (every listing is a new booking from the same client), and Required (photography is not a luxury for agents — it is necessary to compete). Two of the three kick in automatically once you build the relationship. This is why real estate photography is one of the most sustainable service businesses available.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ The three Rs: Referral business (agents refer you to colleagues constantly because they work together), Repeat business (agents hire you for every listing — not just once), and Required business (professional photography is not optional for competitive agents). These three dynamics together create the compounding growth that makes this business model so durable.</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="rp-module-6.html" class="btn-nav outline">← Module 6</a>
+  <div class="nav-module-title">
+    <strong>Track Complete</strong>
+    Real Estate Photography — All 7 Modules
+  </div>
+  <a href="real-estate-photography.html" class="btn-nav primary">← Back to Track Overview</a>
+</div>
+
+<footer style="background:var(--dark);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--warm-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var answers={};
+var quizData={
+  q1:{correct:'B',question:'What is the recommended method for setting your initial photography pricing when entering a new market?',options:{A:'Price 20–30% below the market average to win clients faster.',B:'Research 5–7 competitors, average their prices for a standard shoot, and position yourself in the middle of the pack.',C:'Start at the highest price in the market to signal premium quality.',D:'Copy the exact pricing of the most successful photographer in your market.'},explanation:'Research 5–7 local competitors, average their pricing, and price yourself at that average. Pricing at the bottom attracts the worst clients. Middle-of-market pricing signals quality and filters for agents who value good work.'},
+  q2:{correct:'A',question:'Why is the square footage pricing model generally preferred over the image count model?',options:{A:'It is cleaner and eliminates mental overhead during the shoot — the house is a certain size so it is a certain price, with no need to track how many photos you\'ve taken.',B:'It generates higher revenue per shoot because larger homes always have more rooms.',C:'MLS platforms require square footage-based pricing for all listing photography.',D:'It makes it easier to charge for additional services like drone and virtual staging.'},explanation:'Square footage pricing is simple and unambiguous. No counting photos while shooting, no disputes about what was included, no scope creep. The house size determines the price. This lets you focus entirely on composition and quality.'},
+  q3:{correct:'B',question:'What is the correct framing for the free shoot strategy?',options:{A:'It is working for free, but only for a short time before building a paid client base.',B:'It is a lead magnet — one free shoot per agent to demonstrate quality with zero risk to them. The goal is converting that agent into a repeat paying client.',C:'It builds your portfolio quickly, which is the primary reason to offer free shoots.',D:'It establishes goodwill — agents remember the photographer who helped them starting out.'},explanation:'The free shoot is a strategic lead magnet — not charity, not portfolio building. One shoot per agent gives them zero-risk access to your quality. Once they see the results, they book you at full price. It is a deliberate investment with a clear expected return.'},
+  q4:{correct:'C',question:'What response rate should you aim for when sending personalized Instagram DMs to real estate agents?',options:{A:'50% — half of agents should express interest with a well-crafted message.',B:'25% — one in four agents is a reasonable target.',C:'10% — for every 10 DMs sent, aim for one reply expressing interest. Below 10% means adjust the message before sending more.',D:'1–2% — DM campaigns have very low response rates and volume is the only solution.'},explanation:'10% is the benchmark — one reply per 10 DMs. Below that means adjust your message before burning more leads. Test with 20–30 at a time, measure the reply rate, and optimize before scaling volume.'},
+  q5:{correct:'C',question:'A photographer has 5 reliable agent clients who each list 25 properties/year. Each refers one colleague who lists 15 properties/year. How many annual shoots does this represent?',options:{A:'125 shoots — just the 5 original clients × 25 listings each.',B:'175 shoots — 5 original clients plus partial referral credit.',C:'200 shoots — 5 original clients × 25 = 125, plus 5 referrals × 15 = 75. Total: 200 annual shoots.',D:'250 shoots — referrals typically match or exceed original client volume.'},explanation:'5 × 25 = 125 + 5 × 15 = 75 = 200 annual shoots. At $275 average that is $55,000/year from 10 relationships that grew from 5. This is the compounding power of referral-based business.'},
+  q6:{correct:'B',question:'Why is pay-before-download essential in a photography delivery platform?',options:{A:'It allows you to charge different prices to different agents for the same work.',B:'Once agents download their photos, motivation to pay drops significantly. Pay-before-download eliminates the payment chase entirely — it is a business protection mechanism.',C:'It creates an automatic payment record for tax purposes.',D:'It is required by most MLS systems as a condition of listing photo delivery.'},explanation:'After an agent downloads their photos, paying the invoice becomes low priority — they already have what they needed. Pay-before-download means every client pays every time without any chasing required.'},
+  q7:{correct:'C',question:'What percentage of income should be set aside for estimated quarterly taxes as a self-employed photographer?',options:{A:'10–15% — similar to standard payroll withholding.',B:'15–20% — a reasonable estimate for most income levels.',C:'25–30% — self-employed individuals pay both employee and employer portions of Social Security and Medicare on top of income tax.',D:'Only set aside money when you know you will owe — quarterly payments are optional until $1,000 annual liability.'},explanation:'Self-employed photographers pay the full 15.3% self-employment tax plus income tax. Setting aside 25–30% from every payment means you always have what you need when quarterly taxes are due and avoid underpayment penalties.'},
+  q8:{correct:'B',question:'A photographer does 8 shoots/week at $200 each. They add drone at $200 per shoot and 50% of agents take it. What is the weekly revenue increase?',options:{A:'$400 — all 8 shoots get the drone add-on.',B:'$800 — 4 shoots × $200 drone = $800 additional per week. Monthly that is approximately $3,400 for roughly 2 extra hours of drone flying.',C:'$600 — industry average drone uptake is closer to 30%.',D:'$1,600 — drone doubles the value of every shoot.'},explanation:'4 shoots × $200 = $800/week additional. Over 4.3 weeks that is ~$3,440/month. Each drone session adds ~30 minutes. This is why drone is the highest-return first add-on — significant revenue for minimal extra time.'},
+  q9:{correct:'B',question:'Why should a new photographer set up a booking system before launching — even before having any clients?',options:{A:'Booking systems automatically generate leads from agents searching for photographers online.',B:'How you run your business is part of your product. An agent who books through text messages will not recommend you — even if your photos are excellent. Professional systems signal reliability.',C:'Booking systems are required by MLS rules for commercial real estate photographers.',D:'They prevent double-bookings when shoot volume grows past 5 per week.'},explanation:'Your business infrastructure is part of your brand. Agents who experience a friction-filled booking, delivery, and payment process will not recommend you regardless of photo quality. Build professional systems before your first client.'},
+  q10:{correct:'B',question:'What are the three characteristics that make real estate photography uniquely strong as a business?',options:{A:'High prices, luxury clients, and low competition in most markets.',B:'Referral business (agents refer colleagues), repeat business (same agents hire you for every listing), and required business (photography is necessary to compete — not optional spending).',C:'Flexible hours, low equipment cost, and no licensing requirements.',D:'Year-round demand, simple subject matter, and consistent pay regardless of market conditions.'},explanation:'The three Rs: Referral (agents constantly refer colleagues), Repeat (every listing is a new booking), and Required (photography is not optional for competitive agents). Two of the three kick in automatically once you build the relationship.'}
+};
+
+function selectOption(el,qId,isCorrect){
+  var block=el.parentElement;
+  var opts=block.querySelectorAll('.option');
+  opts.forEach(function(o){o.onclick=null;o.style.pointerEvents='none';});
+  if(isCorrect){el.classList.add('correct');block.querySelector('#'+qId+'-correct').style.display='block';}
+  else{el.classList.add('incorrect');block.querySelector('#'+qId+'-wrong').style.display='block';opts.forEach(function(o){if(o.getAttribute('data-correct')==='true')o.classList.add('correct');});}
+  answers[qId]={selected:el.querySelector('.option-letter').textContent,correct:isCorrect};
+  if(Object.keys(answers).length===Object.keys(quizData).length)document.getElementById('submitBtn').disabled=false;
+}
+
+function submitQuiz(){
+  var score=0;
+  Object.keys(answers).forEach(function(q){if(answers[q].correct)score++;});
+  var total=Object.keys(quizData).length;
+  document.getElementById('quizForm').style.display='none';
+  var result=document.getElementById('quizResult');
+  result.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  var passed=score>=8;
+  document.getElementById('resultLabel').textContent=passed?'✓ Module 7 Passed — Track Complete!':'Keep Reviewing';
+  document.getElementById('resultLabel').style.color=passed?'#7DEFA1':'#F8ADB4';
+  document.getElementById('resultMsg').textContent=passed
+    ?'You\'ve completed the entire Real Estate Photography track. You have the technical skills, the business framework, and the client acquisition strategy to launch. The only thing left is to go shoot something — practice on your own home, reach out to your first 20 agents, and get started. The photographers who succeed are the ones who begin.'
+    :'Review the pricing strategy, client acquisition funnel, and income math sections. Understanding how to price, find, and retain clients is just as important as understanding how to shoot. Both halves have to work together.';
+  var wrongs=Object.keys(answers).filter(function(q){return !answers[q].correct;});
+  if(wrongs.length>0){
+    var wr=document.getElementById('wrongReview');wr.style.display='block';
+    var wl=document.getElementById('wrongList');wl.innerHTML='';
+    wrongs.forEach(function(q){
+      var d=quizData[q];var sel=answers[q].selected;
+      var div=document.createElement('div');div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div><div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div><div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div><div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+
+function retryQuiz(){
+  answers={};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled=true;
+  document.querySelectorAll('.option').forEach(function(o){
+    o.className='option';o.style.pointerEvents='';
+    var qNum=o.closest('.question-block').querySelector('.question-num').textContent.replace('Question ','').replace(' of 10','');
+    var isCorrect=o.getAttribute('data-correct')==='true';
+    o.onclick=function(){selectOption(o,'q'+qNum,isCorrect);};
+  });
+  document.querySelectorAll('.feedback').forEach(function(f){f.style.display='none';});
+}
+</script>
+</body>
+</html>
