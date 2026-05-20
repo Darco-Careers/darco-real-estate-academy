@@ -71,7 +71,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 .warning strong{font-weight:700;}
 /* GEAR KITS */
 .kit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:1.75rem 0;}
-.kit-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s;}
+.kit-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s;display:flex;flex-direction:column;}
 .kit-card:hover{box-shadow:var(--shadow-card);}
 .kit-card.recommended{border-color:var(--warm-mid);}
 .kit-header{padding:1.1rem 1.4rem 0.75rem;border-bottom:1px solid var(--border);}
@@ -90,11 +90,11 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 .kit-header.budget .kit-price{color:var(--text-mid);}
 .kit-header.standard .kit-price{color:var(--warm-light);}
 .kit-header.premium .kit-price{color:var(--warm-mid);}
-.kit-body{padding:1rem 1.4rem 1.25rem;}
+.kit-body{padding:1rem 1.4rem 1.25rem;display:flex;flex-direction:column;flex:1;}
 .kit-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:0.65rem;font-size:13px;color:var(--text-mid);line-height:1.5;}
 .kit-item::before{content:'→';color:var(--warm-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
 .kit-item strong{color:var(--text-dark);font-weight:600;}
-.kit-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;padding:2px 7px;border-radius:6px;margin-top:0.75rem;}
+.kit-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;padding:3px 8px;border-radius:6px;margin-top:auto;padding-top:0.75rem;align-self:flex-start;}
 .kit-tag.start{background:var(--dark-pale);color:var(--dark-mid);}
 .kit-tag.recommended-tag{background:rgba(168,137,58,0.15);color:var(--warm-mid);}
 /* GEAR ITEM DETAIL */
