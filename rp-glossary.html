@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary — Real Estate Photography Track | Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#1C1A18;--dark-mid:#2E2B28;--dark-light:#4A4540;--dark-pale:#F5F2EE;
+  --warm:#C8A96A;--warm-mid:#A8893A;--warm-light:#DFC88A;--warm-pale:#FBF7EE;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(28,26,24,0.1);
+  --shadow-card:0 2px 16px rgba(28,26,24,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.3);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--warm);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--dark);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--warm-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--warm-light);}
+.nav-links a.active{color:var(--warm-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--dark-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--dark-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--dark);font-weight:600;}
+/* HERO */
+.gloss-hero{background:linear-gradient(135deg,#0E0D0C 0%,var(--dark) 55%,var(--dark-mid) 100%);padding:3.5rem 2.5rem 3rem;position:relative;overflow:hidden;}
+.gloss-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(200,169,106,0.1) 0%,transparent 70%);pointer-events:none;}
+.gloss-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--warm-light),transparent);}
+.gloss-hero-inner{max-width:900px;margin:0 auto;position:relative;}
+.gloss-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,106,0.15);border:1px solid rgba(200,169,106,0.3);color:var(--warm-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.gloss-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.gloss-hero h1 em{color:var(--warm-light);font-style:italic;}
+.gloss-hero p{font-size:1rem;color:rgba(255,255,255,0.65);max-width:580px;line-height:1.8;font-weight:300;}
+/* ALPHA NAV */
+.alpha-nav{background:var(--white);border-bottom:1px solid var(--border);padding:0.85rem 2.5rem;position:sticky;top:64px;z-index:90;display:flex;flex-wrap:wrap;gap:6px;}
+.alpha-btn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;color:var(--text-mid);background:var(--dark-pale);transition:all 0.15s;}
+.alpha-btn:hover{background:var(--warm);color:var(--dark);}
+.alpha-btn.has-terms{color:var(--dark);background:var(--cream-dark);}
+.alpha-count{font-size:10px;color:var(--text-light);margin-left:auto;align-self:center;white-space:nowrap;}
+/* LAYOUT */
+.gloss-body{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem;}
+/* CATEGORY SECTIONS */
+.cat-section{margin-bottom:3rem;}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--warm);}
+.cat-icon{font-size:1.5rem;}
+.cat-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--dark);}
+.cat-count{font-size:11px;font-weight:600;color:var(--text-light);background:var(--dark-pale);padding:3px 9px;border-radius:10px;margin-left:auto;}
+/* LETTER GROUPS */
+.letter-group{margin-bottom:2rem;}
+.letter-anchor{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--warm-mid);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border);}
+/* TERM CARDS */
+.term{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:0.75rem;transition:box-shadow 0.2s;}
+.term:hover{box-shadow:var(--shadow-card);}
+.term-word{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.15rem;}
+.term-abbr{font-size:11px;font-weight:700;color:var(--warm-mid);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:0.35rem;}
+.term-def{font-size:13.5px;color:var(--text-mid);line-height:1.75;}
+.term-def strong{color:var(--text-dark);font-weight:600;}
+.term-module{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:2px 8px;border-radius:6px;margin-top:0.5rem;background:var(--warm-pale);color:var(--warm-mid);}
+/* BACK TO TOP */
+.back-top{display:block;text-align:center;margin-top:2rem;color:var(--warm-mid);font-size:13px;font-weight:600;text-decoration:none;}
+.back-top:hover{color:var(--warm);}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .gloss-hero{padding:2.5rem 1.5rem;}
+  .gloss-body{padding:1.75rem 1.25rem 3rem;}
+  .breadcrumb,.alpha-nav{padding-left:1.25rem;padding-right:1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-photography.html">Track Overview</a></li>
+    <li><a href="rp-glossary.html" class="active">Glossary</a></li>
+    <li><a href="real-estate-photography.html" class="nav-back">← Photography Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-photography.html">Real Estate Photography</a><span class="sep">/</span>
+  <span class="current">Glossary</span>
+</div>
+
+<div class="gloss-hero">
+  <div class="gloss-hero-inner">
+    <div class="gloss-badge">Real Estate Photography Track · Reference</div>
+    <h1>Photography <em>Glossary</em></h1>
+    <p>Every key term, acronym, and concept used across all 7 modules — from camera settings and HDR editing to drone regulations, AI tools, and business systems.</p>
+  </div>
+</div>
+
+<div class="alpha-nav" id="alphaNav">
+  <a href="#A" class="alpha-btn has-terms">A</a>
+  <a href="#A" class="alpha-btn has-terms">B</a>
+  <a href="#C" class="alpha-btn has-terms">C</a>
+  <a href="#D" class="alpha-btn has-terms">D</a>
+  <a href="#E" class="alpha-btn has-terms">E</a>
+  <a href="#F" class="alpha-btn has-terms">F</a>
+  <a href="#G" class="alpha-btn has-terms">G</a>
+  <a href="#H" class="alpha-btn has-terms">H</a>
+  <a href="#I" class="alpha-btn has-terms">I</a>
+  <a href="#J" class="alpha-btn">J</a>
+  <a href="#K" class="alpha-btn">K</a>
+  <a href="#L" class="alpha-btn has-terms">L</a>
+  <a href="#M" class="alpha-btn has-terms">M</a>
+  <a href="#N" class="alpha-btn has-terms">N</a>
+  <a href="#O" class="alpha-btn has-terms">O</a>
+  <a href="#P" class="alpha-btn has-terms">P</a>
+  <a href="#Q" class="alpha-btn">Q</a>
+  <a href="#R" class="alpha-btn has-terms">R</a>
+  <a href="#S" class="alpha-btn has-terms">S</a>
+  <a href="#T" class="alpha-btn has-terms">T</a>
+  <a href="#U" class="alpha-btn has-terms">U</a>
+  <a href="#V" class="alpha-btn has-terms">V</a>
+  <a href="#W" class="alpha-btn has-terms">W</a>
+  <a href="#X" class="alpha-btn">X</a>
+  <a href="#Y" class="alpha-btn">Y</a>
+  <a href="#Z" class="alpha-btn">Z</a>
+  <span class="alpha-count">70+ terms across 7 modules</span>
+</div>
+
+<div class="gloss-body">
+
+  <!-- A -->
+  <div class="letter-group" id="A">
+    <div class="letter-anchor">A</div>
+
+    <div class="term">
+      <div class="term-word">AEB — Auto Exposure Bracketing</div>
+      <div class="term-def">A camera drive mode that automatically shoots multiple frames at different exposure levels in one shutter press. The standard setting for real estate HDR photography is <strong>5 shots at 2.0 EV steps</strong>, producing two underexposed, one metered, and two overexposed frames. These are later blended in editing to capture the full dynamic range of the scene.</div>
+      <span class="term-module">Module 3 · Module 4</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">AGL — Above Ground Level</div>
+      <div class="term-def">An altitude measurement taken from the ground directly below the aircraft, as opposed to MSL (Mean Sea Level). The FAA's 400-foot drone altitude limit under Part 107 is measured in AGL. Important distinction on the Part 107 exam — some questions specify MSL, others AGL.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Aperture</div>
+      <div class="term-def">The opening in a camera lens that controls how much light reaches the sensor, measured in f-stops. <strong>f/8 is the industry standard for real estate photography</strong> — it provides deep depth of field so everything from foreground furniture to the back wall stays sharp. Wider apertures (f/2.8) blur backgrounds; narrower apertures (f/16) cause diffraction softening.</div>
+      <span class="term-module">Module 3</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">AutoHDR</div>
+      <div class="term-def">An AI-powered photo editing platform purpose-built for real estate photographers. Accepts RAW bracket files and returns finished, delivery-ready images in 15–30 minutes. Features include HDR blending, window pulls, sky replacement, grass enhancement, virtual twilight, virtual staging, object removal, TV screen replacement, fireplace insertion, and paint color accuracy. Cost: approximately $0.50 per image. Integrates directly with Spiro.</div>
+      <span class="term-module">Module 4</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Aperture Priority Mode (A / Av)</div>
+      <div class="term-def">A camera exposure mode where the photographer sets the aperture and ISO, and the camera automatically calculates the correct shutter speed. The recommended shooting mode for real estate photography — set f/8 and the appropriate ISO, and the camera handles the rest.</div>
+      <span class="term-module">Module 3</span>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="letter-group" id="B">
+    <div class="letter-anchor">B</div>
+
+    <div class="term">
+      <div class="term-word">Bracket / Bracketing</div>
+      <div class="term-def">A sequence of photos taken at different exposure levels — typically 3 or 5 frames — to capture the full tonal range of a scene. In real estate photography, brackets are shot with AEB and blended in editing (Lightroom, Photoshop, or AI) to produce a single properly exposed image showing both interior detail and window views simultaneously.</div>
+      <span class="term-module">Module 3 · Module 4</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">BoxBrownie</div>
+      <div class="term-def">A popular outsourced photo editing and virtual staging service used by real estate photographers. Handles HDR blending, object removal, virtual staging, sky replacement, and other editing tasks. Pricing is per-image or per-room. A reliable option for photographers who outsource editing rather than using AI tools.</div>
+      <span class="term-module">Module 4 · Module 6</span>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="letter-group" id="C">
+    <div class="letter-anchor">C</div>
+
+    <div class="term">
+      <div class="term-word">Color Cast</div>
+      <div class="term-def">An unwanted color tint in a photo caused by artificial lighting — most commonly the orange/yellow cast from incandescent or warm LED bulbs. Interior real estate photos frequently have orange color casts on ceilings and walls. Corrected in editing using Lightroom's Color Range masking tool or Photoshop's Hue/Saturation adjustment.</div>
+      <span class="term-module">Module 4</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Crop Sensor</div>
+      <div class="term-def">A camera sensor smaller than full-frame (36×24mm). Crop sensors capture a narrower field of view than full-frame sensors at the same focal length — effectively multiplying the lens's focal length by a crop factor (typically 1.5× or 1.6×). Photographers using crop sensor cameras need a wider lens (10–18mm) to achieve the same angle of view as a 16–35mm on full-frame.</div>
+      <span class="term-module">Module 2</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">CubiCasa Tour</div>
+      <div class="term-def">An AI-powered virtual tour product from CubiCasa that generates an interactive floor plan-based tour from two inputs: a 5-minute smartphone floor plan scan and your existing listing photos. No 360 camera required. AI automatically places photos in their correct floor plan positions and generates a shareable URL for MLS, Zillow, and agent websites. Launched March 2025.</div>
+      <span class="term-module">Module 6</span>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="letter-group" id="D">
+    <div class="letter-anchor">D</div>
+
+    <div class="term">
+      <div class="term-word">Depth of Field (DOF)</div>
+      <div class="term-def">The range of distance in a scene that appears acceptably sharp in a photograph. <strong>Deep depth of field</strong> (achieved at f/8) keeps everything from a nearby couch to the far wall in focus — ideal for real estate. <strong>Shallow depth of field</strong> (achieved at f/2.8) blurs the background — used in portrait photography but generally avoided in real estate.</div>
+      <span class="term-module">Module 3</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Diffraction</div>
+      <div class="term-def">A loss of sharpness that occurs when shooting at very small apertures (f/16 and beyond) due to light bending around the edges of the aperture blades. This is why real estate photographers use f/8 rather than the smallest available aperture — f/8 provides deep depth of field without the softening caused by diffraction.</div>
+      <span class="term-module">Module 3</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">DJI Mini 4 Pro</div>
+      <div class="term-def">The recommended entry-level drone for real estate photography. Weighs under 250g (reducing some regulatory requirements), shoots 4K video and high-quality stills, has a 3-axis gimbal for stable footage, and supports AEB for HDR drone photography. Retail price approximately $760. Requires FAA Part 107 for commercial use despite being under 250g.</div>
+      <span class="term-module">Module 2 · Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Dolly Zoom</div>
+      <div class="term-def">An AI-generated camera movement effect available in PhotoAIVideo and similar platforms. Simulates the classic cinematic technique of slowly zooming into a scene while maintaining subject size — creating a subtle, dramatic pull toward the subject. The recommended default effect for beginners producing AI listing videos from still photos.</div>
+      <span class="term-module">Module 6</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Dynamic Range</div>
+      <div class="term-def">The difference between the darkest and brightest areas in a scene that a camera can capture simultaneously. Interior real estate photography has extreme dynamic range — bright windows versus dark corners. Human eyes adjust instantly; camera sensors cannot capture both in a single exposure. HDR bracketing and blending solves this problem.</div>
+      <span class="term-module">Module 4</span>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="letter-group" id="E">
+    <div class="letter-anchor">E</div>
+
+    <div class="term">
+      <div class="term-word">EOS R50</div>
+      <div class="term-def">The entry-level Canon mirrorless camera recommended as the Tier 1 budget kit for real estate photography. Shoots excellent stills and video, has AEB capability, and costs approximately $600. Photo quality is comparable to more expensive bodies — the upgrade path (to Canon EOS R full-frame) is driven by workflow efficiency and battery life, not image quality.</div>
+      <span class="term-module">Module 2</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">EV — Exposure Value</div>
+      <div class="term-def">A numerical representation of the combination of shutter speed and aperture that produces a given exposure. In AEB settings, the "2.0 EV steps" describes how far apart each bracket is from the next — larger EV steps capture a wider range of tones, useful in high-contrast interior scenes with bright windows.</div>
+      <span class="term-module">Module 3</span>
+    </div>
+  </div>
+
+  <!-- F -->
+  <div class="letter-group" id="F">
+    <div class="letter-anchor">F</div>
+
+    <div class="term">
+      <div class="term-word">FAA — Federal Aviation Administration</div>
+      <div class="term-def">The U.S. government agency that regulates all civil aviation, including commercial drone operations. The FAA requires Part 107 certification for any drone flown commercially. The FAA also manages airspace classification, drone registration, Remote ID requirements, and LAANC authorization for controlled airspace flights.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Flash / Off-Camera Flash</div>
+      <div class="term-def">A portable strobe or speedlite positioned away from the camera and aimed at the ceiling to create diffused, even lighting across a room. Bounced off the ceiling, flash fills dark corners, reduces the number of brackets needed, and speeds up both the shoot and editing. The Godox AD200 is the industry standard for real estate off-camera flash. Not required to start — adds professional quality when incorporated.</div>
+      <span class="term-module">Module 2 · Module 3</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Full-Frame</div>
+      <div class="term-def">A camera sensor size equivalent to a 35mm film frame (36×24mm). Full-frame sensors capture a wider field of view than crop sensors at the same focal length, perform better in low light, and are generally easier to use at volume due to larger physical size and better battery life. For real estate, a 16–35mm lens is the standard wide-angle choice on full-frame cameras.</div>
+      <span class="term-module">Module 2</span>
+    </div>
+  </div>
+
+  <!-- G -->
+  <div class="letter-group" id="G">
+    <div class="letter-anchor">G</div>
+
+    <div class="term">
+      <div class="term-word">Geared Head (Tripod)</div>
+      <div class="term-def">A tripod head with separate control knobs for each axis of movement, allowing precise micro-adjustments to camera position. Preferred over ball heads for real estate photography because it allows photographers to fine-tune vertical alignment without the camera slipping — a significant time saver when shooting many rooms per day. The Slik 700DX with geared head is the standard professional setup.</div>
+      <span class="term-module">Module 2</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Gimbal</div>
+      <div class="term-def">A motorized stabilization device that keeps a camera level and steady while moving, enabling smooth video walkthroughs. Essential for listing video production. The DJI RS series is the most commonly used gimbal in real estate videography. Added to a photographer's service menu after establishing a consistent photography client base.</div>
+      <span class="term-module">Module 2 · Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Google Gemini</div>
+      <div class="term-def">A free AI tool (gemini.google.com) used in the virtual staging video workflow. A still frame from an empty room is uploaded to Gemini with a text prompt (e.g., "stage this room with elegant modern furniture"), and the AI generates a furnished version of the same room. This staged image is then used as the end frame in Higgsfield AI to create an animated furniture reveal video clip.</div>
+      <span class="term-module">Module 6</span>
+    </div>
+  </div>
+
+  <!-- H -->
+  <div class="letter-group" id="H">
+    <div class="letter-anchor">H</div>
+
+    <div class="term">
+      <div class="term-word">HDR — High Dynamic Range</div>
+      <div class="term-def">A photography and editing technique that combines multiple exposures of the same scene to produce an image showing detail in both the darkest and brightest areas simultaneously. In real estate, HDR blending allows interiors and window views to both appear properly exposed in a single final image. The most widely used editing method in residential real estate photography.</div>
+      <span class="term-module">Module 3 · Module 4</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Hero Reveal</div>
+      <div class="term-def">A cinematic drone flight pattern used for luxury and waterfront listings. The drone starts at low altitude (15–20 feet) behind a natural obstruction — trees, a gate, a stone wall — and flies forward and upward simultaneously, dramatically revealing the property as it rises. Creates an exclusive, narrative feel appropriate for high-end listings with gated or screened approaches.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Higgsfield AI</div>
+      <div class="term-def">An AI video generation platform (higgsfield.ai) that creates animated clips from still images. Used in real estate photography for two main purposes: (1) virtual staging reveals — animating the transformation from an empty room to a furnished room using start and end frames, and (2) day-to-night transitions for exterior shots. Pro subscription required for the start/end frame feature.</div>
+      <span class="term-module">Module 6</span>
+    </div>
+  </div>
+
+  <!-- I -->
+  <div class="letter-group" id="I">
+    <div class="letter-anchor">I</div>
+
+    <div class="term">
+      <div class="term-word">ISO</div>
+      <div class="term-def">A camera setting that controls the sensor's sensitivity to light. Lower ISO (100–200) produces cleaner images with less digital noise — ideal for real estate photography where the camera is on a tripod in controlled conditions. Higher ISO brightens the image but introduces grain. The recommended setting is <strong>ISO 100–400</strong> depending on camera body quality; ISO 100 on crop sensors, up to 400 on full-frame.</div>
+      <span class="term-module">Module 3</span>
+    </div>
+  </div>
+
+  <!-- L -->
+  <div class="letter-group" id="L">
+    <div class="letter-anchor">L</div>
+
+    <div class="term">
+      <div class="term-word">LAANC — Low Altitude Authorization and Notification Capability</div>
+      <div class="term-def">The FAA's automated system for granting real-time airspace authorization to fly drones in controlled airspace near airports. Part 107 pilots can request LAANC authorization through apps like B4UFLY and AirMap — approval often arrives within minutes for standard residential areas. Some restricted zones require advance application up to 90 days ahead. Always check airspace before accepting a drone booking.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Lens Correction / Profile Correction</div>
+      <div class="term-def">A Lightroom and Camera Raw feature that automatically corrects geometric distortion, vignetting, and chromatic aberration introduced by wide-angle lenses. Essential for real estate photography — wide-angle lenses produce barrel distortion (curved lines) that makes rooms look unnatural. Enable lens corrections in Lightroom before exporting final images.</div>
+      <span class="term-module">Module 4</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Lightroom Classic</div>
+      <div class="term-def">Adobe's professional photo management and editing software. The primary editing environment for real estate photographers — used for organizing brackets, applying HDR auto-merge, making global adjustments (exposure, shadows, highlights, clarity, sharpening), applying lens corrections, color grading, and batch exporting. Distinct from the cloud-based "Lightroom" app — Classic is required for advanced features including HDR merge.</div>
+      <span class="term-module">Module 4</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Luminosity Masking</div>
+      <div class="term-def">A Photoshop technique for blending HDR exposures by creating a selection based on the image's brightness values (Command/Ctrl+click on the RGB channel). The resulting mask allows bright and dark exposures to blend naturally along their actual tonal boundaries, producing a more realistic and seamless result than manual painted masks. Considered the gold standard for manual HDR blending.</div>
+      <span class="term-module">Module 4</span>
+    </div>
+  </div>
+
+  <!-- M -->
+  <div class="letter-group" id="M">
+    <div class="letter-anchor">M</div>
+
+    <div class="term">
+      <div class="term-word">Matterport</div>
+      <div class="term-def">The leading platform for professional 3D virtual tours with LiDAR-grade dimensional accuracy (measurements within 1% of reality). Requires a dedicated 360-degree camera ($400+) and a systematic scanning process. Produces fully navigable 3D models with room measurement tools and AI-generated property descriptions. Best suited for luxury and commercial listings where dimensional accuracy matters; for standard residential, phone-based alternatives (Sphere AI, CubiCasa Tour) are now competitive.</div>
+      <span class="term-module">Module 6</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">MLS — Multiple Listing Service</div>
+      <div class="term-def">The shared database used by real estate agents to list and search properties for sale. MLS systems require listing photos to meet specific standards — typically JPEG format, minimum resolution, and specific aspect ratios. Most MLSs also accept video links and virtual tour URLs. MLS-ready delivery is a key feature of professional photography delivery platforms like Spiro.</div>
+      <span class="term-module">Module 1 · Module 4</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">MSL — Mean Sea Level</div>
+      <div class="term-def">An altitude measurement referenced from the average surface level of the ocean. Used in aviation and on sectional charts for instrument flying. Contrasted with AGL (Above Ground Level) — the distinction matters on the FAA Part 107 exam, where certain altitude questions specify MSL while the drone altitude limit (400 feet) is measured in AGL.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+  </div>
+
+  <!-- N -->
+  <div class="letter-group" id="N">
+    <div class="letter-anchor">N</div>
+
+    <div class="term">
+      <div class="term-word">Neighborhood Context Shot</div>
+      <div class="term-def">A drone flight pattern that rises and retreats from the property while the gimbal tilts downward to keep the house in the lower third of the frame — gradually revealing the surrounding geography. Shows buyers proximity to lakes, golf courses, schools, highways, and neighborhood layout. Answers the critical buyer question: "What is around this property?"</div>
+      <span class="term-module">Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">NOTAM — Notice to Airmen</div>
+      <div class="term-def">An official notice issued by aviation authorities about temporary changes or hazards to airspace — including large events, presidential travel routes, emergency operations, forest fires, and temporary flight restrictions. Part 107 pilots are required to check NOTAMs before every flight. Available at 1800wxbrief.com and integrated into apps like B4UFLY.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+  </div>
+
+  <!-- O -->
+  <div class="letter-group" id="O">
+    <div class="letter-anchor">O</div>
+
+    <div class="term">
+      <div class="term-word">Orbit / Point of Interest (POI)</div>
+      <div class="term-def">A drone flight pattern that circles the property at a consistent altitude with the camera pointed at the subject throughout. Shows the full property from all angles — lot boundaries, roof condition, backyard, surrounding context. Most DJI drones have an automated POI mode. The most commonly used drone pattern in residential real estate photography.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+  </div>
+
+  <!-- P -->
+  <div class="letter-group" id="P">
+    <div class="letter-anchor">P</div>
+
+    <div class="term">
+      <div class="term-word">Part 107</div>
+      <div class="term-def">The FAA regulation (14 CFR Part 107) governing commercial drone operations in the United States. Any drone flight conducted for compensation — regardless of drone size or weight — requires a Part 107 Remote Pilot Certificate. The exam is 60 multiple-choice questions at an FAA-approved testing center, $175 fee, 70% passing score. Recurrency training required every 24 months online for free.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Pay-Before-Download</div>
+      <div class="term-def">A delivery platform setting that requires agents to pay their invoice before accessing and downloading their photos. Once an agent has downloaded their files, motivation to pay drops significantly. Pay-before-download eliminates payment chasing entirely — agents pay without exception, every time. A critical business protection mechanism available in platforms like Spiro, HDPhotoHub, and ShowAndTour.</div>
+      <span class="term-module">Module 4 · Module 7</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">PhotoAIVideo</div>
+      <div class="term-def">An AI photo-to-video conversion platform (photoaivideo.com) built by CloudPano Labs for real estate photographers. Converts static listing photos into cinematic moving video clips using AI-generated camera movements — dolly zoom, orbit, pan, tilt, push/pull. Exports in both 16:9 (MLS/websites) and 9:16 vertical (Instagram Reels/TikTok) formats. Integrates with Zillow, Realtor.com, and major listing portals. Previously known as PropertyEdits.ai.</div>
+      <span class="term-module">Module 6</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Photoshop</div>
+      <div class="term-def">Adobe's professional image editing software used alongside Lightroom Classic for high-quality real estate HDR blending. Key techniques include: opening brackets as layers (via "Edit In → Open as Layers"), luminosity masking for exposure blending, pen tool selections for precise window masking, Camera Raw Filter for adjustments within Photoshop, and color cast correction via Hue/Saturation adjustments.</div>
+      <span class="term-module">Module 4</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">PIC — Pilot in Command</div>
+      <div class="term-def">The FAA-designated role for the licensed drone operator responsible for all aspects of a commercial drone flight. The PIC is legally accountable for ensuring compliance with all Part 107 regulations, maintaining visual line of sight, assessing weather and airspace conditions, and reporting any incidents causing $500+ in damages. Only a Part 107 certificate holder can serve as PIC on a commercial operation.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+  </div>
+
+  <!-- R -->
+  <div class="letter-group" id="R">
+    <div class="letter-anchor">R</div>
+
+    <div class="term">
+      <div class="term-word">RAW</div>
+      <div class="term-def">An uncompressed image file format that retains all the data captured by the camera sensor — including full shadow and highlight detail. Essential for HDR real estate photography because RAW files contain the complete tonal information needed for exposure blending. JPEG files discard much of this data permanently. Always shoot RAW for paid work — never JPEG.</div>
+      <span class="term-module">Module 3</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Remote ID</div>
+      <div class="term-def">A required digital identification system for drones — essentially a digital license plate. Broadcasts the drone's real-time position, altitude, speed, and the operator's location via a radio signal trackable by the FAA, law enforcement, and the public through apps like Drone Scanner and Air Centennial. Built into most drones manufactured after 2022; older drones require a ~$100 add-on module. Required for all commercial drone operations.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+  </div>
+
+  <!-- S -->
+  <div class="letter-group" id="S">
+    <div class="letter-anchor">S</div>
+
+    <div class="term">
+      <div class="term-word">SD Card</div>
+      <div class="term-def">The memory card used to store photos and videos in a camera. Always purchase new SD cards from reputable brands (Samsung, SanDisk) — used SD cards have an unknown write-cycle history and can fail without warning, potentially losing an entire shoot's files. Class 10 / UHS-I or faster recommended for real estate photography. A failed SD card on a paid shoot is an unrecoverable client relationship problem.</div>
+      <span class="term-module">Module 2</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Sectional Chart</div>
+      <div class="term-def">An aeronautical map used by pilots and drone operators to identify airspace classifications, restricted zones, airports, and other aviation information. Part 107 exam includes questions requiring candidates to read and interpret sectional charts — identifying airspace classes (A through G), airport types (controlled vs uncontrolled), altitude limits, prohibited and restricted areas, and military training routes.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Sky Replacement</div>
+      <div class="term-def">An editing technique that replaces a dull, overcast, or blown-out sky in an exterior photo with a clean blue sky. Available as an automated feature in Photoshop (Edit → Sky Replacement), AutoHDR, and Lightroom. Standard practice for virtually all exterior real estate photos — even decent skies are often replaced for a cleaner, more consistent look. Mike Burke maintains a sky replacement pack of personally shot skies.</div>
+      <span class="term-module">Module 4</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Sphere AI</div>
+      <div class="term-def">An iPhone app (sphere.app) that creates professional 360-degree virtual tours with no 360 camera required. The app guides the photographer room by room using on-screen dots; AI stitches the captures into a navigable walkthrough and generates a shareable link for MLS, Zillow, and agent websites. Subscription-based with a 14-day free trial. Android early access available. Saves $400+ compared to dedicated 360 camera systems.</div>
+      <span class="term-module">Module 6</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Spiro</div>
+      <div class="term-def">A real estate media delivery platform ($5 per listing) that combines professional photo galleries, property websites, pay-before-download payment processing, online booking, and Spiro scheduling in one system. Integrates directly with AutoHDR. The most recommended delivery platform for real estate photographers — recommended by multiple vetted instructors in this course.</div>
+      <span class="term-module">Module 4 · Module 7</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Square Footage Pricing Model</div>
+      <div class="term-def">A pricing structure where the photography fee is determined by the size of the property — e.g., 0–1,500 sq ft at one price, 1,500–2,500 at another, etc. Preferred over image-count pricing because it is unambiguous, eliminates on-site counting, and removes scope disputes. The house is a certain size so it is a certain price — no negotiation, no tracking.</div>
+      <span class="term-module">Module 7</span>
+    </div>
+  </div>
+
+  <!-- T -->
+  <div class="letter-group" id="T">
+    <div class="letter-anchor">T</div>
+
+    <div class="term">
+      <div class="term-word">TFR — Temporary Flight Restriction</div>
+      <div class="term-def">A temporary airspace restriction issued by the FAA for specific events or situations — sporting events, presidential travel, disaster sites, forest fires, or national security concerns. Drone pilots must check for active TFRs before every flight. Flying a drone in an active TFR can result in severe civil and criminal penalties. Available through B4UFLY, AirMap, and FAA Notice to Airmen (NOTAM) systems.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Tripod</div>
+      <div class="term-def">A three-legged camera support essential for real estate photography. Required for sharp long-exposure interior shots, consistent bracket sequences (all frames must be identical for HDR blending), and stable compositions. The Slik 700DX is the most recommended tripod for working real estate photographers — sturdy, long center column for quick height adjustment, and durable enough for daily field use. Ball head works for beginners; geared head preferred at volume.</div>
+      <span class="term-module">Module 2 · Module 3</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">The Three Rs</div>
+      <div class="term-def">The three business characteristics that make real estate photography uniquely sustainable: <strong>Referral</strong> (agents constantly refer colleagues, creating compounding growth), <strong>Repeat</strong> (agents hire you for every listing — not just once — so revenue builds with each new client), and <strong>Required</strong> (professional photography is not optional for competitive agents — it is a necessary business expense). Two of the three activate automatically once the client relationship is established.</div>
+      <span class="term-module">Module 7</span>
+    </div>
+  </div>
+
+  <!-- U -->
+  <div class="letter-group" id="U">
+    <div class="letter-anchor">U</div>
+
+    <div class="term">
+      <div class="term-word">UAS — Unmanned Aircraft System</div>
+      <div class="term-def">The FAA's official term for a drone and all its associated equipment — the aircraft itself, the remote controller, the communication links, and any ground support equipment. Part 107 regulations apply to "small UAS" weighing between 0.55 lbs (250g) and 55 lbs. The term UAS (rather than "drone") is used throughout the Part 107 exam.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+  </div>
+
+  <!-- V -->
+  <div class="letter-group" id="V">
+    <div class="letter-anchor">V</div>
+
+    <div class="term">
+      <div class="term-word">Virtual Staging</div>
+      <div class="term-def">The digital addition of furniture, decor, and finishing to photos or videos of empty rooms. Photo virtual staging adds furnished renders to still images (available through BoxBrownie, AutoHDR, and AI tools). Video virtual staging (via Higgsfield AI) creates animated clips showing furniture appearing in an empty room. Particularly valuable for vacant listings, new construction, and investment properties where physical staging is impractical.</div>
+      <span class="term-module">Module 6</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Virtual Twilight</div>
+      <div class="term-def">An AI-generated conversion of a daytime exterior photo into a twilight/dusk image — complete with a dramatic sky, lit interior windows, and warm exterior lighting effects. Available in AutoHDR and Higgsfield AI. Eliminates the need for a separate twilight shoot (which requires returning to the property at dusk). A popular listing upgrade that significantly increases visual impact at a fraction of the cost of a real twilight session.</div>
+      <span class="term-module">Module 4 · Module 6</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Visual Line of Sight (VLOS)</div>
+      <div class="term-def">The FAA requirement that a Part 107 drone pilot must be able to see their drone with unaided eyes (no binoculars, no FPV goggles alone) at all times during flight. The pilot must be able to determine the drone's location, altitude, attitude, and direction of flight. A Visual Observer may assist but the PIC remains responsible. Flying beyond VLOS requires a specific FAA waiver.</div>
+      <span class="term-module">Module 5</span>
+    </div>
+  </div>
+
+  <!-- W -->
+  <div class="letter-group" id="W">
+    <div class="letter-anchor">W</div>
+
+    <div class="term">
+      <div class="term-word">White Balance</div>
+      <div class="term-def">A camera setting that adjusts color rendering to compensate for different light sources — daylight, cloudy, tungsten, fluorescent, etc. Set to <strong>Auto</strong> for interior photography (color correction handled in editing). Set to a <strong>fixed value</strong> (Sunny 5200K or Cloudy 6000K) for drone AEB brackets — Auto WB shifts between frames in a sequence, creating inconsistent color that is difficult or impossible to blend cleanly.</div>
+      <span class="term-module">Module 3 · Module 5</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Wide-Angle Lens</div>
+      <div class="term-def">A lens with a short focal length that captures a wider field of view than a standard lens. Essential and non-negotiable for real estate photography — without a wide-angle lens, small rooms appear cramped and photographers cannot capture full kitchens or living rooms. The correct focal range is <strong>10–18mm for crop sensor cameras</strong> and <strong>16–35mm for full-frame cameras</strong>. The lens matters more than the camera body in real estate photography.</div>
+      <span class="term-module">Module 2</span>
+    </div>
+
+    <div class="term">
+      <div class="term-word">Window Pull / Window Masking</div>
+      <div class="term-def">The process of replacing a blown-out (overexposed) window in an interior photo with correctly exposed exterior detail from a darker bracket. Requires selecting the window area (using Photoshop's pen tool or Lightroom masking) and blending in the window view from a darker frame. The most time-consuming manual editing task in HDR blending — automated by AI editing platforms like AutoHDR.</div>
+      <span class="term-module">Module 4</span>
+    </div>
+  </div>
+
+  <!-- Z -->
+  <div class="letter-group" id="Z">
+    <div class="letter-anchor">Z</div>
+
+    <div class="term">
+      <div class="term-word">Zillow 3D Home</div>
+      <div class="term-def">A free virtual tour feature built into the Zillow app. Photographers capture 360-degree panoramas room by room using their smartphone, and the tour auto-publishes directly to the property's Zillow listing. No separate hosting, no additional subscription, no 360 camera required. The fastest and most affordable way to offer a basic virtual tour service — particularly valuable for agents already using Zillow as their primary listing platform.</div>
+      <span class="term-module">Module 6</span>
+    </div>
+  </div>
+
+  <a href="#" class="back-top">↑ Back to top</a>
+
+</div>
+
+<footer style="background:var(--dark);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--warm-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+</body>
+</html>
