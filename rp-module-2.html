@@ -70,34 +70,8 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 .warning p{font-size:13.5px;color:#8B2F20;line-height:1.7;}
 .warning strong{font-weight:700;}
 /* GEAR KITS */
-.kit-grid{display:flex;flex-direction:column;gap:1.1rem;margin:1.75rem 0;}
-.kit-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s;display:grid;grid-template-columns:220px 1fr;min-height:0;}
-.kit-card:hover{box-shadow:var(--shadow-card);}
-.kit-card.recommended{border-color:var(--warm-mid);}
-.kit-header{padding:1.5rem 1.5rem;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;}
-.kit-header.budget{background:var(--cream-dark);}
-.kit-header.standard{background:var(--dark);}
-.kit-header.premium{background:var(--warm-pale);}
-.kit-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.4rem;}
-.kit-label.budget{color:var(--text-light);}
-.kit-label.standard{color:var(--warm-light);}
-.kit-label.premium{color:var(--warm-mid);}
-.kit-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;line-height:1.25;margin-bottom:0.4rem;}
-.kit-header.budget .kit-name{color:var(--text-dark);}
-.kit-header.standard .kit-name{color:var(--white);}
-.kit-header.premium .kit-name{color:var(--dark);}
-.kit-price{font-size:12px;font-weight:600;margin-bottom:0.75rem;}
-.kit-header.budget .kit-price{color:var(--text-mid);}
-.kit-header.standard .kit-price{color:var(--warm-light);}
-.kit-header.premium .kit-price{color:var(--warm-mid);}
-.kit-body{padding:1.25rem 1.5rem;display:flex;flex-wrap:wrap;align-items:flex-start;gap:0.1rem 1.5rem;}
-.kit-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text-mid);line-height:1.55;width:calc(50% - 0.75rem);}
-.kit-item::before{content:'→';color:var(--warm-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
-.kit-item strong{color:var(--text-dark);font-weight:600;}
-.kit-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;padding:4px 10px;border-radius:6px;margin-top:auto;align-self:flex-end;}
-.kit-tag.start{background:var(--dark-pale);color:var(--dark-mid);}
-.kit-tag.recommended-tag{background:rgba(168,137,58,0.15);color:var(--warm-mid);}
-.kit-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s;display:flex;flex-direction:column;}
+.kit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin:1.75rem 0;}
+.kit-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s;}
 .kit-card:hover{box-shadow:var(--shadow-card);}
 .kit-card.recommended{border-color:var(--warm-mid);}
 .kit-header{padding:1.1rem 1.4rem 0.75rem;border-bottom:1px solid var(--border);}
@@ -116,11 +90,11 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 .kit-header.budget .kit-price{color:var(--text-mid);}
 .kit-header.standard .kit-price{color:var(--warm-light);}
 .kit-header.premium .kit-price{color:var(--warm-mid);}
-.kit-body{padding:1rem 1.4rem 1.25rem;display:flex;flex-direction:column;flex:1;}
-.kit-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:0.65rem;font-size:13px;color:var(--text-mid);line-height:1.55;}
+.kit-body{padding:1rem 1.4rem 1.25rem;}
+.kit-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:0.65rem;font-size:13px;color:var(--text-mid);line-height:1.5;}
 .kit-item::before{content:'→';color:var(--warm-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
 .kit-item strong{color:var(--text-dark);font-weight:600;}
-.kit-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;padding:3px 8px;border-radius:6px;margin-top:auto;padding-top:0.75rem;align-self:flex-start;}
+.kit-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;padding:2px 7px;border-radius:6px;margin-top:0.75rem;}
 .kit-tag.start{background:var(--dark-pale);color:var(--dark-mid);}
 .kit-tag.recommended-tag{background:rgba(168,137,58,0.15);color:var(--warm-mid);}
 /* GEAR ITEM DETAIL */
@@ -229,7 +203,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
   .breadcrumb{padding:0.75rem 1.25rem;}
   .progress-bar{padding:0.9rem 1.25rem;}
   .module-nav{padding:1rem 1.25rem;}
-  .kit-card{grid-template-columns:1fr;}.kit-header{border-right:none;border-bottom:1px solid var(--border);}.kit-item{width:100%;}
+  .kit-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -325,13 +299,13 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
         <div class="kit-label budget">Tier 1</div>
         <div class="kit-name">Budget Starter Kit</div>
         <div class="kit-price">~$600–$900 total</div>
-        <span class="kit-tag start">Start here</span>
       </div>
       <div class="kit-body">
-        <div class="kit-item"><strong>Camera:</strong> Canon EOS R50 (~$600 body) — excellent stills and video, all functionality you need</div>
-        <div class="kit-item"><strong>Lens:</strong> Canon RF-S 10–18mm wide-angle — covers interiors on a crop sensor</div>
+        <div class="kit-item"><strong>Camera:</strong> Canon EOS R50 (~$600 body) — shoots excellent stills and video, all the functionality you need</div>
+        <div class="kit-item"><strong>Lens:</strong> Canon RF-S 10–18mm wide-angle — covers interiors comfortably on a crop sensor</div>
         <div class="kit-item"><strong>Tripod:</strong> Basic ball-head tripod (~$50–$80) — functional, gets the job done</div>
-        <div class="kit-item"><strong>SD Cards:</strong> 2× Class 10 — buy new, not used</div>
+        <div class="kit-item"><strong>SD Cards:</strong> 2× Class 10 cards — buy new, not used</div>
+        <span class="kit-tag start">Start here</span>
       </div>
     </div>
 
@@ -340,13 +314,13 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
         <div class="kit-label standard">Tier 2</div>
         <div class="kit-name">Professional Working Kit</div>
         <div class="kit-price">~$2,000–$2,500 total</div>
-        <span class="kit-tag recommended-tag">What working pros use</span>
       </div>
       <div class="kit-body">
-        <div class="kit-item"><strong>Camera:</strong> Canon EOS R full-frame — better battery life, easier at volume, better video</div>
-        <div class="kit-item"><strong>Lens:</strong> 16–35mm wide-angle — less width needed on a full-frame sensor</div>
-        <div class="kit-item"><strong>Tripod:</strong> Slik 700DX with geared head — fine-tune verticals precisely at volume</div>
-        <div class="kit-item"><strong>Flash:</strong> Godox AD200 or equivalent — off-camera flash for interior lighting</div>
+        <div class="kit-item"><strong>Camera:</strong> Canon EOS R (full-frame) — better battery life, easier to use at volume, better video performance</div>
+        <div class="kit-item"><strong>Lens:</strong> 16–35mm wide-angle (full-frame) — you need less width on a full-frame sensor</div>
+        <div class="kit-item"><strong>Tripod:</strong> Slik 700DX with geared head — fine-tune verticals precisely, worth every dollar when shooting at volume</div>
+        <div class="kit-item"><strong>Flash:</strong> Godox AD200 or equivalent — off-camera flash for professional interior lighting</div>
+        <span class="kit-tag recommended-tag">What working pros use</span>
       </div>
     </div>
 
@@ -355,14 +329,14 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
         <div class="kit-label premium">Tier 3</div>
         <div class="kit-name">Full-Service Kit</div>
         <div class="kit-price">~$4,000–$6,000 total</div>
-        <span class="kit-tag start">Upgrade when revenue justifies it</span>
       </div>
       <div class="kit-body">
         <div class="kit-item"><strong>Camera:</strong> Sony A7 III or Canon EOS R — full-frame, excellent low-light, superior video</div>
         <div class="kit-item"><strong>Lens:</strong> Sony/Canon 16–35mm f/2.8 — premium glass for demanding shots</div>
         <div class="kit-item"><strong>Tripod:</strong> Manfrotto 190X with geared head</div>
         <div class="kit-item"><strong>Drone:</strong> DJI Mini 4 Pro — add aerial to your service menu</div>
-        <div class="kit-item"><strong>Gimbal:</strong> DJI RS series — for video walkthroughs</div>
+        <div class="kit-item"><strong>Gimbal:</strong> For video walkthroughs</div>
+        <span class="kit-tag start">Upgrade when revenue justifies it</span>
       </div>
     </div>
 
@@ -391,42 +365,42 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
   <p class="body-text">Every piece of gear in a real estate photography kit has a specific job. Understanding why each item matters helps you make better buying decisions and avoid spending money on things that won't improve your results.</p>
 
   <div class="gear-detail">
-    <div class="gear-icon">📷</div>
+    <div class="gear-icon">??</div>
     <div class="gear-content">
       <div class="gear-sub">The Camera Body</div>
       <h4>A DSLR or Mirrorless Body — Any Will Work</h4>
       <p>For real estate photography, any interchangeable-lens camera made in the last 10 years will produce results agents are happy with. You shoot at base ISO (100–200) in controlled conditions from a tripod — the conditions where even entry-level sensors perform excellently. The most important camera features for real estate are: auto-exposure bracketing (AEB) for HDR shooting, a level indicator or bubble level for keeping verticals straight, and a remote shutter release port or wireless trigger capability.</p>
-      <p class="gear-tip">💡 If you already own a DSLR or mirrorless camera, use it. Don't buy a new body before getting your first paying client.</p>
+      <p class="gear-tip">?? If you already own a DSLR or mirrorless camera, use it. Don't buy a new body before getting your first paying client.</p>
     </div>
   </div>
 
   <div class="gear-detail">
-    <div class="gear-icon">🔭</div>
+    <div class="gear-icon">??</div>
     <div class="gear-content">
       <div class="gear-sub">The Lens — Most Important Purchase</div>
       <h4>Wide-Angle Lens: 10–18mm (Crop) or 16–35mm (Full-Frame)</h4>
       <p>The lens matters more than the camera body in real estate photography. A wide-angle lens is non-negotiable — without it, small rooms look cramped, you cannot capture the full kitchen or living room, and your images look amateur regardless of how good the camera body is. For a crop sensor camera, you need a lens that reaches at least 10mm at its widest. For a full-frame camera, 16mm is sufficient. Autofocus is important for speed. Look for image stabilization if available.</p>
-      <p class="gear-tip">💡 If you're on a tight budget, buy a used wide-angle lens before upgrading the camera body. The lens is where image quality actually lives.</p>
+      <p class="gear-tip">?? If you're on a tight budget, buy a used wide-angle lens before upgrading the camera body. The lens is where image quality actually lives.</p>
     </div>
   </div>
 
   <div class="gear-detail">
-    <div class="gear-icon">📐</div>
+    <div class="gear-icon">??</div>
     <div class="gear-content">
       <div class="gear-sub">The Tripod</div>
       <h4>Sturdy Tripod + Ball Head or Geared Head</h4>
       <p>Real estate photography requires long exposures at low ISO for clean images — that means the camera must be completely still. A cheap, wobbly tripod produces blurry images regardless of how expensive your camera is. The tripod also holds the camera at consistent heights across rooms, making your galleries look cohesive. When starting out, a basic ball-head tripod works fine. When you upgrade, a geared head (like the Manfrotto X-Pro or Slik equivalent) allows you to make micro-adjustments to get vertical lines perfectly straight — a significant time saver when shooting at volume.</p>
-      <p class="gear-tip">💡 You will take your tripod in and out of the car dozens of times per week. Get one that is quick to set up and robust enough for daily use — not a photography-show tripod you're afraid to scratch.</p>
+      <p class="gear-tip">?? You will take your tripod in and out of the car dozens of times per week. Get one that is quick to set up and robust enough for daily use — not a photography-show tripod you're afraid to scratch.</p>
     </div>
   </div>
 
   <div class="gear-detail">
-    <div class="gear-icon">💡</div>
+    <div class="gear-icon">??</div>
     <div class="gear-content">
       <div class="gear-sub">The Flash — What Separates Professional Results</div>
       <h4>Off-Camera Flash (Speedlite or Strobe)</h4>
       <p>A flash is what separates professional interior photography from amateur iPhone shots. Interior spaces have two major problems: dark corners that natural light doesn't reach, and high-contrast windows that blow out when you expose for the interior. An off-camera flash — pointed at the ceiling to bounce diffused light across the room — solves the dark corner problem and significantly reduces the number of bracketed exposures you need to blend in editing. The Godox AD200 is the industry favorite: powerful enough for large rooms, portable, and reasonably priced. A basic speedlite works when starting out.</p>
-      <p class="gear-tip">💡 You don't need flash to start. Many photographers shoot HDR-only at first. But adding flash dramatically speeds up your on-site time and improves your images — it's the upgrade that pays for itself fastest.</p>
+      <p class="gear-tip">?? You don't need flash to start. Many photographers shoot HDR-only at first. But adding flash dramatically speeds up your on-site time and improves your images — it's the upgrade that pays for itself fastest.</p>
     </div>
   </div>
 
@@ -441,25 +415,25 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 
   <div class="addon-grid">
     <div class="addon-card">
-      <div class="addon-icon">🚁</div>
+      <div class="addon-icon">??</div>
       <h4>Drone — DJI Mini 4 Pro</h4>
       <p>The highest-return add-on in real estate photography. Adds $150–$300 per invoice for 30 extra minutes on location. Requires FAA Part 107 license to shoot commercially — covered in Module 5.</p>
       <div class="addon-when">Buy when: generating consistent photography income</div>
     </div>
     <div class="addon-card">
-      <div class="addon-icon">🎬</div>
+      <div class="addon-icon">??</div>
       <h4>Gimbal — DJI RS Series</h4>
       <p>Stabilizes the camera for smooth video walkthroughs. Essential once you add listing video to your services. The DJI RS 3 handles most mirrorless and DSLR cameras. Match the weight capacity to your camera.</p>
       <div class="addon-when">Buy when: adding video walkthrough service</div>
     </div>
     <div class="addon-card">
-      <div class="addon-icon">🔄</div>
+      <div class="addon-icon">??</div>
       <h4>360 Camera — Insta360 X3</h4>
       <p>Enables Matterport-style 3D virtual tours when paired with the Matterport app. The Insta360 X3 works with the Matterport platform at a fraction of the dedicated camera cost. Valuable in luxury and out-of-state buyer markets.</p>
       <div class="addon-when">Buy when: clients requesting 3D tours</div>
     </div>
     <div class="addon-card">
-      <div class="addon-icon">🎙️</div>
+      <div class="addon-icon">??️</div>
       <h4>Wireless Mic — DJI Mic 2</h4>
       <p>Required for agent-on-camera videos — listing introductions, agent profile videos, testimonials. A lapel mic removes wind and background noise from outdoor recordings. A professional mic makes the agent look and sound professional, which they appreciate.</p>
       <div class="addon-when">Buy when: offering agent video services</div>
@@ -523,7 +497,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 
   <!-- SUPPLEMENTAL -->
   <div class="supplemental-section">
-    <h3>📚 Supplemental Resources</h3>
+    <h3>?? Supplemental Resources</h3>
     <p>Additional gear overview covering budget tiers, Sony vs Canon options, and how to build a starter kit for under $500.</p>
     <div class="video-card" style="margin-top:0.75rem;">
       <div class="video-wrapper">
@@ -808,4 +782,5 @@ function retryQuiz(){
 </script>
 
 </body>
+
 </html>
