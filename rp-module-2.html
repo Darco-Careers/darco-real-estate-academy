@@ -70,32 +70,57 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 .warning p{font-size:13.5px;color:#8B2F20;line-height:1.7;}
 .warning strong{font-weight:700;}
 /* GEAR KITS */
-.kit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:1.75rem 0;}
-.kit-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s;display:flex;flex-direction:column;}
+.kit-grid{display:flex;flex-direction:column;gap:1.1rem;margin:1.75rem 0;}
+.kit-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s;display:grid;grid-template-columns:220px 1fr;min-height:0;}
 .kit-card:hover{box-shadow:var(--shadow-card);}
 .kit-card.recommended{border-color:var(--warm-mid);}
-.kit-header{padding:1.25rem 1.5rem 1rem;border-bottom:1px solid var(--border);}
+.kit-header{padding:1.5rem 1.5rem;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;}
 .kit-header.budget{background:var(--cream-dark);}
 .kit-header.standard{background:var(--dark);}
 .kit-header.premium{background:var(--warm-pale);}
-.kit-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.3rem;}
+.kit-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.4rem;}
 .kit-label.budget{color:var(--text-light);}
 .kit-label.standard{color:var(--warm-light);}
 .kit-label.premium{color:var(--warm-mid);}
-.kit-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;line-height:1.2;margin-bottom:0.3rem;}
+.kit-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;line-height:1.25;margin-bottom:0.4rem;}
 .kit-header.budget .kit-name{color:var(--text-dark);}
 .kit-header.standard .kit-name{color:var(--white);}
 .kit-header.premium .kit-name{color:var(--dark);}
-.kit-price{font-size:13px;font-weight:700;margin-top:0;}
+.kit-price{font-size:12px;font-weight:600;margin-bottom:0.75rem;}
 .kit-header.budget .kit-price{color:var(--text-mid);}
 .kit-header.standard .kit-price{color:var(--warm-light);}
 .kit-header.premium .kit-price{color:var(--warm-mid);}
-.kit-body{padding:1.25rem 1.5rem 1.5rem;display:flex;flex-direction:column;flex:1;}
-.kit-item{display:grid;grid-template-columns:70px 1fr;gap:0.5rem;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:13px;line-height:1.5;}
-.kit-item:last-of-type{border-bottom:none;}
-.kit-item strong{color:var(--warm-mid);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:0.3px;}
-.kit-item span{color:var(--text-mid);}
-.kit-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.3px;padding:5px 12px;border-radius:8px;margin-top:1.1rem;align-self:flex-start;}
+.kit-body{padding:1.25rem 1.5rem;display:flex;flex-wrap:wrap;align-items:flex-start;gap:0.1rem 1.5rem;}
+.kit-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text-mid);line-height:1.55;width:calc(50% - 0.75rem);}
+.kit-item::before{content:'→';color:var(--warm-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
+.kit-item strong{color:var(--text-dark);font-weight:600;}
+.kit-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;padding:4px 10px;border-radius:6px;margin-top:auto;align-self:flex-end;}
+.kit-tag.start{background:var(--dark-pale);color:var(--dark-mid);}
+.kit-tag.recommended-tag{background:rgba(168,137,58,0.15);color:var(--warm-mid);}
+.kit-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s;display:flex;flex-direction:column;}
+.kit-card:hover{box-shadow:var(--shadow-card);}
+.kit-card.recommended{border-color:var(--warm-mid);}
+.kit-header{padding:1.1rem 1.4rem 0.75rem;border-bottom:1px solid var(--border);}
+.kit-header.budget{background:var(--cream-dark);}
+.kit-header.standard{background:var(--dark);color:var(--white);}
+.kit-header.premium{background:var(--warm-pale);}
+.kit-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.25rem;}
+.kit-label.budget{color:var(--text-light);}
+.kit-label.standard{color:var(--warm-light);}
+.kit-label.premium{color:var(--warm-mid);}
+.kit-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;}
+.kit-header.budget .kit-name{color:var(--text-dark);}
+.kit-header.standard .kit-name{color:var(--white);}
+.kit-header.premium .kit-name{color:var(--dark);}
+.kit-price{font-size:12px;font-weight:600;margin-top:0.2rem;}
+.kit-header.budget .kit-price{color:var(--text-mid);}
+.kit-header.standard .kit-price{color:var(--warm-light);}
+.kit-header.premium .kit-price{color:var(--warm-mid);}
+.kit-body{padding:1rem 1.4rem 1.25rem;display:flex;flex-direction:column;flex:1;}
+.kit-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:0.65rem;font-size:13px;color:var(--text-mid);line-height:1.55;}
+.kit-item::before{content:'→';color:var(--warm-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
+.kit-item strong{color:var(--text-dark);font-weight:600;}
+.kit-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;padding:3px 8px;border-radius:6px;margin-top:auto;padding-top:0.75rem;align-self:flex-start;}
 .kit-tag.start{background:var(--dark-pale);color:var(--dark-mid);}
 .kit-tag.recommended-tag{background:rgba(168,137,58,0.15);color:var(--warm-mid);}
 /* GEAR ITEM DETAIL */
@@ -204,7 +229,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
   .breadcrumb{padding:0.75rem 1.25rem;}
   .progress-bar{padding:0.9rem 1.25rem;}
   .module-nav{padding:1rem 1.25rem;}
-  .kit-grid{grid-template-columns:1fr;}
+  .kit-card{grid-template-columns:1fr;}.kit-header{border-right:none;border-bottom:1px solid var(--border);}.kit-item{width:100%;}
 }
 </style>
 </head>
@@ -300,13 +325,13 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
         <div class="kit-label budget">Tier 1</div>
         <div class="kit-name">Budget Starter Kit</div>
         <div class="kit-price">~$600–$900 total</div>
+        <span class="kit-tag start">Start here</span>
       </div>
       <div class="kit-body">
-        <div class="kit-item"><strong>Camera</strong><span>Canon EOS R50 (~$600) — excellent stills and video, all the functionality you need to start</span></div>
-        <div class="kit-item"><strong>Lens</strong><span>Canon RF-S 10–18mm wide-angle — covers interiors on a crop sensor</span></div>
-        <div class="kit-item"><strong>Tripod</strong><span>Basic ball-head tripod (~$50–$80) — functional, gets the job done</span></div>
-        <div class="kit-item"><strong>SD Cards</strong><span>2× Class 10 cards — always buy new, never used</span></div>
-        <span class="kit-tag start">✓ Start here</span>
+        <div class="kit-item"><strong>Camera:</strong> Canon EOS R50 (~$600 body) — excellent stills and video, all functionality you need</div>
+        <div class="kit-item"><strong>Lens:</strong> Canon RF-S 10–18mm wide-angle — covers interiors on a crop sensor</div>
+        <div class="kit-item"><strong>Tripod:</strong> Basic ball-head tripod (~$50–$80) — functional, gets the job done</div>
+        <div class="kit-item"><strong>SD Cards:</strong> 2× Class 10 — buy new, not used</div>
       </div>
     </div>
 
@@ -315,13 +340,13 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
         <div class="kit-label standard">Tier 2</div>
         <div class="kit-name">Professional Working Kit</div>
         <div class="kit-price">~$2,000–$2,500 total</div>
+        <span class="kit-tag recommended-tag">What working pros use</span>
       </div>
       <div class="kit-body">
-        <div class="kit-item"><strong>Camera</strong><span>Canon EOS R full-frame — better battery life, easier at volume, superior video</span></div>
-        <div class="kit-item"><strong>Lens</strong><span>16–35mm wide-angle (full-frame) — less width needed on larger sensor</span></div>
-        <div class="kit-item"><strong>Tripod</strong><span>Slik 700DX with geared head — precision verticals, worth every dollar at volume</span></div>
-        <div class="kit-item"><strong>Flash</strong><span>Godox AD200 — off-camera flash for professional interior lighting</span></div>
-        <span class="kit-tag recommended-tag">★ What working pros use</span>
+        <div class="kit-item"><strong>Camera:</strong> Canon EOS R full-frame — better battery life, easier at volume, better video</div>
+        <div class="kit-item"><strong>Lens:</strong> 16–35mm wide-angle — less width needed on a full-frame sensor</div>
+        <div class="kit-item"><strong>Tripod:</strong> Slik 700DX with geared head — fine-tune verticals precisely at volume</div>
+        <div class="kit-item"><strong>Flash:</strong> Godox AD200 or equivalent — off-camera flash for interior lighting</div>
       </div>
     </div>
 
@@ -330,14 +355,14 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
         <div class="kit-label premium">Tier 3</div>
         <div class="kit-name">Full-Service Kit</div>
         <div class="kit-price">~$4,000–$6,000 total</div>
+        <span class="kit-tag start">Upgrade when revenue justifies it</span>
       </div>
       <div class="kit-body">
-        <div class="kit-item"><strong>Camera</strong><span>Sony A7 III or Canon EOS R — full-frame, excellent low-light, superior video</span></div>
-        <div class="kit-item"><strong>Lens</strong><span>Sony/Canon 16–35mm f/2.8 — premium glass for demanding shots</span></div>
-        <div class="kit-item"><strong>Tripod</strong><span>Manfrotto 190X with geared head</span></div>
-        <div class="kit-item"><strong>Drone</strong><span>DJI Mini 4 Pro — add aerial to your service menu</span></div>
-        <div class="kit-item"><strong>Gimbal</strong><span>DJI RS series — for smooth video walkthroughs</span></div>
-        <span class="kit-tag start">↑ Upgrade when revenue justifies it</span>
+        <div class="kit-item"><strong>Camera:</strong> Sony A7 III or Canon EOS R — full-frame, excellent low-light, superior video</div>
+        <div class="kit-item"><strong>Lens:</strong> Sony/Canon 16–35mm f/2.8 — premium glass for demanding shots</div>
+        <div class="kit-item"><strong>Tripod:</strong> Manfrotto 190X with geared head</div>
+        <div class="kit-item"><strong>Drone:</strong> DJI Mini 4 Pro — add aerial to your service menu</div>
+        <div class="kit-item"><strong>Gimbal:</strong> DJI RS series — for video walkthroughs</div>
       </div>
     </div>
 
