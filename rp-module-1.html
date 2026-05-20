@@ -86,7 +86,9 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 .callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--warm-mid);font-style:italic;line-height:1.7;}
 
 /* INFO CARDS */
-.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin:1.5rem 0;}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0;}
+.info-grid.cols-3{grid-template-columns:repeat(3,1fr);}
+.info-grid.cols-4{grid-template-columns:repeat(2,1fr);}
 .info-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:box-shadow 0.2s;}
 .info-card:hover{box-shadow:var(--shadow-card);}
 .info-card .ic-icon{font-size:1.6rem;margin-bottom:0.5rem;}
@@ -202,6 +204,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
   .cl-row{grid-template-columns:1fr 1fr;}
   .cl-note{display:none;}
   .services-table{font-size:12px;}
+  .info-grid.cols-3,.info-grid.cols-4{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -348,7 +351,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 
   <p class="body-text">You do not need to offer all of these to build a profitable business. Plenty of photographers run sustainable full-time operations on standard photography alone. But the path from $3,000/month to $8,000/month almost always runs through adding at least one high-value add-on — drone and video being the two with the best time-to-revenue ratio.</p>
 
-  <div class="info-grid">
+  <div class="info-grid cols-3">
     <div class="info-card">
       <div class="ic-icon">🎯</div>
       <h4>Who hires you</h4>
@@ -435,7 +438,7 @@ a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
 
   <p class="body-text">Here is what a typical busy day looks like in practice:</p>
 
-  <div class="info-grid">
+  <div class="info-grid cols-4">
     <div class="info-card">
       <div class="ic-icon">🏢</div>
       <h4>8:00am — Vacant Condo</h4>
