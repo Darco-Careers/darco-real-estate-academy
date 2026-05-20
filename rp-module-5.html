@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5: Drone Photography & FAA Part 107 — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#1C1A18;--dark-mid:#2E2B28;--dark-light:#4A4540;--dark-pale:#F5F2EE;
+  --warm:#C8A96A;--warm-mid:#A8893A;--warm-light:#DFC88A;--warm-pale:#FBF7EE;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(28,26,24,0.1);
+  --shadow-card:0 2px 16px rgba(28,26,24,0.08);
+  --danger:#8B2F20;--danger-bg:#FBF0EE;--danger-border:rgba(180,60,40,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.3);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--warm);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--dark);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--warm-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--warm-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--dark-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--dark-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--dark);font-weight:600;}
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--dark-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--warm-mid),var(--warm));border-radius:3px;width:71.4%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.complete{background:var(--warm-mid);color:var(--white);}
+.prog-dot.active{background:var(--dark);color:var(--warm-light);}
+.prog-dot.locked{background:rgba(28,26,24,0.1);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(28,26,24,0.2);}
+.module-hero{background:linear-gradient(135deg,#0E0D0C 0%,var(--dark) 55%,var(--dark-mid) 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(200,169,106,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--warm-light),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,106,0.15);border:1px solid rgba(200,169,106,0.3);color:var(--warm-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--warm-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:600px;line-height:1.85;font-weight:300;}
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--warm-mid);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--warm-mid) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--warm-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--warm-mid);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--warm);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--dark-mid);font-style:italic;}
+.warm-rule{width:44px;height:3px;background:var(--warm);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+.callout{background:var(--warm-pale);border-left:4px solid var(--warm-mid);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--warm-mid);font-style:italic;line-height:1.7;}
+.warning{background:var(--danger-bg);border-left:4px solid var(--danger);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.warning p{font-size:13.5px;color:var(--danger);line-height:1.7;}
+.warning strong{font-weight:700;}
+/* CHECKLIST */
+.checklist{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin:1.5rem 0;}
+.checklist h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:1rem;}
+.check-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:0.65rem;font-size:13.5px;color:var(--text-mid);line-height:1.55;}
+.check-item::before{content:'✓';color:var(--warm-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
+.check-item strong{color:var(--text-dark);}
+/* INFO GRID */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.5rem 0;}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:box-shadow 0.2s;}
+.info-card:hover{box-shadow:var(--shadow-card);}
+.info-card .ic-icon{font-size:1.6rem;margin-bottom:0.5rem;}
+.info-card h4{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;}
+.info-card p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.info-card .ic-tag{font-size:11px;font-weight:700;color:var(--warm-mid);margin-top:0.4rem;}
+/* STEPS */
+.steps-seq{display:flex;flex-direction:column;gap:0.75rem;margin:1.5rem 0;}
+.step-seq{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;transition:box-shadow 0.2s;}
+.step-seq:hover{box-shadow:var(--shadow-card);}
+.step-num{width:30px;height:30px;background:var(--dark);color:var(--warm-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;flex-shrink:0;}
+.step-seq h4{font-size:13.5px;font-weight:700;color:var(--text-dark);margin-bottom:0.2rem;}
+.step-seq p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* FLIGHT PATTERNS */
+.pattern-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin:1.5rem 0;}
+.pattern-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s;}
+.pattern-card:hover{box-shadow:var(--shadow-card);}
+.pattern-header{padding:1rem 1.25rem 0.75rem;border-bottom:1px solid var(--border);background:var(--dark);}
+.pattern-num{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--warm-light);margin-bottom:0.2rem;}
+.pattern-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);}
+.pattern-sub{font-size:11.5px;color:rgba(255,255,255,0.55);margin-top:0.15rem;}
+.pattern-body{padding:1rem 1.25rem 1.25rem;}
+.pattern-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:0.55rem;font-size:13px;color:var(--text-mid);line-height:1.5;}
+.pattern-item::before{content:'→';color:var(--warm-mid);font-weight:700;flex-shrink:0;margin-top:1px;}
+.pattern-use{font-size:11.5px;font-weight:700;color:var(--warm-mid);margin-top:0.6rem;padding-top:0.6rem;border-top:1px solid var(--border);}
+/* VIDEO */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.5rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--dark-pale);color:var(--dark-mid);}
+.video-badge.supplemental{background:var(--warm-pale);color:var(--warm-mid);}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* SUPPLEMENTAL */
+.supplemental-section{background:var(--warm-pale);border:1px solid rgba(168,137,58,0.15);border-radius:16px;padding:1.75rem;margin:2rem 0;}
+.supplemental-section h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:0.35rem;}
+.supplemental-section p{font-size:13px;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6;}
+/* QUIZ */
+.quiz-section{background:var(--dark);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warm-light);margin-bottom:0.4rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(200,169,106,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--warm-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--warm);color:var(--dark);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--warm-light);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(200,169,106,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--warm-light);}
+.result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;}
+.retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--warm-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(28,26,24,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--dark);color:var(--warm-light);}
+.btn-nav.primary:hover{background:var(--dark-mid);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--dark-mid);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
+  .pattern-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-photography.html">Track Overview</a></li>
+    <li><a href="real-estate-photography.html" class="nav-back">← Photography Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-photography.html">Real Estate Photography</a><span class="sep">/</span>
+  <span class="current">Module 5: Drone Photography & FAA Part 107</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 5 of 7</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="rp-module-1.html" class="prog-dot complete">1</a>
+    <a href="rp-module-2.html" class="prog-dot complete">2</a>
+    <a href="rp-module-3.html" class="prog-dot complete">3</a>
+    <a href="rp-module-4.html" class="prog-dot complete">4</a>
+    <span class="prog-dot active">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Photography Track · Module 5 of 7</div>
+    <h1>Drone Photography <em>&amp; FAA Part 107</em></h1>
+    <p>How to get your commercial drone license, what the legal requirements are, how to set up for a drone shoot, and the three cinematic flight patterns every real estate drone photographer uses.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"Drone is the single highest-return add-on service in this business. Thirty extra minutes on location, $150 to $300 more on the invoice, every time. But it only works if you do it legally. Get licensed first. Everything else follows from there."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+  <h2 class="lesson-title">FAA Part 107 — <em>What It Is and Why You Need It</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">The FAA (Federal Aviation Administration) regulates all commercial drone operations in the United States under a section of federal aviation regulations called <strong>14 CFR Part 107</strong>. If you fly a drone for any form of compensation — money, a discount, a barter, or anything else of value — you are conducting a commercial operation and you are legally required to hold a Part 107 Remote Pilot Certificate.</p>
+
+  <div class="warning">
+    <p><strong>This applies to every drone, regardless of size.</strong> Even drones under 250g (half a pound) — including the DJI Mini series — require a Part 107 certificate for commercial use. The only exemption from registration is drones under 250g, but the license requirement applies universally. Flying commercially without it can result in fines up to $250,000 or three years in jail. There are no exceptions and no grace periods.</p>
+  </div>
+
+  <p class="body-text">The good news: the Part 107 exam is entirely manageable with focused study. It is a 60-question multiple-choice test taken at an FAA-approved testing facility, and you need a 70% or higher to pass. Most people study for 2–4 weeks and pass on the first attempt. The license costs $175 and once earned only requires free online recurrency training every 24 months — no retesting.</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-icon">📋</div>
+      <h4>Exam Format</h4>
+      <p>60 multiple-choice questions, 2 hours, at an FAA-approved testing facility. 70% passing score. Topics: regulations, airspace, weather, sectional charts, airport operations.</p>
+      <div class="ic-tag">Pass rate is high with proper preparation</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">💵</div>
+      <h4>Cost</h4>
+      <p>$175 exam fee. Drone registration: $5 per drone at FAA DroneZone. Study courses range from free (YouTube) to $150+ for structured prep courses like Pilot Institute.</p>
+      <div class="ic-tag">Total investment under $350</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">📅</div>
+      <h4>Recurrency</h4>
+      <p>Once licensed, free online recurrency training every 24 calendar months at the FAA website. No retaking the exam. The license itself does not expire.</p>
+      <div class="ic-tag">Free renewal online every 2 years</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🎯</div>
+      <h4>Study Recommendation</h4>
+      <p>Pilot Institute is the most recommended prep course among working photographers. Structured, comprehensive, and specifically designed for the Part 107 exam. Takes 2–3 weeks to complete.</p>
+      <div class="ic-tag">pilotinstitute.com</div>
+    </div>
+  </div>
+
+  <p class="body-text">Beyond the exam, commercial drone operations require: registering your drone at faa.gov/uas ($5 per drone), ensuring your drone has Remote ID enabled (built into most drones made after 2022; older drones may need a $100 module), and carrying your Part 107 certificate and government-issued photo ID on every mission.</p>
+
+  <div class="video-card">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/2_2fCo6Xbm0" title="Stop Breaking the Law Flying Your Drone for Real Estate" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-info">
+      <span class="video-badge">Legal Workflow</span>
+      <h4>Stop Breaking the Law — The Legal Drone Workflow for Real Estate Photographers</h4>
+      <p>Taylor Brown walks through the complete legal setup and mission workflow: Part 107 requirements for all drone sizes, insurance, registration, Remote ID, airspace apps, the day-before checklist, legal documentation to carry, mission day safety procedures, and the recommendation to fly drone last in a full photo/video shoot day.</p>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+  <h2 class="lesson-title">Drone Settings — <em>How to Shoot HDR Brackets from the Air</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">Drones have smaller camera sensors than DSLRs, which means the dynamic range problem from interior photography is even more pronounced in aerial shots. The bright sky and the shaded side of the house in a single frame is a large tonal gap. The solution is the same as it is on the ground: <strong>AEB (Auto Exposure Bracketing)</strong> — shoot multiple exposures and blend them in editing.</p>
+
+  <p class="body-text">Here are the camera settings that produce consistently professional drone images for real estate:</p>
+
+  <div class="checklist">
+    <h4>DJI Drone Camera Settings for Real Estate</h4>
+    <div class="check-item"><strong>Camera Mode: Manual (M)</strong> — switch from Auto to Manual to control all exposure settings independently. Auto mode shifts between shots and creates inconsistency across brackets.</div>
+    <div class="check-item"><strong>File Format: RAW (DNG)</strong> — never shoot JPEG for paid work. RAW retains all the shadow and highlight data needed for HDR blending in editing.</div>
+    <div class="check-item"><strong>ISO: 100</strong> — lock at the lowest ISO to minimize digital noise. Higher ISO introduces grain that degrades fine details in roof shingles and brickwork that clients want to see clearly.</div>
+    <div class="check-item"><strong>White Balance: Sunny (5200K) or Cloudy (6000K)</strong> — never leave on Auto. Auto WB shifts color temperature between frames in a bracket sequence, making them inconsistent and harder to blend.</div>
+    <div class="check-item"><strong>Photo Mode: AEB — 5 shots at 0.7 or 1.0 EV steps</strong> — one press captures five frames at different exposures. Import into Lightroom, select all five, right-click → Photo Merge → HDR for a clean blended result.</div>
+    <div class="check-item"><strong>Angle: 45 degrees to the property</strong> — hover showing the front facade and one side. This is the standard real estate drone angle that shows the most about the property in a single frame.</div>
+  </div>
+
+  <p class="body-text">The HDR merge workflow for drone images is identical to the interior process from Module 4: import all five brackets into Lightroom, select them, right-click → Photo Merge → HDR, let Lightroom auto-align and merge, then make final color and exposure adjustments. Drone exteriors are simpler to edit than interiors — one light source (the sun), no color cast issues, and no window pull required.</p>
+
+  <div class="callout">
+    <p>"Always lock your white balance before flying. Auto white balance shifts mid-sequence and creates inconsistent color between your five brackets — making them nearly impossible to blend cleanly."</p>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+  <h2 class="lesson-title">Three Cinematic Flight Patterns — <em>The Baseline Real Estate Deliverables</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">Most real estate drone work — both still photography and video — draws from three fundamental flight maneuvers. These are not advanced techniques; they are the baseline deliverables agents expect when they book drone service. Master these three and you can handle 95% of real estate drone assignments.</p>
+
+  <div class="pattern-grid">
+    <div class="pattern-card">
+      <div class="pattern-header">
+        <div class="pattern-num">Pattern 1</div>
+        <div class="pattern-name">The Orbit / Point of Interest</div>
+        <div class="pattern-sub">Full property coverage in one sweep</div>
+      </div>
+      <div class="pattern-body">
+        <div class="pattern-item">Fly a slow circle around the property at 60–100 feet altitude, keeping the camera pointed at the house throughout the orbit.</div>
+        <div class="pattern-item">Left stick: gently push right to yaw (rotate) the nose toward the house. Right stick: simultaneously push left to strafe sideways in a circle.</div>
+        <div class="pattern-item">Speed: 3–5 mph ground speed. Slow and steady produces smooth, professional-looking footage.</div>
+        <div class="pattern-item">Most modern DJI drones have a built-in Point of Interest (POI) mode that automates this — set a center point and the drone circles it automatically.</div>
+        <div class="pattern-use">📸 Shows: lot boundaries, roof condition, backyard, full property context</div>
+      </div>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-header">
+        <div class="pattern-num">Pattern 2</div>
+        <div class="pattern-name">The Hero Reveal</div>
+        <div class="pattern-sub">Dramatic property entrance shot</div>
+      </div>
+      <div class="pattern-body">
+        <div class="pattern-item">Start low (15–20 feet) behind an obstruction — a tree line, stone wall, front gate, or hedge. The property should not be visible at the start.</div>
+        <div class="pattern-item">Slowly push both sticks forward and up simultaneously: left stick up (ascend) + right stick up (fly forward). The drone climbs and moves forward, revealing the home's facade from behind the obstruction.</div>
+        <div class="pattern-item">The reveal should be slow and smooth — the entire maneuver taking 6–10 seconds. Speed kills the dramatic effect.</div>
+        <div class="pattern-item">Works best for properties with a long driveway, mature trees at the entrance, or a gated front.</div>
+        <div class="pattern-use">🎬 Shows: exclusive, high-end feel — used for luxury listings</div>
+      </div>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-header">
+        <div class="pattern-num">Pattern 3</div>
+        <div class="pattern-name">The Neighborhood Context Shot</div>
+        <div class="pattern-sub">Location and surroundings overview</div>
+      </div>
+      <div class="pattern-body">
+        <div class="pattern-item">Position the drone 50 feet in front of and above the property at about 30 feet altitude, camera pointed at the house.</div>
+        <div class="pattern-item">Fly backward and upward simultaneously while slowly tilting the gimbal downward to keep the house in the lower third of the frame.</div>
+        <div class="pattern-item">As the drone rises and retreats, the surrounding geography reveals itself — nearby lakes, golf courses, schools, highways, neighborhood layout.</div>
+        <div class="pattern-item">This shot answers the buyer question "what is around this property?" — one of the most valuable pieces of information in a listing.</div>
+        <div class="pattern-use">🗺️ Shows: proximity to amenities, neighborhood context, lot size</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 4 -->
+  <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+  <h2 class="lesson-title">Pre-Flight Checklist — <em>Every Mission, Every Time</em></h2>
+  <div class="warm-rule"></div>
+
+  <p class="body-text">As a Part 107 certified pilot, you are the Remote Pilot in Command (PIC) and you are personally responsible for every aspect of the flight. An accident — regardless of cause — falls on you legally and financially. The pre-flight checklist is not optional. It takes five minutes and protects your business, your clients, and everyone near the property.</p>
+
+  <div class="steps-seq">
+    <div class="step-seq">
+      <div class="step-num">1</div>
+      <div>
+        <h4>Check Airspace Before Accepting the Job</h4>
+        <p>Use B4UFLY (FAA mobile app) or AirMap to check whether the property is in controlled airspace. If it is, you may need LAANC authorization — which can often be obtained on-site in minutes through the app. Some restricted zones require advance approval up to 90 days ahead. Check before you commit to the booking, not when you arrive.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">2</div>
+      <div>
+        <h4>Day Before — Charge and Inspect Everything</h4>
+        <p>Charge all batteries fully. Inspect propellers for cracks, chips, or damage. Check that your SD card is installed and has space. Confirm your drone's Remote ID is enabled and transmitting. Verify your registration number is still visible on the drone body. Gather your documents: Part 107 certificate, photo ID, drone registration printout.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">3</div>
+      <div>
+        <h4>Day Of — Check Weather and NOTAMs</h4>
+        <p>Check weather for flying conditions: winds under 25 mph, visibility 3+ statute miles, no thunderstorms nearby. Check NOTAMs (Notices to Airmen) for any last-minute airspace restrictions — large events, emergency operations, or temporary flight restrictions (TFRs) can appear with little notice. Never fly in winds that exceed your drone's rated wind resistance.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">4</div>
+      <div>
+        <h4>On Site — Walk the Area Before Flying</h4>
+        <p>Walk the property perimeter before launching. Identify obstacles: power lines, trees, antenna cables, neighboring structures. Find a clear launch area with a clean line of sight to the flight path. Identify where you will stand throughout the flight to maintain visual line of sight — you must be able to see your drone with unaided eyes at all times.</p>
+      </div>
+    </div>
+    <div class="step-seq">
+      <div class="step-num">5</div>
+      <div>
+        <h4>Fly Drone Last in the Shoot Day</h4>
+        <p>Always complete interior photography first, then do drone work as your final task. This way, if something goes wrong with the drone mission — weather changes, airspace issue, neighbor complaint — you still have the completed interior photos and can reschedule just the drone portion. If you fly first and something goes wrong inside, you may have wasted your drone window.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>"If you're flying in a residential neighborhood, consider notifying neighbors in advance. A brief note — 'a licensed drone pilot will be photographing this property at this time' — prevents complaints before they happen and protects your client relationship."</p>
+  </div>
+
+  <!-- SUPPLEMENTAL -->
+  <div class="supplemental-section">
+    <h3>📚 Supplemental Resource — FAA Part 107 Exam Prep</h3>
+    <p>A comprehensive study guide covering every topic on the Part 107 exam: regulations, airspace classes, sectional charts, airport operations, weather, METARs, and TAFs. Watch this fully before registering for your exam. The video includes practice questions and covers the exact format of questions you will see on test day.</p>
+    <div class="video-card" style="margin-top:0.75rem;">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/zB9qzXaQ72s" title="FAA Part 107 Study Guide — Complete Exam Prep" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge supplemental">Supplemental · Exam Prep</span>
+        <h4>FAA Part 107 Complete Study Guide — Everything You Need to Pass</h4>
+        <p>Matt Kendall covers the full Part 107 exam curriculum: drone regulations, airspace classes A through G, how to read sectional charts, airport operations and signage, weather systems, METARs, TAFs, and sample exam questions throughout. Watch this as your primary exam prep resource and return to specific sections as needed during your study period.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section" id="quizSection">
+    <h3>Module 5 Knowledge Check</h3>
+    <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">A photographer owns a DJI Mini 3 weighing under 250g. They plan to shoot aerial photos for a real estate agent and charge $150 for the service. Do they need an FAA Part 107 certificate?</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div>No — drones under 250g are exempt from Part 107 requirements entirely, including for commercial use.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div>Yes — Part 107 is required for ALL commercial drone operations regardless of drone weight. The under-250g exemption only applies to drone registration, not the commercial pilot certificate requirement.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div>Only if the drone is operated in controlled airspace near an airport.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div>No — the $150 charge is below the threshold requiring commercial licensing.</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. Part 107 is required for any commercial drone operation — any flight for compensation, regardless of drone size. The under-250g exemption only covers FAA drone registration. The pilot certificate requirement applies universally to commercial use.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ Yes, Part 107 is required. The under-250g exemption only covers drone registration — not the commercial pilot certificate. Any drone used for any form of compensation requires a Part 107 certificate. Flying commercially without one risks fines up to $250,000.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">What is the maximum legal altitude for drone operations under FAA Part 107?</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div>200 feet AGL — to keep drones well below aircraft traffic patterns.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div>400 feet AGL (Above Ground Level) — the FAA altitude ceiling for drone operations. An exception exists near structures: you may fly 400 feet above the structure itself.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">C</div>500 feet AGL — matching the minimum altitude at which manned aircraft must fly.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div>1,000 feet AGL — the standard altitude ceiling for uncontrolled airspace operations.</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. 400 feet AGL is the FAA altitude ceiling for Part 107 drone operations. The only exception: near structures such as radio towers or tall buildings, you may fly 400 feet above the top of the structure. For real estate drone work this limit is rarely a constraint — residential properties are well below 400 feet.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ 400 feet AGL is the maximum. This is set to keep drones below the altitudes where helicopters and low-flying aircraft operate. For real estate drone work — typically 60 to 150 feet — this limit is never a practical constraint. Exception: you can fly 400 feet above a structure like a radio tower.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">Why must white balance be locked to a fixed setting (like Sunny or Cloudy) rather than left on Auto when shooting AEB brackets with a drone?</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div>Auto white balance consumes more battery, reducing flight time for the bracket sequence.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div>Auto white balance shifts color temperature between the five bracketed frames — making them inconsistent and difficult or impossible to blend cleanly in editing. A locked white balance ensures all five frames have identical color rendering.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">B</div>Fixed white balance produces more vibrant colors than Auto in bright outdoor conditions.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div>Auto white balance cannot be used in RAW format — the camera requires a fixed setting when shooting RAW files.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. When shooting a 5-frame AEB bracket, all five frames need identical color rendering to blend properly. Auto WB can shift between frames — even slightly — creating color inconsistency that makes the frames difficult to merge. Sunny (~5200K) or Cloudy (~6000K) locked WB keeps the bracket sequence consistent.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ Auto WB shifts color temperature between the five frames in your bracket sequence — making them inconsistent and difficult to blend. A locked white balance (Sunny at 5200K or Cloudy at 6000K) ensures all five frames have identical color rendering, which is essential for a clean HDR merge in Lightroom.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">What does Remote ID do and why is it required for commercial drone operations?</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">A</div>Remote ID is a digital license plate for drones — it transmits the drone's position, altitude, and the pilot's location via a signal that can be tracked by the FAA, law enforcement, and the public through apps. It is required to make drone operations identifiable and accountable in the national airspace.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">B</div>Remote ID is a feature that allows pilots to control their drone remotely from a greater distance than standard radio frequencies allow.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div>Remote ID automatically applies for LAANC airspace authorization when a drone enters controlled airspace.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div>Remote ID is a registration number that must be written on the outside of the drone for visual identification on the ground.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. Remote ID is essentially a digital license plate — it broadcasts the drone's position, altitude, speed, and the operator's location to anyone with a tracking app. This makes commercial drone operations identifiable and enforceable. Most drones made after 2022 have it built in; older drones require a ~$100 add-on module.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ Remote ID is a digital license plate — it broadcasts the drone's real-time position, altitude, and the pilot's location via a radio signal that anyone can track with apps like Drone Scanner. This makes commercial operations identifiable and accountable. Built into most new drones; older drones need a $100 module.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">Which flight pattern is specifically designed for luxury listings with long driveways or gated entrances?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div>The Orbit / Point of Interest — circling the property shows the full approach from all angles.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">C</div>The Neighborhood Context Shot — rising to show the surrounding geography establishes exclusivity.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div>The Hero Reveal — starting low behind an obstruction and flying forward and upward to dramatically reveal the property creates the exclusive, narrative feel appropriate for high-end listings.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div>None of these — luxury listings require custom flight patterns created on a per-property basis.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. The Hero Reveal starts behind a natural obstruction (tree line, gate, wall) at low altitude, then flies forward and upward to reveal the property dramatically. This narrative reveal creates the exclusive, cinematic feel appropriate for luxury and waterfront listings with gated or screened approaches.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ The Hero Reveal is the luxury pattern. Starting behind a natural obstruction at low altitude and flying forward and upward creates a narrative reveal — the property appears from behind the trees or gate, creating a cinematic, exclusive feeling. The Orbit shows the full property. The Context Shot shows location.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">Why is drone work recommended to be done LAST in a combined photo/video/drone shoot day?</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">A</div>Drone batteries perform better later in the day when temperatures are lower.</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">B</div>If the drone mission is disrupted — by weather, airspace issues, a neighbor complaint, or equipment failure — the completed interior photos are already delivered. Only the drone portion needs to be rescheduled, not the entire shoot.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">C</div>Drone light is better in the afternoon when the sun is at a lower angle to the property.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">D</div>FAA regulations require ground photography to be completed before drone operations at the same location.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. Drone operations have more variables that can go wrong — weather changes, airspace issues, equipment problems, neighbor complaints. Completing interior photography first means you always have a deliverable to give the client. If the drone portion fails, you reschedule only that — not the entire shoot.</div>
+        <div class="feedback incorrect" id="q6-wrong">✗ The reason is risk management. Drone operations have more potential disruptions than interior photography. If you fly first and then something prevents completing the interior work, you have nothing to deliver. Interior first means the client always has their photos — drone becomes an add-on that can be rescheduled independently if needed.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">What is LAANC and when does a real estate drone photographer need to use it?</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">A</div>LAANC (Low Altitude Authorization and Notification Capability) is the FAA system for getting automated airspace authorization to fly in controlled airspace. Real estate photographers use it when a property is located near an airport — authorization can often be obtained through the app in minutes on-site.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">B</div>LAANC is the FAA's drone registration portal — all commercial drones must register through it before their first flight.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">C</div>LAANC is an insurance requirement — all Part 107 operators must carry LAANC liability coverage before flying commercially.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">D</div>LAANC is only required for flights above 200 feet in uncontrolled airspace.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. LAANC provides automated airspace authorization for flights in controlled airspace (near airports). Apps like B4UFLY and AirMap integrate LAANC — a photographer can request authorization on-site and often receive it within minutes. Some restricted zones require advance authorization up to 90 days ahead, so always check before accepting the booking.</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ LAANC is the FAA's automated airspace authorization system for controlled airspace near airports. Through apps like B4UFLY and AirMap, photographers can request and receive authorization in minutes for most residential areas. Some restricted zones require advance application. Always check airspace before accepting a drone booking — not when you arrive.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">What ISO setting is recommended for drone real estate photography and why?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">A</div>ISO 800 — a higher ISO compensates for the faster shutter speeds needed to reduce propeller blur in aerial shots.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">B</div>ISO 400 — a balance between noise and shutter speed that works well for drone cameras.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">C</div>ISO 100 — the lowest available setting, producing the cleanest image with the least digital noise. Drone sensors are smaller than DSLRs and more prone to noise at higher ISOs — the fine detail in roof shingles and brickwork that clients want to see clearly degrades first.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">D</div>ISO 200 — slightly above the base to allow faster bracket capture.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. ISO 100 (or the base ISO of the drone camera) is the correct setting. Drone cameras have smaller sensors than DSLRs and generate more noise at elevated ISOs. Since you are shooting in bright outdoor conditions with the camera on a stabilized gimbal, there is no reason to raise ISO — keep it at the lowest setting for the cleanest possible image.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ ISO 100 is the correct setting. Drone sensors are smaller than DSLR sensors and generate more digital noise at elevated ISO values. Since you are shooting in bright outdoor daylight with a stabilized gimbal, there is no need to raise ISO. Keep it at the lowest setting for the cleanest fine detail in roof shingles, brickwork, and landscaping.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">What is the primary subject matter shown in the Neighborhood Context Shot?</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">A</div>The roof condition and architectural details of the property — the drone rises to get a birds-eye view of the structure.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">B</div>The backyard, pool, and rear of the property — rising from the rear of the house shows outdoor amenities.</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">C</div>The surrounding geography and proximity to nearby amenities — lakes, golf courses, schools, highways, and neighborhood layout. This answers the buyer question "what is around this property?"</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">D</div>The street and neighborhood streetscape — showing what the neighborhood looks like from ground level before transitioning to aerial view.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. The Neighborhood Context Shot rises and retreats while the camera tilts downward to keep the property in frame — gradually revealing the surrounding geography. It shows buyers what is nearby: parks, water, schools, transit, and neighborhood character. This is one of the most valuable pieces of information in a real estate listing.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ The Neighborhood Context Shot is about location and surroundings. The drone rises and retreats while the gimbal tilts down to keep the property in frame, revealing what is nearby — lakes, golf courses, schools, major roads, neighborhood layout. This answers the critical buyer question: "what is the context around this property?"</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">How often must a Part 107 Remote Pilot Certificate holder complete recurrency training?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">A</div>Every year — annual recurrency is required to maintain commercial flying privileges.</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">B</div>Every 24 calendar months (2 years) — completed online for free at the FAA website. The Part 107 exam itself does not need to be retaken; only the online recurrency course is required.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">C</div>Every 5 years — the FAA requires recurrency training on the same schedule as a private pilot license.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">D</div>Never — once the Part 107 exam is passed the license is permanent with no renewal requirements.</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. Part 107 recurrency training is required every 24 calendar months (2 years). It is completed online for free at the FAA website — no retesting, no testing facility, no fee. The license itself does not expire; only the recurrency training has a deadline. Missing recurrency means you cannot legally operate commercially until it is completed.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ Recurrency is required every 24 calendar months (2 years), completed online for free at the FAA website. You do not retake the Part 107 exam — only a shorter online recurrency course. The license does not expire, but your authorization to fly commercially lapses if recurrency is not completed on schedule.</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="rp-module-4.html" class="btn-nav outline">← Module 4</a>
+  <div class="nav-module-title">
+    <strong>Up Next: Module 6</strong>
+    AI Tools, Virtual Staging & Video Walkthroughs
+  </div>
+  <a href="rp-module-6.html" class="btn-nav primary">Module 6 →</a>
+</div>
+
+<footer style="background:var(--dark);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--warm-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+var answers={};
+var quizData={
+  q1:{correct:'B',question:'A photographer owns a DJI Mini 3 weighing under 250g. They plan to shoot aerial photos for a real estate agent and charge $150. Do they need an FAA Part 107 certificate?',options:{A:'No — drones under 250g are exempt from Part 107 requirements entirely, including for commercial use.',B:'Yes — Part 107 is required for ALL commercial drone operations regardless of drone weight. The under-250g exemption only applies to drone registration, not the commercial pilot certificate.',C:'Only if operated in controlled airspace near an airport.',D:'No — the $150 charge is below the threshold requiring commercial licensing.'},explanation:'Part 107 is required for any commercial drone operation — any flight for compensation, regardless of drone size. The under-250g exemption only covers FAA drone registration. Flying commercially without a certificate risks fines up to $250,000.'},
+  q2:{correct:'B',question:'What is the maximum legal altitude for drone operations under FAA Part 107?',options:{A:'200 feet AGL — to keep drones well below aircraft traffic patterns.',B:'400 feet AGL — the FAA altitude ceiling for drone operations. An exception exists near structures: you may fly 400 feet above the structure itself.',C:'500 feet AGL — matching the minimum altitude at which manned aircraft must fly.',D:'1,000 feet AGL — the standard ceiling for uncontrolled airspace operations.'},explanation:'400 feet AGL is the maximum. This is set to keep drones below altitudes where helicopters operate. For real estate drone work — typically 60 to 150 feet — this limit is never a practical constraint. Exception: 400 feet above a structure like a radio tower.'},
+  q3:{correct:'C',question:'Why must white balance be locked to a fixed setting rather than left on Auto when shooting AEB brackets?',options:{A:'Auto white balance consumes more battery, reducing flight time for the bracket sequence.',C:'Auto white balance shifts color temperature between the five bracketed frames — making them inconsistent and difficult to blend. A locked white balance ensures all five frames have identical color rendering.',B:'Fixed white balance produces more vibrant colors than Auto in bright outdoor conditions.',D:'Auto white balance cannot be used in RAW format.'},explanation:'AEB bracket sequences require identical color rendering across all five frames for a clean HDR merge. Auto WB can shift between frames — even slightly — creating color inconsistency. Sunny (5200K) or Cloudy (6000K) locked WB keeps the bracket sequence consistent.'},
+  q4:{correct:'A',question:'What does Remote ID do and why is it required for commercial drone operations?',options:{A:'Remote ID is a digital license plate for drones — it transmits the drone\'s position, altitude, and pilot\'s location via a signal trackable by the FAA, law enforcement, and the public.',B:'Remote ID allows pilots to control their drone remotely from a greater distance.',C:'Remote ID automatically applies for LAANC airspace authorization when a drone enters controlled airspace.',D:'Remote ID is a registration number that must be written on the outside of the drone for visual identification.'},explanation:'Remote ID broadcasts the drone\'s real-time position, altitude, speed, and the pilot\'s location to anyone with a tracking app like Drone Scanner. This makes commercial operations identifiable and enforceable. Built into most new drones; older drones need a ~$100 add-on module.'},
+  q5:{correct:'B',question:'Which flight pattern is specifically designed for luxury listings with long driveways or gated entrances?',options:{A:'The Orbit / Point of Interest — circling the property shows the full approach from all angles.',C:'The Neighborhood Context Shot — rising to show the surrounding geography establishes exclusivity.',B:'The Hero Reveal — starting low behind an obstruction and flying forward and upward dramatically reveals the property, creating the exclusive feel appropriate for high-end listings.',D:'None of these — luxury listings require custom flight patterns on a per-property basis.'},explanation:'The Hero Reveal starts behind a natural obstruction at low altitude (15-20 feet), then flies forward and upward to reveal the property dramatically. This narrative reveal creates the cinematic, exclusive feeling used for luxury and waterfront listings.'},
+  q6:{correct:'B',question:'Why is drone work recommended to be done LAST in a combined shoot day?',options:{A:'Drone batteries perform better later in the day when temperatures are lower.',B:'If the drone mission is disrupted — weather, airspace issues, equipment failure — the completed interior photos are already delivered. Only the drone portion needs rescheduling, not the entire shoot.',C:'Drone light is better in the afternoon when the sun is at a lower angle.',D:'FAA regulations require ground photography to be completed before drone operations.'},explanation:'Drone operations have more variables that can disrupt them. Completing interior photography first means you always have deliverables for the client. If the drone portion fails, you reschedule only that — not the entire shoot. Interior first is risk management.'},
+  q7:{correct:'A',question:'What is LAANC and when does a real estate drone photographer need to use it?',options:{A:'LAANC is the FAA system for getting automated airspace authorization to fly in controlled airspace. Real estate photographers use it when a property is located near an airport — authorization often obtained through the app in minutes on-site.',B:'LAANC is the FAA\'s drone registration portal — all commercial drones must register through it.',C:'LAANC is an insurance requirement — all Part 107 operators must carry LAANC liability coverage.',D:'LAANC is only required for flights above 200 feet in uncontrolled airspace.'},explanation:'LAANC provides automated airspace authorization for controlled airspace near airports. Through apps like B4UFLY and AirMap, photographers can often request and receive authorization in minutes. Some restricted zones require advance application — always check before accepting a drone booking.'},
+  q8:{correct:'C',question:'What ISO setting is recommended for drone real estate photography and why?',options:{A:'ISO 800 — compensates for faster shutter speeds needed to reduce propeller blur.',B:'ISO 400 — a balance between noise and shutter speed for drone cameras.',C:'ISO 100 — the lowest available setting, producing the cleanest image. Drone sensors are smaller than DSLRs and more prone to noise — fine detail in roof shingles degrades at higher ISOs.',D:'ISO 200 — slightly above the base to allow faster bracket capture.'},explanation:'ISO 100 (or base ISO) is correct. Drone cameras have smaller sensors than DSLRs and generate more noise at elevated ISOs. In bright outdoor daylight with a stabilized gimbal, there is no reason to raise ISO. Keep it at the lowest setting for the cleanest fine detail.'},
+  q9:{correct:'C',question:'What is the primary subject matter shown in the Neighborhood Context Shot?',options:{A:'The roof condition and architectural details — rising to get a birds-eye view of the structure.',B:'The backyard, pool, and rear of the property — rising from the rear shows outdoor amenities.',C:'The surrounding geography and proximity to nearby amenities — lakes, golf courses, schools, highways, and neighborhood layout. This answers: "what is around this property?"',D:'The street and neighborhood streetscape — showing what the neighborhood looks like before transitioning to aerial.'},explanation:'The Neighborhood Context Shot rises and retreats while the camera tilts downward to keep the property in frame — gradually revealing the surrounding geography. It shows what is nearby: parks, water, schools, transit, neighborhood character.'},
+  q10:{correct:'B',question:'How often must a Part 107 Remote Pilot Certificate holder complete recurrency training?',options:{A:'Every year — annual recurrency is required to maintain commercial flying privileges.',B:'Every 24 calendar months (2 years) — completed online for free at the FAA website. The Part 107 exam itself does not need to be retaken.',C:'Every 5 years — same schedule as a private pilot license.',D:'Never — once the Part 107 exam is passed the license is permanent with no renewal requirements.'},explanation:'Recurrency is required every 24 calendar months, completed online for free at the FAA website. No retesting, no testing facility, no fee. The license does not expire, but commercial flying authorization lapses if recurrency is not completed on schedule.'}
+};
+
+function selectOption(el,qId,isCorrect){
+  var block=el.parentElement;
+  var opts=block.querySelectorAll('.option');
+  opts.forEach(function(o){o.onclick=null;o.style.pointerEvents='none';});
+  if(isCorrect){el.classList.add('correct');block.querySelector('#'+qId+'-correct').style.display='block';}
+  else{el.classList.add('incorrect');block.querySelector('#'+qId+'-wrong').style.display='block';opts.forEach(function(o){if(o.getAttribute('data-correct')==='true')o.classList.add('correct');});}
+  answers[qId]={selected:el.querySelector('.option-letter').textContent,correct:isCorrect};
+  if(Object.keys(answers).length===Object.keys(quizData).length)document.getElementById('submitBtn').disabled=false;
+}
+
+function submitQuiz(){
+  var score=0;
+  Object.keys(answers).forEach(function(q){if(answers[q].correct)score++;});
+  var total=Object.keys(quizData).length;
+  document.getElementById('quizForm').style.display='none';
+  var result=document.getElementById('quizResult');
+  result.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  var passed=score>=8;
+  document.getElementById('resultLabel').textContent=passed?'✓ Module 5 Passed':'Keep Reviewing';
+  document.getElementById('resultLabel').style.color=passed?'#7DEFA1':'#F8ADB4';
+  document.getElementById('resultMsg').textContent=passed
+    ?'Solid. You understand the legal framework, the camera settings, the three flight patterns, and the pre-flight workflow. Go study for your Part 107 exam — once you have that certificate, drone becomes your highest-margin service. Module 6 covers AI tools and video walkthroughs.'
+    :'Review the Part 107 requirements carefully — especially the universal commercial license requirement regardless of drone size, the 400-foot altitude ceiling, and the LAANC airspace authorization process. These are the most tested topics in the actual exam.';
+  var wrongs=Object.keys(answers).filter(function(q){return !answers[q].correct;});
+  if(wrongs.length>0){
+    var wr=document.getElementById('wrongReview');wr.style.display='block';
+    var wl=document.getElementById('wrongList');wl.innerHTML='';
+    wrongs.forEach(function(q){
+      var d=quizData[q];var sel=answers[q].selected;
+      var div=document.createElement('div');div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div><div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div><div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div><div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+
+function retryQuiz(){
+  answers={};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled=true;
+  document.querySelectorAll('.option').forEach(function(o){
+    o.className='option';o.style.pointerEvents='';
+    var qNum=o.closest('.question-block').querySelector('.question-num').textContent.replace('Question ','').replace(' of 10','');
+    var isCorrect=o.getAttribute('data-correct')==='true';
+    o.onclick=function(){selectOption(o,'q'+qNum,isCorrect);};
+  });
+  document.querySelectorAll('.feedback').forEach(function(f){f.style.display='none';});
+}
+</script>
+</body>
+</html>
