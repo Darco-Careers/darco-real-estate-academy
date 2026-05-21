@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 2: The History & Evolution of Real Estate Development — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#2A2A2A;--char-mid:#3D3D3D;--char-light:#555;--char-pale:#F0EEEC;
+  --orange:#D4621A;--orange-mid:#E07030;--orange-light:#F08C50;--orange-pale:#FDF0E8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(42,42,42,0.1);
+  --shadow-card:0 2px 16px rgba(42,42,42,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+
+nav{background:var(--char);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--orange-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+
+.breadcrumb{background:var(--char-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--char);font-weight:600;}
+
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--char-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-mid));border-radius:3px;width:25%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:rgba(212,98,26,0.2);color:var(--orange);}
+.prog-dot.active{background:var(--char);color:var(--orange-light);}
+.prog-dot.locked{background:rgba(42,42,42,0.1);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);}
+
+.module-hero{background:linear-gradient(135deg,#1A1A1A 0%,var(--char) 55%,#383838 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(212,98,26,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--orange-mid),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,98,26,0.15);border:1px solid rgba(212,98,26,0.3);color:var(--orange-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--orange-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:620px;line-height:1.85;font-weight:300;}
+
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--orange);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--orange) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--char);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--orange-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--orange);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--char-mid);font-style:italic;}
+.orange-rule{width:44px;height:3px;background:var(--orange);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+
+.callout{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--orange);font-style:italic;line-height:1.7;}
+.insight-box{background:var(--char);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;color:var(--white);}
+.insight-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--orange-light);margin-bottom:0.5rem;}
+.insight-box p{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.7;}
+
+/* ERA TIMELINE */
+.era-stack{display:flex;flex-direction:column;gap:1.25rem;margin:1.75rem 0;}
+.era-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:box-shadow 0.2s;}
+.era-card:hover{box-shadow:var(--shadow-card);}
+.era-header{background:var(--char);padding:0.9rem 1.4rem;display:flex;align-items:center;gap:12px;}
+.era-header.orange{background:var(--orange);}
+.era-header.mid{background:var(--char-mid);}
+.era-period{font-size:12px;font-weight:700;color:var(--orange-light);letter-spacing:1px;text-transform:uppercase;}
+.era-header.orange .era-period{color:rgba(255,255,255,0.85);}
+.era-header h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);margin-left:auto;}
+.era-body{padding:1.1rem 1.4rem;}
+.era-body p{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.era-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.75rem;}
+.era-tag{font-size:11px;font-weight:600;color:var(--orange);background:var(--orange-pale);padding:3px 9px;border-radius:8px;}
+
+/* CYCLE DIAGRAM */
+.cycle-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.75rem 0;}
+.cycle-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;transition:box-shadow 0.2s;}
+.cycle-card:hover{box-shadow:var(--shadow-card);}
+.cycle-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--orange);line-height:1;margin-bottom:0.35rem;}
+.cycle-phase{font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.cycle-desc{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+
+/* PROFILE CARDS */
+.profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.75rem 0;}
+.profile-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:box-shadow 0.2s;}
+.profile-card:hover{box-shadow:var(--shadow-card);}
+.profile-name{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--char);margin-bottom:0.2rem;}
+.profile-era{font-size:11px;font-weight:600;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;}
+.profile-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.profile-lesson{font-size:12px;font-weight:600;color:var(--text-dark);margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--border);}
+
+/* INFRA TABLE */
+.infra-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
+.infra-table th{background:var(--char);color:var(--orange-light);padding:0.75rem 1rem;text-align:left;font-size:11.5px;font-weight:600;letter-spacing:0.5px;}
+.infra-table th:first-child{border-radius:10px 0 0 0;}
+.infra-table th:last-child{border-radius:0 10px 0 0;}
+.infra-table td{padding:0.8rem 1rem;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;}
+.infra-table tr:last-child td{border-bottom:none;}
+.infra-table tr:nth-child(even) td{background:var(--cream);}
+.infra-table .t-era{font-weight:700;color:var(--text-dark);}
+
+/* GLOSSARY */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.25rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--orange);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.mg-abbr{display:inline-block;font-size:11px;font-weight:600;color:var(--orange);background:var(--orange-pale);padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.mg-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;}
+.mg-footer a{color:var(--orange);text-decoration:none;font-weight:600;}
+
+/* QUIZ */
+.quiz-section{background:var(--char);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-light);margin-bottom:0.4rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(212,98,26,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--orange-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--orange-mid);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(212,98,26,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange-light);}
+.result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;}
+.retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--orange-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(42,42,42,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--orange);color:var(--white);}
+.btn-nav.primary:hover{background:var(--orange-mid);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--char);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
+  .cycle-grid,.profile-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-development.html">Track Overview</a></li>
+    <li><a href="real-estate-development.html" class="nav-back">← Development Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-development.html">Real Estate Development</a><span class="sep">/</span>
+  <span class="current">Module 2: History &amp; Evolution</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 2 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="red-module-1.html" class="prog-dot done">1</a>
+    <span class="prog-dot active">2</span>
+    <span class="prog-dot locked">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+    <span class="prog-dot locked">8</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Development Track · Module 2 of 8</div>
+    <h1>The History &amp; <em>Evolution of Development</em></h1>
+    <p>From colonial land grants to Levittown to the Great Recession — understanding how real estate development evolved in America gives you a mental map of why cities look the way they do, how cycles repeat, and what forces shape every project you will ever attempt.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"History is not just a collection of dates and names. It is a pattern book. Every boom and bust in American real estate follows the same basic script — speculation, overbuilding, correction. The developers who study history don't just know what happened. They recognize where they are in the cycle right now."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 3</div>
+  <h2 class="lesson-title">From Land Grants to Skyscrapers — <em>Four Centuries of Development</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Real estate development in America did not begin with professional developers, formal companies, or government regulation. It began with land — vast quantities of it — being transferred from public to private ownership, and the relentless human drive to extract value from that land. Understanding this history is not an academic exercise. It is a master class in the forces that still drive every development decision made today.</p>
+
+  <p class="body-text">Three forces have shaped American real estate development from the colonial era to the present day: <strong>infrastructure drives value</strong> (every transportation revolution created a new development wave), <strong>government shapes the rules</strong> (from the Homestead Act to the FHA to interstate highways, public policy has determined what gets built and where), and <strong>cycles are inevitable</strong> (boom and bust has repeated like clockwork since the 1780s).</p>
+
+  <div class="era-stack">
+    <div class="era-card">
+      <div class="era-header orange">
+        <div class="era-period">1600s – 1800s</div>
+        <h4>Colonial Era &amp; Land Privatization</h4>
+      </div>
+      <div class="era-body">
+        <p>The essential prerequisite for a real estate market — private ownership of land — was established in America before the Revolution. The Homestead Act of 1862 ultimately transferred nearly 300 million acres of public land to private owners. Land speculation became America's first national pastime: Benjamin Franklin, George Washington, and virtually every major figure of the early republic were active in it. Washington himself was a professional surveyor and personally involved in the development of the District of Columbia.</p>
+        <div class="era-tags"><span class="era-tag">Homestead Act 1862</span><span class="era-tag">Fee Simple Ownership</span><span class="era-tag">Boom/Bust Cycles Begin</span><span class="era-tag">Ground Leases</span></div>
+      </div>
+    </div>
+
+    <div class="era-card">
+      <div class="era-header mid">
+        <div class="era-period">1840s – 1890s</div>
+        <h4>The Railroad Era</h4>
+      </div>
+      <div class="era-body">
+        <p>Between 1850 and 1871, the federal government granted 130 million acres of public land to railroad companies — the largest single transfer of public land to private hands in American history. Railroads didn't just move people. They created cities, destroyed cities, and triggered the first major speculative land booms at scale. Henry Flagler built the entire Florida east coast. Henry Huntington built southern California. The first planned suburbs — Llewellyn Park, NJ and Riverside, IL — were born as railroad commuter communities for the upper middle class.</p>
+        <div class="era-tags"><span class="era-tag">130M Acres to Railroads</span><span class="era-tag">First Planned Suburbs</span><span class="era-tag">Flagler Builds Florida</span><span class="era-tag">Industrial Parks Emerge</span></div>
+      </div>
+    </div>
+
+    <div class="era-card">
+      <div class="era-header">
+        <div class="era-period">1890s – 1940s</div>
+        <h4>Progressive Era, Skyscrapers &amp; the Great Depression</h4>
+      </div>
+      <div class="era-body">
+        <p>The steel frame building transformed cities vertically. The 1893 Chicago Columbian Exposition launched the City Beautiful movement. Zoning was born — Los Angeles adopted the first land use separation code in 1905. The Empire State Building was built in 18 months during the Depression. Rockefeller Center pioneered mixed-use development. The 1929 crash revealed that the entire system of real estate finance was dangerously fragile — and the FHA, created in 1934, rebuilt it from scratch with long-term amortizing mortgages and standardized underwriting.</p>
+        <div class="era-tags"><span class="era-tag">First Zoning Laws 1905</span><span class="era-tag">Skyscrapers</span><span class="era-tag">Great Depression</span><span class="era-tag">FHA Created 1934</span></div>
+      </div>
+    </div>
+
+    <div class="era-card">
+      <div class="era-header orange">
+        <div class="era-period">1945 – 1980s</div>
+        <h4>The Postwar Boom &amp; Suburbanization</h4>
+      </div>
+      <div class="era-body">
+        <p>Fifteen million housing units were built in the 1950s. The GI Bill and VA loans put homeownership within reach of returning veterans. Levittown, NY — 17,500 homes built at 35 per day — became the symbol of mass production homebuilding. The 1956 Interstate Highway Act reshaped the entire American landscape: downtowns hollowed out, suburban office and industrial parks exploded, and the shopping center went from a handful to 100,000 locations. Urban renewal simultaneously bulldozed urban neighborhoods — a legacy still visible in American cities today.</p>
+        <div class="era-tags"><span class="era-tag">GI Bill 1944</span><span class="era-tag">Levittown</span><span class="era-tag">Interstate Highways 1956</span><span class="era-tag">Shopping Centers</span><span class="era-tag">Urban Renewal</span></div>
+      </div>
+    </div>
+
+    <div class="era-card">
+      <div class="era-header mid">
+        <div class="era-period">1980s – Present</div>
+        <h4>The Modern Era — Cycles, Technology &amp; Smart Growth</h4>
+      </div>
+      <div class="era-body">
+        <p>The S&amp;L crisis of the 1980s, the dot-com collapse of 2001, and the Great Recession of 2007–2009 each demonstrated that real estate cycles had not been tamed — only modified. Technology and e-commerce killed enclosed malls and created the industrial warehouse boom. The service economy drove downtown office revivals. Climate, sustainability, and walkability began reshaping where people want to live and work. The forces behind development continue to evolve — but the fundamental cycle of expansion, overbuilding, correction, and recovery does not.</p>
+        <div class="era-tags"><span class="era-tag">S&amp;L Crisis 1980s</span><span class="era-tag">Great Recession 2007–09</span><span class="era-tag">E-Commerce Revolution</span><span class="era-tag">Smart Growth</span></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 3</div>
+  <h2 class="lesson-title">Infrastructure Shapes Everything — <em>The Transportation-Development Link</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Every major transportation revolution in American history created a corresponding real estate development revolution. This is not coincidence — it is one of the most reliable patterns in the history of development. When transportation changes what land is accessible, values shift dramatically. Developers who see transportation investments coming before the market catches up have consistently made extraordinary returns.</p>
+
+  <table class="infra-table">
+    <thead>
+      <tr>
+        <th>Era</th>
+        <th>Transportation Innovation</th>
+        <th>Development Wave It Created</th>
+        <th>Key Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="t-era">1780s–1840s</td>
+        <td>Canals &amp; steamships</td>
+        <td>River towns, port cities, early industrial centers</td>
+        <td>Erie Canal opens New York's interior</td>
+      </tr>
+      <tr>
+        <td class="t-era">1840s–1890s</td>
+        <td>Railroads</td>
+        <td>First suburbs, factory towns, transcontinental land speculation</td>
+        <td>Flagler builds Miami; Huntington builds LA</td>
+      </tr>
+      <tr>
+        <td class="t-era">1880s–1920s</td>
+        <td>Electric streetcars</td>
+        <td>"Streetcar suburbs" — middle-class neighborhoods along transit lines</td>
+        <td>Huntington's Pacific Electric: 1,300 miles of LA suburbia</td>
+      </tr>
+      <tr>
+        <td class="t-era">1920s–1950s</td>
+        <td>Automobile (early)</td>
+        <td>First auto-oriented strip development, early suburban sprawl</td>
+        <td>Highway motels, roadside retail, early shopping centers</td>
+      </tr>
+      <tr>
+        <td class="t-era">1956–1980s</td>
+        <td>Interstate Highway System</td>
+        <td>Mass suburbanization, industrial parks, enclosed malls, office parks</td>
+        <td>Route 128 Boston; Levittown; Northgate Shopping Center</td>
+      </tr>
+      <tr>
+        <td class="t-era">1990s–Present</td>
+        <td>Internet &amp; e-commerce</td>
+        <td>Last-mile logistics warehouses, death of enclosed malls, remote work</td>
+        <td>Amazon fulfillment centers; suburban office vacancy</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="insight-box">
+    <h4>Why This Matters Right Now</h4>
+    <p>Transit-oriented development (TOD) — building mixed-use density around transit nodes — is the contemporary expression of the same logic that built Riverside, Illinois in 1869 and Shaker Heights in 1929. Developers who understand where new transit infrastructure is being built, where highways are being expanded, and where e-commerce logistics require last-mile proximity are reading the same signals that Henry Flagler read in the 1880s. The technology changes. The principle does not.</p>
+  </div>
+
+  <p class="body-text">The connection between infrastructure and value creation also works in reverse. When transportation infrastructure declines or shifts, property values follow. The interstate highways that were supposed to save downtowns actually accelerated their decline by making it equally easy to leave. The enclosed mall, which seemed permanent as recently as 1995, began dying the moment e-commerce offered a better alternative. No infrastructure advantage is permanent — which is why location analysis must always include an honest assessment of the long-term infrastructure trajectory of a site.</p>
+
+  <div class="callout">
+    <p>"The landscape of the metropolitan region was strongly shaped by Huntington's rail network: many of today's freeways follow the old Pacific Electric rights-of-way." — Miles, Netherton &amp; Schmitz. The infrastructure decisions of a century ago still determine land values today.</p>
+  </div>
+
+  <p class="body-text"><strong>Developers and practitioners who shaped the infrastructure-development relationship:</strong></p>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <div class="profile-name">Henry M. Flagler</div>
+      <div class="profile-era">1880s–1913 · Florida East Coast</div>
+      <div class="profile-desc">Standard Oil partner who built the Florida East Coast Railway, then used railroad land grants to develop St. Augustine, West Palm Beach, and Miami — effectively creating Florida's east coast from scratch. Built hotels, electric plants, sewage systems, harbors, and newspapers. One of history's greatest examples of infrastructure-led development.</div>
+      <div class="profile-lesson">Lesson: Control the infrastructure, control the land value.</div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-name">Henry E. Huntington</div>
+      <div class="profile-era">1900s–1920s · Southern California</div>
+      <div class="profile-desc">Built the Pacific Electric Railway — 1,300 miles of streetcar lines — and simultaneously developed residential subdivisions along every route. Also owned the power company and water company. Southern California's suburban form today traces directly to his network. As a local joke put it: "Does Mr. Huntington own the ocean or does it still belong to God?"</div>
+      <div class="profile-lesson">Lesson: Infrastructure + land ownership = compounding returns.</div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-name">William Levitt</div>
+      <div class="profile-era">1947–1960s · New York &amp; Philadelphia</div>
+      <div class="profile-desc">Built 17,500 homes in Levittown, NY at 35 per day using mobile assembly line construction. Priced at $7,990 — $1,500 below any competitor — while earning $1,000 profit per home. Time magazine called him "the most potent single modernizing influence in a largely antiquated industry." Pioneered mass production homebuilding that defined postwar American suburbia.</div>
+      <div class="profile-lesson">Lesson: Systemize production to make scale profitable.</div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-name">J.C. Nichols</div>
+      <div class="profile-era">1905–1950s · Kansas City</div>
+      <div class="profile-desc">Developed the 1,000-acre Country Club District in Kansas City — 6,000 houses, 160 apartment buildings, 35,000 residents — and created America's first suburban shopping center, Country Club Plaza. Installed first-rate infrastructure in advance of sales. Founded the Urban Land Institute. Defined the model of the long-term community builder developer.</div>
+      <div class="profile-lesson">Lesson: Infrastructure investment before sales creates lasting value.</div>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 3</div>
+  <h2 class="lesson-title">The Real Estate Cycle — <em>Why It Always Repeats</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Perhaps the single most important lesson from the history of American real estate development is this: <strong>the cycle always repeats.</strong> It has done so without exception since the 1780s. Boom, overbuilding, crash, recovery — the timeline varies, the triggers vary, but the structure does not. Understanding where you are in the cycle is one of the most important skills a developer can develop.</p>
+
+  <div class="cycle-grid">
+    <div class="cycle-card">
+      <div class="cycle-num">01</div>
+      <div class="cycle-phase">Expansion</div>
+      <div class="cycle-desc">Demand grows, vacancies fall, rents rise, values increase. Financing becomes available and optimistic. Developers enter the market. Returns look excellent. This phase feels like it will last forever.</div>
+    </div>
+    <div class="cycle-card">
+      <div class="cycle-num">02</div>
+      <div class="cycle-phase">Overbuilding</div>
+      <div class="cycle-desc">Supply catches up with and then exceeds demand. New supply keeps coming because projects started during expansion are still being delivered. Financing remains available. Warning signs are dismissed as temporary. This is the most dangerous phase.</div>
+    </div>
+    <div class="cycle-card">
+      <div class="cycle-num">03</div>
+      <div class="cycle-phase">Correction</div>
+      <div class="cycle-desc">Vacancies rise, rents fall, values drop. Financing tightens or disappears. Developers who overleveraged face foreclosure. Projects planned during expansion are abandoned or sold at distress. The market feels like it will never recover.</div>
+    </div>
+    <div class="cycle-card">
+      <div class="cycle-num">04</div>
+      <div class="cycle-phase">Recovery</div>
+      <div class="cycle-desc">Excess supply is absorbed. Vacancies stabilize. Rents begin recovering. Well-capitalized developers who survived the correction find extraordinary buying opportunities. The patient developer who bought in the correction builds the next cycle's fortune.</div>
+    </div>
+  </div>
+
+  <p class="body-text">The cycle has played out with remarkable consistency across American history. The Florida land boom of the 1920s peaked in 1926 — three years before the stock market crash. The S&amp;L crisis of the 1980s was driven by exactly the same overbuilding dynamic that caused the 1873 panic. The 2007–2009 Great Recession followed the same script as the 1929 crash: easy credit, overvalued assets, and a sudden loss of confidence that froze the entire system.</p>
+
+  <p class="body-text">The key insight from Miles is this: <strong>real estate markets peak before the broader economy, and they bottom before the broader economy.</strong> The Florida real estate market peaked in 1926. The stock market crashed in 1929. Real estate developers who understood the cycle saw the warning signs years before Wall Street did.</p>
+
+  <div class="insight-box">
+    <h4>The Government's Role in Every Cycle</h4>
+    <p>The federal government has intervened in every major real estate cycle in American history — sometimes preventing collapse, sometimes inadvertently creating the next one. The FHA (1934) stabilized housing finance after the Depression and created the postwar suburban boom. The deregulation of S&Ls in the 1982 Garn-St. Germain Act led directly to the S&amp;L crisis and the 1990 recession. The loosening of mortgage underwriting standards in the 2000s enabled the 2007–2009 collapse. Understanding government policy is not optional for developers — it shapes the rules of the game in every cycle.</p>
+  </div>
+
+  <p class="body-text"><strong>Practical application for aspiring developers:</strong> Study the current cycle before committing capital to any project. How long has the current expansion been running? What is the relationship between new supply coming to market and actual demand? Are financing conditions unusually easy? Is there a narrative in the market that "this time is different"? These are the warning signs that have appeared before every correction in American real estate history.</p>
+
+  <div class="callout">
+    <p>"The speculative craze for subdivision lots was abating, and many of those who had bought on credit in anticipation of rapid and profitable re-sales were defaulting on their loans — a major disaster loomed." — Miles on the late 1920s. Written about 1928. Applies equally to 2006.</p>
+  </div>
+
+  <!-- KEY TERMS -->
+  <div class="module-glossary">
+    <h3>📖 Module 2 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch2" placeholder="Search terms..." oninput="mgFilter(this,2)">
+    <div class="mg-terms" id="mgTerms2">
+      <div class="mg-term" data-mg="homestead act 1862 free land 160 acres settlers">
+        <div class="mg-name">Homestead Act (1862)</div>
+        <div class="mg-def">Federal legislation that granted 160 acres of public land to settlers who lived on and improved it for five years. Along with other homesteading programs, the government gave away nearly 300 million acres of public land to private owners — establishing private land ownership as the foundation of American real estate markets.</div>
+      </div>
+      <div class="mg-term" data-mg="fee simple complete ownership convey sell lease trade private">
+        <div class="mg-name">Fee Simple</div>
+        <div class="mg-def">The most complete form of private property ownership — including the right to use, sell, lease, or convey the property to another party. The creation of fee simple ownership generated the vibrant real estate market that attracted investment capital and enabled the development of the American built environment.</div>
+      </div>
+      <div class="mg-term" data-mg="ground lease long term land rent tenant improvements landlord income">
+        <div class="mg-name">Ground Lease</div>
+        <div class="mg-def">A long-term lease of land under which the tenant pays ground rent and can build on and improve the property. The landlord retains ownership of the land. Trinity Church in New York City accumulated ground lease income from 1,000 city lots starting in the 1700s. Several of New York's most important buildings still sit on ground-leased land today.</div>
+      </div>
+      <div class="mg-term" data-mg="streetcar suburb transit oriented residential growth electric rail commuter">
+        <div class="mg-name">Streetcar Suburbs</div>
+        <div class="mg-def">Residential subdivisions that developed along electric streetcar lines in the late 19th and early 20th centuries, enabling middle-class workers to live outside the crowded city center and commute to work. Henry Huntington's Pacific Electric Railway in Southern California — 1,300 miles of track — created the suburban form of the entire Los Angeles region.</div>
+      </div>
+      <div class="mg-term" data-mg="city beautiful movement 1893 chicago exposition parks civic architecture burnham olmsted">
+        <div class="mg-name">City Beautiful Movement</div>
+        <div class="mg-def">An urban planning and design movement launched by the 1893 Chicago Columbian Exposition that promoted monumental civic architecture, public parks, and grand boulevards. Led by figures like Daniel Burnham and the Olmsted brothers, it shaped the design of public spaces in American cities for decades and established the concept of the planned urban environment.</div>
+      </div>
+      <div class="mg-term" data-mg="zoning land use separation residential industrial commercial 1905 los angeles 1915 new york">
+        <div class="mg-name">Zoning</div>
+        <div class="mg-def">Government regulation that separates land uses by geographic area within a municipality — residential, commercial, industrial — and controls building height, setbacks, and density. Los Angeles adopted the first land use separation code in 1905. New York enacted comprehensive zoning in 1915. Zoning is now universal and is one of the primary regulatory constraints every developer must navigate.</div>
+      </div>
+      <div class="mg-term" data-mg="FHA federal housing administration 1934 mortgage insurance long term amortizing loan underwriting">
+        <div class="mg-name">Federal Housing Administration <span class="mg-abbr">FHA</span></div>
+        <div class="mg-def">Created in 1934 to stabilize the collapsed residential finance market. The FHA revolutionized housing finance by introducing long-term (20–25 year) self-amortizing mortgages, high loan-to-value ratios (80–90%), standardized underwriting, and mortgage insurance that reduced lender risk. The FHA model enabled the postwar suburban housing boom and transformed homeownership from a privilege to a mass-market reality.</div>
+      </div>
+      <div class="mg-term" data-mg="GI bill servicemens readjustment act 1944 VA veterans administration home loan guarantee">
+        <div class="mg-name">GI Bill (Servicemen's Readjustment Act, 1944)</div>
+        <div class="mg-def">Federal legislation that established VA home loan guarantees for returning WWII veterans, enabling homeownership with little or no down payment. Combined with FHA financing, the GI Bill fueled the postwar housing boom — 15 million units built in the 1950s — and the mass suburbanization of America.</div>
+      </div>
+      <div class="mg-term" data-mg="urban renewal title I housing act 1949 blight clearance redevelopment eminent domain displacement">
+        <div class="mg-name">Urban Renewal</div>
+        <div class="mg-def">A federally funded program (Title I of the Housing Act of 1949) that empowered local governments to use eminent domain to clear "blighted" areas and sell land to private developers for redevelopment. Between 1949 and 1967, approximately 400,000 residential units were demolished under Title I — displacing hundreds of thousands of mostly minority and low-income residents. The program's legacy remains deeply contested.</div>
+      </div>
+      <div class="mg-term" data-mg="real estate cycle expansion overbuilding correction recovery boom bust repeating pattern">
+        <div class="mg-name">Real Estate Cycle</div>
+        <div class="mg-def">The recurring pattern of expansion, overbuilding, correction, and recovery that has characterized American real estate markets since the 1780s. Real estate markets typically peak before the broader economy and bottom before the broader economy. Understanding cycle position is one of the most critical skills in development — overbuilding during expansion and buying during correction are the two great levers of developer wealth and developer ruin, respectively.</div>
+      </div>
+      <div class="mg-term" data-mg="garden city ebenezer howard 1898 master plan mixed use greenbelt planned community">
+        <div class="mg-name">Garden City</div>
+        <div class="mg-def">A planned community concept articulated by Ebenezer Howard in 1898 that combined residential, commercial, industrial, and agricultural land uses within a defined greenbelt. The first garden city — Letchworth, England — was developed in 1903. American expressions included Radburn, NJ (1928) and J.C. Nichols's Country Club District in Kansas City. The garden city concept is the intellectual ancestor of the modern master-planned community.</div>
+      </div>
+      <div class="mg-term" data-mg="transit oriented development TOD density walkability station area mixed use">
+        <div class="mg-name">Transit-Oriented Development <span class="mg-abbr">TOD</span></div>
+        <div class="mg-def">A development approach that concentrates mixed-use density around transit stations — applying the same logic that created streetcar suburbs in the 1880s and railroad suburbs in the 1850s. TOD is the contemporary expression of the infrastructure-value relationship that has driven every major development wave in American history.</div>
+      </div>
+    </div>
+    <p class="mg-none" id="mgNone2">No matching terms found.</p>
+    <div class="mg-footer">More terms covered in upcoming modules. <a href="red-glossary.html">View Full Course Glossary →</a></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section" id="quizSection">
+    <h3>Module 2 Knowledge Check</h3>
+    <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">What was the single largest transfer of public land to private railroad companies in American history, and why does it matter to developers today?</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">A</div>The Homestead Act of 1862, which gave 160 acres to settlers — establishing the precedent that government land grants drive development.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div>Between 1850 and 1871, the federal government granted 130 million acres to railroad companies — more than half of all land within 6 to 40 miles of the rights-of-way. Railroads used this land to fund construction and created the first major development corridors in American history.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">C</div>The Louisiana Purchase of 1803, which doubled the size of the United States and opened the West to development.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">D</div>The Northwest Ordinance of 1787, which established the township and range survey system for dividing western land.</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. Between 1850 and 1871, 130 million acres were granted to railroad companies — the largest transfer of public land to private ownership in American history. The railroads received every other section within miles of their rights-of-way, then sold that land to fund construction and create demand for rail service. This model of infrastructure-led value creation is the direct ancestor of transit-oriented development today.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ The correct answer is the railroad land grants of 1850–1871: 130 million acres granted to railroad companies. The Homestead Act and Northwest Ordinance were significant, but neither matched the scale of the railroad grants. The Louisiana Purchase was a territorial acquisition, not a land transfer to private parties.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">What was the FHA's most important structural innovation in real estate finance, and why did it matter?</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">A</div>It created the first government-backed bank to lend directly to homebuyers, replacing private lenders entirely.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">B</div>It established the first national zoning standards, ensuring that residential areas were protected from industrial encroachment.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div>It replaced short-term balloon mortgages (1–5 years) with long-term self-amortizing loans (20–25 years) at high loan-to-value ratios — transforming home mortgage lending from a high-risk, localized practice into a standardized, national market that made homeownership accessible to the middle class.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">D</div>It created a secondary mortgage market that allowed banks to sell their loans to investors, freeing up capital for new lending.</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. Before the FHA, most mortgages were short-term (1–5 years), non-amortizing balloon loans — borrowers just paid interest and then owed the full principal at maturity. When banks refused to refinance during the Depression, millions of borrowers defaulted. The FHA's long-term amortizing mortgage at 80–90% LTV made homeownership affordable and stable, and standardized the product into a nationwide market.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ The FHA's most important innovation was replacing short-term balloon mortgages with long-term (20–25 year) self-amortizing loans at high loan-to-value ratios. It did not lend directly (it insured loans made by private lenders) and did not create zoning standards. Fannie Mae — not the FHA — created the secondary mortgage market.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">Henry Huntington's development strategy in Southern California is a classic example of what principle?</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">A</div>The value of buying land at distressed prices during a market correction and holding for long-term appreciation.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div>Controlling infrastructure (transit, power, water) and simultaneously owning the land that infrastructure serves — so that every dollar invested in transit directly increased the value of his adjacent real estate holdings.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">C</div>The importance of targeting luxury buyers over middle-income households to maximize profit margins per unit.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">D</div>The value of government partnerships in obtaining land grants and subsidies for large-scale development.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. Huntington owned the Pacific Electric Railway, the Pacific Light and Power Company, and the San Gabriel Valley Water Company — and simultaneously owned the residential subdivisions along every rail line. Each infrastructure investment increased the value of adjacent land he was selling. The joke at the time captured it perfectly: his streetcars, his parks, his beach, his utilities — even the ocean wasn't safe from his ownership claims.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ Huntington's strategy was about controlling infrastructure and owning adjacent land simultaneously. His Pacific Electric Railway, power company, and water company all directly increased the value of the residential subdivisions he was developing alongside them. This infrastructure-land integration model produced compounding returns that pure land speculation or pure transit operation alone could never have achieved.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">What was William Levitt's key innovation that made Levittown economically possible?</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">A</div>He secured government subsidies that covered 50% of construction costs, enabling below-market pricing.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div>He turned the entire development into a mobile assembly line — teams moving from house to house performing 26 specific repetitive tasks, with materials preassembled and delivered just-in-time — achieving 35 homes per day at peak production and pricing $1,500 below any competitor while still earning $1,000 profit per home.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">C</div>He built on government-owned land under a 99-year ground lease, eliminating land cost from his financial model.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">D</div>He used prefabricated modular construction — building homes in factories and assembling them on-site in a single day.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. Levitt brought factory production methods to residential construction — not prefab modules, but a mobile assembly line with workers performing specialized repetitive tasks across hundreds of lots simultaneously. He bought materials in bulk to his own specs, required subcontractors to work exclusively for him, and preassembled components for just-in-time delivery. The result was 35 homes per day, $7,990 per home, $1,000 profit each — at a scale no competitor could match.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ Levitt's innovation was the mobile assembly line — teams of specialized workers moving from house to house performing 26 specific tasks, with just-in-time material delivery. He received no 50% government subsidy, did not use ground leases, and did not build prefab modules. His genius was applying industrial production methods to on-site homebuilding for the first time at scale.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">The 1956 Interstate Highway Act was intended to revitalize downtowns. What was its actual effect?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">A</div>It succeeded in its goal — downtown retail and office markets boomed throughout the 1960s as a direct result of improved highway access.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div>The highways were two-way streets — they allowed businesses and residents to leave cities as easily as to enter them, accelerating urban flight. Office buildings, department stores, and hotels relocated to suburban highway interchanges, and displaced inner-city communities suffered severe harm from the construction itself.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">C</div>It had no significant effect on downtown areas — most development during the 1960s was driven by urban renewal programs rather than highway access.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">D</div>It created a brief downtown revival in the 1960s before the subsequent economic recessions reversed the gains.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. The interstate highways were intended to bring people into downtowns but had the opposite effect — they made it equally easy to leave. The downtown expressways also destroyed urban neighborhoods in their path. The hallmarks of downtowns — office buildings, department stores, hotels — followed the highways out to suburban interchanges. This is one of the most important lessons in the unintended consequences of infrastructure investment on real estate markets.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ The interstate highways, meant to save downtowns, actually accelerated urban flight by making suburban locations just as accessible as downtown. The highways also physically destroyed urban neighborhoods in their construction paths. Understanding unintended policy consequences is part of the developer's toolkit — infrastructure investment never has purely additive effects on all locations.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">What is the critical warning sign that a real estate market is entering the overbuilding phase of the cycle?</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">A</div>Interest rates begin rising rapidly, signaling that the Federal Reserve is concerned about inflation in the economy.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">B</div>Major institutional investors begin exiting the market and returning capital to limited partners.</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">C</div>New supply keeps coming to market even as demand signals weaken — because projects started during the expansion phase are still in the pipeline. Financing remains available, and market participants dismiss warning signs as temporary. The narrative that "this time is different" is widespread.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">D</div>Construction costs rise sharply due to material shortages, reducing developer margins and slowing new starts.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. The overbuilding phase is dangerous precisely because it doesn't look dangerous from inside it. Projects started during the expansion are still being delivered, financing is still available, and market participants have convinced themselves that demand will catch up with supply. The Florida market peaked in 1926 — three years before the stock market crash — because supply had already outrun demand. The warning signs were dismissed as temporary.</div>
+        <div class="feedback incorrect" id="q6-wrong">✗ The critical warning sign of overbuilding is that supply keeps growing even as demand softens, with market participants dismissing the warning signs as temporary. Rising interest rates and institutional exits may accompany the correction phase, but they are not the cause of overbuilding. The overbuilding phase is defined by the gap between supply entering the market and actual demand absorbing it.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">John Jacob Astor's approach to real estate differed fundamentally from most of his contemporaries. What was his strategy?</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">A</div>Buy land at low prices, hold patiently for urban growth to drive values higher, collect rental income while waiting, and rarely sell — using downturns to acquire more land at distressed prices rather than selling under pressure.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">B</div>Build aggressively during boom periods using maximum leverage, then sell everything at the peak to repay debt before the correction.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">C</div>Partner with railroad companies to acquire land grants along new routes before the tracks were built, then sell to settlers at a premium.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">D</div>Develop rental housing for working-class immigrants, using high occupancy rates and low maintenance costs to maximize yield.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. Astor's strategy was the opposite of the speculative frenzy around him: buy cheap, hold patiently, collect rent, and buy more during crashes. During the 1837 depression, while others were defaulting, Astor was acquiring properties at distress prices and foreclosing on mortgages he held. By 1840 he was America's wealthiest man, with $1.25 million in annual ground rent income alone. His dying words: "Could I begin life again, I would buy every foot of land on the island of Manhattan."</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ Astor's strategy was patient accumulation — buy cheap, hold for urban growth, collect rental income, and use downturns to acquire more at distressed prices. He was the opposite of the leveraged speculator. He settled for a 5% return on current land value and left the risk of construction and management to others. His wealth came from the compound growth of Manhattan land values over decades, not from development or speculation.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">Urban renewal programs under Title I of the Housing Act of 1949 produced mixed results. What was the most significant negative outcome?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">A</div>The programs were too expensive for most cities to implement, so very little actual redevelopment occurred despite the federal funding.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">B</div>Between 1949 and 1967, approximately 400,000 residential units were demolished — but only 10,000 new public housing units were built on urban renewal sites. Displaced residents, mostly low-income and minority, received little relocation assistance and were forced into other overcrowded neighborhoods, leading to the program being widely called "Negro removal."</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">C</div>The new office towers and hotels built on cleared land drove up surrounding property values so dramatically that existing residents could no longer afford to stay in nearby neighborhoods.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">D</div>Private developers refused to participate because the land write-down subsidies were insufficient to make the projects financially viable.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. Urban renewal cleared 400,000 units but replaced them with only 10,000 public housing units on cleared sites — a 40:1 demolition-to-replacement ratio. Displaced residents received little help finding new housing and were overwhelmingly low-income and minority. The program was eventually abolished in 1974, but its physical and social legacy — including vacant lots called "Hiroshima Flats" in some cities — remained visible for decades. This history matters for developers working in urban markets today.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ The most significant negative outcome was the massive displacement without adequate relocation: 400,000 units demolished, only 10,000 public housing units built on cleared sites. Displaced residents — overwhelmingly low-income and minority — had nowhere to go. The program was eventually abolished in 1974. Understanding this history is important because its legacy shapes community relationships and political dynamics in urban development today.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">Which of the following best describes the relationship between infrastructure investment and real estate value creation, as illustrated throughout American development history?</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">A</div>Infrastructure investment always benefits all nearby property owners equally, regardless of property type or distance from the infrastructure.</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">B</div>New infrastructure makes previously inaccessible or low-value land accessible and productive, creating a development wave for those who anticipated the infrastructure investment — but no infrastructure advantage is permanent, and shifts in transportation technology can destroy as much value as they create.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">C</div>Infrastructure investment primarily benefits governments through increased property tax revenues, with private developers capturing only modest secondary gains.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">D</div>The value creation from infrastructure investment is limited to the immediate vicinity of the infrastructure itself and does not affect broader regional development patterns.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. Infrastructure investment creates value by making land accessible — but it is not permanent and can destroy value when transportation technology shifts. The interstate highways that created suburban office parks also hollowed out downtowns. E-commerce that created the warehouse boom also killed the enclosed mall. Developers who understand this dynamic position ahead of infrastructure investment and plan for eventual technological disruption of their sites' competitive advantage.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ Infrastructure investment creates development waves for those who anticipated it, but no advantage is permanent. The streetcar suburbs of the 1890s eventually lost their advantage when the automobile arrived. The enclosed mall lost its advantage when e-commerce arrived. The interstate highways that suburbanized America also accelerated downtown decline. Infrastructure creates and destroys value simultaneously — in different locations and at different points in time.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">The Florida real estate market peaked in 1926 — three years before the stock market crashed in 1929. What does this illustrate about real estate cycles?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">A</div>Real estate markets are completely independent of the broader economy and follow their own separate cycle.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">B</div>Florida was a unique market with unusual speculative characteristics that do not apply to other real estate markets.</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">C</div>Real estate markets typically peak before the broader economy — often years before — because supply-demand imbalances build up gradually and become visible to informed analysts before they trigger a broad economic contraction. Developers who study cycle fundamentals can see the warning signs that the general market misses.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">D</div>Government intervention can reliably prevent real estate cycles from completing their natural correction phase.</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. The Florida peak in 1926, three years before the stock market crash, is one of the clearest historical illustrations of real estate leading the broader economic cycle. In Florida, enough lots were subdivided — many in swampland or literally underwater — to house the entire U.S. population. The oversupply was visible to anyone looking at fundamentals. Developers who read the cycle signals rather than the general market sentiment have a significant informational advantage.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ The Florida peak in 1926 illustrates that real estate cycles lead the broader economy — the supply-demand imbalance builds and becomes visible before it triggers broader economic contraction. Real estate is not independent of the economy, but it tends to lead it in both directions. Florida was not unique — the same pattern repeated in the S&amp;L crisis (real estate peaked before the broader recession) and in 2006–2007 (real estate peaked before the 2008 financial crisis).</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="red-module-1.html" class="btn-nav outline">← Module 1</a>
+  <div class="nav-module-title">
+    <strong>Up Next: Module 3</strong>
+    The Public Sector, Regulation &amp; Entitlements
+  </div>
+  <a href="red-module-3.html" class="btn-nav primary">Module 3 →</a>
+</div>
+
+<footer style="background:var(--char);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--orange-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+function mgFilter(input,n){var v=input.value.toLowerCase();var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');var any=false;terms.forEach(function(t){var match=t.getAttribute('data-mg').includes(v)||t.textContent.toLowerCase().includes(v);t.classList.toggle('mg-hidden',!match);if(match)any=true;});document.getElementById('mgNone'+n).style.display=any?'none':'block';}
+
+var answers={};
+var quizData={
+  q1:{correct:'B',question:'What was the single largest transfer of public land to private railroad companies?',options:{A:'The Homestead Act of 1862.',B:'Between 1850–1871, 130 million acres were granted to railroad companies — more than half of all land within miles of the rights-of-way.',C:'The Louisiana Purchase of 1803.',D:'The Northwest Ordinance of 1787.'},explanation:'130 million acres were granted to railroads between 1850–1871 — the largest transfer of public land to private parties in American history. Railroads used this land to fund construction and created the first major development corridors.'},
+  q2:{correct:'C',question:'What was the FHA\'s most important structural innovation in real estate finance?',options:{A:'It created the first government-backed bank to lend directly to homebuyers.',B:'It established the first national zoning standards.',C:'It replaced short-term balloon mortgages with long-term self-amortizing loans at high LTV ratios — making homeownership affordable and standardizing the national mortgage market.',D:'It created a secondary mortgage market that allowed banks to sell their loans to investors.'},explanation:'Before the FHA, most mortgages were short-term (1–5 year) balloon loans. The FHA\'s 20–25 year amortizing mortgage at 80–90% LTV transformed homeownership from a privilege to a mass-market reality.'},
+  q3:{correct:'B',question:'Henry Huntington\'s development strategy in Southern California is a classic example of what principle?',options:{A:'Buying distressed land during corrections and holding for appreciation.',B:'Controlling infrastructure (transit, power, water) while simultaneously owning adjacent land — so every infrastructure dollar increased his real estate values.',C:'Targeting luxury buyers to maximize margins.',D:'Using government partnerships to obtain land grants.'},explanation:'Huntington owned the Pacific Electric Railway, power company, and water company — and simultaneously owned subdivisions along every route. Infrastructure investment directly increased adjacent land values he was selling.'},
+  q4:{correct:'B',question:'What was William Levitt\'s key innovation that made Levittown economically possible?',options:{A:'Government subsidies covering 50% of construction costs.',B:'A mobile assembly line with teams performing 26 specialized tasks across hundreds of lots — achieving 35 homes per day at $7,990 per home with $1,000 profit each.',C:'Building on government-owned ground-leased land, eliminating land cost.',D:'Prefabricated modular construction built in factories.'},explanation:'Levitt applied factory production methods to on-site construction — specialized workers, bulk materials, just-in-time delivery. 35 homes per day, $1,500 below any competitor, $1,000 profit each.'},
+  q5:{correct:'B',question:'The 1956 Interstate Highway Act was intended to revitalize downtowns. What was its actual effect?',options:{A:'It succeeded — downtown markets boomed throughout the 1960s.',B:'The highways were two-way streets — allowing businesses and residents to leave cities as easily as enter, accelerating urban flight to suburban highway interchanges.',C:'It had no significant effect — urban renewal drove development more than highways.',D:'It created a brief downtown revival before recessions reversed the gains.'},explanation:'The interstate highways accelerated urban flight by making suburban locations equally accessible. Office buildings, department stores, and hotels relocated to suburban interchanges. The highways also destroyed inner-city neighborhoods in their construction paths.'},
+  q6:{correct:'C',question:'What is the critical warning sign that a real estate market is entering the overbuilding phase?',options:{A:'Interest rates begin rising rapidly.',B:'Major institutional investors begin exiting the market.',C:'New supply keeps arriving even as demand softens, because pipeline projects are still delivering. Financing remains available and warning signs are dismissed. "This time is different" is heard frequently.',D:'Construction costs rise sharply, reducing developer margins.'},explanation:'Overbuilding is dangerous because it does not look dangerous from inside. Pipeline projects keep delivering, financing stays available, and the market dismisses softening demand as temporary.'},
+  q7:{correct:'A',question:'What was John Jacob Astor\'s real estate strategy?',options:{A:'Buy cheap, hold patiently for urban growth, collect rental income, and use downturns to acquire more at distressed prices — rarely selling.',B:'Build aggressively with maximum leverage during booms, then sell at the peak.',C:'Partner with railroads to acquire land grants along new routes before construction.',D:'Develop rental housing for immigrants using high occupancy and low maintenance.'},explanation:'Astor bought cheap, waited for urban growth, collected rent, and bought more during crashes. During the 1837 depression he was acquiring, not selling. By 1840 he was America\'s wealthiest man.'},
+  q8:{correct:'B',question:'What was the most significant negative outcome of urban renewal programs under Title I?',options:{A:'Programs were too expensive for cities to implement, so little redevelopment occurred.',B:'400,000 residential units were demolished between 1949–1967, but only 10,000 new public housing units were built on cleared sites. Displaced residents — mostly low-income and minority — received little relocation assistance.',C:'New development drove up surrounding values so dramatically that existing residents were priced out.',D:'Private developers refused to participate because subsidies were insufficient.'},explanation:'The 40:1 demolition-to-replacement ratio, combined with minimal relocation assistance for displaced minority residents, led the program to be widely called "Negro removal." It was abolished in 1974.'},
+  q9:{correct:'B',question:'Which best describes the relationship between infrastructure investment and real estate value creation?',options:{A:'Infrastructure benefits all nearby property owners equally regardless of type or distance.',B:'New infrastructure makes inaccessible land accessible and productive — but no advantage is permanent, and shifts in transportation technology can destroy as much value as they create.',C:'Infrastructure investment primarily benefits governments through property tax revenues.',D:'Value creation from infrastructure is limited to the immediate vicinity of the infrastructure.'},explanation:'Infrastructure creates development waves for those who anticipated it — but shifts in technology eventually disrupt those advantages. The interstate highways that created suburban office parks also hollowed out downtowns.'},
+  q10:{correct:'C',question:'The Florida real estate market peaked in 1926 — three years before the 1929 stock market crash. What does this illustrate?',options:{A:'Real estate markets are completely independent of the broader economy.',B:'Florida was a unique speculative market that does not apply to other markets.',C:'Real estate markets typically peak before the broader economy — supply-demand imbalances build gradually and become visible to informed analysts before triggering broad economic contraction.',D:'Government intervention can reliably prevent cycles from completing their correction phase.'},explanation:'Real estate leads the broader economic cycle in both directions. Florida peaked in 1926, the S&L crisis peaked before the 1990 recession, and real estate peaked in 2006 before the 2008 crisis. Developers who study fundamentals see the warnings the general market misses.'}
+};
+
+function selectOption(el,qId,isCorrect){
+  var block=el.parentElement;
+  var opts=block.querySelectorAll('.option');
+  opts.forEach(function(o){o.onclick=null;o.style.pointerEvents='none';});
+  if(isCorrect){el.classList.add('correct');block.querySelector('#'+qId+'-correct').style.display='block';}
+  else{el.classList.add('incorrect');block.querySelector('#'+qId+'-wrong').style.display='block';opts.forEach(function(o){if(o.getAttribute('data-correct')==='true')o.classList.add('correct');});}
+  answers[qId]={selected:el.querySelector('.option-letter').textContent,correct:isCorrect};
+  if(Object.keys(answers).length===Object.keys(quizData).length)document.getElementById('submitBtn').disabled=false;
+}
+
+function submitQuiz(){
+  var score=0;
+  Object.keys(answers).forEach(function(q){if(answers[q].correct)score++;});
+  var total=Object.keys(quizData).length;
+  document.getElementById('quizForm').style.display='none';
+  var result=document.getElementById('quizResult');
+  result.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  var passed=score>=8;
+  document.getElementById('resultLabel').textContent=passed?'✓ Module 2 Passed':'Keep Reviewing';
+  document.getElementById('resultLabel').style.color=passed?'#7DEFA1':'#F8ADB4';
+  document.getElementById('resultMsg').textContent=passed
+    ?'Strong foundation. You understand the three forces that shaped American development history — infrastructure drives value, government shapes the rules, and cycles are inevitable. Module 3 takes you into the regulatory environment: zoning, entitlements, and the public sector processes every developer must navigate.'
+    :'Review the real estate cycle carefully — especially what defines the overbuilding phase and why it is dangerous. Also revisit the FHA\'s structural innovation and the infrastructure-value relationship. These concepts underpin much of what follows in later modules.';
+  var wrongs=Object.keys(answers).filter(function(q){return !answers[q].correct;});
+  if(wrongs.length>0){
+    var wr=document.getElementById('wrongReview');wr.style.display='block';
+    var wl=document.getElementById('wrongList');wl.innerHTML='';
+    wrongs.forEach(function(q){
+      var d=quizData[q];var sel=answers[q].selected;
+      var div=document.createElement('div');div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div><div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div><div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div><div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+
+function retryQuiz(){
+  answers={};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled=true;
+  document.querySelectorAll('.option').forEach(function(o){
+    o.className='option';o.style.pointerEvents='';
+    var block=o.closest('.question-block');
+    var qId='q'+(Array.from(document.querySelectorAll('.question-block')).indexOf(block)+1);
+    var isCorrect=o.getAttribute('data-correct')==='true';
+    o.onclick=function(){selectOption(o,qId,isCorrect);};
+  });
+  document.querySelectorAll('.feedback').forEach(function(f){f.style.display='none';});
+}
+</script>
+</body>
+</html>
