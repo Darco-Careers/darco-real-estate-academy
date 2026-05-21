@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1: Introduction to Real Estate Development — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#2A2A2A;--char-mid:#3D3D3D;--char-light:#555;--char-pale:#F0EEEC;
+  --orange:#D4621A;--orange-mid:#E07030;--orange-light:#F08C50;--orange-pale:#FDF0E8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(42,42,42,0.1);
+  --shadow-card:0 2px 16px rgba(42,42,42,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+
+/* NAV */
+nav{background:var(--char);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--orange-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+
+/* BREADCRUMB + PROGRESS */
+.breadcrumb{background:var(--char-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--char);font-weight:600;}
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--char-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-mid));border-radius:3px;width:12.5%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--char);color:var(--orange-light);}
+.prog-dot.locked{background:rgba(42,42,42,0.1);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);}
+
+/* MODULE HERO */
+.module-hero{background:linear-gradient(135deg,#1A1A1A 0%,var(--char) 55%,#383838 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(212,98,26,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--orange-mid),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,98,26,0.15);border:1px solid rgba(212,98,26,0.3);color:var(--orange-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--orange-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:620px;line-height:1.85;font-weight:300;}
+
+/* MENTOR BUBBLE */
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--orange);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--orange) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--char);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--orange-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+
+/* PAGE BODY */
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--orange);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--char-mid);font-style:italic;}
+.orange-rule{width:44px;height:3px;background:var(--orange);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+
+/* CALLOUT */
+.callout{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--orange);font-style:italic;line-height:1.7;}
+.warning-box{background:#FBF0EE;border-left:4px solid #C0392B;border-radius:0 12px 12px 0;padding:1.1rem 1.4rem;margin:1.5rem 0;}
+.warning-box p{font-size:13.5px;color:#8B2F20;line-height:1.7;}
+
+/* INFO CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.5rem 0;}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:box-shadow 0.2s;}
+.info-card:hover{box-shadow:var(--shadow-card);}
+.ic-icon{font-size:1.6rem;margin-bottom:0.5rem;}
+.ic-title{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--char);margin-bottom:0.35rem;}
+.ic-body{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.ic-tag{font-size:11px;font-weight:700;color:var(--orange);margin-top:0.5rem;}
+
+/* 8-STAGE PIPELINE */
+.stage-pipeline{display:flex;flex-direction:column;gap:0;margin:1.75rem 0;}
+.stage-step{display:flex;gap:1.25rem;align-items:flex-start;position:relative;padding-bottom:1.25rem;}
+.stage-step:last-child{padding-bottom:0;}
+.stage-step::before{content:'';position:absolute;left:19px;top:42px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--orange),rgba(212,98,26,0.1));}
+.stage-step:last-child::before{display:none;}
+.stage-num{width:40px;height:40px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--white);flex-shrink:0;position:relative;z-index:1;}
+.stage-content{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.3rem;flex:1;transition:box-shadow 0.2s;}
+.stage-content:hover{box-shadow:var(--shadow-card);}
+.stage-name{font-weight:700;font-size:13.5px;color:var(--char);margin-bottom:0.25rem;}
+.stage-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.stage-gate{font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;margin-top:0.35rem;}
+
+/* TEAM GRID */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.85rem;margin:1.5rem 0;}
+.team-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:10px;align-items:flex-start;transition:box-shadow 0.2s;}
+.team-card:hover{box-shadow:var(--shadow-card);}
+.team-emoji{font-size:1.3rem;flex-shrink:0;margin-top:1px;}
+.team-name{font-size:13px;font-weight:700;color:var(--char);margin-bottom:0.15rem;}
+.team-role{font-size:12px;color:var(--text-mid);line-height:1.5;}
+
+/* CASE STUDY */
+.case-study{background:var(--char);border-radius:16px;padding:1.75rem;margin:1.75rem 0;color:var(--white);}
+.cs-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange-light);margin-bottom:0.5rem;}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;}
+.cs-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:1rem;}
+.cs-body{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.7;}
+.cs-stats{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1.1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.1);}
+.cs-stat .cs-num{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--orange-light);}
+.cs-stat .cs-lbl{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;}
+
+/* VIDEO */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.5rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--orange-pale);color:var(--orange);}
+.video-badge.supp{background:var(--gold-pale);color:#8A6A20;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* SUPPLEMENTAL */
+.supplemental{background:var(--orange-pale);border:1px solid rgba(212,98,26,0.15);border-radius:16px;padding:1.75rem;margin:2rem 0;}
+.supplemental h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--char);margin-bottom:0.35rem;}
+.supplemental p{font-size:13px;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.6;}
+
+/* KEY TERMS */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.25rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--orange);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.mg-abbr{display:inline-block;font-size:11px;font-weight:600;color:var(--orange);background:var(--orange-pale);padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.mg-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;}
+.mg-footer a{color:var(--orange);text-decoration:none;font-weight:600;}
+
+/* QUIZ */
+.quiz-section{background:var(--char);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-light);margin-bottom:0.4rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(212,98,26,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--orange-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--orange-mid);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(212,98,26,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange-light);}
+.result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;}
+.retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--orange-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+
+/* MODULE NAV */
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(42,42,42,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--orange);color:var(--white);}
+.btn-nav.primary:hover{background:var(--orange-mid);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--char);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
+  .info-grid,.team-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-development.html">Track Overview</a></li>
+    <li><a href="real-estate-development.html" class="nav-back">← Development Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-development.html">Real Estate Development</a><span class="sep">/</span>
+  <span class="current">Module 1: Introduction to Real Estate Development</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 1 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <span class="prog-dot active">1</span>
+    <span class="prog-dot locked">2</span>
+    <span class="prog-dot locked">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+    <span class="prog-dot locked">8</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Development Track · Module 1 of 8</div>
+    <h1>Introduction to <em>Real Estate Development</em></h1>
+    <p>What development actually is, who developers are, how the eight-stage process works from concept to completion, and the team of professionals who make every project possible. A foundation-setting module for one of the most complex careers in real estate.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"Real estate development is one of the broadest, deepest, and most rewarding careers in this industry — but it is not one you master quickly or safely without the right foundation. This course gives you the concepts and the vocabulary. What you build on top of that, through experience and mentorship, is what will take you far. Start here. Stay humble. And never stop learning."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 4</div>
+  <h2 class="lesson-title">What Is Real Estate Development — <em>And Why It Matters</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Real estate development is <strong>the continual reconfiguration of the built environment to meet society's needs.</strong> Every building you have ever walked into — every apartment complex, office tower, shopping center, hotel, or warehouse — was once a raw idea in someone's mind and an empty piece of land. A developer turned that idea into reality.</p>
+
+  <p class="body-text">More precisely, real estate development is the process of bringing built space to fruition. It starts with an idea and ends when tenants or owner-occupants occupy the physical space the development team has created. Each development project is, in essence, a separate business entity — employing the three classical factors of production: <strong>land, labor, and capital</strong> — coordinated by entrepreneurial management and delivered by teams of specialists.</p>
+
+  <div class="callout">
+    <p>"Value is created by providing space to meet the needs of society. Although the definition of real estate development remains simple, the process grows more and more complex as municipalities, financial markets, and consumer tastes evolve." — Miles, Netherton & Schmitz</p>
+  </div>
+
+  <p class="body-text">Both public and private participants have compelling reasons to understand the development process. <strong>Private sector participants</strong> aim to minimize risk while maximizing return — typically profit, but often nonmonetary objectives as well. <strong>The public sector</strong> aims to ensure public safety, manage the impacts of development on the community and environment, and promote development consistent with the community's long-term interests.</p>
+
+  <p class="body-text">A key principle is this: all participants enjoy a higher probability of achieving their goals if they understand how the development process works, who the key players are, how their objectives are interwoven, and why it is important to achieve consensus. Development is not a zero-sum game. The best outcomes happen when developers, governments, communities, and capital markets work together.</p>
+
+  <div class="warning-box">
+    <p><strong>An honest word before we go further:</strong> Real estate development is one of the most expansive and demanding careers in real estate. It is not mastered quickly. Mistakes in development are expensive, public, and slow to unwind. This course gives you a strong foundation in the concepts — enough to know if this path is right for you, and enough to begin building the knowledge base you'll need to pursue it seriously. What this course is not: a replacement for hands-on experience, professional mentorship, or the years of market knowledge that separate a great developer from a dangerous one.</p>
+  </div>
+
+  <p class="body-text">Today, development requires more knowledge than ever about prospective markets, urban growth patterns, neighborhood associations, legal requirements, local regulations, contracts, building design, construction techniques, environmental issues, infrastructure, financing, risk control, and time management. This is why the most successful developers invest years — sometimes decades — building their knowledge before attempting their first major project.</p>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 4</div>
+  <h2 class="lesson-title">The Eight-Stage Model — <em>How Every Project Gets Built</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Despite the enormous complexity of real estate development, developers still follow a standard sequence of steps — from the moment they conceive a project through the time they begin ongoing asset management or sell the finished product. This is the <strong>eight-stage model</strong> — the foundational framework used throughout this course and throughout the industry.</p>
+
+  <p class="body-text">Before we walk through the stages, a few critical points:</p>
+
+  <p class="body-text"><strong>The process is not linear.</strong> The eight stages identify discrete steps and guide understanding, but no chart can capture the constant repositioning that occurs in a developer's mind or the near-constant renegotiation between the developer and other participants. Expect to revisit earlier stages repeatedly as new information emerges.</p>
+
+  <p class="body-text"><strong>At each stage, consider all remaining stages.</strong> Every current decision has implications not just for the immediate next step, but for the life of the project. Great developers think ten steps ahead — always.</p>
+
+  <p class="body-text"><strong>The model applies to redevelopment too.</strong> Transforming an existing building requires most of the same steps as new construction. In large projects, individual components may be at different stages simultaneously.</p>
+
+  <div class="stage-pipeline">
+    <div class="stage-step">
+      <div class="stage-num">1</div>
+      <div class="stage-content">
+        <div class="stage-name">Idea Inception</div>
+        <div class="stage-desc">The developer — drawing on extensive background knowledge and current market data — looks for unmet needs, sees possibilities, and runs quick mental feasibility checks. A dozen ideas may be generated for every one that survives this stage.</div>
+        <div class="stage-gate">Gate: Not feasible → stop · Feasible → proceed to Stage 2</div>
+      </div>
+    </div>
+    <div class="stage-step">
+      <div class="stage-num">2</div>
+      <div class="stage-content">
+        <div class="stage-name">Idea Refinement</div>
+        <div class="stage-desc">The developer finds a specific site for the idea, assesses physical feasibility, talks with prospective tenants, lenders, partners, and professionals, settles on a tentative design, and options the land if the idea looks promising.</div>
+        <div class="stage-gate">Gate: Not feasible → stop · Feasible → proceed to Stage 3</div>
+      </div>
+    </div>
+    <div class="stage-step">
+      <div class="stage-num">3</div>
+      <div class="stage-content">
+        <div class="stage-name">Feasibility Study</div>
+        <div class="stage-desc">A more formal market study is conducted to estimate market absorption and capture rates. A feasibility study compares the estimated value of the project with its cost. Plans are processed through government agencies. Legal, physical, and financial feasibility is demonstrated for all participants.</div>
+        <div class="stage-gate">Gate: Not feasible → stop · Feasible → proceed to Stage 4</div>
+      </div>
+    </div>
+    <div class="stage-step">
+      <div class="stage-num">4</div>
+      <div class="stage-content">
+        <div class="stage-name">Contract Negotiation</div>
+        <div class="stage-desc">Final design is decided based on what users want and will pay for. Contracts are negotiated. The developer secures a written loan commitment, selects a general contractor, establishes rent or sales requirements, and obtains building permits from local government.</div>
+        <div class="stage-gate">Gate: Cannot reach binding contracts → stop · Can reach → proceed to Stage 5</div>
+      </div>
+    </div>
+    <div class="stage-step">
+      <div class="stage-num">5</div>
+      <div class="stage-content">
+        <div class="stage-name">Formal Commitment</div>
+        <div class="stage-desc">All contracts are signed — often simultaneously. This includes the joint venture agreement, construction loan agreement, permanent loan commitment, construction contract, exercise of land purchase option, purchase of insurance, and prelease agreements.</div>
+        <div class="stage-gate">The point of no return — significant capital is now committed</div>
+      </div>
+    </div>
+    <div class="stage-step">
+      <div class="stage-num">6</div>
+      <div class="stage-content">
+        <div class="stage-name">Construction</div>
+        <div class="stage-desc">The developer switches to a formal accounting system, seeking to keep all costs within budget. Marketing professionals' suggested changes are approved, construction disputes are resolved, checks are signed, work is kept on schedule, and operating staff are brought in as needed.</div>
+        <div class="stage-gate">Budget and schedule discipline is everything here</div>
+      </div>
+    </div>
+    <div class="stage-step">
+      <div class="stage-num">7</div>
+      <div class="stage-content">
+        <div class="stage-name">Completion and Formal Opening</div>
+        <div class="stage-desc">Full-time operating staff is brought in, advertising increases. The city approves occupancy, utilities are connected, and tenants move in. The construction loan is paid off and permanent financing is closed.</div>
+        <div class="stage-gate">The project begins its operational life</div>
+      </div>
+    </div>
+    <div class="stage-step">
+      <div class="stage-num">8</div>
+      <div class="stage-content">
+        <div class="stage-name">Property, Asset, and Portfolio Management</div>
+        <div class="stage-desc">The owner — either the developer or a new owner — oversees property management: re-leasing, reconfiguring, remodeling, and remarketing space as necessary to extend the economic life and enhance performance of the asset. Institutional investors and corporate real estate considerations come into play.</div>
+        <div class="stage-gate">Development is never truly "done" — assets require ongoing stewardship</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>"It is better to be skilled and lucky than just lucky." — Miles, Netherton & Schmitz. The eight-stage model assumes a well-informed developer and rigorous analysis — not the lucky gut-feel that occasionally succeeds. Build your skills first.</p>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 4</div>
+  <h2 class="lesson-title">Who Developers Are — <em>And Who They Work With</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Developers are like movie producers: they promote and finance a project, assemble a team of specialists, and then manage that team to make sure the project is realized. Developers are proactive — they make things happen. They do not just buy low and sell high. They are more akin to entrepreneurial innovators who realize an idea in the marketplace.</p>
+
+  <p class="body-text">The developer's job description includes constantly shifting roles: <strong>visionary, promoter, negotiator, manager, leader, risk manager, and investor.</strong> Balancing these roles is an art mastered through experience. Equally important is a goal-oriented disposition to overcome problems and obstacles — because the potential roadblocks in development are numerous.</p>
+
+  <p class="body-text"><strong>Private developers range widely.</strong> Some develop only one property type — single-family homes. Others develop a wide range of product types. Some carve out a niche in one city; others work regionally, nationally, or internationally. Some run extremely lean organizations, hiring outside expertise for every function. Others maintain expertise in-house. Some are publicly traded REITs; others stay private to avoid quarterly earnings pressure.</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-icon">🎯</div>
+      <div class="ic-title">Fee Developers</div>
+      <div class="ic-body">A client hires the developer to see a project through from concept to completion. The developer receives a fee — possibly with a bonus for successful, timely delivery. Lower risk but lower upside.</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">📈</div>
+      <div class="ic-title">Speculative Developers</div>
+      <div class="ic-body">The developer owns the equity and bears both the downside and upside risks. The relationship between final value and total cost determines the outcome. Higher risk, higher reward.</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🤝</div>
+      <div class="ic-title">Public/Private Partnerships</div>
+      <div class="ic-body">A private developer works with public authorities and public resources to develop a project with both public and private components — accessing public resources in exchange for meeting public goals.</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🏦</div>
+      <div class="ic-title">Institutional Developers</div>
+      <div class="ic-body">Financial institutions, corporations, universities, medical centers, and municipalities also develop real estate. The process is the same — layered with institutional procedures and committees.</div>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin-top:1.5rem;">Developers seldom work in isolation. To design, finance, build, lease, or sell their products, developers must engage a wide array of experts. Here is the core development team:</p>
+
+  <div class="team-grid">
+    <div class="team-card"><div class="team-emoji">📐</div><div><div class="team-name">Architect</div><div class="team-role">Develops the concept, creates construction drawings, monitors compliance during construction. Key in winning public approvals.</div></div></div>
+    <div class="team-card"><div class="team-emoji">⚙️</div><div><div class="team-name">Engineers</div><div class="team-role">Civil, structural, mechanical, electrical. Translate design into technical drawings. Critical for physical safety.</div></div></div>
+    <div class="team-card"><div class="team-emoji">🌿</div><div><div class="team-name">Landscape Architect</div><div class="team-role">Creates the outdoor environment — site plans, hardscaping, plantings, pathways. Defines the sense of place.</div></div></div>
+    <div class="team-card"><div class="team-emoji">🗺️</div><div><div class="team-name">Land Planner</div><div class="team-role">For large projects — creates master plans, traffic circulation, land use allocation, open space. Works with regulators.</div></div></div>
+    <div class="team-card"><div class="team-emoji">🏗️</div><div><div class="team-name">General Contractor</div><div class="team-role">Manages construction, hires and supervises subcontractors, maintains schedule and budget. Chosen via selective bidding.</div></div></div>
+    <div class="team-card"><div class="team-emoji">🌱</div><div><div class="team-name">Environmental Consultants</div><div class="team-role">Phase I and II environmental reports, hazardous materials, wetlands, endangered species, air quality, greenhouse gas analysis.</div></div></div>
+    <div class="team-card"><div class="team-emoji">📊</div><div><div class="team-name">Market Research Analysts</div><div class="team-role">Measure supply and demand, determine pricing, estimate leasing or sales periods. Foundation of the feasibility study.</div></div></div>
+    <div class="team-card"><div class="team-emoji">🏦</div><div><div class="team-name">Construction Lender</div><div class="team-role">Finances project during construction. Funds are drawn in stages as work is completed and verified.</div></div></div>
+    <div class="team-card"><div class="team-emoji">💰</div><div><div class="team-name">Permanent Lender</div><div class="team-role">Provides the long-term mortgage after construction is complete. Takes over from the construction lender.</div></div></div>
+    <div class="team-card"><div class="team-emoji">🤝</div><div><div class="team-name">Joint Venture Partners</div><div class="team-role">Provides equity funding during development or operations in return for a share of project profits.</div></div></div>
+    <div class="team-card"><div class="team-emoji">⚖️</div><div><div class="team-name">Real Estate Attorney</div><div class="team-role">Handles contracts, entitlement applications, joint venture agreements, title issues, and regulatory negotiations.</div></div></div>
+    <div class="team-card"><div class="team-emoji">🏠</div><div><div class="team-name">Property Manager</div><div class="team-role">Oversees ongoing operations — leasing, maintenance, tenant relations, budgets — once the project is complete.</div></div></div>
+  </div>
+
+  <p class="body-text" style="margin-top:1.5rem;">A developer's reputation is one of their most important assets — and one of their most fragile. Because buildings are permanent and visible, the developer's public persona is as much a part of a project as the product itself. Communities will always change. A good developer manages that change with vision and sensitivity, and thus has a positive effect on a community.</p>
+
+  <!-- CASE STUDY -->
+  <div class="case-study">
+    <div class="cs-label">Real-World Example · Ground-Up Student Housing</div>
+    <div class="cs-title">Shortbread Lofts — Chapel Hill, North Carolina</div>
+    <div class="cs-sub">Developer: Larry Short / Shortbread Lofts LLC</div>
+    <div class="cs-body">Larry Short developed a 271-bedroom student housing community steps from the University of North Carolina — a seven-story podium building with 85 units above ground-level retail and parking. The site was 1.28 acres in downtown Chapel Hill, rezoned from existing use to TC-3 (Town Center 3) specifically for this development. Short had worked in real estate since the 1970s — rehabilitating small condominiums before taking on this, his first major development project. He deliberately hired professionals with strong local connections and avoided publicity. The project was completed on schedule and became one of the premier student housing communities in the market. This is the development model in action: experienced developer, right site, right product, right team, right market.</div>
+    <div class="cs-stats">
+      <div class="cs-stat"><div class="cs-num">271</div><div class="cs-lbl">Bedrooms</div></div>
+      <div class="cs-stat"><div class="cs-num">1.28 acres</div><div class="cs-lbl">Site size</div></div>
+      <div class="cs-stat"><div class="cs-num">18 months</div><div class="cs-lbl">Rezoning to completion</div></div>
+      <div class="cs-stat"><div class="cs-num">6,459 sf</div><div class="cs-lbl">Retail ground floor</div></div>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 4 -->
+  <div class="section-label"><div class="dot"></div> Lesson 4 of 4</div>
+  <h2 class="lesson-title">Market Forces That Drive Development — <em>Demographics, Employment & Land</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Developers don't build in a vacuum. Every development decision is downstream of real-world forces — who is moving where, where jobs are growing, what land is available, and what consumers want from the built environment. Understanding these forces is how developers spot opportunities before the market does.</p>
+
+  <p class="body-text">The most important macro indicators every developer tracks:</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-icon">👥</div>
+      <div class="ic-title">Population Growth</div>
+      <div class="ic-body">More people require more space. Population growth drives demand for housing, retail, office, and industrial. The best population data comes from the U.S. Census Bureau — but developers need current, local data, not just national trends.</div>
+      <div class="ic-tag">census.gov · esri.com · local planning departments</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">💼</div>
+      <div class="ic-title">Employment Growth</div>
+      <div class="ic-body">Job growth — especially primary (export) employment — drives demand for commercial real estate. When Boeing or Microsoft expands, so does demand for every property type in that region. Without primary employment growth, demand for new space stalls.</div>
+      <div class="ic-tag">bls.gov · regional economic reports</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🏘️</div>
+      <div class="ic-title">Household Formation</div>
+      <div class="ic-body">New households need homes. Demographic shifts — aging boomers downsizing, millennials renting longer, rising single-person households — change what types of housing are in demand and where. Average household size has been falling for decades.</div>
+      <div class="ic-tag">Key driver of residential development</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🌎</div>
+      <div class="ic-title">Regional Migration</div>
+      <div class="ic-body">The U.S. population continues shifting from the Northeast and Midwest toward the Sun Belt, mountain states, and West. The fastest-growing cities — Austin, Raleigh, Phoenix, Dallas, Salt Lake City — have economies built on energy or technology.</div>
+      <div class="ic-tag">Internal mobility = where to develop</div>
+    </div>
+  </div>
+
+  <p class="body-text">Real estate is <strong>location-specific</strong> in a way that distinguishes it from almost every other investment class. Unlike stocks or bonds, real estate cannot be moved to a more desirable location. The value of a property is permanently tied to where it sits — to the local economy, the local community, and the local regulatory environment. This is why understanding local factors — consumer wealth, education levels, employment base, infrastructure, and surrounding development — matters more than national trends alone.</p>
+
+  <p class="body-text">The built environment must adapt as demographics shift. An aging population will need different housing. More single-person households need smaller units. Growing diversity in household composition means more diverse product demand. Developers who understand where society is heading — a few steps ahead of the pack — find the opportunities that others miss.</p>
+
+  <div class="callout">
+    <p>"The future is not just the one year or five years that it takes to develop a project — it is the entire useful life of the project, which may last 50 or 100 years." — Miles, Netherton & Schmitz. Development is a long game. Think accordingly.</p>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="video-card" style="margin-top:2rem;">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/yiKS1s28e9Y" title="How Real Estate Development Works — From Land to Building" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-info">
+      <span class="video-badge">Core Overview</span>
+      <h4>How Real Estate Development Works — From Land to Building</h4>
+      <p>Ethne — a Yale MBA and Master of Architecture graduate working in real estate development in New York City — walks through the full development process step by step. Covers asset types and why developers specialize, site selection and zoning analysis, financial feasibility and the pro forma model, design decisions (building type, unit mix, amenities), securing construction financing through debt and equity, managing construction, marketing and leasing, operations, and exit strategies. A clean, credible, beginner-appropriate overview that closely mirrors the eight-stage model taught in this module.</p>
+    </div>
+  </div>
+
+  <!-- SUPPLEMENTAL -->
+  <div class="supplemental">
+    <h3>📚 Supplemental Resource — A Practitioner's 10-Step Framework</h3>
+    <p>Jason Pitre brings 14 years of on-the-ground development experience to a practical 10-step framework. His strongest point: building your professional network is the single most important thing a new developer can do — more than any course or video. An honest, no-course-selling field perspective that complements the academic foundation in this module.</p>
+    <div class="video-card" style="margin-top:0.75rem;">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/ME-GVA6uGJA" title="Real Estate Development 101 — A Complete Beginner's Guide" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge supp">Supplemental · Practitioner Perspective</span>
+        <h4>Real Estate Development 101 — A Practitioner's 10-Step Framework</h4>
+        <p>Jason Pitre — a Los Angeles contractor and developer with 14 years of experience and over 250 single-family custom homes — walks through his 10-step framework for getting into development: educating yourself, defining your niche, building your network (which he calls the most important step), securing financing, finding the right location, assembling a team, obtaining permits, managing construction, marketing and sales, and evaluating and learning from each project. A practical, honest field perspective that pairs well with the academic framework in this module.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY TERMS -->
+  <div class="module-glossary">
+    <h3>📖 Module 1 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch1" placeholder="Search terms..." oninput="mgFilter(this,1)">
+    <div class="mg-terms" id="mgTerms1">
+      <div class="mg-term" data-mg="real estate development built environment land labor capital continual reconfiguration">
+        <div class="mg-name">Real Estate Development</div>
+        <div class="mg-def">The continual reconfiguration of the built environment to meet society's needs. It starts with an idea and ends when tenants or owner-occupants occupy the physical space created by the development team. Each project is a separate business entity employing land, labor, and capital.</div>
+      </div>
+      <div class="mg-term" data-mg="eight stage model idea inception refinement feasibility contract formal construction completion management">
+        <div class="mg-name">Eight-Stage Model</div>
+        <div class="mg-def">The standard sequential framework for real estate development: (1) Idea Inception, (2) Idea Refinement, (3) Feasibility Study, (4) Contract Negotiation, (5) Formal Commitment, (6) Construction, (7) Completion and Formal Opening, (8) Property/Asset/Portfolio Management. Not linear — developers constantly revisit earlier stages.</div>
+      </div>
+      <div class="mg-term" data-mg="developer entrepreneur risk manager promoter visionary negotiator team builder">
+        <div class="mg-name">Developer</div>
+        <div class="mg-def">The entrepreneurial leader of a development project — simultaneously a visionary, promoter, negotiator, manager, risk manager, and investor. Developers make things happen by assembling teams, securing capital, and managing the entire development process from concept through completion.</div>
+      </div>
+      <div class="mg-term" data-mg="fee developer speculative developer risk compensation ownership">
+        <div class="mg-name">Fee Developer vs. Speculative Developer</div>
+        <div class="mg-def">A fee developer is hired by a client to manage a project from concept to completion, receiving a fee for services. A speculative developer owns the equity — bearing both the downside risk and upside profit potential. Most private developers operate on a speculative basis.</div>
+      </div>
+      <div class="mg-term" data-mg="development team architect engineer contractor lender attorney partners players">
+        <div class="mg-name">Development Team</div>
+        <div class="mg-def">The full group of professionals assembled to execute a development project — including architects, engineers, landscape architects, land planners, general contractors, environmental consultants, market research analysts, construction lenders, permanent lenders, joint venture partners, attorneys, accountants, and property managers.</div>
+      </div>
+      <div class="mg-term" data-mg="public sector partner government regulation entitlement always involved">
+        <div class="mg-name">The Public Sector as Partner</div>
+        <div class="mg-def">The public sector is involved — as a stakeholder or partner — in every real estate project. Development is highly regulated, and the legal and regulatory environment surrounds the entire development process. Successful developers treat the public sector with the same respect they give any other partner.</div>
+      </div>
+      <div class="mg-term" data-mg="feasibility study market value cost comparison project viable">
+        <div class="mg-name">Feasibility Study</div>
+        <div class="mg-def">A formal analysis that compares the estimated value of a proposed project with its estimated costs. Simply put: a project is feasible if its estimated value exceeds its estimated costs. Value is a function of projected cash flow and a market-derived capitalization or discount rate.</div>
+      </div>
+      <div class="mg-term" data-mg="asset management property management re-leasing remodeling remarketing economic life">
+        <div class="mg-name">Asset Management</div>
+        <div class="mg-def">The ongoing stewardship of a completed development project — including re-leasing, reconfiguring, remodeling, and remarketing space to extend the economic life and enhance the performance of the asset. Stage 8 of the eight-stage model, and a career in itself.</div>
+      </div>
+      <div class="mg-term" data-mg="primary employment export jobs regional economy boeing microsoft drives demand">
+        <div class="mg-name">Primary vs. Spin-Off Employment</div>
+        <div class="mg-def">Primary employment results in the export of goods and services from a region (Boeing, Microsoft). Spin-off employment supports primary employment (banks, barbershops, architects). Without growth in primary employment, there is little demand for new real estate development.</div>
+      </div>
+      <div class="mg-term" data-mg="nimbyism not in my backyard community opposition neighbors reputation">
+        <div class="mg-name">NIMBYism</div>
+        <div class="mg-def">"Not in my backyard" — the opposition of community members to a proposed development near their homes or neighborhood. A pervasive reality in development that requires developers to invest significantly in community outreach, stakeholder engagement, and project design that responds to community concerns.</div>
+      </div>
+    </div>
+    <p class="mg-none" id="mgNone1">No matching terms found.</p>
+    <div class="mg-footer">More terms covered in upcoming modules. <a href="red-glossary.html">View Full Course Glossary →</a></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section" id="quizSection">
+    <h3>Module 1 Knowledge Check</h3>
+    <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">How does Miles define real estate development at its most fundamental level?</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">A</div>The buying and selling of land and existing buildings for profit.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div>The continual reconfiguration of the built environment to meet society's needs — a process that starts with an idea and ends when consumers occupy the physical space the development team creates.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">C</div>The construction of new buildings by contractors hired directly by property owners.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)" data-correct="false"><div class="option-letter">D</div>The management and leasing of commercial real estate on behalf of institutional investors.</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. Real estate development is the continual reconfiguration of the built environment to meet society's needs — starting with an idea and ending when tenants or owner-occupants occupy the finished space. Each project is a separate business entity employing land, labor, and capital.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ Real estate development is the continual reconfiguration of the built environment to meet society's needs — starting with an idea and ending when consumers occupy the space. It is not simply buying and selling, construction management, or property management, though all of those are components of the broader field.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">What are the three classical factors of production that every development project employs?</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">A</div>Architects, contractors, and lenders.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">B</div>Design, entitlements, and financing.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div>Land, labor, and capital — coordinated by entrepreneurial management and delivered by teams of specialists.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)" data-correct="false"><div class="option-letter">D</div>Market demand, supply constraints, and zoning regulations.</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. Every development project is a separate business entity employing the three classical factors of production: land, labor, and capital — coordinated by entrepreneurial management and delivered by specialist teams. Value is created by providing space that meets society's needs.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ The three classical factors of production are land, labor, and capital — coordinated by entrepreneurial management. While architects, contractors, lenders, design, and entitlements are all part of the development process, they are components of labor and capital rather than separate factors of production.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">At what stage of the eight-stage model does a developer typically option or purchase the land — committing to a specific site?</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">A</div>Stage 1: Idea Inception — land must be secured before any analysis can begin.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div>Stage 2: Idea Refinement — the developer finds a specific site, looks at physical feasibility, talks with prospective tenants and lenders, and options the land if the idea looks good.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">C</div>Stage 4: Contract Negotiation — land is acquired simultaneously with the construction loan agreement.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)" data-correct="false"><div class="option-letter">D</div>Stage 5: Formal Commitment — the land option is exercised when all other contracts are signed.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. In Stage 2 (Idea Refinement), the developer moves from a general idea to a specific site — assessing physical feasibility, talking with prospective tenants, lenders, and partners, settling on a tentative design, and optioning the land if the idea looks promising. The option is typically exercised at Stage 5.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ Land is typically optioned in Stage 2 (Idea Refinement) — when the developer moves from a general concept to a specific site and commits to that location on a conditional basis. The actual purchase of the land (exercise of the option) usually happens at Stage 5 when all contracts are signed simultaneously.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">What is the key difference between a fee developer and a speculative developer?</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">A</div>Fee developers build commercial properties; speculative developers build residential properties.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div>A fee developer is hired by a client and receives a fee for services without owning the equity. A speculative developer owns the equity and bears both the downside risk and the upside profit potential.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">C</div>Fee developers always use public financing; speculative developers always use private capital.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)" data-correct="false"><div class="option-letter">D</div>There is no meaningful difference — both types bear the same financial risk on every project.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. A fee developer manages a project for a client (retailer, REIT, public agency) and receives a fee — typically structured to cover overhead, possibly with a bonus for success. They do not own the equity. A speculative developer owns the equity and bears the full downside (loss) and upside (profit) based on the relationship between final value and total cost.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ The key difference is equity ownership and risk exposure. Fee developers are hired to manage a project for a client and receive a fee — they do not own the equity. Speculative developers own the equity and bear both the downside risks and upside profits. Both can develop any property type and use any capital source.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">Why does the Miles text emphasize that "the public sector is always a partner" in real estate development?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">A</div>Because the government provides financing for most private development projects through tax incentives.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">B</div>Because developers are required by law to include public sector representatives on their development teams.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div>Because real estate development is highly regulated, and the legal and regulatory environment surrounds the entire process — from zoning and permitting to environmental review and building codes. No project proceeds without public sector involvement.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)" data-correct="false"><div class="option-letter">D</div>Because public/private partnerships are the only financially viable model for large-scale development projects.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. Real estate development is highly regulated at every level — local, state, and federal. Zoning, permitting, environmental review, building codes, infrastructure, and community approvals all require public sector involvement. The most successful developers treat government officials and community stakeholders with the same respect they give any other key partner.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ The public sector is always a partner because development is highly regulated — zoning, permitting, environmental review, building codes, and infrastructure decisions all involve government at local, state, and federal levels. No project proceeds without public sector engagement. Treating government as an adversary rather than a partner is one of the most common and costly developer mistakes.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">What role does the architect play during the construction phase — and what is the limit of that role?</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">A</div>The architect manages day-to-day construction operations and directly supervises subcontractors.</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">B</div>The architect monitors — but does not supervise — construction. They inspect the site periodically to determine whether contract documents are being followed and approve construction loan draws, attesting to compliance with plans.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">C</div>The architect has no role during construction — their work ends when construction drawings are complete.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)" data-correct="false"><div class="option-letter">D</div>The architect takes over as project manager during construction, replacing the developer in day-to-day decisions.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. During construction, the architect monitors — not supervises — the work site. They inspect periodically to determine whether contract documents are being followed. The architect's approval is usually required for each construction loan draw, attesting to compliance. The general contractor is responsible for daily supervision.</div>
+        <div class="feedback incorrect" id="q6-wrong">✗ The architect monitors but does not supervise construction. They inspect periodically to verify compliance with plans and specifications, and their approval is typically required before the construction lender releases each loan draw. The general contractor supervises daily construction operations. The architect bears legal liability for plans and specifications for a defined period.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">What is the difference between primary employment and spin-off employment — and why does it matter for real estate development?</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">A</div>Primary employment is government jobs; spin-off employment is private sector jobs. Both equally drive real estate demand.</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">B</div>Primary employment exports goods and services from a region (like Boeing or Microsoft); spin-off employment supports primary employment (banks, barbershops, architects). Without growth in primary employment, there is little demand for new real estate development.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">C</div>Primary employment is full-time work; spin-off employment is part-time or gig work. Both matter equally for housing demand.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)" data-correct="false"><div class="option-letter">D</div>There is no meaningful difference — all employment drives real estate demand equally regardless of its source.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. Primary (export) employment is activity that brings money into a region from outside — Boeing, Microsoft, major manufacturers, tech firms. Spin-off employment supports primary employment and circulates money already in the region. When primary employers expand, they create demand for all types of real estate. When regional primary economies collapse (like the Rust Belt in the 1980s), demand for all real estate dries up.</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ Primary employment exports goods and services from a region — it brings money in. Examples: Boeing (Seattle), tech companies, major manufacturers. Spin-off employment supports primary employment — banks, barbershops, local service providers. Without primary employment growth, there is little demand for new commercial real estate development. This distinction is fundamental to understanding why some markets thrive and others stagnate.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">A developer is considering a project in a city where the population is declining and the primary employer — a major manufacturer — recently announced layoffs. According to the principles in this module, what should the developer do?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">A</div>Proceed immediately — declining markets have lower land costs and less competition, which improves margins.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">B</div>Proceed if the project type is residential — housing demand is always present regardless of employment trends.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">C</div>Pause and conduct rigorous analysis. Declining primary employment suppresses demand for all real estate types. Population loss reduces household formation. These are major warning signs that the fundamental market conditions for a successful project may not exist.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)" data-correct="false"><div class="option-letter">D</div>Shift to adaptive reuse — converting existing buildings is always viable regardless of market conditions.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. Declining primary employment and population loss are serious warning signs for any development project. Without job growth, commercial real estate demand weakens. Without household formation, residential demand weakens. The feasibility analysis must account for these macro conditions. A project may be technically constructible but economically inviable if the market fundamentals are deteriorating.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ Declining primary employment and population loss are major warning signs. The Rust Belt collapse of the 1980s shows what happens when primary employers contract — demand for all real estate types dries up. A developer should pause and conduct rigorous analysis before proceeding in a weakening market. No product type — residential, commercial, or adaptive reuse — is immune to fundamental demand destruction.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">Why does Miles say "it is better to be skilled and lucky than just lucky" in the context of the eight-stage model?</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">A</div>Because the eight-stage model represents an ideal, rigorous process — not a guarantee. Real estate has stories of intuitive success, but the model exists to give skilled developers a systematic way to improve their odds. Luck alone is not a sustainable strategy in a field where mistakes are so costly.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">B</div>Because luck is irrelevant in development — only technical skill and financial analysis determine outcomes.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">C</div>Because lucky developers always outperform skilled developers in strong market cycles.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)" data-correct="false"><div class="option-letter">D</div>Because the eight-stage model eliminates all risk from development when followed correctly.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. The eight-stage model assumes a well-informed developer and rigorous analysis. Real estate development has stories of people who succeeded through intuition alone — but that is not a repeatable model. The stages exist to maximize the probability of success through systematic decision-making. Skilled developers are better positioned to survive bad luck because they have analyzed risks, prepared contingencies, and built margins into their pro formas.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ Miles acknowledges that development is full of stories of intuitive success — people who had a gut feeling and built a project through unconventional means. The eight-stage model does not account for the lucky intuitive developer. But skill dramatically improves the odds and reduces the impact of bad luck. Development mistakes are expensive, public, and slow to unwind — which is why systematic rigor matters more here than in almost any other business.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">In the Shortbread Lofts case study, what does Larry Short's approach illustrate about successful real estate development?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">A</div>That development success requires a large, prominent personal brand and extensive media coverage.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">B</div>That ground-up development is only viable for developers with access to institutional capital.</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">C</div>That successful development comes from identifying the right site, hiring professionals with strong local knowledge and connections, understanding the local regulatory environment, and building experience incrementally — not from seeking publicity or attempting overly ambitious first projects.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)" data-correct="false"><div class="option-letter">D</div>That student housing is the most reliable entry point for all first-time developers regardless of market.</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. Short's approach embodies core development principles: he deliberately avoided publicity, hired professionals with strong local connections and expertise, worked in a market he knew deeply (Chapel Hill, where he had been working since 1979), and built experience incrementally — starting with small condo rehabs before attempting a major ground-up project. The project succeeded because of market knowledge, the right team, and careful execution — not luck.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ The Shortbread Lofts case illustrates that successful development is about market knowledge, the right team, and disciplined execution — not publicity, institutional capital, or ambitious first projects. Short had been working in Chapel Hill since 1979, built experience through smaller rehab projects, hired people with local knowledge, and avoided the spotlight. The right site + right product + right team + right market = successful development.</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="real-estate-development.html" class="btn-nav outline">← Track Overview</a>
+  <div class="nav-module-title">
+    <strong>Up Next: Module 2</strong>
+    The History & Evolution of Real Estate Development
+  </div>
+  <a href="red-module-2.html" class="btn-nav primary">Module 2 →</a>
+</div>
+
+<footer style="background:var(--char);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--orange-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+function mgFilter(input,n){var v=input.value.toLowerCase();var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');var any=false;terms.forEach(function(t){var match=t.getAttribute('data-mg').includes(v)||t.textContent.toLowerCase().includes(v);t.classList.toggle('mg-hidden',!match);if(match)any=true;});document.getElementById('mgNone'+n).style.display=any?'none':'block';}
+
+var answers={};
+var quizData={
+  q1:{correct:'B',question:'How does Miles define real estate development at its most fundamental level?',options:{A:'The buying and selling of land and existing buildings for profit.',B:'The continual reconfiguration of the built environment to meet society\'s needs.',C:'The construction of new buildings by contractors hired directly by property owners.',D:'The management and leasing of commercial real estate on behalf of institutional investors.'},explanation:'Real estate development is the continual reconfiguration of the built environment to meet society\'s needs — starting with an idea and ending when consumers occupy the finished space. Each project is a separate business entity employing land, labor, and capital.'},
+  q2:{correct:'C',question:'What are the three classical factors of production that every development project employs?',options:{A:'Architects, contractors, and lenders.',B:'Design, entitlements, and financing.',C:'Land, labor, and capital — coordinated by entrepreneurial management.',D:'Market demand, supply constraints, and zoning regulations.'},explanation:'Every development project employs the three classical factors of production: land, labor, and capital — coordinated by entrepreneurial management and delivered by specialist teams.'},
+  q3:{correct:'B',question:'At what stage of the eight-stage model does a developer typically option or purchase the land?',options:{A:'Stage 1: Idea Inception — land must be secured before analysis can begin.',B:'Stage 2: Idea Refinement — the developer finds a specific site and options the land if the idea looks good.',C:'Stage 4: Contract Negotiation — land is acquired simultaneously with the construction loan.',D:'Stage 5: Formal Commitment — the land option is exercised when all other contracts are signed.'},explanation:'Land is typically optioned in Stage 2 (Idea Refinement). The actual purchase (exercise of the option) usually occurs at Stage 5 when all contracts are signed simultaneously.'},
+  q4:{correct:'B',question:'What is the key difference between a fee developer and a speculative developer?',options:{A:'Fee developers build commercial properties; speculative developers build residential.',B:'A fee developer is hired by a client and receives a fee without owning equity. A speculative developer owns equity and bears both downside risk and upside profit.',C:'Fee developers use public financing; speculative developers use private capital.',D:'There is no meaningful difference — both bear the same financial risk.'},explanation:'Fee developers manage projects for clients and receive a fee. They do not own the equity. Speculative developers own the equity and bear the full financial risk and reward.'},
+  q5:{correct:'C',question:'Why does Miles emphasize that "the public sector is always a partner" in real estate development?',options:{A:'Because the government provides financing for most private development projects.',B:'Because developers are required by law to include public sector representatives on their teams.',C:'Because development is highly regulated — zoning, permitting, environmental review, and building codes all require public sector involvement. No project proceeds without it.',D:'Because public/private partnerships are the only financially viable model for large projects.'},explanation:'Development is highly regulated at every level. Zoning, permitting, environmental review, building codes, and infrastructure decisions all involve government. Treating the public sector as an adversary is one of the most common and costly developer mistakes.'},
+  q6:{correct:'B',question:'What role does the architect play during construction — and what is the limit of that role?',options:{A:'The architect manages day-to-day construction operations and directly supervises subcontractors.',B:'The architect monitors — but does not supervise — construction, inspecting periodically and approving loan draws.',C:'The architect has no role during construction — their work ends when drawings are complete.',D:'The architect takes over as project manager during construction.'},explanation:'The architect monitors construction — not supervises. They inspect periodically, verify compliance with plans, and their approval is required for construction loan draws. The general contractor supervises daily operations.'},
+  q7:{correct:'B',question:'What is the difference between primary employment and spin-off employment — and why does it matter?',options:{A:'Primary is government jobs; spin-off is private sector jobs. Both drive demand equally.',B:'Primary employment exports goods and services from a region; spin-off supports primary employment. Without primary employment growth, there is little demand for new real estate development.',C:'Primary is full-time work; spin-off is part-time. Both matter equally for housing.',D:'There is no meaningful difference — all employment drives real estate demand equally.'},explanation:'Primary employment brings money into a region from outside (Boeing, Microsoft, major manufacturers). Spin-off employment supports primary employment and circulates money already in the region. When primary employers contract, demand for all real estate types weakens.'},
+  q8:{correct:'C',question:'A developer considers a project where the population is declining and the primary employer announced layoffs. What should the developer do?',options:{A:'Proceed immediately — declining markets have lower land costs.',B:'Proceed if the project type is residential — housing demand is always present.',C:'Pause and conduct rigorous analysis. Declining primary employment and population loss suppress demand for all real estate types — major warning signs.',D:'Shift to adaptive reuse — always viable regardless of market conditions.'},explanation:'Declining primary employment and population loss suppress demand for all property types. The feasibility analysis must account for these conditions. No product type is immune to fundamental demand destruction.'},
+  q9:{correct:'A',question:'Why does Miles say "it is better to be skilled and lucky than just lucky"?',options:{A:'Because the eight-stage model represents an ideal rigorous process — luck alone is not a sustainable strategy in a field where mistakes are so costly.',B:'Because luck is irrelevant — only technical skill determines outcomes.',C:'Because lucky developers always outperform skilled developers in strong markets.',D:'Because the eight-stage model eliminates all risk when followed correctly.'},explanation:'Real estate has stories of intuitive success, but that is not repeatable. The eight-stage model exists to maximize success probability through systematic decision-making. Development mistakes are expensive, public, and slow to unwind.'},
+  q10:{correct:'C',question:'What does the Shortbread Lofts case study illustrate about successful development?',options:{A:'That development requires a large personal brand and extensive media coverage.',B:'That ground-up development is only viable with institutional capital.',C:'That success comes from identifying the right site, hiring professionals with strong local knowledge, understanding the regulatory environment, and building experience incrementally.',D:'That student housing is the most reliable entry point for all first-time developers.'},explanation:'Short avoided publicity, hired professionals with local connections, worked in a market he had known since 1979, and built experience through smaller projects before attempting a major ground-up development. Right site + right product + right team + right market = success.'}
+};
+
+function selectOption(el,qId,isCorrect){
+  var block=el.parentElement;
+  var opts=block.querySelectorAll('.option');
+  opts.forEach(function(o){o.onclick=null;o.style.pointerEvents='none';});
+  if(isCorrect){el.classList.add('correct');block.querySelector('#'+qId+'-correct').style.display='block';}
+  else{el.classList.add('incorrect');block.querySelector('#'+qId+'-wrong').style.display='block';opts.forEach(function(o){if(o.getAttribute('data-correct')==='true')o.classList.add('correct');});}
+  answers[qId]={selected:el.querySelector('.option-letter').textContent,correct:isCorrect};
+  if(Object.keys(answers).length===Object.keys(quizData).length)document.getElementById('submitBtn').disabled=false;
+}
+
+function submitQuiz(){
+  var score=0;
+  Object.keys(answers).forEach(function(q){if(answers[q].correct)score++;});
+  var total=Object.keys(quizData).length;
+  document.getElementById('quizForm').style.display='none';
+  var result=document.getElementById('quizResult');
+  result.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  var passed=score>=8;
+  document.getElementById('resultLabel').textContent=passed?'✓ Module 1 Passed':'Keep Reviewing';
+  document.getElementById('resultLabel').style.color=passed?'#7DEFA1':'#F8ADB4';
+  document.getElementById('resultMsg').textContent=passed
+    ?'Strong foundation. You understand what real estate development is, how the eight-stage model works, who the key players are, and what market forces drive development decisions. Module 2 covers the history and evolution of development in the United States — essential context for understanding how the industry got to where it is today.'
+    :'Review the eight-stage model carefully — especially what triggers movement between stages. Also revisit the concepts of primary vs. spin-off employment and the difference between fee and speculative developers. These are foundational concepts that appear throughout the rest of the course.';
+  var wrongs=Object.keys(answers).filter(function(q){return !answers[q].correct;});
+  if(wrongs.length>0){
+    var wr=document.getElementById('wrongReview');wr.style.display='block';
+    var wl=document.getElementById('wrongList');wl.innerHTML='';
+    wrongs.forEach(function(q){
+      var d=quizData[q];var sel=answers[q].selected;
+      var div=document.createElement('div');div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div><div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div><div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div><div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+
+function retryQuiz(){
+  answers={};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled=true;
+  document.querySelectorAll('.option').forEach(function(o){
+    o.className='option';o.style.pointerEvents='';
+    var qNum=o.closest('.question-block').querySelector('.question-num').textContent.replace('Question ','').replace(' of 10','');
+    var isCorrect=o.getAttribute('data-correct')==='true';
+    o.onclick=function(){selectOption(o,'q'+qNum,isCorrect);};
+  });
+  document.querySelectorAll('.feedback').forEach(function(f){f.style.display='none';});
+}
+</script>
+</body>
+</html>
