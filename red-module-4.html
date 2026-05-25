@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 4: Idea Inception & Feasibility — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#2A2A2A;--char-mid:#3D3D3D;--char-light:#555;--char-pale:#F0EEEC;
+  --orange:#D4621A;--orange-mid:#E07030;--orange-light:#F08C50;--orange-pale:#FDF0E8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(42,42,42,0.1);
+  --shadow-card:0 2px 16px rgba(42,42,42,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+
+nav{background:var(--char);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--orange-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+
+.breadcrumb{background:var(--char-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--char);font-weight:600;}
+
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--char-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-mid));border-radius:3px;width:50%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:rgba(212,98,26,0.2);color:var(--orange);}
+.prog-dot.active{background:var(--char);color:var(--orange-light);}
+.prog-dot.locked{background:rgba(42,42,42,0.1);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);}
+
+.module-hero{background:linear-gradient(135deg,#1A1A1A 0%,var(--char) 55%,#383838 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(212,98,26,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--orange-mid),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,98,26,0.15);border:1px solid rgba(212,98,26,0.3);color:var(--orange-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--orange-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:620px;line-height:1.85;font-weight:300;}
+
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--orange);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--orange) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--char);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--orange-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--orange);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--char-mid);font-style:italic;}
+.orange-rule{width:44px;height:3px;background:var(--orange);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+
+.callout{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--orange);font-style:italic;line-height:1.7;}
+.warning-box{background:#FBF0EE;border-left:4px solid #C0392B;border-radius:0 12px 12px 0;padding:1.1rem 1.4rem;margin:1.5rem 0;}
+.warning-box p{font-size:13.5px;color:#8B2F20;line-height:1.7;}
+.insight-box{background:var(--char);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.insight-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--orange-light);margin-bottom:0.5rem;}
+.insight-box p{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.7;}
+
+/* IDEA SOURCES */
+.idea-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.75rem 0;}
+.idea-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:box-shadow 0.2s;}
+.idea-card:hover{box-shadow:var(--shadow-card);}
+.idea-icon{font-size:1.75rem;margin-bottom:0.5rem;}
+.idea-title{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--char);margin-bottom:0.35rem;}
+.idea-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.idea-example{font-size:11.5px;font-weight:600;color:var(--orange);margin-top:0.4rem;}
+
+/* MATH BOX */
+.math-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin:1.75rem 0;box-shadow:var(--shadow-card);}
+.math-box h4{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--char);margin-bottom:1.25rem;}
+.math-row{display:flex;align-items:baseline;gap:1rem;padding:0.6rem 0;border-bottom:1px solid var(--border);}
+.math-row:last-child{border-bottom:none;}
+.math-row.total{background:var(--orange-pale);border-radius:8px;padding:0.75rem 1rem;margin-top:0.5rem;border-bottom:none;}
+.math-label{font-size:12.5px;color:var(--text-light);flex:1;}
+.math-value{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--char);}
+.math-row.total .math-value{color:var(--orange);font-size:1.25rem;}
+.math-note{font-size:11.5px;color:var(--text-light);margin-left:auto;}
+.math-vs{text-align:center;padding:1rem 0;font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--text-mid);}
+
+/* RISK GRID */
+.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.75rem 0;}
+.risk-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;transition:box-shadow 0.2s;}
+.risk-card:hover{box-shadow:var(--shadow-card);}
+.risk-num{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--orange);line-height:1;margin-bottom:0.3rem;}
+.risk-title{font-size:13px;font-weight:700;color:var(--char);margin-bottom:0.25rem;}
+.risk-desc{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+
+/* FEASIBILITY COMPONENTS */
+.component-list{display:flex;flex-direction:column;gap:0.85rem;margin:1.75rem 0;}
+.comp-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;transition:box-shadow 0.2s;}
+.comp-item:hover{box-shadow:var(--shadow-card);}
+.comp-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px;}
+.comp-name{font-weight:700;font-size:13.5px;color:var(--char);margin-bottom:0.2rem;}
+.comp-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* CASE STUDY */
+.case-study{background:var(--char);border-radius:16px;padding:1.75rem;margin:1.75rem 0;}
+.cs-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange-light);margin-bottom:0.5rem;}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;}
+.cs-sub{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:1rem;}
+.cs-body{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.7;}
+.cs-stats{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1.1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.1);}
+.cs-stat .cs-num{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--orange-light);}
+.cs-stat .cs-lbl{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;}
+.cs-lesson{font-size:12.5px;font-weight:600;color:var(--orange-light);margin-top:1rem;padding-top:0.75rem;border-top:1px solid rgba(255,255,255,0.1);}
+
+/* GLOSSARY */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.25rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--orange);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.mg-abbr{display:inline-block;font-size:11px;font-weight:600;color:var(--orange);background:var(--orange-pale);padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.mg-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;}
+.mg-footer a{color:var(--orange);text-decoration:none;font-weight:600;}
+
+/* QUIZ */
+.quiz-section{background:var(--char);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-light);margin-bottom:0.4rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(212,98,26,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--orange-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--orange-mid);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(212,98,26,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange-light);}
+.result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;}
+.retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--orange-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(42,42,42,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--orange);color:var(--white);}
+.btn-nav.primary:hover{background:var(--orange-mid);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--char);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
+  .idea-grid,.risk-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-development.html">Track Overview</a></li>
+    <li><a href="real-estate-development.html" class="nav-back">← Development Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-development.html">Real Estate Development</a><span class="sep">/</span>
+  <span class="current">Module 4: Idea Inception &amp; Feasibility</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 4 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="red-module-1.html" class="prog-dot done">1</a>
+    <a href="red-module-2.html" class="prog-dot done">2</a>
+    <a href="red-module-3.html" class="prog-dot done">3</a>
+    <span class="prog-dot active">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+    <span class="prog-dot locked">8</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Development Track · Module 4 of 8</div>
+    <h1>Idea Inception &amp; <em>Feasibility</em></h1>
+    <p>Where does a development project begin? With an idea — and the discipline to test it quickly before spending real money. This module covers how developers generate and evaluate ideas, the back-of-the-envelope pro forma that kills bad ideas early, and the formal feasibility study that proves a project's viability to every participant who needs to commit.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"It is difficult, if not impossible, to manage your way out of a bad development idea. The best risk control technique available to a developer is simply this: don't. Kill the bad ideas early, cheaply, and without ego. The back-of-the-envelope pro forma exists for exactly this purpose."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 3</div>
+  <h2 class="lesson-title">Where Ideas Come From — <em>Stage One: Idea Inception</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Of all the activities that constitute real estate development, idea inception is the least mechanical and the most creative. It is the stage where a developer's accumulated knowledge, market intuition, and observational habits combine to produce the spark that begins a project. There is no formula for generating good development ideas — but there are patterns in how successful developers think, and structures that help separate ideas worth pursuing from ideas worth abandoning quickly.</p>
+
+  <p class="body-text">Developers are constantly performing informal market research — not just when sitting at a desk with spreadsheets, but during almost all their waking moments. When they drive through a neighborhood, eat at a restaurant, read a local newspaper, or talk to a contractor, they are absorbing data about markets, needs, and opportunities. This accumulated background knowledge is the raw material from which development ideas are formed.</p>
+
+  <div class="callout">
+    <p>"No magic formula exists for generating good development ideas because everyone receives different data and processes that data into information differently. The spark comes from the way pieces of information are put together to solve a problem." — Miles, Netherton &amp; Schmitz</p>
+  </div>
+
+  <p class="body-text">Ideas emerge from three primary sources:</p>
+
+  <div class="idea-grid">
+    <div class="idea-card">
+      <div class="idea-icon">📍</div>
+      <div class="idea-title">A Site Looking for a Use</div>
+      <div class="idea-desc">The developer becomes aware of a specific parcel — vacant, underutilized, or available — and asks: what is the highest and best use for this site? The location is the starting point; the product follows from the analysis.</div>
+      <div class="idea-example">Example: A corner lot becomes available; developer evaluates residential, retail, or mixed-use options</div>
+    </div>
+    <div class="idea-card">
+      <div class="idea-icon">🎯</div>
+      <div class="idea-title">A Use Looking for a Site</div>
+      <div class="idea-desc">The developer knows what product they want to build — based on market research, experience, or tenant demand — and searches for the right site to put it on. The product is the starting point; the location follows from the search.</div>
+      <div class="idea-example">Example: A fast-food operator needs a high-traffic corner; a residential developer seeks infill lots fitting an existing plan series</div>
+    </div>
+    <div class="idea-card">
+      <div class="idea-icon">💰</div>
+      <div class="idea-title">Capital Looking for Opportunity</div>
+      <div class="idea-desc">Investors or development companies have capital to deploy and are actively seeking viable projects. The capital is the starting point; both the product and site are shaped by the investment thesis and return requirements.</div>
+      <div class="idea-example">Example: A development company with investor capital seeks multifamily opportunities in growth markets</div>
+    </div>
+  </div>
+
+  <p class="body-text">Beyond these three sources, Miles identifies several formal idea-generation techniques developers use to stimulate creativity and test concepts:</p>
+
+  <p class="body-text"><strong>Brainstorming</strong> — generating the largest possible number of ideas without judgment, then evaluating them afterward. Key rule: defer judgment until the list is complete.</p>
+
+  <p class="body-text"><strong>The Delphi Method</strong> — gathering opinions from dispersed experts through multiple rounds of structured questions. Useful for complex forecasting questions where no single expert has the full picture.</p>
+
+  <p class="body-text"><strong>Environmental Scanning</strong> — systematically monitoring economic, demographic, political, and market trends to identify development opportunities before they become obvious to the broader market.</p>
+
+  <p class="body-text"><strong>Focus Groups</strong> — structured conversations with target consumers to understand their preferences, desires, and willingness to pay. Most useful for modifying a proposed project to better meet market demand.</p>
+
+  <p class="body-text"><strong>Surveys</strong> — targeted questionnaires to existing tenants, prospective customers, or sales center visitors. Builds a profile of the likely customer and their preferences.</p>
+
+  <div class="insight-box">
+    <h4>Situs Theory — The Site Must Fit Three Ways</h4>
+    <p>From Graaskamp's Situs Theory: at stage one, the developer should assess whether an idea fits three ways simultaneously. <strong>The site must fit the location</strong> — the physical, regulatory, and market characteristics of where it sits. <strong>The location must fit the tenant</strong> — the specific target user must want to be in that location and be willing to pay for it. <strong>The tenant must fit the financing</strong> — the rent or sales price the target user will pay must support the capital structure the developer needs. A failure on any one of these three fits dooms the project, regardless of how good the idea seems in the abstract.</p>
+  </div>
+
+  <div class="case-study">
+    <div class="cs-label">Case Study · Stage One · Chapel Hill, North Carolina</div>
+    <div class="cs-title">Shortbread Lofts — How the Idea Was Born</div>
+    <div class="cs-sub">Developer: Larry Short · Product: Student Housing · Market: UNC Chapel Hill</div>
+    <div class="cs-body">Larry Short was selling his existing student housing project, The Warehouse, because of partner disagreements. As he prepared to exit that investment, he identified three simultaneous insights that collectively generated a new idea: (1) upscale student housing for women had already proven viable in this market, (2) his experience with The Warehouse told him what features, functions, and benefits the target market wanted that were not currently available, and (3) two contiguous parcels on West Rosemary Street — close to campus — could potentially be assembled. Three insights. One idea. The site was a use looking for tenants; the use was a product looking for a better site. The combination of both, seen through the lens of accumulated market knowledge, produced the idea for Shortbread Lofts.</div>
+    <div class="cs-lesson">Lesson: Ideas don't come from analysis alone. They come from pattern recognition built on years of market experience — then tested by analysis.</div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 3</div>
+  <h2 class="lesson-title">The Back-of-the-Envelope Pro Forma — <em>Killing Bad Ideas Cheaply</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Stage one ends when the developer tests the idea with a back-of-the-envelope pro forma — a simple, rapid comparison of estimated value versus estimated cost. The purpose is not precision. The purpose is <strong>triage</strong>: identify the ideas that have enough potential to justify the expenditure of real money in stage two, and kill the ideas that don't — before spending that money.</p>
+
+  <p class="body-text">Most development ideas generated at stage one never survive the back-of-the-envelope test. That is not failure — that is the system working correctly. A developer who pursues every idea that seems promising without this initial filter will waste enormous time and capital. The back-of-the-envelope pro forma is the developer's first and cheapest risk control tool.</p>
+
+  <p class="body-text">The calculation follows the same logic as the more detailed pro forma in later stages — just with rougher estimates:</p>
+
+  <div class="math-box">
+    <h4>📊 The Back-of-the-Envelope Pro Forma — Shortbread Lofts (Stage One)</h4>
+    <p style="font-size:13px;color:var(--text-light);margin-bottom:1.25rem;">Larry Short's rough early estimate — before committing to stage two</p>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange);margin-bottom:0.75rem;">ROUGH COST ESTIMATE</p>
+    <div class="math-row"><div class="math-label">Land (2 parcels)</div><div class="math-value">$4,000,000</div></div>
+    <div class="math-row"><div class="math-label">Hard construction (~$70,000/unit × ~300 units)</div><div class="math-value">$21,000,000</div></div>
+    <div class="math-row"><div class="math-label">Soft costs &amp; fees</div><div class="math-value">$4,000,000</div></div>
+    <div class="math-row total"><div class="math-label" style="font-weight:700;">TOTAL ESTIMATED COST</div><div class="math-value">$29,000,000</div></div>
+
+    <div class="math-vs">versus</div>
+
+    <p style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange);margin-bottom:0.75rem;">ROUGH VALUE ESTIMATE</p>
+    <div class="math-row"><div class="math-label">Average rental rate per unit per month</div><div class="math-value">$850</div></div>
+    <div class="math-row"><div class="math-label">Annual income per unit ($850 × 12)</div><div class="math-value">$10,200</div></div>
+    <div class="math-row"><div class="math-label">Estimated units</div><div class="math-value">~300</div></div>
+    <div class="math-row"><div class="math-label">Total annual gross revenue</div><div class="math-value">$3,000,000</div></div>
+    <div class="math-row"><div class="math-label">Operating expenses (30% estimate)</div><div class="math-value">− $900,000</div></div>
+    <div class="math-row"><div class="math-label">Net Operating Income (NOI)</div><div class="math-value">$2,100,000</div></div>
+    <div class="math-row"><div class="math-label">Market cap rate (Chapel Hill apartments)</div><div class="math-value">6%</div></div>
+    <div class="math-row total"><div class="math-label" style="font-weight:700;">ESTIMATED VALUE (NOI ÷ Cap Rate)</div><div class="math-value">$35,000,000</div><div class="math-note">$2.1M ÷ 0.06</div></div>
+
+    <div style="background:var(--char);border-radius:10px;padding:1rem 1.25rem;margin-top:1.25rem;">
+      <p style="font-size:13px;font-weight:700;color:var(--orange-light);margin-bottom:0.3rem;">✓ GO — Value ($35M) exceeds Cost ($29M)</p>
+      <p style="font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.6;">The idea has enough potential to justify spending money on stage two — idea refinement. This is not a guarantee of success. It is a green light to keep going.</p>
+    </div>
+  </div>
+
+  <p class="body-text">The key insight from this exercise: <strong>most of the time, stage one ends with a no-go decision.</strong> That is the correct outcome. The developer generates dozens of ideas for every one that survives. A "no-go" at stage one costs almost nothing — a few hours of analysis. A "no-go" at stage five costs millions. The back-of-the-envelope pro forma is designed to move that decision as early and as cheaply as possible.</p>
+
+  <div class="warning-box">
+    <p><strong>⚠️ The Most Dangerous Trap:</strong> Electronic spreadsheet models can easily be used to force feasibility — it is tempting to change a number here or there to produce a value that exceeds cost by the desired margin. But forcing the numbers will surely come back to haunt a developer during the highly stressful construction stage or the very long duration of asset management. A pro forma that tells you what you want to hear is more dangerous than no pro forma at all.</p>
+  </div>
+
+  <p class="body-text">Risk control during stage one follows a set of practical principles Miles identifies as essential for a developer's longevity:</p>
+
+  <div class="risk-grid">
+    <div class="risk-card">
+      <div class="risk-num">01</div>
+      <div class="risk-title">Know Yourself</div>
+      <div class="risk-desc">Honestly evaluate your financial, intellectual, and emotional capabilities. A developer with limited experience and capital should not attempt a $50M high-rise without strong partners to fill the gaps. Ideas that can be executed by one developer may be disasters for another.</div>
+    </div>
+    <div class="risk-card">
+      <div class="risk-num">02</div>
+      <div class="risk-title">Know Your Team</div>
+      <div class="risk-desc">Identify team members early. People with excellent track records and financial strength reduce long-term risk — but often cost more. The developer must decide which costs are justified for the risk reduction they provide.</div>
+    </div>
+    <div class="risk-card">
+      <div class="risk-num">03</div>
+      <div class="risk-title">Keep Current</div>
+      <div class="risk-desc">Trends in the national economy, supply conditions, the political climate, and tax laws can shift quickly. A developer who stays current in their reading and networking is more likely to abandon an idea before committing significant resources when conditions change.</div>
+    </div>
+    <div class="risk-card">
+      <div class="risk-num">04</div>
+      <div class="risk-title">Behave Ethically</div>
+      <div class="risk-desc">Personal relationships and ethics are critically important in development because it is often impossible to rely on courts for a speedy resolution. In development, time is money — a lot of money. The stronger the business ethics of all involved, the safer the development for everyone.</div>
+    </div>
+    <div class="risk-card">
+      <div class="risk-num">05</div>
+      <div class="risk-title">Watch Financial Cycles</div>
+      <div class="risk-desc">It is not just the cost of financing that cycles — it is its availability. A developer who commits to a project requiring abundant cheap financing and then finds credit conditions tightening mid-project faces potential catastrophe. Some ideas must wait for better financial conditions.</div>
+    </div>
+    <div class="risk-card">
+      <div class="risk-num">06</div>
+      <div class="risk-title">The Best Control: Don't</div>
+      <div class="risk-desc">The single best risk control technique at stage one is simply to decline bad ideas — especially those outside your experience, market knowledge, or financial capacity. Most development losses come from pursuing ideas that should have been killed at stage one.</div>
+    </div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 3</div>
+  <h2 class="lesson-title">The Feasibility Study — <em>Stage Three: Proving the Project</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">If the back-of-the-envelope pro forma is a rough filter, the formal feasibility study is the rigorous proof. By stage three, the developer has refined the idea (stage two), selected a specific site, assembled a preliminary team, and formed a working concept. Now the question is: can this specific project — with this specific design, on this specific site, in this specific market, at this specific time — be demonstrated to be viable to every participant who needs to commit?</p>
+
+  <p class="body-text">The best definition of feasibility remains James Graaskamp's classic 1972 formulation:</p>
+
+  <div class="callout">
+    <p>"A real estate project is 'feasible' when the real estate analyst determines that there is a reasonable likelihood of satisfying explicit objectives when a selected course of action is tested for fit to a context of specific constraints and limited resources." — James A. Graaskamp, 1972</p>
+  </div>
+
+  <p class="body-text">Every word of Graaskamp's definition matters:</p>
+
+  <p class="body-text"><strong>"Reasonable likelihood"</strong> — feasibility never demonstrates certainty. A favorable feasibility study does not guarantee success. It demonstrates that success is reasonably likely given the information available.</p>
+
+  <p class="body-text"><strong>"Satisfying explicit objectives"</strong> — the objectives must be defined before the study begins, and they belong to all participants — not just the developer. The lender's objectives, the investor's objectives, the public sector's objectives, and the end user's objectives must all be satisfied.</p>
+
+  <p class="body-text"><strong>"Selected course of action tested for fit"</strong> — feasibility is not abstract. It applies to a specific plan, a specific timeline, and a specific execution approach. A different plan on the same site might be feasible while the original one is not.</p>
+
+  <p class="body-text"><strong>"Specific constraints and limited resources"</strong> — the plan must work within the actual capital available, the actual regulatory environment, and the actual physical conditions of the site. Not theoretical best-case conditions.</p>
+
+  <p class="body-text">The feasibility study is both a risk control tool and a <strong>management and communication tool</strong>. It brings together every aspect of the development in a consistent format. It is the sales document that persuades lenders, investors, tenants, and government agencies to commit. And critically — it is an <strong>optimization tool</strong>, not just a sufficiency test. A good feasibility study doesn't just determine whether a project is feasible — it determines whether it is the <em>best</em> plan, using sensitivity analysis to test every major decision.</p>
+
+  <p class="body-text">The essential components of a complete feasibility study:</p>
+
+  <div class="component-list">
+    <div class="comp-item">
+      <div class="comp-icon">📋</div>
+      <div><div class="comp-name">Executive Summary</div><div class="comp-desc">A concise overview of the project, the market opportunity, the financial structure, and the key findings. The only section most decision-makers read in full — must be compelling, accurate, and self-contained.</div></div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-icon">📊</div>
+      <div><div class="comp-name">Market Study</div><div class="comp-desc">The analytical foundation — examining national, regional, local, and site-specific trends. Analyzes competitive supply, quantifies demand, and produces an absorption schedule: how many units at what price over what time period will the target market absorb? The most important section for validating revenue assumptions.</div></div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-icon">💵</div>
+      <div><div class="comp-name">Revenue &amp; Operating Cost Projections</div><div class="comp-desc">Detailed pro forma showing projected rental or sales revenue, vacancy, operating expenses, and net operating income (NOI) over the analysis period — typically 5–10 years. The NOI projection is the driver of the value calculation. Every assumption must be supported by comparable market data.</div></div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-icon">📐</div>
+      <div><div class="comp-name">Preliminary Drawings</div><div class="comp-desc">More detailed than stage two sketches — showing exterior elevations, floor layouts, rentable square feet, parking, and building systems. Required so that cost estimates can be more precise. The architect's drawings must be consistent with what the market research says the product should be.</div></div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-icon">🏗️</div>
+      <div><div class="comp-name">Construction &amp; Total Cost Estimates</div><div class="comp-desc">Comprehensive cost breakdown including: land, site preparation, on-site and off-site infrastructure, hard construction costs (by category), soft costs (architecture, engineering, permits, marketing, legal, financing fees, insurance, property taxes during construction), carrying costs, and contingency (typically 5–10% depending on uncertainty level).</div></div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-icon">📈</div>
+      <div><div class="comp-name">Value Statement &amp; Discounted Cash Flow Analysis</div><div class="comp-desc">The formal estimate of project value — using discounted cash flow (DCF) analysis. Projects expected cash flows over the analysis period, applies a market-derived discount rate, and reduces those flows to a present value. If value exceeds total cost, the project satisfies Graaskamp's feasibility test.</div></div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-icon">🔬</div>
+      <div><div class="comp-name">Sensitivity Analysis</div><div class="comp-desc">The optimization step — testing how the project's financial outcome changes as key assumptions vary. What if rents are 10% lower than projected? What if construction costs overrun by 15%? What if absorption takes twice as long? Sensitivity analysis transforms the feasibility study from a static financial snapshot to a dynamic planning tool.</div></div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-icon">🏛️</div>
+      <div><div class="comp-name">Government Considerations &amp; Entitlement Status</div><div class="comp-desc">Summary of regulatory approvals required, current entitlement status, timeline to approvals, and key government relationships. Government agencies reviewing the project need to see that the developer understands and has addressed all regulatory constraints.</div></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>"The feasibility analysis should be more than a technique for controlling risk during stage three. Once completed, the formal feasibility study is the sales tool used to bring together all the players needed to accomplish the development." — Miles, Netherton &amp; Schmitz</p>
+  </div>
+
+  <p class="body-text">A project satisfies Graaskamp's formal definition of feasibility when three conditions are met simultaneously: (1) the risk-adjusted value exceeds total cost including all soft costs; (2) legal and ethical rules have been satisfied; and (3) the developer commands the financial and human resources necessary to bring the project to fruition. All three must be true. A project that pencils financially but requires resources the developer does not have is not feasible for that developer — even if it would be feasible for someone else.</p>
+
+  <div class="case-study">
+    <div class="cs-label">Case Study · Stage Three · Chapel Hill, North Carolina</div>
+    <div class="cs-title">Shortbread Lofts — The Formal Feasibility Study</div>
+    <div class="cs-sub">Developer: Larry Short · Stage Three Cost Confirmation</div>
+    <div class="cs-body">By stage three, Short had refined his numbers significantly from the back-of-the-envelope estimates. He hired CBRE to confirm rental rates — and also canvassed five property management firms to get independent estimates. Drawing on his accounting background, he pushed hard for multiple data sources rather than relying on one estimate. The formal budget showed: total soft costs of $2.27M (architecture, engineering, permits, legal, overhead, advertising, taxes, contingency), total hard costs of $17.29M (construction, general conditions, contractor fee, insurance, bond), and total finance costs of $595K — for a total development cost of $20.55M. With a $21M construction loan lined up, the developer had a negligible positive cash flow of $500K at the construction stage. Short also chose a loan with no prepayment penalty — maintaining flexibility to either hold or sell upon completion, preserving optionality while the market conditions played out.</div>
+    <div class="cs-stats">
+      <div class="cs-stat"><div class="cs-num">$20.55M</div><div class="cs-lbl">Total Development Cost</div></div>
+      <div class="cs-stat"><div class="cs-num">$21M</div><div class="cs-lbl">Construction Loan</div></div>
+      <div class="cs-stat"><div class="cs-num">+$500K</div><div class="cs-lbl">Cash Flow at Construction</div></div>
+    </div>
+    <div class="cs-lesson">Lesson: The formal feasibility study is not just a financial model — it is a management tool that aligns all participants around a single, internally consistent set of assumptions. Short's feasibility study served as his financing package, his design brief, and his risk management framework simultaneously.</div>
+  </div>
+
+  <!-- KEY TERMS -->
+  <div class="module-glossary">
+    <h3>📖 Module 4 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch4" placeholder="Search terms..." oninput="mgFilter(this,4)">
+    <div class="mg-terms" id="mgTerms4">
+      <div class="mg-term" data-mg="idea inception stage one creative brainstorming market opportunity">
+        <div class="mg-name">Idea Inception <span class="mg-abbr">Stage 1</span></div>
+        <div class="mg-def">The first stage of the development process — the least mechanical and most creative. The developer identifies an unmet market need and generates the idea for a project that could fill it. Stage one ends when the developer tests the idea with a back-of-the-envelope pro forma. Most ideas generated at this stage are never pursued — and that is the system working correctly.</div>
+      </div>
+      <div class="mg-term" data-mg="back of envelope pro forma rough estimate value cost quick triage">
+        <div class="mg-name">Back-of-the-Envelope Pro Forma</div>
+        <div class="mg-def">A rapid, rough comparison of estimated project value versus estimated project cost — used at stage one to quickly evaluate whether an idea has enough potential to justify further investment. Calculated using rough estimates of rent per square foot, operating expenses, NOI, and a market cap rate. The primary purpose is triage: kill bad ideas early and cheaply, before committing real money to stage two.</div>
+      </div>
+      <div class="mg-term" data-mg="situs theory Graaskamp location fit tenant financing three ways">
+        <div class="mg-name">Situs Theory (Graaskamp)</div>
+        <div class="mg-def">James Graaskamp's framework for evaluating the three-way fit required for any development: the site must fit its location (physical, regulatory, and market characteristics), the location must fit the target tenant (who must want to be there and pay for it), and the tenant must fit the financing (the rents or sales prices they will pay must support the required capital structure). A failure on any one fit undermines the entire project.</div>
+      </div>
+      <div class="mg-term" data-mg="feasibility study Graaskamp reasonable likelihood explicit objectives constraints resources">
+        <div class="mg-name">Feasibility Study <span class="mg-abbr">Stage 3</span></div>
+        <div class="mg-def">The formal demonstration of project viability required at stage three — providing evidence to every participant (lender, investor, public sector, tenants) that the project can meet its objectives. More than a financial analysis: it is the primary management tool and sales document of the development process. A complete feasibility study includes an executive summary, market study, revenue projections, preliminary drawings, cost estimates, financing structure, government considerations, and a formal value statement.</div>
+      </div>
+      <div class="mg-term" data-mg="Graaskamp definition feasibility reasonable likelihood explicit objectives course of action constraints">
+        <div class="mg-name">Graaskamp's Definition of Feasibility</div>
+        <div class="mg-def">"A real estate project is 'feasible' when the real estate analyst determines that there is a reasonable likelihood of satisfying explicit objectives when a selected course of action is tested for fit to a context of specific constraints and limited resources." — James A. Graaskamp, 1972. The most important definition in the feasibility chapter: feasibility is not certainty, it applies to all participants' objectives, it tests a specific course of action (not an abstract idea), and it must work within actual — not theoretical — constraints and resources.</div>
+      </div>
+      <div class="mg-term" data-mg="optimization tool sensitivity analysis best plan not just feasible">
+        <div class="mg-name">Feasibility as an Optimization Tool</div>
+        <div class="mg-def">Miles argues that the feasibility study should not merely determine whether a project is feasible — it should determine whether it is the best possible plan. By using sensitivity analysis to test every major decision and significant project feature, the developer can move from "this is acceptable" to "this is optimal." The optimization mindset distinguishes sophisticated developers from those who simply confirm what they want to hear.</div>
+      </div>
+      <div class="mg-term" data-mg="sensitivity analysis what if scenarios assumptions vary risk test">
+        <div class="mg-name">Sensitivity Analysis</div>
+        <div class="mg-def">A method of testing a financial model by systematically varying key assumptions — rent levels, construction costs, absorption pace, cap rates, interest rates — to understand how the project's financial outcome changes. Transforms the feasibility study from a static snapshot into a dynamic planning tool. Also reveals which assumptions the project is most sensitive to — those that deserve the greatest scrutiny and risk mitigation.</div>
+      </div>
+      <div class="mg-term" data-mg="market study absorption schedule competitive supply demand revenue projection">
+        <div class="mg-name">Market Study</div>
+        <div class="mg-def">The analytical foundation of the feasibility study — examining national, regional, local, and neighborhood trends to quantify demand for the proposed development. The market study concludes with a projected absorption schedule: how many units at what price over what time period will the target market absorb? The revenue projections in the pro forma are only as reliable as the underlying market study.</div>
+      </div>
+      <div class="mg-term" data-mg="venture capital period stage two three preconstruction high risk expensive">
+        <div class="mg-name">Venture Capital Period</div>
+        <div class="mg-def">Miles' term for the period between stage two (idea refinement) and stage six (construction) — when significant development capital is being spent but the project has not yet been fully committed. Investors during this period face high risk (the project may never be built) and demand extraordinarily high returns similar to venture capitalists. Developers minimize the amount of this expensive capital by using cheaper commercial bank financing wherever possible.</div>
+      </div>
+      <div class="mg-term" data-mg="enterprise concept Graaskamp building as operating business cash flow management">
+        <div class="mg-name">Enterprise Concept (Graaskamp)</div>
+        <div class="mg-def">Graaskamp's argument that buildings should be conceived and managed as operating businesses — not merely as physical assets. Like businesses, buildings must continually redefine their market positions, respond to evolving tenant demands, and be managed aggressively to remain viable. The enterprise concept is the intellectual foundation for treating real estate development as value creation rather than mere construction.</div>
+      </div>
+    </div>
+    <p class="mg-none" id="mgNone4">No matching terms found.</p>
+    <div class="mg-footer">More terms covered in upcoming modules. <a href="red-glossary.html">View Full Course Glossary →</a></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section" id="quizSection">
+    <h3>Module 4 Knowledge Check</h3>
+    <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">Miles says stage one of the development process is "the least mechanical and most creative." What does he identify as the essential raw material from which development ideas are formed?</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">A</div>Formal market research reports commissioned from professional analysts — the more data, the better the ideas generated.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div>Accumulated background knowledge and market experience — built through constant informal observation, reading, networking, and field work — that gives a developer a "feel for the market" from which insights and ideas emerge.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">C</div>Financial modeling skills — developers with the most sophisticated DCF models generate the best ideas because they can quickly calculate which projects will be most profitable.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">D</div>Access to off-market deal flow — developers who see more opportunities generate more ideas, so the key is building a network that surfaces deals before they hit the market.</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. Ideas don't come from formal research alone — they come from pattern recognition built on accumulated market knowledge. Miles says developers perform market research "during almost all their waking moments." The formal techniques (brainstorming, Delphi, focus groups) are tools to stimulate and structure creativity — but the underlying raw material is the developer's background knowledge and market feel.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ The raw material of idea inception is accumulated background knowledge and market experience — not formal reports, financial models, or deal flow alone. Miles says developers perform informal market research constantly, and that the spark comes from how pieces of information are assembled to solve a problem. Formal research refines ideas; experience generates them.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">What are the three primary sources from which development ideas emerge?</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">A</div>Brainstorming sessions, market surveys, and competitive analysis — the three formal research methods that structure idea generation.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div>A site looking for a use (the developer becomes aware of a specific parcel and asks what to build on it), a use looking for a site (the developer knows what product to build and searches for the right location), and capital looking for opportunity (investors with capital to deploy seek viable development projects).</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">C</div>Residential demand, commercial demand, and industrial demand — the three property type markets that drive development activity.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">D</div>Local market knowledge, national trend analysis, and competitive intelligence — the three levels of market research that inform development decisions.</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. The three primary sources: (1) a site looking for a use — the location is the starting point and the product follows from analysis; (2) a use looking for a site — the product is the starting point and the location follows from the search; (3) capital looking for opportunity — investors with capital to deploy seek projects that provide acceptable returns. All three are valid entry points into the development process.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ The three primary sources of development ideas are: a site looking for a use (parcel available, what do we build?), a use looking for a site (product defined, where do we build?), and capital looking for opportunity (investment capital available, what project do we fund?). Brainstorming and market research are tools for refining ideas, not sources of ideas themselves.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">What is the primary purpose of the back-of-the-envelope pro forma at stage one?</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">A</div>To provide a detailed financial model that can be presented to lenders and investors as part of the initial financing package.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">B</div>To demonstrate to the public sector that the proposed development is economically viable and deserving of entitlement approvals.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">C</div>Triage — quickly identifying whether an idea has enough potential to justify spending real money on stage two, and killing ideas that don't before committing those resources. Most ideas die here, and that is the system working correctly.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">D</div>To establish the precise financial terms under which the developer will proceed — locking in cost estimates and return expectations before engaging consultants.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. The back-of-the-envelope pro forma is a triage tool — not a precise financial model. Its purpose is to determine whether an idea deserves further investment of time and money, or whether it should be killed early and cheaply. Most ideas generated at stage one fail this test — and that is expected and healthy. The alternative is spending real money pursuing ideas that should have been discarded in an afternoon.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ The back-of-the-envelope pro forma is a triage tool — not a presentation document, not a regulatory exhibit, and not a binding financial commitment. Its sole purpose is to determine quickly and cheaply whether an idea has enough potential to justify the investment of stage two. Most ideas fail this test, and that is exactly how the system should work.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">In the Shortbread Lofts back-of-the-envelope example, the developer estimated a cap rate of 6% and an NOI of $2.1 million. What value did this produce, and what was the significance of comparing it to the estimated cost of $29 million?</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">A</div>Value of $12.6 million — significantly below cost, indicating the project was not feasible and should be abandoned at stage one.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">B</div>Value of $29 million — exactly equal to cost, indicating the project was marginally feasible and deserved further analysis.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div>Value of $35 million (NOI ÷ cap rate = $2.1M ÷ 0.06) — exceeding the estimated cost of $29 million by $6 million, giving the developer a green light to proceed to stage two and invest in idea refinement.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">D</div>Value of $126 million — far exceeding cost, indicating the project was highly profitable and should be immediately pursued through all stages simultaneously to capture the opportunity.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. $2.1M ÷ 0.06 = $35M. With estimated costs of $29M, the project showed a potential value-to-cost spread of $6M — enough to justify proceeding to stage two. This is not a guarantee of profitability; it is a green light to invest in more detailed analysis. Short himself noted that "the finances never turn out as easy as the back-of-the-envelope pro forma" — but the idea had enough potential to warrant further work.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ The calculation is: NOI ÷ cap rate = $2.1M ÷ 0.06 = $35M. With estimated costs of $29M, value exceeds cost by $6M — a green light to proceed to stage two. The cap rate formula (Value = NOI ÷ Cap Rate) is the fundamental income approach to value. At a 6% cap rate, every dollar of NOI creates $16.67 of property value. A $6M value-to-cost spread at stage one is a meaningful signal worth pursuing.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">What does Miles identify as the single best risk control technique available at stage one?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">A</div>Hiring the most experienced development team possible — the quality of the team is the primary determinant of project risk.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">B</div>Commissioning a detailed market study before committing to any idea — data eliminates most development risk at the inception stage.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">C</div>"Don't" — simply declining to pursue bad ideas, ideas outside the developer's experience or financial capacity, and ideas that don't survive honest back-of-the-envelope analysis. The most development losses come from pursuing ideas that should have been killed at stage one.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">D</div>Securing site control as early as possible — locking up the land before competitors do eliminates the risk of losing the site during analysis.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. Miles states it directly: "The best risk control technique is 'don't.'" Development losses are far more often the result of pursuing bad ideas than of executing good ideas imperfectly. The developer who honestly applies the back-of-the-envelope test, kills ideas outside their competence, and waits for better financial conditions when necessary preserves capital for the ideas that truly deserve it.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ Miles' answer is simple and direct: "The best risk control technique is 'don't.'" A great team can't save a bad idea. A market study can't manufacture demand that isn't there. And securing site control on a bad site just locks up capital in a losing proposition. The highest-leverage risk control available at stage one is the judgment to decline ideas that don't deserve further investment.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">According to Graaskamp's definition, what are the four critical elements of feasibility — and what do they collectively mean?</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">A</div>Revenue exceeds expenses, location is superior, construction team is qualified, and government approvals are obtainable — the four practical conditions every developer evaluates.</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">B</div>Reasonable likelihood (not certainty), explicit objectives (for all participants, not just the developer), a selected course of action tested for fit (a specific plan, not an abstract idea), and specific constraints and limited resources (actual, not theoretical). Together they mean feasibility is participant-specific, plan-specific, constraint-specific, and probabilistic — not a blanket judgment that "this will work."</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">C</div>Financial return exceeds required yield, legal approvals are obtainable, physical construction is achievable, and management capability exists — the four dimensions of project feasibility.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">D</div>Market demand exists, supply is limited, financing is available, and the site is suitable — the four market conditions that must align for any development to be feasible.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. Each phrase in Graaskamp's definition carries meaning: "reasonable likelihood" = not certainty, manage expectations; "explicit objectives" = all participants' objectives, not just the developer's; "selected course of action" = a specific plan and timeline, not an abstract concept; "specific constraints and limited resources" = actual capital and human resources available, not theoretical best-case. Together they produce a definition that is honest, inclusive, and actionable.</div>
+        <div class="feedback incorrect" id="q6-wrong">✗ Graaskamp's definition has four specific elements: (1) reasonable likelihood — not certainty; (2) explicit objectives — for all participants, not just the developer; (3) selected course of action tested for fit — a specific plan and timeline; (4) specific constraints and limited resources — the actual, not theoretical, capital and people available. Together they mean feasibility is probabilistic, multi-participant, plan-specific, and resource-constrained.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">Why does Miles argue that the feasibility study should be treated as an "optimization tool" rather than just a "sufficiency test"?</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">A</div>A sufficiency test only determines whether a project is feasible — whether value exceeds cost. An optimization tool goes further, using sensitivity analysis to test every major decision and project feature to find the best plan, not just an acceptable one. Developers who stop at sufficiency leave value on the table and take on avoidable risk.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">B</div>An optimization tool is faster and cheaper than a sufficiency test — it allows developers to quickly compare multiple project alternatives without committing to detailed analysis of each one.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">C</div>Lenders require optimization analysis in addition to sufficiency testing as a condition of providing construction financing — making it a regulatory necessity rather than a conceptual preference.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">D</div>Optimization tools are more persuasive to investors than sufficiency tests — investors want to see that the developer has maximized projected returns, not merely established that returns are adequate.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. A sufficiency test answers: "Can this work?" An optimization tool answers: "Is this the best version of what could work?" By running sensitivity analysis on every major decision — unit mix, amenities, parking ratios, lease structure, construction methods — the developer moves from "this is feasible" to "this is the optimal configuration." This shift from static analysis to dynamic planning is what separates exceptional feasibility work from mediocre feasibility work.</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ The optimization vs. sufficiency distinction is about depth of analysis, not speed or regulatory requirements. A sufficiency test answers "can this work?" An optimization tool answers "is this the best version of what could work?" By using sensitivity analysis to test every major decision, the developer identifies whether there are better configurations — higher returns, lower risk, or both — than the baseline plan being analyzed.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">Miles includes a stark warning about electronic spreadsheet models in the feasibility chapter. What is the warning, and why does it matter?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">A</div>Spreadsheet models are too simplistic for complex developments — developers should use proprietary software instead of general tools like Excel.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">B</div>Spreadsheet models cannot handle the complexity of discounted cash flow analysis — developers should hire specialized financial analysts rather than building their own models.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">C</div>Spreadsheet models can easily be used to "force feasibility" — changing a number here or there to produce a value that exceeds costs by the desired margin. But forcing the numbers will come back to haunt the developer during the highly stressful construction stage or the long duration of asset management. A pro forma that tells you what you want to hear is more dangerous than no pro forma at all.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">D</div>Spreadsheet models create a false sense of precision — the numbers look exact even when the underlying assumptions are rough estimates, misleading lenders and investors about the reliability of the analysis.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. This is one of Miles' most important practical warnings. It is technically easy to adjust a DCF model until the output looks favorable — and the temptation to do so is real, especially when a developer is excited about an idea. But a manipulated pro forma is not a risk management tool — it is a deception, ultimately of the developer themselves. The assumptions will be tested by reality during construction and operations, and reality does not negotiate.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ Miles' warning is about intellectual honesty: spreadsheet models make it technically easy to "force feasibility" by adjusting assumptions until the model produces the desired result. This is the most dangerous form of confirmation bias in development — the developer convinces themselves the project works when the honest numbers say it doesn't. Reality will expose the manipulation during construction or operations, at enormous cost.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">What is the "venture capital period" Miles describes, and what does it mean for how developers should structure their preconstruction financing?</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">A</div>The period between stage two (idea refinement) and stage six (construction) — when significant development capital is being spent but the project has not yet been fully committed and may never be built. Investors during this period face high risk and demand very high returns. Developers should minimize expensive venture-style capital and maximize cheaper commercial bank financing wherever possible during this period.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">B</div>The period after construction completion when the project is leasing up — when the developer is relying on future rental income to repay construction debt and must attract tenants quickly to avoid default.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">C</div>The period when the developer is seeking equity investors — typically six months of roadshows and presentations before the first equity capital is committed to the project.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">D</div>The period when the project is in entitlements — when the outcome is uncertain and the developer must continue spending money on consultants, attorneys, and community outreach without knowing if approvals will be granted.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. The venture capital period is stages two through five — before construction begins. Capital invested during this period is at high risk because if the project doesn't proceed, the money is lost entirely (feasibility plans have little resale value). Investors demand high returns for this exposure. Developers minimize this expensive capital by using cheaper commercial bank credit wherever possible and by managing the preconstruction period efficiently to reduce its duration.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ The venture capital period is the preconstruction phase — stages two through five. During this period, the developer is spending real money on design, feasibility, entitlements, and team assembly — but the project hasn't been committed to and may never be built. If the project fails to reach construction, all that invested capital is lost. Investors who fund this phase face venture-level risk and demand venture-level returns.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">Graaskamp's formal feasibility test requires three conditions to be met simultaneously. Which of the following correctly states all three?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">A</div>The project must be profitable, legally compliant, and physically constructible — three necessary and sufficient conditions for any development.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">B</div>Market demand must be demonstrated, financing must be committed, and entitlements must be obtained — the three practical milestones that define development feasibility.</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">C</div>(1) The risk-adjusted value exceeds total project cost including all soft costs; (2) legal and ethical rules have been satisfied; and (3) the developer commands the financial and human resources necessary to bring the project to fruition. All three must be true simultaneously — a project that pencils financially but exceeds the developer's resource capacity is not feasible for that developer.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">D</div>The project must generate a return above the hurdle rate, attract at least one anchor tenant, and receive planning commission approval — three stakeholder-based conditions for formal feasibility.</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. Graaskamp's three conditions: (1) value exceeds cost (including all soft costs); (2) legal and ethical constraints are satisfied; and (3) the developer has the resources to execute. The third condition is often overlooked — a project that is financially viable and legally permissible is still not feasible for a developer who lacks the capital, relationships, or expertise to execute it. Feasibility is always developer-specific, not just project-specific.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ Graaskamp's three conditions are: (1) risk-adjusted value exceeds total cost including soft costs; (2) legal and ethical rules are satisfied; and (3) the developer has the financial and human resources to execute. All three must be true simultaneously. The third condition is critically important — a project that pencils and has clear entitlements is still not feasible for a developer who doesn't have the resources to bring it to completion. Feasibility is always developer-specific.</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="red-module-3.html" class="btn-nav outline">← Module 3</a>
+  <div class="nav-module-title">
+    <strong>Up Next: Module 5</strong>
+    Financing the Deal
+  </div>
+  <a href="red-module-5.html" class="btn-nav primary">Module 5 →</a>
+</div>
+
+<footer style="background:var(--char);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--orange-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+function mgFilter(input,n){var v=input.value.toLowerCase();var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');var any=false;terms.forEach(function(t){var match=t.getAttribute('data-mg').includes(v)||t.textContent.toLowerCase().includes(v);t.classList.toggle('mg-hidden',!match);if(match)any=true;});document.getElementById('mgNone'+n).style.display=any?'none':'block';}
+
+var answers={};
+var quizData={
+  q1:{correct:'B',question:'What does Miles identify as the essential raw material from which development ideas are formed?',options:{A:'Formal market research reports commissioned from professional analysts.',B:'Accumulated background knowledge and market experience — built through constant informal observation, reading, networking, and field work.',C:'Financial modeling skills — developers with sophisticated DCF models generate the best ideas.',D:'Access to off-market deal flow through a strong network.'},explanation:'Ideas come from pattern recognition built on accumulated market knowledge — not formal research alone. Miles says developers perform informal market research constantly, and that the spark comes from how pieces of information are assembled to solve a problem.'},
+  q2:{correct:'B',question:'What are the three primary sources from which development ideas emerge?',options:{A:'Brainstorming, market surveys, and competitive analysis.',B:'A site looking for a use, a use looking for a site, and capital looking for opportunity.',C:'Residential demand, commercial demand, and industrial demand.',D:'Local knowledge, national trends, and competitive intelligence.'},explanation:'The three sources: (1) site looking for a use — location is the starting point; (2) use looking for a site — product is the starting point; (3) capital looking for opportunity — investment capital drives the search for viable projects.'},
+  q3:{correct:'C',question:'What is the primary purpose of the back-of-the-envelope pro forma at stage one?',options:{A:'To provide a detailed financial model for lenders and investors.',B:'To demonstrate economic viability to the public sector for entitlement approvals.',C:'Triage — quickly identifying whether an idea deserves further investment, and killing ideas that don\'t before committing real money.',D:'To lock in cost estimates and return expectations before engaging consultants.'},explanation:'The back-of-the-envelope pro forma is a triage tool — not a precision model. Its purpose is to determine whether an idea deserves real investment of stage two resources, or whether it should be killed early and cheaply.'},
+  q4:{correct:'C',question:'In the Shortbread Lofts back-of-the-envelope example, with a 6% cap rate and $2.1M NOI, what value was produced?',options:{A:'$12.6 million — significantly below cost, indicating the project was not feasible.',B:'$29 million — exactly equal to cost, indicating marginal feasibility.',C:'$35 million (NOI ÷ cap rate = $2.1M ÷ 0.06) — exceeding estimated cost of $29M by $6M, a green light to proceed to stage two.',D:'$126 million — far exceeding cost, indicating the project should be immediately pursued.'},explanation:'Value = NOI ÷ Cap Rate = $2.1M ÷ 0.06 = $35M. With estimated costs of $29M, value exceeds cost by $6M — enough potential to justify investing in stage two analysis.'},
+  q5:{correct:'C',question:'What does Miles identify as the single best risk control technique at stage one?',options:{A:'Hiring the most experienced development team possible.',B:'Commissioning a detailed market study before committing to any idea.',C:'"Don\'t" — simply declining to pursue bad ideas, ideas outside the developer\'s experience, and ideas that don\'t survive honest back-of-the-envelope analysis.',D:'Securing site control as early as possible to eliminate the risk of losing the site.'},explanation:'Miles states directly: "The best risk control technique is \'don\'t.\'" Most development losses come from pursuing ideas that should have been killed at stage one.'},
+  q6:{correct:'B',question:'What are the four critical elements of Graaskamp\'s definition of feasibility?',options:{A:'Revenue exceeds expenses, superior location, qualified construction team, and obtainable approvals.',B:'Reasonable likelihood (not certainty), explicit objectives (for all participants), a selected course of action tested for fit (specific plan), and specific constraints and limited resources (actual, not theoretical).',C:'Financial return exceeds yield, legal approvals obtainable, physical construction achievable, and management capability exists.',D:'Market demand exists, supply is limited, financing is available, and the site is suitable.'},explanation:'Each phrase carries meaning: "reasonable likelihood" = not certainty; "explicit objectives" = all participants\' goals; "selected course of action" = specific plan and timeline; "specific constraints and limited resources" = actual, not theoretical, resources.'},
+  q7:{correct:'A',question:'Why does Miles argue the feasibility study should be an "optimization tool" rather than just a "sufficiency test"?',options:{A:'A sufficiency test only determines whether a project is feasible. An optimization tool uses sensitivity analysis to find the best plan — not just an acceptable one — leaving less value on the table and reducing avoidable risk.',B:'An optimization tool is faster and cheaper than a sufficiency test.',C:'Lenders require optimization analysis as a condition of construction financing.',D:'Optimization tools are more persuasive to investors than sufficiency tests.'},explanation:'Sufficiency answers "can this work?" Optimization answers "is this the best version?" By testing every major decision through sensitivity analysis, the developer moves from acceptable to optimal.'},
+  q8:{correct:'C',question:'What is Miles\' warning about electronic spreadsheet models in the feasibility chapter?',options:{A:'Spreadsheet models are too simplistic for complex developments.',B:'Spreadsheet models cannot handle discounted cash flow analysis properly.',C:'Spreadsheet models can easily be used to "force feasibility" — changing numbers to produce desired results. But forcing the numbers will come back to haunt the developer during construction and operations.',D:'Spreadsheet models create false precision that misleads lenders and investors.'},explanation:'The warning is about intellectual honesty: it\'s easy to manipulate a DCF model to produce favorable results. But a manipulated pro forma is a deception — ultimately of the developer themselves. Reality will expose the manipulation during construction or operations at enormous cost.'},
+  q9:{correct:'A',question:'What is the "venture capital period" and what does it mean for preconstruction financing?',options:{A:'The period between stage two and stage six — when significant development capital is being spent but the project hasn\'t been committed and may never be built. Investors face high risk and demand high returns. Developers should minimize this expensive capital and maximize cheaper commercial bank financing.',B:'The period after construction completion when the project is leasing up.',C:'The period when the developer is seeking equity investors — typically six months of presentations.',D:'The period when the project is in entitlements with uncertain outcome.'},explanation:'The venture capital period is stages two through five. If the project doesn\'t proceed, all invested capital is lost. Investors demand venture-level returns for venture-level risk. Developers minimize this expensive capital wherever possible.'},
+  q10:{correct:'C',question:'Which correctly states Graaskamp\'s three conditions for formal feasibility?',options:{A:'The project must be profitable, legally compliant, and physically constructible.',B:'Market demand must be demonstrated, financing committed, and entitlements obtained.',C:'(1) Risk-adjusted value exceeds total cost including soft costs; (2) legal and ethical rules are satisfied; (3) the developer has the financial and human resources to execute. All three must be true simultaneously.',D:'The project must exceed the hurdle rate, attract an anchor tenant, and receive planning commission approval.'},explanation:'All three conditions must be true: financial viability, legal/ethical compliance, AND developer resource capacity. A project that pencils but exceeds the developer\'s execution capacity is not feasible for that developer.'}
+};
+
+function selectOption(el,qId,isCorrect){
+  var block=el.parentElement;
+  var opts=block.querySelectorAll('.option');
+  opts.forEach(function(o){o.onclick=null;o.style.pointerEvents='none';});
+  if(isCorrect){el.classList.add('correct');block.querySelector('#'+qId+'-correct').style.display='block';}
+  else{el.classList.add('incorrect');block.querySelector('#'+qId+'-wrong').style.display='block';opts.forEach(function(o){if(o.getAttribute('data-correct')==='true')o.classList.add('correct');});}
+  answers[qId]={selected:el.querySelector('.option-letter').textContent,correct:isCorrect};
+  if(Object.keys(answers).length===Object.keys(quizData).length)document.getElementById('submitBtn').disabled=false;
+}
+
+function submitQuiz(){
+  var score=0;Object.keys(answers).forEach(function(q){if(answers[q].correct)score++;});
+  var total=Object.keys(quizData).length;
+  document.getElementById('quizForm').style.display='none';
+  var result=document.getElementById('quizResult');result.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  var passed=score>=8;
+  document.getElementById('resultLabel').textContent=passed?'✓ Module 4 Passed':'Keep Reviewing';
+  document.getElementById('resultLabel').style.color=passed?'#7DEFA1':'#F8ADB4';
+  document.getElementById('resultMsg').textContent=passed
+    ?'Strong grasp of idea inception and feasibility. You understand where ideas come from, how the back-of-the-envelope test works, and what Graaskamp\'s definition of feasibility requires of a development project and its developer. Module 5 moves into the financing of development deals — capital stacks, construction loans, and how developers structure the money that makes projects possible.'
+    :'Review Graaskamp\'s definition of feasibility carefully — especially the four key phrases and what each one means. Also revisit the back-of-the-envelope calculation and the three conditions required for formal feasibility. These concepts are foundational to the rest of the course.';
+  var wrongs=Object.keys(answers).filter(function(q){return !answers[q].correct;});
+  if(wrongs.length>0){
+    var wr=document.getElementById('wrongReview');wr.style.display='block';
+    var wl=document.getElementById('wrongList');wl.innerHTML='';
+    wrongs.forEach(function(q){
+      var d=quizData[q];var sel=answers[q].selected;
+      var div=document.createElement('div');div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div><div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div><div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div><div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+
+function retryQuiz(){
+  answers={};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled=true;
+  document.querySelectorAll('.option').forEach(function(o){
+    o.className='option';o.style.pointerEvents='';
+    var block=o.closest('.question-block');
+    var qId='q'+(Array.from(document.querySelectorAll('.question-block')).indexOf(block)+1);
+    var isCorrect=o.getAttribute('data-correct')==='true';
+    o.onclick=function(){selectOption(o,qId,isCorrect);};
+  });
+  document.querySelectorAll('.feedback').forEach(function(f){f.style.display='none';});
+}
+</script>
+</body>
+</html>
