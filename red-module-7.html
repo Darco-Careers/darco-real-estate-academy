@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 7: Construction, Completion & Marketing — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#2A2A2A;--char-mid:#3D3D3D;--char-light:#555;--char-pale:#F0EEEC;
+  --orange:#D4621A;--orange-mid:#E07030;--orange-light:#F08C50;--orange-pale:#FDF0E8;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(42,42,42,0.1);
+  --shadow-card:0 2px 16px rgba(42,42,42,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--char);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--orange-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--char-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--char);font-weight:600;}
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--char-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-mid));border-radius:3px;width:87.5%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:rgba(212,98,26,0.2);color:var(--orange);}
+.prog-dot.active{background:var(--char);color:var(--orange-light);}
+.prog-dot.locked{background:rgba(42,42,42,0.1);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);}
+.module-hero{background:linear-gradient(135deg,#1A1A1A 0%,var(--char) 55%,#383838 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(212,98,26,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--orange-mid),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,98,26,0.15);border:1px solid rgba(212,98,26,0.3);color:var(--orange-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--orange-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:620px;line-height:1.85;font-weight:300;}
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--orange);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--orange) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--char);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--orange-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--orange);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--char-mid);font-style:italic;}
+.orange-rule{width:44px;height:3px;background:var(--orange);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+.callout{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--orange);font-style:italic;line-height:1.7;}
+.warning-box{background:#FBF0EE;border-left:4px solid #C0392B;border-radius:0 12px 12px 0;padding:1.1rem 1.4rem;margin:1.5rem 0;}
+.warning-box p{font-size:13.5px;color:#8B2F20;line-height:1.7;}
+.insight-box{background:var(--char);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.insight-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--orange-light);margin-bottom:0.5rem;}
+.insight-box p{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.7;}
+/* TEAM ROLES */
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.75rem 0;}
+.team-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;transition:box-shadow 0.2s;}
+.team-card:hover{box-shadow:var(--shadow-card);}
+.team-icon{font-size:1.5rem;margin-bottom:0.4rem;}
+.team-role{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange);margin-bottom:0.25rem;}
+.team-title{font-size:13.5px;font-weight:700;color:var(--char);margin-bottom:0.35rem;}
+.team-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* DRAW PROCESS */
+.draw-steps{display:flex;flex-direction:column;gap:0.75rem;margin:1.75rem 0;position:relative;}
+.draw-steps::before{content:'';position:absolute;left:17px;top:0;bottom:0;width:2px;background:var(--cream-dark);}
+.draw-step{display:flex;gap:1rem;align-items:flex-start;}
+.draw-num{width:36px;height:36px;border-radius:50%;background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0;z-index:1;}
+.draw-body{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1.1rem;flex:1;}
+.draw-title{font-weight:700;font-size:13px;color:var(--char);margin-bottom:0.2rem;}
+.draw-desc{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+/* CASE STUDY */
+.case-study{background:var(--char);border-radius:16px;padding:1.75rem;margin:1.75rem 0;}
+.cs-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange-light);margin-bottom:0.5rem;}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;}
+.cs-sub{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:1rem;}
+.cs-body{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.7;}
+.cs-lesson{font-size:12.5px;font-weight:600;color:var(--orange-light);margin-top:1rem;padding-top:0.75rem;border-top:1px solid rgba(255,255,255,0.1);}
+/* SWOT */
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.75rem 0;}
+.swot-card{border-radius:12px;padding:1.25rem;border:1px solid var(--border);}
+.swot-card.s{background:#EFF8F2;border-color:#A8D5B5;}
+.swot-card.w{background:#FDF3F3;border-color:#F0B8B8;}
+.swot-card.o{background:#EEF4FD;border-color:#A8C4E8;}
+.swot-card.t{background:#FDF8EE;border-color:#E8D08C;}
+.swot-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:0.35rem;}
+.swot-card.s .swot-label{color:#2A7A40;}
+.swot-card.w .swot-label{color:#C0392B;}
+.swot-card.o .swot-label{color:#1E5BA8;}
+.swot-card.t .swot-label{color:#8A6A10;}
+.swot-title{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--char);margin-bottom:0.35rem;}
+.swot-desc{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+/* POSITIONING */
+.position-list{display:flex;flex-direction:column;gap:0.85rem;margin:1.75rem 0;}
+.pos-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:box-shadow 0.2s;}
+.pos-card:hover{box-shadow:var(--shadow-card);}
+.pos-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px;}
+.pos-name{font-weight:700;font-size:13.5px;color:var(--char);margin-bottom:0.2rem;}
+.pos-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* PROBLEMS TIMELINE */
+.problems-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin:1.75rem 0;box-shadow:var(--shadow-card);}
+.problems-box h4{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--char);margin-bottom:1rem;}
+.prob-item{display:flex;gap:1rem;align-items:flex-start;padding:0.75rem 0;border-bottom:1px solid var(--border);}
+.prob-item:last-child{border-bottom:none;}
+.prob-icon{font-size:1.1rem;flex-shrink:0;width:28px;text-align:center;margin-top:2px;}
+.prob-title{font-size:13px;font-weight:700;color:var(--char);margin-bottom:0.2rem;}
+.prob-desc{font-size:12.5px;color:var(--text-mid);line-height:1.6;}
+.prob-cost{font-size:11.5px;font-weight:700;color:var(--orange);}
+/* GLOSSARY */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.25rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--orange);}
+.mg-terms{display:flex;flex-direction:column;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.mg-abbr{display:inline-block;font-size:11px;font-weight:600;color:var(--orange);background:var(--orange-pale);padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.mg-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;}
+.mg-footer a{color:var(--orange);text-decoration:none;font-weight:600;}
+/* QUIZ */
+.quiz-section{background:var(--char);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-light);margin-bottom:0.4rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(212,98,26,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--orange-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--orange-mid);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(212,98,26,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange-light);}
+.result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;}
+.retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--orange-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(42,42,42,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--orange);color:var(--white);}
+.btn-nav.primary:hover{background:var(--orange-mid);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--char);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
+  .team-grid,.swot-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-development.html">Track Overview</a></li>
+    <li><a href="real-estate-development.html" class="nav-back">← Development Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-development.html">Real Estate Development</a><span class="sep">/</span>
+  <span class="current">Module 7: Construction, Completion &amp; Marketing</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 7 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="red-module-1.html" class="prog-dot done">1</a>
+    <a href="red-module-2.html" class="prog-dot done">2</a>
+    <a href="red-module-3.html" class="prog-dot done">3</a>
+    <a href="red-module-4.html" class="prog-dot done">4</a>
+    <a href="red-module-5.html" class="prog-dot done">5</a>
+    <a href="red-module-6.html" class="prog-dot done">6</a>
+    <span class="prog-dot active">7</span>
+    <span class="prog-dot locked">8</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Development Track · Module 7 of 8</div>
+    <h1>Construction, Completion <em>&amp; Marketing</em></h1>
+    <p>The project is committed, the contracts are signed, and the shovel is in the ground. Stage six is where plans become a building — and where everything that wasn't perfectly anticipated arrives anyway. This module covers managing construction, drawing down the loan, handling inevitable problems, and running the marketing effort that fills the building before the doors open.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"Stage six is the most exciting part of the development process — and the most dangerous. The developer is fully committed. The unexpected will happen. What separates successful developers from cautionary tales is the ability to solve problems quickly, protect relationships, and keep the project on schedule without losing sight of the market it was designed to serve."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 3</div>
+  <h2 class="lesson-title">Stage Six: Managing Construction — <em>Team, Draws &amp; the Problems You Can't Plan For</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Once construction begins, the developer's role shifts fully to manager. The crucial items are time, quality, and budget — and all three are under pressure simultaneously. Unlike earlier stages, the developer is now fully committed: with cash, guarantees, and reputation. Stopping or making major changes is possible, but the financial consequences are severe.</p>
+
+  <p class="body-text">The key players during construction each manage a distinct function while staying coordinated with the others:</p>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-icon">🏗️</div>
+      <div class="team-role">Construction Lead</div>
+      <div class="team-title">Project Manager</div>
+      <div class="team-desc">On-site daily. Monitors the general contractor's performance, maintains schedule, certifies draw requests, manages the project budget, and resolves on-the-ground problems within delegated authority. Usually has an architecture, engineering, or construction background.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-icon">📣</div>
+      <div class="team-role">Leasing & Sales</div>
+      <div class="team-title">Marketing Manager</div>
+      <div class="team-desc">Marketing accelerates during construction — not just maintains. Even preleased projects require ongoing effort. Provides feedback to the design and construction team on tenant preferences, triggering design adjustments. Manages the sales force, advertising, and site visits.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-icon">💼</div>
+      <div class="team-role">Money Flow</div>
+      <div class="team-title">Financial Officer</div>
+      <div class="team-desc">Manages the project budget, processes draw requests, pays subcontractors, manages relationships with the construction lender and investors. Ensures the accounting system is compatible with the lender's requirements from day one. Evaluates whether change order costs are justified by the increase in value.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-icon">🔑</div>
+      <div class="team-role">Operations</div>
+      <div class="team-title">Property Manager</div>
+      <div class="team-desc">Should be involved during construction — not just after. Flags design decisions that compromise long-term manageability. Catches "value engineering" shortcuts that solve short-term cost problems but create long-term management headaches. Takes over the building at completion.</div>
+    </div>
+  </div>
+
+  <p class="body-text">The <strong>draw process</strong> is the mechanism by which construction work translates into loan disbursements. It follows a defined, multi-step path designed to protect both developer and lender:</p>
+
+  <div class="draw-steps">
+    <div class="draw-step">
+      <div class="draw-num">1</div>
+      <div class="draw-body">
+        <div class="draw-title">Subcontractors submit invoices for work completed</div>
+        <div class="draw-desc">Typically monthly. Each subcontractor invoices for the percentage of their contracted work actually completed and in place.</div>
+      </div>
+    </div>
+    <div class="draw-step">
+      <div class="draw-num">2</div>
+      <div class="draw-body">
+        <div class="draw-title">General contractor compiles and reviews all invoices</div>
+        <div class="draw-desc">Verifies that claimed completion percentages are accurate. Resolves discrepancies with subcontractors before submitting to the developer. Adds the GC's own fee and eligible costs.</div>
+      </div>
+    </div>
+    <div class="draw-step">
+      <div class="draw-num">3</div>
+      <div class="draw-body">
+        <div class="draw-title">Project manager or architect certifies the work</div>
+        <div class="draw-desc">Confirms to the developer and lenders that the work claimed is in fact complete and meets plans and specifications. This certification is required before any funds move.</div>
+      </div>
+    </div>
+    <div class="draw-step">
+      <div class="draw-num">4</div>
+      <div class="draw-body">
+        <div class="draw-title">Financial officer prepares the total draw request</div>
+        <div class="draw-desc">Combines hard costs (construction) with soft costs (insurance, taxes, marketing, overhead). Submits to the construction lender with all required documentation, tied back to the original cost budget.</div>
+      </div>
+    </div>
+    <div class="draw-step">
+      <div class="draw-num">5</div>
+      <div class="draw-body">
+        <div class="draw-title">Construction lender reviews and funds</div>
+        <div class="draw-desc">Verifies the request against the loan agreement and budget. May inspect the site independently. Deposits approved funds in the developer's account, net of retainage withheld until completion.</div>
+      </div>
+    </div>
+    <div class="draw-step">
+      <div class="draw-num">6</div>
+      <div class="draw-body">
+        <div class="draw-title">Financial officer pays subcontractors (minus retainage)</div>
+        <div class="draw-desc">Retainage — typically 10% — is withheld from each payment until satisfactory project completion. Protects against default and ensures the contractor has a financial stake in finishing properly.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text"><strong>Mechanic's liens</strong> are one of the most important legal risks in the draw process. When a subcontractor goes unpaid, they can file a lien on the property — and under most state laws, the lien takes effect from the date the work was done, not the date it was filed. This means a previously unknown lien can displace the construction lender's coveted first-lien position. To prevent this, some lenders disburse funds through title companies, requiring subcontractors to exchange signed lien waivers for their draw checks.</p>
+
+  <div class="problems-box">
+    <h4>⚠️ The Tennis Village — A Cascade of Construction Problems</h4>
+    <p style="font-size:13px;color:var(--text-light);margin-bottom:1rem;">Miles presents a detailed case study of cascading problems — each one manageable alone, but devastating in combination. All occurred on the same project.</p>
+    <div class="prob-item">
+      <div class="prob-icon">🌧️</div>
+      <div>
+        <div class="prob-title">Act of God: Two weeks of unseasonable rain</div>
+        <div class="prob-desc">Project slipped four weeks behind schedule during the dry season. Subcontractors needed incentive pay to return quickly. Critical TV tournament opening date threatened.</div>
+        <div class="prob-cost">Added cost: ~$325,000 — nearly exhausted the remaining contingency</div>
+      </div>
+    </div>
+    <div class="prob-item">
+      <div class="prob-icon">🏠</div>
+      <div>
+        <div class="prob-title">Design error: Unit relocation to avoid rock</div>
+        <div class="prob-desc">In-house engineer approved moving units closer to tennis courts to reduce excavation costs. End units with bay windows now looked into adjacent bedroom windows 12 feet away — not the mountains. Eight units unsellable at projected prices.</div>
+        <div class="prob-cost">Impact: 8 units must be rented instead of sold — disrupts revolving construction loan</div>
+      </div>
+    </div>
+    <div class="prob-item">
+      <div class="prob-icon">🌊</div>
+      <div>
+        <div class="prob-title">Flooding: Stormwater drainage failure from the same relocation</div>
+        <div class="prob-desc">Units moved closer to courts disrupted original drainage system. Three weeks before grand opening, a second rain event flooded ten lower-side units — ruined drywall and carpeting scheduled to close in two weeks.</div>
+        <div class="prob-cost">Repair cost: $160,000 — needed immediately, no contingency remaining</div>
+      </div>
+    </div>
+    <div class="prob-item">
+      <div class="prob-icon">🌿</div>
+      <div>
+        <div class="prob-title">Dead landscaping: Responsibility gap</div>
+        <div class="prob-desc">Landscape contractor assumed the property manager would maintain after installation. Property manager didn't receive the signal. Two weeks of hot sun post-flood killed $100,000 in plants. High-end buyers may not close with dead landscaping at their units.</div>
+        <div class="prob-cost">Replacement cost: $100,000 — and a threatened grand opening</div>
+      </div>
+    </div>
+    <div class="draw-body" style="margin-top:0.75rem;border-radius:10px;padding:0.85rem 1.1rem;background:var(--orange-pale);border:1px solid var(--orange);">
+      <div class="draw-title" style="color:var(--orange);">The Lesson</div>
+      <div class="draw-desc">Problems at stage six are almost always interlinked. A seemingly minor site decision made to solve one problem (avoid rock excavation) created two larger problems downstream (unsellable units, flooding). The developer is ultimately responsible for solving every one — regardless of who caused it. Maintaining contingency reserves, tight change-order controls, and clear responsibility assignments for every handoff is essential to surviving stage six.</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>"Even with good planning and congruent binding obligations, the unexpected will happen, and the developer will need to respond. The developer is ultimately responsible for overcoming whatever problems arise." — Miles, Netherton &amp; Schmitz</p>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 3</div>
+  <h2 class="lesson-title">The SWOT Analysis &amp; Marketing Strategy — <em>Filling the Building Before It Opens</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Marketing runs in parallel with construction — not after it. The goal is for every square foot to be leased or committed on the day the building opens. Every day of vacancy after completion costs money twice: no rent coming in while debt service continues. The marketing effort that began during feasibility now accelerates into full execution.</p>
+
+  <p class="body-text">The strategic marketing plan begins with a SWOT analysis — an inventory of all internal and external factors, positive and negative, that affect the project's market position:</p>
+
+  <div class="swot-grid">
+    <div class="swot-card s">
+      <div class="swot-label">Strengths — Internal</div>
+      <div class="swot-title">What makes this project better than competitors?</div>
+      <div class="swot-desc">Location, design quality, amenities, pricing, unique features, brand. Internal attributes the developer controls. Guide what the marketing program should emphasize and celebrate.</div>
+    </div>
+    <div class="swot-card w">
+      <div class="swot-label">Weaknesses — Internal</div>
+      <div class="swot-title">What gives competitors an edge over this project?</div>
+      <div class="swot-desc">Also includes location, design, pricing, amenities — but the negative side. Some can be overcome through marketing. Others may require product changes or price reductions. Denial is fatal.</div>
+    </div>
+    <div class="swot-card o">
+      <div class="swot-label">Opportunities — External</div>
+      <div class="swot-title">What conditions in the market favor this project?</div>
+      <div class="swot-desc">Economic trends, demographic shifts, competitor failures, favorable financing conditions, emerging market segments. External — beyond developer control — but can be aligned with strengths.</div>
+    </div>
+    <div class="swot-card t">
+      <div class="swot-label">Threats — External</div>
+      <div class="swot-title">What external conditions could undermine this project?</div>
+      <div class="swot-desc">Economic downturns, new competitive supply, key tenant departures, regulatory changes. Vary in magnitude and permanence. Some can be mitigated through the marketing program. Others require strategy adjustment.</div>
+    </div>
+  </div>
+
+  <p class="body-text">From the SWOT analysis, the developer defines a <strong>marketing vision</strong> — the interpretation of the project concept for the public. A successful vision captures the essence of the project in a single meaningful image or statement. It becomes the benchmark for every marketing decision: if a proposed tactic doesn't advance the vision, it doesn't belong in the budget.</p>
+
+  <p class="body-text">Positioning establishes the project's specific place in the market and creates a competitive edge. Four approaches:</p>
+
+  <div class="position-list">
+    <div class="pos-card">
+      <div class="pos-icon">🥇</div>
+      <div>
+        <div class="pos-name">Differentiation — Most Common</div>
+        <div class="pos-desc">Promoting specific characteristics that are superior to competitors. Office building with larger floor plates, better natural light, or superior location. Can even turn constraints into strengths: a project that had to meet high energy efficiency requirements emphasizes those features to environmentally focused tenants.</div>
+      </div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-icon">🔄</div>
+      <div>
+        <div class="pos-name">Repositioning — Existing Product, New Identity</div>
+        <div class="pos-desc">Turning an existing product into something new or different — or targeting a different market segment with the same physical asset. Example: a large-floor-plate office building vacated by one corporate tenant repositioned for back-office users of multiple smaller companies, emphasizing the cafeteria and daycare infrastructure already in place.</div>
+      </div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-icon">🎯</div>
+      <div>
+        <div class="pos-name">Niche Identification — Underserved Segment</div>
+        <div class="pos-desc">Finding a specific, underserved market segment and designing for it precisely. Gen X and Gen Y cohorts have fragmented the market — creating niches for smaller, more affordable units with communal amenities, transit-oriented locations, and open office configurations that established products don't serve well.</div>
+      </div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-icon">🏷️</div>
+      <div>
+        <div class="pos-name">Branding — Identity as Promise</div>
+        <div class="pos-desc">Creating an identity that sets consistent expectations and boosts recognition across multiple projects. Great brands deliver a consistent experience every time — the same amenities, the same management quality, the same leasing experience. The Trilogy series by Shea Homes is a vivid example: buyers familiar with one Trilogy community can expect the same quality at any other, regardless of location.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text">The promotional program uses a mix of tools. Miles notes that targeted advertising should place messages where interested customers are already looking — not where the developer hopes to capture attention. The internet has overtaken print as the primary channel for most real estate advertising. Signage remains highly effective and relatively inexpensive, since most prospects will pass by the site. Direct mail is the most precisely targeted medium. Events — ground-breakings, topping-out parties, grand openings, broker tours — generate attention and goodwill at critical project milestones.</p>
+
+  <div class="case-study">
+    <div class="cs-label">Case Study · Stage Six Marketing · Chapel Hill, NC</div>
+    <div class="cs-title">Shortbread Lofts — How the Marketing Evolved During Construction</div>
+    <div class="cs-sub">Developer: Larry Short · Student Housing · UNC Chapel Hill</div>
+    <div class="cs-body">As construction progressed, Short studied the market and recognized that demand would be significantly higher if units were furnished and offered more amenities. He added a furnished option and upgraded amenities — and persuaded the lender to increase the loan amount by another $1 million to cover the change. Campus marketing used "campus carts" — electric late-night transportation vehicles carrying advertising on all four sides for $2,000/month. The project website became the primary leasing tool: floor plans, photos, a virtual tour, and an online leasing application. For student housing, social proof mattered: the marketing team identified Twitter connectors with large campus followings, knowing that both positive and negative reviews travel fast in a college environment.</div>
+    <div class="cs-lesson">Lesson: The best marketing decisions in stage six come from continuing to study the market — not just executing the plan made in stage three. Short's decision to add a furnished option mid-construction required lender approval but generated significantly higher demand and rents.</div>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 3</div>
+  <h2 class="lesson-title">The Leasing Transaction &amp; Project Completion — <em>Closing the Loop</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">The lease is the legal foundation of the income-producing property. Frederick Case's classic definition: "an agreement by means of which a property owner, the lessor, contracts to transfer to the tenant, the lessee, certain specified rights relating to the possession and use of a real property in return for which the lessee agrees to make certain payments." That stream of payments is the income that gets capitalized to produce the property's value.</p>
+
+  <p class="body-text">Lease structures determine how rent changes over time and how operating expense risks are allocated between landlord and tenant. The key mechanisms:</p>
+
+  <p class="body-text"><strong>Flat rental</strong> — fixed rent throughout the lease term. Simple, predictable, common in short-term residential leases. Landlord absorbs all inflation risk in operating expenses.</p>
+
+  <p class="body-text"><strong>Fixed escalations</strong> — rent increases at specified amounts or percentages on specified dates. Predictable for both parties. Landlord benefits if actual inflation exceeds the agreed escalation; tenant benefits if it doesn't.</p>
+
+  <p class="body-text"><strong>CPI-indexed rents</strong> — rent increases tied to the Consumer Price Index. Protects the landlord against unexpected inflation. Protects the tenant against fixed escalations that might outpace actual inflation.</p>
+
+  <p class="body-text"><strong>Percentage rents</strong> — a retail lease structure where the tenant pays base rent plus a percentage of sales above a specified threshold. Aligns the landlord's income with the tenant's business success. Creates incentive for both parties to maximize the tenant's sales volume.</p>
+
+  <p class="body-text"><strong>Expense stop leases</strong> — the landlord pays operating expenses up to a defined stop (typically year-one expenses), and all increases above the stop pass through to the tenant. Most common in office leases. Protects the landlord from operating cost inflation while giving the tenant some initial certainty.</p>
+
+  <p class="body-text">Space definitions are critical in commercial leases — and affect how much rent the tenant actually pays:</p>
+
+  <p class="body-text"><strong>Rentable area</strong> — the area on which tenants pay rent, which typically includes the tenant's share of common areas (lobbies, hallways, restrooms). This is larger than the space the tenant actually occupies.</p>
+
+  <p class="body-text"><strong>Usable area</strong> — the private space the tenant can actually use for their people, furniture, and equipment.</p>
+
+  <p class="body-text"><strong>Load factor</strong> — the ratio of common area to rentable area in an office building. A 20% load factor means tenants pay for 20% more space than they directly occupy. This is a key lease negotiation point.</p>
+
+  <div class="case-study">
+    <div class="cs-label">Case Study · Stage Seven — Completion · Orange County, CA</div>
+    <div class="cs-title">Irvine Tech Center — Sold Before a Shovel Hit the Ground</div>
+    <div class="cs-sub">Developer: Greenlaw Partners (Wil Smith) · Sale: 2014 During Final Entitlements</div>
+    <div class="cs-body">For Wil Smith's Irvine Tech Center project, stage seven — completion — arrived in a form Miles uses to illustrate an important truth: "completion" for the original developer means the moment they realize their return, not the moment a building opens. ITC was sold in 2014 during the final entitlements process — before construction even began. A national multifamily builder approached Greenlaw directly, ready to enter the Irvine market. The transaction required a return to the feasibility and contract negotiation skill sets: analyzing how the phased sale structure would affect Smith's IRR, structuring the purchase and sale agreement, and executing the commitment stage process all over again. The sale was highly profitable for both Greenlaw and its development-period investor. From the original developer's perspective, the project was complete — the value had been created and captured without ever managing a construction site.</div>
+    <div class="cs-lesson">Lesson: Development value is created long before construction is complete — it is created through entitlements, design, and market positioning. Developers who understand this can capture their return at multiple points in the process, not just at stabilized occupancy.</div>
+  </div>
+
+  <p class="body-text">As construction concludes, the developer manages the formal transition from construction to operations:</p>
+
+  <p class="body-text"><strong>Punch list completion</strong> — identifying and correcting all incomplete or defective items before the contractor receives final payment and retainage is released.</p>
+
+  <p class="body-text"><strong>Regulatory approvals</strong> — obtaining certificates of occupancy and all required final inspections. A failed fire inspection or building code violation can delay tenant move-ins, triggering lease penalties and NOI shortfalls.</p>
+
+  <p class="body-text"><strong>Construction loan payoff</strong> — the permanent loan closes, paying off the construction lender and transitioning the project from development-period to long-term financing. This is often the moment the developer's equity stake crystallizes: the spread between project value and total cost becomes real.</p>
+
+  <p class="body-text"><strong>Grand opening</strong> — the formal transition from development project to operating business. It is both a marketing event (generating attention, goodwill, and community relationships) and an operational milestone. Operations staff must be trained and in place before the first tenants move in.</p>
+
+  <!-- KEY TERMS -->
+  <div class="module-glossary">
+    <h3>📖 Module 7 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch7" placeholder="Search terms..." oninput="mgFilter(this,7)">
+    <div class="mg-terms" id="mgTerms7">
+      <div class="mg-term" data-mg="draw request construction loan disbursement subcontractor payment monthly">
+        <div class="mg-name">Draw Request</div>
+        <div class="mg-def">The formal process by which a developer requests funds from the construction lender to pay for completed construction work. Typically monthly: subcontractors submit invoices → general contractor compiles and verifies → project manager certifies → financial officer combines hard and soft costs and submits to lender → lender inspects and funds → developer pays subcontractors net of retainage. The draw process is the primary financial control mechanism during construction.</div>
+      </div>
+      <div class="mg-term" data-mg="mechanic's lien unpaid subcontractor property lien first position title">
+        <div class="mg-name">Mechanic's Lien</div>
+        <div class="mg-def">A lien on a property that arises when a contractor or subcontractor has performed work but not been paid. Critical legal risk: under most state laws, mechanic's liens take effect from the date the work was performed — not when the lien was filed. An unpaid subcontractor can therefore claim priority over the construction lender's previously recorded first lien. Lenders protect against this by requiring lien waivers from subcontractors in exchange for each draw payment, sometimes disbursing through title companies.</div>
+      </div>
+      <div class="mg-term" data-mg="value engineering construction shortcuts cost savings long term management problems">
+        <div class="mg-name">Value Engineering</div>
+        <div class="mg-def">The practice of reducing construction costs mid-project by substituting lower-cost materials or designs for higher-cost ones. In theory, a legitimate optimization process. In practice, often used to describe cost-cutting under financial pressure that compromises long-term quality, functionality, or management efficiency. Miles warns that "value engineering" shortcuts made to solve short-term financing problems can cause long-term management headaches. The property manager should review all proposed value engineering changes.</div>
+      </div>
+      <div class="mg-term" data-mg="SWOT analysis strengths weaknesses opportunities threats marketing strategy">
+        <div class="mg-name">SWOT Analysis</div>
+        <div class="mg-def">A benchmarking process used to inventory all internal and external factors affecting a development's market position — positive and negative. Strengths (internal attributes that differentiate the project) and Weaknesses (internal limitations that hurt marketability) are within the developer's control. Opportunities (external market conditions that favor the project) and Threats (external conditions that could undermine it) are outside the developer's control but must be addressed in the marketing strategy. SWOT analysis is the foundation of the strategic marketing plan.</div>
+      </div>
+      <div class="mg-term" data-mg="marketing vision positioning theme project identity single statement benchmark">
+        <div class="mg-name">Marketing Vision</div>
+        <div class="mg-def">The developer's interpretation of the project concept for the public — a compelling image or statement that captures the project's location, experience, and differentiation in a way that resonates with the target market. Becomes the benchmark for all marketing decisions: tactics that don't advance the vision don't belong in the budget. A successful vision can be extended into naming, branding, advertising, signage, and the design of the marketing environment.</div>
+      </div>
+      <div class="mg-term" data-mg="branding brand identity promise consistency recognition multiple projects">
+        <div class="mg-name">Branding</div>
+        <div class="mg-def">Creating a project identity that sets consistent expectations and builds recognition across multiple properties or projects. A brand is "a promise" — the commitment that every encounter with that brand will deliver the same quality of experience. In real estate, branding typically includes consistent signage and identification materials, a standard amenity package, consistent management quality, and a consistent leasing experience. Enables buyers familiar with the brand in one market to have confidence in projects in other markets.</div>
+      </div>
+      <div class="mg-term" data-mg="percentage rent retail lease overage sales above base threshold participation">
+        <div class="mg-name">Percentage Rent (Overage Rent)</div>
+        <div class="mg-def">A retail lease structure in which the tenant pays base rent plus a percentage of gross sales that exceed a specified threshold (the "natural breakpoint"). Aligns the landlord's income with the tenant's sales performance and creates mutual incentives to maximize traffic. Example: $50,000/year base rent + 5% of sales over $1,000,000. If the tenant generates $1.2M in sales, the landlord receives $50,000 + $10,000 = $60,000. Primarily used in retail leases, particularly for inline tenants in shopping centers.</div>
+      </div>
+      <div class="mg-term" data-mg="expense stop landlord pays base operating costs tenant pays increases above stop office">
+        <div class="mg-name">Expense Stop</div>
+        <div class="mg-def">A lease provision in which the landlord pays operating expenses up to a defined stop (typically year-one per-square-foot operating costs), and all operating expense increases above the stop are passed through to the tenant. Most common in office leases. Protects the landlord from inflation in operating costs while giving the tenant some initial certainty. As expenses rise over time, more of the cost burden shifts to tenants — improving the landlord's net income position in later years.</div>
+      </div>
+      <div class="mg-term" data-mg="rentable area usable area load factor office lease space measurement common area">
+        <div class="mg-name">Load Factor</div>
+        <div class="mg-def">In office buildings, the ratio of common area to rentable area — the amount by which a tenant's rentable square footage (what they pay rent on) exceeds their usable square footage (what they actually occupy). A 20% load factor means a tenant occupying 8,000 usable square feet pays rent on 9,600 rentable square feet — the extra 1,600 represents their proportionate share of lobbies, hallways, restrooms, and other common areas. Load factor is a key lease negotiation point — lower load factors mean the tenant gets more "real" space for the same rent.</div>
+      </div>
+      <div class="mg-term" data-mg="punch list final completion items defective incomplete contractor retainage release">
+        <div class="mg-name">Punch List</div>
+        <div class="mg-def">A list of incomplete or defective construction items that must be corrected before the project can be considered substantially complete and the contractor receives final payment (including release of retained retainage). The developer, architect, and lender all contribute to the punch list. The punch list is the final quality control checkpoint between construction and occupancy — items that appear minor during construction can become expensive disputes after tenants move in.</div>
+      </div>
+    </div>
+    <p class="mg-none" id="mgNone7">No matching terms found.</p>
+    <div class="mg-footer">More terms covered in the final module. <a href="red-glossary.html">View Full Course Glossary →</a></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section">
+    <h3>Module 7 Knowledge Check</h3>
+    <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">What is retainage, and why is it one of the most important risk control tools during construction?</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">A</div>Retainage is the percentage of the land purchase price the developer keeps in reserve until construction is complete — ensuring the landowner has no claim on the completed building.</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">B</div>Retainage is a percentage (typically 10%) withheld from each construction draw payment to the general contractor until satisfactory project completion. It ensures the contractor has a financial stake in finishing properly — preventing abandonment and ensuring defects are corrected before final payment.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">C</div>Retainage is the developer's contingency reserve — funds held back from the loan draw to cover cost overruns and unexpected construction problems.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">D</div>Retainage is the portion of the permanent loan that the lender holds back until the construction loan is fully repaid and the project reaches stabilized occupancy.</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. Retainage — typically 10% of each draw — is withheld from the contractor until "satisfactory completion": all provisions of the owner-contractor agreement accepted by the architect/project manager, municipal inspectors, and the developer. Example: a $100,000 construction job that is 20% complete generates a $20,000 earned payment, but only $18,000 is paid — $2,000 is retained. This creates a powerful completion incentive and partial protection against contractor default. The retained amount is paid only after final acceptance.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ Retainage is a percentage (typically 10%) withheld from each contractor draw payment until satisfactory project completion. It is held back from the general contractor (and in turn from subcontractors) — not related to land purchase or permanent loan holdbacks. Its purpose is to ensure the contractor completes all work properly before receiving full payment, creating a financial stake in quality completion.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">Why are mechanic's liens particularly dangerous to construction lenders, and how do title company disbursements help?</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">A</div>Mechanic's liens take effect from the date the work was performed — not when the lien was filed. An unpaid subcontractor can therefore claim lien priority over the construction lender's previously recorded first lien. Title company disbursements require subcontractors to sign lien waivers before receiving payment, eliminating this risk on a draw-by-draw basis.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">B</div>Mechanic's liens are dangerous because they increase the property's assessed value, triggering higher property taxes that reduce the project's NOI and thus its value at stabilization.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">C</div>Mechanic's liens are dangerous because they prevent the permanent lender from issuing a loan commitment, blocking the construction lender's takeout and leaving the construction loan outstanding indefinitely.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">D</div>Mechanic's liens are only dangerous if the developer is personally guaranteeing the construction loan — if the loan is non-recourse, mechanic's liens are absorbed by the property without affecting the lender.</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. The legal timing rule is what makes mechanic's liens so dangerous: under most state laws, the lien is retroactive to the date the work was done — not the date the subcontractor filed it in court. So a lender who has a recorded first lien on the property can find that a previously unrecorded subcontractor claim now has priority over their loan. Title company disbursements solve this by requiring each subcontractor to execute a lien waiver (releasing their right to file a lien for that draw amount) before they receive payment.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ Mechanic's liens are dangerous because they take effect retroactively — from the date work was performed, not when filed. An unpaid subcontractor's lien can therefore jump ahead of the construction lender's recorded first lien. Title company disbursements address this by requiring lien waivers from subcontractors in exchange for each draw check — confirming the subcontractor has been paid and waiving their right to file a lien for that amount.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">In the Tennis Village case study, what is the central lesson about construction problems?</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">A</div>Acts of God (rain, weather) are the primary cause of development failures — developers should only build in climate-controlled environments or with all-season construction contracts.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div>Construction problems are almost always interlinked — one seemingly minor decision (relocating units to avoid rock) created two larger downstream problems (unsellable units with bad views, flooding from disrupted drainage). The developer is ultimately responsible for solving every one, regardless of who caused it. Contingency reserves, tight change-order controls, and clear responsibility assignments for every handoff are essential.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">C</div>Developers should never allow in-house engineers to make on-site design decisions — only licensed architects should have authority to modify construction plans mid-project.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">D</div>Joint venture partners with personal guarantees are the most dangerous participants in a development — the Tennis Village case shows how their demands force bad decisions under pressure.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. The Tennis Village cascade is one of Miles' most vivid teaching cases: a cost-saving decision to relocate units to avoid rock excavation created a chain reaction — units with obstructed views that couldn't sell at projected prices, disrupted stormwater drainage that flooded ten other units just before grand opening, and a dead landscaping crisis because of a handoff responsibility gap. None of these problems was inherently fatal individually. Together, combined with exhausted contingency reserves, they threatened the entire project. The lesson: anticipate interlinked consequences, maintain reserves, and define responsibility for every handoff explicitly.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ The central lesson is that construction problems are almost always interlinked. One decision made to solve one problem (avoid expensive rock excavation) created two unforeseen problems downstream (bad views + flooding). The developer bears ultimate responsibility for all of them. Contingency reserves protect against single problems — but cascading linked problems can exhaust reserves quickly. Clear responsibility assignments (who maintains the landscaping before opening?) prevent the responsibility gaps that let small problems become large ones.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">What is the difference between a property's rentable area and usable area, and why does it matter in lease negotiations?</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">A</div>Rentable area is the square footage the developer originally planned to lease; usable area is what was actually built. The difference represents construction variances that affect the developer's projected income.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div>Rentable area is the total area on which the tenant pays rent — including their proportionate share of common areas (lobbies, hallways, restrooms). Usable area is the private space the tenant can actually occupy. The load factor (common area ÷ rentable area) determines how much more the tenant pays than they directly use — a critical negotiation point because a lower load factor means more real space per dollar of rent.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">C</div>Rentable area and usable area are synonymous terms — different industries use different names for the same concept.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">D</div>Usable area is the total building footprint; rentable area is the floor area minus walls and structural elements.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. In office leasing, the load factor is one of the most negotiated lease terms. A tenant occupying 10,000 usable square feet in a building with a 20% load factor actually pays rent on 12,000 rentable square feet — contributing their share of 2,000 square feet of lobbies, hallways, and restrooms. Lower load factors mean tenants get more real space for the same rent expenditure. From the landlord's perspective, higher load factors increase total rent revenue but can make the building harder to lease in a competitive market.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ Rentable area = what the tenant pays rent on (their private space + share of common areas). Usable area = what the tenant actually occupies privately. The load factor (common area ÷ rentable area) is the ratio that determines the difference. A 20% load factor means a tenant pays for 20% more space than they directly use — that 20% is their proportionate share of building common areas. This is a real economic difference and a significant lease negotiation point.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">What is the SWOT analysis and what does each letter stand for?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">A</div>Site, Work, Occupancy, Timeline — a construction management framework tracking site conditions, work progress, occupancy targets, and project timeline.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div>Strengths (internal positive attributes that differentiate the project), Weaknesses (internal limitations that hurt marketability), Opportunities (external conditions that favor the project), Threats (external conditions that could undermine it). A benchmarking tool used to build the strategic marketing plan.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">C</div>Sales, Warranty, Operations, Tenants — the four contractual obligations a developer must fulfill after project completion.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">D</div>Supply, Want, Offer, Transaction — the four-step marketing funnel from market analysis to lease execution.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. SWOT = Strengths, Weaknesses, Opportunities, Threats. The key distinction: Strengths and Weaknesses are internal (within the developer's control), while Opportunities and Threats are external (market conditions, competitive dynamics, economic trends). The marketing strategy aligns strengths with opportunities and develops plans to mitigate weaknesses and threats. SWOT analysis is the starting point of every strategic marketing plan.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ SWOT stands for Strengths (internal positive attributes), Weaknesses (internal limitations), Opportunities (external favorable conditions), and Threats (external unfavorable conditions). The internal/external distinction matters: S and W are within the developer's control; O and T are market conditions the developer must respond to. The strategic marketing plan is built by aligning strengths with opportunities and addressing weaknesses and threats.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">What is a percentage rent structure in retail leasing, and what economic incentive does it create?</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">A</div>A percentage rent structure has two components: a base rent plus a percentage of tenant sales above a specified threshold. This aligns the landlord's income with the tenant's business success — both parties benefit when the tenant drives higher sales. It also creates incentive for the developer to curate a strong tenant mix and maintain common areas that drive shopper traffic.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">B</div>A percentage rent structure means the tenant pays a fixed percentage of the landlord's total operating costs — aligning tenant expenses with building costs rather than with the tenant's own performance.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">C</div>A percentage rent structure means the rent escalates by a fixed percentage each year — the most common escalation method for long-term commercial leases.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">D</div>A percentage rent structure means the tenant and landlord split net operating income on a percentage basis — making the tenant a de facto equity partner in the property.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. Percentage rent = base rent + % of sales above a threshold. Example: $50K base rent + 5% of sales over $1M. If tenant generates $1.2M in sales, landlord receives $50K + $10K = $60K. Below $1M (the "natural breakpoint"), only base rent is paid. This creates genuine alignment: the landlord wants the tenant to succeed, which drives co-marketing, strong common area maintenance, and curating complementary tenant mix. In regional malls, even anchor tenants might pay below-market base rent but meaningful percentage rent on high sales volumes.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ Percentage rent = base rent + a percentage of tenant sales above a defined threshold. It's primarily used in retail leases, particularly for larger tenants in shopping centers. The alignment effect is the key: both landlord and tenant benefit when sales rise, creating mutual incentive to drive traffic and maximize sales performance. This contrasts with net leases or fixed-escalation leases where the parties' interests are less directly linked.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">What does the Irvine Tech Center case study reveal about when "completion" occurs for a developer?</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">A</div>Completion occurs when the building receives its certificate of occupancy — the legal moment when tenants can legally move in and the permanent loan can be drawn.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">B</div>Completion occurs when the project reaches stabilized occupancy — typically 90–95% leased — because only then does the full value of the project become measurable.</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">C</div>For the original developer, completion occurs when they realize their return — which can happen at many points in the process, including before construction begins. ITC was sold during the final entitlements process, generating strong profits for Greenlaw and its investors without ever breaking ground. Development value is created through entitlements, design, and market positioning — not only through construction.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">D</div>Completion occurs when the construction loan is paid off — the moment the developer is no longer personally liable for construction debt marks the formal end of the development period.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. The ITC case illustrates one of Miles' most important insights: development value is created before construction — through entitlements, design approvals, market positioning, and investor relationships. Greenlaw created enough value through the entitlement and design process that a national multifamily builder was willing to pay handsomely for it before a shovel touched the ground. The "completion" for the original developer was the transaction that realized their return — not a physical milestone. Developers who understand this can time their exit for maximum return at any stage of the process.</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ The ITC case reveals that "completion" for a developer is the moment they realize their return — not a physical milestone. Greenlaw sold ITC during the final entitlements process, before construction began, generating strong profits. Development value is created through entitlements, design, and market positioning — which can make a project saleable and profitable long before occupancy. Miles uses this case to illustrate that experienced developers understand their value creation arc and can exit at the most advantageous moment.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">What are the three types of marketing budget approaches, and which does Miles identify as most reliable?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">A</div>Fixed allocation (based on past projects), percentage of construction cost (industry averages), and zero-based budgeting. Miles considers percentage budgeting most reliable because it provides a consistent benchmark across projects.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">B</div>Fixed allocation (assigned amount from company experience), percentage budgeting (based on industry averages of total sales revenue), and zero-based budgeting (assigning a cost to every specific activity in the marketing plan). Zero-based budgeting is most reliable — it anticipates every necessary action, assigns costs to each, and produces an accurate total based on the project's specific circumstances rather than averages.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">C</div>Pre-construction budget, construction-period budget, and post-construction budget. Miles recommends developing all three simultaneously during the feasibility stage to capture the full marketing lifecycle.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">D</div>In-house budget, outsourced budget, and hybrid budget. Miles identifies the hybrid approach — combining in-house staff with outside agencies — as most reliable for large commercial developments.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. The three approaches: (1) Fixed allocation — quick but not project-specific; (2) Percentage budgeting — based on industry averages, useful early but can be misleading for unique projects; (3) Zero-based budgeting — assigns a cost to each specific planned activity, producing the most accurate and project-specific budget. Miles recommends zero-based: the more distinctive the project, the more important it is to budget from scratch rather than from averages that may not reflect the project's specific promotional requirements.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ The three marketing budget approaches are: fixed allocation (based on past projects or company formulas), percentage budgeting (based on industry averages applied to total revenue), and zero-based budgeting (assigning a specific cost to every planned activity). Miles identifies zero-based budgeting as most reliable — it's the only approach that accounts for the project's specific promotional requirements rather than relying on averages that may not apply. The more distinctive the project, the more important zero-based budgeting becomes.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">What is an expense stop in an office lease, and what risk does it transfer to the tenant?</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">A</div>An expense stop is a maximum limit on the rent the landlord can charge — protecting tenants from rent increases above a specified level during the lease term.</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">B</div>An expense stop defines the level of operating expenses the landlord will pay (typically year-one per-square-foot costs), with all increases above that level passed through to the tenant. This transfers inflation risk in operating costs from the landlord to the tenant — as property taxes, maintenance, and utilities rise, the tenant absorbs those increases rather than the landlord.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">C</div>An expense stop is a tenant's right to terminate the lease if operating expenses rise above a specified threshold — protecting the tenant from unexpectedly high occupancy costs.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">D</div>An expense stop is a construction contract provision that prevents cost overruns from exceeding a specified amount — similar to a guaranteed maximum price.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. The expense stop defines what the landlord will pay. Above the stop, the tenant pays. Example: the expense stop is set at year-one operating costs of $12/SF. In year three, if operating expenses are $14/SF, the tenant pays the $2/SF increase. This is the fundamental risk-shifting mechanism in office leases — it converts what would be variable operating costs for the landlord into predictable net income. As expenses rise over time, the landlord's net income from the property actually improves relative to gross revenue, because operating cost increases are passed to tenants.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ An expense stop is the level of operating expenses the landlord agrees to pay — typically year-one per-square-foot costs. All increases above the stop are passed through to the tenant. This transfers operating cost inflation risk to the tenant: as property taxes, utilities, and maintenance costs rise over the lease term, the tenant absorbs those increases. It's most common in office leases and is one of the most important economic provisions in a multi-year commercial lease.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">Miles warns that marketing cannot save a badly conceived project. What principle underlies this warning?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">A</div>Marketing is too expensive — the cost of marketing a bad project always exceeds the additional revenue it generates, making the effort financially counterproductive.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">B</div>Marketing budgets are fixed during feasibility — a project conceived with insufficient demand cannot increase its marketing budget at stage six without lender approval.</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">C</div>A well-conceived project responds to market demand (a market looking for a project). Marketing's role is to find and convince prospects that the product meets their needs — not to manufacture demand that doesn't exist. Marketing is a component in overall project success; it cannot create a market where none exists, cannot correct fundamental design failures, and cannot overcome poor timing. Bad ideas must be killed in stages one and two — not papered over with marketing in stage six.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">D</div>Marketing works through word-of-mouth, and poorly designed projects generate negative reviews that overwhelm any amount of paid advertising.</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. This is one of Miles' foundational principles: marketing is not a remedy for bad development decisions. Miles states directly: "it is not impossible for a dynamic marketing program to facilitate the success of a bad project — and it is usually essential in workout situations. However, it is unwise and often fatal to initiate a project that does not have a previously identified market." The role of marketing is to reach and persuade an existing target market — not to create one. This is why stages one through three exist: to identify the market, verify demand, and build a product for it before committing construction capital.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ Miles' principle is foundational: a well-conceived project responds to a pre-existing market demand. Marketing's job is to find those potential users and convince them to choose this project — not to manufacture demand that doesn't exist. A project with no market, fundamental design flaws, or severe timing problems cannot be saved by marketing no matter how much is spent. The lesson reinforces why rigorous stage one through three analysis is non-negotiable: identify the market first, then build for it.</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="red-module-6.html" class="btn-nav outline">← Module 6</a>
+  <div class="nav-module-title">
+    <strong>Up Next: Module 8</strong>
+    Asset Management, Portfolio &amp; The Future
+  </div>
+  <a href="red-module-8.html" class="btn-nav primary">Module 8 →</a>
+</div>
+
+<footer style="background:var(--char);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--orange-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+function mgFilter(input,n){var v=input.value.toLowerCase();var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');var any=false;terms.forEach(function(t){var match=t.getAttribute('data-mg').includes(v)||t.textContent.toLowerCase().includes(v);t.classList.toggle('mg-hidden',!match);if(match)any=true;});document.getElementById('mgNone'+n).style.display=any?'none':'block';}
+var answers={};
+var quizData={
+  q1:{correct:'B',question:'What is retainage and why is it an important risk control tool?',options:{A:'Percentage of land purchase price held in reserve until building completion.',B:'A percentage (typically 10%) withheld from each construction draw until satisfactory project completion — ensures the contractor has a financial stake in finishing properly.',C:'The developer\'s contingency reserve held back from the loan draw.',D:'Portion of the permanent loan held back until the project reaches stabilized occupancy.'},explanation:'Retainage — typically 10% of each draw — is withheld until "satisfactory completion." Example: a 20% complete $100K job earns $20K but only $18K is paid ($2K retained). Creates a powerful completion incentive and partial protection against contractor default.'},
+  q2:{correct:'A',question:'Why are mechanic\'s liens dangerous to construction lenders, and how do title company disbursements help?',options:{A:'Mechanic\'s liens take effect from the date work was performed — not when filed. An unpaid subcontractor can claim priority over the lender\'s recorded first lien. Title companies require lien waivers before payment, eliminating this risk draw by draw.',B:'Mechanic\'s liens increase assessed value, triggering higher property taxes.',C:'Mechanic\'s liens prevent the permanent lender from issuing a loan commitment.',D:'Only dangerous if the developer personally guarantees the construction loan.'},explanation:'The retroactive legal timing rule is the danger: mechanic\'s liens apply from the date work was done, not when filed. A previously unrecorded subcontractor claim can displace a lender\'s first lien. Title company disbursements require lien waivers in exchange for each payment.'},
+  q3:{correct:'B',question:'What is the central lesson of the Tennis Village case study?',options:{A:'Acts of God are the primary cause of development failures.',B:'Construction problems are almost always interlinked. One minor decision (relocating units to avoid rock) created two larger downstream problems (unsellable views, flooding). The developer is ultimately responsible for all of them.',C:'Developers should never allow in-house engineers to make on-site design decisions.',D:'Joint venture partners with personal guarantees are the most dangerous participants.'},explanation:'The cascade: relocating units to avoid rock created bad views for eight units AND disrupted drainage that flooded ten others. Each problem alone was manageable; together with exhausted contingency, they threatened the whole project. Maintain reserves, control change orders, and assign responsibility for every handoff.'},
+  q4:{correct:'B',question:'What is the difference between rentable area and usable area in office leasing?',options:{A:'Rentable is planned to lease; usable is what was built.',B:'Rentable area = private space + proportionate share of common areas (what tenant pays rent on). Usable area = private space only (what tenant occupies). The load factor determines the difference — a key negotiation point.',C:'They are synonymous — different industries use different names.',D:'Usable = total building footprint; rentable = floor area minus walls.'},explanation:'Rentable area includes the tenant\'s share of common areas (lobbies, hallways, restrooms) — they pay rent on more than they directly occupy. The load factor (common area ÷ rentable area) quantifies this. Lower load factors mean more real space per dollar of rent.'},
+  q5:{correct:'B',question:'What is the SWOT analysis and what does each letter stand for?',options:{A:'Site, Work, Occupancy, Timeline — a construction management framework.',B:'Strengths (internal positives), Weaknesses (internal limitations), Opportunities (external favorable conditions), Threats (external unfavorable conditions). A benchmarking tool for strategic marketing planning.',C:'Sales, Warranty, Operations, Tenants — four post-completion obligations.',D:'Supply, Want, Offer, Transaction — the four-step marketing funnel.'},explanation:'SWOT: Strengths and Weaknesses are internal (within developer control); Opportunities and Threats are external (market conditions). Marketing strategy aligns strengths with opportunities and addresses weaknesses and threats.'},
+  q6:{correct:'A',question:'What is a percentage rent structure in retail leasing and what incentive does it create?',options:{A:'Base rent + a percentage of tenant sales above a specified threshold. Aligns landlord income with tenant business success — both parties benefit when sales rise, creating mutual incentive to maximize traffic.',B:'Tenant pays a fixed percentage of the landlord\'s total operating costs.',C:'Rent escalates by a fixed percentage each year.',D:'Tenant and landlord split NOI on a percentage basis — making tenant a de facto equity partner.'},explanation:'Percentage rent = base rent + % of sales above threshold. Creates genuine alignment: the landlord wants the tenant to succeed, driving co-marketing and strong common area maintenance. Even anchor tenants in regional malls may pay below-market base rent but significant percentage rent on high sales volumes.'},
+  q7:{correct:'C',question:'What does the Irvine Tech Center case study reveal about when "completion" occurs for a developer?',options:{A:'Completion occurs when the building receives its certificate of occupancy.',B:'Completion occurs when the project reaches stabilized occupancy (90–95% leased).',C:'For the original developer, completion occurs when they realize their return — which can happen before construction begins. ITC was sold during final entitlements. Development value is created through entitlements, design, and market positioning, not only through construction.',D:'Completion occurs when the construction loan is paid off.'},explanation:'Greenlaw sold ITC before a shovel hit the ground, generating strong profits. Development value is created through entitlements, design, and market positioning — all stages before construction. Experienced developers understand their value creation arc and can exit at the most advantageous moment.'},
+  q8:{correct:'B',question:'What are the three marketing budget approaches and which is most reliable?',options:{A:'Fixed allocation, percentage of construction cost, zero-based. Percentage is most reliable.',B:'Fixed allocation (from company experience), percentage budgeting (industry averages of sales revenue), zero-based budgeting (cost to every specific activity). Zero-based is most reliable — projects\' specific requirements rather than averages.',C:'Pre-construction, construction-period, post-construction budgets.',D:'In-house, outsourced, and hybrid budgets.'},explanation:'The three approaches: fixed allocation (quick, not project-specific), percentage budgeting (useful early, can mislead unique projects), zero-based (assigns cost to every planned activity — most accurate). More distinctive projects require zero-based budgeting.'},
+  q9:{correct:'B',question:'What is an expense stop in an office lease and what risk does it transfer?',options:{A:'A maximum rent limit protecting tenants from increases above a specified level.',B:'Defines the level of operating expenses the landlord will pay (typically year-one per-SF costs), with all increases above that level passed through to the tenant. Transfers operating cost inflation risk from landlord to tenant.',C:'Tenant\'s right to terminate if operating expenses exceed a specified threshold.',D:'A construction contract provision preventing cost overruns.'},explanation:'Expense stop = landlord pays up to the stop; tenant pays increases above it. Example: stop at $12/SF year-one costs. In year 3 at $14/SF, tenant pays the $2/SF increase. Transfers operating inflation risk to tenants. As expenses rise over the lease term, the landlord\'s net income improves.'},
+  q10:{correct:'C',question:'Miles warns marketing cannot save a badly conceived project. What principle underlies this?',options:{A:'Marketing is too expensive for bad projects — cost always exceeds additional revenue.',B:'Marketing budgets are fixed during feasibility and cannot increase at stage six.',C:'A well-conceived project responds to pre-existing market demand. Marketing finds and convinces an existing target market — it cannot manufacture demand that doesn\'t exist, correct fundamental design failures, or overcome poor timing. Bad ideas must be killed early.',D:'Poorly designed projects generate negative word-of-mouth that overwhelms paid advertising.'},explanation:'Miles: "it is unwise and often fatal to initiate a project that does not have a previously identified market." Marketing\'s role is to reach and persuade an existing market — not to create one. This reinforces why rigorous stages 1–3 analysis is non-negotiable: identify the market first, then build for it.'}
+};
+function selectOption(el,qId,isCorrect){
+  var block=el.parentElement;var opts=block.querySelectorAll('.option');
+  opts.forEach(function(o){o.onclick=null;o.style.pointerEvents='none';});
+  if(isCorrect){el.classList.add('correct');block.querySelector('#'+qId+'-correct').style.display='block';}
+  else{el.classList.add('incorrect');block.querySelector('#'+qId+'-wrong').style.display='block';opts.forEach(function(o){if(o.getAttribute('data-correct')==='true')o.classList.add('correct');});}
+  answers[qId]={selected:el.querySelector('.option-letter').textContent,correct:isCorrect};
+  if(Object.keys(answers).length===Object.keys(quizData).length)document.getElementById('submitBtn').disabled=false;
+}
+function submitQuiz(){
+  var score=0;Object.keys(answers).forEach(function(q){if(answers[q].correct)score++;});
+  var total=Object.keys(quizData).length;
+  document.getElementById('quizForm').style.display='none';
+  var result=document.getElementById('quizResult');result.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  var passed=score>=8;
+  document.getElementById('resultLabel').textContent=passed?'✓ Module 7 Passed':'Keep Reviewing';
+  document.getElementById('resultLabel').style.color=passed?'#7DEFA1':'#F8ADB4';
+  document.getElementById('resultMsg').textContent=passed
+    ?'Strong grasp of construction management, marketing strategy, and lease structure. You understand the draw process, mechanic\'s lien risk, how SWOT analysis drives marketing strategy, the key lease provisions, and why the ITC case redefines "completion." One module left — Module 8 covers asset management, portfolio strategy, and the future of real estate development.'
+    :'Review retainage and mechanic\'s liens carefully — these are foundational construction finance concepts. Also revisit the SWOT framework, the four positioning strategies, and the expense stop / load factor lease concepts. These come up in every commercial real estate conversation.';
+  var wrongs=Object.keys(answers).filter(function(q){return !answers[q].correct;});
+  if(wrongs.length>0){
+    var wr=document.getElementById('wrongReview');wr.style.display='block';
+    var wl=document.getElementById('wrongList');wl.innerHTML='';
+    wrongs.forEach(function(q){
+      var d=quizData[q];var sel=answers[q].selected;
+      var div=document.createElement('div');div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div><div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div><div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div><div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+function retryQuiz(){
+  answers={};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled=true;
+  document.querySelectorAll('.option').forEach(function(o){
+    o.className='option';o.style.pointerEvents='';
+    var block=o.closest('.question-block');
+    var qId='q'+(Array.from(document.querySelectorAll('.question-block')).indexOf(block)+1);
+    var isCorrect=o.getAttribute('data-correct')==='true';
+    o.onclick=function(){selectOption(o,qId,isCorrect);};
+  });
+  document.querySelectorAll('.feedback').forEach(function(f){f.style.display='none';});
+}
+</script>
+</body>
+</html>
