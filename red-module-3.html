@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 3: The Public Sector, Regulation & Entitlements — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#2A2A2A;--char-mid:#3D3D3D;--char-light:#555;--char-pale:#F0EEEC;
+  --orange:#D4621A;--orange-mid:#E07030;--orange-light:#F08C50;--orange-pale:#FDF0E8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(42,42,42,0.1);
+  --shadow-card:0 2px 16px rgba(42,42,42,0.08);
+  --forest:#1B4D3E;--forest-mid:#2A6A55;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+
+nav{background:var(--char);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--orange-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+
+.breadcrumb{background:var(--char-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--char);font-weight:600;}
+
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--char-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-mid));border-radius:3px;width:37.5%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:rgba(212,98,26,0.2);color:var(--orange);}
+.prog-dot.active{background:var(--char);color:var(--orange-light);}
+.prog-dot.locked{background:rgba(42,42,42,0.1);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);}
+
+.module-hero{background:linear-gradient(135deg,#1A1A1A 0%,var(--char) 55%,#383838 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(212,98,26,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--orange-mid),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,98,26,0.15);border:1px solid rgba(212,98,26,0.3);color:var(--orange-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--orange-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:620px;line-height:1.85;font-weight:300;}
+
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--orange);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--orange) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--char);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--orange-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--orange);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--char-mid);font-style:italic;}
+.orange-rule{width:44px;height:3px;background:var(--orange);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+
+.callout{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--orange);font-style:italic;line-height:1.7;}
+.warning-box{background:#FBF0EE;border-left:4px solid #C0392B;border-radius:0 12px 12px 0;padding:1.1rem 1.4rem;margin:1.5rem 0;}
+.warning-box p{font-size:13.5px;color:#8B2F20;line-height:1.7;}
+.insight-box{background:var(--char);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.insight-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--orange-light);margin-bottom:0.5rem;}
+.insight-box p{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.7;}
+
+/* HIERARCHY */
+.hierarchy{display:flex;flex-direction:column;gap:0;margin:1.75rem 0;}
+.h-level{display:flex;gap:1rem;align-items:stretch;margin-bottom:0.6rem;}
+.h-num{width:32px;height:32px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--white);flex-shrink:0;margin-top:2px;}
+.h-content{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;flex:1;transition:box-shadow 0.2s;}
+.h-content:hover{box-shadow:var(--shadow-card);}
+.h-name{font-weight:700;font-size:13.5px;color:var(--char);margin-bottom:0.25rem;}
+.h-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.h-note{font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;margin-top:0.3rem;}
+
+/* STAKEHOLDER GRID */
+.stakeholder-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.75rem 0;}
+.sk-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:box-shadow 0.2s;}
+.sk-card:hover{box-shadow:var(--shadow-card);}
+.sk-icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.sk-name{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--char);margin-bottom:0.35rem;}
+.sk-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.sk-risk{font-size:11px;font-weight:700;color:var(--orange);margin-top:0.4rem;}
+
+/* P3 EXAMPLES */
+.p3-grid{display:flex;flex-direction:column;gap:1rem;margin:1.75rem 0;}
+.p3-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;display:flex;gap:1.25rem;align-items:flex-start;transition:box-shadow 0.2s;}
+.p3-card:hover{box-shadow:var(--shadow-card);}
+.p3-city{width:52px;height:52px;background:var(--char);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.p3-meta{flex:1;}
+.p3-location{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange);margin-bottom:0.2rem;}
+.p3-name{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--char);margin-bottom:0.35rem;}
+.p3-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* CASE STUDY */
+.case-study{background:var(--char);border-radius:16px;padding:1.75rem;margin:1.75rem 0;}
+.cs-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange-light);margin-bottom:0.5rem;}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;}
+.cs-sub{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:1rem;}
+.cs-body{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.7;}
+.cs-lesson{font-size:12.5px;font-weight:600;color:var(--orange-light);margin-top:1rem;padding-top:0.75rem;border-top:1px solid rgba(255,255,255,0.1);}
+
+/* GLOSSARY */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.25rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--orange);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.mg-abbr{display:inline-block;font-size:11px;font-weight:600;color:var(--orange);background:var(--orange-pale);padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.mg-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;}
+.mg-footer a{color:var(--orange);text-decoration:none;font-weight:600;}
+
+/* QUIZ */
+.quiz-section{background:var(--char);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-light);margin-bottom:0.4rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(212,98,26,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--orange-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--orange-mid);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(212,98,26,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange-light);}
+.result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;}
+.retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--orange-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(42,42,42,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--orange);color:var(--white);}
+.btn-nav.primary:hover{background:var(--orange-mid);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--char);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
+  .stakeholder-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-development.html">Track Overview</a></li>
+    <li><a href="real-estate-development.html" class="nav-back">← Development Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-development.html">Real Estate Development</a><span class="sep">/</span>
+  <span class="current">Module 3: The Public Sector, Regulation &amp; Entitlements</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 3 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="red-module-1.html" class="prog-dot done">1</a>
+    <a href="red-module-2.html" class="prog-dot done">2</a>
+    <span class="prog-dot active">3</span>
+    <span class="prog-dot locked">4</span>
+    <span class="prog-dot locked">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+    <span class="prog-dot locked">8</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Development Track · Module 3 of 8</div>
+    <h1>The Public Sector, <em>Regulation &amp; Entitlements</em></h1>
+    <p>Every development project must navigate a complex web of regulations, approvals, and stakeholders before a single shovel hits the ground. This module covers what that process looks like, who the players are, and how the most successful developers navigate the public sector — not as an obstacle, but as a partner.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"Developers who treat the regulatory process as an adversary lose. Developers who treat it as a partnership — and invest in understanding the community's legitimate interests — win consistently. The entitlement process is not a bureaucratic hurdle. It is the process by which the community decides what gets built in its backyard. Respect that, and you will be far more effective."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 3</div>
+  <h2 class="lesson-title">Entitlements &amp; the Regulatory Framework — <em>What Gets Built and Why</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Every real estate project begins with an idea — but before that idea can become a building, it must navigate a complex framework of public regulations, approvals, and legal rights. Understanding this framework is not optional for developers. It determines what can be built, how intensively a site can be used, how long the approval process will take, and how much it will cost. Developers who understand entitlements think and plan differently from those who do not.</p>
+
+  <p class="body-text">At the heart of the regulatory system is a fundamental tension: <strong>the rights of private property owners versus the interests of the public.</strong> Neither is absolute. The developer has real property rights — but those rights are limited by the community's legitimate interest in health, safety, and welfare. The public sector has real regulatory power — but that power is constrained by constitutional protections of private property. The development process is the arena in which these competing interests are negotiated.</p>
+
+  <div class="callout">
+    <p>"The public and private sectors each have limited rights in the real estate development arena. The allocation of power between the two sectors changes continually as new regulations are enacted, challenged by property rights interests, and tested in the judicial system." — Miles, Netherton &amp; Schmitz</p>
+  </div>
+
+  <p class="body-text"><strong>Entitlements</strong> are the rights to use and develop property — approvals granted by all levels of government necessary for a project to proceed. They include everything from zoning compliance to environmental clearance to subdivision approval. Without entitlements, no project can legally be built.</p>
+
+  <p class="body-text">Approvals fall into two categories:</p>
+
+  <p class="body-text"><strong>By-right approvals</strong> — for developments consistent with existing regulations. These can be approved administratively, without further public hearings or discretionary review. Fast, predictable, and lower risk.</p>
+
+  <p class="body-text"><strong>Discretionary approvals</strong> — for developments that require elected officials to make a judgment call, even if the project technically complies with regulations. Higher profile, more stakeholders, longer timelines, and far greater entitlement risk.</p>
+
+  <p class="body-text">The regulatory framework is a hierarchy — from broad, long-term plans at the top to project-specific approvals at the bottom. Every developer must understand each level:</p>
+
+  <div class="hierarchy">
+    <div class="h-level">
+      <div class="h-num">1</div>
+      <div class="h-content">
+        <div class="h-name">General (Comprehensive) Plan</div>
+        <div class="h-desc">The highest-level policy document — a long-term statement of goals governing land use for up to 20 years. Sets the framework for all other regulations. A political document created by elected officials. Covers land use, circulation, housing, resources, recreation, and safety. Developers seeking uses inconsistent with the general plan must seek an amendment — a lengthy, uncertain process.</div>
+        <div class="h-note">Planning horizon: up to 20 years</div>
+      </div>
+    </div>
+    <div class="h-level">
+      <div class="h-num">2</div>
+      <div class="h-content">
+        <div class="h-name">Specific Plans &amp; Planned Unit Developments</div>
+        <div class="h-desc">More detailed than the general plan — covering a specific geographic area or project. Provides greater flexibility including mixed land uses, clustering to preserve open space, and negotiated mitigation. Can be initiated by a developer or a government entity. Includes design standards, phasing, financing, and implementation steps.</div>
+        <div class="h-note">The vehicle for flexibility and creative development solutions</div>
+      </div>
+    </div>
+    <div class="h-level">
+      <div class="h-num">3</div>
+      <div class="h-content">
+        <div class="h-name">Zoning Ordinance</div>
+        <div class="h-desc">The local law that specifies exactly what may be built on each parcel — building types, floor area ratios, permitted uses, height limits, lot coverage, setbacks, and densities. Updated to conform to the general plan. Developers may seek variances for specific elements. Zoning is the primary day-to-day regulatory constraint on development.</div>
+        <div class="h-note">The most tangible constraint on every specific project</div>
+      </div>
+    </div>
+    <div class="h-level">
+      <div class="h-num">4</div>
+      <div class="h-content">
+        <div class="h-name">Subdivision Maps</div>
+        <div class="h-desc">Required when a property is being partitioned — for sale, leasing, or financing. Processed in two steps: a tentative map (discretionary approval) followed by a final map (recorded legal parcels). Conditions attached to subdivision maps can include dedications for streets and parks, impact fees, infrastructure requirements, and environmental mitigation.</div>
+        <div class="h-note">Required for any division of land</div>
+      </div>
+    </div>
+    <div class="h-level">
+      <div class="h-num">5</div>
+      <div class="h-content">
+        <div class="h-name">Conditions of Approval &amp; Exactions</div>
+        <div class="h-desc">Specific requirements imposed on a project as conditions of receiving approval — construction standards, environmental mitigation, infrastructure improvements, impact fees, and community benefits. Exactions may be scheduled fees (uniformly applied) or negotiated mitigation contributions. Must bear a rational nexus to the project's actual impacts.</div>
+        <div class="h-note">The negotiable layer — often the most costly and contentious</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <h4>The Irvine Tech Center — When the Rules Changed Mid-Process</h4>
+    <p>Greenlaw Partners was midway through entitlements for the Irvine Tech Center when the city initiated a new vision plan for the entire Irvine Business Complex. The project was folded into the broader city process. What could have been a disaster became an advantage — Greenlaw's project was consistent with the city's goals, which ultimately reduced the number of required approvals and streamlined the process. The lesson: developers who align with the community's stated goals navigate the regulatory environment far more efficiently than those who fight it.</p>
+  </div>
+
+  <p class="body-text">Infrastructure — roads, water, sewer, drainage, utilities — is a critical element of the entitlement process. Developers are typically responsible for on-site improvements and often required to contribute to off-site infrastructure as well. Many jurisdictions operate on the principle that <strong>"growth is expected to pay its own way"</strong> — meaning developers fund the infrastructure that their projects require, either directly or through impact fees and special assessment districts.</p>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 3</div>
+  <h2 class="lesson-title">Stakeholders, Politics &amp; the Approval Process — <em>Who Has Power and Why It Matters</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Complying with the regulatory framework is necessary — but it is not sufficient. A project can satisfy every written regulation and still fail at the discretionary approval stage if the developer has not invested in understanding the political and community landscape. <strong>Entitlement risk is the highest-risk phase of the development process</strong> — and it is risk that can be substantially mitigated through informed, proactive public outreach.</p>
+
+  <div class="warning-box">
+    <p><strong>⚠️ The Cautionary Tale from Chapter 8:</strong> A developer secured preliminary support from three city council members before investing in entitlements. He proceeded — and spent months advancing through the regulatory process. Then elections happened. Two supportive council members lost. The developer found himself facing a likely 3-2 negative vote with no opportunity to redesign the project or negotiate. He had followed the regulatory process correctly and still lost — because he had not invested in understanding the broader political landscape. <strong>Regulatory compliance and political feasibility are two different things.</strong></p>
+  </div>
+
+  <p class="body-text">The stakeholder environment around any proposed development is complex. Understanding who the players are — and what each one wants — is essential before committing significant resources to any project.</p>
+
+  <div class="stakeholder-grid">
+    <div class="sk-card">
+      <div class="sk-icon">🏛️</div>
+      <div class="sk-name">The Board (Elected Officials)</div>
+      <div class="sk-desc">Final authority on local land use decisions. May be city council, board of supervisors, or similar. Balance community values, technical staff recommendations, and constituent pressures. Their support — or opposition — determines the outcome.</div>
+      <div class="sk-risk">Most important relationship to cultivate early</div>
+    </div>
+    <div class="sk-card">
+      <div class="sk-icon">📋</div>
+      <div class="sk-name">Planning Staff</div>
+      <div class="sk-desc">Professional staff that reviews applications and advises elected bodies. Their recommendation carries significant weight. Influence varies by jurisdiction — in some, staff drives outcomes; in others, elected officials dominate. Know which is which in your specific market.</div>
+      <div class="sk-risk">Misreading staff influence is a fatal flaw</div>
+    </div>
+    <div class="sk-card">
+      <div class="sk-icon">🏘️</div>
+      <div class="sk-name">Individual Neighbors &amp; Direct Stakeholders</div>
+      <div class="sk-desc">People directly affected by the project — views altered, traffic increased, daily habits changed. Not all concerns can be resolved, but many can be addressed through design changes, construction mitigation, or communication. Engage them early and listen genuinely.</div>
+      <div class="sk-risk">Ignoring direct stakeholders generates organized opposition</div>
+    </div>
+    <div class="sk-card">
+      <div class="sk-icon">📣</div>
+      <div class="sk-name">Ad Hoc Opposition Groups</div>
+      <div class="sk-desc">Form spontaneously when news of a project spreads without adequate information. Often driven by misinformation. Early outreach with facts can prevent formation. Once organized, they are significantly harder to neutralize. Their leaders sometimes run for office on anti-development platforms.</div>
+      <div class="sk-risk">Absence of information fills with assumptions</div>
+    </div>
+    <div class="sk-card">
+      <div class="sk-icon">🌿</div>
+      <div class="sk-name">Issue-Based Interest Groups</div>
+      <div class="sk-desc">Standing organizations — environmental groups, historic preservation advocates, open space coalitions. Well funded, technically sophisticated, and focused on specific values. Some will never support any project regardless of mitigation. Attempting to convert them is often a waste of resources.</div>
+      <div class="sk-risk">Litigation can drain a project of resources and time</div>
+    </div>
+    <div class="sk-card">
+      <div class="sk-icon">👍</div>
+      <div class="sk-name">Supporters</div>
+      <div class="sk-desc">Often outnumber opponents but are rarely activated. Supporters may include businesses who benefit from growth, residents who want the housing or retail, or ideological advocates of property rights. The developer must actively identify and mobilize them — they will not organize themselves.</div>
+      <div class="sk-risk">Passive supporters cannot offset vocal opposition</div>
+    </div>
+  </div>
+
+  <p class="body-text"><strong>Public outreach is not a checkbox.</strong> It is a strategic, two-way process of gathering information and disseminating it accurately. The goal is not to sell the community on a predetermined project — it is to genuinely understand their concerns, reshape the project where possible, and build authentic support among those who can be persuaded.</p>
+
+  <p class="body-text">Key outreach tools include:</p>
+
+  <p class="body-text"><strong>Community attitude surveys</strong> — early-stage research to understand the political climate and community priorities before significant resources are committed.</p>
+
+  <p class="body-text"><strong>Charrettes</strong> — collaborative workshops that engage stakeholders in shaping the project design. When done well, they create shared ownership of solutions. When done poorly, they raise false expectations. A skilled facilitator is essential.</p>
+
+  <p class="body-text"><strong>The public hearing</strong> — not a venue for persuasion but a performance with a predetermined outcome. A developer who enters a public hearing without already knowing the vote count has failed at outreach. By the time the gavel comes down, there should be no surprises.</p>
+
+  <div class="callout">
+    <p>"A developer should enter into a public hearing reasonably assured of the outcome. A negative decision, especially if it cannot be appealed, can close off subsequent efforts to gain approvals." — Miles, Netherton &amp; Schmitz</p>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 3</div>
+  <h2 class="lesson-title">Public/Private Partnerships — <em>When Government Becomes Your Development Partner</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">The traditional model of real estate development assumed a clear separation: the private sector develops, and the public sector regulates and provides services. That model changed fundamentally in the late 1970s and has continued evolving since. Today, <strong>public/private partnerships (P3s)</strong> are a mainstream development tool — particularly for complex projects in challenging markets where neither the public nor private sector could succeed alone.</p>
+
+  <p class="body-text">Several forces drove this evolution. Federal cutbacks in urban aid in the 1980s forced local governments to innovate. Tax-cutting referenda made traditional bond financing politically risky. Rising land values made public land a strategic asset. And complex urban redevelopment challenges — brownfields, waterfront districts, affordable housing, transit-oriented development — required the combined resources of both sectors.</p>
+
+  <p class="body-text">In a P3, each partner contributes what they do best: government brings land, approvals, public financing vehicles (TIF, assessment districts, tax abatements), and community legitimacy. The private sector brings capital, development expertise, market knowledge, and execution capability. The risks and benefits are shared.</p>
+
+  <div class="p3-grid">
+    <div class="p3-card">
+      <div class="p3-city">🏙️</div>
+      <div class="p3-meta">
+        <div class="p3-location">Austin, Texas</div>
+        <div class="p3-name">Mueller — Former Airport Redevelopment</div>
+        <div class="p3-desc">700-acre master-planned community on a former municipal airport site, developed by Catellus. City retains land ownership until parcels are developed. Catellus funds infrastructure, reimbursed through tax increment financing and land sales. At buildout: 6,000 homes and 4 million square feet of commercial space. A model of sustainable community development.</div>
+      </div>
+    </div>
+    <div class="p3-card">
+      <div class="p3-city">🏢</div>
+      <div class="p3-meta">
+        <div class="p3-location">Chicago, Illinois</div>
+        <div class="p3-name">Sullivan Center — Historic Downtown Renovation</div>
+        <div class="p3-desc">Renovation of a 9-building historic department store complex in the Loop. Upper floors converted to office, lower levels to retail including CityTarget. Used historic tax credits and tax increment financing. Required partnerships with the mayor's office, alderman, city housing department, and multiple civic organizations — a decade-long public/private collaboration.</div>
+      </div>
+    </div>
+    <div class="p3-card">
+      <div class="p3-city">🌊</div>
+      <div class="p3-meta">
+        <div class="p3-location">Vancouver, British Columbia</div>
+        <div class="p3-name">Woodward's — Mixed-Use Urban Redevelopment</div>
+        <div class="p3-desc">Former department store site redeveloped into 1.08M SF of residential, university, cultural, retail, and daycare space on 2.32 acres. City contributed land in exchange for developer performing remediation and providing public space. Province contributed C$106M for university and social housing. Federal government provided the C$205M construction loan. Ownership shared among five public and private partners.</div>
+      </div>
+    </div>
+    <div class="p3-card">
+      <div class="p3-city">🏛️</div>
+      <div class="p3-meta">
+        <div class="p3-location">Washington, D.C.</div>
+        <div class="p3-name">City Vista — Mixed-Income Urban Housing</div>
+        <div class="p3-desc">$200M project on a city-owned site, developed by Lowe Enterprises through an RFP process. 244 rental apartments, 441 condominiums, 55,000 SF supermarket, and 60,000 SF of commercial space. City contributed below-market land sale and two ground leases and participated in project financing. A model of mixed-income urban development through public/private collaboration.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text">P3s are most effective when the project serves both public goals (community development, affordable housing, job creation, infrastructure) and private interests (return on investment, market demand, asset value creation). When either side dominates — when the public sector imposes too many conditions that make the project financially unviable, or when the private sector extracts too much value without delivering public benefit — the partnership fails.</p>
+
+  <div class="insight-box">
+    <h4>Public Finance Vehicles Every Developer Should Know</h4>
+    <p><strong>Tax Increment Financing (TIF)</strong> — captures future property tax increases generated by the development to fund infrastructure costs. <strong>Special Assessment Districts</strong> — property owners within a defined area pay additional fees to fund specific improvements. <strong>Tax Abatements</strong> — temporary reduction of property taxes to encourage development in targeted areas. <strong>Ground Leases</strong> — public entity retains land ownership while leasing to developer, reducing acquisition costs. <strong>Eminent Domain</strong> — government authority to acquire private property for public use with just compensation — powerful but politically sensitive after Kelo v. New London (2005).</p>
+  </div>
+
+  <!-- KEY TERMS -->
+  <div class="module-glossary">
+    <h3>📖 Module 3 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch3" placeholder="Search terms..." oninput="mgFilter(this,3)">
+    <div class="mg-terms" id="mgTerms3">
+      <div class="mg-term" data-mg="entitlements approvals rights develop use land government permits">
+        <div class="mg-name">Entitlements</div>
+        <div class="mg-def">The rights to use and develop property — approvals granted by all levels of government (local, state, federal) that authorize a specific development on a specific piece of land. Without entitlements, no project can legally proceed. They include zoning compliance, environmental clearance, subdivision approvals, and all other required government authorizations.</div>
+      </div>
+      <div class="mg-term" data-mg="by right approval administrative consistent regulations no hearing">
+        <div class="mg-name">By-Right Approval</div>
+        <div class="mg-def">An approval granted administratively — without public hearings or discretionary review — when a proposed development is fully consistent with existing zoning and regulations. By-right projects are faster, more predictable, and carry significantly less entitlement risk than discretionary projects.</div>
+      </div>
+      <div class="mg-term" data-mg="discretionary approval elected officials judgment vote hearing risk">
+        <div class="mg-name">Discretionary Approval</div>
+        <div class="mg-def">An approval that requires elected officials to exercise judgment — even for projects that technically comply with regulations. Subject to public hearings, political considerations, and community opposition. Discretionary approvals carry the highest entitlement risk and are where most development projects succeed or fail politically.</div>
+      </div>
+      <div class="mg-term" data-mg="general plan comprehensive long term goals land use 20 years policy">
+        <div class="mg-name">General Plan (Comprehensive Plan)</div>
+        <div class="mg-def">The highest-level policy document governing land use in a jurisdiction — a long-term statement of goals for up to 20 years. Sets the framework for all other local land use regulations. A political document created and approved by elected officials. Covers land use, circulation, housing, natural resources, recreation, and safety. Amendments require the same extensive process as creating the original plan.</div>
+      </div>
+      <div class="mg-term" data-mg="zoning ordinance law parcel use height setback density FAR">
+        <div class="mg-name">Zoning Ordinance</div>
+        <div class="mg-def">The local law that specifies exactly what may be built on each parcel — permitted uses, building height limits, floor area ratios (FAR), lot coverage, setbacks, parking requirements, and densities. The primary day-to-day regulatory constraint on development. Developers may seek variances from specific zoning requirements, which require discretionary approval.</div>
+      </div>
+      <div class="mg-term" data-mg="specific plan planned unit development PUD flexible mixed use design">
+        <div class="mg-name">Specific Plan / Planned Unit Development <span class="mg-abbr">PUD</span></div>
+        <div class="mg-def">A more detailed regulatory document covering a specific geographic area, providing greater flexibility than standard zoning — allowing mixed land uses, clustering to preserve open space, and negotiated mitigation measures. Can be initiated by a developer or a government entity. The vehicle through which creative, mixed-use development solutions are achieved.</div>
+      </div>
+      <div class="mg-term" data-mg="exactions fees conditions approval infrastructure mitigation impact">
+        <div class="mg-name">Exactions</div>
+        <div class="mg-def">Financial or other conditions imposed on a developer as a condition of project approval. Two main forms: (1) scheduled fees collected by agencies for infrastructure, schools, transportation, and utilities; (2) mitigation exactions — monetary or in-kind contributions to offset a project's specific impacts. Must bear a rational nexus to the project's actual impacts on public facilities.</div>
+      </div>
+      <div class="mg-term" data-mg="entitlement risk political opposition community approval uncertainty timeline">
+        <div class="mg-name">Entitlement Risk</div>
+        <div class="mg-def">The risk that a project will fail to obtain necessary government approvals — despite complying with regulations — due to political opposition, community resistance, staff recommendations, or changing elected officials. The highest-risk phase of the development process. Mitigated through proactive public outreach, early stakeholder engagement, and understanding the political landscape before committing significant resources.</div>
+      </div>
+      <div class="mg-term" data-mg="charrette collaborative workshop stakeholders design community input">
+        <div class="mg-name">Charrette</div>
+        <div class="mg-def">A collaborative workshop that engages community stakeholders in shaping the design of a proposed project. Intended to create shared ownership of solutions and defuse adversarial confrontations. Uses skilled facilitators, multiple design professionals, and team-based problem-solving. Risk: can raise false expectations about participants' influence if not carefully managed.</div>
+      </div>
+      <div class="mg-term" data-mg="public private partnership P3 government developer joint venture TIF">
+        <div class="mg-name">Public/Private Partnership <span class="mg-abbr">P3</span></div>
+        <div class="mg-def">A development venture combining public sector resources (land, approvals, public financing, community legitimacy) with private sector resources (capital, development expertise, market knowledge). Each partner shares risks and benefits. Most effective for complex projects in challenging markets — brownfields, waterfront districts, affordable housing, transit-oriented development — where neither sector could succeed alone.</div>
+      </div>
+      <div class="mg-term" data-mg="tax increment financing TIF infrastructure future property tax revenue">
+        <div class="mg-name">Tax Increment Financing <span class="mg-abbr">TIF</span></div>
+        <div class="mg-def">A public finance mechanism that captures future property tax increases generated by a development project to fund the infrastructure and public improvements that make that development possible. One of the most common tools in public/private partnerships — allows infrastructure to be funded without new taxes, using the project's own future value creation as the funding source.</div>
+      </div>
+      <div class="mg-term" data-mg="eminent domain taking just compensation fifth amendment public use Kelo">
+        <div class="mg-name">Eminent Domain</div>
+        <div class="mg-def">The constitutional power of government to take private property for public use, with payment of just compensation. The Fifth Amendment establishes both the power and its limits. The 2005 Supreme Court case Kelo v. City of New London expanded the definition of "public use" to include economic development — generating significant controversy and leading many states to adopt restrictions on eminent domain use.</div>
+      </div>
+    </div>
+    <p class="mg-none" id="mgNone3">No matching terms found.</p>
+    <div class="mg-footer">More terms covered in upcoming modules. <a href="red-glossary.html">View Full Course Glossary →</a></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section" id="quizSection">
+    <h3>Module 3 Knowledge Check</h3>
+    <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">What is the fundamental tension at the heart of the land use regulatory system?</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">A</div>The rights of private property owners to use their land economically versus the public sector's legitimate interest in health, safety, and community welfare — neither is absolute, and the development process is the arena where these competing interests are negotiated.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">B</div>The conflict between local government regulations and federal environmental laws, which frequently contradict each other and create uncertainty for developers.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">C</div>The tension between developers seeking maximum density and neighbors seeking minimum density — a purely aesthetic disagreement resolved through design negotiation.</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">D</div>The conflict between the cost of compliance with regulations and the financial returns required by investors — a purely financial calculation.</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. The regulatory system balances two legitimate but competing interests: the private property owner's right to benefit economically from land versus the community's interest in health, safety, and welfare. Neither is absolute — the developer has real rights, but they are limited. The public sector has real regulatory power, but it is constrained by constitutional property rights protections.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ The fundamental tension is between private property rights and public interest — not federal vs. local law, not aesthetic disagreements, and not purely financial. Both the private sector and the public sector have legitimate but limited rights in the development arena, and the development process is where those interests are negotiated.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">What is the difference between a by-right approval and a discretionary approval?</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">A</div>By-right approvals require payment of fees; discretionary approvals do not — they are granted based on community benefit rather than financial contribution.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">B</div>By-right approvals are for residential projects; discretionary approvals are for commercial projects — each type follows its own regulatory track.</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">C</div>By-right approvals are granted administratively when a project is fully consistent with existing regulations — no public hearing required. Discretionary approvals require elected officials to make a judgment call — subject to public hearings, community opposition, and political considerations — even for compliant projects.</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">D</div>By-right approvals are permanent; discretionary approvals expire after a set period and must be renewed — creating ongoing uncertainty for long-term projects.</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. By-right approvals are administrative — fast, predictable, and lower risk. Discretionary approvals require elected official judgment — slower, unpredictable, and carrying significant entitlement risk. The distinction is critical in project underwriting: a discretionary project requires a much larger contingency for time and cost than a by-right project.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ The key distinction is process and risk. By-right approvals are administrative — granted when a project fully complies with existing regulations, without public hearings. Discretionary approvals require elected officials to make a judgment call, even for compliant projects — introducing public hearings, community opposition, and political risk into the process.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">In the regulatory hierarchy, what is the relationship between a general plan and a zoning ordinance?</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">A</div>They are independent documents — zoning ordinances are created by cities while general plans are created by counties, and they govern different geographic areas.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div>The general plan is the highest-level policy document — a long-term statement of community goals. The zoning ordinance implements the general plan at the parcel level, specifying exactly what may be built on each piece of land. Zoning must be consistent with the general plan.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">C</div>The zoning ordinance supersedes the general plan — because it is more specific, it takes precedence when the two documents conflict.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">D</div>They serve the same purpose but apply to different scales — general plans for large developments, zoning ordinances for small ones.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. The general plan sits at the top of the regulatory hierarchy — a long-term policy statement for up to 20 years. The zoning ordinance implements the general plan at the parcel level, specifying permitted uses, heights, setbacks, densities, and other detailed standards. Zoning must be consistent with the general plan, and zoning amendments must typically be accompanied by general plan amendments.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ The general plan and zoning ordinance are hierarchical, not independent. The general plan is the top-level policy document; the zoning ordinance implements it at the parcel level. Zoning must be consistent with the general plan — the general plan is not superseded by zoning, and they are not scale-based alternatives.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">The cautionary tale from Chapter 8 describes a developer who followed the regulatory process correctly but still lost his project. What was the fatal mistake?</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">A</div>He failed to hire a land use attorney early enough in the process, allowing regulatory errors to accumulate unchecked.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">B</div>He proposed too high a density, triggering community opposition that could have been avoided with a smaller project.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">C</div>He relied on preliminary support from council members without understanding the broader political landscape — and failed to invest in community outreach. When elections changed the council composition, he had no relationships, no ability to redesign the project, and no one to negotiate with.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">D</div>He submitted his entitlement application too early, before the community had been adequately notified — triggering a legal challenge that invalidated the process.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. This is the textbook example of entitlement risk. The developer confused regulatory compliance with political feasibility — they are two different things. He had council support but no community relationships, no outreach strategy, and no ability to adapt when the political environment changed. Entitlement risk is not just regulatory risk — it is political risk, and it requires a completely different toolkit.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ The fatal mistake was conflating regulatory compliance with political feasibility. The developer followed every regulatory requirement correctly — but failed to invest in community outreach and political relationship building. When elections changed the council, he had no community relationships, no ability to redesign, and no one to negotiate with. Regulatory compliance is necessary but not sufficient for a discretionary approval.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">What is a charrette, and what is its primary risk?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">A</div>A formal public hearing before the planning commission — risk is that opponents will dominate the testimony and misrepresent the project to elected officials.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">B</div>A collaborative workshop that engages community stakeholders in shaping the project design — intended to create shared ownership of solutions. Primary risk is raising false expectations about participants' ability to influence the final project, which creates greater opposition when reality falls short of what was implied.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">C</div>A technical review of the project's environmental impacts — risk is that consultants miss critical issues that are discovered later in the process at much greater cost.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">D</div>A meeting between the developer and planning staff to resolve technical issues before a formal application is submitted — risk is that commitments made in the meeting are not binding.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. A charrette is a collaborative community design workshop — when done well, it builds shared ownership and defuses adversarial dynamics. The primary risk is that the process implies more community influence over the final design than the developer can actually deliver. If participants later feel their input was ignored, the charrette backfires and creates more opposition than if it had not been held at all. A skilled facilitator is essential.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ A charrette is a collaborative community workshop for shaping project design. Its primary risk is raising false expectations — if participants believe they have more design influence than they actually do, and the final project does not reflect their input, the charrette generates more opposition than if it had never been held. Managing participant expectations is the facilitator's most critical responsibility.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">What does it mean that "growth is expected to pay its own way" — and what are the primary mechanisms through which developers fund the infrastructure their projects require?</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">A</div>It means developers must fund all infrastructure in their city — including roads, schools, and utilities — regardless of whether those improvements serve the developer's project specifically.</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">B</div>Existing residents should not subsidize the infrastructure costs generated by new development. Developers fund on-site improvements directly and contribute to off-site infrastructure through impact fees, exactions, assessment districts, and reimbursement agreements — typically based on their project's proportional share of the infrastructure need.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">C</div>It means the developer must demonstrate project profitability before receiving any government approvals — ensuring that taxpayers are not exposed to failed development projects.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">D</div>It means developers must fund their own marketing and leasing costs without government subsidy — the project must stand on its own commercial merits.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. "Growth pays its own way" means new development — not existing residents — funds the infrastructure it requires. On-site improvements are the developer's direct responsibility. Off-site infrastructure contributions are typically structured as impact fees (uniformly applied), negotiated exactions (project-specific), or participation in assessment districts and community facility districts that issue bonds repaid by future property owners.</div>
+        <div class="feedback incorrect" id="q6-wrong">✗ "Growth pays its own way" means new development funds the infrastructure it requires — not all infrastructure citywide. The mechanisms include: direct on-site improvements, impact fees for off-site infrastructure, negotiated exactions tied to the project's specific impacts, and participation in special assessment districts that fund infrastructure through bonds repaid by future property owners in the benefiting area.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">Which type of stakeholder group does Miles advise developers to largely stop trying to persuade — and why?</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">A</div>Individual neighbors — because their concerns are too specific and too numerous to address efficiently within the entitlement timeline.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">B</div>Planning staff — because their recommendations are predetermined by regulations and cannot be influenced by community outreach efforts.</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">C</div>Broadly anti-growth issue-based groups — because they will never support any project regardless of mitigation offered. Attempting to convert them wastes resources that could be used to neutralize persuadable opponents and activate supporters.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">D</div>Elected officials — because they are legally prohibited from pre-committing their votes before the public hearing and cannot be influenced by private conversations.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. Standing anti-growth organizations — whose purpose is to oppose development on ideological grounds — will never support any project, regardless of what mitigation is offered. Investing outreach resources in converting them is almost always futile. The developer's resources are better spent neutralizing persuadable opponents (those whose concerns can be addressed) and activating passive supporters (those who agree but are not organized).</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ Miles advises developers to largely stop trying to persuade broadly anti-growth issue-based groups — not individual neighbors, planning staff, or elected officials. Standing anti-growth organizations will never support any project regardless of mitigation. Resources spent attempting to convert them are wasted. Focus instead on neutralizing persuadable opponents and activating passive supporters.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">What is Tax Increment Financing (TIF) and why is it particularly useful in public/private partnerships?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">A</div>A federal program that reduces the tax burden on developers during the construction phase — making projects financially viable that would otherwise not pencil.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">B</div>A mechanism that captures future property tax increases generated by a development project to fund the infrastructure and public improvements that make the development possible — allowing infrastructure to be financed without new taxes, using the project's own future value creation as the funding source.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">C</div>A tax incentive that reduces the developer's income tax obligation in proportion to the affordable housing units included in the project.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">D</div>A financing tool that allows the developer to defer property taxes during the development period and repay them from project revenues after stabilization.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. TIF is one of the most powerful tools in the P3 toolkit precisely because it uses the project's own future value creation — not new taxes — to fund needed infrastructure. The "increment" is the difference between the property tax base before development and after. That increment is captured to repay bonds issued to fund infrastructure. It aligns public and private interests: both benefit from maximizing project value.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ TIF is not a federal tax reduction or an income tax incentive. It is a local finance mechanism that captures future property tax increases generated by development to fund infrastructure costs — typically through the issuance of bonds. It allows public infrastructure to be funded without raising taxes, using the development's own value creation as the repayment source.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">The Irvine Tech Center case study illustrates a scenario where the city's actions mid-process could have been a disaster for the developer. What made it work in Greenlaw's favor instead?</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">A</div>Greenlaw had a pre-existing relationship with the mayor's office that allowed them to shape the city's vision plan to match their project's requirements.</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">B</div>Greenlaw's project concept was consistent with the goals of the city's new vision plan — so instead of being blocked, the project was folded into a broader approved framework that actually reduced the number of required approvals and streamlined the process. Alignment with community goals created an advantage, not an obstacle.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">C</div>Greenlaw threatened litigation against the city if their project was delayed by the vision plan process — using legal pressure to preserve their entitlement timeline.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">D</div>The city recognized that Greenlaw had already invested too much capital to stop the project — and approved it to avoid a lawsuit over sunk costs.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. The key lesson is that alignment with community goals is a strategic advantage — not just a regulatory obligation. Because Greenlaw's project concept was consistent with the IBC Vision Plan's goals, the city's new framework actually reduced Greenlaw's entitlement burden rather than adding to it. Developers who design projects that advance the community's stated goals find that the regulatory environment works with them rather than against them.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ The ITC case worked in Greenlaw's favor because their project aligned with the city's vision — not because of political connections, legal threats, or sunk cost protection. Alignment with community goals is the most powerful tool a developer has in navigating discretionary approvals. When your project advances what the community wants, the regulatory process becomes your ally rather than your adversary.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">A developer is planning a major mixed-use project that will require a general plan amendment and several discretionary approvals. According to the principles in this module, what should be the developer's first priority before committing significant resources?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">A</div>Hire the best land use attorney available and begin the formal application process — the regulatory pathway will determine the political outcome.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">B</div>Commission a full environmental impact report to understand all potential project impacts before any community outreach begins.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">C</div>Secure site control and lock up the land under option — political feasibility cannot be assessed without first controlling the specific site.</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">D</div>Assess both regulatory and political feasibility before committing major resources — understand the community's attitude toward growth and the proposed project type, identify key stakeholders and their likely positions, assess the political landscape including upcoming elections, and determine whether the project concept can be aligned with the community's stated goals.</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. For a project requiring a general plan amendment and multiple discretionary approvals, political feasibility assessment is as important as regulatory due diligence — and should happen before major resource commitments. The cautionary tale from Chapter 8 illustrates exactly what happens when regulatory analysis proceeds without political analysis: the developer invests heavily and then faces a changed political environment with no relationships and no ability to adapt.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ For a major discretionary project, political feasibility assessment must happen alongside — and before committing resources to — regulatory analysis. A land use attorney, EIR, and site control are all necessary — but none of them assesses the critical question: is this project politically achievable in this community at this time? That question requires community attitude research, stakeholder mapping, and political landscape analysis before significant resources are committed.</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="red-module-2.html" class="btn-nav outline">← Module 2</a>
+  <div class="nav-module-title">
+    <strong>Up Next: Module 4</strong>
+    Idea Inception &amp; Feasibility
+  </div>
+  <a href="red-module-4.html" class="btn-nav primary">Module 4 →</a>
+</div>
+
+<footer style="background:var(--char);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--orange-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+function mgFilter(input,n){var v=input.value.toLowerCase();var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');var any=false;terms.forEach(function(t){var match=t.getAttribute('data-mg').includes(v)||t.textContent.toLowerCase().includes(v);t.classList.toggle('mg-hidden',!match);if(match)any=true;});document.getElementById('mgNone'+n).style.display=any?'none':'block';}
+
+var answers={};
+var quizData={
+  q1:{correct:'A',question:'What is the fundamental tension at the heart of the land use regulatory system?',options:{A:'Private property rights vs. public interest — neither is absolute, and the development process is where these are negotiated.',B:'Federal environmental laws vs. local regulations — they frequently contradict each other.',C:'Developers seeking maximum density vs. neighbors seeking minimum density.',D:'Cost of regulatory compliance vs. investor return requirements.'},explanation:'The regulatory system balances private property rights against public interest in health, safety, and welfare. Neither is absolute. Both the private sector and public sector have limited rights, and the development process is the negotiating arena.'},
+  q2:{correct:'C',question:'What is the difference between a by-right approval and a discretionary approval?',options:{A:'By-right requires fees; discretionary does not.',B:'By-right is for residential; discretionary is for commercial.',C:'By-right is granted administratively when fully consistent with regulations — no hearing required. Discretionary requires elected official judgment — public hearings, community opposition, political risk.',D:'By-right is permanent; discretionary expires and must be renewed.'},explanation:'By-right approvals are administrative — fast, predictable, lower risk. Discretionary approvals require elected official judgment — slower, unpredictable, significant entitlement risk.'},
+  q3:{correct:'B',question:'What is the relationship between a general plan and a zoning ordinance?',options:{A:'They are independent — zoning by cities, general plans by counties.',B:'The general plan is the top-level policy document. The zoning ordinance implements it at the parcel level. Zoning must be consistent with the general plan.',C:'The zoning ordinance supersedes the general plan because it is more specific.',D:'They serve the same purpose but apply to different project scales.'},explanation:'The general plan sits at the top of the regulatory hierarchy. The zoning ordinance implements it at the parcel level. Zoning must be consistent with the general plan.'},
+  q4:{correct:'C',question:'What was the fatal mistake of the developer in the Chapter 8 cautionary tale?',options:{A:'Failed to hire a land use attorney early enough.',B:'Proposed too high a density.',C:'Relied on preliminary council support without community outreach — when elections changed the council, he had no relationships, no ability to redesign, and no one to negotiate with.',D:'Submitted his application too early before adequate community notification.'},explanation:'Regulatory compliance and political feasibility are two different things. The developer followed regulations correctly but failed to invest in community outreach and political relationship building.'},
+  q5:{correct:'B',question:'What is a charrette and what is its primary risk?',options:{A:'A formal public hearing — risk is opponents dominating testimony.',B:'A collaborative community design workshop — primary risk is raising false expectations about participants\' influence, which creates more opposition when the final project does not match what was implied.',C:'A technical environmental review — risk is missing critical issues.',D:'A pre-application meeting with planning staff — risk is non-binding commitments.'},explanation:'A charrette is a collaborative community workshop. Its primary risk is raising false expectations — participants who feel their input was ignored become stronger opponents than if no charrette had been held.'},
+  q6:{correct:'B',question:'What does "growth pays its own way" mean?',options:{A:'Developers fund all city infrastructure regardless of whether it serves their project.',B:'Existing residents should not subsidize new development infrastructure costs. Developers fund on-site improvements and contribute to off-site infrastructure through fees, exactions, and assessment districts based on proportional impact.',C:'Developers must demonstrate profitability before receiving approvals.',D:'Developers fund their own marketing without government subsidy.'},explanation:'"Growth pays its own way" means new development — not existing residents — funds the infrastructure it requires, through on-site improvements, impact fees, exactions, and assessment district participation.'},
+  q7:{correct:'C',question:'Which stakeholder group does Miles advise developers to largely stop trying to persuade?',options:{A:'Individual neighbors — too numerous to address efficiently.',B:'Planning staff — their recommendations are predetermined.',C:'Broadly anti-growth issue-based groups — they will never support any project regardless of mitigation. Resources are better spent on persuadable opponents and passive supporters.',D:'Elected officials — legally prohibited from pre-committing votes.'},explanation:'Standing anti-growth organizations will never support any project on ideological grounds. Investing resources in converting them is futile. Focus on neutralizing persuadable opponents and activating passive supporters.'},
+  q8:{correct:'B',question:'What is Tax Increment Financing (TIF) and why is it useful in public/private partnerships?',options:{A:'A federal program reducing developer tax burden during construction.',B:'A mechanism capturing future property tax increases from development to fund infrastructure — allowing public improvements without new taxes, using the project\'s own value creation as the funding source.',C:'A tax incentive reducing income tax obligations based on affordable housing included.',D:'A tool allowing developers to defer property taxes until project stabilization.'},explanation:'TIF captures the difference between pre-development and post-development property tax revenues to fund infrastructure bonds. It aligns public and private interests — both benefit from maximizing project value.'},
+  q9:{correct:'B',question:'What made the Irvine Tech Center situation work in Greenlaw\'s favor despite the mid-process city intervention?',options:{A:'Greenlaw had pre-existing relationships with the mayor\'s office that shaped the vision plan.',B:'Greenlaw\'s project concept was consistent with the city\'s new vision plan goals — so the broader framework reduced required approvals and streamlined the process. Alignment created an advantage.',C:'Greenlaw threatened litigation to preserve their timeline.',D:'The city approved the project to avoid a lawsuit over sunk costs.'},explanation:'Alignment with community goals is the most powerful tool in navigating discretionary approvals. Because Greenlaw\'s project matched the IBC Vision Plan goals, the regulatory environment worked with them rather than against them.'},
+  q10:{correct:'D',question:'For a major project requiring general plan amendment and discretionary approvals, what should be the developer\'s first priority before committing significant resources?',options:{A:'Hire the best land use attorney and begin formal application.',B:'Commission a full environmental impact report.',C:'Secure site control under option.',D:'Assess both regulatory and political feasibility — community attitude, stakeholder positions, political landscape, upcoming elections, and whether the project aligns with community goals — before major commitments.'},explanation:'Political feasibility assessment must happen alongside regulatory due diligence, before major resource commitments. The cautionary tale shows what happens when regulatory analysis proceeds without political analysis: the developer invests heavily, then faces a changed environment with no relationships and no ability to adapt.'}
+};
+
+function selectOption(el,qId,isCorrect){
+  var block=el.parentElement;
+  var opts=block.querySelectorAll('.option');
+  opts.forEach(function(o){o.onclick=null;o.style.pointerEvents='none';});
+  if(isCorrect){el.classList.add('correct');block.querySelector('#'+qId+'-correct').style.display='block';}
+  else{el.classList.add('incorrect');block.querySelector('#'+qId+'-wrong').style.display='block';opts.forEach(function(o){if(o.getAttribute('data-correct')==='true')o.classList.add('correct');});}
+  answers[qId]={selected:el.querySelector('.option-letter').textContent,correct:isCorrect};
+  if(Object.keys(answers).length===Object.keys(quizData).length)document.getElementById('submitBtn').disabled=false;
+}
+
+function submitQuiz(){
+  var score=0;Object.keys(answers).forEach(function(q){if(answers[q].correct)score++;});
+  var total=Object.keys(quizData).length;
+  document.getElementById('quizForm').style.display='none';
+  var result=document.getElementById('quizResult');result.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  var passed=score>=8;
+  document.getElementById('resultLabel').textContent=passed?'✓ Module 3 Passed':'Keep Reviewing';
+  document.getElementById('resultLabel').style.color=passed?'#7DEFA1':'#F8ADB4';
+  document.getElementById('resultMsg').textContent=passed
+    ?'Strong understanding of the regulatory landscape. You grasp the difference between regulatory and political feasibility, the hierarchy of entitlements, and the strategic logic of public outreach. Module 4 moves into Idea Inception and Feasibility — where the developer\'s judgment about markets, sites, and opportunities is tested before any regulatory process begins.'
+    :'Review the distinction between by-right and discretionary approvals, and revisit the relationship between entitlement risk and public outreach strategy. Also review Tax Increment Financing and the P3 framework. These concepts underpin the decision-making process at every stage of development.';
+  var wrongs=Object.keys(answers).filter(function(q){return !answers[q].correct;});
+  if(wrongs.length>0){
+    var wr=document.getElementById('wrongReview');wr.style.display='block';
+    var wl=document.getElementById('wrongList');wl.innerHTML='';
+    wrongs.forEach(function(q){
+      var d=quizData[q];var sel=answers[q].selected;
+      var div=document.createElement('div');div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div><div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div><div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div><div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+
+function retryQuiz(){
+  answers={};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled=true;
+  document.querySelectorAll('.option').forEach(function(o){
+    o.className='option';o.style.pointerEvents='';
+    var block=o.closest('.question-block');
+    var qId='q'+(Array.from(document.querySelectorAll('.question-block')).indexOf(block)+1);
+    var isCorrect=o.getAttribute('data-correct')==='true';
+    o.onclick=function(){selectOption(o,qId,isCorrect);};
+  });
+  document.querySelectorAll('.feedback').forEach(function(f){f.style.display='none';});
+}
+</script>
+</body>
+</html>
