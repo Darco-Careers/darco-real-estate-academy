@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5: Financing the Deal — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#2A2A2A;--char-mid:#3D3D3D;--char-light:#555;--char-pale:#F0EEEC;
+  --orange:#D4621A;--orange-mid:#E07030;--orange-light:#F08C50;--orange-pale:#FDF0E8;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(42,42,42,0.1);
+  --shadow-card:0 2px 16px rgba(42,42,42,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--char);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--orange-light);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--orange-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--char-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--orange);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--char);font-weight:600;}
+.progress-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--char-light);white-space:nowrap;}
+.progress-track{flex:1;height:5px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-mid));border-radius:3px;width:62.5%;}
+.progress-modules{display:flex;gap:7px;align-items:center;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:rgba(212,98,26,0.2);color:var(--orange);}
+.prog-dot.active{background:var(--char);color:var(--orange-light);}
+.prog-dot.locked{background:rgba(42,42,42,0.1);color:var(--text-light);}
+a.prog-dot{cursor:pointer;transition:all 0.2s;}
+a.prog-dot:hover{transform:scale(1.15);}
+.module-hero{background:linear-gradient(135deg,#1A1A1A 0%,var(--char) 55%,#383838 100%);padding:4rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(212,98,26,0.1) 0%,transparent 70%);pointer-events:none;}
+.module-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--orange-mid),transparent);}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,98,26,0.15);border:1px solid rgba(212,98,26,0.3);color:var(--orange-light);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.9rem;}
+.module-hero h1 em{color:var(--orange-light);font-style:italic;}
+.module-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:620px;line-height:1.85;font-weight:300;}
+.mentor-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;}
+.mentor-bubble{background:#FFFDF7;border:2px solid var(--orange);border-radius:16px;padding:1.5rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.mentor-bubble::before{content:'';position:absolute;top:22px;left:-14px;width:0;height:0;border-style:solid;border-width:10px 14px 10px 0;border-color:transparent var(--orange) transparent transparent;}
+.mentor-bubble::after{content:'';position:absolute;top:23px;left:-11px;width:0;height:0;border-style:solid;border-width:9px 13px 9px 0;border-color:transparent #FFFDF7 transparent transparent;}
+.mentor-avatar{width:52px;height:52px;background:var(--char);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--orange-light);flex-shrink:0;}
+.mentor-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#1A1E26;line-height:1.75;}
+.page-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.section-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;}
+.section-label .dot{width:6px;height:6px;background:var(--orange);border-radius:50%;flex-shrink:0;}
+.lesson-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;line-height:1.25;}
+.lesson-title em{color:var(--char-mid);font-style:italic;}
+.orange-rule{width:44px;height:3px;background:var(--orange);border-radius:2px;margin:0.75rem 0 1.25rem;}
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.body-text{font-size:14.5px;color:var(--text-mid);line-height:1.85;margin-bottom:1rem;}
+.body-text strong{color:var(--text-dark);font-weight:600;}
+.callout{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.callout p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--orange);font-style:italic;line-height:1.7;}
+.insight-box{background:var(--char);border-radius:14px;padding:1.5rem 1.75rem;margin:1.75rem 0;}
+.insight-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--orange-light);margin-bottom:0.5rem;}
+.insight-box p{font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.7;}
+
+/* NOI FORMULA BOX */
+.formula-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin:1.75rem 0;box-shadow:var(--shadow-card);}
+.formula-box h4{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--char);margin-bottom:1.1rem;}
+.formula-row{display:flex;align-items:baseline;gap:1rem;padding:0.55rem 0.75rem;border-radius:8px;}
+.formula-row.highlight{background:var(--orange-pale);}
+.formula-row.total{background:var(--char);border-radius:10px;padding:0.75rem 1rem;margin-top:0.5rem;}
+.formula-label{font-size:13px;color:var(--text-mid);flex:1;}
+.formula-row.total .formula-label{color:rgba(255,255,255,0.7);}
+.formula-value{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--char);}
+.formula-row.total .formula-value{color:var(--orange-light);font-size:1.15rem;}
+.formula-operator{font-size:13px;color:var(--text-light);width:16px;text-align:center;flex-shrink:0;}
+.formula-divider{border:none;border-top:1px dashed var(--border);margin:0.5rem 0;}
+
+/* CAPITAL STACK */
+.capital-stack{display:flex;flex-direction:column;gap:0;margin:1.75rem 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.stack-level{padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;}
+.stack-level.common{background:#1E2A3A;}
+.stack-level.preferred{background:#2D3E52;}
+.stack-level.mezz{background:#3E5268;}
+.stack-level.senior{background:#4A6278;}
+.stack-badge{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.5);width:80px;flex-shrink:0;}
+.stack-name{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--white);}
+.stack-desc{font-size:12.5px;color:rgba(255,255,255,0.6);margin-top:0.15rem;}
+.stack-risk{font-size:11px;font-weight:700;color:var(--orange-light);margin-left:auto;white-space:nowrap;}
+
+/* FINANCING SEQUENCE */
+.fin-sequence{display:flex;flex-direction:column;gap:1rem;margin:1.75rem 0;position:relative;}
+.fin-sequence::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--cream-dark);}
+.fin-step{display:flex;gap:1.25rem;align-items:flex-start;position:relative;}
+.fin-num{width:40px;height:40px;border-radius:50%;background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;z-index:1;}
+.fin-body{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;flex:1;transition:box-shadow 0.2s;}
+.fin-body:hover{box-shadow:var(--shadow-card);}
+.fin-title{font-weight:700;font-size:13.5px;color:var(--char);margin-bottom:0.25rem;}
+.fin-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.fin-tag{font-size:11px;font-weight:700;color:var(--orange);margin-top:0.35rem;}
+
+/* MATH BOXES */
+.math-box{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin:1.5rem 0;box-shadow:var(--shadow-card);}
+.math-box h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--char);margin-bottom:1rem;}
+.math-row{display:flex;align-items:baseline;gap:1rem;padding:0.55rem 0;border-bottom:1px solid var(--border);}
+.math-row:last-child{border-bottom:none;}
+.math-row.result{background:var(--orange-pale);border-radius:8px;padding:0.65rem 0.75rem;margin-top:0.5rem;border-bottom:none;}
+.math-label{font-size:13px;color:var(--text-mid);flex:1;}
+.math-value{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--char);}
+.math-row.result .math-value{color:var(--orange);}
+.math-note{font-size:11px;color:var(--text-light);margin-left:auto;}
+
+/* LENDER RATIOS */
+.ratio-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.75rem 0;}
+.ratio-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;transition:box-shadow 0.2s;}
+.ratio-card:hover{box-shadow:var(--shadow-card);}
+.ratio-abbr{font-size:1.5rem;font-weight:700;color:var(--orange);font-family:'Playfair Display',serif;margin-bottom:0.25rem;}
+.ratio-name{font-size:12.5px;font-weight:700;color:var(--char);margin-bottom:0.5rem;}
+.ratio-formula{font-family:'DM Mono',monospace;font-size:12px;background:var(--char-pale);color:var(--char);padding:6px 10px;border-radius:6px;margin-bottom:0.6rem;}
+.ratio-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.ratio-target{font-size:11.5px;font-weight:700;color:var(--orange);margin-top:0.4rem;}
+
+/* GLOSSARY */
+.module-glossary{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.module-glossary h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.mg-sub{font-size:13px;color:var(--text-light);margin-bottom:1.25rem;}
+.mg-search{width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:1.25rem;transition:border 0.2s;box-sizing:border-box;}
+.mg-search:focus{border-color:var(--orange);}
+.mg-terms{display:flex;flex-direction:column;gap:0;}
+.mg-term{padding:0.85rem 0;border-bottom:1px solid var(--border);}
+.mg-term:last-child{border-bottom:none;}
+.mg-term.mg-hidden{display:none;}
+.mg-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+.mg-abbr{display:inline-block;font-size:11px;font-weight:600;color:var(--orange);background:var(--orange-pale);padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+.mg-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.mg-none{font-size:13px;color:var(--text-light);padding:1rem 0;text-align:center;display:none;}
+.mg-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;}
+.mg-footer a{color:var(--orange);text-decoration:none;font-weight:600;}
+
+/* QUIZ */
+.quiz-section{background:var(--char);border-radius:20px;padding:2.5rem;margin:2.5rem 0;}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:2rem;}
+.question-block{margin-bottom:2rem;}
+.question-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange-light);margin-bottom:0.4rem;}
+.question-text{font-size:14.5px;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.6;}
+.option{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem;transition:all 0.18s;font-size:13.5px;color:rgba(255,255,255,0.8);line-height:1.55;}
+.option:hover{background:rgba(255,255,255,0.1);border-color:rgba(212,98,26,0.4);}
+.option.correct{background:rgba(52,168,83,0.15);border-color:#34A853;color:#fff;}
+.option.incorrect{background:rgba(220,53,69,0.15);border-color:#DC3545;color:#fff;}
+.option-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:var(--orange-light);}
+.option.correct .option-letter{background:#34A853;}
+.option.incorrect .option-letter{background:#DC3545;}
+.feedback{display:none;margin-top:0.75rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:13px;line-height:1.65;}
+.feedback.correct{background:rgba(52,168,83,0.15);border:1px solid #34A853;color:#7DEFA1;}
+.feedback.incorrect{background:rgba(220,53,69,0.12);border:1px solid #DC3545;color:#F8ADB4;}
+.quiz-btn{background:var(--orange);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.quiz-btn:hover{background:var(--orange-mid);}
+.quiz-btn:disabled{opacity:0.5;cursor:default;}
+.quiz-result{display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(212,98,26,0.25);border-radius:14px;padding:1.75rem;text-align:center;margin-top:1.5rem;}
+.result-score{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange-light);}
+.result-label{font-size:14px;color:rgba(255,255,255,0.6);margin-top:0.25rem;}
+.result-msg{font-size:13.5px;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.7;}
+.retry-btn{display:inline-block;margin-top:1rem;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;}
+.retry-btn:hover{background:rgba(255,255,255,0.18);}
+.wrong-review{display:none;margin-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;}
+.wrong-review h4{font-size:13px;font-weight:700;color:var(--orange-light);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:1rem;}
+.wrong-item{background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.2);border-radius:10px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
+.wi-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:0.35rem;line-height:1.5;}
+.wi-your{font-size:12px;color:#F8ADB4;margin-bottom:0.2rem;}
+.wi-correct{font-size:12px;color:#7DEFA1;margin-bottom:0.35rem;}
+.wi-exp{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.5rem;margin-top:0.35rem;}
+.module-nav{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;bottom:0;z-index:50;box-shadow:0 -2px 16px rgba(42,42,42,0.07);}
+.btn-nav{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.btn-nav.primary{background:var(--orange);color:var(--white);}
+.btn-nav.primary:hover{background:var(--orange-mid);}
+.btn-nav.outline{background:transparent;color:var(--text-mid);border:1.5px solid var(--border);}
+.btn-nav.outline:hover{border-color:var(--char);color:var(--text-dark);}
+.nav-module-title{font-size:12px;color:var(--text-light);text-align:center;}
+.nav-module-title strong{display:block;font-size:13.5px;color:var(--text-dark);font-weight:600;}
+@media(max-width:640px){
+  nav{padding:0 1.25rem;}.nav-links{display:none;}
+  .module-hero{padding:2.5rem 1.5rem;}
+  .page-body{padding:1.75rem 1.25rem;}
+  .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
+  .ratio-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="real-estate-development.html">Track Overview</a></li>
+    <li><a href="real-estate-development.html" class="nav-back">← Development Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span>
+  <a href="real-estate-development.html">Real Estate Development</a><span class="sep">/</span>
+  <span class="current">Module 5: Financing the Deal</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 5 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="red-module-1.html" class="prog-dot done">1</a>
+    <a href="red-module-2.html" class="prog-dot done">2</a>
+    <a href="red-module-3.html" class="prog-dot done">3</a>
+    <a href="red-module-4.html" class="prog-dot done">4</a>
+    <span class="prog-dot active">5</span>
+    <span class="prog-dot locked">6</span>
+    <span class="prog-dot locked">7</span>
+    <span class="prog-dot locked">8</span>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="hero-inner">
+    <div class="module-badge">Real Estate Development Track · Module 5 of 8</div>
+    <h1>Financing <em>the Deal</em></h1>
+    <p>No project gets built without money — and understanding where that money comes from, what it costs, and how it flows through the capital stack is one of the most essential skills in real estate development. This module covers NOI, valuation methods, the capital stack, the financing sequence, and the metrics lenders use to say yes or no.</p>
+  </div>
+</div>
+
+<div class="mentor-wrap">
+  <div class="mentor-bubble">
+    <div class="mentor-avatar">D</div>
+    <div class="mentor-text">"Without financing — debt, equity, or some combination — no real estate development is possible. The developer who understands money doesn't just know how to read a pro forma. They understand the motivations of every capital source they will ever work with, and they know how to structure deals that work for everyone in the stack."</div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- LESSON 1 -->
+  <div class="section-label"><div class="dot"></div> Lesson 1 of 3</div>
+  <h2 class="lesson-title">NOI &amp; Valuation — <em>How Value Is Measured and Created</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Before a single dollar of financing can be arranged, a developer must understand how the project will be valued — and that starts with Net Operating Income. NOI is the single most important financial metric in commercial real estate. It is the foundation of every valuation, every loan decision, and every equity return calculation. Every developer needs to understand it deeply.</p>
+
+  <p class="body-text"><strong>Net Operating Income (NOI)</strong> is the income a property generates from operations — after operating expenses, but before debt service, depreciation, or capital expenditures. It is the measure of a property's productivity that exists independent of how it is financed.</p>
+
+  <div class="formula-box">
+    <h4>📊 How NOI Is Calculated</h4>
+    <div class="formula-row highlight">
+      <div class="formula-operator">+</div>
+      <div class="formula-label">Potential Gross Income (PGI) — rent at 100% occupancy</div>
+      <div class="formula-value">$2,799,360</div>
+    </div>
+    <div class="formula-row">
+      <div class="formula-operator">−</div>
+      <div class="formula-label">Vacancy &amp; Collection Loss (lost rent, non-paying tenants)</div>
+      <div class="formula-value">$105,821</div>
+    </div>
+    <div class="formula-row">
+      <div class="formula-operator">+</div>
+      <div class="formula-label">Miscellaneous Income (parking, double occupancy, balcony premiums)</div>
+      <div class="formula-value">$292,965</div>
+    </div>
+    <div class="formula-divider"></div>
+    <div class="formula-row">
+      <div class="formula-operator">=</div>
+      <div class="formula-label"><strong>Effective Gross Income (EGI)</strong></div>
+      <div class="formula-value">$2,986,504</div>
+    </div>
+    <div class="formula-row">
+      <div class="formula-operator">−</div>
+      <div class="formula-label">Operating Expenses (taxes, maintenance, payroll, insurance, management)</div>
+      <div class="formula-value">$909,041</div>
+    </div>
+    <div class="formula-row">
+      <div class="formula-operator">−</div>
+      <div class="formula-label">Replacement Reserves</div>
+      <div class="formula-value">$40,375</div>
+    </div>
+    <div class="formula-divider"></div>
+    <div class="formula-row total">
+      <div class="formula-operator" style="color:var(--orange-light);">=</div>
+      <div class="formula-label"><strong>NET OPERATING INCOME (NOI)</strong></div>
+      <div class="formula-value">$2,037,268</div>
+    </div>
+    <p style="font-size:11.5px;color:var(--text-light);margin-top:0.75rem;">Shortbread Lofts Year 1 Pro Forma — as presented to the construction lender</p>
+  </div>
+
+  <p class="body-text">Two critical things NOI does <em>not</em> include: <strong>debt service</strong> (mortgage payments) and <strong>capital expenditures</strong> (major improvements, tenant improvements, leasing commissions). These are "below the line" — they affect cash flow to the owner but not the property's fundamental operating income. This separation is what makes NOI the universal standard for comparing properties across different capital structures.</p>
+
+  <p class="body-text">Understanding lease structures is essential for accurate NOI projection. The three main types:</p>
+
+  <p class="body-text"><strong>Gross Lease</strong> — landlord pays all operating expenses. Tenant pays a fixed rent. Common in apartments (except utilities) and some office buildings.</p>
+
+  <p class="body-text"><strong>Modified Gross / Full Service</strong> — landlord pays expenses up to an "expense stop" (typically year one costs), then passes increases through to tenants. Most common in office leases.</p>
+
+  <p class="body-text"><strong>Triple Net (NNN)</strong> — tenant pays all operating expenses: property taxes, insurance, and maintenance. The landlord receives truly "net" income. Common in retail and industrial. The "three nets" refer to property taxes (N1), building insurance (N2), and property maintenance (N3).</p>
+
+  <p class="body-text">Once NOI is established, value is derived using two complementary approaches:</p>
+
+  <p class="body-text"><strong>Direct Capitalization</strong> — divides a single year's NOI by a market-derived cap rate to produce a property value. Fast and widely used for stable properties. Formula: V = NOI ÷ R (where R = cap rate).</p>
+
+  <p class="body-text"><strong>Discounted Cash Flow (DCF)</strong> — projects all future cash flows including the terminal sale value, then discounts them back to present value at the investor's required return (hurdle rate). More rigorous — captures growth, timing, and the ultimate disposition value. The result is a Net Present Value (NPV): if positive, the project meets the investor's return requirement.</p>
+
+  <div class="math-box">
+    <h4>📊 Shortbread Lofts — DCF Valuation (Unlevered, r = 12%)</h4>
+    <div class="math-row"><div class="math-label">Year 1 NOI</div><div class="math-value">$2,037,268</div><div class="math-note">PV factor 0.893 → $1,819,280</div></div>
+    <div class="math-row"><div class="math-label">Year 2 NOI</div><div class="math-value">$2,087,936</div><div class="math-note">PV factor 0.797 → $1,664,085</div></div>
+    <div class="math-row"><div class="math-label">Year 3 NOI</div><div class="math-value">$2,154,980</div><div class="math-note">PV factor 0.712 → $1,534,346</div></div>
+    <div class="math-row"><div class="math-label">Year 4 NOI</div><div class="math-value">$2,224,147</div><div class="math-note">PV factor 0.636 → $1,414,557</div></div>
+    <div class="math-row"><div class="math-label">Year 5 NOI + Terminal Value ($44M sale)</div><div class="math-value">$46,295,501</div><div class="math-note">PV factor 0.567 → $26,249,549</div></div>
+    <div class="math-row result"><div class="math-label"><strong>Total Present Value</strong></div><div class="math-value">$32,681,818</div></div>
+    <div class="math-row"><div class="math-label">Total Development Cost</div><div class="math-value">$29,000,000</div></div>
+    <div class="math-row result"><div class="math-label"><strong>Unlevered NPV (Value − Cost)</strong></div><div class="math-value" style="color:#2A8B50;">+$3,681,818 ✓</div></div>
+    <p style="font-size:11.5px;color:var(--text-light);margin-top:0.75rem;">Positive NPV confirms the project meets the 12% required return. Terminal value based on Year 5 NOI ÷ 5% exit cap rate = ~$45.9M gross, ~$44M net of selling costs.</p>
+  </div>
+
+  <div class="insight-box">
+    <h4>The Leverage Effect — Why Debt Amplifies Equity Returns</h4>
+    <p>Debt amplifies equity returns when the cost of debt is lower than the overall property return. Example: A $1M property returns 6% ($60K NOI). If 80% is financed with debt at 4% interest ($32K/year), the equity holder receives $28K on $200K invested — a 14% return versus 6% unlevered. This is positive leverage. But leverage cuts both ways: when returns fall below the cost of debt, losses are amplified just as gains were. Understanding this dynamic is foundational to every financing decision a developer makes.</p>
+  </div>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 2 -->
+  <div class="section-label"><div class="dot"></div> Lesson 2 of 3</div>
+  <h2 class="lesson-title">The Capital Stack &amp; Financing Sequence — <em>Where the Money Comes From</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">Every real estate project is financed by a combination of debt and equity — organized into a <strong>capital stack</strong>. The capital stack defines who gets paid first, who absorbs losses first, and what return each source expects for the risk they're taking. The higher up the stack, the higher the risk, the higher the expected return — and the last to be paid.</p>
+
+  <div class="capital-stack">
+    <div class="stack-level common">
+      <div>
+        <div class="stack-name">Common Equity</div>
+        <div class="stack-desc">Developer and equity partners. First to absorb losses, last to receive distributions. Highest risk, highest potential return. Typically 10–20% of capital stack.</div>
+      </div>
+      <div class="stack-risk">Highest Risk / Highest Return</div>
+    </div>
+    <div class="stack-level preferred">
+      <div>
+        <div class="stack-name">Preferred Equity</div>
+        <div class="stack-desc">Senior to common equity, junior to debt. Fixed preferred return paid before common equity distributions. Private investors, PE funds, real estate investment firms.</div>
+      </div>
+      <div class="stack-risk">High Risk / Fixed Return</div>
+    </div>
+    <div class="stack-level mezz">
+      <div>
+        <div class="stack-name">Mezzanine Debt</div>
+        <div class="stack-desc">Subordinate to senior debt. Fills the gap between senior debt and equity. Typically hedge funds, mortgage REITs, private lenders. Higher cost than senior debt.</div>
+      </div>
+      <div class="stack-risk">Moderate Risk / Higher Rate</div>
+    </div>
+    <div class="stack-level senior">
+      <div>
+        <div class="stack-name">Senior Debt</div>
+        <div class="stack-desc">First lien position. Largest portion of the stack. Banks and institutional lenders. First claim on cash flows and collateral in default. Lowest cost of capital.</div>
+      </div>
+      <div class="stack-risk">Lowest Risk / Lowest Rate</div>
+    </div>
+  </div>
+
+  <p class="body-text">The typical development financing sequence follows the project through its stages — with different capital sources appropriate at each stage because the risk profile changes as the project advances:</p>
+
+  <div class="fin-sequence">
+    <div class="fin-step">
+      <div class="fin-num">1</div>
+      <div class="fin-body">
+        <div class="fin-title">Predevelopment / Joint Venture Equity</div>
+        <div class="fin-desc">The most expensive capital — developer's own equity or a joint venture partner's capital. Covers entitlements, design, feasibility, and early site control. Highest risk because the project may never be built. Investors demand venture-level returns (20%+). Miles calls this the "venture capital period."</div>
+        <div class="fin-tag">Risk: Maximum · Return: Maximum · Source: Developer equity, JV partners</div>
+      </div>
+    </div>
+    <div class="fin-step">
+      <div class="fin-num">2</div>
+      <div class="fin-body">
+        <div class="fin-title">Land Acquisition Financing</div>
+        <div class="fin-desc">Multiple forms: all-cash purchase, seller-financed purchase money mortgage, land purchase option (lowest risk — developer controls land without owning it during entitlement), or ground lease (long-term lease instead of purchase — no front-end land payment but no land appreciation either).</div>
+        <div class="fin-tag">Key tool: Land option — controls site without committing full purchase capital</div>
+      </div>
+    </div>
+    <div class="fin-step">
+      <div class="fin-num">3</div>
+      <div class="fin-body">
+        <div class="fin-title">Construction Loan</div>
+        <div class="fin-desc">Short-term loan — typically 12–24 months — funding the actual building of the project. Commercial banks are the primary source. Interest accrues during construction (no payments until completion). Construction lender relies on permanent loan "takeout" as the exit. Risk premium is higher than permanent debt despite shorter maturity. Developer's creditworthiness and the contractor's track record are critical.</div>
+        <div class="fin-tag">Rate: Floating (LIBOR/SOFR + spread) · Term: 12–24 months · Source: Commercial banks</div>
+      </div>
+    </div>
+    <div class="fin-step">
+      <div class="fin-num">4</div>
+      <div class="fin-body">
+        <div class="fin-title">Permanent / "Takeout" Loan</div>
+        <div class="fin-desc">Long-term debt financing based on the completed project's stabilized income stream. Life insurance companies are the historical primary source. CMBS (commercial mortgage-backed securities) also a major source. The permanent lender commits before construction — giving the construction lender its exit strategy. Sized using DSCR and LTV ratios against projected stabilized NOI.</div>
+        <div class="fin-tag">Rate: Fixed · Term: 10–30 years · Source: Life insurance companies, CMBS, banks</div>
+      </div>
+    </div>
+    <div class="fin-step">
+      <div class="fin-num">5</div>
+      <div class="fin-body">
+        <div class="fin-title">Interim / Mezzanine Financing</div>
+        <div class="fin-desc">Bridge capital when there is a temporary mismatch — construction delays, slower-than-expected lease-up, financing gap between construction loan payoff and permanent loan funding. Expensive capital (higher fees, higher rates) that buys time. Used strategically to avoid default or to capture a specific financing opportunity.</div>
+        <div class="fin-tag">Risk: High · Rate: Expensive · Source: Hedge funds, mortgage REITs, private lenders</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text">The four quadrants of the capital markets — private debt, public debt, private equity, and public equity — each play a role in development financing. <strong>Private debt</strong> (banks, insurance companies) dominates construction and permanent lending. <strong>Public debt</strong> (CMBS, Fannie Mae/Freddie Mac for multifamily) provides significant permanent financing capacity. <strong>Private equity</strong> (individuals, PE funds, sovereign wealth funds) provides development-period equity. <strong>Public equity</strong> (REITs, listed partnerships) provides equity for operating properties and large developments.</p>
+
+  <hr class="lesson-divider">
+
+  <!-- LESSON 3 -->
+  <div class="section-label"><div class="dot"></div> Lesson 3 of 3</div>
+  <h2 class="lesson-title">Lender Metrics — <em>How Lenders Say Yes or No</em></h2>
+  <div class="orange-rule"></div>
+
+  <p class="body-text">When a lender evaluates a development loan, they are asking one fundamental question: will I get my money back? Two ratios answer that question — and every developer seeking financing must understand them, calculate them, and structure deals that satisfy them.</p>
+
+  <div class="ratio-grid">
+    <div class="ratio-card">
+      <div class="ratio-abbr">DSCR</div>
+      <div class="ratio-name">Debt Service Coverage Ratio</div>
+      <div class="ratio-formula">DSCR = NOI ÷ Annual Debt Service</div>
+      <div class="ratio-desc">Measures how much NOI the property generates relative to each dollar of debt service. A DSCR of 1.80 means $1.80 of NOI for every $1.00 of debt service. The lower the DSCR, the less cushion — and the higher the lender's risk. Tests whether the property can pay the mortgage.</div>
+      <div class="ratio-target">Typical requirement: 1.20–1.60 · Shortbread Lofts at maturity: 2.02</div>
+    </div>
+    <div class="ratio-card">
+      <div class="ratio-abbr">LTV</div>
+      <div class="ratio-name">Loan-to-Value Ratio</div>
+      <div class="ratio-formula">LTV = Loan Amount ÷ Property Value</div>
+      <div class="ratio-desc">Measures how much of the property's value is financed by debt. A 70% LTV means $0.70 of debt for every $1.00 of value — leaving a 30% equity cushion. For development projects not yet built, lenders substitute LTC (Loan-to-Cost) instead. Tests whether the collateral protects the lender.</div>
+      <div class="ratio-target">Typical max: 65–75% LTV · Shortbread Lofts: 67.7% ($21M ÷ $31M)</div>
+    </div>
+  </div>
+
+  <p class="body-text">When both ratios are calculated, the lender underwrites to the <strong>lower</strong> of the two justified loan amounts — using the DSCR constraint (NOI supports this much debt) and the LTV constraint (collateral supports this much debt) independently, then taking the smaller result. This dual test protects lenders against both cash flow risk and collateral value risk simultaneously.</p>
+
+  <div class="math-box">
+    <h4>📊 Shortbread Lofts — Loan Metrics</h4>
+    <div class="math-row"><div class="math-label">Construction loan amount</div><div class="math-value">$21,000,000</div></div>
+    <div class="math-row"><div class="math-label">Interest rate (interest-only)</div><div class="math-value">4.8%</div></div>
+    <div class="math-row"><div class="math-label">Annual debt service ($21M × 4.8%)</div><div class="math-value">$1,008,000</div></div>
+    <div class="math-row"><div class="math-label">Year 5 NOI at maturity</div><div class="math-value">$2,295,501</div></div>
+    <div class="math-row result"><div class="math-label"><strong>DSCR at maturity</strong> ($2,295,501 ÷ $1,008,000)</div><div class="math-value">2.02 ✓</div></div>
+    <div class="math-row"><div class="math-label">Property value (Year 1 cap rate, 6.5%)</div><div class="math-value">$31,342,584</div></div>
+    <div class="math-row result"><div class="math-label"><strong>LTV ratio</strong> ($21M ÷ $31.3M)</div><div class="math-value">67.0% ✓</div></div>
+    <p style="font-size:11.5px;color:var(--text-light);margin-top:0.75rem;">Both ratios are strong — allowing Short to proceed without a permanent loan takeout commitment in place. The high DSCR (2.02 vs. typical 1.20–1.60) and moderate LTV (67% vs. typical 65–75% max) gave the construction lender confidence to commit.</p>
+  </div>
+
+  <p class="body-text">Beyond ratios, the loan underwriting process evaluates six factors:</p>
+
+  <p class="body-text"><strong>1. Market &amp; submarket analysis</strong> — demand for this type of space, competing properties, absorption timeline.</p>
+  <p class="body-text"><strong>2. Location analysis</strong> — site accessibility, zoning, utilities, growth corridor position.</p>
+  <p class="body-text"><strong>3. Appropriateness of improvements</strong> — physical constraints, environmental issues, building-to-site fit.</p>
+  <p class="body-text"><strong>4. Borrower creditworthiness</strong> — developer's assets, liabilities, other obligations. Construction loans are often recourse — the lender can pursue the developer's personal assets in default.</p>
+  <p class="body-text"><strong>5. Construction team &amp; property management plan</strong> — contractor track record, on-time and on-budget history, management capability post-completion.</p>
+  <p class="body-text"><strong>6. Financial viability</strong> — pro forma cash flow analysis, DCF, DSCR, and LTV — the quantitative confirmation of everything above.</p>
+
+  <div class="callout">
+    <p>"In all financing decisions, it is helpful if the developer is able to stand in the lender's or investor's shoes. This perspective enables the developer to approach the right sources of capital with the right requests." — Miles, Netherton &amp; Schmitz</p>
+  </div>
+
+  <!-- KEY TERMS -->
+  <div class="module-glossary">
+    <h3>📖 Module 5 — Key Terms &amp; Definitions</h3>
+    <p class="mg-sub">Terms introduced in this module. Search to find any definition instantly.</p>
+    <input type="text" class="mg-search" id="mgSearch5" placeholder="Search terms..." oninput="mgFilter(this,5)">
+    <div class="mg-terms" id="mgTerms5">
+      <div class="mg-term" data-mg="NOI net operating income property productivity revenue expenses">
+        <div class="mg-name">Net Operating Income <span class="mg-abbr">NOI</span></div>
+        <div class="mg-def">The income a property generates from operations — after all operating expenses (taxes, maintenance, payroll, insurance, management fees) but before debt service, depreciation, and capital expenditures. The universal standard for measuring property productivity and comparing properties across different ownership structures. NOI is the numerator in the cap rate valuation formula: Value = NOI ÷ Cap Rate.</div>
+      </div>
+      <div class="mg-term" data-mg="potential gross income PGI rent 100% occupancy contract escalation">
+        <div class="mg-name">Potential Gross Income <span class="mg-abbr">PGI</span></div>
+        <div class="mg-def">The rent a property could generate if it were fully occupied with no discounts — the theoretical maximum revenue. Includes contract rent (rent per square foot × occupied square feet), rent escalations, and expense reimbursements by tenants. The starting point of the NOI calculation — before vacancy, collection loss, or any deductions.</div>
+      </div>
+      <div class="mg-term" data-mg="cap rate capitalization rate NOI value income approach">
+        <div class="mg-name">Capitalization Rate <span class="mg-abbr">Cap Rate</span></div>
+        <div class="mg-def">The ratio of a property's NOI to its market value — expressed as: Cap Rate = NOI ÷ Value. Alternatively used to derive value: Value = NOI ÷ Cap Rate. Reflects the market's assessment of a property's growth prospects and investment risk relative to alternatives. Lower cap rates indicate lower perceived risk (investors pay more for each dollar of income). Cap rates vary by property type, location, quality, and market cycle position.</div>
+      </div>
+      <div class="mg-term" data-mg="discounted cash flow DCF present value NPV IRR future cash flows">
+        <div class="mg-name">Discounted Cash Flow Analysis <span class="mg-abbr">DCF</span></div>
+        <div class="mg-def">A multi-period valuation method that projects all expected future cash flows (annual NOI plus terminal sale value) and discounts them back to present value at the investor's required rate of return. Produces a Net Present Value (NPV): positive NPV means the project exceeds the required return; negative NPV means it falls short. More rigorous than direct capitalization because it captures growth, timing, and ultimate disposition value across the full holding period.</div>
+      </div>
+      <div class="mg-term" data-mg="IRR internal rate of return hurdle rate investment benchmark">
+        <div class="mg-name">Internal Rate of Return <span class="mg-abbr">IRR</span></div>
+        <div class="mg-def">The annual rate of return that a stream of cash flows generates over the life of a project, relative to the initial investment. Investors compare the expected IRR to their required rate of return (hurdle rate): if IRR exceeds the hurdle rate for the project's risk level, the investment meets the return requirement. Unlike NPV (which is dollar-denominated), IRR is a percentage — useful for comparing projects of different sizes.</div>
+      </div>
+      <div class="mg-term" data-mg="capital stack debt equity senior mezzanine preferred common layers">
+        <div class="mg-name">Capital Stack</div>
+        <div class="mg-def">The layered structure of financing sources for a real estate project, from lowest risk/lowest return (senior debt at the bottom) to highest risk/highest return (common equity at the top). Each layer has a different claim priority on cash flows and collateral. In order from bottom to top: senior debt, mezzanine debt, preferred equity, common equity. The higher the layer, the later it gets paid — and the higher the required return to compensate for that risk.</div>
+      </div>
+      <div class="mg-term" data-mg="construction loan short term bank building period floating rate draws">
+        <div class="mg-name">Construction Loan</div>
+        <div class="mg-def">Short-term financing (typically 12–24 months) that funds the actual construction of a project. Starts with a zero balance; the lender funds "draws" as construction progresses. Interest typically accrues during construction rather than requiring periodic payments. Commercial banks are the primary source. The construction lender relies on a permanent loan "takeout" as its exit. Floating rate (tied to SOFR or similar). Higher risk premium than permanent debt despite shorter maturity.</div>
+      </div>
+      <div class="mg-term" data-mg="permanent loan takeout long term mortgage stabilized income insurance CMBS">
+        <div class="mg-name">Permanent Loan (Takeout Loan)</div>
+        <div class="mg-def">Long-term debt financing based on a completed project's stabilized income stream — typically 10–30 years. "Takes out" (pays off) the construction loan at completion. Sized using DSCR and LTV ratios against projected stabilized NOI. Life insurance companies are the historical primary source for larger loans; CMBS provides significant capacity in permanent financing. Fixed rate. The developer typically arranges the permanent loan commitment before obtaining the construction loan.</div>
+      </div>
+      <div class="mg-term" data-mg="DSCR debt service coverage ratio NOI annual debt service 1.2 1.6">
+        <div class="mg-name">Debt Service Coverage Ratio <span class="mg-abbr">DSCR</span></div>
+        <div class="mg-def">Calculated as NOI ÷ Annual Debt Service. Measures how much NOI is generated per dollar of debt service — the cushion between the property's income and its mortgage payments. The most important single metric for lenders evaluating a development loan. Typical minimum: 1.20–1.60. A DSCR of 2.02 (as in Shortbread Lofts) means $2.02 of NOI for every $1.00 of debt service — a very strong position.</div>
+      </div>
+      <div class="mg-term" data-mg="LTV loan to value ratio collateral equity cushion loan amount property value">
+        <div class="mg-name">Loan-to-Value Ratio <span class="mg-abbr">LTV</span></div>
+        <div class="mg-def">Calculated as Loan Amount ÷ Property Value. Measures what percentage of the property's value is financed by debt — the inverse of the equity cushion. A 70% LTV means 30% equity cushion protects the lender. For development projects not yet built, lenders use Loan-to-Cost (LTC) instead. Typical maximum: 65–75%. When a lender underwrites using both DSCR and LTV, the loan is sized to the lower of the two justified amounts.</div>
+      </div>
+      <div class="mg-term" data-mg="triple net NNN lease tenant pays taxes insurance maintenance landlord">
+        <div class="mg-name">Triple Net Lease <span class="mg-abbr">NNN</span></div>
+        <div class="mg-def">A lease in which the tenant is responsible for all three major operating expenses: property taxes (N1), building insurance (N2), and property maintenance (N3). The landlord receives truly net income — no operating expense risk. Common in retail and industrial properties. Highly desirable for investors because the income stream is predictable and management-intensive expenses pass through to the tenant.</div>
+      </div>
+      <div class="mg-term" data-mg="CMBS commercial mortgage backed securities public debt securitization bond">
+        <div class="mg-name">Commercial Mortgage-Backed Securities <span class="mg-abbr">CMBS</span></div>
+        <div class="mg-def">Fixed-income securities collateralized by pools of commercial real estate mortgages — similar to corporate bonds, rated by third-party agencies (AAA to non-rated), and sold in public bond markets. Brought greater liquidity and competition to commercial real estate permanent lending. CMBS volumes peaked at $230B in 2007, collapsed to under $3B in 2009 during the Great Recession, and recovered to ~$90B in 2013. Less flexible than life insurance company loans — CMBS loans are standardized and difficult to modify once securitized.</div>
+      </div>
+    </div>
+    <p class="mg-none" id="mgNone5">No matching terms found.</p>
+    <div class="mg-footer">More terms covered in upcoming modules. <a href="red-glossary.html">View Full Course Glossary →</a></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section" id="quizSection">
+    <h3>Module 5 Knowledge Check</h3>
+    <p class="quiz-sub">10 questions · 8/10 to pass · Review wrong answers below if needed</p>
+    <div id="quizForm">
+
+      <div class="question-block">
+        <div class="question-num">Question 1 of 10</div>
+        <div class="question-text">A property has a Potential Gross Income of $500,000, vacancy of $25,000, miscellaneous income of $15,000, and operating expenses of $180,000. What is the NOI?</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">A</div>$295,000 — PGI minus operating expenses only</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">B</div>$320,000 — PGI minus vacancy, ignoring miscellaneous income</div>
+        <div class="option" onclick="selectOption(this,'q1',true)" data-correct="true"><div class="option-letter">C</div>$310,000 — ($500,000 − $25,000 + $15,000 − $180,000) = $310,000</div>
+        <div class="option" onclick="selectOption(this,'q1',false)"><div class="option-letter">D</div>$490,000 — PGI minus vacancy only, before operating expenses</div>
+        <div class="feedback correct" id="q1-correct">✓ Correct. NOI = PGI − Vacancy + Miscellaneous Income − Operating Expenses = $500,000 − $25,000 + $15,000 − $180,000 = $310,000. Remember: miscellaneous income (parking, vending, rooftop leases) is added to get to Effective Gross Income before subtracting operating expenses.</div>
+        <div class="feedback incorrect" id="q1-wrong">✗ NOI = PGI − Vacancy + Miscellaneous Income − Operating Expenses = $500,000 − $25,000 + $15,000 − $180,000 = $310,000. Miscellaneous income is additive (increases effective gross income), and operating expenses are then subtracted from effective gross income to arrive at NOI.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 2 of 10</div>
+        <div class="question-text">A property has an NOI of $400,000 and comparable properties in the market trade at a 5% cap rate. What is the estimated property value?</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">A</div>$2,000,000 — NOI × 5%</div>
+        <div class="option" onclick="selectOption(this,'q2',true)" data-correct="true"><div class="option-letter">B</div>$8,000,000 — NOI ÷ cap rate = $400,000 ÷ 0.05</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">C</div>$4,000,000 — NOI × 10</div>
+        <div class="option" onclick="selectOption(this,'q2',false)"><div class="option-letter">D</div>$400,000 — NOI equals value at a 100% cap rate</div>
+        <div class="feedback correct" id="q2-correct">✓ Correct. Value = NOI ÷ Cap Rate = $400,000 ÷ 0.05 = $8,000,000. At a 5% cap rate, buyers are paying 20× annual NOI ($400,000 × 20 = $8,000,000). This is the direct capitalization method — the most widely used quick valuation approach for income-producing real estate.</div>
+        <div class="feedback incorrect" id="q2-wrong">✗ Value = NOI ÷ Cap Rate = $400,000 ÷ 0.05 = $8,000,000. The formula is V = NOI ÷ R, not NOI × R. At a 5% cap rate, the multiplier is 1 ÷ 0.05 = 20. So buyers are paying 20× annual NOI. The cap rate is expressed as a decimal in the formula.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 3 of 10</div>
+        <div class="question-text">What is the key difference between NOI and cash flow after financing?</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">A</div>NOI includes depreciation as an expense; cash flow after financing does not.</div>
+        <div class="option" onclick="selectOption(this,'q3',true)" data-correct="true"><div class="option-letter">B</div>NOI is before debt service and capital expenditures (above the line). Cash flow after financing subtracts tenant improvements, leasing commissions, capital improvements, and then annual debt service from NOI — reflecting the actual cash available to the equity owner.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">C</div>NOI is calculated annually; cash flow after financing is calculated monthly.</div>
+        <div class="option" onclick="selectOption(this,'q3',false)"><div class="option-letter">D</div>They are the same calculation — "NOI" and "cash flow after financing" are interchangeable terms used by different professionals.</div>
+        <div class="feedback correct" id="q3-correct">✓ Correct. NOI stops above the line — before debt service and capital expenditures. This is intentional: it makes NOI a consistent measure of property productivity across different ownership structures. Cash flow after financing takes the next step — subtracting below-the-line items: tenant improvements, leasing commissions, capital improvements, and then annual debt service (principal + interest). What's left is the equity owner's actual cash return.</div>
+        <div class="feedback incorrect" id="q3-wrong">✗ The key distinction is the "line." NOI is above-the-line — before debt service and capital expenditures. Cash flow after financing is below-the-line — it subtracts tenant improvements, leasing commissions, capital improvements, and then annual debt service from NOI. Depreciation is a tax concept, not a cash flow — it never appears in either calculation.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 4 of 10</div>
+        <div class="question-text">In a triple net (NNN) lease, who pays for property taxes, building insurance, and property maintenance?</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">A</div>The landlord pays all three — that's why it's called "triple net" from the landlord's perspective.</div>
+        <div class="option" onclick="selectOption(this,'q4',true)" data-correct="true"><div class="option-letter">B</div>The tenant pays all three: property taxes (N1), building insurance (N2), and property maintenance (N3). The landlord receives truly net income with minimal operating expense risk.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">C</div>Property taxes are paid by the landlord; the tenant pays insurance and maintenance.</div>
+        <div class="option" onclick="selectOption(this,'q4',false)"><div class="option-letter">D</div>All expenses are split 50/50 between landlord and tenant, with three categories identified for the split.</div>
+        <div class="feedback correct" id="q4-correct">✓ Correct. In a triple net lease, the tenant is responsible for all three "nets": property taxes, building insurance, and property maintenance. The landlord receives truly net income — no operating expense risk. NNN leases are common in retail and industrial properties and are highly attractive to investors because the income stream is clean, predictable, and management-light.</div>
+        <div class="feedback incorrect" id="q4-wrong">✗ In a NNN lease, the tenant pays all three: property taxes (N1), building insurance (N2), and property maintenance (N3). The landlord receives truly net income — that's the whole point of the structure. Each "N" refers to one of the three major expense categories the tenant has taken on, leaving the landlord with minimal operating expense exposure.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 5 of 10</div>
+        <div class="question-text">In the capital stack, which layer absorbs losses first and receives distributions last?</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">A</div>Senior debt — it is the largest portion of the stack and therefore carries the most absolute risk.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">B</div>Mezzanine debt — it sits between senior debt and equity, absorbing losses before either.</div>
+        <div class="option" onclick="selectOption(this,'q5',false)"><div class="option-letter">C</div>Preferred equity — it has contractual priority over common equity but absorbs losses before debt.</div>
+        <div class="option" onclick="selectOption(this,'q5',true)" data-correct="true"><div class="option-letter">D</div>Common equity — it is the top of the stack. First to absorb losses if the project underperforms. Last to receive distributions after all other capital sources have been satisfied. Highest risk, highest potential return.</div>
+        <div class="feedback correct" id="q5-correct">✓ Correct. Common equity sits at the top of the capital stack — highest risk, highest potential return. In the event of losses, equity is the first to be wiped out. In the event of distributions, equity is the last to be paid — after all debt service and preferred equity returns have been satisfied. This is why equity investors demand the highest returns: they absorb the first dollar of loss and receive the last dollar of gain.</div>
+        <div class="feedback incorrect" id="q5-wrong">✗ Common equity is the top of the capital stack — first to absorb losses, last to receive distributions. Senior debt (at the bottom) has the first claim on cash flows and collateral and therefore the lowest risk. The stack works from bottom to top for payment priority and from top to bottom for loss absorption.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 6 of 10</div>
+        <div class="question-text">Why does a developer typically arrange permanent loan financing before obtaining the construction loan?</div>
+        <div class="option" onclick="selectOption(this,'q6',true)" data-correct="true"><div class="option-letter">A</div>The construction lender requires the permanent loan as a "takeout" — their exit strategy for getting repaid. The amount of the permanent loan determines how large the construction loan can be. Without a takeout commitment, the construction lender bears the risk of holding a loan on an incomplete project indefinitely.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">B</div>Permanent lenders charge lower interest rates than construction lenders, so arranging the permanent loan first locks in lower overall financing costs.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">C</div>Regulators require permanent financing to be in place before construction can legally begin on commercial projects.</div>
+        <div class="option" onclick="selectOption(this,'q6',false)"><div class="option-letter">D</div>Permanent lenders have more capital available than construction lenders and can fund the project faster if arranged early.</div>
+        <div class="feedback correct" id="q6-correct">✓ Correct. The permanent loan is the construction lender's exit — the mechanism by which the construction loan gets paid off at completion. Without it, the construction lender holds the risk of a completed building that can't be refinanced. The permanent loan commitment also sizes the construction loan: the developer can only borrow as much in construction as the permanent lender will take out. This sequential logic explains why permanent financing is arranged first despite being funded last.</div>
+        <div class="feedback incorrect" id="q6-wrong">✗ The reason is structural, not about rates or regulations. The construction lender's exit is the permanent loan — when construction is complete and the building is leased up, the permanent loan pays off the construction loan. Without a permanent loan commitment, the construction lender has no clear exit and bears the risk of holding a loan on a stabilizing property. The size of the permanent loan also caps the size of the construction loan.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 7 of 10</div>
+        <div class="question-text">A property has an NOI of $300,000 and annual debt service of $200,000. What is the DSCR, and is this likely to satisfy a typical lender?</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">A</div>DSCR of 0.67 — below 1.0, meaning the property cannot cover its debt payments. Unacceptable to any lender.</div>
+        <div class="option" onclick="selectOption(this,'q7',true)" data-correct="true"><div class="option-letter">B</div>DSCR of 1.50 ($300,000 ÷ $200,000) — within the typical acceptable range of 1.20–1.60. The property generates $1.50 of NOI for every $1.00 of debt service.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">C</div>DSCR of 2.0 — above the typical range, suggesting the loan is too small relative to the property's income.</div>
+        <div class="option" onclick="selectOption(this,'q7',false)"><div class="option-letter">D</div>DSCR of 1.50 but this is typically unacceptable — lenders require a minimum DSCR of 2.0 for development projects.</div>
+        <div class="feedback correct" id="q7-correct">✓ Correct. DSCR = NOI ÷ Annual Debt Service = $300,000 ÷ $200,000 = 1.50. This falls within the typical lender requirement of 1.20–1.60 and would generally satisfy most permanent lenders. The 1.50 DSCR means the property has a 50 cents of buffer above its debt service for every dollar owed — a moderate cushion that most lenders find acceptable for a stabilized property.</div>
+        <div class="feedback incorrect" id="q7-wrong">✗ DSCR = $300,000 ÷ $200,000 = 1.50. The typical lender requirement is 1.20–1.60 — not 2.0. A DSCR of 1.50 means $1.50 of NOI for every $1.00 of debt service, which falls comfortably within most lenders' requirements. Note that development projects (pre-stabilization) may require higher DSCRs because the risk is greater.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 8 of 10</div>
+        <div class="question-text">What is positive leverage, and when does it occur?</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">A</div>Positive leverage occurs when the developer uses more debt than equity, always amplifying returns regardless of the relationship between debt cost and property returns.</div>
+        <div class="option" onclick="selectOption(this,'q8',true)" data-correct="true"><div class="option-letter">B</div>Positive leverage occurs when the cost of debt financing is lower than the overall return generated by the property. In this situation, the percentage return to the equity investor is greater using debt than it would be with no debt — debt amplifies equity returns upward.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">C</div>Positive leverage means the lender makes a profit on the loan — the interest received exceeds the cost of funds deployed.</div>
+        <div class="option" onclick="selectOption(this,'q8',false)"><div class="option-letter">D</div>Positive leverage is only possible in rising markets — in flat or declining markets, all leverage becomes negative by definition.</div>
+        <div class="feedback correct" id="q8-correct">✓ Correct. Positive leverage occurs when debt costs less than the overall property return — so using debt increases the equity return above what it would be unlevered. In the Miles example: a $1M property returning 6% financed 80% with debt at 4% produces a 14% equity return — versus 6% unlevered. But leverage is a double-edged sword: when property returns fall below the cost of debt, losses are amplified just as gains were. Understanding this dynamic is fundamental to every financing decision.</div>
+        <div class="feedback incorrect" id="q8-wrong">✗ Positive leverage occurs specifically when the cost of debt is lower than the overall property return (cap rate or unlevered IRR). In that situation, using debt amplifies the equity return above the unlevered level. When debt costs more than the property returns — negative leverage — losses are amplified. Leverage is always conditional on the relationship between debt cost and property return, not simply on the amount of debt used.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 9 of 10</div>
+        <div class="question-text">What is a land purchase option, and why is it a valuable tool for developers at the early stages?</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">A</div>A land purchase option gives the developer the right to purchase the land at a below-market price — the primary benefit is the discount to current market value.</div>
+        <div class="option" onclick="selectOption(this,'q9',true)" data-correct="true"><div class="option-letter">B</div>A land purchase option gives the developer the right to purchase land at an agreed price during a defined period — without obligation to buy. The developer controls the site while completing entitlements, design, and financing, without committing full purchase capital. If the project proves infeasible, the developer loses only the option payment, not the land purchase price.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">C</div>A land purchase option is a form of seller financing in which the seller loans the developer the purchase price — similar to a purchase money mortgage but with different tax treatment.</div>
+        <div class="option" onclick="selectOption(this,'q9',false)"><div class="option-letter">D</div>A land purchase option allows the developer to purchase land in installments over time — spreading the acquisition cost across the development period.</div>
+        <div class="feedback correct" id="q9-correct">✓ Correct. The land purchase option is one of the most powerful risk management tools available to developers early in the process. It provides site control (the seller cannot sell to anyone else during the option period) without requiring full capital commitment. During the option period, the developer advances entitlements, designs, and financing. If the project proves infeasible, only the option payment is lost — not the full land purchase price. This aligns perfectly with stage one and two risk management principles.</div>
+        <div class="feedback incorrect" id="q9-wrong">✗ A land purchase option gives the developer the right (but not obligation) to purchase land at an agreed price during a defined period. Its primary value is risk management: the developer controls the site for entitlement and feasibility work without committing full capital. If the project doesn't work, only the option fee is lost — not the full purchase price. It is not a below-market purchase tool, not installment financing, and not the same as a purchase money mortgage.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="question-num">Question 10 of 10</div>
+        <div class="question-text">When a lender calculates both the DSCR-justified loan amount and the LTV-justified loan amount and they differ, which does the lender use?</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">A</div>The higher of the two — to maximize the loan amount and give the developer the most capital possible.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">B</div>The DSCR-justified amount — because cash flow risk is always more important to lenders than collateral value risk.</div>
+        <div class="option" onclick="selectOption(this,'q10',true)" data-correct="true"><div class="option-letter">C</div>The lower of the two — because each ratio measures a different risk (DSCR measures cash flow adequacy; LTV measures collateral preservation), and the lender needs protection against both. The binding constraint is always the lower number.</div>
+        <div class="option" onclick="selectOption(this,'q10',false)"><div class="option-letter">D</div>The LTV-justified amount — because collateral value is the ultimate backstop and always takes precedence over cash flow analysis.</div>
+        <div class="feedback correct" id="q10-correct">✓ Correct. The lender uses the lower of the two justified loan amounts because each ratio protects against a different risk. DSCR measures whether ongoing cash flow is sufficient to cover debt service — cash flow risk. LTV measures whether the collateral value protects principal in the event of default — collateral risk. Both risks matter, and the loan is structured to satisfy both constraints simultaneously. Using the higher amount would leave one risk unmitigated.</div>
+        <div class="feedback incorrect" id="q10-wrong">✗ The lender uses the lower of the two justified amounts. DSCR and LTV each measure a different risk: DSCR tests cash flow adequacy, LTV tests collateral protection. A loan that satisfies one but not the other leaves the lender exposed to the unconstrained risk. Using the lower of the two ensures both the cash flow test and the collateral test are passed simultaneously.</div>
+      </div>
+
+      <button class="quiz-btn" id="submitBtn" onclick="submitQuiz()" disabled>Submit Answers</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="result-msg" id="resultMsg"></div>
+      <button class="retry-btn" onclick="retryQuiz()">Retake Quiz</button>
+      <div class="wrong-review" id="wrongReview">
+        <h4>Questions to Review</h4>
+        <div id="wrongList"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="module-nav">
+  <a href="red-module-4.html" class="btn-nav outline">← Module 4</a>
+  <div class="nav-module-title">
+    <strong>Up Next: Module 6</strong>
+    Idea Refinement, Site Control &amp; Contract Negotiation
+  </div>
+  <a href="red-module-6.html" class="btn-nav primary">Module 6 →</a>
+</div>
+
+<footer style="background:var(--char);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--orange-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice. Always consult qualified professionals.</p>
+</footer>
+
+<script>
+function mgFilter(input,n){var v=input.value.toLowerCase();var terms=document.querySelectorAll('#mgTerms'+n+' .mg-term');var any=false;terms.forEach(function(t){var match=t.getAttribute('data-mg').includes(v)||t.textContent.toLowerCase().includes(v);t.classList.toggle('mg-hidden',!match);if(match)any=true;});document.getElementById('mgNone'+n).style.display=any?'none':'block';}
+var answers={};
+var quizData={
+  q1:{correct:'C',question:'A property has PGI of $500K, vacancy of $25K, misc income of $15K, operating expenses of $180K. What is NOI?',options:{A:'$295,000 — PGI minus operating expenses only.',B:'$320,000 — PGI minus vacancy, ignoring miscellaneous income.',C:'$310,000 — ($500,000 − $25,000 + $15,000 − $180,000)',D:'$490,000 — PGI minus vacancy only.'},explanation:'NOI = PGI − Vacancy + Miscellaneous Income − Operating Expenses = $500,000 − $25,000 + $15,000 − $180,000 = $310,000.'},
+  q2:{correct:'B',question:'A property has NOI of $400,000 and market cap rate of 5%. What is the estimated value?',options:{A:'$2,000,000 — NOI × 5%.',B:'$8,000,000 — NOI ÷ cap rate = $400,000 ÷ 0.05.',C:'$4,000,000 — NOI × 10.',D:'$400,000 — NOI equals value at 100% cap rate.'},explanation:'Value = NOI ÷ Cap Rate = $400,000 ÷ 0.05 = $8,000,000. At a 5% cap rate, the multiplier is 20×.'},
+  q3:{correct:'B',question:'What is the key difference between NOI and cash flow after financing?',options:{A:'NOI includes depreciation; cash flow after financing does not.',B:'NOI is before debt service and capital expenditures (above the line). Cash flow after financing subtracts TIs, leasing commissions, capital improvements, and debt service.',C:'NOI is annual; cash flow after financing is monthly.',D:'They are the same — interchangeable terms.'},explanation:'NOI is above the line — before debt service and capex. Cash flow after financing subtracts below-the-line items: tenant improvements, leasing commissions, capital improvements, and annual debt service.'},
+  q4:{correct:'B',question:'In a triple net (NNN) lease, who pays for property taxes, building insurance, and property maintenance?',options:{A:'The landlord pays all three.',B:'The tenant pays all three: property taxes (N1), building insurance (N2), and property maintenance (N3). Landlord receives truly net income.',C:'Landlord pays taxes; tenant pays insurance and maintenance.',D:'All expenses split 50/50.'},explanation:'In a NNN lease, tenant pays all three nets. The landlord receives truly net income — common in retail and industrial. Each "N" represents one of the three major expense categories.'},
+  q5:{correct:'D',question:'In the capital stack, which layer absorbs losses first and receives distributions last?',options:{A:'Senior debt — largest portion of the stack.',B:'Mezzanine debt — sits between senior debt and equity.',C:'Preferred equity — senior to common equity.',D:'Common equity — top of the stack. First to absorb losses, last to receive distributions. Highest risk, highest potential return.'},explanation:'Common equity is the top of the capital stack — first dollar of loss, last dollar of gain. Senior debt at the bottom has first claim on cash flows and collateral, lowest risk.'},
+  q6:{correct:'A',question:'Why does a developer typically arrange permanent financing before the construction loan?',options:{A:'The construction lender requires the permanent loan as a "takeout" — their exit strategy. The permanent loan amount determines the construction loan size.',B:'Permanent lenders charge lower rates, so arranging first locks in lower overall costs.',C:'Regulators require permanent financing before construction can begin.',D:'Permanent lenders have more capital and can fund faster if arranged early.'},explanation:'The permanent loan is the construction lender\'s exit. Without it, the construction lender has no clear repayment path. The permanent loan commitment also sizes the construction loan.'},
+  q7:{correct:'B',question:'A property has NOI of $300,000 and annual debt service of $200,000. What is the DSCR?',options:{A:'DSCR of 0.67 — below 1.0, cannot cover debt.',B:'DSCR of 1.50 ($300,000 ÷ $200,000) — within typical range of 1.20–1.60.',C:'DSCR of 2.0 — above the typical range.',D:'DSCR of 1.50 but unacceptable — lenders require 2.0 minimum.'},explanation:'DSCR = $300,000 ÷ $200,000 = 1.50. The typical lender requirement is 1.20–1.60. A 1.50 DSCR means $1.50 of NOI per $1.00 of debt service — acceptable to most permanent lenders.'},
+  q8:{correct:'B',question:'What is positive leverage and when does it occur?',options:{A:'Positive leverage occurs when developer uses more debt than equity, always amplifying returns.',B:'Positive leverage occurs when the cost of debt is lower than the overall property return — debt amplifies equity returns upward.',C:'Positive leverage means the lender makes a profit on the loan.',D:'Positive leverage is only possible in rising markets.'},explanation:'Positive leverage occurs when debt costs less than property returns. In Miles\' example: 6% property return, 80% debt at 4% = 14% equity return. But leverage cuts both ways — losses are amplified when returns fall below debt cost.'},
+  q9:{correct:'B',question:'What is a land purchase option and why is it valuable?',options:{A:'A land purchase option gives the right to buy at a below-market price.',B:'A land purchase option gives the right to purchase land at an agreed price during a defined period without obligation. Developer controls site for entitlements and feasibility without committing full purchase capital.',C:'A form of seller financing similar to a purchase money mortgage.',D:'Allows developer to purchase land in installments over time.'},explanation:'A land option controls the site without full capital commitment. If the project proves infeasible, only the option payment is lost — not the full purchase price. Aligns with stage one/two risk management principles.'},
+  q10:{correct:'C',question:'When DSCR-justified and LTV-justified loan amounts differ, which does the lender use?',options:{A:'The higher — to maximize loan amount for the developer.',B:'The DSCR-justified — cash flow risk is always more important.',C:'The lower — because each ratio measures a different risk (DSCR = cash flow adequacy; LTV = collateral preservation). Both must be satisfied simultaneously.',D:'The LTV-justified — collateral value is the ultimate backstop.'},explanation:'The lender uses the lower of the two amounts because DSCR and LTV each measure different risks. Using the lower ensures both the cash flow test and the collateral test are passed simultaneously.'}
+};
+function selectOption(el,qId,isCorrect){
+  var block=el.parentElement;var opts=block.querySelectorAll('.option');
+  opts.forEach(function(o){o.onclick=null;o.style.pointerEvents='none';});
+  if(isCorrect){el.classList.add('correct');block.querySelector('#'+qId+'-correct').style.display='block';}
+  else{el.classList.add('incorrect');block.querySelector('#'+qId+'-wrong').style.display='block';opts.forEach(function(o){if(o.getAttribute('data-correct')==='true')o.classList.add('correct');});}
+  answers[qId]={selected:el.querySelector('.option-letter').textContent,correct:isCorrect};
+  if(Object.keys(answers).length===Object.keys(quizData).length)document.getElementById('submitBtn').disabled=false;
+}
+function submitQuiz(){
+  var score=0;Object.keys(answers).forEach(function(q){if(answers[q].correct)score++;});
+  var total=Object.keys(quizData).length;
+  document.getElementById('quizForm').style.display='none';
+  var result=document.getElementById('quizResult');result.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  var passed=score>=8;
+  document.getElementById('resultLabel').textContent=passed?'✓ Module 5 Passed':'Keep Reviewing';
+  document.getElementById('resultLabel').style.color=passed?'#7DEFA1':'#F8ADB4';
+  document.getElementById('resultMsg').textContent=passed
+    ?'Solid grasp of development finance. You understand NOI construction, direct capitalization and DCF valuation, the capital stack, the financing sequence, and the two key lender metrics (DSCR and LTV). Module 6 moves into idea refinement, site control, and contract negotiation — where the deal structure gets locked in.'
+    :'Review the NOI formula carefully — especially what is above and below the line. Also revisit the DSCR and LTV calculations and what each measures. The capital stack hierarchy (senior debt at the bottom, common equity at the top) is also worth revisiting.';
+  var wrongs=Object.keys(answers).filter(function(q){return !answers[q].correct;});
+  if(wrongs.length>0){
+    var wr=document.getElementById('wrongReview');wr.style.display='block';
+    var wl=document.getElementById('wrongList');wl.innerHTML='';
+    wrongs.forEach(function(q){
+      var d=quizData[q];var sel=answers[q].selected;
+      var div=document.createElement('div');div.className='wrong-item';
+      div.innerHTML='<div class="wi-q">'+d.question+'</div><div class="wi-your">Your answer: '+sel+'. '+d.options[sel]+'</div><div class="wi-correct">Correct answer: '+d.correct+'. '+d.options[d.correct]+'</div><div class="wi-exp">'+d.explanation+'</div>';
+      wl.appendChild(div);
+    });
+  }
+}
+function retryQuiz(){
+  answers={};
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizForm').style.display='block';
+  document.getElementById('submitBtn').disabled=true;
+  document.querySelectorAll('.option').forEach(function(o){
+    o.className='option';o.style.pointerEvents='';
+    var block=o.closest('.question-block');
+    var qId='q'+(Array.from(document.querySelectorAll('.question-block')).indexOf(block)+1);
+    var isCorrect=o.getAttribute('data-correct')==='true';
+    o.onclick=function(){selectOption(o,qId,isCorrect);};
+  });
+  document.querySelectorAll('.feedback').forEach(function(f){f.style.display='none';});
+}
+</script>
+</body>
+</html>
