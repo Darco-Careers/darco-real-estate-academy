@@ -316,6 +316,14 @@ a.prog-dot:hover{transform:scale(1.15);}
 
   <p class="body-text"><strong>Discounted Cash Flow (DCF)</strong> — projects all future cash flows including the terminal sale value, then discounts them back to present value at the investor's required return (hurdle rate). More rigorous — captures growth, timing, and the ultimate disposition value. The result is a Net Present Value (NPV): if positive, the project meets the investor's return requirement.</p>
 
+  <div class="insight-box" style="margin:1.25rem 0;">
+    <h4>🧠 The Golden Rule of Present Value — Before You Read the Table</h4>
+    <p style="margin-bottom:0.75rem;">Don't let the PV factors in the table below intimidate you. A <strong>PV factor</strong> (Present Value Factor) is simply a math tool that adjusts for the <strong>Time Value of Money</strong> — the idea that a dollar today is worth more than a dollar tomorrow.</p>
+    <p style="margin-bottom:0.75rem;">Here's why: If someone promises you $100 today, it's worth exactly $100. But if they promise you $100 five years from now, that future promise is worth less to you today — because you have to wait, inflation erodes its purchasing power, and you miss out on investing it in the meantime.</p>
+    <p style="margin-bottom:0.75rem;">In real estate, we "discount" each year's future income backward to ask: <em>What is that future rent check worth in today's dollars?</em> The PV factor gets smaller the further out you go — because money that arrives later is worth less today than money that arrives sooner.</p>
+    <p><strong>The bottom line:</strong> If the sum of all those discounted future cash flows (the Total Present Value) is higher than what it costs to build the project today, you have a winner — a positive NPV. The table below shows exactly this calculation for Shortbread Lofts.</p>
+  </div>
+
   <div class="math-box">
     <h4>📊 Shortbread Lofts — DCF Valuation (Unlevered, r = 12%)</h4>
     <div class="math-row"><div class="math-label">Year 1 NOI</div><div class="math-value">$2,037,268</div><div class="math-note">PV factor 0.893 → $1,819,280</div></div>
@@ -445,6 +453,13 @@ a.prog-dot:hover{transform:scale(1.15);}
       <div class="ratio-desc">Measures how much of the property's value is financed by debt. A 70% LTV means $0.70 of debt for every $1.00 of value — leaving a 30% equity cushion. For development projects not yet built, lenders substitute LTC (Loan-to-Cost) instead. Tests whether the collateral protects the lender.</div>
       <div class="ratio-target">Typical max: 65–75% LTV · Shortbread Lofts: 67.7% ($21M ÷ $31M)</div>
     </div>
+    <div class="ratio-card">
+      <div class="ratio-abbr">LTC</div>
+      <div class="ratio-name">Loan-to-Cost Ratio</div>
+      <div class="ratio-formula">LTC = Loan Amount ÷ Total Development Cost</div>
+      <div class="ratio-desc">Used by construction lenders for projects not yet built — because there is no completed building to value yet. Measures how much of the total development budget (land + hard costs + soft costs) the lender will fund. If a project costs $10M to build and the bank offers 70% LTC, they write a $7M check — requiring the developer to supply $3M in equity. Tests whether the developer has enough skin in the game.</div>
+      <div class="ratio-target">Typical requirement: 60–75% LTC · replaces LTV during construction phase</div>
+    </div>
   </div>
 
   <p class="body-text">When both ratios are calculated, the lender underwrites to the <strong>lower</strong> of the two justified loan amounts — using the DSCR constraint (NOI supports this much debt) and the LTV constraint (collateral supports this much debt) independently, then taking the smaller result. This dual test protects lenders against both cash flow risk and collateral value risk simultaneously.</p>
@@ -469,6 +484,14 @@ a.prog-dot:hover{transform:scale(1.15);}
   <p class="body-text"><strong>4. Borrower creditworthiness</strong> — developer's assets, liabilities, other obligations. Construction loans are often recourse — the lender can pursue the developer's personal assets in default.</p>
   <p class="body-text"><strong>5. Construction team &amp; property management plan</strong> — contractor track record, on-time and on-budget history, management capability post-completion.</p>
   <p class="body-text"><strong>6. Financial viability</strong> — pro forma cash flow analysis, DCF, DSCR, and LTV — the quantitative confirmation of everything above.</p>
+
+  <div class="warning-box">
+    <p><strong>⚠️ Developer's Risk Check: Recourse vs. Non-Recourse Debt</strong><br><br>
+    When you sign for a development loan, you need to know exactly what you are personally liable for. This is not an abstract concept — it determines whether a failed project costs you the project or costs you everything.<br><br>
+    <strong>Recourse Debt (typical for construction loans):</strong> The lender requires a personal guarantee. If the project fails and the bank forecloses, they can pursue your personal bank accounts, vehicles, and other assets to recover the difference. This is the standard for most construction financing. High risk — requires maximum execution discipline.<br><br>
+    <strong>Non-Recourse Debt (typical for permanent/takeout loans):</strong> The loan is secured only by the property itself. If the project defaults, the lender takes the building — but cannot touch your personal assets beyond the equity you have in the deal.<br><br>
+    <strong>The developer's goal:</strong> Get the project built, leased up, and stabilized as quickly as possible — then transition from the risky recourse construction loan into a safe non-recourse permanent loan. Every month you remain in the construction loan phase is a month your personal assets are exposed.</p>
+  </div>
 
   <div class="callout">
     <p>"In all financing decisions, it is helpful if the developer is able to stand in the lender's or investor's shoes. This perspective enables the developer to approach the right sources of capital with the right requests." — Miles, Netherton &amp; Schmitz</p>
@@ -519,6 +542,10 @@ a.prog-dot:hover{transform:scale(1.15);}
       <div class="mg-term" data-mg="LTV loan to value ratio collateral equity cushion loan amount property value">
         <div class="mg-name">Loan-to-Value Ratio <span class="mg-abbr">LTV</span></div>
         <div class="mg-def">Calculated as Loan Amount ÷ Property Value. Measures what percentage of the property's value is financed by debt — the inverse of the equity cushion. A 70% LTV means 30% equity cushion protects the lender. For development projects not yet built, lenders use Loan-to-Cost (LTC) instead. Typical maximum: 65–75%. When a lender underwrites using both DSCR and LTV, the loan is sized to the lower of the two justified amounts.</div>
+      </div>
+      <div class="mg-term" data-mg="loan to cost LTC construction lender development budget total cost equity">
+        <div class="mg-name">Loan-to-Cost Ratio <span class="mg-abbr">LTC</span></div>
+        <div class="mg-def">Calculated as Loan Amount ÷ Total Development Cost. Used by construction lenders for unbuilt projects — because there is no completed building to value yet. Measures how much of the total development budget (land + hard costs + soft costs) the lender will fund. A 70% LTC on a $10,000,000 project means the lender provides $7,000,000 in debt, requiring the developer to supply $3,000,000 in equity. Typical requirement: 60–75% LTC.</div>
       </div>
       <div class="mg-term" data-mg="triple net NNN lease tenant pays taxes insurance maintenance landlord">
         <div class="mg-name">Triple Net Lease <span class="mg-abbr">NNN</span></div>
@@ -661,6 +688,28 @@ a.prog-dot:hover{transform:scale(1.15);}
         <h4>Questions to Review</h4>
         <div id="wrongList"></div>
       </div>
+    </div>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="video-card" style="margin-top:2rem;">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/b6sxYOFnQlU" title="Multifamily Ground-Up Development Model — Back of Envelope Walkthrough" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-info">
+      <span class="video-badge">Core Overview</span>
+      <h4>Multifamily Ground-Up Development Model — Back of Envelope Walkthrough</h4>
+      <p>Marina (25 years CRE experience) walks through a one-page back-of-envelope model on a 260-unit ground-up multifamily project. Covers loan-to-cost ratio, interest during construction, hard costs vs. soft costs, contingency vs. escalation, and the implied land value calculation — backing into what you can afford to pay for land based on your target yield.</p>
+    </div>
+  </div>
+  <div class="video-card" style="margin-top:0.75rem;">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/86M0d9t8afs" title="Cap Rates Explained — The Three Drivers Every Developer Must Know" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-info">
+      <span class="video-badge supp">Supplemental · Financial Concepts</span>
+      <h4>Cap Rates Explained — The Three Drivers Every Developer Must Know</h4>
+      <p>Break Into CRE breaks down the three drivers of cap rates: income upside, the risk-free rate and interest rates, and risk of capital loss. Includes a concrete example showing how a 100 basis point rise in interest rates drops IRR from 15% to 13% and requires a 10% price reduction to maintain target returns — essential context for understanding how financing costs affect deal viability.</p>
     </div>
   </div>
 
