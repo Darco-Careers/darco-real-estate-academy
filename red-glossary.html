@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RED Track Glossary — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#2A2A2A;--char-mid:#3D3D3D;--char-light:#555;--char-pale:#F0EEEC;
+  --orange:#D4621A;--orange-mid:#E07030;--orange-light:#F08C50;--orange-pale:#FDF0E8;
+  --gold:#C9A84C;--gold-pale:#FBF5E6;
+  --cream:#FAF8F3;--cream-dark:#F0EBE0;
+  --text-dark:#1A1A18;--text-mid:#4A4A42;--text-light:#8A8A7A;
+  --white:#FFFFFF;--border:rgba(42,42,42,0.1);
+  --shadow-card:0 2px 16px rgba(42,42,42,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+
+nav{background:var(--char);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:var(--orange-light);letter-spacing:0.5px;font-weight:300;}
+.nav-back{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.88);padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);text-decoration:none;font-size:13px;font-weight:500;}
+
+.gloss-hero{background:linear-gradient(135deg,#1A1A1A 0%,var(--char) 55%,#383838 100%);padding:3.5rem 2.5rem 3rem;position:relative;overflow:hidden;}
+.gloss-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(212,98,26,0.1) 0%,transparent 70%);pointer-events:none;}
+.gloss-hero h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;}
+.gloss-hero p{font-size:15px;color:rgba(255,255,255,0.65);max-width:560px;}
+.hero-stats{display:flex;gap:2.5rem;margin-top:1.5rem;}
+.hero-stat .num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--orange-light);}
+.hero-stat .lbl{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;}
+
+.gloss-body{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+
+.search-wrap{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:0.75rem 1.25rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;box-shadow:var(--shadow-card);}
+.search-wrap input{border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text-dark);flex:1;background:transparent;}
+.search-wrap input::placeholder{color:var(--text-light);}
+.search-icon{color:var(--text-light);flex-shrink:0;}
+
+.alpha-nav{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:2rem;}
+.alpha-link{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:var(--orange);color:var(--white);font-weight:700;font-size:13px;text-decoration:none;transition:all 0.2s;}
+.alpha-link:hover{background:var(--orange-mid);transform:scale(1.1);}
+.alpha-disabled{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:var(--cream-dark);color:var(--text-light);font-size:13px;}
+
+.letter-group{margin-bottom:2.5rem;}
+.letter-header{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--orange);border-bottom:2px solid var(--orange-pale);padding-bottom:0.4rem;margin-bottom:1.25rem;}
+
+.gloss-term{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:0.75rem;box-shadow:var(--shadow-card);transition:box-shadow 0.2s;}
+.gloss-term:hover{box-shadow:0 4px 20px rgba(42,42,42,0.12);}
+.gloss-term.hidden{display:none;}
+.gloss-name{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+.gloss-mod{font-size:11px;font-weight:600;color:var(--orange);background:var(--orange-pale);padding:2px 8px;border-radius:8px;letter-spacing:0.3px;}
+.gloss-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+.no-results{text-align:center;padding:3rem;color:var(--text-light);font-size:15px;display:none;}
+
+.back-bar{background:var(--white);border-top:1px solid var(--border);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.back-bar a{color:var(--orange);text-decoration:none;font-weight:600;font-size:14px;}
+
+@media(max-width:640px){
+  .gloss-hero{padding:2.5rem 1.5rem 2rem;}
+  .gloss-hero h1{font-size:1.6rem;}
+  .gloss-body{padding:1.75rem 1.25rem;}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap;}
+  nav{padding:0 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="real-estate-development.html">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Your Complete Real Estate Career Journey</div>
+    </div>
+  </a>
+  <a href="real-estate-development.html" class="nav-back">← Back to Track</a>
+</nav>
+
+<div class="gloss-hero">
+  <h1>RED Track — Full Glossary</h1>
+  <p>Every key term from all 8 Real Estate Development modules, searchable in one place. Terms are organized alphabetically with a source module tag for easy reference.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">86</div><div class="lbl">Terms Defined</div></div>
+    <div class="hero-stat"><div class="num">8</div><div class="lbl">Modules Covered</div></div>
+    <div class="hero-stat"><div class="num">A–Z</div><div class="lbl">Alphabetical Index</div></div>
+  </div>
+</div>
+
+<div class="gloss-body">
+
+  <div class="search-wrap">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="glossSearch" placeholder="Search any term or definition..." oninput="filterGloss(this.value)">
+  </div>
+
+  <div class="alpha-nav">
+    <a href="#letter-A" class="alpha-link">A</a><a href="#letter-B" class="alpha-link">B</a><a href="#letter-C" class="alpha-link">C</a><a href="#letter-D" class="alpha-link">D</a><a href="#letter-E" class="alpha-link">E</a><a href="#letter-F" class="alpha-link">F</a><a href="#letter-G" class="alpha-link">G</a><a href="#letter-H" class="alpha-link">H</a><a href="#letter-I" class="alpha-link">I</a><span class="alpha-disabled">J</span><span class="alpha-disabled">K</span><a href="#letter-L" class="alpha-link">L</a><a href="#letter-M" class="alpha-link">M</a><a href="#letter-N" class="alpha-link">N</a><a href="#letter-O" class="alpha-link">O</a><a href="#letter-P" class="alpha-link">P</a><span class="alpha-disabled">Q</span><a href="#letter-R" class="alpha-link">R</a><a href="#letter-S" class="alpha-link">S</a><a href="#letter-T" class="alpha-link">T</a><a href="#letter-U" class="alpha-link">U</a><a href="#letter-V" class="alpha-link">V</a><span class="alpha-disabled">W</span><span class="alpha-disabled">X</span><span class="alpha-disabled">Y</span><a href="#letter-Z" class="alpha-link">Z</a>
+  </div>
+
+  <div id="glossEntries">
+  <div class="letter-group" id="letter-A">
+    <div class="letter-header">A</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Asset Management <span class="gloss-mod">Module 1</span></div>
+      <div class="gloss-def">The ongoing stewardship of a completed development project — including re-leasing, reconfiguring, remodeling, and remarketing space to extend the economic life and enhance the performance of the asset. Stage 8 of the eight-stage model, and a career in itself.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-B">
+    <div class="letter-header">B</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Back-of-the-Envelope Pro Forma <span class="gloss-mod">Module 4</span></div>
+      <div class="gloss-def">A rapid, rough comparison of estimated project value versus estimated project cost — used at stage one to quickly evaluate whether an idea has enough potential to justify further investment. Calculated using rough estimates of rent per square foot, operating expenses, NOI, and a market cap rate. The primary purpose is triage: kill bad ideas early and cheaply, before committing real money to stage two.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Bid (Fixed Price) Contract <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">A construction contract where the developer solicits competing bids from multiple qualified contractors based on complete plans and specifications, and selects the lowest qualified bid. Results in a fixed commitment price. Common for government projects and standard designs where specifications are firm before bidding begins. Primary risk: the contractor delivers exactly what was specified — change orders are expensive and contentious.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Bonding (Performance &amp; Payment) <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">A surety company's guarantee provided by or on behalf of the contractor. A performance bond ensures project completion regardless of contractor default. A payment bond ensures valid claims for labor and materials will be paid (protecting subcontractors and preventing mechanic's liens). Performance bonds are more expensive but provide more protection. Government contracts typically require bonding. Most experienced developers believe calling a bond means losing time and money even in the best case — it is a backstop, not a cost-free solution.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Branding <span class="gloss-mod">Module 7</span></div>
+      <div class="gloss-def">Creating a project identity that sets consistent expectations and builds recognition across multiple properties or projects. A brand is "a promise" — the commitment that every encounter with that brand will deliver the same quality of experience. In real estate, branding typically includes consistent signage and identification materials, a standard amenity package, consistent management quality, and a consistent leasing experience. Enables buyers familiar with the brand in one market to have confidence in projects in other markets.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">By-Right Approval <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">An approval granted administratively — without public hearings or discretionary review — when a proposed development is fully consistent with existing zoning and regulations. By-right projects are faster, more predictable, and carry significantly less entitlement risk than discretionary projects.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-C">
+    <div class="letter-header">C</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Capitalization Rate Cap Rate <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">The ratio of a property's NOI to its market value — expressed as: Cap Rate = NOI ÷ Value. Alternatively used to derive value: Value = NOI ÷ Cap Rate. Reflects the market's assessment of a property's growth prospects and investment risk relative to alternatives. Lower cap rates indicate lower perceived risk (investors pay more for each dollar of income). Cap rates vary by property type, location, quality, and market cycle position.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Capital Program <span class="gloss-mod">Module 8</span></div>
+      <div class="gloss-def">A ten-year (or longer) schedule of planned capital expenditures for a property's major systems: roof, HVAC, elevators, parking structures, windows, technology infrastructure. Created at the time of acquisition or transfer. Scheduled preventive maintenance is almost always less costly and less disruptive to tenants than crisis-driven emergency repairs. Managers must be careful not to over-improve and drain cash flow, but a property below market standard loses tenants and value.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Capital Stack <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">The layered structure of financing sources for a real estate project, from lowest risk/lowest return (senior debt at the bottom) to highest risk/highest return (common equity at the top). Each layer has a different claim priority on cash flows and collateral. In order from bottom to top: senior debt, mezzanine debt, preferred equity, common equity. The higher the layer, the later it gets paid — and the higher the required return to compensate for that risk.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Charrette <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">A collaborative workshop that engages community stakeholders in shaping the design of a proposed project. Intended to create shared ownership of solutions and defuse adversarial confrontations. Uses skilled facilitators, multiple design professionals, and team-based problem-solving. Risk: can raise false expectations about participants' influence if not carefully managed.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">City Beautiful Movement <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">An urban planning and design movement launched by the 1893 Chicago Columbian Exposition that promoted monumental civic architecture, public parks, and grand boulevards. Led by figures like Daniel Burnham and the Olmsted brothers, it shaped the design of public spaces in American cities for decades and established the concept of the planned urban environment.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Commercial Mortgage-Backed Securities CMBS <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">Fixed-income securities collateralized by pools of commercial real estate mortgages — similar to corporate bonds, rated by third-party agencies (AAA to non-rated), and sold in public bond markets. Brought greater liquidity and competition to commercial real estate permanent lending. CMBS volumes peaked at $230B in 2007, collapsed to under $3B in 2009 during the Great Recession, and recovered to ~$90B in 2013. Less flexible than life insurance company loans — CMBS loans are standardized and difficult to modify once securitized.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Construction Loan <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">Short-term financing (typically 12–24 months) that funds the actual construction of a project. Starts with a zero balance; the lender funds "draws" as construction progresses. Interest typically accrues during construction rather than requiring periodic payments. Commercial banks are the primary source. The construction lender relies on a permanent loan "takeout" as its exit. Floating rate (tied to SOFR or similar). Higher risk premium than permanent debt despite shorter maturity.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Contract Negotiation Stage 4 <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">The fourth stage of the development process — where the developer formalizes business arrangements with all participants: permanent lender, construction lender, architect, general contractor, and major tenants. All contracts must be internally consistent — conflicting terms between contracts create serious risk. The feasibility study serves as the primary negotiating tool. Stage four ends when all contracts are negotiated but not yet signed.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-D">
+    <div class="letter-header">D</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Debt Service Coverage Ratio DSCR <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">Calculated as NOI ÷ Annual Debt Service. Measures how much NOI is generated per dollar of debt service — the cushion between the property's income and its mortgage payments. The most important single metric for lenders evaluating a development loan. Typical minimum: 1.20–1.60. A DSCR of 2.02 (as in Shortbread Lofts) means $2.02 of NOI for every $1.00 of debt service — a very strong position.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Developer <span class="gloss-mod">Module 1</span></div>
+      <div class="gloss-def">The entrepreneurial leader of a development project — simultaneously a visionary, promoter, negotiator, manager, risk manager, and investor. Developers make things happen by assembling teams, securing capital, and managing the entire development process from concept through completion.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Development Team <span class="gloss-mod">Module 1</span></div>
+      <div class="gloss-def">The full group of professionals assembled to execute a development project — including architects, engineers, landscape architects, land planners, general contractors, environmental consultants, market research analysts, construction lenders, permanent lenders, joint venture partners, attorneys, accountants, and property managers.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Discounted Cash Flow Analysis DCF <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">A multi-period valuation method that projects all expected future cash flows (annual NOI plus terminal sale value) and discounts them back to present value at the investor's required rate of return. Produces a Net Present Value (NPV): positive NPV means the project exceeds the required return; negative NPV means it falls short. More rigorous than direct capitalization because it captures growth, timing, and ultimate disposition value across the full holding period.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Discretionary Approval <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">An approval that requires elected officials to exercise judgment — even for projects that technically comply with regulations. Subject to public hearings, political considerations, and community opposition. Discretionary approvals carry the highest entitlement risk and are where most development projects succeed or fail politically.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Draw Request <span class="gloss-mod">Module 7</span></div>
+      <div class="gloss-def">The formal process by which a developer requests funds from the construction lender to pay for completed construction work. Typically monthly: subcontractors submit invoices → general contractor compiles and verifies → project manager certifies → financial officer combines hard and soft costs and submits to lender → lender inspects and funds → developer pays subcontractors net of retainage. The draw process is the primary financial control mechanism during construction.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Due Diligence <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">The comprehensive investigation of all factors that could affect a site's suitability, development feasibility, and legal status — conducted before committing to purchase or full project commitment. Covers physical (geology, soils, hazardous materials, wetlands, biology), legal (title, easements, liens), regulatory (zoning, entitlements, growth controls), and political (public opinion, opposition groups) dimensions. The goal is to identify fatal flaws before — not after — significant capital is committed.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-E">
+    <div class="letter-header">E</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Effective Rent <span class="gloss-mod">Module 8</span></div>
+      <div class="gloss-def">The actual net income from a lease after deducting all associated costs: brokerage commissions, rental concessions (free rent periods), tenant improvement allowances, space planning costs, moving allowances, and legal fees. Effective rent is the correct measure of leasing performance — not absolute asking rent. Professional property management tracks effective rents, not asking rents, because the difference can be substantial in competitive markets where concessions are common.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Eight-Stage Model <span class="gloss-mod">Module 1</span></div>
+      <div class="gloss-def">The standard sequential framework for real estate development: (1) Idea Inception, (2) Idea Refinement, (3) Feasibility Study, (4) Contract Negotiation, (5) Formal Commitment, (6) Construction, (7) Completion and Formal Opening, (8) Property/Asset/Portfolio Management. Not linear — developers constantly revisit earlier stages.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Eminent Domain <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">The constitutional power of government to take private property for public use, with payment of just compensation. The Fifth Amendment establishes both the power and its limits. The 2005 Supreme Court case Kelo v. City of New London expanded the definition of "public use" to include economic development — generating significant controversy and leading many states to adopt restrictions on eminent domain use.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Enterprise Concept (Graaskamp) <span class="gloss-mod">Module 4</span></div>
+      <div class="gloss-def">Graaskamp's argument that buildings should be conceived and managed as operating businesses — not merely as physical assets. Like businesses, buildings must continually redefine their market positions, respond to evolving tenant demands, and be managed aggressively to remain viable. The enterprise concept is the intellectual foundation for treating real estate development as value creation rather than mere construction.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Entitlement Risk <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">The risk that a project will fail to obtain necessary government approvals — despite complying with regulations — due to political opposition, community resistance, staff recommendations, or changing elected officials. The highest-risk phase of the development process. Mitigated through proactive public outreach, early stakeholder engagement, and understanding the political landscape before committing significant resources.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Entitlements <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">The rights to use and develop property — approvals granted by all levels of government (local, state, federal) that authorize a specific development on a specific piece of land. Without entitlements, no project can legally proceed. They include zoning compliance, environmental clearance, subdivision approvals, and all other required government authorizations.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Exactions <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">Financial or other conditions imposed on a developer as a condition of project approval. Two main forms: (1) scheduled fees collected by agencies for infrastructure, schools, transportation, and utilities; (2) mitigation exactions — monetary or in-kind contributions to offset a project's specific impacts. Must bear a rational nexus to the project's actual impacts on public facilities.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Expense Stop <span class="gloss-mod">Module 7</span></div>
+      <div class="gloss-def">A lease provision in which the landlord pays operating expenses up to a defined stop (typically year-one per-square-foot operating costs), and all operating expense increases above the stop are passed through to the tenant. Most common in office leases. Protects the landlord from inflation in operating costs while giving the tenant some initial certainty. As expenses rise over time, more of the cost burden shifts to tenants — improving the landlord's net income position in later years.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-F">
+    <div class="letter-header">F</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Fast-Track Construction <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">A construction approach where work proceeds in parallel with design — excavation may begin before interior design is complete, structure may begin before all final drawings are finished. Reduces project timeline and interest carrying costs. Works well when coordination is strong and specifications are largely stable. When coordination breaks down or designs change mid-construction, it can be catastrophic — the contractor's leverage increases dramatically once work has begun on incomplete specifications.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Feasibility as an Optimization Tool <span class="gloss-mod">Module 4</span></div>
+      <div class="gloss-def">Miles argues that the feasibility study should not merely determine whether a project is feasible — it should determine whether it is the best possible plan. By using sensitivity analysis to test every major decision and significant project feature, the developer can move from "this is acceptable" to "this is optimal." The optimization mindset distinguishes sophisticated developers from those who simply confirm what they want to hear.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Feasibility Study <span class="gloss-mod">Module 1</span></div>
+      <div class="gloss-def">A formal analysis that compares the estimated value of a proposed project with its estimated costs. Simply put: a project is feasible if its estimated value exceeds its estimated costs. Value is a function of projected cash flow and a market-derived capitalization or discount rate.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Federal Housing Administration FHA <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">Created in 1934 to stabilize the collapsed residential finance market. The FHA revolutionized housing finance by introducing long-term (20–25 year) self-amortizing mortgages, high loan-to-value ratios (80–90%), standardized underwriting, and mortgage insurance that reduced lender risk. The FHA model enabled the postwar suburban housing boom and transformed homeownership from a privilege to a mass-market reality.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Fee Developer vs. Speculative Developer <span class="gloss-mod">Module 1</span></div>
+      <div class="gloss-def">A fee developer is hired by a client to manage a project from concept to completion, receiving a fee for services. A speculative developer owns the equity — bearing both the downside risk and upside profit potential. Most private developers operate on a speculative basis.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Fee Simple <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">The most complete form of private property ownership — including the right to use, sell, lease, or convey the property to another party. The creation of fee simple ownership generated the vibrant real estate market that attracted investment capital and enabled the development of the American built environment.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-G">
+    <div class="letter-header">G</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Garden City <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">A planned community concept articulated by Ebenezer Howard in 1898 that combined residential, commercial, industrial, and agricultural land uses within a defined greenbelt. The first garden city — Letchworth, England — was developed in 1903. American expressions included Radburn, NJ (1928) and J.C. Nichols's Country Club District in Kansas City. The garden city concept is the intellectual ancestor of the modern master-planned community.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">General Plan (Comprehensive Plan) <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">The highest-level policy document governing land use in a jurisdiction — a long-term statement of goals for up to 20 years. Sets the framework for all other local land use regulations. A political document created and approved by elected officials. Covers land use, circulation, housing, natural resources, recreation, and safety. Amendments require the same extensive process as creating the original plan.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">GI Bill (Servicemen's Readjustment Act, 1944) <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">Federal legislation that established VA home loan guarantees for returning WWII veterans, enabling homeownership with little or no down payment. Combined with FHA financing, the GI Bill fueled the postwar housing boom — 15 million units built in the 1950s — and the mass suburbanization of America.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Graaskamp's Definition of Feasibility <span class="gloss-mod">Module 4</span></div>
+      <div class="gloss-def">"A real estate project is 'feasible' when the real estate analyst determines that there is a reasonable likelihood of satisfying explicit objectives when a selected course of action is tested for fit to a context of specific constraints and limited resources." — James A. Graaskamp, 1972. The most important definition in the feasibility chapter: feasibility is not certainty, it applies to all participants' objectives, it tests a specific course of action (not an abstract idea), and it must work within actual — not theoretical — constraints and resources.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Ground Lease <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">A long-term lease of land under which the tenant pays ground rent and can build on and improve the property. The landlord retains ownership of the land. Trinity Church in New York City accumulated ground lease income from 1,000 city lots starting in the 1700s. Several of New York's most important buildings still sit on ground-leased land today.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-H">
+    <div class="letter-header">H</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Homestead Act (1862) <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">Federal legislation that granted 160 acres of public land to settlers who lived on and improved it for five years. Along with other homesteading programs, the government gave away nearly 300 million acres of public land to private owners — establishing private land ownership as the foundation of American real estate markets.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-I">
+    <div class="letter-header">I</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Idea Inception Stage 1 <span class="gloss-mod">Module 4</span></div>
+      <div class="gloss-def">The first stage of the development process — the least mechanical and most creative. The developer identifies an unmet market need and generates the idea for a project that could fill it. Stage one ends when the developer tests the idea with a back-of-the-envelope pro forma. Most ideas generated at this stage are never pursued — and that is the system working correctly.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Idea Refinement Stage 2 <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">The second stage of the development process — where the developer moves from a promising general idea to a specific, physically grounded concept tied to a specific piece of land. Involves simultaneous work across site selection, competitive analysis, government engagement, initial design, and team assembly. Ends when the developer has enough confidence in the project's feasibility to commit resources to the formal feasibility study (stage three) or decides to abandon the idea.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Internal Rate of Return IRR <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">The annual rate of return that a stream of cash flows generates over the life of a project, relative to the initial investment. Investors compare the expected IRR to their required rate of return (hurdle rate): if IRR exceeds the hurdle rate for the project's risk level, the investment meets the return requirement. Unlike NPV (which is dollar-denominated), IRR is a percentage — useful for comparing projects of different sizes.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-L">
+    <div class="letter-header">L</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Land Residual Analysis <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">A method of determining how much a site is worth by calculating: completed development value minus all construction and soft costs. The residual — what's left after paying for everything to build the project — represents the maximum supportable land price. Prevents developers from overpaying for land relative to the development value the site can support. The fundamental discipline of site pricing.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Load Factor <span class="gloss-mod">Module 7</span></div>
+      <div class="gloss-def">In office buildings, the ratio of common area to rentable area — the amount by which a tenant's rentable square footage (what they pay rent on) exceeds their usable square footage (what they actually occupy). A 20% load factor means a tenant occupying 8,000 usable square feet pays rent on 9,600 rentable square feet — the extra 1,600 represents their proportionate share of lobbies, hallways, restrooms, and other common areas. Load factor is a key lease negotiation point — lower load factors mean the tenant gets more "real" space for the same rent.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Loan-to-Cost Ratio LTC <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">Calculated as Loan Amount ÷ Total Development Cost. Used by construction lenders for unbuilt projects — because there is no completed building to value yet. Measures how much of the total development budget (land + hard costs + soft costs) the lender will fund. A 70% LTC on a $10,000,000 project means the lender provides $7,000,000 in debt, requiring the developer to supply $3,000,000 in equity. Typical requirement: 60–75% LTC.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Loan-to-Value Ratio LTV <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">Calculated as Loan Amount ÷ Property Value. Measures what percentage of the property's value is financed by debt — the inverse of the equity cushion. A 70% LTV means 30% equity cushion protects the lender. For development projects not yet built, lenders use Loan-to-Cost (LTC) instead. Typical maximum: 65–75%. When a lender underwrites using both DSCR and LTV, the loan is sized to the lower of the two justified amounts.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-M">
+    <div class="letter-header">M</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Management Triad <span class="gloss-mod">Module 8</span></div>
+      <div class="gloss-def">The three interrelated but distinct management functions responsible for maximizing real estate value after development: property management (on-site, daily operations, primary link with tenants), asset management (off-site, multiple properties, strategic direction, hold-or-sell analysis), and portfolio management (investment strategy, acquisitions and dispositions, investor reporting). In small portfolios one person may perform all three roles; in large institutional portfolios, separate specialized teams handle each function.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Marketing Vision <span class="gloss-mod">Module 7</span></div>
+      <div class="gloss-def">The developer's interpretation of the project concept for the public — a compelling image or statement that captures the project's location, experience, and differentiation in a way that resonates with the target market. Becomes the benchmark for all marketing decisions: tactics that don't advance the vision don't belong in the budget. A successful vision can be extended into naming, branding, advertising, signage, and the design of the marketing environment.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Market Study <span class="gloss-mod">Module 4</span></div>
+      <div class="gloss-def">The analytical foundation of the feasibility study — examining national, regional, local, and neighborhood trends to quantify demand for the proposed development. The market study concludes with a projected absorption schedule: how many units at what price over what time period will the target market absorb? The revenue projections in the pro forma are only as reliable as the underlying market study.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Mechanic's Lien <span class="gloss-mod">Module 7</span></div>
+      <div class="gloss-def">A lien on a property that arises when a contractor or subcontractor has performed work but not been paid. Critical legal risk: under most state laws, mechanic's liens take effect from the date the work was performed — not when the lien was filed. An unpaid subcontractor can therefore claim priority over the construction lender's previously recorded first lien. Lenders protect against this by requiring lien waivers from subcontractors in exchange for each draw payment, sometimes disbursing through title companies.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-N">
+    <div class="letter-header">N</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Negotiated Contract (GMP) <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">A construction contract negotiated directly with one general contractor — typically resulting in a "not-to-exceed" or guaranteed maximum price (GMP) with a savings sharing provision. Common for complex projects or when the developer has established relationships with qualified contractors. The developer and contractor may share savings if actual cost comes in below the GMP. Primary risk: less price certainty than a bid contract; contractor leverage increases if work begins before final specifications are complete.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Net Operating Income NOI <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">The income a property generates from operations — after all operating expenses (taxes, maintenance, payroll, insurance, management fees) but before debt service, depreciation, and capital expenditures. The universal standard for measuring property productivity and comparing properties across different ownership structures. NOI is the numerator in the cap rate valuation formula: Value = NOI ÷ Cap Rate.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">NIMBYism <span class="gloss-mod">Module 1</span></div>
+      <div class="gloss-def">"Not in my backyard" — the opposition of community members to a proposed development near their homes or neighborhood. A pervasive reality in development that requires developers to invest significantly in community outreach, stakeholder engagement, and project design that responds to community concerns.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-O">
+    <div class="letter-header">O</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Option Agreement <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">A contract giving the developer the right (but not obligation) to purchase land at an agreed price during a defined period. The primary risk management tool for site control during stage two — the developer advances entitlements and feasibility work without committing full purchase capital. If the project proves infeasible, only the option payment is lost. The option becomes a full contract of sale if exercised, so it must address all title transfer requirements, escape clauses, and financing conditions at the time it is drafted.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-P">
+    <div class="letter-header">P</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Percentage Rent (Overage Rent) <span class="gloss-mod">Module 7</span></div>
+      <div class="gloss-def">A retail lease structure in which the tenant pays base rent plus a percentage of gross sales that exceed a specified threshold called the <strong>breakpoint</strong>. Aligns the landlord's income with the tenant's sales performance and creates mutual incentives to maximize traffic. Example: $50,000/year base rent + 5% of sales over $1,000,000 (the breakpoint). If the tenant generates $1.2M in sales, the landlord receives $50,000 + $10,000 = $60,000. Below the $1,000,000 breakpoint, only base rent is paid. Primarily used in retail leases, particularly for inline tenants in shopping centers.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Permanent Loan (Takeout Loan) <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">Long-term debt financing based on a completed project's stabilized income stream — typically 10–30 years. "Takes out" (pays off) the construction loan at completion. Sized using DSCR and LTV ratios against projected stabilized NOI. Life insurance companies are the historical primary source for larger loans; CMBS provides significant capacity in permanent financing. Fixed rate. The developer typically arranges the permanent loan commitment before obtaining the construction loan.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Potential Gross Income PGI <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">The rent a property could generate if it were fully occupied with no discounts — the theoretical maximum revenue. Includes contract rent (rent per square foot × occupied square feet), rent escalations, and expense reimbursements by tenants. The starting point of the NOI calculation — before vacancy, collection loss, or any deductions.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Primary vs. Spin-Off Employment <span class="gloss-mod">Module 1</span></div>
+      <div class="gloss-def">Primary employment results in the export of goods and services from a region (Boeing, Microsoft). Spin-off employment supports primary employment (banks, barbershops, architects). Without growth in primary employment, there is little demand for new real estate development.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Property Management Contract <span class="gloss-mod">Module 8</span></div>
+      <div class="gloss-def">The formal agreement between property owner and management firm specifying: services provided and who pays for them, authority to hire employees and authorize expenditures, record-keeping responsibilities, insurance obligations, advertising management, and compensation. The progressively more common industry standard is a contract terminable by the owner without cause on 30–60 days' notice — giving the owner rapid remediation capability while ensuring the manager's continuous attention.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Property Strategic Plan <span class="gloss-mod">Module 8</span></div>
+      <div class="gloss-def">The asset management document that defines the direction for a property: analyze problems and opportunities, revise objectives, consider alternatives (hold/sell, reposition, change use, change tenant mix, change manager), create a revised pro forma, and implement through staffing, marketing, operating budget, and capital program. Should be reviewed at least annually. The discipline of asking "if we didn't already own this asset, would we acquire it today?" prevents the inertia that causes well-located assets to underperform.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Public/Private Partnership P3 <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">A development venture combining public sector resources (land, approvals, public financing, community legitimacy) with private sector resources (capital, development expertise, market knowledge). Each partner shares risks and benefits. Most effective for complex projects in challenging markets — brownfields, waterfront districts, affordable housing, transit-oriented development — where neither sector could succeed alone.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Punch List <span class="gloss-mod">Module 7</span></div>
+      <div class="gloss-def">A list of incomplete or defective construction items that must be corrected before the project can be considered substantially complete and the contractor receives final payment (including release of retained retainage). The developer, architect, and lender all contribute to the punch list. The punch list is the final quality control checkpoint between construction and occupancy — items that appear minor during construction can become expensive disputes after tenants move in.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-R">
+    <div class="letter-header">R</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Real Estate Cycle <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">The recurring pattern of expansion, overbuilding, correction, and recovery that has characterized American real estate markets since the 1780s. Real estate markets typically peak before the broader economy and bottom before the broader economy. Understanding cycle position is one of the most critical skills in development — overbuilding during expansion and buying during correction are the two great levers of developer wealth and developer ruin, respectively.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Real Estate Development <span class="gloss-mod">Module 1</span></div>
+      <div class="gloss-def">The continual reconfiguration of the built environment to meet society's needs. It starts with an idea and ends when tenants or owner-occupants occupy the physical space created by the development team. Each project is a separate business entity employing land, labor, and capital.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Release Clause <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">A contract provision allowing the developer to obtain clear title to a portion of the land by making a specified partial payment against the seller's note. Enables phased development — the developer can start building on a released portion while still owing the seller for unreleased portions. The release price is typically set higher than the pro-rata land price to compensate the seller for reduced collateral on the remaining balance.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Retainage <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">A percentage of each construction draw payment withheld from the general contractor until completion of the project. Protects the developer and lender against incomplete or defective work — the contractor has a financial incentive to finish properly and on time. The retained funds are released upon satisfactory completion and final lien waivers. Retainage is standard in construction contracts and explicitly addressed in construction loan agreements.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-S">
+    <div class="letter-header">S</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Sensitivity Analysis <span class="gloss-mod">Module 4</span></div>
+      <div class="gloss-def">A method of testing a financial model by systematically varying key assumptions — rent levels, construction costs, absorption pace, cap rates, interest rates — to understand how the project's financial outcome changes. Transforms the feasibility study from a static snapshot into a dynamic planning tool. Also reveals which assumptions the project is most sensitive to — those that deserve the greatest scrutiny and risk mitigation.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Situs Evolution <span class="gloss-mod">Module 8</span></div>
+      <div class="gloss-def">Miles' concept, illustrated by the Europa Center 20-year arc, that a property's competitive position relative to its surrounding market does not remain fixed — the market moves around the property. A location that was the best in town in 1987 may face superior competition from newer developments by 2007, even with excellent management. "Basis may be forever, but situs evolves." Developers must design for adaptation; asset managers must continuously reassess competitive position.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Situs Theory (Graaskamp) <span class="gloss-mod">Module 4</span></div>
+      <div class="gloss-def">James Graaskamp's framework for evaluating the three-way fit required for any development: the site must fit its location (physical, regulatory, and market characteristics), the location must fit the target tenant (who must want to be there and pay for it), and the tenant must fit the financing (the rents or sales prices they will pay must support the required capital structure). A failure on any one fit undermines the entire project.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Specific Plan / Planned Unit Development PUD <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">A more detailed regulatory document covering a specific geographic area, providing greater flexibility than standard zoning — allowing mixed land uses, clustering to preserve open space, and negotiated mitigation measures. Can be initiated by a developer or a government entity. The vehicle through which creative, mixed-use development solutions are achieved.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Stabilization <span class="gloss-mod">Module 8</span></div>
+      <div class="gloss-def">The point at which a project is physically complete and its occupancy rate represents a fair share of the market. Before stabilization, the developer remains actively involved. At stabilization, full responsibility transfers to property and asset management. The time to stabilization varies by property type, market conditions, asset quality, and management quality. Some poorly conceived projects go into decline before ever reaching stabilization.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Streetcar Suburbs <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">Residential subdivisions that developed along electric streetcar lines in the late 19th and early 20th centuries, enabling middle-class workers to live outside the crowded city center and commute to work. Henry Huntington's Pacific Electric Railway in Southern California — 1,300 miles of track — created the suburban form of the entire Los Angeles region.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Subordination Clause <span class="gloss-mod">Module 6</span></div>
+      <div class="gloss-def">A contractual provision in which the seller agrees to move from first lien to second lien position — allowing a construction loan to take priority as the first lien on the property. This makes the seller's position economically similar to equity (paid after the bank). Sellers require higher compensation for subordinating. For the developer, subordination significantly enhances the ability to obtain construction financing because the construction lender gets full first-lien security on the property even though the developer hasn't yet paid the full purchase price.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">SWOT Analysis <span class="gloss-mod">Module 7</span></div>
+      <div class="gloss-def">A benchmarking process used to inventory all internal and external factors affecting a development's market position — positive and negative. Strengths (internal attributes that differentiate the project) and Weaknesses (internal limitations that hurt marketability) are within the developer's control. Opportunities (external market conditions that favor the project) and Threats (external conditions that could undermine it) are outside the developer's control but must be addressed in the marketing strategy. SWOT analysis is the foundation of the strategic marketing plan.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-T">
+    <div class="letter-header">T</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Tax Increment Financing TIF <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">A public finance mechanism that captures future property tax increases generated by a development project to fund the infrastructure and public improvements that make that development possible. One of the most common tools in public/private partnerships — allows infrastructure to be funded without new taxes, using the project's own future value creation as the funding source.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">The Public Sector as Partner <span class="gloss-mod">Module 1</span></div>
+      <div class="gloss-def">The public sector is involved — as a stakeholder or partner — in every real estate project. Development is highly regulated, and the legal and regulatory environment surrounds the entire development process. Successful developers treat the public sector with the same respect they give any other partner.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Transfer Package <span class="gloss-mod">Module 8</span></div>
+      <div class="gloss-def">The formal documentation package that accompanies the transition from development team to asset management. Establishes the baseline for measuring future management performance. Includes: narrative description of project status, as-built drawings, comparison of actual versus pro forma results with variances explained, project value and assumptions, total development cost, and developer profit calculation. Without a rigorous transfer package, management has no reliable benchmark from which to measure progress.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Transit-Oriented Development TOD <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">A development approach that concentrates mixed-use density around transit stations — applying the same logic that created streetcar suburbs in the 1880s and railroad suburbs in the 1850s. TOD is the contemporary expression of the infrastructure-value relationship that has driven every major development wave in American history.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Triple Net Lease NNN <span class="gloss-mod">Module 5</span></div>
+      <div class="gloss-def">A lease in which the tenant is responsible for all three major operating expenses: property taxes (N1), building insurance (N2), and property maintenance (N3). The landlord receives truly net income — no operating expense risk. Common in retail and industrial properties. Highly desirable for investors because the income stream is predictable and management-intensive expenses pass through to the tenant.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-U">
+    <div class="letter-header">U</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Urban Renewal <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">A federally funded program (Title I of the Housing Act of 1949) that empowered local governments to use eminent domain to clear "blighted" areas and sell land to private developers for redevelopment. Between 1949 and 1967, approximately 400,000 residential units were demolished under Title I — displacing hundreds of thousands of mostly minority and low-income residents. The program's legacy remains deeply contested.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-V">
+    <div class="letter-header">V</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Value Engineering <span class="gloss-mod">Module 7</span></div>
+      <div class="gloss-def">The practice of reducing construction costs mid-project by substituting lower-cost materials or designs for higher-cost ones. In theory, a legitimate optimization process. In practice, often used to describe cost-cutting under financial pressure that compromises long-term quality, functionality, or management efficiency. Miles warns that "value engineering" shortcuts made to solve short-term financing problems can cause long-term management headaches. The property manager should review all proposed value engineering changes.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Venture Capital Period <span class="gloss-mod">Module 4</span></div>
+      <div class="gloss-def">Miles' term for the period between stage two (idea refinement) and stage six (construction) — when significant development capital is being spent but the project has not yet been fully committed. Investors during this period face high risk (the project may never be built) and demand extraordinarily high returns similar to venture capitalists. Developers minimize the amount of this expensive capital by using cheaper commercial bank financing wherever possible.</div>
+    </div>
+  </div>
+  <div class="letter-group" id="letter-Z">
+    <div class="letter-header">Z</div>
+    <div class="gloss-term">
+      <div class="gloss-name">Zoning <span class="gloss-mod">Module 2</span></div>
+      <div class="gloss-def">Government regulation that separates land uses by geographic area within a municipality — residential, commercial, industrial — and controls building height, setbacks, and density. Los Angeles adopted the first land use separation code in 1905. New York enacted comprehensive zoning in 1915. Zoning is now universal and is one of the primary regulatory constraints every developer must navigate.</div>
+    </div>
+    <div class="gloss-term">
+      <div class="gloss-name">Zoning Ordinance <span class="gloss-mod">Module 3</span></div>
+      <div class="gloss-def">The local law that specifies exactly what may be built on each parcel — permitted uses, building height limits, floor area ratios (FAR), lot coverage, setbacks, parking requirements, and densities. The primary day-to-day regulatory constraint on development. Developers may seek variances from specific zoning requirements, which require discretionary approval.</div>
+    </div>
+  </div>
+  </div>
+  <div class="no-results" id="noResults">No matching terms found.</div>
+
+</div>
+
+<div class="back-bar">
+  <a href="red-module-1.html">← Module 1: Introduction to Real Estate Development</a>
+  <a href="real-estate-development.html">Track Overview →</a>
+</div>
+
+<footer style="background:var(--char);color:rgba(255,255,255,0.7);text-align:center;padding:2.5rem;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;">Darco Real Estate Academy</div>
+  <p>Your Complete Real Estate Career Journey · <span style="color:var(--orange-light);">A Darco Organization Program</span></p>
+  <p style="margin-top:0.5rem;font-size:11px;color:rgba(255,255,255,0.4);">Educational content only. Not financial or legal advice.</p>
+</footer>
+
+<script>
+function filterGloss(val) {
+  var v = val.toLowerCase();
+  var terms = document.querySelectorAll('.gloss-term');
+  var groups = document.querySelectorAll('.letter-group');
+  var any = false;
+  terms.forEach(function(t) {
+    var match = t.textContent.toLowerCase().includes(v);
+    t.classList.toggle('hidden', !match);
+    if (match) any = true;
+  });
+  groups.forEach(function(g) {
+    var visible = g.querySelectorAll('.gloss-term:not(.hidden)').length > 0;
+    g.style.display = visible ? '' : 'none';
+  });
+  document.getElementById('noResults').style.display = any ? 'none' : 'block';
+  document.querySelector('.alpha-nav').style.display = v ? 'none' : '';
+}
+</script>
+
+</body>
+</html>
