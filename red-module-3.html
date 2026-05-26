@@ -184,6 +184,15 @@ a.prog-dot:hover{transform:scale(1.15);}
   .breadcrumb,.progress-bar,.module-nav{padding-left:1.25rem;padding-right:1.25rem;}
   .stakeholder-grid{grid-template-columns:1fr;}
 }
+/* VIDEO */
+.video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:1.5rem 0;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-info{padding:1.25rem 1.5rem;}
+.video-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:0.5rem;background:var(--orange-pale);color:var(--orange);}
+.video-badge.supp{background:var(--gold-pale);color:#8A6A20;}
+.video-info h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;}
+.video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
 </style>
 </head>
 <body>
@@ -685,7 +694,8 @@ a.prog-dot:hover{transform:scale(1.15);}
   </div>
 
   <!-- VIDEO -->
-  <div class="video-card" style="margin-top:2rem;">
+  <div style="width:100%;margin-top:2rem;">
+  <div class="video-card">
     <div class="video-wrapper">
       <iframe src="https://www.youtube.com/embed/2Q5bICcek6s" title="A Brief History of City Planning in the United States" allowfullscreen loading="lazy"></iframe>
     </div>
