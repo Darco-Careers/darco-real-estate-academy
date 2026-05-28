@@ -7,41 +7,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --teal:#0D5C63;--teal-mid:#107A82;--teal-light:#18A0AB;--teal-pale:#EEF8F9;
-  --navy:#0A2540;--navy-mid:#0E3358;
+  --amber:#7A5800;--amber-mid:#A07010;--amber-light:#C49030;--amber-pale:#FBF5E0;
+  --amber-dark:#4A3400;--amber-darker:#2E2000;
   --sand:#F7F4EF;--sand-dark:#EDE9E0;
   --text-dark:#0A1628;--text-mid:#3A4A5C;--text-light:#7A8A9A;
-  --white:#FFFFFF;--border:rgba(13,92,99,0.1);
-  --shadow-card:0 2px 16px rgba(13,92,99,0.08);
+  --white:#FFFFFF;--border:rgba(122,88,0,0.1);
+  --shadow-card:0 2px 16px rgba(122,88,0,0.08);
   --accent:#C9993A;--accent-pale:#FBF5E8;
   --green:#1A7A4A;--green-pale:#EAF5EE;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
 strong{display:inline;}
-nav{background:var(--navy);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+nav{background:var(--amber-dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
 .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
-.nav-logo{width:36px;height:36px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-logo{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
 .nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
 .nav-tagline{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;font-weight:300;}
 .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
 .nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
-.nav-links a:hover{color:var(--teal-light);}
+.nav-links a:hover{color:var(--amber-light);}
 .nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
-.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
-.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--amber-mid);text-decoration:none;font-weight:500;}
 .breadcrumb .sep{opacity:0.4;}
-.breadcrumb .current{color:var(--teal);font-weight:600;}
-.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
-.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
-.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
-.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:12.5%;}
+.breadcrumb .current{color:var(--amber);font-weight:600;}
+.progress-bar{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--amber-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(122,88,0,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--amber-mid);border-radius:3px;width:12.5%;}
 .progress-modules{display:flex;gap:6px;}
 .prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
-.prog-dot.active{background:var(--teal);color:var(--white);}
-.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
-.module-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--teal) 60%,var(--teal-light) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
-.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(24,160,171,0.12) 0%,transparent 70%);pointer-events:none;}
+.prog-dot.active{background:var(--amber);color:var(--white);}
+.prog-dot.locked{background:rgba(122,88,0,0.12);color:var(--text-light);}
+.module-hero{background:linear-gradient(135deg,var(--amber-dark) 0%,var(--amber) 60%,var(--amber-light) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(196,144,48,0.12) 0%,transparent 70%);pointer-events:none;}
 .module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
 .module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
 .module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
@@ -52,73 +52,73 @@ nav{background:var(--navy);padding:0 2.5rem;display:flex;align-items:center;just
 .meta-item span{color:rgba(201,210,255,0.9);font-weight:600;}
 .module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
 .lesson-section{margin-bottom:3.5rem;}
-.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
 .section-label .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;}
 h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
-h2.lesson-title em{color:var(--teal);font-style:italic;}
+h2.lesson-title em{color:var(--amber);font-style:italic;}
 h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
 .lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
 .lesson-text strong{color:var(--text-dark);font-weight:600;}
-.teal-divider{width:50px;height:3px;background:var(--teal-light);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.amber-divider{width:50px;height:3px;background:var(--amber-light);border-radius:2px;margin:0.75rem 0 1.5rem;}
 .callout-insight{background:var(--accent-pale);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
 .callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
 .callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
-.callout-teal{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
-.callout-teal .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
-.callout-teal p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-amber{background:var(--amber-pale);border-left:4px solid var(--amber-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-amber .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.5rem;}
+.callout-amber p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
 .callout-green{background:var(--green-pale);border-left:4px solid var(--green);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
 .callout-green .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;}
 .callout-green p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
 .career-ladder{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
 .ladder-step{display:flex;align-items:stretch;gap:0;}
 .ladder-connector{display:flex;flex-direction:column;align-items:center;width:44px;flex-shrink:0;}
-.ladder-node{width:34px;height:34px;border-radius:50%;background:var(--teal);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.ladder-node{width:34px;height:34px;border-radius:50%;background:var(--amber);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
 .ladder-node.gold{background:var(--accent);}
 .ladder-line{width:2px;background:var(--border);flex:1;margin:4px 0;}
 .ladder-content{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1.15rem;margin-bottom:0.6rem;flex:1;}
 .ladder-content h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.15rem;}
 .ladder-content p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
-.ladder-content .pay{font-size:12px;font-weight:700;color:var(--teal-mid);margin-top:0.3rem;}
+.ladder-content .pay{font-size:12px;font-weight:700;color:var(--amber-mid);margin-top:0.3rem;}
 .ladder-content .pay.gold-pay{color:var(--accent);}
 .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem;margin:2rem 0;}
-.stat-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--teal-mid);border-radius:0 0 12px 12px;padding:1.1rem 1.25rem;text-align:center;}
-.stat-number{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--teal);line-height:1;}
+.stat-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--amber-mid);border-radius:0 0 12px 12px;padding:1.1rem 1.25rem;text-align:center;}
+.stat-number{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--amber);line-height:1;}
 .stat-label{font-size:12px;color:var(--text-mid);margin-top:0.35rem;line-height:1.4;}
 .day-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:2rem 0;}
 .day-block{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;}
-.day-block .time{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.4rem;}
+.day-block .time{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.4rem;}
 .day-block h4{font-size:13.5px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
 .day-block p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
 .company-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.65rem;margin:2rem 0;}
 .company-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;}
 .company-card h4{font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
 .company-card p{font-size:12px;color:var(--text-mid);line-height:1.5;}
-.credential-box{background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;color:var(--white);}
+.credential-box{background:linear-gradient(135deg,var(--amber-dark),var(--amber));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;color:var(--white);}
 .credential-box h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:rgba(201,210,255,0.95);margin-bottom:0.5rem;}
 .credential-box p{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:1rem;}
 .cred-steps{display:flex;flex-direction:column;gap:0.5rem;}
 .cred-step{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:0.65rem 0.9rem;font-size:13px;color:rgba(255,255,255,0.85);display:flex;align-items:flex-start;gap:10px;}
-.cred-step .cs-num{background:var(--teal-light);color:var(--white);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.cred-step .cs-num{background:var(--amber-light);color:var(--white);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
 .path-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
 .path-card{border-radius:14px;padding:1.5rem;}
-.path-card.w2{background:var(--teal-pale);border:1px solid rgba(13,92,99,0.2);}
+.path-card.w2{background:var(--amber-pale);border:1px solid rgba(122,88,0,0.2);}
 .path-card.licensed{background:var(--accent-pale);border:1px solid rgba(201,153,58,0.3);}
 .path-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
-.path-card.w2 h4{color:var(--teal);}
+.path-card.w2 h4{color:var(--amber);}
 .path-card.licensed h4{color:#8A6A20;}
 .path-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
 .path-card ul li{font-size:13px;color:var(--text-mid);line-height:1.6;padding-left:1.25rem;position:relative;}
-.path-card.w2 ul li::before{content:'→';color:var(--teal-mid);font-weight:700;position:absolute;left:0;}
+.path-card.w2 ul li::before{content:'→';color:var(--amber-mid);font-weight:700;position:absolute;left:0;}
 .path-card.licensed ul li::before{content:'→';color:#8A6A20;font-weight:700;position:absolute;left:0;}
 .mentor-bubble{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow-card);}
-.mentor-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--navy));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;}
+.mentor-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-dark));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;}
 .mentor-text p{font-size:1rem;color:var(--text-mid);line-height:1.8;font-style:italic;}
-.mentor-text .mentor-sig{font-size:12px;font-weight:600;color:var(--teal-mid);margin-top:0.5rem;font-style:normal;}
-.takeaways{background:var(--navy);border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.mentor-text .mentor-sig{font-size:12px;font-weight:600;color:var(--amber-mid);margin-top:0.5rem;font-style:normal;}
+.takeaways{background:var(--amber-dark);border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0;}
 .takeaways h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:1.25rem;}
 .takeaway-list{display:flex;flex-direction:column;gap:0.75rem;}
 .takeaway-item{display:flex;align-items:flex-start;gap:0.85rem;}
-.ta-check{width:22px;height:22px;border-radius:50%;background:var(--teal-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--white);font-weight:700;margin-top:2px;}
+.ta-check{width:22px;height:22px;border-radius:50%;background:var(--amber-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--white);font-weight:700;margin-top:2px;}
 .takeaway-item p{font-size:14px;color:rgba(255,255,255,0.82);line-height:1.65;}
 .quiz-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2.5rem 0;box-shadow:var(--shadow-card);}
 .quiz-section h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
@@ -127,11 +127,11 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .quiz-q p{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.65rem;line-height:1.5;}
 .quiz-options{display:flex;flex-direction:column;gap:0.4rem;}
 .quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
-.quiz-opt:hover{border-color:var(--teal-light);background:var(--teal-pale);}
-.quiz-opt input{accent-color:var(--teal);width:15px;height:15px;}
+.quiz-opt:hover{border-color:var(--amber-light);background:var(--amber-pale);}
+.quiz-opt input{accent-color:var(--amber);width:15px;height:15px;}
 .quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
-.quiz-btn{background:var(--teal);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
-.quiz-btn:hover{background:var(--teal-mid);}
+.quiz-btn{background:var(--amber);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
+.quiz-btn:hover{background:var(--amber-mid);}
 .quiz-result{display:none;margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.6;}
 .quiz-result.correct{background:var(--green-pale);border:1px solid var(--green);color:var(--green);}
 .quiz-result.incorrect{background:#FEF2F2;border:1px solid #FCA5A5;color:#B91C1C;}
@@ -139,8 +139,8 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .bnav-btn{display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.5rem;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
 .bnav-prev{background:var(--sand-dark);color:var(--text-mid);border:1px solid var(--border);}
 .bnav-prev:hover{background:var(--sand);}
-.bnav-next{background:var(--teal);color:var(--white);}
-.bnav-next:hover{background:var(--teal-mid);}
+.bnav-next{background:var(--amber);color:var(--white);}
+.bnav-next:hover{background:var(--amber-mid);}
 .bnav-center{font-size:12px;color:var(--text-light);}
 </style>
 </head>
@@ -201,11 +201,11 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
   <div class="lesson-section">
     <div class="section-label"><span class="dot"></span>Lesson 1</div>
     <h2 class="lesson-title">What Is a <em>Leasing Consultant?</em></h2>
-    <div class="teal-divider"></div>
+    <div class="amber-divider"></div>
     <p class="lesson-text">A leasing consultant is the first person a prospective resident meets when they come to look at an apartment community. You are the face of the property. You answer the phone, respond to online inquiries, schedule and conduct tours, guide applicants through the rental process, and help new residents feel at home when they move in.</p>
     <p class="lesson-text">But here is what makes the job more than just showing apartments: <strong>you are a salesperson, a customer service professional, a compliance officer, and a relationship manager all rolled into one.</strong> Every interaction you have either brings the property closer to full occupancy or pushes it further away. The best leasing consultants understand that, and they treat every prospect like they matter — because they do.</p>
 
-    <div class="callout-teal">
+    <div class="callout-amber">
       <div class="callout-label">Key Distinction</div>
       <p>A leasing consultant works for a property management company as a W-2 employee. You do not need a real estate license to start. You show, lease, and manage residency at an apartment community — you are not brokering sales, and you are not an independent agent. This is an employed, salaried-plus-commission position.</p>
     </div>
@@ -248,7 +248,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
   <div class="lesson-section">
     <div class="section-label"><span class="dot"></span>Lesson 2</div>
     <h2 class="lesson-title">What You <em>Get Paid</em></h2>
-    <div class="teal-divider"></div>
+    <div class="amber-divider"></div>
     <p class="lesson-text">Leasing consultant compensation typically has two components: a base hourly wage or salary, plus performance bonuses tied to leases signed. In the Los Angeles market, here is what you can realistically expect:</p>
 
     <div class="stat-grid">
@@ -277,7 +277,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
   <div class="lesson-section">
     <div class="section-label"><span class="dot"></span>Lesson 3</div>
     <h2 class="lesson-title">The <em>Career Ladder:</em> Where This Goes</h2>
-    <div class="teal-divider"></div>
+    <div class="amber-divider"></div>
     <p class="lesson-text">Leasing is one of the most accessible entry points into property management — and property management is one of the most reliable paths into a long-term real estate career. Here is the full ladder, from your first day to owning the shop:</p>
 
     <div class="career-ladder">
@@ -357,7 +357,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
   <div class="lesson-section">
     <div class="section-label"><span class="dot"></span>Lesson 4</div>
     <h2 class="lesson-title">Who <em>Hires</em> Leasing Consultants in LA</h2>
-    <div class="teal-divider"></div>
+    <div class="amber-divider"></div>
     <p class="lesson-text">The Los Angeles metro is one of the largest apartment markets in the country. Large institutional property management companies operate hundreds of communities across LA County and the surrounding area. Here are the major employers you should know by name:</p>
 
     <div class="company-grid">
@@ -399,7 +399,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       </div>
     </div>
 
-    <div class="callout-teal">
+    <div class="callout-amber">
       <div class="callout-label">📍 Where the Jobs Are</div>
       <p>The highest concentration of leasing consultant positions in the LA area is in communities with 100+ units — large complexes in Koreatown, downtown LA, the Westside, the Valley, and the South Bay. The large-scale communities are where entry-level hiring is most consistent and where career ladders are most clearly defined.</p>
     </div>
@@ -408,7 +408,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
   <div class="lesson-section">
     <div class="section-label"><span class="dot"></span>Lesson 5</div>
     <h2 class="lesson-title">The <em>NALP Credential:</em> Your Industry Certification</h2>
-    <div class="teal-divider"></div>
+    <div class="amber-divider"></div>
     <p class="lesson-text">The apartment industry has its own professional certification for leasing consultants: the <strong>National Apartment Leasing Professional (NALP)</strong>. It is administered by the National Apartment Association Education Institute (NAAEI) — the same organization that oversees the CAMT credential for maintenance technicians.</p>
     <p class="lesson-text">Think of NALP as the industry's stamp of approval that says: this person knows how to lease professionally, legally, and effectively. It is not required to get hired, but it significantly improves your credibility, your earning potential, and your path to promotion.</p>
 
