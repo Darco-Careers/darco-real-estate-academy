@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1: The Leasing Career — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0D5C63;--teal-mid:#107A82;--teal-light:#18A0AB;--teal-pale:#EEF8F9;
+  --navy:#0A2540;--navy-mid:#0E3358;
+  --sand:#F7F4EF;--sand-dark:#EDE9E0;
+  --text-dark:#0A1628;--text-mid:#3A4A5C;--text-light:#7A8A9A;
+  --white:#FFFFFF;--border:rgba(13,92,99,0.1);
+  --shadow-card:0 2px 16px rgba(13,92,99,0.08);
+  --accent:#C9993A;--accent-pale:#FBF5E8;
+  --green:#1A7A4A;--green-pale:#EAF5EE;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--navy);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;font-weight:300;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--teal-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--teal-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--teal);font-weight:600;}
+.progress-bar{background:var(--teal-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--teal-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(13,92,99,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-mid);border-radius:3px;width:12.5%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.active{background:var(--teal);color:var(--white);}
+.prog-dot.locked{background:rgba(13,92,99,0.12);color:var(--text-light);}
+.module-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--teal) 60%,var(--teal-light) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(24,160,171,0.12) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:rgba(201,210,255,0.9);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.72);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:rgba(201,210,255,0.9);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--teal);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.teal-divider{width:50px;height:3px;background:var(--teal-light);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-insight{background:var(--accent-pale);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-insight .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8A6A20;margin-bottom:0.5rem;}
+.callout-insight p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-teal{background:var(--teal-pale);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-teal .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.5rem;}
+.callout-teal p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-green{background:var(--green-pale);border-left:4px solid var(--green);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-green .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;}
+.callout-green p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.career-ladder{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
+.ladder-step{display:flex;align-items:stretch;gap:0;}
+.ladder-connector{display:flex;flex-direction:column;align-items:center;width:44px;flex-shrink:0;}
+.ladder-node{width:34px;height:34px;border-radius:50%;background:var(--teal);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.ladder-node.gold{background:var(--accent);}
+.ladder-line{width:2px;background:var(--border);flex:1;margin:4px 0;}
+.ladder-content{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1.15rem;margin-bottom:0.6rem;flex:1;}
+.ladder-content h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.15rem;}
+.ladder-content p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+.ladder-content .pay{font-size:12px;font-weight:700;color:var(--teal-mid);margin-top:0.3rem;}
+.ladder-content .pay.gold-pay{color:var(--accent);}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem;margin:2rem 0;}
+.stat-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--teal-mid);border-radius:0 0 12px 12px;padding:1.1rem 1.25rem;text-align:center;}
+.stat-number{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--teal);line-height:1;}
+.stat-label{font-size:12px;color:var(--text-mid);margin-top:0.35rem;line-height:1.4;}
+.day-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:2rem 0;}
+.day-block{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;}
+.day-block .time{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:0.4rem;}
+.day-block h4{font-size:13.5px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.day-block p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+.company-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.65rem;margin:2rem 0;}
+.company-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;}
+.company-card h4{font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.company-card p{font-size:12px;color:var(--text-mid);line-height:1.5;}
+.credential-box{background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:16px;padding:2rem 2.25rem;margin:2rem 0;color:var(--white);}
+.credential-box h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:rgba(201,210,255,0.95);margin-bottom:0.5rem;}
+.credential-box p{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:1rem;}
+.cred-steps{display:flex;flex-direction:column;gap:0.5rem;}
+.cred-step{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:0.65rem 0.9rem;font-size:13px;color:rgba(255,255,255,0.85);display:flex;align-items:flex-start;gap:10px;}
+.cred-step .cs-num{background:var(--teal-light);color:var(--white);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.path-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.path-card{border-radius:14px;padding:1.5rem;}
+.path-card.w2{background:var(--teal-pale);border:1px solid rgba(13,92,99,0.2);}
+.path-card.licensed{background:var(--accent-pale);border:1px solid rgba(201,153,58,0.3);}
+.path-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.75rem;}
+.path-card.w2 h4{color:var(--teal);}
+.path-card.licensed h4{color:#8A6A20;}
+.path-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.path-card ul li{font-size:13px;color:var(--text-mid);line-height:1.6;padding-left:1.25rem;position:relative;}
+.path-card.w2 ul li::before{content:'→';color:var(--teal-mid);font-weight:700;position:absolute;left:0;}
+.path-card.licensed ul li::before{content:'→';color:#8A6A20;font-weight:700;position:absolute;left:0;}
+.mentor-bubble{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow-card);}
+.mentor-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--navy));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;}
+.mentor-text p{font-size:1rem;color:var(--text-mid);line-height:1.8;font-style:italic;}
+.mentor-text .mentor-sig{font-size:12px;font-weight:600;color:var(--teal-mid);margin-top:0.5rem;font-style:normal;}
+.takeaways{background:var(--navy);border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:1.25rem;}
+.takeaway-list{display:flex;flex-direction:column;gap:0.75rem;}
+.takeaway-item{display:flex;align-items:flex-start;gap:0.85rem;}
+.ta-check{width:22px;height:22px;border-radius:50%;background:var(--teal-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--white);font-weight:700;margin-top:2px;}
+.takeaway-item p{font-size:14px;color:rgba(255,255,255,0.82);line-height:1.65;}
+.quiz-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2.5rem 0;box-shadow:var(--shadow-card);}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.quiz-section .quiz-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.quiz-q{margin-bottom:1.5rem;}
+.quiz-q p{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.65rem;line-height:1.5;}
+.quiz-options{display:flex;flex-direction:column;gap:0.4rem;}
+.quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
+.quiz-opt:hover{border-color:var(--teal-light);background:var(--teal-pale);}
+.quiz-opt input{accent-color:var(--teal);width:15px;height:15px;}
+.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
+.quiz-btn{background:var(--teal);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
+.quiz-btn:hover{background:var(--teal-mid);}
+.quiz-result{display:none;margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.6;}
+.quiz-result.correct{background:var(--green-pale);border:1px solid var(--green);color:var(--green);}
+.quiz-result.incorrect{background:#FEF2F2;border:1px solid #FCA5A5;color:#B91C1C;}
+.bottom-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;margin-top:2rem;}
+.bnav-btn{display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.5rem;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.bnav-prev{background:var(--sand-dark);color:var(--text-mid);border:1px solid var(--border);}
+.bnav-prev:hover{background:var(--sand);}
+.bnav-next{background:var(--teal);color:var(--white);}
+.bnav-next:hover{background:var(--teal-mid);}
+.bnav-center{font-size:12px;color:var(--text-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Leasing Career Track</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">All Tracks</a></li>
+    <li><a href="#">My Progress</a></li>
+    <li><a href="leasing-career.html" class="nav-back">← Back to Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="#">Home</a><span class="sep">›</span>
+  <a href="#">Leasing Career Track</a><span class="sep">›</span>
+  <span class="current">Module 1: The Leasing Career</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 1 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <div class="prog-dot active">1</div>
+    <div class="prog-dot locked">2</div>
+    <div class="prog-dot locked">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📋 Module 1 · Leasing Career Track</div>
+    <h1>The <em>Leasing Career:</em><br>What It Is and Where It Goes</h1>
+    <p>Before you can lease an apartment, you need to understand the job — what you actually do every day, what companies are hiring, what you get paid, and where this career can take you.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ <span>45 min</span></div>
+      <div class="meta-item">📖 <span>5 Lessons</span></div>
+      <div class="meta-item">🎯 <span>No License Required to Start</span></div>
+      <div class="meta-item">📍 <span>LA Market Focus</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 1</div>
+    <h2 class="lesson-title">What Is a <em>Leasing Consultant?</em></h2>
+    <div class="teal-divider"></div>
+    <p class="lesson-text">A leasing consultant is the first person a prospective resident meets when they come to look at an apartment community. You are the face of the property. You answer the phone, respond to online inquiries, schedule and conduct tours, guide applicants through the rental process, and help new residents feel at home when they move in.</p>
+    <p class="lesson-text">But here is what makes the job more than just showing apartments: <strong>you are a salesperson, a customer service professional, a compliance officer, and a relationship manager all rolled into one.</strong> Every interaction you have either brings the property closer to full occupancy or pushes it further away. The best leasing consultants understand that, and they treat every prospect like they matter — because they do.</p>
+
+    <div class="callout-teal">
+      <div class="callout-label">Key Distinction</div>
+      <p>A leasing consultant works for a property management company as a W-2 employee. You do not need a real estate license to start. You show, lease, and manage residency at an apartment community — you are not brokering sales, and you are not an independent agent. This is an employed, salaried-plus-commission position.</p>
+    </div>
+
+    <h3 class="sub-title">What You Actually Do Each Day</h3>
+    <p class="lesson-text">No two days are exactly alike, but here is a realistic look at what fills a leasing consultant's schedule:</p>
+
+    <div class="day-grid">
+      <div class="day-block">
+        <div class="time">Morning</div>
+        <h4>Open &amp; Prepare</h4>
+        <p>Review new inquiries from the overnight lead system, check which units are available, confirm appointments for the day, and walk model units to make sure they are ready to show.</p>
+      </div>
+      <div class="day-block">
+        <div class="time">Midday</div>
+        <h4>Tours &amp; Follow-Up</h4>
+        <p>Conduct in-person and virtual tours, answer calls and emails from prospects, follow up with anyone who toured in the last 48–72 hours, and push applications to the next step.</p>
+      </div>
+      <div class="day-block">
+        <div class="time">Afternoon</div>
+        <h4>Applications &amp; Leasing</h4>
+        <p>Process rental applications, verify income and rental history, communicate approval or denial decisions, collect deposits, and schedule lease signings.</p>
+      </div>
+      <div class="day-block">
+        <div class="time">Throughout the Day</div>
+        <h4>Resident Service</h4>
+        <p>Handle resident questions, accept maintenance requests, assist with renewals, and help coordinate move-ins and move-outs. Your residents are your customers even after they sign.</p>
+      </div>
+    </div>
+
+    <div class="mentor-bubble">
+      <div class="mentor-avatar">M</div>
+      <div class="mentor-text">
+        <p>"People think leasing is just showing apartments. It's not. You're doing sales, compliance, customer service, and relationship management simultaneously. The consultants who get promoted are the ones who realize that early."</p>
+        <div class="mentor-sig">— Marcus, Senior Leasing Consultant, 4 years in the industry</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 2</div>
+    <h2 class="lesson-title">What You <em>Get Paid</em></h2>
+    <div class="teal-divider"></div>
+    <p class="lesson-text">Leasing consultant compensation typically has two components: a base hourly wage or salary, plus performance bonuses tied to leases signed. In the Los Angeles market, here is what you can realistically expect:</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number">$18–$24</div>
+        <div class="stat-label">Hourly base for entry-level Leasing Consultant in LA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$200–$500</div>
+        <div class="stat-label">Typical monthly lease bonus range depending on occupancy goals</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$50–$70K</div>
+        <div class="stat-label">Total first-year earning potential combining base + bonuses in LA</div>
+      </div>
+    </div>
+
+    <p class="lesson-text">Beyond the base and bonuses, most property management companies offer benefits including health insurance, paid time off, and — importantly — <strong>discounted or free apartment rent</strong> for consultants who live on-site. That benefit alone can be worth $1,500–$2,500 per month in the Los Angeles market.</p>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The On-Site Housing Benefit</div>
+      <p>Many large apartment communities offer leasing staff a discounted unit at the property — sometimes 20–50% off market rent. If you are paying $1,800/month in rent somewhere else, living on-site and saving $900/month is equivalent to a $10,800 annual raise. Always ask about this benefit during your interview.</p>
+    </div>
+  </div>
+
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 3</div>
+    <h2 class="lesson-title">The <em>Career Ladder:</em> Where This Goes</h2>
+    <div class="teal-divider"></div>
+    <p class="lesson-text">Leasing is one of the most accessible entry points into property management — and property management is one of the most reliable paths into a long-term real estate career. Here is the full ladder, from your first day to owning the shop:</p>
+
+    <div class="career-ladder">
+      <div class="ladder-step">
+        <div class="ladder-connector">
+          <div class="ladder-node">1</div>
+          <div class="ladder-line"></div>
+        </div>
+        <div class="ladder-content">
+          <h4>Leasing Consultant</h4>
+          <p>Show units, process applications, sign leases, build resident relationships. The foundation of everything that follows.</p>
+          <div class="pay">$18–$24/hr + bonuses · No license required</div>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-connector">
+          <div class="ladder-node">2</div>
+          <div class="ladder-line"></div>
+        </div>
+        <div class="ladder-content">
+          <h4>Senior Leasing Consultant</h4>
+          <p>Handles complex leases, mentors junior consultants, manages high-value prospects, and takes on more administrative responsibility.</p>
+          <div class="pay">$22–$30/hr + higher commission · 1–2 years experience</div>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-connector">
+          <div class="ladder-node">3</div>
+          <div class="ladder-line"></div>
+        </div>
+        <div class="ladder-content">
+          <h4>Leasing Manager</h4>
+          <p>Oversees the entire leasing team at a community, sets occupancy strategy, manages marketing, and reports to the property manager.</p>
+          <div class="pay">$48,000–$65,000/yr · Typically 2–4 years experience</div>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-connector">
+          <div class="ladder-node">4</div>
+          <div class="ladder-line"></div>
+        </div>
+        <div class="ladder-content">
+          <h4>Property Manager</h4>
+          <p>Runs the full operation of an apartment community — financials, maintenance, staffing, compliance, and resident satisfaction.</p>
+          <div class="pay">$60,000–$85,000/yr · Often requires CAMT or equivalent</div>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-connector">
+          <div class="ladder-node gold">5</div>
+          <div class="ladder-line"></div>
+        </div>
+        <div class="ladder-content">
+          <h4>Licensed Real Estate Agent</h4>
+          <p>With a California real estate license, you can move into residential sales, work with investors, or represent tenants and landlords in higher-stakes transactions.</p>
+          <div class="pay gold-pay">Commission-based · License = career mobility</div>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="ladder-connector">
+          <div class="ladder-node gold">6</div>
+        </div>
+        <div class="ladder-content">
+          <h4>Broker / Business Owner</h4>
+          <p>Own your own property management company, brokerage, or investment portfolio. Built on the foundation you start today.</p>
+          <div class="pay gold-pay">Unlimited earning potential · Your own operation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-green">
+      <div class="callout-label">✅ No License to Start</div>
+      <p>In California, leasing consultants employed by a property management company do not need a real estate license to lease residential apartments. As a W-2 employee leasing units for your employer, you are covered under their license. This means you can start earning and building experience immediately.</p>
+    </div>
+  </div>
+
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 4</div>
+    <h2 class="lesson-title">Who <em>Hires</em> Leasing Consultants in LA</h2>
+    <div class="teal-divider"></div>
+    <p class="lesson-text">The Los Angeles metro is one of the largest apartment markets in the country. Large institutional property management companies operate hundreds of communities across LA County and the surrounding area. Here are the major employers you should know by name:</p>
+
+    <div class="company-grid">
+      <div class="company-card">
+        <h4>Greystar</h4>
+        <p>Largest property manager in the US. Extensive LA presence, structured training programs, clear promotion paths.</p>
+      </div>
+      <div class="company-card">
+        <h4>Essex Property Trust</h4>
+        <p>West Coast focused REIT with strong LA/OC presence. Known for competitive pay and benefits.</p>
+      </div>
+      <div class="company-card">
+        <h4>AIMCO</h4>
+        <p>Large national operator with luxury and workforce housing communities across the LA Basin.</p>
+      </div>
+      <div class="company-card">
+        <h4>Equity Residential</h4>
+        <p>Major REIT with significant Los Angeles portfolio, particularly in Westside and urban markets.</p>
+      </div>
+      <div class="company-card">
+        <h4>FPI Management</h4>
+        <p>One of California's largest property managers with strong presence in the LA affordable and market-rate sectors.</p>
+      </div>
+      <div class="company-card">
+        <h4>Western National</h4>
+        <p>Southern California focused with deep roots in the LA market. Known for promoting from within.</p>
+      </div>
+      <div class="company-card">
+        <h4>AvalonBay</h4>
+        <p>Premium apartment REIT with communities throughout LA. Excellent training infrastructure.</p>
+      </div>
+      <div class="company-card">
+        <h4>Prometheus RE</h4>
+        <p>California-based operator known for strong culture and employee development programs.</p>
+      </div>
+      <div class="company-card">
+        <h4>Local Firms</h4>
+        <p>Dozens of mid-size and independent management companies throughout LA County also hire regularly.</p>
+      </div>
+    </div>
+
+    <div class="callout-teal">
+      <div class="callout-label">📍 Where the Jobs Are</div>
+      <p>The highest concentration of leasing consultant positions in the LA area is in communities with 100+ units — large complexes in Koreatown, downtown LA, the Westside, the Valley, and the South Bay. The large-scale communities are where entry-level hiring is most consistent and where career ladders are most clearly defined.</p>
+    </div>
+  </div>
+
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 5</div>
+    <h2 class="lesson-title">The <em>NALP Credential:</em> Your Industry Certification</h2>
+    <div class="teal-divider"></div>
+    <p class="lesson-text">The apartment industry has its own professional certification for leasing consultants: the <strong>National Apartment Leasing Professional (NALP)</strong>. It is administered by the National Apartment Association Education Institute (NAAEI) — the same organization that oversees the CAMT credential for maintenance technicians.</p>
+    <p class="lesson-text">Think of NALP as the industry's stamp of approval that says: this person knows how to lease professionally, legally, and effectively. It is not required to get hired, but it significantly improves your credibility, your earning potential, and your path to promotion.</p>
+
+    <div class="credential-box">
+      <h3>How to Earn Your NALP</h3>
+      <p>The NALP is designed to be completed in your first year in the industry. Here is what the path looks like:</p>
+      <div class="cred-steps">
+        <div class="cred-step"><div class="cs-num">1</div><span>Complete the NALP coursework through NAAEI or a local affiliate apartment association. Covers leasing fundamentals, fair housing, marketing, maintenance awareness, and resident retention.</span></div>
+        <div class="cred-step"><div class="cs-num">2</div><span>Accumulate 6 months of on-site leasing experience. You can start the coursework before you have the experience and complete it as you work.</span></div>
+        <div class="cred-step"><div class="cs-num">3</div><span>Pass the NALP exam. It is proctored and covers the core competencies from the coursework.</span></div>
+        <div class="cred-step"><div class="cs-num">4</div><span>Maintain your credential by completing continuing education every two years.</span></div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Leasing Consultant vs. Licensed Agent — Understanding the Difference</h3>
+    <p class="lesson-text">Students sometimes ask whether they should get their real estate license instead of pursuing the NALP. Here is the honest answer: they serve different purposes, and the license comes later.</p>
+
+    <div class="path-compare">
+      <div class="path-card w2">
+        <h4>Leasing Consultant (W-2)</h4>
+        <ul>
+          <li>Start immediately, no license required</li>
+          <li>Stable base pay + bonuses + benefits</li>
+          <li>On-site housing discount available</li>
+          <li>Clear promotion path within property management</li>
+          <li>NALP credential validates your skills</li>
+          <li>Company covers your legal compliance</li>
+        </ul>
+      </div>
+      <div class="path-card licensed">
+        <h4>Licensed Agent (Independent)</h4>
+        <ul>
+          <li>Requires California real estate license</li>
+          <li>Commission-only, no base salary</li>
+          <li>No benefits package</li>
+          <li>Higher earning ceiling, more income volatility</li>
+          <li>Greater independence and flexibility</li>
+          <li>Best pursued after 2+ years of W-2 experience</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout-insight">
+      <div class="callout-label">💡 The Smart Sequence</div>
+      <p>The industry's most successful property managers typically followed this order: leasing consultant → earn NALP → get promoted → get licensed as an agent → eventually broker. Each step builds on the last. Start where the opportunity is, then upgrade.</p>
+    </div>
+  </div>
+
+  <div class="takeaways">
+    <h3>Module 1 — Key Takeaways</h3>
+    <div class="takeaway-list">
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>A leasing consultant is a W-2 employee who shows, leases, and manages resident relationships at an apartment community. No real estate license is required to start.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Entry-level leasing consultants in Los Angeles earn $18–$24/hr base plus bonuses, with total first-year compensation of $50,000–$70,000 possible. On-site housing discounts can add significant additional value.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The career ladder runs: Leasing Consultant → Senior LC → Leasing Manager → Property Manager → Licensed Agent → Broker. Each level builds on the skills developed in the one before it.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Major employers in Los Angeles include Greystar, Essex Property Trust, AIMCO, AvalonBay, Equity Residential, FPI Management, and Western National, among many others.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The NALP (National Apartment Leasing Professional) credential is the industry's primary certification for leasing consultants. It requires 6 months of experience and a proctored exam, and meaningfully accelerates promotion timelines.</p></div>
+    </div>
+  </div>
+
+  <div class="quiz-section">
+    <h3>Knowledge Check</h3>
+    <div class="quiz-sub">Test your understanding before moving to Module 2.</div>
+
+    <div class="quiz-q">
+      <p>1. A leasing consultant at an apartment community in California needs a real estate license to legally lease units to residents.</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">True — all real estate activity requires a license in California</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">False — W-2 employees leasing for their employer are covered under the company's license</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>2. What is the NALP?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">The National Apartment Leasing Professional credential — the industry certification for leasing consultants</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">A California state license required to work as a leasing consultant</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">A national background check system used by property management companies</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>3. Which best describes what a leasing consultant does on a typical day?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">Only conducts apartment tours — all other tasks are handled by the property manager</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">Shows units, processes applications, communicates with residents, signs leases, and supports move-ins</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">Manages the property's maintenance operations and contractor relationships</label></div>
+      </div>
+    </div>
+
+    <button class="quiz-btn" onclick="checkQuiz()">Submit Answers</button>
+    <div class="quiz-result" id="quiz-result"></div>
+  </div>
+
+</div>
+
+<div class="bottom-nav">
+  <a href="leasing-career.html" class="bnav-btn bnav-prev">← Track Overview</a>
+  <span class="bnav-center">Module 1 of 8 · Leasing Career Track</span>
+  <a href="lc-module-2.html" class="bnav-btn bnav-next">Module 2: Fair Housing →</a>
+</div>
+
+<script>
+function checkQuiz(){
+  const answers={q1:'b',q2:'a',q3:'b'};
+  let score=0,total=Object.keys(answers).length;
+  for(const [q,correct] of Object.entries(answers)){
+    const sel=document.querySelector('input[name="'+q+'"]:checked');
+    if(sel&&sel.value===correct)score++;
+  }
+  const result=document.getElementById('quiz-result');
+  result.style.display='block';
+  if(score===total){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You have a solid grasp of the leasing career fundamentals. Head to Module 2 to dive into Fair Housing law.';
+  } else if(score>=total-1){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; good work.</strong> Review any questions you missed, then continue to Module 2.';
+  } else {
+    result.className='quiz-result incorrect';
+    result.innerHTML='&#10007; <strong>'+score+'/'+total+' correct.</strong> Take a few minutes to re-read the sections on licensing requirements and the NALP credential before moving forward.';
+  }
+}
+</script>
+</body>
+</html>
