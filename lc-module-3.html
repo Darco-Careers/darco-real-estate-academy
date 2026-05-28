@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 3: Advertising & Attracting Prospects — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --amber:#7A5800;--amber-mid:#A07010;--amber-light:#C49030;--amber-pale:#FBF5E0;
+  --amber-dark:#4A3400;--amber-darker:#2E2000;
+  --sand:#F7F4EF;--sand-dark:#EDE9E0;
+  --text-dark:#0A1628;--text-mid:#3A4A5C;--text-light:#7A8A9A;
+  --white:#FFFFFF;--border:rgba(122,88,0,0.1);
+  --shadow-card:0 2px 16px rgba(122,88,0,0.08);
+  --green:#1A7A4A;--green-pale:#EAF5EE;
+  --red:#B91C1C;--red-pale:#FEF2F2;
+  --blue:#1A4A7A;--blue-pale:#EEF4FB;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--amber-dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--amber-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--amber-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--amber);font-weight:600;}
+.progress-bar{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--amber-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(122,88,0,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--amber-mid);border-radius:3px;width:37.5%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:var(--amber-light);color:var(--white);}
+.prog-dot.active{background:var(--amber);color:var(--white);}
+.prog-dot.locked{background:rgba(122,88,0,0.12);color:var(--text-light);}
+.module-hero{background:linear-gradient(135deg,var(--amber-darker) 0%,var(--amber) 60%,var(--amber-light) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(196,144,48,0.15) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:rgba(255,235,180,0.95);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.72);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:rgba(255,235,180,0.95);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--amber-light);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--amber);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.amber-divider{width:50px;height:3px;background:var(--amber-light);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-amber{background:var(--amber-pale);border-left:4px solid var(--amber-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-amber .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.5rem;}
+.callout-amber p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-green{background:var(--green-pale);border-left:4px solid var(--green);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-green .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;}
+.callout-green p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--red-pale);border-left:4px solid var(--red);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-blue{background:var(--blue-pale);border-left:4px solid var(--blue);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-blue .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;}
+.callout-blue p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Platform grid */
+.platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.platform-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.platform-card .plat-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:2px 10px;border-radius:20px;margin-bottom:0.5rem;}
+.platform-card .plat-tag.primary{background:var(--amber-pale);color:var(--amber-mid);}
+.platform-card .plat-tag.secondary{background:var(--green-pale);color:var(--green);}
+.platform-card .plat-tag.social{background:var(--blue-pale);color:var(--blue);}
+.platform-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.platform-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+/* Ad anatomy */
+.ad-anatomy{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:2rem 0;box-shadow:var(--shadow-card);}
+.ad-header{background:var(--amber-dark);padding:1rem 1.5rem;}
+.ad-header h4{font-size:14px;font-weight:600;color:var(--white);}
+.ad-header p{font-size:12px;color:rgba(255,255,255,0.6);margin-top:0.2rem;}
+.ad-body{padding:1.25rem 1.5rem;}
+.ad-line{display:flex;gap:0.85rem;margin-bottom:0.85rem;align-items:flex-start;}
+.ad-line:last-child{margin-bottom:0;}
+.ad-num{width:26px;height:26px;border-radius:50%;background:var(--amber);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.ad-content h5{font-size:13.5px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.ad-content p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+/* Before/after ad */
+.ad-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.ad-sample{border-radius:12px;padding:1.25rem;}
+.ad-sample.bad{background:var(--red-pale);border:1px solid rgba(185,28,28,0.2);}
+.ad-sample.good{background:var(--green-pale);border:1px solid rgba(26,122,74,0.2);}
+.ad-sample-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.65rem;}
+.ad-sample.bad .ad-sample-label{color:var(--red);}
+.ad-sample.good .ad-sample-label{color:var(--green);}
+.ad-sample-text{font-size:13px;color:var(--text-mid);line-height:1.75;font-style:italic;}
+.ad-sample-note{font-size:12px;color:var(--text-light);margin-top:0.65rem;line-height:1.55;font-style:normal;}
+/* Photo tips */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin:2rem 0;}
+.photo-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;}
+.photo-card .pi{font-size:1.5rem;margin-bottom:0.4rem;}
+.photo-card h4{font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.photo-card p{font-size:12px;color:var(--text-mid);line-height:1.55;}
+/* Response time */
+.response-ladder{display:flex;flex-direction:column;gap:0.6rem;margin:2rem 0;}
+.rl-item{display:flex;align-items:center;gap:1rem;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1.1rem;}
+.rl-time{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;width:80px;flex-shrink:0;}
+.rl-time.good{color:var(--green);}
+.rl-time.ok{color:var(--amber-mid);}
+.rl-time.bad{color:var(--red);}
+.rl-label{font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:0.15rem;}
+.rl-desc{font-size:12.5px;color:var(--text-mid);}
+/* Tracking table */
+.tracking-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
+.tracking-table th{background:var(--amber);color:var(--white);font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:0.85rem 1.1rem;text-align:left;}
+.tracking-table td{padding:0.85rem 1.1rem;font-size:13.5px;color:var(--text-mid);border-bottom:1px solid var(--border);}
+.tracking-table tr:last-child td{border-bottom:none;}
+.tracking-table tr:nth-child(even) td{background:var(--amber-pale);}
+/* Mentor */
+.mentor-bubble{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow-card);}
+.mentor-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-dark));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;}
+.mentor-text p{font-size:1rem;color:var(--text-mid);line-height:1.8;font-style:italic;}
+.mentor-text .mentor-sig{font-size:12px;font-weight:600;color:var(--amber-mid);margin-top:0.5rem;font-style:normal;}
+/* Takeaways */
+.takeaways{background:var(--amber-darker);border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:1.25rem;}
+.takeaway-list{display:flex;flex-direction:column;gap:0.75rem;}
+.takeaway-item{display:flex;align-items:flex-start;gap:0.85rem;}
+.ta-check{width:22px;height:22px;border-radius:50%;background:var(--amber-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--white);font-weight:700;margin-top:2px;}
+.takeaway-item p{font-size:14px;color:rgba(255,255,255,0.82);line-height:1.65;}
+/* Quiz */
+.quiz-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2.5rem 0;box-shadow:var(--shadow-card);}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.quiz-q{margin-bottom:1.5rem;}
+.quiz-q p{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.65rem;line-height:1.5;}
+.quiz-options{display:flex;flex-direction:column;gap:0.4rem;}
+.quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
+.quiz-opt:hover{border-color:var(--amber-light);background:var(--amber-pale);}
+.quiz-opt input{accent-color:var(--amber);width:15px;height:15px;}
+.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
+.quiz-btn{background:var(--amber);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
+.quiz-btn:hover{background:var(--amber-mid);}
+.quiz-result{display:none;margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.6;}
+.quiz-result.correct{background:var(--green-pale);border:1px solid var(--green);color:var(--green);}
+.quiz-result.incorrect{background:var(--red-pale);border:1px solid #FCA5A5;color:var(--red);}
+.bottom-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;margin-top:2rem;}
+.bnav-btn{display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.5rem;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.bnav-prev{background:var(--sand-dark);color:var(--text-mid);border:1px solid var(--border);}
+.bnav-prev:hover{background:var(--sand);}
+.bnav-next{background:var(--amber);color:var(--white);}
+.bnav-next:hover{background:var(--amber-mid);}
+.bnav-center{font-size:12px;color:var(--text-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Leasing Career Track</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="leasing-career.html" class="nav-back">← Back to Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">›</span>
+  <a href="leasing-career.html">Leasing Career Track</a><span class="sep">›</span>
+  <span class="current">Module 3: Advertising &amp; Attracting Prospects</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 3 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="lc-module-1.html" class="prog-dot done">1</a>
+    <a href="lc-module-2.html" class="prog-dot done">2</a>
+    <div class="prog-dot active">3</div>
+    <div class="prog-dot locked">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📢 Module 3 · Leasing Career Track</div>
+    <h1>Advertising &amp; <em>Attracting Prospects</em></h1>
+    <p>An empty unit costs money every single day it sits vacant. Your job starts before a prospect ever sets foot on the property — it starts the moment a unit becomes available and your community needs to fill it fast with the right person.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ <span>45 min</span></div>
+      <div class="meta-item">📖 <span>5 Lessons</span></div>
+      <div class="meta-item">📢 <span>ILS Platforms</span></div>
+      <div class="meta-item">⚖️ <span>Fair Housing in Advertising</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 1</div>
+    <h2 class="lesson-title">The Leasing Consultant's Role in <em>Marketing</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">At a small independent property, the landlord might write their own ads and post them on Craigslist. At the large institutional apartment communities where most leasing consultants work, the marketing operation is more structured — but your role inside it is just as important.</p>
+    <p class="lesson-text">Large management companies typically have a centralized marketing team that manages the community's presence on major listing platforms, runs paid advertising campaigns, and sets the brand standards. As a leasing consultant, your job intersects with marketing in three key ways:</p>
+
+    <div class="platform-grid">
+      <div class="platform-card">
+        <span class="plat-tag primary">Your Responsibility</span>
+        <h4>Responding to Leads</h4>
+        <p>Every inquiry that comes through — phone, email, online chat, text — is a lead generated by marketing. Your speed and quality of response is what converts that lead into a showing.</p>
+      </div>
+      <div class="platform-card">
+        <span class="plat-tag primary">Your Responsibility</span>
+        <h4>Updating Availability</h4>
+        <p>Keeping the leasing software and listing platforms current with accurate unit availability, pricing, and move-in dates. An outdated listing wastes everyone's time and damages the community's reputation.</p>
+      </div>
+      <div class="platform-card">
+        <span class="plat-tag primary">Your Responsibility</span>
+        <h4>Community Presence</h4>
+        <p>How you answer the phone, how the leasing office looks, how the model unit is staged — these are all extensions of the community's marketing. You are the last mile of every marketing dollar spent.</p>
+      </div>
+      <div class="platform-card">
+        <span class="plat-tag secondary">Company Handles</span>
+        <h4>Platform Campaigns</h4>
+        <p>Paid advertising on Apartments.com, Zillow, and other ILS platforms is typically managed by a marketing coordinator or regional team. You work within the system they have built.</p>
+      </div>
+    </div>
+
+    <div class="callout-amber">
+      <div class="callout-label">💡 Why This Matters to Your Performance</div>
+      <p>Your leasing numbers — tours booked, applications received, leases signed — are directly tied to how well you respond to the leads that marketing generates. A community with great marketing and a slow-responding leasing consultant will lose prospects to competitors. You are the conversion engine. Marketing gets people to the door; you get them to sign.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 2</div>
+    <h2 class="lesson-title">The Platforms — <em>Where Prospects Come From</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Apartment prospects today search for housing across multiple platforms simultaneously. Understanding where your leads come from helps you respond appropriately and gives you insight into what prospects have already seen before they contact you.</p>
+
+    <h3 class="sub-title">Internet Listing Services (ILS) — The Primary Platforms</h3>
+    <p class="lesson-text">ILS platforms are the dominant source of apartment leads for large communities. Your employer will likely be listed on most of these, and your property management software will integrate with them to sync availability and pricing automatically.</p>
+
+    <div class="platform-grid">
+      <div class="platform-card">
+        <span class="plat-tag primary">Highest Volume</span>
+        <h4>Apartments.com</h4>
+        <p>The largest dedicated apartment listing platform in the US. Owned by CoStar Group. Most institutional communities invest heavily here. Prospects can filter by price, size, amenities, and neighborhood. Many leads come pre-qualified because of the filtering tools.</p>
+      </div>
+      <div class="platform-card">
+        <span class="plat-tag primary">High Volume</span>
+        <h4>Zillow Rentals</h4>
+        <p>Part of the Zillow ecosystem — massive consumer traffic. Many prospects use Zillow to search both for-sale and for-rent simultaneously, which means they may be comparing buying vs. renting. Leads tend to be earlier in the decision process.</p>
+      </div>
+      <div class="platform-card">
+        <span class="plat-tag primary">Growing Fast</span>
+        <h4>Zumper</h4>
+        <p>A strong apartment search platform especially popular with younger renters. Mobile-first design with instant apply functionality. Particularly strong in urban markets like Los Angeles. Prospects can apply directly through the platform.</p>
+      </div>
+      <div class="platform-card">
+        <span class="plat-tag primary">Strong in LA</span>
+        <h4>HotPads / Trulia Rentals</h4>
+        <p>Both owned by Zillow Group. HotPads has strong presence in urban markets. Trulia drives significant rental traffic. Leads from these platforms often overlap with Zillow leads — same parent company, different audience.</p>
+      </div>
+      <div class="platform-card">
+        <span class="plat-tag secondary">Supplemental</span>
+        <h4>Craigslist</h4>
+        <p>Still relevant in LA, particularly for prospects seeking smaller or independent properties. Large institutional communities often post here as well. Leads from Craigslist tend to be more price-sensitive and require slightly more pre-screening effort.</p>
+      </div>
+      <div class="platform-card">
+        <span class="plat-tag social">Social</span>
+        <h4>Facebook Marketplace</h4>
+        <p>Growing rapidly as a rental search tool. Many prospects browse Facebook Marketplace alongside traditional ILS platforms. Strong for word-of-mouth sharing — a prospect can easily share a listing with friends or family who are also looking.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Your Property Management Software and the ILS</h3>
+    <p class="lesson-text">At large apartment communities, your property management platform — typically <strong>Yardi, Entrata, or RealPage</strong> — syncs with the ILS platforms automatically. When a unit becomes available, the system pushes the listing to Apartments.com, Zillow, and other connected platforms with the current price and availability. When a prospect clicks "Contact" on any of these platforms, the lead flows into your CRM within the software.</p>
+
+    <div class="callout-blue">
+      <div class="callout-label">📋 Know Your Software</div>
+      <p>When you start a new leasing position, one of your first priorities is to learn how your employer's property management platform handles leads. Where do new inquiries appear? How quickly does the system alert you? How do you log your follow-up activity? A leasing consultant who knows their software moves faster, follows up more consistently, and converts more leads. Ask your property manager for a walkthrough on your first week.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 3</div>
+    <h2 class="lesson-title">Writing a <em>Listing That Converts</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">At large institutional communities, your marketing team writes and manages the primary listing descriptions. But leasing consultants are frequently asked to write or update listings for specific units, respond to inquiry messages, or update availability notes. Knowing how to write a strong listing makes you more valuable — and prevents Fair Housing violations.</p>
+    <p class="lesson-text">The goal of a listing is to give the prospect enough information to self-qualify and take the next step — scheduling a tour. <strong>Describe the property and its benefits. Never describe the ideal tenant.</strong></p>
+
+    <h3 class="sub-title">The Anatomy of a Strong Apartment Listing</h3>
+    <div class="ad-anatomy">
+      <div class="ad-header">
+        <h4>What every effective listing includes</h4>
+        <p>In order — from most to least important for the prospect's decision</p>
+      </div>
+      <div class="ad-body">
+        <div class="ad-line">
+          <div class="ad-num">1</div>
+          <div class="ad-content">
+            <h5>Headline — unit size, key feature, location</h5>
+            <p>Lead with what matters most: beds, baths, and location. "Spacious 2BR/2BA in Koreatown — In-Unit Laundry &amp; Parking" answers the two biggest questions immediately.</p>
+          </div>
+        </div>
+        <div class="ad-line">
+          <div class="ad-num">2</div>
+          <div class="ad-content">
+            <h5>Price and availability</h5>
+            <p>State the monthly rent and available date clearly. Prospects who cannot afford the rent or cannot meet your timeline will self-screen out — which saves your time and theirs.</p>
+          </div>
+        </div>
+        <div class="ad-line">
+          <div class="ad-num">3</div>
+          <div class="ad-content">
+            <h5>Unit features — specific and descriptive</h5>
+            <p>Hardwood floors, stainless appliances, updated kitchen, private balcony, walk-in closet. Be specific. "Updated kitchen" is stronger than "nice kitchen." Specific details signal a well-maintained property.</p>
+          </div>
+        </div>
+        <div class="ad-line">
+          <div class="ad-num">4</div>
+          <div class="ad-content">
+            <h5>Community amenities</h5>
+            <p>Pool, gym, rooftop deck, gated parking, doorman, dog run, EV charging. These differentiate your community from individual landlord listings. Prospects searching ILS platforms specifically value community amenities.</p>
+          </div>
+        </div>
+        <div class="ad-line">
+          <div class="ad-num">5</div>
+          <div class="ad-content">
+            <h5>Location and neighborhood features</h5>
+            <p>Proximity to transit, restaurants, parks, grocery stores — described as neutral location features, not as attributes targeted at any type of resident. "Walking distance to Metro and Whole Foods" is compliant. "Perfect for the professional on the go" is not.</p>
+          </div>
+        </div>
+        <div class="ad-line">
+          <div class="ad-num">6</div>
+          <div class="ad-content">
+            <h5>Lease terms and pet policy</h5>
+            <p>State whether pets are allowed, any pet restrictions, and the lease term (12-month minimum, etc.). Pre-qualifying on these points eliminates time-wasting inquiries from prospects who cannot meet your requirements.</p>
+          </div>
+        </div>
+        <div class="ad-line">
+          <div class="ad-num">7</div>
+          <div class="ad-content">
+            <h5>Clear call to action</h5>
+            <p>"Schedule a tour today" or "Apply online at [link]." Tell the prospect exactly what to do next. Do not make them guess.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Before &amp; After — Fair Housing Compliant Listing Language</h3>
+    <div class="ad-compare">
+      <div class="ad-sample bad">
+        <div class="ad-sample-label">❌ Violation — Do Not Use</div>
+        <div class="ad-sample-text">"Beautiful 2BR in quiet, mature neighborhood. Perfect for working professionals or empty nesters. Minutes from top schools and churches. No children please. Serious applicants only."</div>
+        <div class="ad-sample-note">Violations: "mature neighborhood" (age/familial status), "working professionals or empty nesters" (familial status, age), "churches" (religion), "No children please" (familial status — explicit violation). Every sentence has a problem.</div>
+      </div>
+      <div class="ad-sample good">
+        <div class="ad-sample-label">✓ Compliant — Use This</div>
+        <div class="ad-sample-text">"Bright 2BR/1BA with hardwood floors, updated kitchen, and private patio. In-unit washer/dryer. Assigned parking included. Walk to Silver Lake Reservoir, coffee shops, and Metro Line 2. 12-month lease. Cat-friendly. Income 3× rent required."</div>
+        <div class="ad-sample-note">Describes the property, its features, and its location. States lease terms and an income requirement that pre-qualifies prospects. No language targeting any demographic. Open to all qualified applicants.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 4</div>
+    <h2 class="lesson-title">Photography — <em>Your Listing's First Impression</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">The majority of prospects on ILS platforms will not click on a listing without photos — and will not schedule a tour based on poor photos. At large communities your marketing team likely handles professional photography for model units. But leasing consultants are often asked to photograph newly available units quickly, and knowing how to take a strong photo makes a real difference in how fast a unit leases.</p>
+
+    <div class="photo-grid">
+      <div class="photo-card">
+        <div class="pi">☀️</div>
+        <h4>Shoot in Natural Light</h4>
+        <p>Open all blinds and curtains. Turn on every interior light. Shoot mid-morning when sunlight is at its best. Dark photos make units look smaller and less appealing than they are.</p>
+      </div>
+      <div class="photo-card">
+        <div class="pi">🧹</div>
+        <h4>Stage Before You Shoot</h4>
+        <p>Remove cleaning supplies, personal items, and anything that should not be in the shot. Close toilet lids. Clear countertops. A tidy unit photographs dramatically better than an identical unit that is slightly cluttered.</p>
+      </div>
+      <div class="photo-card">
+        <div class="pi">🚪</div>
+        <h4>Shoot From the Doorway</h4>
+        <p>Stand in the doorway of each room and shoot toward the back corner. This gives the widest angle and makes rooms appear larger. Avoid shooting from the center of a room — it compresses the space.</p>
+      </div>
+      <div class="photo-card">
+        <div class="pi">📍</div>
+        <h4>Cover Every Room</h4>
+        <p>Living room, kitchen, every bedroom, every bathroom, balcony or patio, and parking if it is included. Prospects who cannot see all rooms in photos assume the missing rooms are the problem.</p>
+      </div>
+      <div class="photo-card">
+        <div class="pi">🏊</div>
+        <h4>Include Community Amenities</h4>
+        <p>Pool, gym, rooftop, lobby, dog run — these photos differentiate your community from individual landlord listings. They justify the rent premium and attract the prospect who is choosing between communities.</p>
+      </div>
+      <div class="photo-card">
+        <div class="pi">🏙️</div>
+        <h4>Exterior on a Clear Day</h4>
+        <p>A clean, well-lit exterior photo builds trust before the prospect even sees the unit. Shoot the building façade and entrance on a day with blue sky if possible. First impressions start before the tour.</p>
+      </div>
+    </div>
+
+    <div class="callout-green">
+      <div class="callout-label">✅ The Model Unit Standard</div>
+      <p>Most large apartment communities maintain a furnished model unit specifically for photography and tours. Keep the model unit in photo-ready condition at all times — blinds open, lights on, surfaces cleared, fresh flowers or a bowl of fruit on the counter. When a prospect walks in to see what their future home could look like, the model unit is your most powerful sales tool. Treat it accordingly.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 5 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 5</div>
+    <h2 class="lesson-title">Lead Response — <em>Speed Converts</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">A prospect who submits an inquiry on Apartments.com at 7pm on a Tuesday is likely also contacting two or three other communities at the same time. The first leasing consultant to respond with a helpful, human reply is the one who gets the tour scheduled. Speed is the single biggest driver of lead conversion — more than listing quality, more than amenities, more than price.</p>
+
+    <h3 class="sub-title">Response Time Benchmarks</h3>
+    <div class="response-ladder">
+      <div class="rl-item">
+        <div class="rl-time good">Under 1 hr</div>
+        <div>
+          <div class="rl-label">Excellent — highest conversion rate</div>
+          <div class="rl-desc">Prospects are still actively comparing options. A fast, personal response sets you apart immediately and dramatically increases the likelihood of a scheduled tour.</div>
+        </div>
+      </div>
+      <div class="rl-item">
+        <div class="rl-time good">1–4 hrs</div>
+        <div>
+          <div class="rl-label">Good — still very competitive</div>
+          <div class="rl-desc">Most prospects are still engaged within the first few hours. A clear, helpful response that answers their questions and invites them to schedule a tour will still convert well.</div>
+        </div>
+      </div>
+      <div class="rl-item">
+        <div class="rl-time ok">Same day</div>
+        <div>
+          <div class="rl-label">Acceptable — conversion starts to drop</div>
+          <div class="rl-desc">By end of day, some prospects have already scheduled tours elsewhere. You can still convert but you are playing catch-up. Always aim to respond before the business day ends.</div>
+        </div>
+      </div>
+      <div class="rl-item">
+        <div class="rl-time bad">24+ hrs</div>
+        <div>
+          <div class="rl-label">Poor — most prospects have moved on</div>
+          <div class="rl-desc">A 24+ hour response time signals to the prospect that the community is poorly managed. Many will have already toured and applied elsewhere. Some will not respond to your outreach at all.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">What a Strong Lead Response Looks Like</h3>
+    <p class="lesson-text">Your first response should accomplish three things: acknowledge the inquiry warmly, answer the most likely questions, and invite them to take a specific next step. Keep it conversational — not corporate.</p>
+
+    <div class="ad-compare">
+      <div class="ad-sample bad">
+        <div class="ad-sample-label">❌ Weak Response</div>
+        <div class="ad-sample-text">"Thank you for your interest in our community. Please call our leasing office during business hours at (323) 555-0100 to schedule a showing."</div>
+        <div class="ad-sample-note">Cold, generic, puts all the work on the prospect. No personality, no helpful information, no sense of urgency. The prospect will call a competitor instead.</div>
+      </div>
+      <div class="ad-sample good">
+        <div class="ad-sample-label">✓ Strong Response</div>
+        <div class="ad-sample-text">"Hi [Name] — thanks for reaching out about the 2BR! We have a unit available on the 4th floor with a city view and in-unit washer/dryer. Rent is $2,450/mo and it's available June 1st. I'd love to show you around — are you available this week? I have openings Thursday at 10am, 2pm, or Saturday morning. Let me know what works!"</div>
+        <div class="ad-sample-note">Personal, specific, answers the key questions, and offers concrete next steps. Feels like a human wrote it. Much higher likelihood of a scheduled tour.</div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Tracking Where Your Leads Come From</h3>
+    <p class="lesson-text">Professional leasing consultants and their managers track lead sources — which platform generated each inquiry. This data tells the community where to invest marketing dollars and helps you understand your prospect pipeline. Most property management software tracks this automatically when leads flow in through integrated platforms. For walk-ins and phone calls, you should always ask: <strong>"How did you hear about us?"</strong> and log the answer.</p>
+
+    <table class="tracking-table">
+      <tr>
+        <th>Lead Source</th>
+        <th>Why It Matters</th>
+        <th>What to Ask</th>
+      </tr>
+      <tr>
+        <td>Apartments.com / Zillow</td>
+        <td>Confirms your ILS investment is working. High-volume platforms — track cost per lease, not just cost per lead.</td>
+        <td>Already tracked in your PM software via the inquiry form.</td>
+      </tr>
+      <tr>
+        <td>Referral from current resident</td>
+        <td>The highest-quality lead source. Referred prospects convert at higher rates and stay longer. Referral programs pay off.</td>
+        <td>"Did a current resident refer you? We'd love to thank them."</td>
+      </tr>
+      <tr>
+        <td>Drive-by / walk-in</td>
+        <td>Indicates strong signage and curb appeal. These prospects are already in the neighborhood — very high intent.</td>
+        <td>"Were you just passing by, or have you been looking at our community for a while?"</td>
+      </tr>
+      <tr>
+        <td>Google search</td>
+        <td>Organic search traffic. Confirms the community's online presence is working. These prospects did specific research.</td>
+        <td>"How did you find us online — were you searching for apartments in the area?"</td>
+      </tr>
+      <tr>
+        <td>Social media</td>
+        <td>Facebook Marketplace, Instagram — growing channel especially for younger renters. Indicates brand awareness.</td>
+        <td>"Did you see us on Facebook or Instagram?"</td>
+      </tr>
+    </table>
+
+    <div class="mentor-bubble">
+      <div class="mentor-avatar">T</div>
+      <div class="mentor-text">
+        <p>"The leasing consultants who consistently hit their numbers are the ones who respond to every lead the same day — no exceptions. It sounds obvious but you'd be surprised how many people let leads sit in the queue. I tell my team: if a lead comes in and you have not responded within four hours, someone else already has. Act like it."</p>
+        <div class="mentor-sig">— Tamara, Leasing Manager, Greystar — Los Angeles</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways">
+    <h3>Module 3 — Key Takeaways</h3>
+    <div class="takeaway-list">
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>As a leasing consultant at a large community, your primary advertising role is responding to leads, keeping availability current, and converting marketing-generated inquiries into scheduled tours. The marketing team builds the pipeline — you convert it.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The primary ILS platforms are Apartments.com, Zillow Rentals, Zumper, HotPads, and Trulia Rentals. Your property management software (Yardi, Entrata, RealPage) syncs availability to these platforms automatically — learn how your system works on your first week.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Effective listing language describes the property and its features — never the ideal tenant. Any language that signals a preference for or against a protected class is a Fair Housing violation, even if it sounds friendly or positive.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Strong listing photos require natural light, a staged and clean unit, doorway-angle shots, coverage of every room, and community amenity photos. The model unit should always be photo-ready and tour-ready.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Speed of lead response is the single biggest driver of tour conversion. Respond to every inquiry within 1–4 hours when possible. A warm, personal, specific response that answers key questions and offers a concrete next step outperforms generic template responses every time.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Always ask "How did you hear about us?" and track lead sources. This data informs marketing investment decisions and helps your property manager understand where the community's advertising dollars are working.</p></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section">
+    <h3>Knowledge Check</h3>
+    <div class="quiz-sub">5 questions covering advertising, platforms, and lead response.</div>
+
+    <div class="quiz-q">
+      <p>1. Which of the following listing descriptions contains a Fair Housing violation?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">"2BR with in-unit laundry, hardwood floors, and private balcony. Walk to Metro and Trader Joe's. Cats OK. 12-month lease. Income 3× rent required."</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">"Cozy 1BR in a quiet building — perfect for a single professional. No pets, no kids. Near churches and synagogues."</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">"Spacious 3BR with two parking spaces, large yard, and updated kitchen. Near top-rated schools and parks. 12-month lease."</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>2. A prospect submits an online inquiry at 6pm on a Monday. You see it when you get to work Tuesday at 9am. What should you do?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">Wait until you have a free moment later in the day — morning is busy with scheduled tours</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">Respond immediately with a warm, specific reply that answers their likely questions and offers specific tour times</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">Call them rather than email — phone is always better for leads</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>3. Which property management platforms do large apartment communities in Los Angeles most commonly use to manage their leasing operations and ILS integrations?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">QuickBooks, Microsoft Excel, and Google Sheets</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">Yardi, Entrata, and RealPage</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">Zillow, Apartments.com, and Craigslist directly</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>4. A prospect walks in off the street and says they saw a "For Rent" sign while driving by. After the tour you should:</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4a" value="a"><label for="q4a">Log "walk-in" as the lead source and note it in your property management software — this data helps track which marketing channels are performing</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4b" value="b"><label for="q4b">Not worry about tracking it — walk-ins are too rare to be worth logging</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4c" value="c"><label for="q4c">Ask them to fill out a full application before providing any community information</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>5. Your community's model unit has a light bulb burned out and some clutter on the kitchen counter. A prospect tour is scheduled in 2 hours. What is the right priority?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5a" value="a"><label for="q5a">Do the tour as-is — prospects understand that units are not always perfect</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5b" value="b"><label for="q5b">Replace the bulb and clear the counter before the tour — the model unit is your primary sales tool and should always be tour-ready</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5c" value="c"><label for="q5c">Reschedule the tour until maintenance can fix everything properly</label></div>
+      </div>
+    </div>
+
+    <button class="quiz-btn" onclick="checkQuiz()">Submit Answers</button>
+    <div class="quiz-result" id="quiz-result"></div>
+  </div>
+
+</div>
+
+<div class="bottom-nav">
+  <a href="lc-module-2.html" class="bnav-btn bnav-prev">← Module 2: Fair Housing</a>
+  <span class="bnav-center">Module 3 of 8 · Leasing Career Track</span>
+  <a href="lc-module-4.html" class="bnav-btn bnav-next">Module 4: Pre-Screening &amp; Showing Units →</a>
+</div>
+
+<script>
+function checkQuiz(){
+  const answers={q1:'b',q2:'b',q3:'b',q4:'a',q5:'b'};
+  let score=0,total=Object.keys(answers).length;
+  for(const [q,correct] of Object.entries(answers)){
+    const sel=document.querySelector('input[name="'+q+'"]:checked');
+    if(sel&&sel.value===correct)score++;
+  }
+  const result=document.getElementById('quiz-result');
+  result.style.display='block';
+  if(score===total){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You have a strong understanding of the advertising and lead response fundamentals. On to Module 4.';
+  } else if(score>=total-1){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; good work.</strong> Review any missed questions then continue to Module 4.';
+  } else {
+    result.className='quiz-result incorrect';
+    result.innerHTML='&#10007; <strong>'+score+'/'+total+' correct.</strong> Re-read Lessons 2, 3, and 5 before continuing. Advertising compliance and lead response speed are daily fundamentals in this role.';
+  }
+}
+</script>
+</body>
+</html>
