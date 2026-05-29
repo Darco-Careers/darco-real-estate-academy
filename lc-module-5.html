@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5: Applications &amp; Tenant Screening — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --amber:#7A5800;--amber-mid:#A07010;--amber-light:#C49030;--amber-pale:#FBF5E0;
+  --amber-dark:#4A3400;--amber-darker:#2E2000;
+  --sand:#F7F4EF;--sand-dark:#EDE9E0;
+  --text-dark:#0A1628;--text-mid:#3A4A5C;--text-light:#7A8A9A;
+  --white:#FFFFFF;--border:rgba(122,88,0,0.1);
+  --shadow-card:0 2px 16px rgba(122,88,0,0.08);
+  --green:#1A7A4A;--green-pale:#EAF5EE;
+  --red:#B91C1C;--red-pale:#FEF2F2;
+  --blue:#1A4A7A;--blue-pale:#EEF4FB;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--amber-dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--amber-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--amber-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--amber);font-weight:600;}
+.progress-bar{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--amber-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(122,88,0,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--amber-mid);border-radius:3px;width:62.5%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:var(--amber-light);color:var(--white);}
+.prog-dot.active{background:var(--amber);color:var(--white);}
+.prog-dot.locked{background:rgba(122,88,0,0.12);color:var(--text-light);}
+.module-hero{background:linear-gradient(135deg,var(--amber-darker) 0%,var(--amber) 60%,var(--amber-light) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(196,144,48,0.15) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:rgba(255,235,180,0.95);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.72);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:rgba(255,235,180,0.95);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--amber-light);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--amber);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.amber-divider{width:50px;height:3px;background:var(--amber-light);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-amber{background:var(--amber-pale);border-left:4px solid var(--amber-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-amber .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.5rem;}
+.callout-amber p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-green{background:var(--green-pale);border-left:4px solid var(--green);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-green .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;}
+.callout-green p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--red-pale);border-left:4px solid var(--red);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-blue{background:var(--blue-pale);border-left:4px solid var(--blue);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-blue .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;}
+.callout-blue p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Two-col grid */
+.two-col-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.info-card .ic-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:2px 10px;border-radius:20px;margin-bottom:0.5rem;}
+.ic-tag.required{background:var(--amber-pale);color:var(--amber-mid);}
+.ic-tag.verify{background:var(--blue-pale);color:var(--blue);}
+.ic-tag.flag{background:var(--red-pale);color:var(--red);}
+.ic-tag.pass{background:var(--green-pale);color:var(--green);}
+.info-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.info-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+/* Screening steps */
+.screen-steps{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
+.screen-step{display:flex;gap:1.25rem;padding:1.1rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.screen-step:last-child{border-bottom:none;}
+.ss-num{width:36px;height:36px;border-radius:50%;background:var(--amber);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.ss-body h5{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.ss-body p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+/* Criteria table */
+.criteria-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
+.criteria-table th{background:var(--amber);color:var(--white);font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:0.85rem 1.1rem;text-align:left;}
+.criteria-table td{padding:0.85rem 1.1rem;font-size:13.5px;color:var(--text-mid);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.65;}
+.criteria-table tr:last-child td{border-bottom:none;}
+.criteria-table tr:nth-child(even) td{background:var(--amber-pale);}
+.criteria-table td:first-child{font-weight:600;color:var(--text-dark);white-space:nowrap;}
+/* Result badge */
+.result-badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;letter-spacing:0.04em;}
+.badge-pass{background:var(--green-pale);color:var(--green);}
+.badge-fail{background:var(--red-pale);color:var(--red);}
+.badge-review{background:var(--amber-pale);color:var(--amber-mid);}
+/* Compare boxes */
+.ad-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.ad-sample{border-radius:12px;padding:1.25rem;}
+.ad-sample.bad{background:var(--red-pale);border:1px solid rgba(185,28,28,0.2);}
+.ad-sample.good{background:var(--green-pale);border:1px solid rgba(26,122,74,0.2);}
+.ad-sample-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.65rem;}
+.ad-sample.bad .ad-sample-label{color:var(--red);}
+.ad-sample.good .ad-sample-label{color:var(--green);}
+.ad-sample-text{font-size:13px;color:var(--text-mid);line-height:1.75;}
+.ad-sample-note{font-size:12px;color:var(--text-light);margin-top:0.65rem;line-height:1.55;}
+/* Mentor */
+.mentor-bubble{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow-card);}
+.mentor-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-dark));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;}
+.mentor-text p{font-size:1rem;color:var(--text-mid);line-height:1.8;font-style:italic;}
+.mentor-text .mentor-sig{font-size:12px;font-weight:600;color:var(--amber-mid);margin-top:0.5rem;font-style:normal;}
+/* Takeaways */
+.takeaways{background:var(--amber-darker);border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:1.25rem;}
+.takeaway-list{display:flex;flex-direction:column;gap:0.75rem;}
+.takeaway-item{display:flex;align-items:flex-start;gap:0.85rem;}
+.ta-check{width:22px;height:22px;border-radius:50%;background:var(--amber-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--white);font-weight:700;margin-top:2px;}
+.takeaway-item p{font-size:14px;color:rgba(255,255,255,0.82);line-height:1.65;}
+/* Quiz */
+.quiz-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2.5rem 0;box-shadow:var(--shadow-card);}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.quiz-q{margin-bottom:1.5rem;}
+.quiz-q p{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.65rem;line-height:1.5;}
+.quiz-options{display:flex;flex-direction:column;gap:0.4rem;}
+.quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
+.quiz-opt:hover{border-color:var(--amber-light);background:var(--amber-pale);}
+.quiz-opt input{accent-color:var(--amber);width:15px;height:15px;}
+.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
+.quiz-btn{background:var(--amber);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
+.quiz-btn:hover{background:var(--amber-mid);}
+.quiz-result{display:none;margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.6;}
+.quiz-result.correct{background:var(--green-pale);border:1px solid var(--green);color:var(--green);}
+.quiz-result.incorrect{background:var(--red-pale);border:1px solid #FCA5A5;color:var(--red);}
+.bottom-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;margin-top:2rem;}
+.bnav-btn{display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.5rem;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.bnav-prev{background:var(--sand-dark);color:var(--text-mid);border:1px solid var(--border);}
+.bnav-prev:hover{background:var(--sand);}
+.bnav-next{background:var(--amber);color:var(--white);}
+.bnav-next:hover{background:var(--amber-mid);}
+.bnav-center{font-size:12px;color:var(--text-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Leasing Career Track</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="leasing-career.html" class="nav-back">← Back to Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">›</span>
+  <a href="leasing-career.html">Leasing Career Track</a><span class="sep">›</span>
+  <span class="current">Module 5: Applications &amp; Tenant Screening</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 5 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="lc-module-1.html" class="prog-dot done">1</a>
+    <a href="lc-module-2.html" class="prog-dot done">2</a>
+    <a href="lc-module-3.html" class="prog-dot done">3</a>
+    <a href="lc-module-4.html" class="prog-dot done">4</a>
+    <div class="prog-dot active">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📋 Module 5 · Leasing Career Track</div>
+    <h1>Applications &amp; <em>Tenant Screening</em></h1>
+    <p>A great tour means nothing if the wrong person signs the lease. Processing applications accurately and consistently is one of the most important responsibilities a leasing consultant has — and one of the highest-liability areas if done incorrectly. This module teaches you how to do it right.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ <span>55 min</span></div>
+      <div class="meta-item">📖 <span>5 Lessons</span></div>
+      <div class="meta-item">📄 <span>The Application Form</span></div>
+      <div class="meta-item">🔍 <span>Background &amp; Credit</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 1</div>
+    <h2 class="lesson-title">Your Role in the <em>Application Process</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">At large apartment communities, the leasing consultant is the primary point of contact during the application process. You are not making the final approval decision alone — your property manager or regional manager typically reviews and approves applications — but you are responsible for collecting complete applications, communicating the process to prospects, and ensuring that every applicant is treated consistently according to the community's written qualifying standards.</p>
+    <p class="lesson-text">This is not a passive role. How you handle applications directly affects the community's legal exposure. Inconsistent processes, incomplete paperwork, and undocumented decisions create Fair Housing liability. A clean, consistent application process is your protection — and your employer's.</p>
+
+    <h3 class="sub-title">What the Application Process Accomplishes</h3>
+    <div class="two-col-grid">
+      <div class="info-card">
+        <span class="ic-tag required">Purpose</span>
+        <h4>Verifies the Prospect's Qualifications</h4>
+        <p>The application collects the information your company needs to verify income, rental history, credit, and background — confirming that the applicant meets the written qualifying standards.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag required">Purpose</span>
+        <h4>Creates a Paper Trail</h4>
+        <p>Every application, every screening result, and every decision must be documented. If a Fair Housing complaint is ever filed, your paper trail is your defense. No documentation = no defense.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag required">Purpose</span>
+        <h4>Moves the Lease Forward</h4>
+        <p>An approved application is the gateway to the lease. No one signs a lease without an approved application on file. Processing applications quickly keeps the prospect engaged and reduces the chance they sign elsewhere.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag required">Purpose</span>
+        <h4>Protects the Community</h4>
+        <p>The right tenant pays rent on time, cares for the unit, and respects neighbors. The screening process is what separates a well-run community from one constantly dealing with collections, damage, and conflict.</p>
+      </div>
+    </div>
+
+    <div class="callout-amber">
+      <div class="callout-label">💡 The Critical Reframe</div>
+      <p>The Turner book is written for property owners who set their own standards and make their own decisions. As a leasing consultant at a large community, your company has already set the qualifying standards. Your job is to apply them consistently to every applicant — not to make judgment calls that deviate from written policy. When in doubt, always check with your property manager before proceeding or deviating from the standard process.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 2</div>
+    <h2 class="lesson-title">The Application Form — <em>What It Collects and Why</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">A rental application form is the foundation of the screening process. Every person over 18 who will live in the unit must submit a separate application. This is non-negotiable — including married couples, roommates, and adult children. Each person is screened individually because each person's income, credit, and background affects the risk assessment.</p>
+    <p class="lesson-text">At large communities, your property management software (Yardi, Entrata, RealPage) typically has an online application integrated directly into the ILS platforms. Prospects may apply before they even tour. Know your system so you can guide applicants through it efficiently.</p>
+
+    <h3 class="sub-title">What Every Application Must Collect</h3>
+    <div class="two-col-grid">
+      <div class="info-card">
+        <span class="ic-tag verify">Identity</span>
+        <h4>Full Legal Name, Date of Birth, SSN, Driver's License</h4>
+        <p>Required to run background and credit checks. SSN verification confirms the applicant is who they say they are. Discrepancies between stated identity and background results are a red flag that requires immediate follow-up.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag verify">Contact</span>
+        <h4>Current Address, Phone, Email, Emergency Contact</h4>
+        <p>The emergency contact field is particularly important — specify it as a contact "for rent or tenancy issues." If a resident goes quiet on a late rent situation, the emergency contact gives you a legitimate way to reach someone close to them.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag verify">Occupants</span>
+        <h4>Names of All Occupants</h4>
+        <p>Fair Housing prohibits asking ages or relationships. But you must know who will live in the unit for occupancy standard purposes. Applicants often voluntarily provide relationship information here — that's fine. You just can't ask for it.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag verify">Rental History</span>
+        <h4>All Residences for the Past 3–5 Years</h4>
+        <p>Name, address, landlord contact, monthly rent, and reason for moving. Any gaps or omissions are worth investigating. An applicant who "forgot" a previous address is often hiding a bad reference or an eviction from that property.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag verify">Employment</span>
+        <h4>Current Employer, Position, Income, Start Date</h4>
+        <p>Gross monthly income is what matters — not net. The standard qualification is income of at least 3× the monthly rent. Job start date helps assess stability. Very recent hires (under 60–90 days) may not pass your company's income stability standard.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag verify">Other Income</span>
+        <h4>Any Additional Income Sources</h4>
+        <p>Self-employment, freelance income, child support, disability payments, or other sources. In California, source of income is a protected class — you cannot reject an applicant solely because their income comes from Section 8 or another housing assistance program.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Application Questions That Reveal Character</h3>
+    <p class="lesson-text">Beyond the factual information, well-designed applications include behavioral questions that reveal how an applicant thinks about tenancy. These are standard at institutional communities:</p>
+    <table class="criteria-table">
+      <tr><th>Question</th><th>What a Strong Answer Looks Like</th><th>Watch For</th></tr>
+      <tr><td>"How many evictions have been filed on you?"</td><td>Zero. Any number requires follow-up with documentation.</td><td>Phrased as "how many" not "have you" — forces the applicant to think, not auto-respond "no"</td></tr>
+      <tr><td>"How many felonies do you have?"</td><td>Zero. Criminal history is reviewed case by case per company policy.</td><td>Same phrasing strategy — requires a number, not a yes/no</td></tr>
+      <tr><td>"What pets do you have?" (not "do you have")</td><td>Honest disclosure. Any undisclosed pets discovered later are a lease violation.</td><td>Asking "what" instead of "do you" significantly increases honest responses</td></tr>
+      <tr><td>"Have you ever broken a lease?"</td><td>No, or a clear explanation with a verifiable resolution.</td><td>Cross-check against landlord references — consistency matters</td></tr>
+      <tr><td>"When would you like to move in?"</td><td>Within 2–4 weeks of the available date.</td><td>"ASAP" or "immediately" warrants a closer look — may signal an eviction in progress</td></tr>
+    </table>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ Incomplete Applications</div>
+      <p>Never process an incomplete application. If an applicant leaves fields blank — intentionally or not — hand it back and let them know it will be processed when complete. Blanks on key fields like prior addresses, employment, or SSN are almost always intentional. An applicant who won't complete the form in full is telling you something.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 3</div>
+    <h2 class="lesson-title">The Four Steps of <em>Processing an Application</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Once a complete application is in hand, the screening process follows four core steps in order. At large communities, much of this happens automatically through your property management software — but you need to understand what each step is doing and why, so you can explain it to applicants, catch errors, and escalate issues to your manager appropriately.</p>
+
+    <div class="screen-steps">
+      <div class="screen-step">
+        <div class="ss-num">1</div>
+        <div class="ss-body">
+          <h5>Verify Income</h5>
+          <p>Confirm that gross monthly income equals at least 3× the monthly rent. For W-2 employees, this typically means reviewing the last two pay stubs and verifying employment with the employer directly. For self-employed applicants, two years of tax returns and recent bank statements are the standard. Paystubs alone are not sufficient — a motivated applicant can fabricate one in minutes. Your PM software may flag income automatically, but always cross-check against the actual documents.</p>
+        </div>
+      </div>
+      <div class="screen-step">
+        <div class="ss-num">2</div>
+        <div class="ss-body">
+          <h5>Run Background and Credit Check</h5>
+          <p>Ordered through your property management software or a third-party screening service (TransUnion SmartMove, RentPrep, Experian Connect are common at large communities). The background check reveals criminal history, eviction filings, judgments, liens, and SSN verification. The credit check reveals payment history, delinquencies, and whether the applicant meets your community's minimum credit score standard. Both are typically ordered simultaneously and return results within a few hours.</p>
+        </div>
+      </div>
+      <div class="screen-step">
+        <div class="ss-num">3</div>
+        <div class="ss-body">
+          <h5>Contact Previous Landlords</h5>
+          <p>Call every previous landlord listed for the past 3–5 years. This is the most revealing step — previous landlords have nothing to gain by lying and will tell you the truth. Ask: Did they pay on time? Did they give proper notice? Would you rent to them again? One tip: before asking your questions, ask "Do you have any vacancies?" A friend posing as a landlord won't have a ready answer. A real landlord will.</p>
+        </div>
+      </div>
+      <div class="screen-step">
+        <div class="ss-num">4</div>
+        <div class="ss-body">
+          <h5>Review Everything and Make a Decision</h5>
+          <p>At large communities, the property manager or assistant manager reviews the full package and makes the approval decision. Your job as leasing consultant is to ensure the package is complete, accurate, and documented. Present any discrepancies or concerns to your manager — don't make judgment calls outside your authority. The decision should always be based on the written qualifying standards, not personal impression.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-blue">
+      <div class="callout-label">📋 What Your PM Software Does Automatically</div>
+      <p>Yardi, Entrata, and RealPage all integrate screening directly into the application workflow. When an applicant submits online, the system can automatically trigger a background and credit check, score the application against your community's qualifying criteria, and return a recommendation (Approve, Decline, or Conditional). Your role is to review the results, flag anything that needs human judgment, and communicate the outcome to the applicant. Learn your system's screening workflow in your first week.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 4</div>
+    <h2 class="lesson-title">Reading the Results — <em>What Passes, What Fails, What's Gray</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Screening results don't always come back as a clean pass or fail. Knowing what each result means — and how to handle the gray areas — is what separates a leasing consultant who processes applications from one who genuinely understands the process.</p>
+
+    <h3 class="sub-title">Background Check — What to Look For</h3>
+    <div class="two-col-grid">
+      <div class="info-card">
+        <span class="ic-tag flag">Red Flag</span>
+        <h4>Eviction on Record</h4>
+        <p>An eviction filing — even one that didn't proceed to removal — indicates a tenant who forced a landlord to use legal action. This is one of the most serious red flags. Most institutional communities automatically decline any eviction in the past 5–7 years per their written policy.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag flag">Red Flag</span>
+        <h4>Landlord Judgment or Lien</h4>
+        <p>A money judgment from a previous landlord means the court found the tenant responsible for unpaid rent or damages. This is strong evidence of how they treat their obligations. Follow your community's policy — most decline or require a co-signer.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag flag">Red Flag</span>
+        <h4>Identity Discrepancy</h4>
+        <p>If the SSN returns a different name, or the background check shows addresses the applicant didn't list, flag it immediately for your manager. Do not proceed without resolving the discrepancy. Undisclosed addresses often hide bad landlord references.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag flag">Red Flag</span>
+        <h4>Criminal History</h4>
+        <p>Review according to your company's written criminal history policy — not your personal judgment. HUD guidelines require an individualized assessment for most criminal records. Never make a blanket criminal denial on your own — escalate to management for any criminal results.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Credit Check — Interpreting the Results</h3>
+    <p class="lesson-text">Credit results at large communities typically return as <strong>Pass</strong>, <strong>Fail</strong>, or <strong>Conditional</strong> against your community's minimum score threshold — not as a raw score. Here's what each means for your process:</p>
+    <div class="two-col-grid">
+      <div class="info-card">
+        <span class="ic-tag pass">✓ Pass</span>
+        <h4>Meets Credit Standard</h4>
+        <p>Applicant's credit score meets or exceeds your community's minimum. Proceed to the next step. Note that a credit pass doesn't mean the full application is approved — income, background, and references must all clear as well.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag flag">✗ Fail</span>
+        <h4>Does Not Meet Credit Standard</h4>
+        <p>Applicant's credit score is below the threshold. Depending on your community's policy, this may be an automatic decline, or it may allow for a conditional approval with a higher deposit or co-signer. Never deviate from written policy on your own.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag required">~ Conditional</span>
+        <h4>Marginal — Additional Requirements</h4>
+        <p>Some communities allow approval with conditions: additional deposit, co-signer with strong credit and income, or prepaid rent. These are management decisions, not leasing consultant decisions. Present the conditional result to your manager and let them determine the path forward.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag verify">Note</span>
+        <h4>What Credit Doesn't Tell You</h4>
+        <p>Credit history predicts payment behavior — but it's one data point among several. A prospect with fair credit but stellar rental history and strong income may be a better bet than one with good credit but a pattern of breaking leases. Look at the full picture.</p>
+      </div>
+    </div>
+
+    <div class="mentor-bubble">
+      <div class="mentor-avatar">M</div>
+      <div class="mentor-text">
+        <p>"The mistake I see new leasing consultants make is treating the screening result as the decision. It's not. The screening result is data. The decision belongs to the manager. Your job is to bring them complete, accurate information and flag anything that doesn't add up. The consultant who tries to make approval calls on their own is the consultant who eventually creates a Fair Housing problem for the property."</p>
+        <div class="mentor-sig">— Marcus, Property Manager, Essex Property Trust — Los Angeles</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 5 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 5</div>
+    <h2 class="lesson-title">Approvals, Denials &amp; <em>Adverse Action Notices</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Every application ends in one of three outcomes: approved, conditionally approved, or denied. Each outcome has required communication steps — and for denials, there are specific legal requirements under the Fair Credit Reporting Act (FCRA) that your community must follow.</p>
+
+    <h3 class="sub-title">Communicating the Decision</h3>
+    <div class="ad-compare">
+      <div class="ad-sample bad">
+        <div class="ad-sample-label">❌ How NOT to Communicate a Denial</div>
+        <div class="ad-sample-text">"Hi, just wanted to let you know your application didn't go through. Sorry about that — good luck!"</div>
+        <div class="ad-sample-note">Vague, undocumented, gives no reason, and doesn't fulfill the FCRA requirement to send an Adverse Action Notice if the denial was based on a consumer report.</div>
+      </div>
+      <div class="ad-sample good">
+        <div class="ad-sample-label">✓ Correct Denial Process</div>
+        <div class="ad-sample-text">Send a written Rental Application Response/Adverse Action Notice stating: the denial reason (based on qualifying standards), the name of the consumer reporting agency used, and the applicant's right to request a free copy of their report within 60 days.</div>
+        <div class="ad-sample-note">Required by the Fair Credit Reporting Act when the denial is based on a background or credit report. Your PM software or manager should have a standard template. Always send it in writing.</div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The Adverse Action Notice — What It Must Include</h3>
+    <p class="lesson-text">When an applicant is denied based on information from a consumer report (background check or credit check), federal law requires you to send them an Adverse Action Notice. At large communities this is handled as a standard procedure — your manager or software generates it. But you need to know what it covers:</p>
+    <table class="criteria-table">
+      <tr><th>Required Element</th><th>What It Means</th></tr>
+      <tr><td>Name of the Reporting Agency</td><td>Which screening company was used (e.g., TransUnion SmartMove, CoreLogic SafeRent). The applicant has the right to know who generated the report used against them.</td></tr>
+      <tr><td>Statement That the Agency Didn't Make the Decision</td><td>The screening company only provides data — your community made the decision. The applicant should not argue with the screening company.</td></tr>
+      <tr><td>Right to Dispute the Report</td><td>The applicant has the right to dispute the accuracy of the consumer report with the reporting agency directly.</td></tr>
+      <tr><td>Right to a Free Copy of the Report</td><td>The applicant can request a free copy from the consumer reporting agency within 60 days of receiving the Adverse Action Notice.</td></tr>
+    </table>
+
+    <h3 class="sub-title">Holding the Unit — and When to Stop</h3>
+    <p class="lesson-text">One of the most common leasing mistakes is taking a unit off the market before an application is approved and a holding deposit is in hand. An applicant who is approved but doesn't provide a holding deposit within 24 hours should not have the unit held exclusively for them — other qualified applicants may be in the pipeline.</p>
+
+    <div class="callout-green">
+      <div class="callout-label">✅ Best Practice — The Holding Deposit</div>
+      <p>Once an application is approved, communicate the decision promptly and require the holding deposit (typically equal to one month's rent or the security deposit amount per your community's policy) within 24 hours to take the unit off the market. Without the deposit, the unit stays available. This protects the community from holding a unit for a prospect who changes their mind — and it gives qualified applicants a clear, fair next step.</p>
+    </div>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ Document Everything</div>
+      <p>Every application, every screening result, every communication, and every decision must be documented and filed — whether the applicant was approved, denied, or withdrew. If a Fair Housing complaint is ever filed, your documentation is your entire defense. Your company's standard is to retain denied application files for at least three years. Never discard application materials. If you're uncertain where records are stored in your PM system, ask your manager.</p>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways">
+    <h3>Module 5 — Key Takeaways</h3>
+    <div class="takeaway-list">
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Every person over 18 who will live in the unit must submit a separate application and application fee — no exceptions, including married couples, roommates, and adult family members.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Never process an incomplete application. Blank fields on key information like prior addresses, SSN, or employment are almost always intentional and warrant closer scrutiny.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The four steps of processing are: verify income (3× rent minimum), run background and credit check, contact previous landlords, then present the complete package to management for a decision.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Screening results — background, credit, and landlord references — are data for management to evaluate, not decisions for leasing consultants to make on their own. Always escalate gray areas to your manager.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>When a denial is based on a consumer report, federal law (FCRA) requires sending an Adverse Action Notice that identifies the screening agency and explains the applicant's rights. Your PM software or manager handles this — but you must understand what it is and why it exists.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Document everything. Every application, every result, every communication, and every decision must be on file regardless of outcome. Your documentation is your Fair Housing defense.</p></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section">
+    <h3>Knowledge Check</h3>
+    <div class="quiz-sub">5 questions covering the application process, screening steps, and legal requirements.</div>
+
+    <div class="quiz-q">
+      <p>1. A couple applies together for a 2-bedroom unit. The lease would be in both their names. How many applications should you collect?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">One application — since they are applying together and will share the lease</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">Two applications — one for each adult, each with their own application fee, income documentation, and background check</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">Two applications, but only one application fee since they share finances</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>2. An applicant's background check comes back showing an address they did not list on their application. What should you do?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">Ignore it — people forget addresses all the time</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">Flag it for your manager and attempt to contact the landlord at that address — the applicant may be hiding a bad reference</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">Automatically deny the application — an undisclosed address is always disqualifying</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>3. You call a previous landlord reference and ask "Do you have any vacancies?" before asking your screening questions. Why?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">To make small talk and warm up the conversation</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">To verify you are actually speaking with a landlord — a friend posing as a landlord won't have a ready answer to that question</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">To determine if the applicant could move back to their previous unit if your community doesn't work out</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>4. An applicant is denied based on information from a background check. What must your community send them by law?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4a" value="a"><label for="q4a">Nothing — denial decisions are private business decisions that do not require written notice</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4b" value="b"><label for="q4b">An Adverse Action Notice identifying the screening agency and explaining the applicant's rights to dispute the report and request a free copy</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4c" value="c"><label for="q4c">A letter explaining the specific reasons their background check failed in detail</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>5. A prospect is approved for a unit on a Tuesday and says they will bring the holding deposit "sometime next week." What is the correct response?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5a" value="a"><label for="q5a">Hold the unit for them — they were approved and you want to close the lease</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5b" value="b"><label for="q5b">Let them know that per community policy, the unit can be held for 24 hours after approval — without the holding deposit, the unit remains available to other qualified applicants</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5c" value="c"><label for="q5c">Ask them to sign the lease now and bring the deposit later</label></div>
+      </div>
+    </div>
+
+    <button class="quiz-btn" onclick="checkQuiz()">Submit Answers</button>
+    <div class="quiz-result" id="quiz-result"></div>
+  </div>
+
+</div>
+
+<div class="bottom-nav">
+  <a href="lc-module-4.html" class="bnav-btn bnav-prev">← Module 4: Pre-Screening &amp; Showing Units</a>
+  <span class="bnav-center">Module 5 of 8 · Leasing Career Track</span>
+  <a href="lc-module-6.html" class="bnav-btn bnav-next">Module 6: The Lease &amp; Move-In Process →</a>
+</div>
+
+<script>
+function checkQuiz(){
+  var answers={q1:'b',q2:'b',q3:'b',q4:'b',q5:'b'};
+  var score=0;
+  var total=0;
+  for(var q in answers){
+    total++;
+    var sel=document.querySelector('input[name="'+q+'"]:checked');
+    if(sel&&sel.value===answers[q])score++;
+  }
+  var result=document.getElementById('quiz-result');
+  result.style.display='block';
+  if(score===total){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You understand the application and screening process. These are the skills that keep your community protected and your occupancy filled with qualified residents. On to Module 6.';
+  } else if(score>=total-1){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; good work.</strong> Review any missed questions then continue to Module 6.';
+  } else {
+    result.className='quiz-result incorrect';
+    result.innerHTML='&#10007; <strong>'+score+'/'+total+' correct.</strong> Re-read Lessons 3, 4, and 5 before continuing. The screening process and Adverse Action Notice requirements are daily fundamentals in this role.';
+  }
+}
+</script>
+
+</body>
+</html>
