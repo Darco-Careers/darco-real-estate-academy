@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leasing Career Track — Full Course Glossary</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --amber:#7A5800;--amber-mid:#A07010;--amber-light:#C49030;--amber-pale:#FBF5E0;
+  --amber-dark:#4A3400;--amber-darker:#2E2000;
+  --sand:#F7F4EF;--sand-dark:#EDE9E0;
+  --text-dark:#0A1628;--text-mid:#3A4A5C;--text-light:#7A8A9A;
+  --white:#FFFFFF;--border:rgba(122,88,0,0.1);
+  --shadow-card:0 2px 16px rgba(122,88,0,0.08);
+  --green:#1A7A4A;--green-pale:#EAF5EE;
+  --red:#B91C1C;--red-pale:#FEF2F2;
+  --blue:#1A4A7A;--blue-pale:#EEF4FB;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+nav{background:var(--amber-dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--amber-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+/* Hero */
+.glossary-hero{background:linear-gradient(135deg,var(--amber-darker) 0%,var(--amber) 60%,var(--amber-light) 100%);padding:3rem 2.5rem;position:relative;overflow:hidden;}
+.glossary-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(196,144,48,0.15) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.glossary-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.6rem;}
+.glossary-hero h1 em{color:rgba(255,235,180,0.95);font-style:italic;}
+.glossary-hero p{font-size:1rem;color:rgba(255,255,255,0.7);max-width:560px;line-height:1.8;font-weight:300;}
+/* Search bar */
+.search-wrap{background:var(--white);border-bottom:1px solid var(--border);padding:1.25rem 2.5rem;position:sticky;top:64px;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.search-inner{max-width:900px;margin:0 auto;display:flex;gap:1rem;align-items:center;}
+.search-box{flex:1;position:relative;}
+.search-box input{width:100%;padding:0.65rem 1rem 0.65rem 2.5rem;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text-dark);background:var(--sand);outline:none;transition:border-color 0.2s;}
+.search-box input:focus{border-color:var(--amber-light);}
+.search-icon{position:absolute;left:0.75rem;top:50%;transform:translateY(-50%);color:var(--text-light);font-size:14px;}
+.search-count{font-size:12px;color:var(--text-light);white-space:nowrap;}
+/* A-Z nav */
+.az-nav{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.6rem 2.5rem;}
+.az-inner{max-width:900px;margin:0 auto;display:flex;gap:4px;flex-wrap:wrap;}
+.az-btn{padding:3px 8px;border-radius:5px;font-size:12px;font-weight:600;color:var(--amber-mid);text-decoration:none;cursor:pointer;transition:all 0.15s;}
+.az-btn:hover,.az-btn.active{background:var(--amber);color:var(--white);}
+/* Main content */
+.glossary-body{max-width:900px;margin:0 auto;padding:2.5rem 2rem;}
+/* Module section */
+.module-section{margin-bottom:3rem;}
+.module-section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:2px solid var(--amber-pale);}
+.mod-badge{display:inline-flex;align-items:center;gap:6px;background:var(--amber);color:var(--white);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:20px;}
+.module-section-header h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);}
+/* Term cards */
+.terms-grid{display:flex;flex-direction:column;gap:0.6rem;}
+.term-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;transition:border-color 0.2s;}
+.term-card:hover{border-color:var(--amber-light);}
+.term-card.hidden{display:none;}
+.term-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.4rem;}
+.term-name{font-size:14px;font-weight:700;color:var(--amber-dark);}
+.term-tag{font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:2px 9px;border-radius:99px;background:var(--amber-pale);color:var(--amber-mid);white-space:nowrap;flex-shrink:0;}
+.term-def{font-size:13.5px;color:var(--text-mid);line-height:1.7;}
+/* No results */
+.no-results{text-align:center;padding:3rem 1rem;color:var(--text-light);}
+.no-results p{font-size:15px;}
+/* Letter anchor */
+.letter-anchor{display:block;height:0;overflow:hidden;}
+/* Footer nav */
+.glossary-footer{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;margin-top:2rem;}
+.gf-btn{display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.5rem;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.gf-track{background:var(--amber);color:var(--white);}
+.gf-track:hover{background:var(--amber-mid);}
+.gf-center{font-size:12px;color:var(--text-light);text-align:center;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Leasing Career Track</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="leasing-career.html" class="nav-back">← Back to Track</a></li>
+  </ul>
+</nav>
+
+<div class="glossary-hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📖 Full Course Glossary</div>
+    <h1>Leasing Career Track — <em>Key Terms &amp; Definitions</em></h1>
+    <p>68 terms across all 8 modules. Use this as a study reference, an exam prep tool, or a quick lookup during your first weeks on the job.</p>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <div class="search-inner">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search any term or definition..." oninput="filterTerms()">
+    </div>
+    <span class="search-count" id="searchCount">68 terms</span>
+  </div>
+</div>
+
+<div class="az-nav">
+  <div class="az-inner" id="azNav"></div>
+</div>
+
+<div class="glossary-body" id="glossaryBody">
+
+  <!-- MODULE 1 -->
+  <div class="module-section" id="section-m1">
+    <div class="module-section-header">
+      <span class="mod-badge">Module 1</span>
+      <h2>The Leasing Career</h2>
+    </div>
+    <div class="terms-grid">
+
+      <div class="term-card" data-term="leasing consultant">
+        <div class="term-header"><span class="term-name">Leasing Consultant</span><span class="term-tag">Module 1</span></div>
+        <div class="term-def">A W-2 employee at an apartment community responsible for showing units, processing applications, executing leases, and building relationships with residents. The primary customer-facing role in residential property management. Also called Leasing Agent or Leasing Associate.</div>
+      </div>
+
+      <div class="term-card" data-term="nalp national apartment leasing professional">
+        <div class="term-header"><span class="term-name">NALP (National Apartment Leasing Professional)</span><span class="term-tag">Module 1</span></div>
+        <div class="term-def">The entry-level professional credential for apartment leasing consultants, administered by NAAEI (National Apartment Association Education Institute). Requires a minimum of 6 months of leasing experience plus coursework and a written exam. The recognized industry certification for the leasing professional role.</div>
+      </div>
+
+      <div class="term-card" data-term="naaei national apartment association education institute">
+        <div class="term-header"><span class="term-name">NAAEI (National Apartment Association Education Institute)</span><span class="term-tag">Module 1</span></div>
+        <div class="term-def">The education arm of the National Apartment Association (NAA). Administers professional credentials including the NALP (leasing), CAMT (maintenance), CAM (apartment manager), and CPM (property manager) designations.</div>
+      </div>
+
+      <div class="term-card" data-term="property management company institutional operator">
+        <div class="term-header"><span class="term-name">Property Management Company / Institutional Operator</span><span class="term-tag">Module 1</span></div>
+        <div class="term-def">A company that manages apartment communities on behalf of property owners. Large institutional operators like Greystar, Equity Residential, and Essex Property Trust manage thousands of units and employ leasing consultants as W-2 staff. Distinct from a solo landlord managing their own property.</div>
+      </div>
+
+      <div class="term-card" data-term="on-site housing benefit">
+        <div class="term-header"><span class="term-name">On-Site Housing Benefit</span><span class="term-tag">Module 1</span></div>
+        <div class="term-def">A compensation benefit offered by many large apartment communities where a leasing consultant or resident manager lives in a unit at the community at a significantly reduced rent — sometimes free. The value of this benefit can add $1,000–$2,000+ per month to total compensation in high-cost markets like Los Angeles.</div>
+      </div>
+
+      <div class="term-card" data-term="cpm certified property manager irem">
+        <div class="term-header"><span class="term-name">CPM (Certified Property Manager)</span><span class="term-tag">Module 1</span></div>
+        <div class="term-def">The gold standard credential for property managers, administered by IREM (Institute of Real Estate Management). Requires significant experience, coursework, and an exam. The long-term career milestone for leasing professionals advancing toward senior management roles.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div class="module-section" id="section-m2">
+    <div class="module-section-header">
+      <span class="mod-badge">Module 2</span>
+      <h2>Fair Housing</h2>
+    </div>
+    <div class="terms-grid">
+
+      <div class="term-card" data-term="fair housing act">
+        <div class="term-header"><span class="term-name">Fair Housing Act</span><span class="term-tag">Module 2</span></div>
+        <div class="term-def">Federal law (Title VIII of the Civil Rights Act of 1968, significantly expanded in 1988) that prohibits discrimination in the sale, rental, and financing of housing based on seven protected classes. Enforced by HUD and through private lawsuits. Violations can result in fines of $21,000–$107,000+ depending on history of violations.</div>
+      </div>
+
+      <div class="term-card" data-term="protected class">
+        <div class="term-header"><span class="term-name">Protected Class</span><span class="term-tag">Module 2</span></div>
+        <div class="term-def">A group of people protected from housing discrimination under federal, state, or local law. The seven federal protected classes are: race, color, religion, sex, national origin, familial status, and disability. California adds additional classes including source of income, sexual orientation, gender identity, marital status, ancestry, and others.</div>
+      </div>
+
+      <div class="term-card" data-term="hud department of housing and urban development">
+        <div class="term-header"><span class="term-name">HUD (Department of Housing and Urban Development)</span><span class="term-tag">Module 2</span></div>
+        <div class="term-def">The federal agency responsible for enforcing the Fair Housing Act. HUD investigates fair housing complaints, issues guidance on compliance, and can refer cases to the Department of Justice. Fines and penalties for violations are issued through HUD's administrative process or federal courts.</div>
+      </div>
+
+      <div class="term-card" data-term="familial status">
+        <div class="term-header"><span class="term-name">Familial Status</span><span class="term-tag">Module 2</span></div>
+        <div class="term-def">A federal protected class covering households with one or more children under 18, pregnant women, and people with legal custody of minors. Prohibits discrimination against families with children in housing. A leasing consultant may not deny a unit, steer families toward certain units, or use language in advertising that discourages families from applying.</div>
+      </div>
+
+      <div class="term-card" data-term="reasonable accommodation">
+        <div class="term-header"><span class="term-name">Reasonable Accommodation</span><span class="term-tag">Module 2</span></div>
+        <div class="term-def">A change in rules, policies, practices, or services that a housing provider must make to give a person with a disability equal opportunity to use and enjoy a dwelling. Example: allowing a resident with a mobility disability to have a reserved parking space close to their unit, even if the community has a first-come-first-served parking policy.</div>
+      </div>
+
+      <div class="term-card" data-term="reasonable modification">
+        <div class="term-header"><span class="term-name">Reasonable Modification</span><span class="term-tag">Module 2</span></div>
+        <div class="term-def">A structural change to a unit or common area that a resident with a disability may request to make the space usable. Examples: installing grab bars in a bathroom, adding a ramp at the entrance. In private housing, the resident typically pays for the modification. The landlord cannot refuse a reasonable modification request.</div>
+      </div>
+
+      <div class="term-card" data-term="esa emotional support animal service animal">
+        <div class="term-header"><span class="term-name">ESA (Emotional Support Animal) vs. Service Animal</span><span class="term-tag">Module 2</span></div>
+        <div class="term-def">A Service Animal is trained to perform specific tasks for a person with a disability (e.g., guide dogs). An ESA provides emotional support and does not require task training. Both are protected under Fair Housing as disability accommodations — neither can be denied through a pet policy, charged a pet deposit, or refused due to breed restrictions. Distinct from pets, which are not protected.</div>
+      </div>
+
+      <div class="term-card" data-term="source of income california protected class section 8">
+        <div class="term-header"><span class="term-name">Source of Income (California Protected Class)</span><span class="term-tag">Module 2</span></div>
+        <div class="term-def">In California, source of income — including Section 8 Housing Choice Vouchers, disability payments, and other lawful income sources — is a protected class under FEHA (Fair Employment and Housing Act). A landlord or leasing consultant cannot refuse to rent to an applicant solely because their income comes from housing assistance or government programs.</div>
+      </div>
+
+      <div class="term-card" data-term="steering">
+        <div class="term-header"><span class="term-name">Steering</span><span class="term-tag">Module 2</span></div>
+        <div class="term-def">A Fair Housing violation in which a housing provider guides prospective residents toward or away from certain units, buildings, or neighborhoods based on their protected class. Example: showing a family with children only units near the playground, or discouraging a prospect of a particular background from applying at a specific community. Steering is illegal even when well-intentioned.</div>
+      </div>
+
+      <div class="term-card" data-term="quid pro quo harassment hostile environment">
+        <div class="term-header"><span class="term-name">Quid Pro Quo Harassment / Hostile Environment Harassment</span><span class="term-tag">Module 2</span></div>
+        <div class="term-def">Two forms of sexual harassment prohibited by Fair Housing. Quid pro quo: conditioning housing terms on submission to unwanted conduct ("I'll approve your application if..."). Hostile environment: severe or pervasive conduct that makes housing conditions intolerable. Both create personal and company liability for leasing staff.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 3 -->
+  <div class="module-section" id="section-m3">
+    <div class="module-section-header">
+      <span class="mod-badge">Module 3</span>
+      <h2>Advertising &amp; Attracting Prospects</h2>
+    </div>
+    <div class="terms-grid">
+
+      <div class="term-card" data-term="ils internet listing service">
+        <div class="term-header"><span class="term-name">ILS (Internet Listing Service)</span><span class="term-tag">Module 3</span></div>
+        <div class="term-def">Online platforms where apartment communities advertise available units to prospective residents. The major ILS platforms are Apartments.com, Zillow Rentals, Zumper, HotPads, and Trulia Rentals. Most large communities use their property management software to automatically sync unit availability and pricing across all connected ILS platforms.</div>
+      </div>
+
+      <div class="term-card" data-term="property management software yardi entrata realpage">
+        <div class="term-header"><span class="term-name">Property Management Software (Yardi / Entrata / RealPage)</span><span class="term-tag">Module 3</span></div>
+        <div class="term-def">Enterprise software platforms used by large apartment communities to manage leasing, applications, screening, rent collection, maintenance, and accounting. Yardi, Entrata, and RealPage are the three dominant systems in the institutional apartment market. They integrate with ILS platforms, screening services, and e-signature tools — forming the operational backbone of the leasing workflow.</div>
+      </div>
+
+      <div class="term-card" data-term="crm customer relationship management leads">
+        <div class="term-header"><span class="term-name">CRM (Customer Relationship Management)</span><span class="term-tag">Module 3</span></div>
+        <div class="term-def">Within property management software, the CRM is the module that tracks prospect inquiries, tour appointments, follow-up activity, and application status. When a prospect submits an inquiry on Apartments.com, it flows into the community's CRM as a lead. Leasing consultants use the CRM to log every touchpoint and track where each prospect is in the pipeline.</div>
+      </div>
+
+      <div class="term-card" data-term="lead source tracking">
+        <div class="term-header"><span class="term-name">Lead Source</span><span class="term-tag">Module 3</span></div>
+        <div class="term-def">The channel through which a prospect first learned about the community — Apartments.com, Zillow, walk-in, referral, Google search, etc. Tracking lead sources by asking "How did you hear about us?" and logging the answer informs marketing spend decisions. Cost-per-lease by lead source is a key metric for property managers and regional managers.</div>
+      </div>
+
+      <div class="term-card" data-term="vacancy loss">
+        <div class="term-header"><span class="term-name">Vacancy Loss</span><span class="term-tag">Module 3</span></div>
+        <div class="term-def">Revenue lost because a unit is unoccupied. Calculated as the daily rent rate multiplied by the number of days vacant. A $2,400/month unit vacant for 15 days = $1,200 in vacancy loss. Reducing days between a move-out and a new move-in (by pre-leasing units) is one of the highest-value activities a leasing consultant can perform.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 4 -->
+  <div class="module-section" id="section-m4">
+    <div class="module-section-header">
+      <span class="mod-badge">Module 4</span>
+      <h2>Pre-Screening &amp; Showing Units</h2>
+    </div>
+    <div class="terms-grid">
+
+      <div class="term-card" data-term="pre-screening">
+        <div class="term-header"><span class="term-name">Pre-Screening</span><span class="term-tag">Module 4</span></div>
+        <div class="term-def">The conversation conducted before a tour — by phone, email, or chat — to confirm that a prospect's basic needs align with available units. Pre-screening covers move-in timeline, budget relative to available rent, number of occupants, pets, and lease term preference. It protects the prospect from a wasted tour and protects the leasing consultant's schedule for qualified leads.</div>
+      </div>
+
+      <div class="term-card" data-term="qualifying standards minimum requirements">
+        <div class="term-header"><span class="term-name">Qualifying Standards / Minimum Requirements</span><span class="term-tag">Module 4</span></div>
+        <div class="term-def">Written criteria that every applicant must meet to be approved for a lease. Typically include: income of 3× monthly rent, no evictions in a specified period, minimum credit score, acceptable rental history, and a background check free of disqualifying criminal history. Must be applied consistently to every applicant to avoid Fair Housing liability.</div>
+      </div>
+
+      <div class="term-card" data-term="buying signals">
+        <div class="term-header"><span class="term-name">Buying Signals</span><span class="term-tag">Module 4</span></div>
+        <div class="term-def">Behaviors a prospect exhibits during a tour that indicate genuine interest and intent to lease — opening closet doors, checking water pressure, measuring rooms, asking about move-in dates, or discussing where their furniture would go. When buying signals appear, an effective leasing consultant slows down, encourages exploration, and moves toward the application conversation.</div>
+      </div>
+
+      <div class="term-card" data-term="holding deposit">
+        <div class="term-header"><span class="term-name">Holding Deposit</span><span class="term-tag">Module 4</span></div>
+        <div class="term-def">A payment collected from an approved applicant to take a unit off the market while the move-in is finalized. Typically equal to one month's rent or the security deposit amount. Without a holding deposit in hand, a unit should not be held exclusively for one applicant. The holding deposit is usually applied toward the security deposit at move-in.</div>
+      </div>
+
+      <div class="term-card" data-term="model unit">
+        <div class="term-header"><span class="term-name">Model Unit</span><span class="term-tag">Module 4</span></div>
+        <div class="term-def">A furnished, staged unit maintained by the community specifically for tours and photography. The model unit represents what a resident's home could look and feel like. It should always be in photo-ready condition: lights on, blinds open, surfaces clear. At large communities, the model is the leasing consultant's single most powerful sales tool.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 5 -->
+  <div class="module-section" id="section-m5">
+    <div class="module-section-header">
+      <span class="mod-badge">Module 5</span>
+      <h2>Applications &amp; Tenant Screening</h2>
+    </div>
+    <div class="terms-grid">
+
+      <div class="term-card" data-term="background check criminal history screening">
+        <div class="term-header"><span class="term-name">Background Check</span><span class="term-tag">Module 5</span></div>
+        <div class="term-def">A report ordered through a tenant screening service that reveals an applicant's criminal history, eviction filings, past judgments and liens, SSN verification, and address history. Ordered as part of the application processing workflow. Results must be reviewed against the community's written screening criteria — criminal history decisions must follow an individualized assessment per HUD guidance.</div>
+      </div>
+
+      <div class="term-card" data-term="credit check credit score">
+        <div class="term-header"><span class="term-name">Credit Check</span><span class="term-tag">Module 5</span></div>
+        <div class="term-def">A report that reveals an applicant's credit score and payment history — including delinquent accounts, collections, bankruptcies, and overall financial responsibility. At large communities, the PM software typically returns a pass/fail result against the community's minimum score threshold rather than showing the raw score. Credit is one data point among several — not the sole basis for a decision.</div>
+      </div>
+
+      <div class="term-card" data-term="fcra fair credit reporting act">
+        <div class="term-header"><span class="term-name">FCRA (Fair Credit Reporting Act)</span><span class="term-tag">Module 5</span></div>
+        <div class="term-def">Federal law governing the use of consumer reports (background and credit checks) in housing decisions. When an applicant is denied based on a consumer report, the FCRA requires the housing provider to send an Adverse Action Notice identifying the reporting agency and explaining the applicant's rights to dispute the report and request a free copy within 60 days.</div>
+      </div>
+
+      <div class="term-card" data-term="adverse action notice">
+        <div class="term-header"><span class="term-name">Adverse Action Notice</span><span class="term-tag">Module 5</span></div>
+        <div class="term-def">A written notice required by the FCRA when a rental application is denied — or conditionally approved — based on information in a consumer report. Must identify the screening agency used, state that the agency did not make the decision, and inform the applicant of their right to dispute the report and request a free copy within 60 days. Generated by the PM software or management — the leasing consultant must understand what it is and why it exists.</div>
+      </div>
+
+      <div class="term-card" data-term="income verification 3x rule">
+        <div class="term-header"><span class="term-name">Income Verification / 3× Rule</span><span class="term-tag">Module 5</span></div>
+        <div class="term-def">The standard qualifying requirement that an applicant's gross monthly income equal at least three times the monthly rent. A $2,400/month unit requires documented income of at least $7,200/month. For W-2 employees, this is verified through pay stubs and direct employer contact. Self-employed applicants typically submit two years of tax returns and recent bank statements.</div>
+      </div>
+
+      <div class="term-card" data-term="eviction record eviction filing">
+        <div class="term-header"><span class="term-name">Eviction Record</span><span class="term-tag">Module 5</span></div>
+        <div class="term-def">A documented history of eviction filings — whether or not they proceeded to removal — that appears on a background check. Even an eviction filing (as opposed to a completed eviction) signals that a tenant forced a landlord into legal action. Most institutional communities have a written policy that automatically declines applicants with evictions within a defined period, typically 5–7 years.</div>
+      </div>
+
+      <div class="term-card" data-term="conditional approval co-signer additional deposit">
+        <div class="term-header"><span class="term-name">Conditional Approval</span><span class="term-tag">Module 5</span></div>
+        <div class="term-def">An application decision that approves a resident subject to additional requirements — typically a higher security deposit, a co-signer with strong credit and income, or prepaid rent — when the applicant's credit or income marginally misses the standard qualifying criteria. A management-level decision that leasing consultants should escalate to their property manager rather than deciding independently.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 6 -->
+  <div class="module-section" id="section-m6">
+    <div class="module-section-header">
+      <span class="mod-badge">Module 6</span>
+      <h2>The Lease &amp; Move-In Process</h2>
+    </div>
+    <div class="terms-grid">
+
+      <div class="term-card" data-term="lease rental agreement contract">
+        <div class="term-header"><span class="term-name">Lease / Rental Agreement</span><span class="term-tag">Module 6</span></div>
+        <div class="term-def">A legally binding contract between the property owner (or management company) and the tenant that defines the terms, conditions, rules, and responsibilities of the rental relationship. Specifies rent amount, lease term, security deposit, late fees, pet policy, guest policy, utilities responsibility, and all other material terms. Every adult occupant must sign. A copy must be provided to each resident after signing.</div>
+      </div>
+
+      <div class="term-card" data-term="term lease fixed term">
+        <div class="term-header"><span class="term-name">Term Lease</span><span class="term-tag">Module 6</span></div>
+        <div class="term-def">A lease with a fixed start and end date — most commonly 12 months. Both the resident and the landlord are legally bound for the full term. Large institutional communities use term leases as the standard. Lease end dates are often strategically set to fall in peak leasing season (spring/summer) to minimize vacancy risk at turnover.</div>
+      </div>
+
+      <div class="term-card" data-term="month-to-month lease tenancy">
+        <div class="term-header"><span class="term-name">Month-to-Month Tenancy</span><span class="term-tag">Module 6</span></div>
+        <div class="term-def">A rental agreement with no fixed end date that automatically renews each month. Either party may terminate with proper notice (typically 30 days in California). At large communities, month-to-month tenancy often applies after the initial term expires — usually at a higher rent rate than the fixed-term lease to incentivize renewal.</div>
+      </div>
+
+      <div class="term-card" data-term="security deposit">
+        <div class="term-header"><span class="term-name">Security Deposit</span><span class="term-tag">Module 6</span></div>
+        <div class="term-def">A sum paid by the resident before move-in, held by the landlord as protection against unpaid rent or damages beyond normal wear and tear. In California, security deposits for unfurnished units are capped at two months' rent (as of 2024 under AB 12). Must be returned with an itemized statement within 21 calendar days of move-out. Cannot be used for normal wear and tear.</div>
+      </div>
+
+      <div class="term-card" data-term="grace period rent late fee">
+        <div class="term-header"><span class="term-name">Grace Period</span><span class="term-tag">Module 6</span></div>
+        <div class="term-def">Additional days after the rent due date during which rent may be received without triggering a late fee. Common at large communities — rent due the 1st, grace period through the 5th, late fee assessed on the 6th. A grace period is a courtesy window, not a license to pay late — rent is still technically due on the 1st.</div>
+      </div>
+
+      <div class="term-card" data-term="lead based paint disclosure">
+        <div class="term-header"><span class="term-name">Lead-Based Paint Disclosure</span><span class="term-tag">Module 6</span></div>
+        <div class="term-def">A federal disclosure required for all residential properties built before 1978. The landlord must disclose any known lead-based paint hazards and provide the EPA pamphlet "Protect Your Family from Lead in Your Home." Residents must sign acknowledging receipt before signing the lease. Required even if no lead is present — failure to provide is a federal violation.</div>
+      </div>
+
+      <div class="term-card" data-term="move-in condition report inspection checklist">
+        <div class="term-header"><span class="term-name">Move-In Condition Report</span><span class="term-tag">Module 6</span></div>
+        <div class="term-def">A written and photographic record of the unit's condition at the time the resident takes possession. Completed together with the resident during the move-in inspection. Required by California law. Establishes the baseline against which move-out condition is compared when determining security deposit deductions. Time-stamped photos uploaded to the PM system are the strongest form of documentation.</div>
+      </div>
+
+      <div class="term-card" data-term="california 24 hour notice landlord entry">
+        <div class="term-header"><span class="term-name">24-Hour Notice (California Landlord Entry)</span><span class="term-tag">Module 6</span></div>
+        <div class="term-def">Under California Civil Code Section 1954, a landlord must provide at least 24 hours written notice before entering a unit for non-emergency purposes (inspections, repairs, showing to prospective residents, etc.). In emergencies — fire, flood, gas leak — entry without notice is permitted. Violation of the notice requirement is a tenant right infringement and creates legal exposure.</div>
+      </div>
+
+      <div class="term-card" data-term="renter's insurance">
+        <div class="term-header"><span class="term-name">Renter's Insurance</span><span class="term-tag">Module 6</span></div>
+        <div class="term-def">An insurance policy that covers a resident's personal property against loss (theft, fire, water damage) and provides liability coverage if someone is injured in their unit. Most large communities require a minimum of $100,000 in liability coverage as a condition of the lease. The property's insurance covers the building — not the resident's belongings or personal liability.</div>
+      </div>
+
+      <div class="term-card" data-term="ab 1482 rent control rent increase notice california">
+        <div class="term-header"><span class="term-name">AB 1482 (California Tenant Protection Act)</span><span class="term-tag">Module 6</span></div>
+        <div class="term-def">California law (effective 2020) that caps annual rent increases for covered units at 5% + local CPI (max 10%) and requires just cause for eviction after 12 months of tenancy. Also establishes notice requirements: 30 days written notice for rent increases up to 10%, 90 days written notice for increases over 10%. Not all units are covered — newer construction and single-family homes may be exempt.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 7 -->
+  <div class="module-section" id="section-m7">
+    <div class="module-section-header">
+      <span class="mod-badge">Module 7</span>
+      <h2>Resident Relations &amp; Renewals</h2>
+    </div>
+    <div class="terms-grid">
+
+      <div class="term-card" data-term="physical occupancy rate">
+        <div class="term-header"><span class="term-name">Physical Occupancy Rate</span><span class="term-tag">Module 7</span></div>
+        <div class="term-def">The percentage of total units that are currently occupied by a paying resident. Calculated as: occupied units ÷ total units × 100. The primary measure of a community's current revenue performance. Most institutional communities target 95%+ physical occupancy. Distinct from leased percentage, which includes pre-leased units not yet occupied.</div>
+      </div>
+
+      <div class="term-card" data-term="economic occupancy">
+        <div class="term-header"><span class="term-name">Economic Occupancy</span><span class="term-tag">Module 7</span></div>
+        <div class="term-def">The percentage of potential gross rent actually collected — accounting for concessions, delinquencies, and non-revenue units (model, employee, down units). Always lower than physical occupancy. Calculated as: actual rent collected ÷ total potential gross rent × 100. A community can be 96% physically occupied but have lower economic occupancy if concessions or delinquency are high.</div>
+      </div>
+
+      <div class="term-card" data-term="leased percentage pre-leased">
+        <div class="term-header"><span class="term-name">Leased Percentage</span><span class="term-tag">Module 7</span></div>
+        <div class="term-def">The percentage of total units with a signed lease in place — including units that are approved and leased but not yet occupied (pre-leased). A community with 94% physical occupancy and 98% leased percentage has strong forward momentum. Pre-leasing units before current residents move out eliminates vacancy days entirely and is one of the highest-value leasing activities.</div>
+      </div>
+
+      <div class="term-card" data-term="tour to lease conversion rate">
+        <div class="term-header"><span class="term-name">Tour-to-Lease Conversion Rate</span><span class="term-tag">Module 7</span></div>
+        <div class="term-def">The percentage of property tours that result in a signed lease application or lease. Calculated as: leases signed ÷ tours conducted × 100. Industry average is approximately 25–35%. A consistently high conversion rate indicates strong tour technique, effective objection handling, and timely follow-up. A consistently low rate signals something in the process needs examination.</div>
+      </div>
+
+      <div class="term-card" data-term="renewal rate retention">
+        <div class="term-header"><span class="term-name">Renewal Rate</span><span class="term-tag">Module 7</span></div>
+        <div class="term-def">The percentage of expiring leases that renew for another term. Calculated as: renewals signed ÷ leases expiring in the period × 100. Top-performing institutional communities target 55–65% annual renewal rates. Every prevented move-out saves the community $3,000–$5,000+ in turnover costs. The renewal rate is jointly influenced by leasing staff relationship quality, management pricing decisions, and community conditions.</div>
+      </div>
+
+      <div class="term-card" data-term="turnover cost unit turn">
+        <div class="term-header"><span class="term-name">Turnover Cost</span><span class="term-tag">Module 7</span></div>
+        <div class="term-def">The total cost incurred when a resident moves out and a unit is prepared for the next resident. Includes: vacancy loss (days empty × daily rent), cleaning, paint, carpet cleaning or replacement, minor repairs, leasing costs, and administrative time. Industry average is $3,000–$5,000+ per unit turn. Every retained renewal avoids this cost entirely.</div>
+      </div>
+
+      <div class="term-card" data-term="notice to vacate nrv">
+        <div class="term-header"><span class="term-name">Notice to Vacate</span><span class="term-tag">Module 7</span></div>
+        <div class="term-def">Written notice provided by a resident indicating their intent to move out. In California, residents on a fixed-term lease must typically provide 30 days written notice before lease expiration; residents on month-to-month must provide 30 days notice. The notice must be submitted through the method specified in the lease (usually the resident portal or written to the management office). Incorrect notice procedures can affect security deposit timelines.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODULE 8 -->
+  <div class="module-section" id="section-m8">
+    <div class="module-section-header">
+      <span class="mod-badge">Module 8</span>
+      <h2>Getting Hired &amp; Moving Up</h2>
+    </div>
+    <div class="terms-grid">
+
+      <div class="term-card" data-term="star method interview behavioral">
+        <div class="term-header"><span class="term-name">STAR Method</span><span class="term-tag">Module 8</span></div>
+        <div class="term-def">A structured framework for answering behavioral interview questions: Situation (describe the context), Task (what you were responsible for), Action (what you specifically did), Result (the outcome). Used to answer questions like "Tell me about a time you handled a difficult customer." The most effective way to turn work experience into compelling interview answers.</div>
+      </div>
+
+      <div class="term-card" data-term="aagla apartment association greater los angeles">
+        <div class="term-header"><span class="term-name">AAGLA (Apartment Association of Greater Los Angeles)</span><span class="term-tag">Module 8</span></div>
+        <div class="term-def">The regional chapter of the National Apartment Association serving the Los Angeles market. Provides industry education, legislative advocacy, networking events, and resources for apartment professionals. Membership and attendance at AAGLA events is a direct way to build industry connections and meet hiring managers at large LA apartment operators.</div>
+      </div>
+
+      <div class="term-card" data-term="irem institute real estate management">
+        <div class="term-header"><span class="term-name">IREM (Institute of Real Estate Management)</span><span class="term-tag">Module 8</span></div>
+        <div class="term-def">A professional association and credentialing body for real estate management professionals. Administers the CPM (Certified Property Manager) and ARM (Accredited Residential Manager) designations. The CPM is the long-term credential target for leasing professionals advancing toward senior property management roles.</div>
+      </div>
+
+      <div class="term-card" data-term="arm accredited residential manager">
+        <div class="term-header"><span class="term-name">ARM (Accredited Residential Manager)</span><span class="term-tag">Module 8</span></div>
+        <div class="term-def">An IREM credential for residential property managers that bridges the gap between the NALP (entry-level leasing) and the CPM (senior management). Requires coursework, experience, and an exam. A strong mid-career credential for leasing consultants who have moved into assistant manager or leasing manager roles and are on the path to property manager.</div>
+      </div>
+
+      <div class="term-card" data-term="assistant property manager apm">
+        <div class="term-header"><span class="term-name">Assistant Property Manager (APM)</span><span class="term-tag">Module 8</span></div>
+        <div class="term-def">A management-track role that bridges leasing and operations. APMs typically handle collections, delinquency, vendor coordination, financial reporting, and operational oversight alongside leasing responsibilities. The step between leasing manager and property manager on the institutional career ladder. A California real estate salesperson license is valuable — and often required — at this level.</div>
+      </div>
+
+      <div class="term-card" data-term="regional manager portfolio manager">
+        <div class="term-header"><span class="term-name">Regional Manager / Portfolio Manager</span><span class="term-tag">Module 8</span></div>
+        <div class="term-def">A senior management role overseeing 5–15+ apartment communities and their property management teams. Responsible for occupancy targets, budget performance, team development, and owner reporting across the portfolio. Typically earns $90,000–$130,000+ plus significant bonus potential. Many regional managers began their careers as leasing consultants.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="no-results" id="noResults" style="display:none;">
+    <p>No terms found matching your search. Try a different keyword.</p>
+  </div>
+
+</div>
+
+<div class="glossary-footer">
+  <a href="leasing-career.html" class="gf-btn" style="background:var(--sand-dark);color:var(--text-mid);border:1px solid var(--border);">← Track Overview</a>
+  <div class="gf-center">Leasing Career Track · 68 Terms · 8 Modules</div>
+  <a href="lc-module-1.html" class="gf-btn gf-track">Back to Module 1 →</a>
+</div>
+
+<script>
+// Build A-Z nav
+var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+var azNav = document.getElementById('azNav');
+letters.forEach(function(l){
+  var btn = document.createElement('span');
+  btn.className = 'az-btn';
+  btn.textContent = l;
+  btn.onclick = function(){ scrollToLetter(l); };
+  azNav.appendChild(btn);
+});
+
+function scrollToLetter(letter){
+  var cards = document.querySelectorAll('.term-card:not(.hidden)');
+  for(var i=0;i<cards.length;i++){
+    var name = cards[i].querySelector('.term-name').textContent.trim().toUpperCase();
+    if(name.charAt(0) === letter){
+      cards[i].scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+  }
+}
+
+function filterTerms(){
+  var q = document.getElementById('searchInput').value.toLowerCase().trim();
+  var cards = document.querySelectorAll('.term-card');
+  var visible = 0;
+  cards.forEach(function(card){
+    var data = card.getAttribute('data-term').toLowerCase();
+    var def = card.querySelector('.term-def').textContent.toLowerCase();
+    var name = card.querySelector('.term-name').textContent.toLowerCase();
+    var match = !q || data.indexOf(q)>-1 || def.indexOf(q)>-1 || name.indexOf(q)>-1;
+    card.classList.toggle('hidden', !match);
+    if(match) visible++;
+  });
+  // Hide empty sections
+  document.querySelectorAll('.module-section').forEach(function(sec){
+    var shown = sec.querySelectorAll('.term-card:not(.hidden)').length;
+    sec.style.display = shown === 0 ? 'none' : '';
+  });
+  document.getElementById('searchCount').textContent = visible + ' term' + (visible!==1?'s':'');
+  document.getElementById('noResults').style.display = visible===0 ? 'block' : 'none';
+}
+</script>
+
+</body>
+</html>
