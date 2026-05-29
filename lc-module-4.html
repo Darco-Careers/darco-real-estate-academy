@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 4: Pre-Screening &amp; Showing Units — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --amber:#7A5800;--amber-mid:#A07010;--amber-light:#C49030;--amber-pale:#FBF5E0;
+  --amber-dark:#4A3400;--amber-darker:#2E2000;
+  --sand:#F7F4EF;--sand-dark:#EDE9E0;
+  --text-dark:#0A1628;--text-mid:#3A4A5C;--text-light:#7A8A9A;
+  --white:#FFFFFF;--border:rgba(122,88,0,0.1);
+  --shadow-card:0 2px 16px rgba(122,88,0,0.08);
+  --green:#1A7A4A;--green-pale:#EAF5EE;
+  --red:#B91C1C;--red-pale:#FEF2F2;
+  --blue:#1A4A7A;--blue-pale:#EEF4FB;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--amber-dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--amber-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--amber-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--amber);font-weight:600;}
+.progress-bar{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--amber-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(122,88,0,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--amber-mid);border-radius:3px;width:50%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:var(--amber-light);color:var(--white);}
+.prog-dot.active{background:var(--amber);color:var(--white);}
+.prog-dot.locked{background:rgba(122,88,0,0.12);color:var(--text-light);}
+.module-hero{background:linear-gradient(135deg,var(--amber-darker) 0%,var(--amber) 60%,var(--amber-light) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(196,144,48,0.15) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:rgba(255,235,180,0.95);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.72);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:rgba(255,235,180,0.95);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--amber-light);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--amber);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.amber-divider{width:50px;height:3px;background:var(--amber-light);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-amber{background:var(--amber-pale);border-left:4px solid var(--amber-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-amber .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.5rem;}
+.callout-amber p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-green{background:var(--green-pale);border-left:4px solid var(--green);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-green .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;}
+.callout-green p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--red-pale);border-left:4px solid var(--red);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-blue{background:var(--blue-pale);border-left:4px solid var(--blue);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-blue .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;}
+.callout-blue p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Two-column card grids */
+.two-col-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.info-card .ic-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:2px 10px;border-radius:20px;margin-bottom:0.5rem;}
+.ic-tag.allowed{background:var(--green-pale);color:var(--green);}
+.ic-tag.prohibited{background:var(--red-pale);color:var(--red);}
+.ic-tag.tip{background:var(--amber-pale);color:var(--amber-mid);}
+.ic-tag.neutral{background:var(--blue-pale);color:var(--blue);}
+.info-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.info-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+/* Before/after compare */
+.ad-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.ad-sample{border-radius:12px;padding:1.25rem;}
+.ad-sample.bad{background:var(--red-pale);border:1px solid rgba(185,28,28,0.2);}
+.ad-sample.good{background:var(--green-pale);border:1px solid rgba(26,122,74,0.2);}
+.ad-sample-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.65rem;}
+.ad-sample.bad .ad-sample-label{color:var(--red);}
+.ad-sample.good .ad-sample-label{color:var(--green);}
+.ad-sample-text{font-size:13px;color:var(--text-mid);line-height:1.75;font-style:italic;}
+.ad-sample-note{font-size:12px;color:var(--text-light);margin-top:0.65rem;line-height:1.55;font-style:normal;}
+/* Checklist */
+.checklist{display:flex;flex-direction:column;gap:0.55rem;margin:2rem 0;}
+.cl-item{display:flex;align-items:flex-start;gap:0.85rem;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1.1rem;}
+.cl-icon{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;}
+.cl-icon.check{background:var(--green-pale);color:var(--green);}
+.cl-icon.amber{background:var(--amber-pale);color:var(--amber);}
+.cl-text h5{font-size:13.5px;font-weight:600;color:var(--text-dark);margin-bottom:0.15rem;}
+.cl-text p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+/* Tour step flow */
+.tour-steps{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
+.tour-step{display:flex;gap:1.25rem;padding:1.1rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.tour-step:last-child{border-bottom:none;}
+.ts-num{width:36px;height:36px;border-radius:50%;background:var(--amber);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.ts-body h5{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.ts-body p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+/* Objection table */
+.obj-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
+.obj-table th{background:var(--amber);color:var(--white);font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:0.85rem 1.1rem;text-align:left;}
+.obj-table td{padding:0.85rem 1.1rem;font-size:13.5px;color:var(--text-mid);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.65;}
+.obj-table tr:last-child td{border-bottom:none;}
+.obj-table tr:nth-child(even) td{background:var(--amber-pale);}
+.obj-table td:first-child{font-weight:600;color:var(--text-dark);}
+/* Mentor */
+.mentor-bubble{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow-card);}
+.mentor-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-dark));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;}
+.mentor-text p{font-size:1rem;color:var(--text-mid);line-height:1.8;font-style:italic;}
+.mentor-text .mentor-sig{font-size:12px;font-weight:600;color:var(--amber-mid);margin-top:0.5rem;font-style:normal;}
+/* Takeaways */
+.takeaways{background:var(--amber-darker);border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:1.25rem;}
+.takeaway-list{display:flex;flex-direction:column;gap:0.75rem;}
+.takeaway-item{display:flex;align-items:flex-start;gap:0.85rem;}
+.ta-check{width:22px;height:22px;border-radius:50%;background:var(--amber-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--white);font-weight:700;margin-top:2px;}
+.takeaway-item p{font-size:14px;color:rgba(255,255,255,0.82);line-height:1.65;}
+/* Quiz */
+.quiz-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2.5rem 0;box-shadow:var(--shadow-card);}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.quiz-q{margin-bottom:1.5rem;}
+.quiz-q p{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.65rem;line-height:1.5;}
+.quiz-options{display:flex;flex-direction:column;gap:0.4rem;}
+.quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
+.quiz-opt:hover{border-color:var(--amber-light);background:var(--amber-pale);}
+.quiz-opt input{accent-color:var(--amber);width:15px;height:15px;}
+.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
+.quiz-btn{background:var(--amber);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
+.quiz-btn:hover{background:var(--amber-mid);}
+.quiz-result{display:none;margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.6;}
+.quiz-result.correct{background:var(--green-pale);border:1px solid var(--green);color:var(--green);}
+.quiz-result.incorrect{background:var(--red-pale);border:1px solid #FCA5A5;color:var(--red);}
+.bottom-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;margin-top:2rem;}
+.bnav-btn{display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.5rem;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.bnav-prev{background:var(--sand-dark);color:var(--text-mid);border:1px solid var(--border);}
+.bnav-prev:hover{background:var(--sand);}
+.bnav-next{background:var(--amber);color:var(--white);}
+.bnav-next:hover{background:var(--amber-mid);}
+.bnav-center{font-size:12px;color:var(--text-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Leasing Career Track</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="leasing-career.html" class="nav-back">← Back to Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">›</span>
+  <a href="leasing-career.html">Leasing Career Track</a><span class="sep">›</span>
+  <span class="current">Module 4: Pre-Screening &amp; Showing Units</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 4 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="lc-module-1.html" class="prog-dot done">1</a>
+    <a href="lc-module-2.html" class="prog-dot done">2</a>
+    <a href="lc-module-3.html" class="prog-dot done">3</a>
+    <div class="prog-dot active">4</div>
+    <div class="prog-dot locked">5</div>
+    <div class="prog-dot locked">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📋 Module 4 · Leasing Career Track</div>
+    <h1>Pre-Screening &amp; <em>Showing Units</em></h1>
+    <p>The tour is where leases are won or lost. Before a prospect ever steps on the property, a great leasing consultant has already asked the right questions, confirmed the right details, and set the stage for a showing that feels less like a sales pitch and more like a welcome home.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ <span>50 min</span></div>
+      <div class="meta-item">📖 <span>5 Lessons</span></div>
+      <div class="meta-item">📞 <span>Pre-Screening Calls</span></div>
+      <div class="meta-item">🏠 <span>The Tour Playbook</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 1</div>
+    <h2 class="lesson-title">Why Pre-Screening Matters — <em>Before the Tour Begins</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">A prospect who tours your community and falls in love with it — only to be declined during the application process — is a frustrating outcome for everyone. They wasted time. You wasted time. And a unit that could have been shown to a qualified prospect sat idle for another day or two.</p>
+    <p class="lesson-text">Pre-screening is the conversation you have <strong>before</strong> the tour to make sure a prospect is likely to qualify for the unit. It is not gatekeeping — it is customer service. Knowing upfront that a prospect's budget, timeline, or situation doesn't fit your available units saves them from a disappointing experience and keeps your schedule clear for qualified prospects.</p>
+
+    <h3 class="sub-title">What Pre-Screening Accomplishes</h3>
+    <div class="two-col-grid">
+      <div class="info-card">
+        <span class="ic-tag tip">For You</span>
+        <h4>Protects Your Time</h4>
+        <p>Tours take 30–60 minutes each. Pre-screening a prospect in 5 minutes by phone before booking ensures every tour you conduct has a genuine chance of converting to an application.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag tip">For the Prospect</span>
+        <h4>Prevents Disappointment</h4>
+        <p>A prospect who learns upfront that the rent is $500 above their budget doesn't spend their Saturday touring a unit they cannot afford. That's a better experience — even if it means redirecting them.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag tip">For the Property</span>
+        <h4>Maintains Occupancy Momentum</h4>
+        <p>Every day a unit sits vacant costs money. A showing slot filled by an unqualified prospect is a showing slot not available to someone who can actually sign a lease.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag tip">For Fair Housing</span>
+        <h4>Creates a Consistent Process</h4>
+        <p>When you ask the same qualifying questions of every prospect in the same order, you demonstrate a consistent, non-discriminatory process. Inconsistency creates liability.</p>
+      </div>
+    </div>
+
+    <div class="callout-amber">
+      <div class="callout-label">💡 Pre-Screening vs. Discrimination</div>
+      <p>Pre-screening is about the unit and the lease requirements — not about the person. You are asking whether the prospect's needs match what you have available: the price, the availability date, the unit size, and the lease term. You are never screening based on who the person is. Every question you ask must be one you would ask every single prospect, every single time.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 2</div>
+    <h2 class="lesson-title">What You Can — and <em>Cannot</em> — Ask</h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">This is where Fair Housing knowledge protects you in a real, practical way. The pre-screening call is a conversation about logistics — not a background investigation. There are clear boundaries between questions that are appropriate and questions that cross the line.</p>
+
+    <h3 class="sub-title">Appropriate Pre-Screening Questions</h3>
+    <div class="two-col-grid">
+      <div class="info-card">
+        <span class="ic-tag allowed">✓ Allowed</span>
+        <h4>Move-in timeline</h4>
+        <p>"When are you looking to move in?" Confirms alignment with your available date. A prospect who needs housing immediately cannot wait for a unit available in 45 days.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag allowed">✓ Allowed</span>
+        <h4>Budget and rent range</h4>
+        <p>"Our available units start at $2,200/month — does that fit your budget?" Applied consistently to every prospect. Not about income — about whether the rent is within range.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag allowed">✓ Allowed</span>
+        <h4>Number of occupants</h4>
+        <p>"How many people will be living in the unit?" This determines whether the unit size is appropriate. You cannot ask about the relationship or ages of the occupants.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag allowed">✓ Allowed</span>
+        <h4>Pets</h4>
+        <p>"Do you have any pets?" If the community has a no-pet policy or breed restrictions, this pre-qualifies the prospect before the tour. Be consistent — ask everyone.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag allowed">✓ Allowed</span>
+        <h4>Unit size preference</h4>
+        <p>"Are you looking for a one-bedroom or two-bedroom?" Helps match the prospect to available inventory and avoids showing a unit that doesn't meet their needs.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag allowed">✓ Allowed</span>
+        <h4>Lease term</h4>
+        <p>"We offer 12-month leases — does that work for your situation?" Month-to-month or short-term needs should be surfaced before the tour, not after.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Questions You Must Never Ask</h3>
+    <div class="two-col-grid">
+      <div class="info-card">
+        <span class="ic-tag prohibited">✗ Prohibited</span>
+        <h4>Where are you from? / What country?</h4>
+        <p>National origin is a protected class. This question — however casually phrased — has no place in a pre-screening call and creates direct Fair Housing liability.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag prohibited">✗ Prohibited</span>
+        <h4>Are you married? / Do you have kids?</h4>
+        <p>Familial status is protected. You cannot inquire about whether occupants are related, married, have children, or are expecting. Ask only how many people will occupy the unit.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag prohibited">✗ Prohibited</span>
+        <h4>What religion do you practice?</h4>
+        <p>Religion is a federal protected class. Any question that touches on religious affiliation, practice, or preference is a violation — including seemingly friendly conversation.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag prohibited">✗ Prohibited</span>
+        <h4>Where do you work? / What do you do?</h4>
+        <p>Employment details are not a pre-screening question — they are part of the formal application and income verification process. Asking informally on a call creates inconsistency and potential liability.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag prohibited">✗ Prohibited</span>
+        <h4>Do you have a disability?</h4>
+        <p>Disability is protected. You cannot ask — ever. If a prospect volunteers information about a disability or requests an accommodation, your obligation is to listen and respond appropriately, not to ask questions about the nature of their condition.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag prohibited">✗ Prohibited</span>
+        <h4>Do you receive housing assistance?</h4>
+        <p>In California and many other states, source of income — including Section 8 / Housing Choice Vouchers — is a protected class. Asking this question as a pre-screening filter is a violation in these jurisdictions.</p>
+      </div>
+    </div>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ The "Just Curious" Trap</div>
+      <p>Some Fair Housing violations happen not from policy but from casual small talk. "Where are you originally from?" "Oh, do you have kids?" "What kind of work do you do?" — these can all feel like friendly conversation. In the context of a leasing call, they are not. Keep pre-screening focused on the unit requirements. Save the small talk for after the tour.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 3</div>
+    <h2 class="lesson-title">Preparing for the Tour — <em>The Pre-Showing Checklist</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">A great tour does not start when the prospect arrives. It starts 20–30 minutes before they walk through the door. Leasing consultants who treat every tour as a prepared, deliberate presentation — not a casual walk-through — consistently outperform those who wing it. The preparation is what makes the tour feel effortless.</p>
+
+    <h3 class="sub-title">The Pre-Tour Checklist</h3>
+    <div class="checklist">
+      <div class="cl-item">
+        <div class="cl-icon check">✓</div>
+        <div class="cl-text">
+          <h5>Review the prospect's inquiry and pre-screening notes</h5>
+          <p>What unit size are they looking for? What is their move-in date? Do they have pets? Knowing this before they arrive lets you personalize the tour instead of re-asking questions they already answered.</p>
+        </div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-icon check">✓</div>
+        <div class="cl-text">
+          <h5>Confirm the appointment 24 hours in advance</h5>
+          <p>Send a quick text or email the day before: "Hi [Name] — confirming your tour tomorrow at 2pm. We're at [address]. Looking forward to showing you around!" This dramatically reduces no-shows and signals professionalism.</p>
+        </div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-icon check">✓</div>
+        <div class="cl-text">
+          <h5>Inspect and prep the unit being shown</h5>
+          <p>If showing a specific available unit — not just the model — walk it in advance. Lights on, blinds open, surfaces clear, no odors, no maintenance issues visible. A unit that looks neglected signals to the prospect that the management is also neglected.</p>
+        </div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-icon check">✓</div>
+        <div class="cl-text">
+          <h5>Check the model unit</h5>
+          <p>If you are using the model: fresh flowers or fruit on the counter, lights on throughout, scent neutral or subtly fresh, nothing out of place. The model is your showroom — treat it like one.</p>
+        </div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-icon check">✓</div>
+        <div class="cl-text">
+          <h5>Know the current pricing and availability</h5>
+          <p>Check your property management software before the tour so you have current rent amounts, move-in specials, and available dates ready. Nothing undermines credibility faster than not knowing what your own units rent for.</p>
+        </div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-icon amber">D</div>
+        <div class="cl-text">
+          <h5>Plan your tour route</h5>
+          <p>Walk the prospect through the best parts of the community first — lobby, amenities, then the unit. End at the leasing office where you can sit down and talk about next steps. Never start at the dumpsters or the parking structure.</p>
+        </div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-icon amber">D</div>
+        <div class="cl-text">
+          <h5>Have an application ready</h5>
+          <p>Whether paper or digital, have the application process ready to explain — or begin — immediately after the tour ends. A qualified prospect who loved the unit and has to wait a day to figure out how to apply often loses momentum.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-green">
+      <div class="callout-label">✅ The First 60 Seconds</div>
+      <p>When a prospect walks into your leasing office, the impression you make in the first 60 seconds sets the tone for the entire tour. Stand up to greet them. Use their name. Offer water. Say something that shows you remember them: "You mentioned you have a cat — I have a unit on the second floor with a private patio you're going to love." That one detail signals you were listening and makes the tour feel personal, not transactional.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 4</div>
+    <h2 class="lesson-title">Conducting the Tour — <em>The Leasing Consultant's Playbook</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">The tour is not a recitation of square footage and appliance brands. It is a conversation about how this place could become the prospect's home. The most effective leasing consultants guide the tour with a purpose — they know what to show, what to say, and how to read the prospect's reactions in real time.</p>
+
+    <h3 class="sub-title">The Tour Flow — Step by Step</h3>
+    <div class="tour-steps">
+      <div class="tour-step">
+        <div class="ts-num">1</div>
+        <div class="ts-body">
+          <h5>Start at the leasing office — build rapport first</h5>
+          <p>Offer a seat, offer water, and spend 2–3 minutes connecting before you leave for the tour. Ask open-ended questions: "What's bringing you to the area?" or "What's most important to you in your next place?" These answers guide everything you highlight on the tour.</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="ts-num">2</div>
+        <div class="ts-body">
+          <h5>Lead with the community's best amenities</h5>
+          <p>Walk them through the lobby, gym, pool, rooftop, dog run — whatever your community's strongest selling points are. Prospects should feel the quality of the community before they see the unit. Sequence matters: first impression is everything.</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="ts-num">3</div>
+        <div class="ts-body">
+          <h5>Approach the unit from the best angle</h5>
+          <p>If there is a scenic courtyard route or a hallway that shows off the building's quality, take it. Avoid service corridors, loading areas, or anything that undermines the impression you are building. Every step before the door opens is part of the sale.</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="ts-num">4</div>
+        <div class="ts-body">
+          <h5>Open the door — and let them walk in first</h5>
+          <p>Step aside and let the prospect enter ahead of you. Give them a moment to take it in before you say anything. First reactions are honest — and the silence lets them form their own impression rather than reacting to your description of it.</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="ts-num">5</div>
+        <div class="ts-body">
+          <h5>Talk about lifestyle — not specs</h5>
+          <p>"The kitchen gets great morning light" lands better than "the kitchen faces east." "You could set up a home office in this alcove" beats "the unit has 850 square feet." Connect the features to how the prospect will actually live there — especially using what they told you in step 1.</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="ts-num">6</div>
+        <div class="ts-body">
+          <h5>Watch for buying signals — and follow them</h5>
+          <p>A prospect who opens closet doors, checks water pressure, or looks out the window is engaged. A prospect who checks their phone is not. If you see engagement, slow down and let them explore. If they seem disinterested, ask: "Is this the layout you had in mind, or would a different floor plan work better for you?"</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="ts-num">7</div>
+        <div class="ts-body">
+          <h5>End the tour back at the leasing office</h5>
+          <p>Always return to your desk to close the conversation. Standing in the parking lot is not the right environment for discussing applications, pricing, or next steps. The office signals that a decision is appropriate now — and gives you access to everything you need to move the process forward.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mentor-bubble">
+      <div class="mentor-avatar">R</div>
+      <div class="mentor-text">
+        <p>"I always ask one question right after we walk in: 'Can you picture yourself living here?' It sounds simple but it's the most useful question in the tour. If they say yes, the rest of the conversation is about how to make it happen. If they hesitate, I know exactly what to address before we leave the unit. Don't be afraid to ask directly — most people appreciate it."</p>
+        <div class="mentor-sig">— Rafael, Senior Leasing Consultant, Equity Residential — Los Angeles</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 5 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 5</div>
+    <h2 class="lesson-title">Handling Objections &amp; <em>Moving to the Application</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Most prospects who tour an apartment and don't apply the same day aren't saying no — they're saying not yet. An objection is almost always a question in disguise. Learning to hear what's actually behind "I want to think about it" or "It's a little above my budget" is what separates a leasing consultant who books tours from one who signs leases.</p>
+
+    <h3 class="sub-title">Common Objections and How to Handle Them</h3>
+    <table class="obj-table">
+      <tr>
+        <th>The Objection</th>
+        <th>What It Usually Means</th>
+        <th>How to Respond</th>
+      </tr>
+      <tr>
+        <td>"I want to think about it."</td>
+        <td>They liked it but are not sure yet — or they are seeing other properties and don't want to commit before comparing.</td>
+        <td>"Absolutely — what would you need to see or know to feel confident moving forward?" This surfaces the real concern without pressure.</td>
+      </tr>
+      <tr>
+        <td>"It's a little above my budget."</td>
+        <td>They may be stretching, or they may be comparing to cheaper options that don't match the quality.</td>
+        <td>Acknowledge it, then help them do the math. "Compared to a place at $1,900 with no parking, you're actually saving the cost of a parking space plus the stress of looking for street parking every night."</td>
+      </tr>
+      <tr>
+        <td>"I'm still looking at other places."</td>
+        <td>They are comparison shopping — completely normal. They have not yet decided this is the right place.</td>
+        <td>"That makes total sense. What's the most important thing you're weighing?" Then make the case for what your community does better than anything at the same price point.</td>
+      </tr>
+      <tr>
+        <td>"The unit feels a little small."</td>
+        <td>They may genuinely need a larger unit — or they may not have been able to visualize how their furniture would fit.</td>
+        <td>"Would it help to walk through the layout with your furniture in mind? A lot of people are surprised by how livable it feels once you place a couch and bed." If they need a larger unit, offer one.</td>
+      </tr>
+      <tr>
+        <td>"Can you hold it for me?"</td>
+        <td>They want the unit but are not quite ready to apply today — possibly waiting on income, a roommate decision, or approval elsewhere.</td>
+        <td>Be honest: "I can't hold it without a completed application and holding deposit — but I can tell you it's the only available unit in that tier right now, so if it feels right, starting the application today is the best way to secure it."</td>
+      </tr>
+    </table>
+
+    <h3 class="sub-title">Asking for the Application</h3>
+    <p class="lesson-text">The application ask should feel like a natural next step — not a sales push. After the tour, once you are back at your desk, use a soft but direct close:</p>
+
+    <div class="ad-compare">
+      <div class="ad-sample bad">
+        <div class="ad-sample-label">❌ Passive — Leaves It Vague</div>
+        <div class="ad-sample-text">"So... let us know if you want to move forward! You can find the application on our website or just give us a call."</div>
+        <div class="ad-sample-note">No urgency, no guidance, puts all momentum on the prospect. Most people will go home, life will happen, and they will never apply.</div>
+      </div>
+      <div class="ad-sample good">
+        <div class="ad-sample-label">✓ Direct — Moves the Process Forward</div>
+        <div class="ad-sample-text">"Based on everything you've told me, I think this unit is a strong fit. The application takes about 15 minutes — would you like to start it now while you're here, or would tonight work better? I'll send you the link either way."</div>
+        <div class="ad-sample-note">Gives them two real options, both of which move forward. Not pushy — just clear. Most prospects who are ready will choose one of the two.</div>
+      </div>
+    </div>
+
+    <div class="callout-blue">
+      <div class="callout-label">📋 If They're Not Ready Today</div>
+      <p>Not every tour ends in an application — and that is fine. What matters is that you leave the door open professionally. Before the prospect leaves, make sure you have their contact information in your system, give them your direct number or email, and set a specific follow-up: "I'll check in with you Thursday — by then I should also know if another unit on a higher floor is opening up." A specific follow-up beats a vague "feel free to reach out."</p>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways">
+    <h3>Module 4 — Key Takeaways</h3>
+    <div class="takeaway-list">
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Pre-screening is a customer service tool, not a filter. It ensures that the prospects you tour are genuinely matched to what you have available — saving time for everyone and protecting your schedule for qualified leads.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Allowable pre-screening questions cover unit logistics only: move-in timeline, budget relative to available rent, number of occupants, pet ownership, unit size preference, and lease term. Nothing about the person's identity, background, or family situation.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Tour preparation is not optional — it is the work that makes the tour look effortless. Confirm appointments, inspect units, know your pricing, and plan your route before every showing.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Lead the tour with amenities, let the prospect walk into the unit first, talk about lifestyle rather than specs, and always end back at the leasing office where the application conversation belongs.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Objections are usually questions in disguise. Ask what's behind the hesitation before responding. "What would you need to feel confident moving forward?" surfaces the real concern more reliably than addressing the stated objection directly.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Always ask for the application directly and specifically. Offer two concrete options — start now or tonight — rather than leaving the next step vague. If they are not ready, set a specific follow-up time before they leave.</p></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section">
+    <h3>Knowledge Check</h3>
+    <div class="quiz-sub">5 questions covering pre-screening, Fair Housing, and the tour process.</div>
+
+    <div class="quiz-q">
+      <p>1. During a pre-screening call, a prospect mentions they are moving in with their sister and her two kids. You should:</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">Ask how old the children are to make sure they are a good fit for the community</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">Note that there will be 4 occupants, confirm the unit size works for that number, and continue with standard pre-screening questions</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">Let them know that the community is better suited to young professionals and suggest they look elsewhere</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>2. Which of the following is a legitimate pre-screening question?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">"What country are you originally from?"</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">"Our available units start at $2,400/month — does that align with your budget?"</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">"Are you currently employed? What is your job title?"</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>3. You are preparing for a 2pm tour. When should you inspect the unit you plan to show?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">Right before the prospect arrives or earlier that day — lights on, surfaces clear, no visible issues</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">When you walk in with the prospect — if there's an issue you'll address it on the spot</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">The day before — same-day prep takes too much time</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>4. A prospect tours the unit, seems interested, but says "I want to think about it" when you get back to the office. The best response is:</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4a" value="a"><label for="q4a">"Of course — take all the time you need. Just let us know when you're ready."</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4b" value="b"><label for="q4b">"I understand — what would you need to see or know to feel confident moving forward?"</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4c" value="c"><label for="q4c">"I should let you know there are two other people looking at this unit today — you may want to decide quickly."</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>5. During the tour, you notice the prospect opening closet doors, checking water pressure, and measuring the bedroom with their hands. This is a sign that:</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5a" value="a"><label for="q5a">They are skeptical and probably won't apply — focus on wrapping up the tour efficiently</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5b" value="b"><label for="q5b">They are highly engaged — slow down, let them explore, and be ready to answer detailed questions</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5c" value="c"><label for="q5c">They have toured many units and are just going through the motions — don't read too much into it</label></div>
+      </div>
+    </div>
+
+    <button class="quiz-btn" onclick="checkQuiz()">Submit Answers</button>
+    <div class="quiz-result" id="quiz-result"></div>
+  </div>
+
+</div>
+
+<div class="bottom-nav">
+  <a href="lc-module-3.html" class="bnav-btn bnav-prev">← Module 3: Advertising &amp; Attracting Prospects</a>
+  <span class="bnav-center">Module 4 of 8 · Leasing Career Track</span>
+  <a href="lc-module-5.html" class="bnav-btn bnav-next">Module 5: Applications &amp; Tenant Screening →</a>
+</div>
+
+<script>
+function checkQuiz(){
+  var answers={q1:'b',q2:'b',q3:'a',q4:'b',q5:'b'};
+  var score=0;
+  var total=0;
+  for(var q in answers){
+    total++;
+    var sel=document.querySelector('input[name="'+q+'"]:checked');
+    if(sel&&sel.value===answers[q])score++;
+  }
+  var result=document.getElementById('quiz-result');
+  result.style.display='block';
+  if(score===total){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You understand the pre-screening and tour fundamentals. These are the skills that convert a lead into a signed lease. On to Module 5.';
+  } else if(score>=total-1){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; good work.</strong> Review any missed questions then continue to Module 5.';
+  } else {
+    result.className='quiz-result incorrect';
+    result.innerHTML='&#10007; <strong>'+score+'/'+total+' correct.</strong> Re-read Lessons 2 and 4 before continuing. Fair Housing in pre-screening and the tour playbook are core daily skills in this role.';
+  }
+}
+</script>
+
+</body>
+</html>
