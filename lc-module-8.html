@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 8: Getting Hired &amp; Moving Up — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --amber:#7A5800;--amber-mid:#A07010;--amber-light:#C49030;--amber-pale:#FBF5E0;
+  --amber-dark:#4A3400;--amber-darker:#2E2000;
+  --sand:#F7F4EF;--sand-dark:#EDE9E0;
+  --text-dark:#0A1628;--text-mid:#3A4A5C;--text-light:#7A8A9A;
+  --white:#FFFFFF;--border:rgba(122,88,0,0.1);
+  --shadow-card:0 2px 16px rgba(122,88,0,0.08);
+  --green:#1A7A4A;--green-pale:#EAF5EE;
+  --red:#B91C1C;--red-pale:#FEF2F2;
+  --blue:#1A4A7A;--blue-pale:#EEF4FB;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--amber-dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--amber-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--amber-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--amber);font-weight:600;}
+.progress-bar{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--amber-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(122,88,0,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--amber-mid);border-radius:3px;width:100%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:var(--amber-light);color:var(--white);}
+.prog-dot.active{background:var(--amber);color:var(--white);}
+.module-hero{background:linear-gradient(135deg,var(--amber-darker) 0%,var(--amber) 60%,var(--amber-light) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(196,144,48,0.15) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:rgba(255,235,180,0.95);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.72);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:rgba(255,235,180,0.95);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--amber-light);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--amber);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.amber-divider{width:50px;height:3px;background:var(--amber-light);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-amber{background:var(--amber-pale);border-left:4px solid var(--amber-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-amber .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.5rem;}
+.callout-amber p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-green{background:var(--green-pale);border-left:4px solid var(--green);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-green .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;}
+.callout-green p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-blue{background:var(--blue-pale);border-left:4px solid var(--blue);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-blue .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;}
+.callout-blue p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Resume sections */
+.resume-block{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:2rem 0;box-shadow:var(--shadow-card);}
+.resume-header{background:var(--amber-dark);padding:0.85rem 1.25rem;}
+.resume-header h4{font-size:13px;font-weight:700;color:var(--white);letter-spacing:0.5px;}
+.resume-header p{font-size:11px;color:rgba(255,255,255,0.6);margin-top:0.2rem;}
+.resume-body{padding:1.25rem;}
+.resume-row{display:flex;gap:0.85rem;margin-bottom:0.85rem;align-items:flex-start;}
+.resume-row:last-child{margin-bottom:0;}
+.rr-check{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:2px;}
+.rr-check.good{background:var(--green-pale);color:var(--green);}
+.rr-check.bad{background:var(--red-pale);color:var(--red);}
+.rr-text h5{font-size:13.5px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.rr-text p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+/* Interview Q&A */
+.qa-stack{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
+.qa-item{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
+.qa-q{background:var(--amber-pale);padding:0.85rem 1.1rem;font-size:13.5px;font-weight:600;color:var(--amber-dark);}
+.qa-a{padding:0.85rem 1.1rem;font-size:13px;color:var(--text-mid);line-height:1.7;}
+/* Career ladder */
+.career-ladder{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
+.cl-rung{display:flex;gap:1.25rem;padding:1.1rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.cl-rung:last-child{border-bottom:none;}
+.cl-step{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;border:2px solid var(--amber-light);}
+.cl-step.entry{background:var(--amber-pale);color:var(--amber-mid);}
+.cl-step.mid{background:var(--amber-light);color:var(--white);}
+.cl-step.senior{background:var(--amber);color:var(--white);}
+.cl-step.top{background:var(--amber-dark);color:var(--white);}
+.cl-body{flex:1;}
+.cl-body h5{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.25rem;}
+.cl-body .cl-comp{font-size:12px;font-weight:600;color:var(--amber-mid);margin-bottom:0.3rem;}
+.cl-body p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+/* NALP section */
+.nalp-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.nalp-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.nalp-card .nc-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:2px 10px;border-radius:20px;margin-bottom:0.5rem;background:var(--amber-pale);color:var(--amber-mid);}
+.nalp-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.nalp-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+/* 90-day plan */
+.plan-90{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.plan-phase{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.plan-phase-header{padding:0.75rem 1rem;}
+.plan-phase-header.p1{background:var(--amber-pale);}
+.plan-phase-header.p2{background:var(--amber-light);}
+.plan-phase-header.p3{background:var(--amber);}
+.plan-phase-header h4{font-size:13px;font-weight:700;}
+.plan-phase-header.p1 h4{color:var(--amber-dark);}
+.plan-phase-header.p2 h4{color:var(--white);}
+.plan-phase-header.p3 h4{color:var(--white);}
+.plan-phase-body{padding:1rem;}
+.plan-phase-body ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.plan-phase-body li{font-size:12.5px;color:var(--text-mid);line-height:1.55;display:flex;gap:0.5rem;}
+.plan-phase-body li::before{content:'→';color:var(--amber-mid);flex-shrink:0;}
+/* Mentor */
+.mentor-bubble{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow-card);}
+.mentor-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-dark));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;}
+.mentor-text p{font-size:1rem;color:var(--text-mid);line-height:1.8;font-style:italic;}
+.mentor-text .mentor-sig{font-size:12px;font-weight:600;color:var(--amber-mid);margin-top:0.5rem;font-style:normal;}
+/* Takeaways */
+.takeaways{background:var(--amber-darker);border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:1.25rem;}
+.takeaway-list{display:flex;flex-direction:column;gap:0.75rem;}
+.takeaway-item{display:flex;align-items:flex-start;gap:0.85rem;}
+.ta-check{width:22px;height:22px;border-radius:50%;background:var(--amber-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--white);font-weight:700;margin-top:2px;}
+.takeaway-item p{font-size:14px;color:rgba(255,255,255,0.82);line-height:1.65;}
+/* Quiz */
+.quiz-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2.5rem 0;box-shadow:var(--shadow-card);}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.quiz-q{margin-bottom:1.5rem;}
+.quiz-q p{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.65rem;line-height:1.5;}
+.quiz-options{display:flex;flex-direction:column;gap:0.4rem;}
+.quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
+.quiz-opt:hover{border-color:var(--amber-light);background:var(--amber-pale);}
+.quiz-opt input{accent-color:var(--amber);width:15px;height:15px;}
+.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
+.quiz-btn{background:var(--amber);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
+.quiz-btn:hover{background:var(--amber-mid);}
+.quiz-result{display:none;margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.6;}
+.quiz-result.correct{background:var(--green-pale);border:1px solid var(--green);color:var(--green);}
+.quiz-result.incorrect{background:var(--red-pale);border:1px solid #FCA5A5;color:var(--red);}
+/* Completion banner */
+.completion-banner{background:linear-gradient(135deg,var(--amber-darker),var(--amber));border-radius:20px;padding:2.5rem;text-align:center;margin:3rem 0;}
+.cb-icon{font-size:3rem;margin-bottom:1rem;}
+.cb-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:0.75rem;}
+.cb-sub{font-size:1rem;color:rgba(255,255,255,0.75);max-width:500px;margin:0 auto 1.75rem;line-height:1.8;}
+.cb-btn{display:inline-block;background:var(--white);color:var(--amber-dark);font-size:15px;font-weight:700;padding:14px 36px;border-radius:10px;text-decoration:none;transition:all 0.2s;}
+.cb-btn:hover{background:var(--amber-pale);}
+/* Reading list */
+.reading-list{display:flex;flex-direction:column;gap:0.75rem;margin:2rem 0;}
+.book-item{display:flex;gap:1rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;align-items:flex-start;}
+.book-icon{font-size:1.75rem;flex-shrink:0;margin-top:2px;}
+.book-info h5{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.book-info .book-author{font-size:12px;color:var(--amber-mid);font-weight:600;margin-bottom:0.35rem;}
+.book-info p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+.bottom-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;margin-top:2rem;}
+.bnav-btn{display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.5rem;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.bnav-prev{background:var(--sand-dark);color:var(--text-mid);border:1px solid var(--border);}
+.bnav-prev:hover{background:var(--sand);}
+.bnav-track{background:var(--amber);color:var(--white);}
+.bnav-track:hover{background:var(--amber-mid);}
+.bnav-center{font-size:12px;color:var(--text-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Leasing Career Track</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="leasing-career.html" class="nav-back">← Back to Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">›</span>
+  <a href="leasing-career.html">Leasing Career Track</a><span class="sep">›</span>
+  <span class="current">Module 8: Getting Hired &amp; Moving Up</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 8 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="lc-module-1.html" class="prog-dot done">1</a>
+    <a href="lc-module-2.html" class="prog-dot done">2</a>
+    <a href="lc-module-3.html" class="prog-dot done">3</a>
+    <a href="lc-module-4.html" class="prog-dot done">4</a>
+    <a href="lc-module-5.html" class="prog-dot done">5</a>
+    <a href="lc-module-6.html" class="prog-dot done">6</a>
+    <a href="lc-module-7.html" class="prog-dot done">7</a>
+    <div class="prog-dot active">8</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🚀 Module 8 · Leasing Career Track</div>
+    <h1>Getting Hired &amp; <em>Moving Up</em></h1>
+    <p>You've done the work. Seven modules of real knowledge — Fair Housing, advertising, screening, touring, applications, lease execution, resident relations. Now it's time to turn that knowledge into a job offer, and that job into a career. This module is your playbook for landing the role and building toward the title you want.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ <span>50 min</span></div>
+      <div class="meta-item">📖 <span>5 Lessons</span></div>
+      <div class="meta-item">📄 <span>Resume &amp; Interview</span></div>
+      <div class="meta-item">🏆 <span>NALP Credential</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 1</div>
+    <h2 class="lesson-title">Where the Jobs Are — <em>Who Hires in Los Angeles</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">The Los Angeles apartment market is one of the largest and most active in the country. Large institutional property management companies operate thousands of units across the metro and hire leasing consultants continuously — turnover in this role is real, which means opportunity is real. You do not need prior leasing experience to land your first position. You need to demonstrate the right skills, the right attitude, and enough knowledge to hit the ground running. This course has given you that knowledge.</p>
+
+    <h3 class="sub-title">The Major Employers in LA</h3>
+    <p class="lesson-text">These companies collectively manage tens of thousands of apartment units in the Los Angeles market and are among the most active employers of leasing consultants:</p>
+    <div class="nalp-grid">
+      <div class="nalp-card">
+        <span class="nc-tag">National REIT</span>
+        <h4>Greystar Real Estate Partners</h4>
+        <p>The largest apartment operator in the US. Strong systems, training programs, and clear internal promotion paths. Heavy presence in LA, West Hollywood, and the South Bay.</p>
+      </div>
+      <div class="nalp-card">
+        <span class="nc-tag">National REIT</span>
+        <h4>Equity Residential (EQR)</h4>
+        <p>Publicly traded REIT focused on urban and suburban markets. Strong benefits package and structured career development. Significant presence in LA, Pasadena, and West LA.</p>
+      </div>
+      <div class="nalp-card">
+        <span class="nc-tag">National REIT</span>
+        <h4>Essex Property Trust</h4>
+        <p>West Coast-focused REIT — their entire portfolio is in California, Oregon, and Washington. Deep roots in the LA market. Known for promoting from within.</p>
+      </div>
+      <div class="nalp-card">
+        <span class="nc-tag">National REIT</span>
+        <h4>AIMCO (Apartment Investment &amp; Management)</h4>
+        <p>Privately held company managing high-quality apartment communities across LA. Strong operational standards and an emphasis on resident experience.</p>
+      </div>
+      <div class="nalp-card">
+        <span class="nc-tag">Management Company</span>
+        <h4>Western National Property Management</h4>
+        <p>LA-based company managing thousands of units across Southern California. Regional employer with a strong local reputation.</p>
+      </div>
+      <div class="nalp-card">
+        <span class="nc-tag">Management Company</span>
+        <h4>JRK Property Holdings</h4>
+        <p>Large private apartment owner-operator with significant LA presence. Manages both conventional and affordable housing communities across the metro area.</p>
+      </div>
+      <div class="nalp-card">
+        <span class="nc-tag">Developer/Manager</span>
+        <h4>Mack Urban</h4>
+        <p>LA-based developer and operator of new apartment communities in urban neighborhoods. Known for design-forward properties and strong leasing teams.</p>
+      </div>
+      <div class="nalp-card">
+        <span class="nc-tag">National REIT</span>
+        <h4>AvalonBay Communities</h4>
+        <p>One of the largest apartment REITs in the country. Professional training infrastructure, structured onboarding, and strong internal mobility programs.</p>
+      </div>
+    </div>
+
+    <div class="callout-blue">
+      <div class="callout-label">📋 Where to Find the Job Listings</div>
+      <p>Indeed, LinkedIn, and Apartments.com/Careers are the primary job boards for leasing consultant positions. Also check the careers page of each company listed above directly. Many communities post openings on-site as well — if you tour a community you want to work at, ask the leasing consultant how they got their start. The apartment industry is a relationship business at every level.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 2</div>
+    <h2 class="lesson-title">Building Your Resume — <em>What Hiring Managers Actually Look For</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Leasing consultant hiring managers are looking for a specific combination: people skills, organizational ability, and sales instinct. If you have customer-facing experience from any industry — retail, hospitality, restaurant, call center — that is genuinely valuable. You do not need apartment-specific experience for your first position. You need to demonstrate that you can build trust with strangers, follow a process, and handle rejection without taking it personally.</p>
+
+    <h3 class="sub-title">What to Include — and How to Frame It</h3>
+    <div class="resume-block">
+      <div class="resume-header">
+        <h4>What a strong leasing consultant resume communicates</h4>
+        <p>Frame every experience through the lens of customer service, sales, and process</p>
+      </div>
+      <div class="resume-body">
+        <div class="resume-row">
+          <div class="rr-check good">✓</div>
+          <div class="rr-text">
+            <h5>Quantified customer service achievements</h5>
+            <p>"Managed 80+ customer interactions per shift" or "Maintained 4.8/5 customer satisfaction rating over 18 months." Numbers signal competence. Generic descriptions like "provided excellent customer service" signal nothing.</p>
+          </div>
+        </div>
+        <div class="resume-row">
+          <div class="rr-check good">✓</div>
+          <div class="rr-text">
+            <h5>Sales or persuasion experience — from any context</h5>
+            <p>Retail upsells, appointment booking, subscription sales, community outreach, even volunteer fundraising. If you have moved people from hesitation to decision, that is a selling skill — name it as one.</p>
+          </div>
+        </div>
+        <div class="resume-row">
+          <div class="rr-check good">✓</div>
+          <div class="rr-text">
+            <h5>Administrative and software proficiency</h5>
+            <p>Yardi, Entrata, RealPage experience is gold if you have it. If not, name any CRM, property management, or scheduling software you've used. Comfort with technology signals that you'll get up to speed fast.</p>
+          </div>
+        </div>
+        <div class="resume-row">
+          <div class="rr-check good">✓</div>
+          <div class="rr-text">
+            <h5>Reliability and consistency signals</h5>
+            <p>Tenure at previous jobs matters. Three years at one employer — even in a different field — signals stability. Job-hopping every 4–6 months raises concerns in a role where relationship-building takes time.</p>
+          </div>
+        </div>
+        <div class="resume-row">
+          <div class="rr-check bad">✗</div>
+          <div class="rr-text">
+            <h5>Generic objective statements</h5>
+            <p>"Seeking a challenging position in a dynamic organization." Remove this entirely. Replace it with a 2-sentence professional summary that states your relevant background and what you bring specifically to a leasing role.</p>
+          </div>
+        </div>
+        <div class="resume-row">
+          <div class="rr-check bad">✗</div>
+          <div class="rr-text">
+            <h5>Job descriptions instead of achievements</h5>
+            <p>"Responsible for answering phones and assisting customers" tells the hiring manager what your job was. "Resolved 95% of customer inquiries on first contact, reducing escalations by 30%" tells them how good you were at it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-amber">
+      <div class="callout-label">💡 The Darco Advantage on Your Resume</div>
+      <p>Completing this course is a genuine resume signal. Under your education or professional development section, list: "Darco Real Estate Academy — Leasing Career Track (8 modules): Fair Housing law, ILS platforms, tenant screening, lease execution, and resident relations." A hiring manager who sees that you invested in learning this material before applying will take you more seriously than a candidate with equal experience but no initiative. Add it.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 3</div>
+    <h2 class="lesson-title">The Interview — <em>How to Walk In Prepared</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Leasing consultant interviews are typically conducted by a property manager or a regional manager. The interview is itself a demonstration of the skills you'll use daily in the role — your ability to build rapport quickly, communicate clearly, handle pressure calmly, and sell yourself as the right person for the job. Showing up knowing the material from this course puts you ahead of most candidates before you open your mouth.</p>
+
+    <h3 class="sub-title">Questions You Will Be Asked — and How to Answer Them</h3>
+    <div class="qa-stack">
+      <div class="qa-item">
+        <div class="qa-q">"Tell me about yourself."</div>
+        <div class="qa-a">Keep it to 60–90 seconds. Cover: where you come from professionally, what drew you to leasing specifically, and one thing that makes you a strong fit. End with a forward-looking line: "I've spent the last few months studying the industry — Fair Housing, the leasing process, what great resident relations looks like — and I'm ready to put that into practice." Don't recite your resume. Tell a story.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">"Why do you want to work in apartment leasing?"</div>
+        <div class="qa-a">Be honest and specific. "I'm drawn to the combination of sales and service — I like the idea of helping people find a home and building real relationships with residents over time. I also see a clear career path here and I'm serious about building in this industry." Do not say "because I like people." Everyone says that.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">"Tell me about a time you handled a difficult customer."</div>
+        <div class="qa-a">Use the STAR format: Situation, Task, Action, Result. Describe a specific scenario, explain what you did, and end with a positive outcome. The best answers show that you stayed calm, listened fully, and solved the problem without escalating. Interviewers are evaluating how you'll handle an upset resident — give them evidence.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">"What do you know about Fair Housing?"</div>
+        <div class="qa-a">This question separates candidates who have done their homework from those who haven't. You can answer this fully now: "Fair Housing prohibits discrimination in housing based on seven federal protected classes — race, color, religion, sex, national origin, familial status, and disability. California adds several additional protected classes including source of income. As a leasing consultant, Fair Housing applies to every interaction — advertising, pre-screening calls, showing units, and processing applications." That answer gets you hired.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">"How do you handle rejection?"</div>
+        <div class="qa-a">Leasing is a sales role and most prospects don't sign. "I've learned to separate my effort from the outcome. When a prospect doesn't lease, I review what I could have done better — was my follow-up fast enough, did I address their concerns clearly? But I don't take it personally. The next prospect is a fresh start."</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">"Where do you see yourself in 2–3 years?"</div>
+        <div class="qa-a">Show ambition within the industry. "I'd like to earn my NALP certification in my first year and learn the full operational side of running a community. Long-term, I'm interested in moving toward a leasing manager or assistant manager role. I want to grow with the company I join."</div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Questions You Should Ask the Interviewer</h3>
+    <p class="lesson-text">Asking thoughtful questions at the end of an interview signals genuine interest and professional thinking. Here are four that work well for a leasing role:</p>
+    <div class="callout-green">
+      <div class="callout-label">✅ Strong Interview Questions to Ask</div>
+      <p>"What does success look like in this role in the first 90 days?" — Shows you're thinking about execution, not just getting hired.<br><br>"What property management software does the community use?" — Signals practical thinking and gives you something specific to study before your first day.<br><br>"What's the renewal rate at this community, and what role does the leasing team play in the renewal process?" — Demonstrates that you understand the business side of the role.<br><br>"What's the career path for strong performers on the leasing team here?" — Shows ambition without being presumptuous.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 4</div>
+    <h2 class="lesson-title">Your First 90 Days — <em>How to Win the Role You Just Landed</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Getting hired is the beginning. The first 90 days determine whether you become a leasing consultant who is shown the door after 6 months or one who is on the promotion track by the end of the first year. This is where the knowledge from this course becomes daily practice — and where your ability to learn fast, build relationships, and deliver consistent results gets noticed.</p>
+
+    <div class="plan-90">
+      <div class="plan-phase">
+        <div class="plan-phase-header p1">
+          <h4>Days 1–30: Learn Everything</h4>
+        </div>
+        <div class="plan-phase-body">
+          <ul>
+            <li>Master the PM software — Yardi, Entrata, or RealPage. Ask for a full walkthrough in week one.</li>
+            <li>Memorize the community: unit types, floor plans, pricing, amenities, lease terms, and pet policy.</li>
+            <li>Shadow every lease signing, tour, and move-in inspection you can.</li>
+            <li>Learn the community's qualifying standards inside and out.</li>
+            <li>Introduce yourself to every resident you encounter. Learn names.</li>
+            <li>Ask your manager for feedback every week. Not monthly — every week.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="plan-phase">
+        <div class="plan-phase-header p2">
+          <h4>Days 31–60: Execute Independently</h4>
+        </div>
+        <div class="plan-phase-body">
+          <ul>
+            <li>Conduct tours and lease signings independently — ask for feedback after each one.</li>
+            <li>Track your own conversion rate. If you're below community average, identify why.</li>
+            <li>Be the first to respond to every lead that comes in on your shift.</li>
+            <li>Start building relationships with vendors and maintenance staff.</li>
+            <li>Begin studying for the NALP if you plan to pursue it.</li>
+            <li>Identify the top two or three upcoming lease expirations and flag them for renewal outreach.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="plan-phase">
+        <div class="plan-phase-header p3">
+          <h4>Days 61–90: Add Value Beyond the Role</h4>
+        </div>
+        <div class="plan-phase-body">
+          <ul>
+            <li>Bring one process improvement idea to your manager — based on what you've observed, not criticism.</li>
+            <li>Conduct your first personal renewal outreach calls proactively.</li>
+            <li>Demonstrate that you can handle a problem without always escalating.</li>
+            <li>Ask your manager what the path to leasing manager looks like here.</li>
+            <li>Join the local Apartment Association (AAGLA in LA) or attend a NAAEI event.</li>
+            <li>Update your LinkedIn with your new role and the skills you've built.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mentor-bubble">
+      <div class="mentor-avatar">D</div>
+      <div class="mentor-text">
+        <p>"Every leasing manager I've ever promoted had one thing in common in their first 90 days: they acted like they already had the next job. They were studying the business, asking good questions, bringing solutions instead of problems. The consultants who stayed consultants were the ones who waited to be told what to do. Don't wait. The opportunity is there from day one."</p>
+        <div class="mentor-sig">— Danielle, Regional Manager, Essex Property Trust — Southern California</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 5 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 5</div>
+    <h2 class="lesson-title">The NALP &amp; <em>Your Career Ladder</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">The apartment industry has a clear, well-defined career ladder — and unlike many industries, it is genuinely accessible to people who start with no prior experience. The path from leasing consultant to property manager to regional manager is well-worn, and the credentials that accelerate it are within reach from day one of your career.</p>
+
+    <h3 class="sub-title">The NALP Credential — Your First Professional Certification</h3>
+    <div class="nalp-grid">
+      <div class="nalp-card">
+        <span class="nc-tag">What It Is</span>
+        <h4>National Apartment Leasing Professional</h4>
+        <p>The NALP is the recognized entry-level credential for leasing professionals, administered by NAAEI (National Apartment Association Education Institute) — the same body that issues the CAMT credential for maintenance technicians.</p>
+      </div>
+      <div class="nalp-card">
+        <span class="nc-tag">Who It's For</span>
+        <h4>Working Leasing Consultants</h4>
+        <p>You must have a minimum of 6 months of experience in a leasing role to sit for the NALP exam. This course has given you the foundational knowledge — the job gives you the experience requirement.</p>
+      </div>
+      <div class="nalp-card">
+        <span class="nc-tag">What It Covers</span>
+        <h4>Leasing Fundamentals</h4>
+        <p>The NALP exam covers Fair Housing, marketing and advertising, the leasing process, lease documents, customer service, and career development — all topics covered in this course. Your preparation has already begun.</p>
+      </div>
+      <div class="nalp-card">
+        <span class="nc-tag">How to Earn It</span>
+        <h4>Course + Exam</h4>
+        <p>Complete the NALP coursework (available online or through your local Apartment Association chapter), pass the written exam, and fulfill the experience requirement. Most candidates complete it within their first year. Visit naahq.org/naaei for current details.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The Career Ladder — From First Day to Property Manager</h3>
+    <div class="career-ladder">
+      <div class="cl-rung">
+        <div class="cl-step entry">LC</div>
+        <div class="cl-body">
+          <h5>Leasing Consultant</h5>
+          <div class="cl-comp">$18–$24/hr base + leasing bonuses + potential on-site housing</div>
+          <p>Where everyone starts. Tours, applications, lease signings, move-ins, resident communication. The full foundation of this course. Timeline to move up: 1–2 years of strong performance.</p>
+        </div>
+      </div>
+      <div class="cl-rung">
+        <div class="cl-step entry">SLC</div>
+        <div class="cl-body">
+          <h5>Senior Leasing Consultant</h5>
+          <div class="cl-comp">$22–$28/hr + bonuses</div>
+          <p>All the responsibilities of LC plus mentoring junior staff, handling complex resident issues, and taking ownership of renewal outreach. Often the stepping stone to leasing manager at smaller communities.</p>
+        </div>
+      </div>
+      <div class="cl-rung">
+        <div class="cl-step mid">LM</div>
+        <div class="cl-body">
+          <h5>Leasing Manager / Leasing Director</h5>
+          <div class="cl-comp">$55,000–$75,000 salary + bonuses</div>
+          <p>Oversees the leasing team, manages occupancy strategy, runs the renewal program, and reports to the property manager. The NALP credential and 2–3 years of consistent performance typically unlock this role.</p>
+        </div>
+      </div>
+      <div class="cl-rung">
+        <div class="cl-step mid">APM</div>
+        <div class="cl-body">
+          <h5>Assistant Property Manager</h5>
+          <div class="cl-comp">$55,000–$70,000 salary</div>
+          <p>Handles collections, delinquency, vendor coordination, and operational reporting. Bridges the gap between leasing and property management. Often where the California real estate license becomes valuable.</p>
+        </div>
+      </div>
+      <div class="cl-rung">
+        <div class="cl-step senior">PM</div>
+        <div class="cl-body">
+          <h5>Property Manager</h5>
+          <div class="cl-comp">$70,000–$100,000+ salary + bonuses + benefits</div>
+          <p>Runs the entire community — leasing, maintenance, financials, compliance, and team management. Full ownership of the asset's performance. The CPM (Certified Property Manager) credential from IREM is the next professional milestone here.</p>
+        </div>
+      </div>
+      <div class="cl-rung">
+        <div class="cl-step top">RM</div>
+        <div class="cl-body">
+          <h5>Regional Manager / Portfolio Manager</h5>
+          <div class="cl-comp">$90,000–$130,000+ salary + significant bonus potential</div>
+          <p>Oversees 5–15+ properties and their management teams. Strategic role with significant income and visibility. Many regional managers started exactly where you are starting now.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-green">
+      <div class="callout-label">✅ The Timeline Is Yours to Control</div>
+      <p>There is no fixed timeline for advancement in this industry. The leasing consultants who reach property manager in 3–4 years are the ones who treat the leasing consultant role as a graduate school — studying everything, building relationships internally, earning certifications, and demonstrating that they think like managers, not just employees. The ones who stay leasing consultants for 10 years are the ones who didn't. The difference is entirely within your control.</p>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways">
+    <h3>Module 8 — Key Takeaways</h3>
+    <div class="takeaway-list">
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The major institutional employers in LA — Greystar, Equity Residential, Essex Property Trust, AvalonBay, AIMCO, and others — hire leasing consultants continuously. You do not need prior apartment experience. You need demonstrable people skills, process orientation, and the knowledge from this course.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Build your resume around quantified achievements, customer service outcomes, and any sales or persuasion experience — from any industry. List this course under your education or professional development section. It signals initiative.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The interview is itself a demonstration of the leasing role. Prepare specific answers to the six core questions, especially the Fair Housing question — a complete, confident answer to that one question separates you from most candidates.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Win your first 90 days by learning obsessively (days 1–30), executing independently and tracking your own metrics (days 31–60), and adding value beyond the role description (days 61–90).</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The NALP credential (6 months experience + coursework + exam) is your first professional certification and signals seriousness about the career. Pursue it in your first year. Visit naahq.org/naaei for current details.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The career ladder is real and accessible: LC → Senior LC → Leasing Manager → Assistant PM → Property Manager → Regional Manager. The path from where you start to $90,000+ in management is 5–8 years of focused, intentional effort. That effort starts now.</p></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section">
+    <h3>Knowledge Check — Final Module</h3>
+    <div class="quiz-sub">5 questions covering the job search, interview preparation, NALP, and career development.</div>
+
+    <div class="quiz-q">
+      <p>1. An interviewer asks: "What do you know about Fair Housing?" Which answer is strongest?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">"It's the law that says landlords can't discriminate. I know the basics and I'm ready to learn more on the job."</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">"Fair Housing prohibits discrimination based on seven federal protected classes — race, color, religion, sex, national origin, familial status, and disability. California adds additional classes including source of income. It applies to every part of the leasing process from advertising through screening and signing."</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">"I've taken a course on it and I'm familiar with the protected classes, but I'd want to review the specifics before my first day."</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>2. You have no prior apartment leasing experience. What is the most important thing to include in your resume to stand out for a leasing consultant position?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">A note that you are a quick learner and eager to take on new challenges</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">Quantified customer service and sales achievements from previous roles, plus this course listed under professional development</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">A strong objective statement explaining why you want to transition into real estate</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>3. What is the minimum experience requirement to sit for the NALP exam?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">No experience required — the exam can be taken before starting a leasing position</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">6 months of experience in a leasing role</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">2 years of experience as a leasing consultant</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>4. In your first 30 days on the job, what is the single most important priority?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4a" value="a"><label for="q4a">Close as many leases as possible to prove your value immediately</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4b" value="b"><label for="q4b">Learn everything — the software, the community, the qualifying standards, and the team — so you can execute independently in weeks 31–60</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4c" value="c"><label for="q4c">Focus on building relationships with residents before worrying about leasing performance</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>5. Which of the following best describes the typical career path from leasing consultant to property manager?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5a" value="a"><label for="q5a">Leasing Consultant → Property Manager — most consultants move directly into management within 2 years</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5b" value="b"><label for="q5b">Leasing Consultant → Senior Leasing Consultant or Leasing Manager → Assistant Property Manager → Property Manager — typically 4–6 years of focused performance</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5c" value="c"><label for="q5c">The only path to property manager is through a real estate license — leasing consultants must get licensed before they can advance</label></div>
+      </div>
+    </div>
+
+    <button class="quiz-btn" onclick="checkQuiz()">Submit Answers</button>
+    <div class="quiz-result" id="quiz-result"></div>
+  </div>
+
+  <!-- COMPLETION BANNER -->
+  <div class="completion-banner">
+    <div class="cb-icon">🏆</div>
+    <div class="cb-title">Leasing Career Track — Complete</div>
+    <div class="cb-sub">Eight modules. Fair Housing. Advertising. Pre-screening. Showing units. Applications. Lease execution. Resident relations. And now — how to land the job and build the career. You came in with zero and you're leaving with a professional foundation. What you do with it is entirely up to you.</div>
+    <a href="leasing-career.html" class="cb-btn">← Back to Track Overview</a>
+  </div>
+
+  <!-- RECOMMENDED READING -->
+  <h3 class="sub-title">Continue Your Education — Recommended Reading</h3>
+  <p class="lesson-text">These books will deepen your knowledge and give you an edge as you build your career. They are the same resources recommended throughout the track:</p>
+  <div class="reading-list">
+    <div class="book-item">
+      <div class="book-icon">📘</div>
+      <div class="book-info">
+        <h5>The Book on Managing Rental Properties</h5>
+        <div class="book-author">Brandon Turner &amp; Heather Turner — BiggerPockets Publishing</div>
+        <p>The primary anchor for this entire track. Chapters 4–13 are the curriculum. Written for property owners, but the knowledge is foundational for anyone working in residential leasing.</p>
+      </div>
+    </div>
+    <div class="book-item">
+      <div class="book-icon">📗</div>
+      <div class="book-info">
+        <h5>The Book on Rental Property Investing</h5>
+        <div class="book-author">Brandon Turner — BiggerPockets Publishing</div>
+        <p>Helps you understand what property owners are trying to accomplish — making you a smarter, more empathetic employee who understands why occupancy, NOI, and retention matter to the ownership side.</p>
+      </div>
+    </div>
+    <div class="book-item">
+      <div class="book-icon">📙</div>
+      <div class="book-info">
+        <h5>Property Management Excellence</h5>
+        <div class="book-author">Robert Griswold — John Wiley &amp; Sons</div>
+        <p>Used in the Property Management track. Covers tenant acquisition, rent pricing, and habitability standards in depth — directly relevant for leasing professionals eyeing advancement into management.</p>
+      </div>
+    </div>
+    <div class="book-item">
+      <div class="book-icon">📕</div>
+      <div class="book-info">
+        <h5>The ABCs of Property Management</h5>
+        <div class="book-author">Ken McElroy — Rich Dad Advisors</div>
+        <p>Strong on what owners expect from their leasing and management teams. Understanding the owner's perspective makes you a better consultant at every level of the career ladder.</p>
+      </div>
+    </div>
+    <div class="book-item">
+      <div class="book-icon">📒</div>
+      <div class="book-info">
+        <h5>Secrets of a Master Closer</h5>
+        <div class="book-author">Mike Kaplan</div>
+        <p>Not real estate specific, but the sales closing framework applies directly to apartment leasing and touring. For consultants who want to sharpen their conversion rate — this is the book.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="bottom-nav">
+  <a href="lc-module-7.html" class="bnav-btn bnav-prev">← Module 7: Resident Relations &amp; Renewals</a>
+  <span class="bnav-center">Module 8 of 8 · Track Complete 🎉</span>
+  <a href="leasing-career.html" class="bnav-btn bnav-track">Back to Track Overview →</a>
+</div>
+
+<script>
+function checkQuiz(){
+  var answers={q1:'b',q2:'b',q3:'b',q4:'b',q5:'b'};
+  var score=0;
+  var total=0;
+  for(var q in answers){
+    total++;
+    var sel=document.querySelector('input[name="'+q+'"]:checked');
+    if(sel&&sel.value===answers[q])score++;
+  }
+  var result=document.getElementById('quiz-result');
+  result.style.display='block';
+  if(score===total){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You have completed the Darco Leasing Career Track. Eight modules, 40 lessons, and the full professional foundation for a career in apartment leasing. Now go get the job.';
+  } else if(score>=total-1){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; strong finish.</strong> Review any missed questions — then go get the job. You are ready.';
+  } else {
+    result.className='quiz-result incorrect';
+    result.innerHTML='&#10007; <strong>'+score+'/'+total+' correct.</strong> Re-read Lessons 2, 3, and 5 before you go. The resume, the interview answers, and the career ladder are what this entire track has been building toward.';
+  }
+}
+</script>
+
+</body>
+</html>
