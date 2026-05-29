@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 6: The Lease &amp; Move-In Process — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --amber:#7A5800;--amber-mid:#A07010;--amber-light:#C49030;--amber-pale:#FBF5E0;
+  --amber-dark:#4A3400;--amber-darker:#2E2000;
+  --sand:#F7F4EF;--sand-dark:#EDE9E0;
+  --text-dark:#0A1628;--text-mid:#3A4A5C;--text-light:#7A8A9A;
+  --white:#FFFFFF;--border:rgba(122,88,0,0.1);
+  --shadow-card:0 2px 16px rgba(122,88,0,0.08);
+  --green:#1A7A4A;--green-pale:#EAF5EE;
+  --red:#B91C1C;--red-pale:#FEF2F2;
+  --blue:#1A4A7A;--blue-pale:#EEF4FB;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--amber-dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--amber-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--amber-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--amber);font-weight:600;}
+.progress-bar{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--amber-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(122,88,0,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--amber-mid);border-radius:3px;width:75%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:var(--amber-light);color:var(--white);}
+.prog-dot.active{background:var(--amber);color:var(--white);}
+.prog-dot.locked{background:rgba(122,88,0,0.12);color:var(--text-light);}
+.module-hero{background:linear-gradient(135deg,var(--amber-darker) 0%,var(--amber) 60%,var(--amber-light) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(196,144,48,0.15) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:rgba(255,235,180,0.95);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.72);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:rgba(255,235,180,0.95);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--amber-light);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--amber);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.amber-divider{width:50px;height:3px;background:var(--amber-light);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-amber{background:var(--amber-pale);border-left:4px solid var(--amber-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-amber .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.5rem;}
+.callout-amber p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-green{background:var(--green-pale);border-left:4px solid var(--green);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-green .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;}
+.callout-green p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--red-pale);border-left:4px solid var(--red);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-blue{background:var(--blue-pale);border-left:4px solid var(--blue);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-blue .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;}
+.callout-blue p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Lease clause grid */
+.clause-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.clause-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.clause-num{font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.4rem;}
+.clause-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.clause-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+/* Checklist */
+.checklist{display:flex;flex-direction:column;gap:0.55rem;margin:2rem 0;}
+.cl-item{display:flex;align-items:flex-start;gap:0.85rem;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1.1rem;}
+.cl-icon{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;}
+.cl-icon.check{background:var(--green-pale);color:var(--green);}
+.cl-icon.amber{background:var(--amber-pale);color:var(--amber);}
+.cl-icon.warn{background:var(--red-pale);color:var(--red);}
+.cl-text h5{font-size:13.5px;font-weight:600;color:var(--text-dark);margin-bottom:0.15rem;}
+.cl-text p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+/* Move-in steps */
+.steps-flow{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
+.step-row{display:flex;gap:1.25rem;padding:1.1rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.step-row:last-child{border-bottom:none;}
+.sr-num{width:36px;height:36px;border-radius:50%;background:var(--amber);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.sr-body h5{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.sr-body p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+/* Orientation table */
+.orient-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
+.orient-table th{background:var(--amber);color:var(--white);font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:0.85rem 1.1rem;text-align:left;}
+.orient-table td{padding:0.85rem 1.1rem;font-size:13.5px;color:var(--text-mid);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.65;}
+.orient-table tr:last-child td{border-bottom:none;}
+.orient-table tr:nth-child(even) td{background:var(--amber-pale);}
+.orient-table td:first-child{font-weight:600;color:var(--text-dark);}
+/* Mentor */
+.mentor-bubble{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow-card);}
+.mentor-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-dark));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;}
+.mentor-text p{font-size:1rem;color:var(--text-mid);line-height:1.8;font-style:italic;}
+.mentor-text .mentor-sig{font-size:12px;font-weight:600;color:var(--amber-mid);margin-top:0.5rem;font-style:normal;}
+/* Takeaways */
+.takeaways{background:var(--amber-darker);border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:1.25rem;}
+.takeaway-list{display:flex;flex-direction:column;gap:0.75rem;}
+.takeaway-item{display:flex;align-items:flex-start;gap:0.85rem;}
+.ta-check{width:22px;height:22px;border-radius:50%;background:var(--amber-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--white);font-weight:700;margin-top:2px;}
+.takeaway-item p{font-size:14px;color:rgba(255,255,255,0.82);line-height:1.65;}
+/* Quiz */
+.quiz-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2.5rem 0;box-shadow:var(--shadow-card);}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.quiz-q{margin-bottom:1.5rem;}
+.quiz-q p{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.65rem;line-height:1.5;}
+.quiz-options{display:flex;flex-direction:column;gap:0.4rem;}
+.quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
+.quiz-opt:hover{border-color:var(--amber-light);background:var(--amber-pale);}
+.quiz-opt input{accent-color:var(--amber);width:15px;height:15px;}
+.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
+.quiz-btn{background:var(--amber);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
+.quiz-btn:hover{background:var(--amber-mid);}
+.quiz-result{display:none;margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.6;}
+.quiz-result.correct{background:var(--green-pale);border:1px solid var(--green);color:var(--green);}
+.quiz-result.incorrect{background:var(--red-pale);border:1px solid #FCA5A5;color:var(--red);}
+.bottom-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;margin-top:2rem;}
+.bnav-btn{display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.5rem;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.bnav-prev{background:var(--sand-dark);color:var(--text-mid);border:1px solid var(--border);}
+.bnav-prev:hover{background:var(--sand);}
+.bnav-next{background:var(--amber);color:var(--white);}
+.bnav-next:hover{background:var(--amber-mid);}
+.bnav-center{font-size:12px;color:var(--text-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Leasing Career Track</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="leasing-career.html" class="nav-back">← Back to Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">›</span>
+  <a href="leasing-career.html">Leasing Career Track</a><span class="sep">›</span>
+  <span class="current">Module 6: The Lease &amp; Move-In Process</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 6 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="lc-module-1.html" class="prog-dot done">1</a>
+    <a href="lc-module-2.html" class="prog-dot done">2</a>
+    <a href="lc-module-3.html" class="prog-dot done">3</a>
+    <a href="lc-module-4.html" class="prog-dot done">4</a>
+    <a href="lc-module-5.html" class="prog-dot done">5</a>
+    <div class="prog-dot active">6</div>
+    <div class="prog-dot locked">7</div>
+    <div class="prog-dot locked">8</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">📝 Module 6 · Leasing Career Track</div>
+    <h1>The Lease &amp; <em>Move-In Process</em></h1>
+    <p>The lease signing is the finish line — and the starting line. Everything you've done from the first inquiry to the approved application leads here. How you handle the signing and move-in sets the tone for the entire tenancy. Get it right and you start the relationship with trust and clarity.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ <span>50 min</span></div>
+      <div class="meta-item">📖 <span>5 Lessons</span></div>
+      <div class="meta-item">📄 <span>Lease Anatomy</span></div>
+      <div class="meta-item">🔑 <span>Move-In Day</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 1</div>
+    <h2 class="lesson-title">What a Lease Is — and <em>Why It Matters to You</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">A lease is a legally binding contract between the tenant and the property owner that defines the terms, conditions, rules, and responsibilities of the rental relationship. It is the single most important document in the leasing process — and as a leasing consultant, you are the person who walks the resident through it, collects signatures, and ensures it is executed correctly.</p>
+    <p class="lesson-text">You did not write the lease. Your company's attorneys did. But you need to understand every section of it so you can explain it clearly to residents, answer their questions confidently, and flag anything unusual to your property manager before signing day.</p>
+
+    <h3 class="sub-title">Term vs. Month-to-Month — What You'll Encounter</h3>
+    <p class="lesson-text">At most institutional apartment communities in Los Angeles, the standard lease is a <strong>12-month term lease</strong>. Some communities offer 6-month or 9-month options at a higher monthly rate — shorter terms are priced at a premium because they create more turnover risk for the property. Month-to-month tenancies typically apply after the initial term expires, at a higher rent.</p>
+
+    <div class="callout-amber">
+      <div class="callout-label">💡 Why Lease Terms Are Timed Strategically</div>
+      <p>Large communities aim to avoid lease expirations during slow leasing seasons (October through January in most markets). If a unit comes available in November, a 14-month lease might be offered rather than a 12-month, so the next renewal or turnover falls in a stronger leasing month. This is a management decision — but understanding it helps you explain unusual lease lengths to curious residents.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 2</div>
+    <h2 class="lesson-title">The Anatomy of a Lease — <em>What Every Section Covers</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Residential leases at large apartment communities are typically 10–20 pages including addendums. That sounds like a lot — but each section exists for a reason, and knowing what each one covers makes you far more effective at the lease signing appointment. Here are the core sections every lease contains:</p>
+
+    <div class="clause-grid">
+      <div class="clause-card">
+        <div class="clause-num">Section 1</div>
+        <h4>Names of All Residents</h4>
+        <p>Every adult occupant must be named on the lease. Anyone not listed is not authorized to live there — which gives management grounds for action if unauthorized occupants move in.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 2</div>
+        <h4>Lease Dates &amp; Term</h4>
+        <p>Exact start and end dates of the tenancy. Also whether this is a term lease or month-to-month. Both parties are legally bound for the full term.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 3</div>
+        <h4>Unit Address</h4>
+        <p>The specific unit number, building, and property address. The resident may only occupy the unit listed — not a different unit in the same building.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 4</div>
+        <h4>Rent Amount &amp; Due Date</h4>
+        <p>Monthly rent amount, the date it is due (typically the 1st), any grace period, and how it must be paid — online portal, check, or other method per community policy.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 5</div>
+        <h4>Late Fees &amp; NSF Fees</h4>
+        <p>The dollar amount charged when rent is late, when the fee kicks in (after grace period), and any daily accumulating fee. Also the returned check (NSF) penalty. In California, late fees must be reasonable and reflect actual damages.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 6</div>
+        <h4>Security Deposit</h4>
+        <p>Amount charged, conditions under which it may be applied, and — in California — the requirement that it be returned within 21 days of move-out with an itemized deduction statement if any amount is withheld.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 7</div>
+        <h4>Utilities Responsibility</h4>
+        <p>Which utilities the resident pays (typically electricity, gas, renter's insurance) vs. which are included in rent (often water, trash, common area). This section is one of the most common sources of resident confusion — be ready to explain it clearly.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 8</div>
+        <h4>Guest Policy</h4>
+        <p>How long a guest may stay (typically 14 consecutive days, or 30 days per year). Anyone staying longer must be screened and added to the lease. This prevents unauthorized long-term occupancy — a common issue at large communities.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 9</div>
+        <h4>Pet Policy</h4>
+        <p>Whether pets are permitted, breed and weight restrictions, and the pet deposit or monthly pet rent. Accompanied by a separate Pet Addendum. ESAs and service animals are handled separately under Fair Housing — never deny them through the pet policy.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 10</div>
+        <h4>Smoking Policy</h4>
+        <p>Whether smoking is permitted in the unit, on the balcony, or anywhere on the property. Most large institutional communities are entirely smoke-free — including e-cigarettes and marijuana. Violations can be grounds for lease termination.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 11</div>
+        <h4>Subletting &amp; Short-Term Rentals</h4>
+        <p>Whether Airbnb or similar short-term rentals are permitted (almost always prohibited at large communities). Residents who sublet without authorization are violating the lease and exposing the property to unknown liability.</p>
+      </div>
+      <div class="clause-card">
+        <div class="clause-num">Section 12</div>
+        <h4>Landlord Access</h4>
+        <p>In California, the landlord must provide 24-hour written notice before entering for non-emergency reasons. The lease spells this out, along with emergency access rights. Residents often ask about this — know it cold.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Common Addendums at Large Communities</h3>
+    <p class="lesson-text">In addition to the main lease, residents at large apartment communities typically sign several addendums that cover specific policies in detail:</p>
+    <table class="orient-table">
+      <tr><th>Addendum</th><th>What It Covers</th></tr>
+      <tr><td>Pet Addendum</td><td>Specific pet permissions, breed restrictions, pet deposit, monthly pet rent, resident responsibilities for pet damage</td></tr>
+      <tr><td>Move-Out Procedures</td><td>Exactly how and when to give notice, cleaning expectations, key return, forwarding address for security deposit return</td></tr>
+      <tr><td>Rules &amp; Regulations</td><td>Quiet hours, parking rules, pool and gym hours, trash disposal, balcony use, laundry room conduct</td></tr>
+      <tr><td>Lead-Based Paint Disclosure</td><td>Required by federal law for any property built before 1978. Must be signed even if lead is not present.</td></tr>
+      <tr><td>Renter's Insurance Requirement</td><td>Most large communities require proof of renter's insurance (typically $100,000 liability minimum) before move-in. This protects both the resident and the property.</td></tr>
+      <tr><td>Mold Disclosure / Addendum</td><td>Required in California. Resident acknowledges they received information about mold and agrees to report moisture or mold immediately.</td></tr>
+    </table>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ Never Skip an Addendum</div>
+      <p>Every addendum must be signed and initialed. A lease that is missing a required addendum — especially the Lead-Based Paint Disclosure for pre-1978 buildings — creates legal exposure for your company. If you are ever unsure whether an addendum applies, ask your property manager before the signing appointment, not during it.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 3</div>
+    <h2 class="lesson-title">The Lease Signing Appointment — <em>Running It Professionally</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">At large apartment communities, lease signing is typically handled through your property management software — residents sign digitally via DocuSign, Yardi's e-signature module, or a similar tool. But many communities still conduct in-person signings, and even with digital signing, a leasing consultant often walks the resident through the document in the leasing office first.</p>
+    <p class="lesson-text">The tone you set at the lease signing carries into the entire tenancy. A resident who felt rushed, confused, or talked down to at signing will carry that experience forward. One who felt welcomed, informed, and respected is far more likely to renew.</p>
+
+    <h3 class="sub-title">Before the Signing Appointment</h3>
+    <div class="checklist">
+      <div class="cl-item">
+        <div class="cl-icon check">✓</div>
+        <div class="cl-text">
+          <h5>Prepare the lease package in advance</h5>
+          <p>All blanks filled in, all addendums included, all signature and initial spots flagged. A lease that arrives missing information or with blank fields signals unprofessionalism and can delay the signing.</p>
+        </div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-icon check">✓</div>
+        <div class="cl-text">
+          <h5>Confirm all move-in funds are ready</h5>
+          <p>First month's rent, security deposit, pet deposit (if applicable), and any other required move-in costs must be collected before or at signing. Certified funds or online payment per your community's policy — personal checks are often not accepted for move-in funds.</p>
+        </div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-icon check">✓</div>
+        <div class="cl-text">
+          <h5>Confirm utilities transfer</h5>
+          <p>Verify that the resident has transferred required utilities into their name before they take possession. Many communities require proof of utility transfer before handing over keys — check your community's policy.</p>
+        </div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-icon check">✓</div>
+        <div class="cl-text">
+          <h5>Confirm renter's insurance is in place</h5>
+          <p>If your community requires it, request the declarations page showing the property as an additional interested party before the signing appointment. Don't assume it's been arranged — ask for documentation.</p>
+        </div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-icon amber">D</div>
+        <div class="cl-text">
+          <h5>Inspect the unit before the resident arrives</h5>
+          <p>Walk the unit on the day of move-in. Lights working, appliances functioning, unit clean, no maintenance issues. The unit should be in the exact condition promised when the resident toured. If anything is off, fix it before they arrive or communicate proactively.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">At the Signing Appointment</h3>
+    <p class="lesson-text">Walk the resident through the lease section by section — not word for word, but covering the key points of each section in plain language. Frame it as an orientation, not a legal review. Your goal is for them to leave feeling informed and confident, not overwhelmed.</p>
+
+    <div class="callout-green">
+      <div class="callout-label">✅ The Right Frame</div>
+      <p>Open the lease signing with something like: "I want to walk you through the main points so nothing is a surprise during your tenancy. Most of this is standard, but I want to make sure you feel good about everything before you sign." That framing immediately positions you as an ally, not a gatekeeper.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 4</div>
+    <h2 class="lesson-title">The Move-In Inspection — <em>Protecting Both Sides</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">The move-in inspection — also called the Move-In Condition Report or Move-In Checklist — is one of the most important documents in the entire leasing process. It creates a documented record of the unit's condition on the day the resident takes possession. When the resident moves out, this same document is used to determine what, if anything, is charged against the security deposit.</p>
+    <p class="lesson-text">Without a move-in inspection, the property cannot prove what damage existed before the resident moved in versus what they caused. This makes it nearly impossible to make legitimate deductions from the security deposit — and creates significant legal exposure for the community.</p>
+
+    <h3 class="sub-title">The Move-In Inspection Process</h3>
+    <div class="steps-flow">
+      <div class="step-row">
+        <div class="sr-num">1</div>
+        <div class="sr-body">
+          <h5>Walk the unit together with the resident</h5>
+          <p>Go room by room with the resident present. Do not do the inspection alone and hand them a completed form — they need to see the condition themselves and agree to it. Their signature confirms they accept the unit in the documented condition.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="sr-num">2</div>
+        <div class="sr-body">
+          <h5>Document every existing defect — no matter how small</h5>
+          <p>A small scratch on the bathroom door, a scuff on the baseboard, a chip in the kitchen counter. If it exists today and isn't documented, the resident can claim they didn't cause it when they move out. Be thorough — this document protects them as much as it protects the property.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="sr-num">3</div>
+        <div class="sr-body">
+          <h5>Photograph everything</h5>
+          <p>Take time-stamped photos of every room, every appliance, every surface. Most property management software allows photos to be attached directly to the move-in inspection record. Photos are far more compelling than written descriptions in a deposit dispute.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="sr-num">4</div>
+        <div class="sr-body">
+          <h5>Both parties sign the completed report</h5>
+          <p>The resident and a community representative both sign. The resident receives a copy. In California, providing the move-in inspection report is legally required — failing to do so can limit the landlord's ability to make security deposit deductions.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="sr-num">5</div>
+        <div class="sr-body">
+          <h5>File it where it will be found at move-out</h5>
+          <p>Upload it into your property management system linked to the resident's file. The property manager handling the move-out in 12 months needs to find this document instantly. A move-in inspection that can't be located is as good as one that was never done.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mentor-bubble">
+      <div class="mentor-avatar">L</div>
+      <div class="mentor-text">
+        <p>"I have seen leasing consultants skip the move-in inspection because they were in a rush or the resident seemed like a great person. Every single time that comes back to bite someone. It takes 20 minutes and it saves everyone — the resident and the property — enormous headaches 12 months from now. If you only take one thing from this module, take that: never hand keys to a resident without a signed, photographed move-in inspection in hand."</p>
+        <div class="mentor-sig">— Leticia, Leasing Manager, AIMCO — Los Angeles</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 5 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 5</div>
+    <h2 class="lesson-title">The New Resident Orientation — <em>Starting the Relationship Right</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">The new resident orientation happens at or just after the lease signing. It is not part of the lease document — it is a brief, practical walkthrough of everything a new resident needs to know to start their tenancy smoothly. Think of it as the onboarding session for their new home.</p>
+    <p class="lesson-text">Communities that invest in a strong orientation see fewer maintenance emergencies, fewer policy violations in the first 90 days, and higher satisfaction scores at renewal time. A resident who feels genuinely welcomed and informed is a resident who is already thinking about staying.</p>
+
+    <h3 class="sub-title">What Every New Resident Orientation Should Cover</h3>
+    <table class="orient-table">
+      <tr><th>Topic</th><th>Key Points to Cover</th></tr>
+      <tr><td>Rent Payment</td><td>Exactly how to pay (resident portal, app, or other method), the due date, the grace period if any, and what happens if rent is late. Spell out the late fee structure clearly — residents who understand consequences are more likely to plan ahead.</td></tr>
+      <tr><td>Maintenance Requests</td><td>How to submit a request (online portal, phone, email), what counts as an emergency vs. a standard request, and what to do after hours for urgent issues. Make clear that they must report issues — the maintenance team cannot fix problems they don't know about.</td></tr>
+      <tr><td>Emergency Procedures</td><td>What qualifies as a maintenance emergency (active leak, no heat in winter, no working lock, gas smell), how to reach the on-call maintenance line, and when to call 911. Give them the emergency contact number in writing.</td></tr>
+      <tr><td>Community Rules</td><td>Quiet hours, parking policy, pool and gym access, trash and recycling schedule, package room or locker system, guest parking, balcony rules. Hit the top 5 most-violated policies at your specific community.</td></tr>
+      <tr><td>Utilities</td><td>Which utilities they are responsible for, how to set them up if not already done, and the account numbers or contact information for any provider. Confusion about utilities is one of the most common first-month issues.</td></tr>
+      <tr><td>Move-Out Process</td><td>How much notice is required (typically 30–60 days in California), how to give notice properly, what the cleaning standards are, and how the security deposit return process works. Planting this information at move-in prevents the "I didn't know!" problem at move-out.</td></tr>
+      <tr><td>Renter's Insurance</td><td>If required, confirm it is in place. If not yet required but recommended, briefly explain why — the property's insurance does not cover residents' personal belongings.</td></tr>
+    </table>
+
+    <div class="callout-blue">
+      <div class="callout-label">📋 The Welcome Package</div>
+      <p>Many large communities provide a physical or digital welcome package at move-in — a folder or app notification containing the resident portal login, emergency maintenance number, community rules summary, parking permit, pool and gym access information, and local service recommendations. If your community has one, make it part of your standard move-in handoff. If it doesn't, suggest one to your property manager — it's a simple touch that makes a strong first impression.</p>
+    </div>
+
+    <div class="callout-green">
+      <div class="callout-label">✅ The Last Step — and the Most Important</div>
+      <p>End every move-in with a genuine, personal close: "I'm really glad you chose [Community Name] — I think you're going to love it here. My direct number is in the portal if anything comes up in your first few weeks. Don't hesitate to reach out." That single moment of human warmth — after all the paperwork and logistics — is what residents remember. It is also the first seed of a renewal.</p>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways">
+    <h3>Module 6 — Key Takeaways</h3>
+    <div class="takeaway-list">
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The lease is a legal contract — your job is to understand every section so you can explain it clearly to residents, not to interpret or modify it. When in doubt, ask your property manager before the signing appointment.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Key lease sections every leasing consultant must know: names of all residents, lease term and dates, rent amount and due date, late fees, security deposit conditions, utilities responsibility, guest policy, pet policy, and California's 24-hour entry notice requirement.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Before any lease signing: prepare the full document package, confirm move-in funds, verify utilities transfer, confirm renter's insurance, and inspect the unit on move-in day.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The move-in inspection is mandatory — walk the unit with the resident, document every existing defect, photograph everything, get both signatures, and file it in the property management system where it can be found at move-out.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The new resident orientation covers: rent payment, maintenance requests, emergency procedures, community rules, utilities, the move-out process, and renter's insurance. A well-run orientation prevents the most common first-90-day problems.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>End every move-in with a warm personal close. The tone you set on day one is the tone that carries into the renewal conversation 10 months from now.</p></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section">
+    <h3>Knowledge Check</h3>
+    <div class="quiz-sub">5 questions covering the lease, move-in inspection, and resident orientation.</div>
+
+    <div class="quiz-q">
+      <p>1. A resident asks why there is a Lead-Based Paint Disclosure addendum to sign when the building was built in 1985. What do you tell them?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">Tell them it's a mistake and remove it from the signing package</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">Explain that this disclosure is only required for buildings built before 1978 — if the building is from 1985 it should not be included, and flag it for your manager before proceeding</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">Tell them all leases include it regardless of building age and proceed with signing</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>2. A resident wants to move in on the 1st but says they haven't had time to transfer the electricity into their name yet. What should you do?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">Hand over the keys and trust them to do it within a few days</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">Follow your community's policy — most require proof of utility transfer before handing over keys. Communicate this requirement clearly and help them arrange it before move-in day</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">Transfer the utilities yourself using their account information from the application</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>3. During the move-in inspection you notice a small chip in the kitchen counter tile that wasn't on the unit's previous inspection report. What do you do?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">Skip it — it's small and won't matter at move-out</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">Document it on the move-in inspection report, photograph it, and note it in the system — protecting both the resident and the community</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">Note it verbally but don't put it in writing to avoid creating a maintenance ticket</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>4. In California, how much notice must a landlord provide before entering a unit for a non-emergency reason such as a routine inspection?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4a" value="a"><label for="q4a">No notice required — the landlord owns the property and may enter at any time</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4b" value="b"><label for="q4b">24 hours written notice</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4c" value="c"><label for="q4c">48 hours verbal notice</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>5. A new resident asks at the move-in orientation: "When and how do I give notice if I decide to move out at the end of my lease?" What is the best response?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5a" value="a"><label for="q5a">"Don't worry about that now — we'll send you a reminder when it's time"</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5b" value="b"><label for="q5b">Explain exactly how notice must be given (written, through the portal or in person), how many days in advance (typically 30–60 days per the lease), and point to the Move-Out Procedures addendum they just signed</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5c" value="c"><label for="q5c">Tell them just to let you know verbally when they're thinking about leaving</label></div>
+      </div>
+    </div>
+
+    <button class="quiz-btn" onclick="checkQuiz()">Submit Answers</button>
+    <div class="quiz-result" id="quiz-result"></div>
+  </div>
+
+</div>
+
+<div class="bottom-nav">
+  <a href="lc-module-5.html" class="bnav-btn bnav-prev">← Module 5: Applications &amp; Tenant Screening</a>
+  <span class="bnav-center">Module 6 of 8 · Leasing Career Track</span>
+  <a href="lc-module-7.html" class="bnav-btn bnav-next">Module 7: Resident Relations &amp; Renewals →</a>
+</div>
+
+<script>
+function checkQuiz(){
+  var answers={q1:'b',q2:'b',q3:'b',q4:'b',q5:'b'};
+  var score=0;
+  var total=0;
+  for(var q in answers){
+    total++;
+    var sel=document.querySelector('input[name="'+q+'"]:checked');
+    if(sel&&sel.value===answers[q])score++;
+  }
+  var result=document.getElementById('quiz-result');
+  result.style.display='block';
+  if(score===total){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You understand the lease and move-in process. A confident, well-run signing and orientation is what separates a transactional leasing consultant from one residents trust. On to Module 7.';
+  } else if(score>=total-1){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; good work.</strong> Review any missed questions then continue to Module 7.';
+  } else {
+    result.className='quiz-result incorrect';
+    result.innerHTML='&#10007; <strong>'+score+'/'+total+' correct.</strong> Re-read Lessons 2, 4, and 5 before continuing. The lease clauses, move-in inspection, and orientation process are daily fundamentals you will use on every single move-in.';
+  }
+}
+</script>
+
+</body>
+</html>
