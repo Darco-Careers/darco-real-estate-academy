@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 7: Resident Relations &amp; Renewals — Darco Real Estate Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --amber:#7A5800;--amber-mid:#A07010;--amber-light:#C49030;--amber-pale:#FBF5E0;
+  --amber-dark:#4A3400;--amber-darker:#2E2000;
+  --sand:#F7F4EF;--sand-dark:#EDE9E0;
+  --text-dark:#0A1628;--text-mid:#3A4A5C;--text-light:#7A8A9A;
+  --white:#FFFFFF;--border:rgba(122,88,0,0.1);
+  --shadow-card:0 2px 16px rgba(122,88,0,0.08);
+  --green:#1A7A4A;--green-pale:#EAF5EE;
+  --red:#B91C1C;--red-pale:#FEF2F2;
+  --blue:#1A4A7A;--blue-pale:#EEF4FB;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
+strong{display:inline;}
+nav{background:var(--amber-dark);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.25);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--white);}
+.nav-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);}
+.nav-tagline{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--amber-light);}
+.nav-back{background:rgba(255,255,255,0.1)!important;color:rgba(255,255,255,0.88)!important;padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);}
+.breadcrumb{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);}
+.breadcrumb a{color:var(--amber-mid);text-decoration:none;font-weight:500;}
+.breadcrumb .sep{opacity:0.4;}
+.breadcrumb .current{color:var(--amber);font-weight:600;}
+.progress-bar{background:var(--amber-pale);border-bottom:1px solid var(--border);padding:0.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.progress-label{font-size:12px;font-weight:600;color:var(--amber-mid);white-space:nowrap;}
+.progress-track{flex:1;height:6px;background:rgba(122,88,0,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--amber-mid);border-radius:3px;width:87.5%;}
+.progress-modules{display:flex;gap:6px;}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.prog-dot.done{background:var(--amber-light);color:var(--white);}
+.prog-dot.active{background:var(--amber);color:var(--white);}
+.prog-dot.locked{background:rgba(122,88,0,0.12);color:var(--text-light);}
+.module-hero{background:linear-gradient(135deg,var(--amber-darker) 0%,var(--amber) 60%,var(--amber-light) 100%);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.module-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:55%;height:200%;background:radial-gradient(ellipse,rgba(196,144,48,0.15) 0%,transparent 70%);pointer-events:none;}
+.module-hero-inner{max-width:860px;margin:0 auto;position:relative;}
+.module-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1rem;}
+.module-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.75rem;}
+.module-hero h1 em{color:rgba(255,235,180,0.95);font-style:italic;}
+.module-hero p{font-size:1rem;color:rgba(255,255,255,0.72);max-width:600px;line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.module-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.6);}
+.meta-item span{color:rgba(255,235,180,0.95);font-weight:600;}
+.module-body{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.lesson-section{margin-bottom:3.5rem;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
+.section-label .dot{width:6px;height:6px;background:var(--amber-light);border-radius:50%;}
+h2.lesson-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--text-dark);line-height:1.25;margin-bottom:1.25rem;}
+h2.lesson-title em{color:var(--amber);font-style:italic;}
+h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--text-dark);margin:2rem 0 0.75rem;}
+.lesson-text{font-size:1.05rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.25rem;}
+.lesson-text strong{color:var(--text-dark);font-weight:600;}
+.amber-divider{width:50px;height:3px;background:var(--amber-light);border-radius:2px;margin:0.75rem 0 1.5rem;}
+.callout-amber{background:var(--amber-pale);border-left:4px solid var(--amber-mid);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-amber .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.5rem;}
+.callout-amber p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-green{background:var(--green-pale);border-left:4px solid var(--green);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-green .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;}
+.callout-green p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-warning{background:var(--red-pale);border-left:4px solid var(--red);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-warning .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;}
+.callout-warning p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+.callout-blue{background:var(--blue-pale);border-left:4px solid var(--blue);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
+.callout-blue .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;}
+.callout-blue p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
+/* Two-col grid */
+.two-col-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.info-card .ic-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:2px 10px;border-radius:20px;margin-bottom:0.5rem;}
+.ic-tag.amber{background:var(--amber-pale);color:var(--amber-mid);}
+.ic-tag.green{background:var(--green-pale);color:var(--green);}
+.ic-tag.red{background:var(--red-pale);color:var(--red);}
+.ic-tag.blue{background:var(--blue-pale);color:var(--blue);}
+.info-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
+.info-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
+/* Metric cards */
+.metric-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.85rem;margin:2rem 0;}
+.metric-card{background:var(--amber-darker);border-radius:12px;padding:1.25rem;text-align:center;}
+.metric-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--amber-light);margin-bottom:0.3rem;}
+.metric-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.08em;}
+.metric-note{font-size:11px;color:rgba(255,255,255,0.45);margin-top:0.4rem;line-height:1.5;}
+/* Problem-response table */
+.problem-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
+.problem-table th{background:var(--amber);color:var(--white);font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:0.85rem 1.1rem;text-align:left;}
+.problem-table td{padding:0.85rem 1.1rem;font-size:13.5px;color:var(--text-mid);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.65;}
+.problem-table tr:last-child td{border-bottom:none;}
+.problem-table tr:nth-child(even) td{background:var(--amber-pale);}
+.problem-table td:first-child{font-weight:600;color:var(--text-dark);}
+/* Renewal timeline */
+.renewal-timeline{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
+.rt-item{display:flex;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.rt-item:last-child{border-bottom:none;}
+.rt-time{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--amber);width:100px;flex-shrink:0;padding-top:2px;}
+.rt-body h5{font-size:13.5px;font-weight:600;color:var(--text-dark);margin-bottom:0.25rem;}
+.rt-body p{font-size:13px;color:var(--text-mid);line-height:1.65;}
+/* Compare */
+.ad-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.ad-sample{border-radius:12px;padding:1.25rem;}
+.ad-sample.bad{background:var(--red-pale);border:1px solid rgba(185,28,28,0.2);}
+.ad-sample.good{background:var(--green-pale);border:1px solid rgba(26,122,74,0.2);}
+.ad-sample-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.65rem;}
+.ad-sample.bad .ad-sample-label{color:var(--red);}
+.ad-sample.good .ad-sample-label{color:var(--green);}
+.ad-sample-text{font-size:13px;color:var(--text-mid);line-height:1.75;font-style:italic;}
+.ad-sample-note{font-size:12px;color:var(--text-light);margin-top:0.65rem;line-height:1.55;font-style:normal;}
+/* Mentor */
+.mentor-bubble{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow-card);}
+.mentor-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-dark));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;}
+.mentor-text p{font-size:1rem;color:var(--text-mid);line-height:1.8;font-style:italic;}
+.mentor-text .mentor-sig{font-size:12px;font-weight:600;color:var(--amber-mid);margin-top:0.5rem;font-style:normal;}
+/* Takeaways */
+.takeaways{background:var(--amber-darker);border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.takeaways h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:1.25rem;}
+.takeaway-list{display:flex;flex-direction:column;gap:0.75rem;}
+.takeaway-item{display:flex;align-items:flex-start;gap:0.85rem;}
+.ta-check{width:22px;height:22px;border-radius:50%;background:var(--amber-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--white);font-weight:700;margin-top:2px;}
+.takeaway-item p{font-size:14px;color:rgba(255,255,255,0.82);line-height:1.65;}
+/* Quiz */
+.quiz-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2.5rem 0;box-shadow:var(--shadow-card);}
+.quiz-section h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+.quiz-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
+.quiz-q{margin-bottom:1.5rem;}
+.quiz-q p{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.65rem;line-height:1.5;}
+.quiz-options{display:flex;flex-direction:column;gap:0.4rem;}
+.quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
+.quiz-opt:hover{border-color:var(--amber-light);background:var(--amber-pale);}
+.quiz-opt input{accent-color:var(--amber);width:15px;height:15px;}
+.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
+.quiz-btn{background:var(--amber);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
+.quiz-btn:hover{background:var(--amber-mid);}
+.quiz-result{display:none;margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.6;}
+.quiz-result.correct{background:var(--green-pale);border:1px solid var(--green);color:var(--green);}
+.quiz-result.incorrect{background:var(--red-pale);border:1px solid #FCA5A5;color:var(--red);}
+.bottom-nav{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;margin-top:2rem;}
+.bnav-btn{display:inline-flex;align-items:center;gap:8px;padding:0.75rem 1.5rem;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.bnav-prev{background:var(--sand-dark);color:var(--text-mid);border:1px solid var(--border);}
+.bnav-prev:hover{background:var(--sand);}
+.bnav-next{background:var(--amber);color:var(--white);}
+.bnav-next:hover{background:var(--amber-mid);}
+.bnav-center{font-size:12px;color:var(--text-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">D</div>
+    <div>
+      <div class="nav-title">Darco Real Estate Academy</div>
+      <div class="nav-tagline">Leasing Career Track</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">All Tracks</a></li>
+    <li><a href="leasing-career.html" class="nav-back">← Back to Track</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span class="sep">›</span>
+  <a href="leasing-career.html">Leasing Career Track</a><span class="sep">›</span>
+  <span class="current">Module 7: Resident Relations &amp; Renewals</span>
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label">Module 7 of 8</span>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-modules">
+    <a href="lc-module-1.html" class="prog-dot done">1</a>
+    <a href="lc-module-2.html" class="prog-dot done">2</a>
+    <a href="lc-module-3.html" class="prog-dot done">3</a>
+    <a href="lc-module-4.html" class="prog-dot done">4</a>
+    <a href="lc-module-5.html" class="prog-dot done">5</a>
+    <a href="lc-module-6.html" class="prog-dot done">6</a>
+    <div class="prog-dot active">7</div>
+    <div class="prog-dot locked">8</div>
+  </div>
+</div>
+
+<div class="module-hero">
+  <div class="module-hero-inner">
+    <div class="module-badge">🤝 Module 7 · Leasing Career Track</div>
+    <h1>Resident Relations &amp; <em>Renewals</em></h1>
+    <p>Getting a resident to sign is the beginning, not the finish line. The leasing consultants who advance fastest are the ones who understand that every interaction during a tenancy either builds or erodes the trust that makes a resident want to stay. Renewals are earned — not sent.</p>
+    <div class="module-meta">
+      <div class="meta-item">⏱ <span>50 min</span></div>
+      <div class="meta-item">📖 <span>5 Lessons</span></div>
+      <div class="meta-item">🔄 <span>Renewal Strategy</span></div>
+      <div class="meta-item">⚠️ <span>Handling Problems</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="module-body">
+
+  <!-- LESSON 1 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 1</div>
+    <h2 class="lesson-title">Why Retention Is the <em>Most Valuable Metric</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Every time a resident moves out, the community absorbs a cascade of costs: vacancy loss while the unit sits empty, turnover maintenance, cleaning, paint, carpet, leasing commissions, and the staff time of processing a new application and executing a new lease. Industry estimates put the total cost of turning a unit at <strong>$3,000–$5,000 or more</strong> for a typical apartment — and that's before accounting for market rent adjustments during downtime.</p>
+    <p class="lesson-text">A leasing consultant who closes 10 new leases a month but loses 8 residents at renewal creates far less value than one who closes 7 new leases and retains 9. The math of retention always wins. This is why the best leasing professionals think of every resident interaction — not just the tour and signing — as part of their job.</p>
+
+    <div class="metric-row">
+      <div class="metric-card">
+        <div class="metric-num">$4K+</div>
+        <div class="metric-label">Average Turnover Cost</div>
+        <div class="metric-note">Per unit vacancy, including lost rent, maintenance, and re-leasing costs</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">60%</div>
+        <div class="metric-label">Target Renewal Rate</div>
+        <div class="metric-note">Top-performing institutional communities aim for 55–65% annual renewal rates</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">10 mo</div>
+        <div class="metric-label">Renewal Window Opens</div>
+        <div class="metric-note">Best practice: begin renewal outreach 60–90 days before lease expiration</div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">What Drives Residents to Stay — and to Leave</h3>
+    <div class="two-col-grid">
+      <div class="info-card">
+        <span class="ic-tag green">Reasons to Stay</span>
+        <h4>Maintenance responsiveness</h4>
+        <p>The #1 driver of resident satisfaction at large communities. A resident whose maintenance requests are handled quickly and professionally is a resident who feels cared for — and renews.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag red">Reasons to Leave</span>
+        <h4>Feeling ignored or disrespected</h4>
+        <p>Residents who feel like a number — not a person — do not renew. Unanswered calls, unresolved complaints, and impersonal communication are the top cited reasons for not renewing.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag green">Reasons to Stay</span>
+        <h4>Community feel and neighbor quality</h4>
+        <p>Residents stay longer in communities where they feel safe, the neighbors are respectful, and management enforces the rules consistently. A well-run community retains residents.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag red">Reasons to Leave</span>
+        <h4>Rent increase above market</h4>
+        <p>Residents will accept moderate rent increases if they value the community. But a renewal offer significantly above market — without a corresponding upgrade in value — sends residents searching for alternatives.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag green">Reasons to Stay</span>
+        <h4>Relationship with leasing staff</h4>
+        <p>Residents who know the leasing consultant's name, feel remembered, and feel genuinely welcomed renew at higher rates. This relationship is yours to build from day one.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag red">Reasons to Leave</span>
+        <h4>Life changes</h4>
+        <p>Job relocation, family growth, financial hardship — some move-outs are outside your control. Focus your retention energy on the residents for whom staying is a real option.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 2</div>
+    <h2 class="lesson-title">Communicating With Residents — <em>The Daily Standard</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">How you communicate with residents during the tenancy — not just at move-in or renewal — is what determines whether they feel valued or just tolerated. Responsive, professional, and consistently documented communication is the standard at institutional apartment communities.</p>
+
+    <h3 class="sub-title">The Communication Rules</h3>
+    <div class="two-col-grid">
+      <div class="info-card">
+        <span class="ic-tag amber">Standard</span>
+        <h4>Respond the same business day</h4>
+        <p>Every call, email, and portal message from a resident deserves a same-day response — even if you don't have a complete answer yet. "I've received your message and I'm looking into it" is a response. Silence is not.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag amber">Standard</span>
+        <h4>Document everything in writing</h4>
+        <p>Phone conversations, verbal agreements, maintenance requests, and complaints should all be logged in your property management system. "He said / she said" disputes are settled by whoever has better documentation.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag amber">Standard</span>
+        <h4>Keep professional — always</h4>
+        <p>Residents will sometimes be rude, frustrated, or unreasonable. Your tone must remain professional regardless. A leasing consultant who responds to anger with anger creates escalation. One who responds with calm, clear communication resolves it.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag amber">Standard</span>
+        <h4>Use the portal for official communication</h4>
+        <p>Important notices — late rent, lease violations, renewal offers — must go through official channels (your PM software's messaging system or certified mail), not text or casual email. Text is fine for logistics; official business requires a paper trail.</p>
+      </div>
+    </div>
+
+    <div class="callout-amber">
+      <div class="callout-label">💡 The 24-Hour Rule</div>
+      <p>Every maintenance request should receive a response within 24 hours — even if it's just to confirm receipt and give an estimated timeframe. Residents do not expect instant fixes for non-emergencies. They expect to be heard and kept informed. A maintenance request that disappears into a void is one of the fastest ways to lose a renewal. Use your PM software's maintenance ticketing system to track every request from submission to completion.</p>
+    </div>
+  </div>
+
+  <!-- LESSON 3 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 3</div>
+    <h2 class="lesson-title">Handling Common Problems — <em>Your Response Defines You</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Problems are inevitable at any apartment community. How you handle them is what defines your reputation as a leasing professional — and whether a resident chooses to renew. Most problems fall into a small number of recurring categories. Knowing how to respond to each one professionally, calmly, and within your authority is a core competency of this role.</p>
+
+    <table class="problem-table">
+      <tr><th>The Problem</th><th>Your Role</th><th>What To Do</th></tr>
+      <tr>
+        <td>Resident complains about a neighbor (noise, parking, behavior)</td>
+        <td>First contact, intake, follow-up</td>
+        <td>Listen fully without taking sides. Log the complaint in writing. Inform the property manager. If the issue involves a lease violation, management issues a notice. Never confront the neighbor on behalf of the complaining resident — that puts you in the middle and creates liability.</td>
+      </tr>
+      <tr>
+        <td>Resident reports a maintenance issue that was previously submitted and not resolved</td>
+        <td>Advocate and escalate</td>
+        <td>Pull up the original ticket in your PM system. Escalate to the maintenance supervisor with a written note. Follow up with the resident within 24 hours. A resident who sees you go to bat for them is a resident who trusts you.</td>
+      </tr>
+      <tr>
+        <td>Resident is late on rent</td>
+        <td>Follow company protocol — do not improvise</td>
+        <td>Your community has a written late rent process: portal notification, phone call, formal late notice, then escalation. Follow it exactly and consistently. Never agree to waive late fees without management approval — once you waive once, it becomes the expectation.</td>
+      </tr>
+      <tr>
+        <td>Resident reports an unauthorized occupant</td>
+        <td>Document and notify management</td>
+        <td>Log the report. Management will determine whether to require the new occupant to apply, issue a lease violation notice, or both. You do not make this call on your own.</td>
+      </tr>
+      <tr>
+        <td>Resident threatens to break the lease early</td>
+        <td>Listen, de-escalate, escalate to PM</td>
+        <td>Ask what's driving the decision — sometimes a problem can be resolved before it becomes a move-out. For genuine early termination situations, connect the resident with your property manager who will walk through the early termination process and any associated fees per the lease.</td>
+      </tr>
+      <tr>
+        <td>Resident is visibly upset about a management decision</td>
+        <td>Stay calm, listen, document</td>
+        <td>Let them speak. Acknowledge their frustration without agreeing or disagreeing with the decision. "I hear you, and I want to make sure the right person addresses this" is a complete response. Escalate to your property manager with a written summary of the conversation.</td>
+      </tr>
+    </table>
+
+    <div class="callout-warning">
+      <div class="callout-label">⚠️ The Biggest Mistake in Problem Handling</div>
+      <p>Making promises you can't keep. "I'll get that fixed today" when you don't control the maintenance schedule. "I'll waive that fee" when you don't have authority to do so. "I'll make sure that doesn't happen again" when you can't guarantee it. Each broken promise destroys more trust than the original problem. If you're not sure you can deliver it, don't promise it. Say: "I'm going to find out what we can do and get back to you by end of day."</p>
+    </div>
+  </div>
+
+  <!-- LESSON 4 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 4</div>
+    <h2 class="lesson-title">The Renewal Process — <em>How It Works and Your Role In It</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">At large apartment communities, the renewal process is largely managed by the property manager or a dedicated renewals coordinator — not the leasing consultant alone. But leasing consultants play a direct role: you are often the face of the community to the resident, and a renewal conversation handled well or poorly by you can be the difference between a signed renewal and a notice to vacate.</p>
+
+    <h3 class="sub-title">The Renewal Timeline</h3>
+    <div class="renewal-timeline">
+      <div class="rt-item">
+        <div class="rt-time">90 Days Out</div>
+        <div class="rt-body">
+          <h5>Flag the upcoming expiration</h5>
+          <p>Your PM software should generate a list of leases expiring in 90 days. Review it with your property manager. This is when renewal pricing decisions are made based on current market rents, occupancy goals, and the individual resident's history.</p>
+        </div>
+      </div>
+      <div class="rt-item">
+        <div class="rt-time">60 Days Out</div>
+        <div class="rt-body">
+          <h5>Send the renewal offer</h5>
+          <p>California law requires at least 30 days notice for rent increases up to 10%, and 90 days notice for increases over 10% (per AB 1482 for covered properties). Best practice is 60 days regardless to give residents time to decide without feeling pressured. Send through official channels with a clear deadline for response.</p>
+        </div>
+      </div>
+      <div class="rt-item">
+        <div class="rt-time">45 Days Out</div>
+        <div class="rt-body">
+          <h5>Personal outreach — your moment</h5>
+          <p>If the resident hasn't responded to the written offer, this is where you come in. A personal call or in-person conversation from the leasing consultant — not just a form letter — dramatically increases renewal rates. "Hi [Name], just wanted to make sure you received the renewal offer and answer any questions you might have." Simple. Personal. Effective.</p>
+        </div>
+      </div>
+      <div class="rt-item">
+        <div class="rt-time">30 Days Out</div>
+        <div class="rt-body">
+          <h5>Final decision — renewal or notice to vacate</h5>
+          <p>If no response has been received, a formal notice is sent. In California, if a resident on a fixed-term lease does not renew and does not give notice, the lease typically converts to month-to-month at the new rate. Know your community's policy and communicate it clearly.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">The Renewal Conversation</h3>
+    <div class="ad-compare">
+      <div class="ad-sample bad">
+        <div class="ad-sample-label">❌ Transactional — Feels Like a Form Letter</div>
+        <div class="ad-sample-text">"Hi, your lease is coming up. We sent you a renewal offer. Please sign and return it by the 15th or let us know if you're moving out."</div>
+        <div class="ad-sample-note">No relationship. No acknowledgment of the resident as a person. Signals that they are interchangeable with the next applicant. Reduces renewal probability significantly.</div>
+      </div>
+      <div class="ad-sample good">
+        <div class="ad-sample-label">✓ Personal — Builds the Relationship</div>
+        <div class="ad-sample-text">"Hi [Name], it's [Your Name] from [Community]. Your lease is coming up in about 6 weeks — I just wanted to personally reach out and see how things are going. Have you had a chance to look at the renewal offer? I'd love to have you stay. Is there anything I can help answer?"</div>
+        <div class="ad-sample-note">Uses their name. Acknowledges the relationship. Opens a dialogue rather than issuing a deadline. Invites them to surface any unresolved issues before they decide to leave. This is what retention looks like in practice.</div>
+      </div>
+    </div>
+
+    <div class="mentor-bubble">
+      <div class="mentor-avatar">V</div>
+      <div class="mentor-text">
+        <p>"The renewal conversation isn't about the rent increase. By the time a resident is deciding whether to renew, the rent number is almost secondary. What they're really deciding is: do I trust this community to take care of me for another year? Your personal outreach at 45 days is your answer to that question. Show them you know who they are. That call takes three minutes and it closes more renewals than any concession you could offer."</p>
+        <div class="mentor-sig">— Vanessa, Leasing Manager, Greystar — Los Angeles</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 5 -->
+  <div class="lesson-section">
+    <div class="section-label"><span class="dot"></span>Lesson 5</div>
+    <h2 class="lesson-title">Occupancy Goals &amp; <em>Your Performance Metrics</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">Large apartment communities track leasing performance through a set of standard metrics. Understanding these numbers — and how your daily actions affect them — is what separates a leasing consultant who executes tasks from one who thinks like a professional. Your property manager reviews these metrics weekly or monthly, and they directly inform your performance reviews and advancement opportunities.</p>
+
+    <h3 class="sub-title">The Key Metrics You'll Be Measured On</h3>
+    <div class="two-col-grid">
+      <div class="info-card">
+        <span class="ic-tag amber">KPI</span>
+        <h4>Occupancy Rate</h4>
+        <p>Percentage of total units that are leased and occupied. Most institutional communities target 95%+ physical occupancy. Economic occupancy (accounting for concessions and delinquencies) is typically 1–3% lower. This is the top-line health metric for any community.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag amber">KPI</span>
+        <h4>Leased Percentage</h4>
+        <p>Units with signed leases as a percentage of total units — including pre-leased units not yet occupied. A community with 95% physical occupancy and 98% leased percentage is in a strong forward position. Tracking both tells the full story.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag amber">KPI</span>
+        <h4>Tour-to-Lease Conversion Rate</h4>
+        <p>How many tours result in a signed lease. Industry average is roughly 25–35%. A leasing consultant consistently above this range is demonstrating strong sales skill. Below it — consistently — signals something in the tour or follow-up process needs work.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag amber">KPI</span>
+        <h4>Renewal Rate</h4>
+        <p>Percentage of expiring leases that renew. This is partly within your control (relationship quality, responsiveness, the renewal conversation) and partly a management function (pricing, concessions). Top communities aim for 55–65% annual renewal rates.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag amber">KPI</span>
+        <h4>Days Vacant per Turn</h4>
+        <p>How many days a unit sits empty between move-out and new move-in. Every day is direct revenue loss. As a leasing consultant you influence this by pre-leasing units before they are vacated — an approved application and a future move-in date before the current resident leaves eliminates vacancy entirely.</p>
+      </div>
+      <div class="info-card">
+        <span class="ic-tag amber">KPI</span>
+        <h4>Lead Source Performance</h4>
+        <p>Which advertising platforms and channels are generating the most — and highest-quality — leads. You contribute to this data every time you ask "How did you hear about us?" and log the answer. Your property manager uses this to allocate marketing spend.</p>
+      </div>
+    </div>
+
+    <div class="callout-green">
+      <div class="callout-label">✅ Thinking Like a Leasing Professional</div>
+      <p>The leasing consultants who advance to leasing manager, then to assistant property manager, then to property manager are the ones who understand the business behind the role. They know their conversion rates, they know their community's occupancy goals, they track their pipeline, and they proactively identify residents at risk of not renewing. That business awareness — combined with genuine relationship skills — is what the career ladder rewards. Module 8 covers exactly how to get there.</p>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways">
+    <h3>Module 7 — Key Takeaways</h3>
+    <div class="takeaway-list">
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Retention is the most valuable metric in leasing — every prevented move-out saves the community $4,000+ in turnover costs. The relationship you build from day one is what drives renewal decisions.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Same-day response to all resident communication, written documentation of every interaction, professional tone regardless of the resident's attitude, and official channels for formal notices are the four non-negotiable communication standards.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>When handling problems: listen fully, document everything, follow company protocol, escalate to management when a decision is outside your authority, and never make promises you cannot keep.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The renewal timeline: 90 days — flag expirations and set pricing. 60 days — send the written offer. 45 days — personal outreach from you. 30 days — final decision deadline. California requires 30-day notice for rent increases up to 10%, 90-day notice for increases over 10%.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>The personal renewal call at 45 days — using the resident's name, acknowledging the relationship, and inviting them to surface concerns — closes more renewals than any concession or form letter.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Your key performance metrics: occupancy rate, leased percentage, tour-to-lease conversion rate, renewal rate, days vacant per turn, and lead source performance. Understanding these numbers puts you on a clear path to advancement.</p></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section">
+    <h3>Knowledge Check</h3>
+    <div class="quiz-sub">5 questions covering resident relations, problem handling, and renewals.</div>
+
+    <div class="quiz-q">
+      <p>1. A resident calls to complain about their neighbor's noise at midnight every weekend. What is the correct first response?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">Go knock on the neighbor's door and tell them to keep it down</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">Listen fully, log the complaint in writing, and inform the property manager — who will issue a lease violation notice if warranted</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">Tell the resident to handle it directly with the neighbor</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>2. A resident on a 12-month lease has not responded to the renewal offer sent 60 days before expiration. What should you do at 45 days out?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">Wait — if they want to renew, they'll reach out on their own</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">Make a personal call using their name, acknowledge the relationship, and invite them to ask any questions about the renewal offer</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">Send a formal notice that they must respond within 5 business days or the unit will be listed</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>3. A resident is frustrated about a rent increase in their renewal offer and says "This is way too much." What is the best response?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">"I understand your frustration — let me see what I can do about getting that reduced for you"</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">"I hear you — let me connect you with [Property Manager's name] who handles our renewal pricing. I want to make sure you get the right answer." Document the conversation and escalate.</label></div>
+        <div class="quiz-opt"><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">"The pricing is set and can't be changed — I'd suggest you start looking at your other options if it doesn't work for you"</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>4. In California, how many days notice is required before a rent increase greater than 10%?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4a" value="a"><label for="q4a">30 days</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4b" value="b"><label for="q4b">90 days</label></div>
+        <div class="quiz-opt"><input type="radio" name="q4" id="q4c" value="c"><label for="q4c">60 days</label></div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p>5. Which of the following best describes "tour-to-lease conversion rate"?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5a" value="a"><label for="q5a">The percentage of phone inquiries that result in a scheduled tour</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5b" value="b"><label for="q5b">The percentage of tours that result in a signed lease — a measure of leasing consultant effectiveness at the in-person selling stage</label></div>
+        <div class="quiz-opt"><input type="radio" name="q5" id="q5c" value="c"><label for="q5c">The percentage of leases that renew at the end of their term</label></div>
+      </div>
+    </div>
+
+    <button class="quiz-btn" onclick="checkQuiz()">Submit Answers</button>
+    <div class="quiz-result" id="quiz-result"></div>
+  </div>
+
+</div>
+
+<div class="bottom-nav">
+  <a href="lc-module-6.html" class="bnav-btn bnav-prev">← Module 6: The Lease &amp; Move-In Process</a>
+  <span class="bnav-center">Module 7 of 8 · Leasing Career Track</span>
+  <a href="lc-module-8.html" class="bnav-btn bnav-next">Module 8: Getting Hired &amp; Moving Up →</a>
+</div>
+
+<script>
+function checkQuiz(){
+  var answers={q1:'b',q2:'b',q3:'b',q4:'b',q5:'b'};
+  var score=0;
+  var total=0;
+  for(var q in answers){
+    total++;
+    var sel=document.querySelector('input[name="'+q+'"]:checked');
+    if(sel&&sel.value===answers[q])score++;
+  }
+  var result=document.getElementById('quiz-result');
+  result.style.display='block';
+  if(score===total){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You understand the full resident lifecycle — from move-in through renewal. One module left: how to land the job and build the career. On to Module 8.';
+  } else if(score>=total-1){
+    result.className='quiz-result correct';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; good work.</strong> Review any missed questions then continue to Module 8.';
+  } else {
+    result.className='quiz-result incorrect';
+    result.innerHTML='&#10007; <strong>'+score+'/'+total+' correct.</strong> Re-read Lessons 3 and 4 before continuing. Problem handling and the renewal process are what separate a leasing consultant from a truly effective one.';
+  }
+}
+</script>
+
+</body>
+</html>
