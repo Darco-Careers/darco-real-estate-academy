@@ -132,7 +132,9 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
 .quiz-opt:hover{border-color:var(--amber-light);background:var(--amber-pale);}
 .quiz-opt input{accent-color:var(--amber);width:15px;height:15px;}
-.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
+.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;flex:1;}
+.quiz-opt{cursor:pointer;}
+.quiz-opt:focus-within{border-color:var(--amber-light);background:var(--amber-pale);}
 .quiz-btn{background:var(--amber);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
 .quiz-btn:hover{background:var(--amber-mid);}
 .quiz-result{display:none;margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.6;}
@@ -154,6 +156,11 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
 .video-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
 .video-label .dot{width:6px;height:6px;background:var(--amber-light);border-radius:50%;}
+@media(max-width:768px){
+  .two-col-grid,.ad-compare{grid-template-columns:1fr!important;}
+  .obj-table-wrap{overflow-x:auto;}
+  .obj-table{min-width:540px;}
+}
 </style>
 </head>
 <body>
@@ -472,7 +479,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="mentor-avatar">R</div>
       <div class="mentor-text">
         <p>"I always ask one question right after we walk in: 'Can you picture yourself living here?' It sounds simple but it's the most useful question in the tour. If they say yes, the rest of the conversation is about how to make it happen. If they hesitate, I know exactly what to address before we leave the unit. Don't be afraid to ask directly — most people appreciate it."</p>
-        <div class="mentor-sig">— Rafael, Senior Leasing Consultant — West Coast Portfolio</div>
+        <div class="mentor-sig">— Rafael, Senior Leasing Consultant — National Leasing Portfolio</div>
       </div>
     </div>
   </div>
@@ -501,6 +508,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     <p class="lesson-text">Most prospects who tour an apartment and don't apply the same day aren't saying no — they're saying not yet. An objection is almost always a question in disguise. Learning to hear what's actually behind "I want to think about it" or "It's a little above my budget" is what separates a leasing consultant who books tours from one who signs leases.</p>
 
     <h3 class="sub-title">Common Objections and How to Handle Them</h3>
+    <div class="obj-table-wrap">
     <table class="obj-table">
       <tr>
         <th>The Objection</th>
@@ -533,6 +541,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
         <td>Be honest: "I can't hold it without a completed application and holding deposit — but I can tell you it's the only available unit in that tier right now, so if it feels right, starting the application today is the best way to secure it."</td>
       </tr>
     </table>
+    </div>
 
     <h3 class="sub-title">Asking for the Application</h3>
     <p class="lesson-text">The application ask should feel like a natural next step — not a sales push. After the tour, once you are back at your desk, use a soft but direct close:</p>

@@ -15,6 +15,7 @@
   --shadow-card:0 2px 16px rgba(122,88,0,0.08);
   --gold:#C9993A;--gold-light:#E8C97A;--gold-pale:#FBF5E8;
   --green:#1A7A4A;--green-pale:#EAF5EE;
+  --blue:#1A4A7A;--blue-pale:#EAF0F6;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text-dark);line-height:1.75;overflow-x:hidden;}
@@ -119,7 +120,7 @@ nav{background:var(--amber-dark);padding:0 2.5rem;display:flex;align-items:cente
 .video-info{padding:1rem 1.25rem;}
 .video-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 10px;border-radius:20px;margin-bottom:0.5rem;}
 .video-badge.start{background:var(--amber-pale);color:var(--amber-mid);}
-.video-badge.nalp{background:var(--gold-pale);color:#8A6A20;}
+.video-badge.calp{background:var(--gold-pale);color:#8A6A20;}
 .video-badge.sales{background:var(--green-pale);color:var(--green);}
 .video-info h4{font-size:13.5px;font-weight:600;color:var(--text-dark);margin-bottom:0.35rem;line-height:1.4;}
 .video-info p{font-size:12px;color:var(--text-mid);line-height:1.55;}
@@ -151,6 +152,8 @@ footer p{font-size:12px;color:rgba(255,255,255,0.35);}
 .fade-in.visible{opacity:1;transform:translateY(0);}
 
 @media(max-width:640px){
+  .books-grid{grid-template-columns:1fr!important;}
+  
   nav{padding:0 1.25rem;}.nav-links{display:none;}
   .hero{padding:3rem 1.5rem;}.hero-inner{grid-template-columns:1fr;}.hero-visual{display:none;}
   .container{padding:0 1.25rem;}
@@ -190,9 +193,9 @@ footer p{font-size:12px;color:rgba(255,255,255,0.35);}
       <div class="track-badge">🏠 Career Track</div>
       <h1>Apartment<br><em>Leasing</em></h1>
       <p class="hero-sub">The front door of the property management industry. No license required to start, steady income from day one, and a clear ladder into property management, real estate sales, and beyond.</p>
-      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:-1.75rem;margin-bottom:2.5rem;line-height:1.7;">* In California, on-site leasing employees of a licensed property management company are exempt from real estate licensing requirements while working on-site at a specific community.</p>
+      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:-1.75rem;margin-bottom:2.5rem;line-height:1.7;">* In most states, on-site leasing employees of a licensed property management company are exempt from real estate licensing requirements when working on-site at a specific community. Licensing rules vary by state — verify your state's requirement.</p>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="number">$50K–$70K</div><div class="label">Year-one earning potential in LA</div></div>
+        <div class="hero-stat"><div class="number">$45K–$70K</div><div class="label">Typical year-one earning potential</div></div>
         <div class="hero-stat"><div class="number">No License</div><div class="label">Required to start</div></div>
         <div class="hero-stat"><div class="number">CALP</div><div class="label">Industry credential</div></div>
       </div>
@@ -248,7 +251,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.35);}
         <div class="mod-num">1</div>
         <div class="mod-info">
           <h4>The Leasing Career</h4>
-          <p>What the job is, what you get paid, the full career ladder, who hires in LA, and the CALP credential explained.</p>
+          <p>What the job is, what you get paid, the full career ladder, who hires in major markets, and the CALP credential explained.</p>
           <div class="mod-tags"><span class="mod-tag">Overview</span><span class="mod-tag">Career Ladder</span><span class="mod-tag">Compensation</span></div>
         </div>
         <div class="mod-arrow">›</div>
@@ -335,8 +338,8 @@ footer p{font-size:12px;color:rgba(255,255,255,0.35);}
         <div class="video-info">
           <span class="video-badge start">Start Here</span>
           <h4>Is Becoming a Leasing Agent Worth It?</h4>
-          <p>Kevin Trible — a working leasing consultant at a luxury apartment community in Southern California — breaks down the five factors that determine whether a leasing position is worth your time.</p>
-          <p class="credit">Kevin Trible · Southern California Leasing Agent</p>
+          <p>Kevin Trible — a working leasing consultant at a luxury apartment community — breaks down the five factors that determine whether a leasing position is worth your time: sales skills, commission structure, property quality, traffic, and the team.</p>
+          <p class="credit">Kevin Trible · Leasing Agent · Luxury Apartment Community</p>
         </div>
       </div>
       <div class="video-card fade-in">
@@ -366,7 +369,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.35);}
           <iframe src="https://www.youtube.com/embed/zVC7l3NGje0" title="The Secret to High Renewal Rates — Emerson Property Management" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
-          <span class="video-badge nalp">Business Side</span>
+          <span class="video-badge calp">Business Side</span>
           <h4>The Secret to High Renewal Rates — Why Retention Is Everything</h4>
           <p>Cameron from Emerson Property Management breaks down the real cost of losing a resident and the simple renewal strategy that has produced near-zero turnover across his portfolio.</p>
           <p class="credit">Emerson Property Management · Renewal Strategy</p>
@@ -399,14 +402,14 @@ footer p{font-size:12px;color:rgba(255,255,255,0.35);}
     <p class="section-eyebrow" style="color:var(--gold-light);">The Money</p>
     <h2 class="section-title" style="color:var(--white);">What can apartment leasing <em style="color:var(--gold-light);">realistically earn you?</em></h2>
     <div class="gold-divider"></div>
-    <p style="color:rgba(255,255,255,0.65);font-size:1rem;line-height:1.8;max-width:680px;margin-bottom:2rem;font-weight:300;">LA compensation reflects the high cost of living. Base pay is competitive, bonuses are tied directly to your leasing performance, and on-site housing discounts can dramatically increase your total compensation value.</p>
+    <p style="color:rgba(255,255,255,0.65);font-size:1rem;line-height:1.8;max-width:680px;margin-bottom:2rem;font-weight:300;">Leasing consultant compensation varies by market, company, and community size. The figures below reflect typical national ranges — high-cost metros like New York, San Francisco, and your area tend toward the upper end, while smaller markets trend lower. In all markets, performance bonuses and on-site housing discounts significantly increase your total compensation value.</p>
     <div class="earnings-grid">
       <div class="earnings-card fade-in"><div class="earnings-role">Leasing Consultant (Entry)</div><div class="earnings-amount">$18–$24/hr</div><div class="earnings-note">Base pay + monthly lease bonuses. No license required. On-site housing discount available.</div></div>
       <div class="earnings-card fade-in"><div class="earnings-role">Senior Leasing Consultant</div><div class="earnings-amount">$22–$30/hr</div><div class="earnings-note">Higher base + increased commission tier. Typically reached after 1–2 years.</div></div>
       <div class="earnings-card fade-in"><div class="earnings-role">Leasing Manager</div><div class="earnings-amount">$48K–$65K</div><div class="earnings-note">Manages the full leasing team. Occupancy strategy and marketing responsibility added.</div></div>
       <div class="earnings-card fade-in"><div class="earnings-role">Property Manager</div><div class="earnings-amount">$60K–$85K</div><div class="earnings-note">Runs the full community operation. The natural next step for top leasing managers.</div></div>
     </div>
-    <p style="margin-top:1.5rem;font-size:12.5px;color:rgba(255,255,255,0.4);font-style:italic;text-align:center;">* Income figures reflect the Los Angeles market. Figures vary by company, community size, and performance.</p>
+    <p style="margin-top:1.5rem;font-size:12.5px;color:rgba(255,255,255,0.4);font-style:italic;text-align:center;">* Income figures represent typical national ranges. Actual compensation varies by market, company, community size, and individual performance. High-cost metros generally trend toward the upper end of each range.</p>
   </div>
 </section>
 
@@ -418,11 +421,11 @@ footer p{font-size:12px;color:rgba(255,255,255,0.35);}
     <div class="gold-divider"></div>
     <div class="steps">
       <div class="step fade-in"><div class="step-number">1</div><div class="step-content"><h4>Complete this curriculum</h4><p>Work through all 8 modules of this track. By the time you finish, you will understand fair housing law, the leasing process, the application and screening system, and what to expect in your first 90 days on the job.</p></div></div>
-      <div class="step fade-in"><div class="step-number">2</div><div class="step-content"><h4>Apply for entry-level leasing consultant roles</h4><p>Target large apartment communities (100+ units) operated by institutional companies like Greystar, Essex, AvalonBay, and FPI Management. These companies have the most consistent hiring, the clearest training programs, and the best-defined promotion paths.</p></div></div>
+      <div class="step fade-in"><div class="step-number">2</div><div class="step-content"><h4>Apply for entry-level leasing consultant roles</h4><p>Target large apartment communities (100+ units) operated by institutional companies like Greystar, Equity Residential, AvalonBay, Camden Property Trust, and FPI Management. These companies operate nationally, have the most consistent hiring, the clearest training programs, and the best-defined promotion paths.</p></div></div>
       <div class="step fade-in"><div class="step-number">3</div><div class="step-content"><h4>Start the CALP coursework in your first 3 months</h4><p>The Certified Apartment Leasing Professional (CALP) credential requires 6 months of experience and a proctored exam. Start the coursework immediately — you can complete much of it while building your experience hours on the job.</p></div></div>
       <div class="step fade-in"><div class="step-number">4</div><div class="step-content"><h4>Get comfortable with your company's software</h4><p>Yardi, Entrata, and RealPage are the three dominant property management platforms. Your employer will train you on their system, but take the time to learn it deeply. Speed and accuracy in the system is a competitive advantage.</p></div></div>
       <div class="step fade-in"><div class="step-number">5</div><div class="step-content"><h4>Pursue promotion to Senior Consultant or Leasing Manager</h4><p>After 12–18 months, position yourself for the next step. Build your occupancy track record, earn the CALP, and communicate your promotion goals directly to your property manager. Companies promote from within constantly in this industry.</p></div></div>
-      <div class="step fade-in"><div class="step-number">6</div><div class="step-content"><h4>Consider your California real estate license as a long-term upgrade</h4><p>After 2+ years in leasing and property management, the California real estate license opens doors to sales, investment, and brokerage. It's not a prerequisite for success in leasing — it's a tool for expanding your career ceiling later.</p></div></div>
+      <div class="step fade-in"><div class="step-number">6</div><div class="step-content"><h4>Consider your state real estate license as a long-term upgrade</h4><p>After 2+ years in leasing and property management, obtaining your state real estate license opens doors to sales, investment, and brokerage. It's not a prerequisite for success in leasing — it's a tool for expanding your career ceiling later.</p></div></div>
     </div>
   </div>
 </section>
@@ -470,7 +473,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.35);}
     <div class="gold-divider"></div>
     <p class="lead-text">These books form the knowledge base behind this curriculum. You do not need to read them before starting — but the students who go deepest in this career are the ones who treat these as reference tools they return to throughout their first year on the job.</p>
 
-    <div style="display:flex;flex-direction:column;gap:1rem;margin:2rem 0;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;">
 
       <div style="background:var(--sand);border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
         <div style="width:44px;height:44px;background:var(--amber);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📘</div>
@@ -523,6 +526,16 @@ footer p{font-size:12px;color:rgba(255,255,255,0.35);}
       </div>
 
     </div>
+  </div>
+</section>
+
+<section style="background:var(--blue-pale);padding:2.5rem 0;border-top:1px solid rgba(26,74,122,0.12);">
+  <div class="container">
+    <p class="section-eyebrow" style="color:var(--blue);">State-Specific Resources</p>
+    <h2 class="section-title" style="font-size:1.35rem;">Laws vary by state — <em>know yours before your first day</em></h2>
+    <div class="gold-divider" style="background:var(--blue);"></div>
+    <p class="lead-text">Security deposit limits, landlord entry notice requirements, protected classes, and rent control rules all depend on where you work. This course covers the national framework — for your state's specific rules, use Nolo's State Landlord-Tenant Law Guide, which covers all 50 states in plain language.</p>
+    <a href="https://www.nolo.com/legal-encyclopedia/state-landlord-tenant-laws" target="_blank" class="btn btn-outline" style="margin-top:0.5rem;">Look Up Your State's Laws at Nolo.com →</a>
   </div>
 </section>
 

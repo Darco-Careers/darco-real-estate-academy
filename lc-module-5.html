@@ -158,6 +158,10 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
 .video-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
 .video-label .dot{width:6px;height:6px;background:var(--amber-light);border-radius:50%;}
+@media(max-width:768px){
+  .two-col-grid,.criteria-table-wrap{grid-template-columns:1fr!important;}
+  .criteria-table{min-width:480px;}
+}
 </style>
 </head>
 <body>
@@ -275,7 +279,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="info-card">
         <span class="ic-tag verify">Occupants</span>
         <h4>Names of All Occupants</h4>
-        <p>Fair Housing prohibits asking ages or relationships. But you must know who will live in the unit for occupancy standard purposes. Applicants often voluntarily provide relationship information here — that's fine. You just can't ask for it.</p>
+        <p>Fair Housing prohibits using familial status — including the presence of children — as a basis for denial. However, you may collect dates of birth for all occupants to process background screening and enforce occupancy limits. What you cannot do is use that information to reject applicants because they have children or to impose occupancy limits more restrictive than your community's written policy allows. Applicants often voluntarily provide relationship information here — that's fine. You just can't ask for it.</p>
       </div>
       <div class="info-card">
         <span class="ic-tag verify">Rental History</span>
@@ -290,7 +294,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="info-card">
         <span class="ic-tag verify">Other Income</span>
         <h4>Any Additional Income Sources</h4>
-        <p>Self-employment, freelance income, child support, disability payments, or other sources. In California, source of income is a protected class — you cannot reject an applicant solely because their income comes from Section 8 or another housing assistance program.</p>
+        <p>Self-employment, freelance income, child support, disability payments, or other sources. In many states, source of income is a protected class — you cannot reject an applicant solely because their income comes from Section 8 or another housing assistance program. Check your state law.</p>
       </div>
     </div>
 
@@ -323,7 +327,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
         <div class="ss-num">1</div>
         <div class="ss-body">
           <h5>Verify Income</h5>
-          <p>Confirm that gross monthly income equals at least 3× the monthly rent. For W-2 employees, this typically means reviewing the last two pay stubs and verifying employment with the employer directly. For self-employed applicants, two years of tax returns and recent bank statements are the standard. Paystubs alone are not sufficient — a motivated applicant can fabricate one in minutes. Your PM software may flag income automatically, but always cross-check against the actual documents.</p>
+          <p>Confirm that gross monthly income equals at least 3× the monthly rent. For W-2 employees, this typically means reviewing the last two to three pay stubs. Many institutional operators now use automated income and employment verification services (such as Equifax's The Work Number or document authentication tools like Snappt) that flag altered PDFs and pull employer records electronically — reducing fraud risk and eliminating the need for manual employer calls. For self-employed applicants, two years of tax returns and recent bank statements are the standard. Your PM software may flag income automatically, but always cross-check against the actual documents your company requires.</p>
         </div>
       </div>
       <div class="screen-step">
@@ -360,7 +364,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     <div class="video-label"><span class="dot"></span>Watch: See How a Real Company Does It</div>
     <h2 class="lesson-title">Inside a Real Property Management <em>Screening Workflow</em></h2>
     <div class="amber-divider"></div>
-    <p class="lesson-text">Every company's process looks a little different, but the fundamentals are the same. Here's an inside look at one property management team running applications through AppFolio — from pulling the screening report to reading credit and background results to verifying income from pay stubs and sending the approval letter.</p>
+    <p class="lesson-text">Every company's process looks a little different, but the fundamentals are the same. Here's an inside look at one property management team running applications through AppFolio — from pulling the screening report to reading credit and background results to verifying income from pay stubs and sending the approval letter. While AppFolio is typically used by mid-sized portfolios, the exact same screening data points and workflow logic apply directly to enterprise systems like Yardi and Entrata.</p>
     <div class="video-card">
       <div class="video-wrapper">
         <iframe src="https://www.youtube.com/embed/6WNDSqLlImU" title="Tenant Screening Walkthrough in AppFolio — Property Management Training" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -368,7 +372,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="video-info">
         <span class="video-badge">Property Management Team · AppFolio · Real Screening Workflow</span>
         <h4>How a Real Property Management Company Screens Applicants in AppFolio</h4>
-        <p>Watch a property management team run the full screening workflow inside AppFolio: pulling Experian credit and background reports, verifying income using year-to-date gross pay on pay stubs, applying the 3.5× income requirement, handling a guarantor situation, and sending the approval letter. A real team, real software, real process — exactly what you'll be doing on the job.</p>
+        <p>Watch a property management team run the full screening workflow inside AppFolio: pulling Experian credit and background reports, verifying income using year-to-date gross pay on pay stubs, applying the 3× income requirement, handling a guarantor situation, and sending the approval letter. A real team, real software, real process — exactly what you'll be doing on the job.</p>
       </div>
     </div>
   </div>
@@ -433,7 +437,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="mentor-avatar">M</div>
       <div class="mentor-text">
         <p>"The mistake I see new leasing consultants make is treating the screening result as the decision. It's not. The screening result is data. The decision belongs to the manager. Your job is to bring them complete, accurate information and flag anything that doesn't add up. The consultant who tries to make approval calls on their own is the consultant who eventually creates a Fair Housing problem for the property."</p>
-        <div class="mentor-sig">— Marcus, Property Manager, Essex Property Trust — Los Angeles</div>
+        <div class="mentor-sig">— Marcus, Property Manager — National Apartment REIT</div>
       </div>
     </div>
   </div>
@@ -441,17 +445,17 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 
   <div class="lesson-section">
     <div class="video-label"><span class="dot"></span>Watch: Professional Screening Criteria</div>
-    <h2 class="lesson-title">How a Southern California Property Management Company <em>Sets Its Standards</em></h2>
+    <h2 class="lesson-title">How a Top-Tier Property Management Company <em>Sets Its Standards</em></h2>
     <div class="amber-divider"></div>
-    <p class="lesson-text">Steve Welty is CEO of Good Life Property Management, a Southern California company managing nearly 1,600 properties. In this video he pulls back the curtain on their complete screening criteria — income ratios, tiered credit scoring, what actually matters in a credit report, pet screening, Section 8 compliance, co-signer standards, and the red flags that signal a problem applicant before you approve anyone.</p>
+    <p class="lesson-text">Steve Welty is CEO of Good Life Property Management, a property management company managing nearly 1,600 properties. In this video he pulls back the curtain on their complete screening criteria — income ratios, tiered credit scoring, what actually matters in a credit report, pet screening, Section 8 compliance, co-signer standards, and the red flags that signal a problem applicant before you approve anyone.</p>
     <div class="video-card">
       <div class="video-wrapper">
         <iframe src="https://www.youtube.com/embed/YkxreetRSDk" title="How We Screen Tenants — Good Life Property Management" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="video-info">
-        <span class="video-badge">Good Life Property Management · Southern California · ~1,600 Properties</span>
-        <h4>How We Screen Tenants — Professional Criteria From a Southern California Property Manager</h4>
-        <p>Covers written screening criteria (now required under CA AB2493), 3× income minimum, tiered credit score thresholds with income offsets, what to look for inside a credit report beyond the score, income verification standards, pet screening process, Section 8 compliance requirements, co-signer standards, and applicant red flags. Data-driven professional standards from a company that has processed hundreds of applications in the Southern California market.</p>
+        <span class="video-badge">Good Life Property Management · ~1,600 Properties</span>
+        <h4>How We Screen Tenants — Professional Criteria From a Top-Tier Property Manager</h4>
+        <p>Covers written screening criteria (required by law in many states and recommended as best practice everywhere), 3× income minimum, tiered credit score thresholds with income offsets, what to look for inside a credit report beyond the score, income verification standards, pet screening process, Section 8 compliance requirements, co-signer standards, and applicant red flags. Data-driven professional standards from a company that has processed hundreds of applications across their portfolio.</p>
       </div>
     </div>
   </div>
@@ -575,7 +579,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
   <div style="background:var(--amber-pale);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
     <div>
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.25rem;">📖 Course Reference</div>
-      <div style="font-size:13.5px;color:var(--text-dark);font-weight:500;">Need a term defined? The full course glossary covers all 68 key terms across all 8 modules.</div>
+      <div style="font-size:13.5px;color:var(--text-dark);font-weight:500;">Need a term defined? The full course glossary covers all 56 key terms across all 8 modules.</div>
     </div>
     <a href="lc-glossary.html" style="background:var(--amber);color:var(--white);text-decoration:none;font-size:13px;font-weight:600;padding:9px 20px;border-radius:8px;white-space:nowrap;flex-shrink:0;">View Glossary →</a>
   </div>
@@ -598,6 +602,7 @@ function checkQuiz(){
   }
   var result=document.getElementById('quiz-result');
   result.style.display='block';
+  result.scrollIntoView({behavior:'smooth',block:'nearest'});
   if(score===total){
     result.className='quiz-result correct';
     result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You understand the application and screening process. These are the skills that keep your community protected and your occupancy filled with qualified residents. On to Module 6.';

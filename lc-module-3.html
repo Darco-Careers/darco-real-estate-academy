@@ -170,6 +170,10 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
 .video-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
 .video-label .dot{width:6px;height:6px;background:var(--amber-light);border-radius:50%;}
+@media(max-width:768px){
+  .platform-grid,.ad-compare,.photo-grid{grid-template-columns:1fr!important;}
+  .tracking-table{font-size:12px;}
+}
 </style>
 </head>
 <body>
@@ -287,7 +291,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="platform-card">
         <span class="plat-tag primary">Growing Fast</span>
         <h4>Zumper</h4>
-        <p>A strong apartment search platform especially popular with younger renters. Mobile-first design with instant apply functionality. Particularly strong in urban markets like Los Angeles. Prospects can apply directly through the platform.</p>
+        <p>A strong apartment search platform especially popular with younger renters. Mobile-first design with instant apply functionality. Particularly strong in urban markets like a major metro market. Prospects can apply directly through the platform.</p>
       </div>
       <div class="platform-card">
         <span class="plat-tag primary">Strong in LA</span>
@@ -352,7 +356,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
           <div class="ad-num">1</div>
           <div class="ad-content">
             <h5>Headline — unit size, key feature, location</h5>
-            <p>Lead with what matters most: beds, baths, and location. "Spacious 2BR/2BA in Koreatown — In-Unit Laundry &amp; Parking" answers the two biggest questions immediately.</p>
+            <p>Lead with what matters most: beds, baths, and location. "Spacious 2BR/2BA in a walkable urban neighborhood — In-Unit Laundry &amp; Parking" answers the two biggest questions immediately.</p>
           </div>
         </div>
         <div class="ad-line">
@@ -409,7 +413,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       </div>
       <div class="ad-sample good">
         <div class="ad-sample-label">✓ Compliant — Use This</div>
-        <div class="ad-sample-text">"Bright 2BR/1BA with hardwood floors, updated kitchen, and private patio. In-unit washer/dryer. Assigned parking included. Walk to Silver Lake Reservoir, coffee shops, and Metro Line 2. 12-month lease. Cat-friendly. Income 3× rent required."</div>
+        <div class="ad-sample-text">"Bright 2BR/1BA with hardwood floors, updated kitchen, and private patio. In-unit washer/dryer. Assigned parking included. Walk to local parks, coffee shops, and transit. 12-month lease. Cat-friendly. Income 3× rent required."</div>
         <div class="ad-sample-note">Describes the property, its features, and its location. States lease terms and an income requirement that pre-qualifies prospects. No language targeting any demographic. Open to all qualified applicants.</div>
       </div>
     </div>
@@ -574,7 +578,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="mentor-avatar">T</div>
       <div class="mentor-text">
         <p>"The leasing consultants who consistently hit their numbers are the ones who respond to every lead the same day — no exceptions. It sounds obvious but you'd be surprised how many people let leads sit in the queue. I tell my team: if a lead comes in and you have not responded within four hours, someone else already has. Act like it."</p>
-        <div class="mentor-sig">— Tamara, Portfolio Leasing Manager — Los Angeles Portfolio — Los Angeles</div>
+        <div class="mentor-sig">— Tamara, Portfolio Leasing Manager — National Apartment Community</div>
       </div>
     </div>
   </div>
@@ -602,7 +606,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="quiz-options">
         <div class="quiz-opt"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">"2BR with in-unit laundry, hardwood floors, and private balcony. Walk to Metro and Trader Joe's. Cats OK. 12-month lease. Income 3× rent required."</label></div>
         <div class="quiz-opt"><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">"Cozy 1BR in a quiet building — perfect for a single professional. No pets, no kids. Near churches and synagogues."</label></div>
-        <div class="quiz-opt"><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">"Spacious 3BR with two parking spaces, large yard, and updated kitchen. Near local transit and parks and parks. 12-month lease."</label></div>
+        <div class="quiz-opt"><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">"Spacious 3BR with two parking spaces, large yard, and updated kitchen. Near local transit and public parks. 12-month lease."</label></div>
       </div>
     </div>
 
@@ -616,7 +620,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     </div>
 
     <div class="quiz-q">
-      <p>3. Which property management platforms do large apartment communities in Los Angeles most commonly use to manage their leasing operations and ILS integrations?</p>
+      <p>3. Which property management platforms do large apartment communities in any major metro market most commonly use to manage their leasing operations and ILS integrations?</p>
       <div class="quiz-options">
         <div class="quiz-opt"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">QuickBooks, Microsoft Excel, and Google Sheets</label></div>
         <div class="quiz-opt"><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">Yardi, Entrata, and RealPage</label></div>
@@ -674,6 +678,7 @@ function checkQuiz(){
   }
   const result=document.getElementById('quiz-result');
   result.style.display='block';
+  result.scrollIntoView({behavior:'smooth',block:'nearest'});
   if(score===total){
     result.className='quiz-result correct';
     result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You have a strong understanding of the advertising and lead response fundamentals. On to Module 4.';

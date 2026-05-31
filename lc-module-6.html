@@ -125,7 +125,9 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
 .quiz-opt:hover{border-color:var(--amber-light);background:var(--amber-pale);}
 .quiz-opt input{accent-color:var(--amber);width:15px;height:15px;}
-.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
+.quiz-opt label{font-size:13.5px;color:var(--text-mid);cursor:pointer;line-height:1.4;flex:1;}
+.quiz-opt{cursor:pointer;}
+.quiz-opt:focus-within{border-color:var(--amber-light);background:var(--amber-pale);}
 .quiz-btn{background:var(--amber);color:var(--white);border:none;padding:0.75rem 2rem;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
 .quiz-btn:hover{background:var(--amber-mid);}
 .quiz-result{display:none;margin-top:1rem;padding:1rem 1.25rem;border-radius:10px;font-size:14px;line-height:1.6;}
@@ -148,6 +150,9 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .video-info p{font-size:13px;color:var(--text-mid);line-height:1.6;}
 .video-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.6rem;}
 .video-label .dot{width:6px;height:6px;background:var(--amber-light);border-radius:50%;}
+@media(max-width:768px){
+  .clause-grid,.two-col-grid,.ad-compare{grid-template-columns:1fr!important;}
+}
 </style>
 </head>
 <body>
@@ -195,7 +200,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     <div class="module-meta">
       <div class="meta-item">⏱ <span>50 min</span></div>
       <div class="meta-item">📖 <span>5 Lessons</span></div>
-      <div class="meta-item">🎬 <span>2 Videos</span></div>
+      <div class="meta-item">🎬 <span>3 Videos</span></div>
       <div class="meta-item">📄 <span>Lease Anatomy</span></div>
       <div class="meta-item">🔑 <span>Move-In Day</span></div>
     </div>
@@ -213,7 +218,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     <p class="lesson-text">You did not write the lease. Your company's attorneys did. But you need to understand every section of it so you can explain it clearly to residents, answer their questions confidently, and flag anything unusual to your property manager before signing day.</p>
 
     <h3 class="sub-title">Term vs. Month-to-Month — What You'll Encounter</h3>
-    <p class="lesson-text">At most institutional apartment communities in Los Angeles, the standard lease is a <strong>12-month term lease</strong>. Some communities offer 6-month or 9-month options at a higher monthly rate — shorter terms are priced at a premium because they create more turnover risk for the property. Month-to-month tenancies typically apply after the initial term expires, at a higher rent.</p>
+    <p class="lesson-text">At most institutional apartment communities, the standard lease is a <strong>12-month term lease</strong>. Some communities offer 6-month or 9-month options at a higher monthly rate — shorter terms are priced at a premium because they create more turnover risk for the property. Month-to-month tenancies typically apply after the initial term expires, at a higher rent.</p>
 
     <div class="callout-amber">
       <div class="callout-label">💡 Why Lease Terms Are Timed Strategically</div>
@@ -252,12 +257,12 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="clause-card">
         <div class="clause-num">Section 5</div>
         <h4>Late Fees &amp; NSF Fees</h4>
-        <p>The dollar amount charged when rent is late, when the fee kicks in (after grace period), and any daily accumulating fee. Also the returned check (NSF) penalty. In California, late fees must be reasonable and reflect actual damages.</p>
+        <p>The dollar amount charged when rent is late, when the fee kicks in (after grace period), and any daily accumulating fee. Also the returned check (NSF) penalty. Late fee rules vary by state — many states cap fees or require them to reflect actual damages. Know your state's rule.</p>
       </div>
       <div class="clause-card">
         <div class="clause-num">Section 6</div>
         <h4>Security Deposit</h4>
-        <p>Amount charged, conditions under which it may be applied, and — in California — the requirement that it be returned within 21 days of move-out with an itemized deduction statement if any amount is withheld.</p>
+        <p>Amount charged, conditions under which it may be applied, and the requirement that it be returned within the state-mandated timeframe (typically 14–30 days depending on your state) with an itemized deduction statement if any amount is withheld.</p>
       </div>
       <div class="clause-card">
         <div class="clause-num">Section 7</div>
@@ -287,7 +292,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="clause-card">
         <div class="clause-num">Section 12</div>
         <h4>Landlord Access</h4>
-        <p>In California, the landlord must provide 24-hour written notice before entering for non-emergency reasons. The lease spells this out, along with emergency access rights. Residents often ask about this — know it cold.</p>
+        <p>Most states require the landlord to provide written advance notice (typically 24–48 hours) before entering for non-emergency reasons. Your state's requirement will be spelled out in your lease template. Residents often ask about this — know your state's rule cold.</p>
       </div>
     </div>
 
@@ -300,7 +305,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <tr><td>Rules &amp; Regulations</td><td>Quiet hours, parking rules, pool and gym hours, trash disposal, balcony use, laundry room conduct</td></tr>
       <tr><td>Lead-Based Paint Disclosure</td><td>Required by federal law for any property built before 1978. Must be signed even if lead is not present.</td></tr>
       <tr><td>Renter's Insurance Requirement</td><td>Most large communities require proof of renter's insurance (typically $100,000 liability minimum) before move-in. This protects both the resident and the property.</td></tr>
-      <tr><td>Mold Disclosure / Addendum</td><td>Required in California. Resident acknowledges they received information about mold and agrees to report moisture or mold immediately.</td></tr>
+      <tr><td>Mold Disclosure / Addendum</td><td>Required in many states. Resident acknowledges they received information about mold and agrees to report moisture or mold immediately. Check your state law.</td></tr>
     </table>
 
     <div class="callout-warning">
@@ -418,7 +423,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
         <div class="sr-num">4</div>
         <div class="sr-body">
           <h5>Both parties sign the completed report</h5>
-          <p>The resident and a community representative both sign. The resident receives a copy. In California, providing the move-in inspection report is legally required — failing to do so can limit the landlord's ability to make security deposit deductions.</p>
+          <p>The resident and a community representative both sign. The resident receives a copy. In many states, providing the move-in inspection report is legally required — and even where not required, failing to do so can limit the landlord's ability to make security deposit deductions at move-out.</p>
         </div>
       </div>
       <div class="step-row">
@@ -434,25 +439,42 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="mentor-avatar">L</div>
       <div class="mentor-text">
         <p>"I have seen leasing consultants skip the move-in inspection because they were in a rush or the resident seemed like a great person. Every single time that comes back to bite someone. It takes 20 minutes and it saves everyone — the resident and the property — enormous headaches 12 months from now. If you only take one thing from this module, take that: never hand keys to a resident without a signed, photographed move-in inspection in hand."</p>
-        <div class="mentor-sig">— Leticia, Leasing Manager, AIMCO — Los Angeles</div>
+        <div class="mentor-sig">— Leticia, Leasing Manager — National Leasing Portfolio</div>
       </div>
     </div>
   </div>
 
 
   <div class="lesson-section">
-    <div class="video-label"><span class="dot"></span>Watch: The Move-In Condition Report in Action</div>
-    <h2 class="lesson-title">What to Document — and <em>Why It Matters at Move-Out</em></h2>
+    <div class="video-label"><span class="dot"></span>Watch: The Move-In Inspection — Room by Room</div>
+    <h2 class="lesson-title">Everything to Check Before <em>Your Resident Signs Off</em></h2>
     <div class="amber-divider"></div>
-    <p class="lesson-text">The move-in condition report exists to protect the resident from being charged for damage they didn't cause — and to protect the community from disputes at move-out. This video walks through every area of a unit that needs to be checked and documented on move-in day: doors, appliances, refrigerator components, garbage disposal, carpet, bathrooms, washer/dryer, and more. The perspective is the resident's, but the checklist is the same one you'll use as the leasing consultant conducting the inspection alongside them.</p>
+    <p class="lesson-text">This is one of the most thorough move-in inspection walkthroughs available — covering every room, every system, and every item that needs to be documented before a resident takes possession. The perspective is the resident's, but as the leasing consultant conducting the walkthrough alongside them, this is your checklist too. Miss something here and it becomes your problem at move-out.</p>
     <div class="video-card">
       <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/m3ijReSxQVA" title="Move-In Condition Report Walkthrough — What to Document" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/wlbtItqt0fE" title="Apartment Move-In Walkthrough Inspection Guide — Alex and Philip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="video-info">
-        <span class="video-badge">Move-In Condition Report · Room-by-Room Walkthrough</span>
-        <h4>How to Complete a Move-In Condition Report — Room by Room</h4>
-        <p>Walks through every area of a unit that must be documented at move-in: entry doors, interior walls and floors, kitchen appliances and components, garbage disposal, bathroom fixtures, washer and dryer, light fixtures, and exterior areas. Covers what to photograph, why the condition report is not a maintenance request, and how proper documentation protects both parties when the resident eventually moves out. Filmed from the resident's perspective — the checklist applies identically to the leasing consultant conducting the walkthrough alongside them.</p>
+        <span class="video-badge">Move-In Inspection · Complete Room-by-Room Walkthrough</span>
+        <h4>Apartment Move-In Walkthrough — Everything You Need to Inspect and Document</h4>
+        <p>Covers every area of a unit systematically: front door and locks, walls and ceilings (including water stain detection), windows, electrical outlets, kitchen appliances, garbage disposal, bathroom fixtures (shower pressure, diverter, toilet stability, caulking, floor water damage), bedrooms, closets, HVAC system, smoke detectors, washer and dryer, water heater location, circuit breaker, and deck condition. The most comprehensive move-in inspection checklist you will find — document everything before the resident takes the keys.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-section">
+    <div class="video-label"><span class="dot"></span>Supplemental · Additional Reference</div>
+    <h2 class="lesson-title">The Move-In Condition Report — <em>What It Is and Why It Exists</em></h2>
+    <div class="amber-divider"></div>
+    <p class="lesson-text">A quick supplemental walkthrough of the move-in condition report — what it is, why it matters, and the specific items most likely to cause disputes at move-out: appliance components, refrigerator brackets, garbage disposal, carpet condition, and bathroom fixtures. A useful second reference alongside the more comprehensive inspection video above.</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/m3ijReSxQVA" title="Move-In Condition Report Walkthrough — Supplemental" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="video-badge">Supplemental · Move-In Condition Report Reference</span>
+        <h4>Move-In Condition Report — What to Note and Why</h4>
+        <p>Covers the purpose of the move-in condition report, the difference between a condition note and a maintenance request, and the specific items that most commonly cause security deposit disputes: appliance components, refrigerator brackets, garbage disposal, carpet condition, and bathroom fixtures. A focused supplemental reference for the move-in inspection process.</p>
       </div>
     </div>
   </div>
@@ -473,7 +495,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <tr><td>Emergency Procedures</td><td>What qualifies as a maintenance emergency (active leak, no heat in winter, no working lock, gas smell), how to reach the on-call maintenance line, and when to call 911. Give them the emergency contact number in writing.</td></tr>
       <tr><td>Community Rules</td><td>Quiet hours, parking policy, pool and gym access, trash and recycling schedule, package room or locker system, guest parking, balcony rules. Hit the top 5 most-violated policies at your specific community.</td></tr>
       <tr><td>Utilities</td><td>Which utilities they are responsible for, how to set them up if not already done, and the account numbers or contact information for any provider. Confusion about utilities is one of the most common first-month issues.</td></tr>
-      <tr><td>Move-Out Process</td><td>How much notice is required (typically 30–60 days in California), how to give notice properly, what the cleaning standards are, and how the security deposit return process works. Planting this information at move-in prevents the "I didn't know!" problem at move-out.</td></tr>
+      <tr><td>Move-Out Process</td><td>How much notice is required (typically 30–60 days depending on your state), how to give notice properly, what the cleaning standards are, and how the security deposit return process works. Planting this information at move-in prevents the "I didn't know!" problem at move-out.</td></tr>
       <tr><td>Renter's Insurance</td><td>If required, confirm it is in place. If not yet required but recommended, briefly explain why — the property's insurance does not cover residents' personal belongings.</td></tr>
     </table>
 
@@ -488,12 +510,17 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     </div>
   </div>
 
+      <div class="callout-blue">
+      <div class="callout-label">📋 Know Your State Law</div>
+      <p>Landlord-tenant law varies significantly by state and city. The principles in this course apply nationally — but security deposit limits, required notice periods, protected classes, and rent control rules all depend on where you work. Before your first day, look up your state's rules at <a href="https://www.nolo.com/legal-encyclopedia/state-landlord-tenant-laws" target="_blank" style="color:var(--blue);font-weight:600;">Nolo's State Landlord-Tenant Law Guide</a> — it covers all 50 states in plain language.</p>
+    </div>
+
   <!-- TAKEAWAYS -->
   <div class="takeaways">
     <h3>Module 6 — Key Takeaways</h3>
     <div class="takeaway-list">
       <div class="takeaway-item"><div class="ta-check">✓</div><p>The lease is a legal contract — your job is to understand every section so you can explain it clearly to residents, not to interpret or modify it. When in doubt, ask your property manager before the signing appointment.</p></div>
-      <div class="takeaway-item"><div class="ta-check">✓</div><p>Key lease sections every leasing consultant must know: names of all residents, lease term and dates, rent amount and due date, late fees, security deposit conditions, utilities responsibility, guest policy, pet policy, and California's 24-hour entry notice requirement.</p></div>
+      <div class="takeaway-item"><div class="ta-check">✓</div><p>Key lease sections every leasing consultant must know: names of all residents, lease term and dates, rent amount and due date, late fees, security deposit conditions, utilities responsibility, guest policy, pet policy, and your state's landlord entry notice requirement.</p></div>
       <div class="takeaway-item"><div class="ta-check">✓</div><p>Before any lease signing: prepare the full document package, confirm move-in funds, verify utilities transfer, confirm renter's insurance, and inspect the unit on move-in day.</p></div>
       <div class="takeaway-item"><div class="ta-check">✓</div><p>The move-in inspection is mandatory — walk the unit with the resident, document every existing defect, photograph everything, get both signatures, and file it in the property management system where it can be found at move-out.</p></div>
       <div class="takeaway-item"><div class="ta-check">✓</div><p>The new resident orientation covers: rent payment, maintenance requests, emergency procedures, community rules, utilities, the move-out process, and renter's insurance. A well-run orientation prevents the most common first-90-day problems.</p></div>
@@ -534,7 +561,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     </div>
 
     <div class="quiz-q">
-      <p>4. In California, how much notice must a landlord provide before entering a unit for a non-emergency reason such as a routine inspection?</p>
+      <p>4. In most states, how much advance written notice must a landlord provide before entering a unit for a non-emergency reason such as a routine inspection?</p>
       <div class="quiz-options">
         <div class="quiz-opt"><input type="radio" name="q4" id="q4a" value="a"><label for="q4a">No notice required — the landlord owns the property and may enter at any time</label></div>
         <div class="quiz-opt"><input type="radio" name="q4" id="q4b" value="b"><label for="q4b">24 hours written notice</label></div>
@@ -562,7 +589,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
   <div style="background:var(--amber-pale);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
     <div>
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:0.25rem;">📖 Course Reference</div>
-      <div style="font-size:13.5px;color:var(--text-dark);font-weight:500;">Need a term defined? The full course glossary covers all 68 key terms across all 8 modules.</div>
+      <div style="font-size:13.5px;color:var(--text-dark);font-weight:500;">Need a term defined? The full course glossary covers all 56 key terms across all 8 modules.</div>
     </div>
     <a href="lc-glossary.html" style="background:var(--amber);color:var(--white);text-decoration:none;font-size:13px;font-weight:600;padding:9px 20px;border-radius:8px;white-space:nowrap;flex-shrink:0;">View Glossary →</a>
   </div>
@@ -585,6 +612,7 @@ function checkQuiz(){
   }
   var result=document.getElementById('quiz-result');
   result.style.display='block';
+  result.scrollIntoView({behavior:'smooth',block:'nearest'});
   if(score===total){
     result.className='quiz-result correct';
     result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You understand the lease and move-in process. A confident, well-run signing and orientation is what separates a transactional leasing consultant from one residents trust. On to Module 7.';
