@@ -74,7 +74,6 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .callout-blue{background:var(--blue-pale);border-left:4px solid var(--blue);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:1.75rem 0;}
 .callout-blue .callout-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;}
 .callout-blue p{font-size:1rem;color:var(--text-dark);line-height:1.8;}
-/* Two-column card grids */
 .two-col-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin:2rem 0;}
 .info-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
 .info-card .ic-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:2px 10px;border-radius:20px;margin-bottom:0.5rem;}
@@ -84,17 +83,15 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .ic-tag.neutral{background:var(--blue-pale);color:var(--blue);}
 .info-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
 .info-card p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
-/* Before/after compare */
 .ad-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
 .ad-sample{border-radius:12px;padding:1.25rem;}
 .ad-sample.bad{background:var(--red-pale);border:1px solid rgba(185,28,28,0.2);}
-.ad-sample.good{background:var(--green-pale);border:1px solid rgba(26,122,74,0.2);}
+.ad-sample.good {background:var(--green-pale);border:1px solid rgba(26,122,74,0.2);}
 .ad-sample-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.65rem;}
 .ad-sample.bad .ad-sample-label{color:var(--red);}
 .ad-sample.good .ad-sample-label{color:var(--green);}
 .ad-sample-text{font-size:13px;color:var(--text-mid);line-height:1.75;font-style:italic;}
 .ad-sample-note{font-size:12px;color:var(--text-light);margin-top:0.65rem;line-height:1.55;font-style:normal;}
-/* Checklist */
 .checklist{display:flex;flex-direction:column;gap:0.55rem;margin:2rem 0;}
 .cl-item{display:flex;align-items:flex-start;gap:0.85rem;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1.1rem;}
 .cl-icon{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;}
@@ -102,37 +99,34 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .cl-icon.amber{background:var(--amber-pale);color:var(--amber);}
 .cl-text h5{font-size:13.5px;font-weight:600;color:var(--text-dark);margin-bottom:0.15rem;}
 .cl-text p{font-size:12.5px;color:var(--text-mid);line-height:1.55;}
-/* Tour step flow */
 .tour-steps{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
 .tour-step{display:flex;gap:1.25rem;padding:1.1rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
 .tour-step:last-child{border-bottom:none;}
 .ts-num{width:36px;height:36px;border-radius:50%;background:var(--amber);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;flex-shrink:0;margin-top:2px;}
 .ts-body h5{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.3rem;}
 .ts-body p{font-size:13px;color:var(--text-mid);line-height:1.65;}
-/* Objection table */
 .obj-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);}
 .obj-table th{background:var(--amber);color:var(--white);font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:0.85rem 1.1rem;text-align:left;}
 .obj-table td{padding:0.85rem 1.1rem;font-size:13.5px;color:var(--text-mid);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.65;}
 .obj-table tr:last-child td{border-bottom:none;}
 .obj-table tr:nth-child(even) td{background:var(--amber-pale);}
 .obj-table td:first-child{font-weight:600;color:var(--text-dark);}
-/* Mentor */
 .mentor-bubble{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;margin:2rem 0;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow-card);}
 .mentor-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-dark));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;}
 .mentor-text p{font-size:1rem;color:var(--text-mid);line-height:1.8;font-style:italic;}
 .mentor-text .mentor-sig{font-size:12px;font-weight:600;color:var(--amber-mid);margin-top:0.5rem;font-style:normal;}
-/* Takeaways */
 .takeaways{background:var(--amber-darker);border-radius:16px;padding:2rem 2.25rem;margin:2.5rem 0;}
 .takeaways h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:1.25rem;}
 .takeaway-list{display:flex;flex-direction:column;gap:0.75rem;}
 .takeaway-item{display:flex;align-items:flex-start;gap:0.85rem;}
 .ta-check{width:22px;height:22px;border-radius:50%;background:var(--amber-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--white);font-weight:700;margin-top:2px;}
 .takeaway-item p{font-size:14px;color:rgba(255,255,255,0.82);line-height:1.65;}
-/* Quiz */
 .quiz-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2.5rem 0;box-shadow:var(--shadow-card);}
 .quiz-section h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
 .quiz-sub{font-size:13px;color:var(--text-light);margin-bottom:1.5rem;}
-.quiz-q{margin-bottom:1.5rem;}
+.quiz-q{margin-bottom:1.5rem; padding:1rem; border-radius:8px; transition: background 0.2s;}
+.quiz-q.correct-q{background: var(--green-pale); border: 1px solid rgba(26,122,74,0.15);}
+.quiz-q.incorrect-q{background: var(--red-pale); border: 1px solid rgba(185,28,28,0.15);}
 .quiz-q p{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:0.65rem;line-height:1.5;}
 .quiz-options{display:flex;flex-direction:column;gap:0.4rem;}
 .quiz-opt{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.85rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;background:var(--sand);}
@@ -151,7 +145,6 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 .bnav-next{background:var(--amber);color:var(--white);}
 .bnav-next:hover{background:var(--amber-mid);}
 .bnav-center{font-size:12px;color:var(--text-light);}
-
 .video-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-card);margin:2rem 0;}
 .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
 .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
@@ -217,7 +210,6 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
 
 <div class="module-body">
 
-  <!-- LESSON 1 -->
   <div class="lesson-section">
     <div class="section-label"><span class="dot"></span>Lesson 1</div>
     <h2 class="lesson-title">Why Pre-Screening Matters — <em>Before the Tour Begins</em></h2>
@@ -255,7 +247,6 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     </div>
   </div>
 
-
   <div class="lesson-section">
     <div class="video-label"><span class="dot"></span>Watch: The 12-Question Pre-Screening Framework</div>
     <h2 class="lesson-title">What Every Leasing Call Should <em>Find Out Before the Tour</em></h2>
@@ -273,7 +264,6 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     </div>
   </div>
 
-  <!-- LESSON 2 -->
   <div class="lesson-section">
     <div class="section-label"><span class="dot"></span>Lesson 2</div>
     <h2 class="lesson-title">What You Can — and <em>Cannot</em> — Ask</h2>
@@ -314,7 +304,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       </div>
     </div>
 
-    <h3 class="sub-title">Questions You Must Never Ask</h3>
+    <h3 class="sub-title">Questions You Must Never Ask (Or Prematurely Force)</h3>
     <div class="two-col-grid">
       <div class="info-card">
         <span class="ic-tag prohibited">✗ Prohibited</span>
@@ -332,9 +322,9 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
         <p>Religion is a federal protected class. Any question that touches on religious affiliation, practice, or preference is a violation — including seemingly friendly conversation.</p>
       </div>
       <div class="info-card">
-        <span class="ic-tag prohibited">✗ Prohibited</span>
-        <h4>Where do you work? / What do you do?</h4>
-        <p>Employment details are not a pre-screening question — they are part of the formal application and income verification process. Asking informally on a call creates inconsistency and potential liability.</p>
+        <span class="ic-tag neutral">⚠️ Mismatched Workflow</span>
+        <h4>"Where do you work? / What do you do?"</h4>
+        <p>While stating gross income requirements (e.g., 3x rent) is fully lawful and standard, digging into employment details, job titles, or specific employers over a brief introductory call is an operational mismatch. Save formal employment and income verification checks for the application processing module.</p>
       </div>
       <div class="info-card">
         <span class="ic-tag prohibited">✗ Prohibited</span>
@@ -344,17 +334,16 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="info-card">
         <span class="ic-tag prohibited">✗ Prohibited</span>
         <h4>Do you receive housing assistance?</h4>
-        <p>In California and many other states, source of income — including Section 8 / Housing Choice Vouchers — is a protected class. Asking this question as a pre-screening filter is a violation in these jurisdictions.</p>
+        <p>In many states and major municipalities, source of income — including Section 8 / Housing Choice Vouchers — is a protected class. Asking this question as a pre-screening filter is an immediate legal violation in these jurisdictions.</p>
       </div>
     </div>
 
     <div class="callout-warning">
       <div class="callout-label">⚠️ The "Just Curious" Trap</div>
-      <p>Some Fair Housing violations happen not from policy but from casual small talk. "Where are you originally from?" "Oh, do you have kids?" "What kind of work do you do?" — these can all feel like friendly conversation. In the context of a leasing call, they are not. Keep pre-screening focused on the unit requirements. Save the small talk for after the tour.</p>
+      <p>Some Fair Housing violations happen not from policy but from casual small talk. "Where are you originally from?" "Oh, do you have kids?" — these can all feel like friendly conversation. In the context of a leasing call, they are not. Keep pre-screening focused on the unit requirements. Save the small talk for after the tour.</p>
     </div>
   </div>
 
-  <!-- LESSON 3 -->
   <div class="lesson-section">
     <div class="section-label"><span class="dot"></span>Lesson 3</div>
     <h2 class="lesson-title">Preparing for the Tour — <em>The Pre-Showing Checklist</em></h2>
@@ -420,7 +409,6 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     </div>
   </div>
 
-  <!-- LESSON 4 -->
   <div class="lesson-section">
     <div class="section-label"><span class="dot"></span>Lesson 4</div>
     <h2 class="lesson-title">Conducting the Tour — <em>The Leasing Consultant's Playbook</em></h2>
@@ -484,11 +472,10 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       <div class="mentor-avatar">R</div>
       <div class="mentor-text">
         <p>"I always ask one question right after we walk in: 'Can you picture yourself living here?' It sounds simple but it's the most useful question in the tour. If they say yes, the rest of the conversation is about how to make it happen. If they hesitate, I know exactly what to address before we leave the unit. Don't be afraid to ask directly — most people appreciate it."</p>
-        <div class="mentor-sig">— Rafael, Senior Leasing Consultant, Equity Residential — Los Angeles</div>
+        <div class="mentor-sig">— Rafael, Senior Leasing Consultant — West Coast Portfolio</div>
       </div>
     </div>
   </div>
-
 
   <div class="lesson-section">
     <div class="video-label"><span class="dot"></span>Watch: The Two-Letter Word That Kills Tours</div>
@@ -507,7 +494,6 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     </div>
   </div>
 
-  <!-- LESSON 5 -->
   <div class="lesson-section">
     <div class="section-label"><span class="dot"></span>Lesson 5</div>
     <h2 class="lesson-title">Handling Objections &amp; <em>Moving to the Application</em></h2>
@@ -570,7 +556,6 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     </div>
   </div>
 
-  <!-- TAKEAWAYS -->
   <div class="takeaways">
     <h3>Module 4 — Key Takeaways</h3>
     <div class="takeaway-list">
@@ -583,12 +568,11 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
     </div>
   </div>
 
-  <!-- QUIZ -->
   <div class="quiz-section">
     <h3>Knowledge Check</h3>
     <div class="quiz-sub">5 questions covering pre-screening, Fair Housing, and the tour process.</div>
 
-    <div class="quiz-q">
+    <div class="quiz-q" id="block-q1">
       <p>1. During a pre-screening call, a prospect mentions they are moving in with their sister and her two kids. You should:</p>
       <div class="quiz-options">
         <div class="quiz-opt"><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">Ask how old the children are to make sure they are a good fit for the community</label></div>
@@ -597,16 +581,16 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       </div>
     </div>
 
-    <div class="quiz-q">
+    <div class="quiz-q" id="block-q2">
       <p>2. Which of the following is a legitimate pre-screening question?</p>
       <div class="quiz-options">
         <div class="quiz-opt"><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">"What country are you originally from?"</label></div>
         <div class="quiz-opt"><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">"Our available units start at $2,400/month — does that align with your budget?"</label></div>
-        <div class="quiz-opt"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">"Are you currently employed? What is your job title?"</label></div>
+        <div class="quiz-opt"><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">"Are you currently married or planning to have roommates split the security deposit?"</label></div>
       </div>
     </div>
 
-    <div class="quiz-q">
+    <div class="quiz-q" id="block-q3">
       <p>3. You are preparing for a 2pm tour. When should you inspect the unit you plan to show?</p>
       <div class="quiz-options">
         <div class="quiz-opt"><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">Right before the prospect arrives or earlier that day — lights on, surfaces clear, no visible issues</label></div>
@@ -615,7 +599,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       </div>
     </div>
 
-    <div class="quiz-q">
+    <div class="quiz-q" id="block-q4">
       <p>4. A prospect tours the unit, seems interested, but says "I want to think about it" when you get back to the office. The best response is:</p>
       <div class="quiz-options">
         <div class="quiz-opt"><input type="radio" name="q4" id="q4a" value="a"><label for="q4a">"Of course — take all the time you need. Just let us know when you're ready."</label></div>
@@ -624,7 +608,7 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
       </div>
     </div>
 
-    <div class="quiz-q">
+    <div class="quiz-q" id="block-q5">
       <p>5. During the tour, you notice the prospect opening closet doors, checking water pressure, and measuring the bedroom with their hands. This is a sign that:</p>
       <div class="quiz-options">
         <div class="quiz-opt"><input type="radio" name="q5" id="q5a" value="a"><label for="q5a">They are skeptical and probably won't apply — focus on wrapping up the tour efficiently</label></div>
@@ -638,7 +622,6 @@ h3.sub-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:
   </div>
 
 </div>
-
 
 <div style="max-width:860px;margin:0 auto;padding:0 2rem 2rem;">
   <div style="background:var(--amber-pale);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
@@ -662,8 +645,17 @@ function checkQuiz(){
   var total=0;
   for(var q in answers){
     total++;
+    var qBlock=document.getElementById('block-'+q);
     var sel=document.querySelector('input[name="'+q+'"]:checked');
-    if(sel&&sel.value===answers[q])score++;
+    if(qBlock){
+      qBlock.classList.remove('correct-q','incorrect-q');
+      if(sel&&sel.value===answers[q]){
+        score++;
+        qBlock.classList.add('correct-q');
+      } else {
+        qBlock.classList.add('incorrect-q');
+      }
+    }
   }
   var result=document.getElementById('quiz-result');
   result.style.display='block';
@@ -672,13 +664,13 @@ function checkQuiz(){
     result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; excellent!</strong> You understand the pre-screening and tour fundamentals. These are the skills that convert a lead into a signed lease. On to Module 5.';
   } else if(score>=total-1){
     result.className='quiz-result correct';
-    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; good work.</strong> Review any missed questions then continue to Module 5.';
+    result.innerHTML='&#10003; <strong>'+score+'/'+total+' correct &mdash; good work.</strong> Review any missed questions highlighted in red, then continue to Module 5.';
   } else {
     result.className='quiz-result incorrect';
     result.innerHTML='&#10007; <strong>'+score+'/'+total+' correct.</strong> Re-read Lessons 2 and 4 before continuing. Fair Housing in pre-screening and the tour playbook are core daily skills in this role.';
   }
+  result.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 </script>
-
 </body>
 </html>
