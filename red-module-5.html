@@ -295,18 +295,24 @@ a.prog-dot:hover{transform:scale(1.15);}
       <div class="formula-label">Operating Expenses (taxes, maintenance, payroll, insurance, management)</div>
       <div class="formula-value">$909,041</div>
     </div>
-    <div class="formula-row">
+    <div class="formula-divider"></div>
+    <div class="formula-row total" style="background:#2A4A2A;">
+      <div class="formula-operator" style="color:#7DEFA1;">=</div>
+      <div class="formula-label"><strong>NET OPERATING INCOME (NOI)</strong> <span style="font-size:11px;font-weight:400;color:rgba(255,255,255,0.55);">— standard property performance measure</span></div>
+      <div class="formula-value" style="color:#7DEFA1;">$2,077,643</div>
+    </div>
+    <div class="formula-row" style="padding-top:0.75rem;">
       <div class="formula-operator">−</div>
-      <div class="formula-label">Replacement Reserves</div>
+      <div class="formula-label">Replacement Reserves <span style="font-size:11px;color:var(--text-light);">(structural adjustment required by construction lenders)</span></div>
       <div class="formula-value">$40,375</div>
     </div>
     <div class="formula-divider"></div>
     <div class="formula-row total">
       <div class="formula-operator" style="color:var(--orange-light);">=</div>
-      <div class="formula-label"><strong>NET OPERATING INCOME (NOI)</strong></div>
+      <div class="formula-label"><strong>BANK-ADJUSTED NOI</strong> <span style="font-size:11px;font-weight:400;color:rgba(255,255,255,0.55);">— used by lenders for debt sizing</span></div>
       <div class="formula-value">$2,037,268</div>
     </div>
-    <p style="font-size:11.5px;color:var(--text-light);margin-top:0.75rem;">Shortbread Lofts Year 1 Pro Forma — as presented to the construction lender</p>
+    <p style="font-size:11.5px;color:var(--text-light);margin-top:0.75rem;">Shortbread Lofts Year 1 Pro Forma. <strong>Note:</strong> Standard NOI (above) is the universal property performance metric. Replacement Reserves are a below-the-line structural adjustment — some lenders deduct them to arrive at a conservative "Bank-Adjusted NOI" for loan sizing. Always confirm which figure a lender is using when you submit a pro forma.</p>
   </div>
 
   <p class="body-text">Two critical things NOI does <em>not</em> include: <strong>debt service</strong> (mortgage payments) and <strong>capital expenditures</strong> (major improvements, tenant improvements, leasing commissions). These are "below the line" — they affect cash flow to the owner but not the property's fundamental operating income. This separation is what makes NOI the universal standard for comparing properties across different capital structures.</p>
@@ -335,6 +341,7 @@ a.prog-dot:hover{transform:scale(1.15);}
 
   <div class="math-box">
     <h4>📊 Shortbread Lofts — DCF Valuation (Unlevered, r = 12%)</h4>
+    <p style="font-size:12px;color:var(--text-light);margin-bottom:0.85rem;padding:0.6rem 0.75rem;background:var(--char-pale);border-radius:8px;">PV Factor formula: <strong style="font-family:'Playfair Display',serif;">PV Factor = 1 ÷ (1 + r)ⁿ</strong> &nbsp;·&nbsp; where r = 12% (0.12) and n = year number. Example: Year 1 → 1 ÷ (1.12)¹ = <strong>0.893</strong>. Year 3 → 1 ÷ (1.12)³ = <strong>0.712</strong>. These factors shrink as years increase — money arriving later is worth less today.</p>
     <div class="math-row"><div class="math-label">Year 1 NOI</div><div class="math-value">$2,037,268</div><div class="math-note">PV factor 0.893 → $1,819,280</div></div>
     <div class="math-row"><div class="math-label">Year 2 NOI</div><div class="math-value">$2,087,936</div><div class="math-note">PV factor 0.797 → $1,664,085</div></div>
     <div class="math-row"><div class="math-label">Year 3 NOI</div><div class="math-value">$2,154,980</div><div class="math-note">PV factor 0.712 → $1,534,346</div></div>
@@ -460,7 +467,7 @@ a.prog-dot:hover{transform:scale(1.15);}
       <div class="ratio-name">Loan-to-Value Ratio</div>
       <div class="ratio-formula">LTV = Loan Amount ÷ Property Value</div>
       <div class="ratio-desc">Measures how much of the property's value is financed by debt. A 70% LTV means $0.70 of debt for every $1.00 of value — leaving a 30% equity cushion. For development projects not yet built, lenders substitute LTC (Loan-to-Cost) instead. Tests whether the collateral protects the lender.</div>
-      <div class="ratio-target">Typical max: 65–75% LTV · Shortbread Lofts: 67.7% ($21M ÷ $31M)</div>
+      <div class="ratio-target">Typical max: 65–75% LTV · Shortbread Lofts: 67.0% ($21M ÷ $31M)</div>
     </div>
     <div class="ratio-card">
       <div class="ratio-abbr">LTC</div>
@@ -472,6 +479,25 @@ a.prog-dot:hover{transform:scale(1.15);}
   </div>
 
   <p class="body-text">When both ratios are calculated, the lender underwrites to the <strong>lower</strong> of the two justified loan amounts — using the DSCR constraint (NOI supports this much debt) and the LTV constraint (collateral supports this much debt) independently, then taking the smaller result. This dual test protects lenders against both cash flow risk and collateral value risk simultaneously.</p>
+
+  <div class="insight-box" style="margin:1.5rem 0;">
+    <h4>⚖️ The Dual-Constraint Reality — Underwriting in Action</h4>
+    <p style="margin-bottom:0.75rem;">Every permanent lender runs two parallel tests. The loan amount is capped by whichever test is more restrictive — forcing the developer to bring more equity to fill the gap.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:0.75rem 0;">
+      <div style="background:rgba(255,255,255,0.07);border-radius:10px;padding:1rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--orange-light);margin-bottom:0.4rem;">LTV CONSTRAINT</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.85);line-height:1.6;">Lender will fund up to <strong style="color:#fff;">70% of value</strong><br>Property value: $31,000,000<br>Max loan: <strong style="color:var(--orange-light);">$21,700,000</strong></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border-radius:10px;padding:1rem;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--orange-light);margin-bottom:0.4rem;">DSCR CONSTRAINT</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.85);line-height:1.6;">Stabilized NOI at 1.25× coverage<br>NOI: $2,037,268 ÷ 1.25 = $1,629,814<br>Max loan: <strong style="color:var(--orange-light);">$20,900,000</strong></div>
+      </div>
+    </div>
+    <div style="background:rgba(212,98,26,0.2);border-radius:10px;padding:0.85rem 1rem;margin-top:0.5rem;">
+      <div style="font-size:12px;font-weight:700;color:var(--orange-light);margin-bottom:0.3rem;">THE RESULT</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.85);">The lender writes the loan for <strong style="color:#fff;">$20,900,000</strong> (the DSCR constraint is binding). The developer must find an additional <strong style="color:var(--orange-light);">$800,000 in equity</strong> to close the gap — even though the collateral alone would have supported a larger loan.</div>
+    </div>
+  </div>
 
   <div class="math-box">
     <h4>📊 Shortbread Lofts — Loan Metrics</h4>
@@ -562,7 +588,7 @@ a.prog-dot:hover{transform:scale(1.15);}
       </div>
       <div class="mg-term" data-mg="CMBS commercial mortgage backed securities public debt securitization bond">
         <div class="mg-name">Commercial Mortgage-Backed Securities <span class="mg-abbr">CMBS</span></div>
-        <div class="mg-def">Fixed-income securities collateralized by pools of commercial real estate mortgages — similar to corporate bonds, rated by third-party agencies (AAA to non-rated), and sold in public bond markets. Brought greater liquidity and competition to commercial real estate permanent lending. CMBS volumes peaked at $230B in 2007, collapsed to under $3B in 2009 during the Great Recession, and recovered to ~$90B in 2013. Less flexible than life insurance company loans — CMBS loans are standardized and difficult to modify once securitized.</div>
+        <div class="mg-def">Fixed-income securities collateralized by pools of commercial real estate mortgages — rated by third-party agencies (AAA to non-rated) and sold in public bond markets. CMBS brought significant liquidity and competition to commercial real estate permanent lending, and today operates as a seasoned, permanent fixture in the capital markets alongside debt funds, life insurance companies, and agency execution. Volumes are subject to credit cycle conditions but CMBS consistently represents a major share of commercial real estate debt origination. Less flexible than life insurance company loans — CMBS loans are standardized and difficult to modify once securitized. Best suited for stabilized, cash-flowing properties with clean title and straightforward tenancy.</div>
       </div>
     </div>
     <p class="mg-none" id="mgNone5">No matching terms found.</p>
